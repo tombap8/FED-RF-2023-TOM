@@ -35,6 +35,9 @@ https://www.dothome.co.kr/
 (2) 깃허브: 회원가입 후 레파지토리 만들기!
 https://github.com/
 
+- 깃허브 데스크탑 설치
+https://desktop.github.com/
+
 
 9. 포트폴리오
 - 개인포폴 주제선정 후 분기별 제출 및 발표
