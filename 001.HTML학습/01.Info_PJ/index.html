@@ -43,9 +43,22 @@
               border: 4px double darkblue;
               /* 패딩 */
               padding: 20px;
-              /* 마진 */
-            }
+              /* 마진 : 마영오! 씨를 무대중앙으로 모시겠습니다! */
+              margin: 0 auto;
+              /* 양쪽마진을 auto 로 쓰면 등분할되어 
+              블록박스가 중앙위치함 */
+              /* 
+                [ 마진/패딩공통 개수별 정의 ]
+                margin: 4방향;(1개)
+                margin: 위아래 양쪽;(2개)
+                margin: 위 양쪽 아래;(3개)
+                margin: 위 오른 아래 왼;(4개-시계방향)
+              */
 
+              /* 텍스트 중앙 : tac */
+              text-align: center;
+            }
+            
             /* 메인이미지 */
             .cimg{
               width: 100%;
@@ -55,6 +68,11 @@
             /* 1.상단영역 */
             #top {
                 background-color: lightblue;
+            }
+
+            /* 2. 메인영역 */
+            #cont{
+              margin: 20px auto;
             }
 
         </style>
