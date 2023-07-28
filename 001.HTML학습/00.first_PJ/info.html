@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- 선언부 : 브라우저가 어떤 html버전 문법으로 읽어야 할지를 지시함! html 만 쓰면 html5문서임! -->
+<!-- 
+    html은 루트가 하나다!
+
+    [html하위 구성]
+    1.head - 웹문서 기본셋팅값
+    (메타태그-문서정보,문자셋 등, 타이틀태그)
+    2.body - 웹 페이지 출력되는 본문
+ -->
+<html>
+    <head>
+        <meta name="description" content="현재 사이트의 내용을 검색되도록 요약설명을 여기에씀">
+        <meta charset="UTF-8">
+        <!-- 메타 charset utf-8은 한글,일본어 등 2byte문자열 안깨짐설정 -->
+        <title>기본전달사항</title>
+        <!-- title : 탭메뉴에 출력되는 문자 -->
+    </head>
+    <body>
+        <!-- 
+            [ VSCODE에는 에밋이 기본설치 되어있다! ]
+            -> 에밋이 뭐지? 
+            약자로 코딩을 짧고 쉽게 하도록 도와주는 도구
+            -> 예전에는 젠코딩이라고 불렀다!
+            -> HTML, CSS 모두에 적용됨
+            -> 단축키를 지정해서 사용하면 편리하다!
+            -> 단축키 지정: ctrl + K + S (키셋설정!)
+            -> 3가지 단축키 지정
+                1) 태그랩핑 : ctrl + alt + A
+                2) 태그삭제 : ctrl + alt + R
+                3) 태그변경 : ctrl + alt + U
+
+                ______________________________
+
+                [ 태그들 ]
+                1. h1~h6 : 제목표시(heading)
+                2. br : 인라인 줄바꿈(break)
+                3. a : 링크 (Anchor:닻)
+                - href 속성: 
+                이동할 곳(hyper text reference)
+                - target 속성: 창옵션(_blank새창)
+                (기본값은 _self 현재창)
+
+         -->
+        
+        <h1>
+            [ 프론트엔드(React, PHP), 
+            <br>플러터(Flutter)활용 웹&앱개발 양성과정 - 기본전달사항 ]
+        </h1>
+        탐쌤이멜: 
+        <a href="mailto:tombap@naver.com">tombap@naver.com</a>
+        
+        <h2>1. 교재: 6권</h2>
+        
+        <h2>2. 평가: 3회차의 프로젝트 산출물</h2>
+        
+        <h2>3. 공식교과서: w3c 스쿨</h2>
+        <a href="https://www.w3schools.com/" target="_blank">
+            https://www.w3schools.com/</a>
+
+        
+        <h2>4. 소스 빌드용 폴더 생성하기!</h2>
+        
+        <h2 id="mv">5. 강의 동영상 백업 유튜브: 탐쌤코딩 프론트엔드 2022</h2>
+        <a href="https://www.youtube.com/channel/UCZbKItP_V6tjCSpR7ywc5Lw" target="_blank">https://www.youtube.com/channel/UCZbKItP_V6tjCSpR7ywc5Lw</a>
+        
+        <h2>6. 소스 깃허브 : 탐쌤코딩 프론트엔드 2022</h2>
+        <a href="https://github.com/tombap8/FED-RF-2023-TOM" target="_blank">https://github.com/tombap8/FED-RF-2023-TOM</a>
+        
+        <h2>7. 사이트 벤치마킹 포털</h2>
+        
+        <h3>(1) 디비컷</h3>
+        <a href="https://www.dbcut.com/bbs/index.php" target="_blank">https://www.dbcut.com/bbs/index.php</a>
+        
+        <h3>(2) 굿디자인웹</h3>
+        <a href="https://www.gdweb.co.kr/main/" target="_blank">https://www.gdweb.co.kr/main/</a>
+        
+        <h3>(3) 어워즈</h3>
+        <a href="https://www.awwwards.com/" target="_blank">https://www.awwwards.com/</a>
+        
+        <h2>8. 필수 회원가입</h2>
+        
+        <h3>(1) 닷홈: 회원가입 후 무료호스팅하기!</h3>
+        <a href="https://www.dothome.co.kr/" target="_blank">https://www.dothome.co.kr/</a>
+        
+        <h3>(2) 깃허브: 회원가입 후 레파지토리 만들기!</h3>
+        <a href="https://github.com/" target="_blank">https://github.com/</a>
+        
+        <h3>- 깃허브 데스크탑 설치</h3>
+        <a href="https://desktop.github.com/" target="_blank">https://desktop.github.com/</a>
+        
+        
+        <h2>9. 포트폴리오</h2>
+        <h3>- 개인포폴 주제선정 후 분기별 제출 및 발표</h3>
+        예시)
+        <a href="https://tombap8.github.io/FED-PJ-2022-tom/" target="_blank">https://tombap8.github.io/FED-PJ-2022-tom/</a>
+        <br>
+        <a href="https://tombap8.github.io/KNG-FED211/index.html" target="_blank">https://tombap8.github.io/KNG-FED211/index.html</a>
+        
+        <h2>10. UI/UX 참고자료</h2>
+        
+        <h3>1) UX 개념의 예 :  피아노건반 계단</h3>
+        <h4>- The Fun Theory 동영상 시리즈 1번</h4>
+        <a href="https://youtu.be/SByymar3bds" target="_blank">https://youtu.be/SByymar3bds</a>
+        
+        <h3>2) 인터페이스 개념</h3>
+        <h4>- 나건교수 동영상</h4>
+        <a href="https://youtu.be/EKFM5yeXdck" target="_blank">https://youtu.be/EKFM5yeXdck</a>
+        
+        <h4>-> 소통이 이루지는 장소에서 사용되는 </h4>
+        수단과 방법을 인터페이스라고함!
+        
+
+        <h2><a href="#">🤞맨위로🤞</a></h2>
+        <h2><a href="#mv">🤷‍♀️강의동영상🤷‍♀️</a></h2>
+        <!-- 
+            [ a요소 href값에 따른 내부이동 ]
+            "#"만쓰면 맨위로
+            "#아이디명" 으로쓰면 아이디 이름 요소로 이동
+            -> 요소에 아이디를 써야함
+
+         -->
+        
+        
+        
+
+    </body>    
+</html>    
+
+
+
