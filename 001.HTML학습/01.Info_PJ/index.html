@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- 뷰포트: 모바일에서 실제픽셀로 변환함 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>네이버 요약뉴스</title>
-</head>
-<body>
-    <!-- 1. 상단영역 : 제목, 메뉴 -->
-    <div id="top" class="bx"></div>
-    <!-- 2. 메인영역 : 컨텐츠 -->
-    <div id="cont" class="bx"></div>
-    <!-- 3. 하단영역 : 회사정보 -->
-    <div id="info" class="bx"></div>
-    <!-- 
+    <head>
+        <meta charset="UTF-8" />
+        <!-- 뷰포트: 모바일에서 실제픽셀로 변환함 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>네이버 요약뉴스</title>
+        <!-- css인라인 코딩영역 -->
+        <style>
+            /* CSS영역내 주석문 */
+        </style>
+    </head>
+    <body>
+        <!-- 1. 상단영역 : 제목, 메뉴 -->
+        <header id="top" class="bx">
+          <!-- 1-1.제목 -->
+          <h1>네이버 요약 뉴스</h1>
+          <!-- 1-2.GNB메뉴 -->
+          <!-- GNB(Global Navigation Bar) -->
+          <nav id="gnb">
+            <a href="">
+              <!-- 상대경로 -->
+              <img src="./images/logo.png" alt="네이버로고">
+              <!-- 절대상대경로 -->
+              <img src="/001.HTML학습/01.Info_PJ/images/logo.png" alt="네이버로고">
+              <!-- 절대경로 -->
+              <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="네이버로고">
+            </a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+          </nav>
+        </header>
+        <!-- 2. 메인영역 : 컨텐츠 -->
+        <main id="cont" class="bx"></main>
+        <!-- 3. 하단영역 : 회사정보 -->
+        <footer id="info" class="bx"></footer>
+        <!-- 
         [ 레이아웃을 위한 블록요소 ]
         div : 영역을 나누고 묶어주는 요소
 
@@ -33,7 +57,17 @@
         요소(element)는 공통적인 성질을 이를때 사용
         태그(tag)는 구체적인 요소를 사용할때 지칭하는말
 
+        [ 웹에서의 경로 ]
+        1. 상대경로 : 현재파일 위치에서 파악되는 경로
+        1) ./ - 현재위치 (또는 쓰지 않고 바로)
+        2) ../ - 상위폴더로 이동
+
+        2. 절대경로 : http부터 쓰는 웹 경로
+        
+        3. 절대상대경로 : 웹 사이트 루트부터의 경로
+        -> 슬래쉬(/)부터 씀
+
 
      -->
-</body>
+    </body>
 </html>
