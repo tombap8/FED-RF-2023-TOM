@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <!-- 뷰포트: 모바일에서 실제픽셀로 변환함 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>네이버 요약뉴스 - 정치</title>
+        <!-- 서브용 외부CSS 불러오기 -->
+        <link rel="stylesheet" href="./css/sub.css">
+        
+    </head>
+    <body>
+        <!-- 1. 상단영역 : 제목, 메뉴 -->
+        <header id="top" class="bx">
+            <!-- 1-1.제목 -->
+            <h1>네이버 요약 뉴스</h1>
+            <!-- 1-2.GNB메뉴 -->
+            <!-- GNB(Global Navigation Bar) -->
+            <nav id="gnb">
+                <a href="index.html">
+                    <!-- 상대경로 -->
+                    <img src="./images/logo.png" alt="네이버로고" style="width: 24px" />
+                    <!-- style속성으로 CSS를 셋팅하는 방법은 인라인방식이라고 함! -->
+
+                    <!-- 절대상대경로 -->
+                    <!-- <img src="/001.HTML학습/01.Info_PJ/images/logo.png" alt="네이버로고"> -->
+                    <!-- 절대경로 -->
+                    <!-- <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="네이버로고"> -->
+                </a>
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> | <a href="sub3.html">사회</a> |
+                <a href="sub4.html">IT/과학</a> |
+                <a href="sub5.html">TV/연예</a>
+            </nav>
+        </header>
+        <!-- 2. 메인영역 : 컨텐츠 -->
+        <main id="cont" class="bx">
+            <!-- 2-1. 서브타이틀 -->
+            <h2 class="stit">정치 뉴스</h2>
+            <!-- 2-2. 언론사로고 -->
+            <div class="prlogo"></div>
+            <!-- 2-3. 기사제목 -->
+            <h3 class="atit"></h3>
+            <!-- 2-4. 기사사진 -->
+            <figure class="afig">
+                <!-- 이미지 -->
+                <!-- 이미지설명 -->
+                <figcaption></figcaption>
+            </figure>
+            <!-- 2-5. 기사내용 -->
+            <section class="acont">
+
+            </section>
+            <!-- 2-6. 기자정보 -->
+            <div class="rpt"></div>
+            <!-- 2-7. 기사원문 -->
+            <h5>
+                <a href=""></a>
+            </h5>
+
+
+
+        </main>
+        <!-- 3. 하단영역 : 회사정보 -->
+        <footer id="info" class="bx">
+            <address>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: <span class="utxt">Tom Brace Parker</span> <br />
+                전화: <b class="utxt">010-2222-3333</b>
+            </address>
+        </footer>
+        <!-- 
+            [ 웹표준이란? ]
+            - 모든 브라우저에서 하나의 소스로
+            동일한 디스플레이 및 기능이 작동하도록
+            정한 웹 코딩의 표준안이다!
+
+            [ 웹접근성이란? ]
+            - 평등의 원칙! 즉, 장애인 차별금지법에 따라
+            이미지(alt속성), 동영상(자막) 등에 설명을 추가
+            하여 정보제공에 차별이 없도록 하는 것!
+
+            [ img요소 : 이미지 연결요소 ]
+            - 필수속성
+            1) src : 이미지경로
+            (source)
+            2) alt : 이미지 설명(웹접근성)
+            (alternative text - 대체텍스트)
+
+        [ 레이아웃을 위한 블록요소 ]
+        div : 영역을 나누고 묶어주는 요소
+
+        [ HTML5에서 등장한 div친구들 ]
+        - div에 내용을 구분하는 이름을 지어줌
+        - 의미가 있는 요소를 시멘틱태그라고 함!
+        1. header : 머릿부분
+        2. footer : 아래부분
+        3. main : 메인부분(한번만 사용!)
+        4. nav : 네비게이션 부분
+        5. aside : 부가정보
+        6. section : 내용구분파트
+        7. article : 독립된 내용구분파트
+        (section / article 내부에 h1~6태그를 쓸것을 권고함)
+
+        참고) 요소와 태그는 무엇이 다른가?
+        요소(element)는 공통적인 성질을 이를때 사용
+        태그(tag)는 구체적인 요소를 사용할때 지칭하는말
+
+        [ 웹에서의 경로 ]
+        1. 상대경로 : 현재파일 위치에서 파악되는 경로
+        1) ./ - 현재위치 (또는 쓰지 않고 바로)
+        2) ../ - 상위폴더로 이동
+
+        2. 절대경로 : http부터 쓰는 웹 경로
+        
+        3. 절대상대경로 : 웹 사이트 루트부터의 경로
+        -> 슬래쉬(/)부터 씀
+
+        -> 주의: 절대상대경로는 서버 루트폴더가
+        같지 않으면 경로가 망가짐. 또는 로컬에서
+        직접 웹 페이지를 열어도 망가짐.
+
+
+     -->
+    </body>
+</html>

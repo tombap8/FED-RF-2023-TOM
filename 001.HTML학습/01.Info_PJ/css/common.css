@@ -83,12 +83,17 @@ h2 {
         margin: 위 오른 아래 왼;(4개-시계방향)
     */
 
-    /* 텍스트 중앙 : tac */
-    text-align: center;
-
+    
     /* 둥근모서리 */
     border-radius: 15px;
 }
+
+/* 상단,하단만 중앙정렬 */
+#top,#info{
+    /* 텍스트 중앙 : tac */
+    text-align: center;
+}
+
 
 /* 메인이미지 */
 .cimg {
