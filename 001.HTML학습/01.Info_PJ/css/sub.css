@@ -13,7 +13,24 @@ h2.stit {
     text-align: center;
     text-shadow: 2px 2px 2px #0000008a;
 
-    outline: 1px solid red;
+    border-radius: 10px;
+
+    /* outline: 1px solid red; */
+    /* 
+        [ outline 요소 ]
+
+        box모델의 필수속성은 아니지만
+        박스의 외곽선을 표현해주며
+        박스자체에 크기에 영향을 주지 않음!
+        outline :  두께 종류 색상
+
+        -> border와 셋팅이 같음!
+        단, border-radius 둥근모서리는 
+        보더만 적용되었으나  아웃트라인도 됨 이제는...
+
+        -> 주로 사용되는 예는 input 입력창에서
+        포커스가 갈 경우 외곽선표시가 됨
+    */
     padding: 40px;
 
     /* 배경넣기 : 한번에쓰기 */
@@ -29,39 +46,66 @@ h2.stit {
     background-position: center;
     /* 배경크기 : 가로 세로 (cover - 박스채우기) */
     background-size: cover;
+
+    margin-bottom: 30px;
+
+    /* 박스그림자 */
+    box-shadow: 
+    inset 0 0 6px 5px #05050573,
+    0 0 5px 5px hotpink;
+    /* 
+        [ box-shadow 속성 ]
+        - 박스 외부/내부 그림자 설정속성
+        - 값 : x축 y축 blur spread 색
+        text-shadow와 달리 spread 속성이 있음
+        이것은 그림자를 커지게함!
+        - 내부그림자 옵션: inset
+        - 그림자 다중설정 : 콤마로 연속사용가능
+    */
     
 }
 
 /* 정치 배경이미지 */
-#cont .st1{
+h2.st1{
     /* 배경이미지 */
     background-image: url(../images/afig1.jpg);
     color: magenta;
 }
 /* 경제 배경이미지 */
-#cont .st2{
+h2.st2{
     /* 배경이미지 */
     background-image: url(../images/afig2.jpg);
     color: yellow;
 }
 /* 사회 배경이미지 */
-#cont .st3{
+h2.st3{
     /* 배경이미지 */
     background-image: url(../images/afig3.jpg);
     color: aquamarine;
 }
 /* IT/과학 배경이미지 */
-#cont .st4{
+h2.st4{
     /* 배경이미지 */
     background-image: url(../images/afig4.jpg);
     color: lime;
 }
 /* TV/연예 배경이미지 */
 /* .st5의 적용우선순위를 높이기 위해 부모요소를 써줌! */
-#cont .st5{
+h2.st5{
     /* 배경이미지 */
     background-image: url(../images/afig5.jpg);
     /* 배경위치변경 (세로 y축) */
     background-position-y: -40px;
     color: aqua;
+}
+
+/* 언론사로고 */
+.prlogo img{
+    height: 32px;
+    /* 
+        이미지는 기본 비율을 가지고 있어서
+        가로,세로 중 한쪽만 크기를 주면
+        나머지 방향은 자동으로 비율을 유지함!
+        가로,세로를 다 주면 비율이 깨짐!
+    */
 }
