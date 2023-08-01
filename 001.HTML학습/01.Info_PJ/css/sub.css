@@ -4,6 +4,11 @@
 /* 공통외부CSS 합치기 */
 @import url(./common.css);
 
+/* 서브페이지 공통 글자설정 */
+#cont {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
 /* 서브타이틀 */
 h2.stit {
     color: #12ab0d;
@@ -50,9 +55,7 @@ h2.stit {
     margin-bottom: 30px;
 
     /* 박스그림자 */
-    box-shadow: 
-    inset 0 0 6px 5px #05050573,
-    0 0 5px 5px hotpink;
+    box-shadow: inset 0 0 6px 5px #05050573, 0 0 5px 5px hotpink;
     /* 
         [ box-shadow 속성 ]
         - 박스 외부/내부 그림자 설정속성
@@ -62,36 +65,35 @@ h2.stit {
         - 내부그림자 옵션: inset
         - 그림자 다중설정 : 콤마로 연속사용가능
     */
-    
 }
 
 /* 정치 배경이미지 */
-h2.st1{
+h2.st1 {
     /* 배경이미지 */
     background-image: url(../images/afig1.jpg);
     color: magenta;
 }
 /* 경제 배경이미지 */
-h2.st2{
+h2.st2 {
     /* 배경이미지 */
     background-image: url(../images/afig2.jpg);
     color: yellow;
 }
 /* 사회 배경이미지 */
-h2.st3{
+h2.st3 {
     /* 배경이미지 */
     background-image: url(../images/afig3.jpg);
     color: aquamarine;
 }
 /* IT/과학 배경이미지 */
-h2.st4{
+h2.st4 {
     /* 배경이미지 */
     background-image: url(../images/afig4.jpg);
     color: lime;
 }
 /* TV/연예 배경이미지 */
 /* .st5의 적용우선순위를 높이기 위해 부모요소를 써줌! */
-h2.st5{
+h2.st5 {
     /* 배경이미지 */
     background-image: url(../images/afig5.jpg);
     /* 배경위치변경 (세로 y축) */
@@ -100,7 +102,7 @@ h2.st5{
 }
 
 /* 언론사로고 */
-.prlogo img{
+.prlogo img {
     height: 32px;
     /* 
         이미지는 기본 비율을 가지고 있어서
@@ -108,4 +110,71 @@ h2.st5{
         나머지 방향은 자동으로 비율을 유지함!
         가로,세로를 다 주면 비율이 깨짐!
     */
+}
+
+/* 기사타이틀 */
+.atit {
+    font-size: 30px;
+}
+
+/* 기사이미지 박스 */
+.afig {
+    margin-bottom: 40px;
+}
+/* 기사이미지 */
+.afig img {
+    width: 100%;
+}
+/* 기사이미지 설명 */
+.afig figcaption {
+    font-size: 15px;
+    text-align: center;
+    color: #767676;
+}
+
+/* 기사 문단 */
+.acont p {
+    font-size: 18px;
+    color: #303038;
+    /* 자간 : ls */
+    letter-spacing: 2px;
+    /* 단어간격 : ws */
+    word-spacing: 1px;
+    /* 양쪽정렬 */
+    text-align: justify;
+    /* 줄간격 lh */
+    line-height: 2.1;
+    /* 글자 라인간 간격을 조정함
+    숫자만 쓰면 배수임(글자높이값에 대한배수)
+    단위를 쓰면 단위에 맞게 줄간격 조정됨
+    -> 줄간격의 응용은 버튼 등의 글자를
+    세로 중앙에 오게 할때 박스높이값만큼 준다! */
+}
+
+/* 유튜브 동영상박스 */
+.mvbx {
+    height: 550px;
+    /* 
+        div와 같은 block요소는
+        width 설정을 하지 않으면
+        width:auto 로 자동설정됨.
+        이는 싸고 있는 박스 컨텐트영역을
+        자동으로 채워준다!
+    */
+}
+.mvbx iframe{
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* 기사원문 */
+.alink{
+    text-align: right;
+}
+.alink a{
+    width: 70px;
+    height: 70px;
+    border: 1px solid darkcyan;
+    border-radius: 50%;/* 원형 */
 }
