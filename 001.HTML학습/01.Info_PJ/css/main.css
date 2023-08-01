@@ -3,3 +3,8 @@
 
 /* 공통외부CSS 합치기 */
 @import url(./common.css);
+
+/* 메인페이지용 메인영역 */
+#cont{
+    background-color: #37c1b4;
+}
