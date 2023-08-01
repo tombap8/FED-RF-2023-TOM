@@ -12,4 +12,56 @@ h2.stit {
     font-family: "Bagel Fat One", cursive;
     text-align: center;
     text-shadow: 2px 2px 2px #0000008a;
+
+    outline: 1px solid red;
+    padding: 40px;
+
+    /* 배경넣기 : 한번에쓰기 */
+    /* background: url(../images/afig4.jpg) no-repeat center/cover; */
+    /* background: 색이반고윙/크; 
+        배경색 이미지 반복 고정 위치/크기
+    */
+
+    /* 배경넣기 : 속성별쓰기 */
+    /* 반복여부 */
+    background-repeat: no-repeat;
+    /* 배경위치 : 가로 세로 */
+    background-position: center;
+    /* 배경크기 : 가로 세로 (cover - 박스채우기) */
+    background-size: cover;
+    
+}
+
+/* 정치 배경이미지 */
+#cont .st1{
+    /* 배경이미지 */
+    background-image: url(../images/afig1.jpg);
+    color: magenta;
+}
+/* 경제 배경이미지 */
+#cont .st2{
+    /* 배경이미지 */
+    background-image: url(../images/afig2.jpg);
+    color: yellow;
+}
+/* 사회 배경이미지 */
+#cont .st3{
+    /* 배경이미지 */
+    background-image: url(../images/afig3.jpg);
+    color: aquamarine;
+}
+/* IT/과학 배경이미지 */
+#cont .st4{
+    /* 배경이미지 */
+    background-image: url(../images/afig4.jpg);
+    color: lime;
+}
+/* TV/연예 배경이미지 */
+/* .st5의 적용우선순위를 높이기 위해 부모요소를 써줌! */
+#cont .st5{
+    /* 배경이미지 */
+    background-image: url(../images/afig5.jpg);
+    /* 배경위치변경 (세로 y축) */
+    background-position-y: -40px;
+    color: aqua;
 }
