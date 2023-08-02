@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.블록과 인라인</title>
+    <style>
+        /* 타이틀 */
+        .tit{
+            text-align: center;
+            border: 5px dotted orange;
+            background-color: lightblue;
+        }
+
+        /* 
+            선택자에 별(*)을 모든의 의미임
+            그래서 모든 요소를 선택함!
+            .ele *  클래스 ele 하위 모든 요소들 선택 
+        */
+        .ele * {
+            /* 박스모델의 기본속성 디자인주기 */
+            width: 200px;
+            height: 150px;
+            border: 10px solid blue;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        /********************************************* 
+
+            [ CSS의 display 속성이란? ]
+
+            - 브라우서에서 화면에 요소를 어떻게 보이게 할지
+            결정해 주는 속성
+            - 요소의 역할은 내용구분!
+
+            - 요소의 display 는 크게 2가지
+
+            1. block 요소
+
+            (1) 표현법 : 
+                display : block;
+            (2) 기본적으로 block인 요소들
+            h1~h6, div, p, figure, header, nav, ...
+
+            (3) 특징: 
+                1) 옆에 다른요소가 올 수 없다(블록킹!)
+                2) 내용을 구분하는 그룹화요소다!
+                3) 박스모델 디자인 속성이 모두 적용된다!
+                : width, height, border, padding, margin
+                4) 가로크기를 주지 않으면 부모박스 끝까지 간다!
+                -> width: auto;
+                5) 세로크기를 주지 않으면 내용만큼 늘어난다!
+                -> height: auto;
+                6) 위,아래간 블록요소 마진은 중첩된다!
+                -> 큰 마진이 작은 마진을 포함한다!
+                7) 박스의 지정된 가로,세로 크기는 컨텐츠영역의
+                크기 이므로 보더와 패딩을 주면 박스크기가 늘어남!
+                -> 이런박스를 컨텐트 박스(content-box)라고 함!
+
+                [ 보더와 패딩을 박스크기에 포함여부 결정속성 ]
+                ->>>>>>> box-sizing 속성
+                1) box-sizing : border-box; (bxb)
+                -> 크기를 지정한 박스에 대한 패딩과 보더를 포함시킴
+                (즉, 크기가 늘어나지 않음!)
+
+                2) box-sizing : content-box; (bxc)
+                -> 크기를 지정한 박스에 패딩과 보더를 주면
+                준만큼 늘어남!
+
+
+
+        *********************************************/
+
+        /* 보더박스용 클래스 */
+        .bxb{
+            box-sizing: border-box;
+            /* box-sizing: content-box */;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="tit">02.블록과 인라인</h1>
+
+    <h2 class="tit">인라인 요소들</h2>
+    <div class="ele">
+        <a href="#">나는 a다!</a>
+        <img src="./imgs/blogo.png" alt="로고" title="나는 img다!">
+        <span>나는 span이다!</span>
+        <b>나는 b다!</b>
+        <button>
+            나는 button 이다! 나는 인라인인가?
+        </button>
+        <i>나는 i다!</i>
+        <em>나는 em이다!</em>
+        <strong>나는 strong이다!</strong>
+    </div>
+
+    <h2 class="tit">블록 요소들</h2>
+    <div class="ele">
+        <h1>나는 h1이다!</h1>
+        <h4 class="bxb">나는 h4다!</h4>
+        <div>나는 div다!</div>
+        <p>나는 p다!</p>
+        <header>나는 header다!</header>
+    </div>
+    
+</body>
+</html>
