@@ -151,6 +151,31 @@ h2.st5 {
     세로 중앙에 오게 할때 박스높이값만큼 준다! */
 }
 
+/* 강조em요소 디자인변경 */
+.acont p em{
+    /* 이탤릭해제 */
+    font-style: normal;
+    /* 글자색 변경 */
+    color: darkmagenta;
+    /* 글자 두껍게 */
+    font-weight: bold;
+    /* 글자그림자 */
+    text-shadow: 2px 2px 2px #0b88db;
+}
+/* mark요소 디자인 변경하기 */
+.acont p mark {
+    display: block;
+    background-color: #ebebeb;
+    text-align: center;
+    margin: 15px 0;
+    padding: 20px 50px;
+    font-size: 25px;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    color: darkorange;
+    font-family: "Black And White Picture", "궁서";
+}
+
 /* 유튜브 동영상박스 */
 .mvbx {
     height: 550px;
