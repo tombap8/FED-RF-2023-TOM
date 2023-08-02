@@ -56,7 +56,7 @@
 html,
 body,
 h1,
-h2, figure {
+h2, figure, blockquote {
     margin: 0;
     padding: 0;
 }
