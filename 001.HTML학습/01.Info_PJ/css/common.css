@@ -56,9 +56,14 @@
 html,
 body,
 h1,
-h2, figure, blockquote {
+h2, figure, blockquote, ul, ol, dl, dd {
     margin: 0;
     padding: 0;
+}
+
+/* 리스트 블릿,숫자 없애기 */
+ul,ol{
+    list-style: none;
 }
 
 /* 레이아웃 박스 공통 디자인 */

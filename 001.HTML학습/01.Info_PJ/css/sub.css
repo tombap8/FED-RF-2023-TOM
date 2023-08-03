@@ -341,3 +341,62 @@ h2.st5 {
     margin: 20px 0;
     padding: 20px 0;
 }
+/* 뉴스 파트 공통 a요소 */
+.nbx a{
+    /* 글자크기 fz */
+    font-size: 17px;
+    /* 줄간격 lh */
+    line-height: 2.5;
+    /* 글자색 c */
+    color: #222;
+    /* 밑줄없앰 */
+    text-decoration: none;
+}
+/* 공통 a마우스 오버 */
+.nbx a:hover{
+    color: yellowgreen;
+    text-shadow: 1px 1px 1px #000;
+}
+/* 뉴스 타이틀 공통 */
+.nbx h3{
+    font-family: 'Black And White Picture';
+    font-weight: normal;
+    font-size: 30px;
+    background-image: 
+    linear-gradient(to right, lightblue, transparent);
+    padding: 10px;
+}
+
+/* 주요뉴스 ul */
+.cnews ul li::before{
+    content: '📣';
+}
+.cnews ul li::after{
+    content: '👨‍🦰';
+    /* content: url(../images/prlogo1.png); */
+}
+/* 
+    [ CSS 가상요소 : before, after ]
+    - 모든 요소는 맨앞과 맨뒤에 가상요소를
+    사용할 수 있다
+    - 맨앞은 before, 맨뒤는 after
+    - 필수속성 : content
+    - 이미지는 url() 사용!
+*/
+
+/* 분야별 뉴스 */
+.snews dt{
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 28px;
+    background-color: lightgreen;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 50%;
+    border: 4px dashed blue;
+    margin-top: 55px;
+}
+
+/* dd앞에 가상요소로 블릿넣기 */
+.snews dd::before{
+    content: '🚩';
+}
