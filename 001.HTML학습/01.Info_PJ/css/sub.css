@@ -271,3 +271,73 @@ h2.st5 {
     background-color: aquamarine;
     box-shadow: 0 0 10px 5px darkblue;
 }
+
+/* 오늘의 작품&느낌 */
+.work{
+    text-align: center;
+    /* 배경색 */
+    /* background-color: lightpink; */
+
+    /* 그라데이션 -> 이미지로! bgi */
+    background-image: 
+    linear-gradient(46deg, #f29df6 10%, #d0ffd7 60%,#8087ff);
+    /* linear-gradient(to right, red, blue,yellow) */
+    /* 
+        [ 선형 그라데이션 : linear-gradient ]
+        linear-gradient(방향,색1,색2);
+        linear-gradient(방향,색1 몇%,색2 몇%);
+        linear-gradient(각도,색1 몇%,색2 몇%);
+        - 옵션
+            1.방향 : to top, to bottom, to left, to right
+            2.각도 : 각도deg
+            3.콤마로 나열된 색상에 %를 뒤에 쓰면 비율 조정가능!
+    */
+
+    /* border: 50px dotted #09a1ff;
+    padding: 50px; */
+
+    /* 
+        배경옵션 추가!!!
+        background-clip : 배경이 적용되는 범위설정
+        1. border-box -> 보더까지 적용(기본값)
+        2. padding-box -> 패딩까지 적용
+        3. content-box -> 내용영역만 적용(패딩,보더빠짐)
+
+    */
+    background-clip: content-box;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.471);
+}
+
+/* 작품 타이틀 */
+.work h3{
+    font-family: 'Black And White Picture';
+    font-weight: normal;
+    font-size: 28px;
+    color: #333;
+    padding-top: 20px;
+}
+/* 작품이미지 */
+.work img{
+    border: 15px ridge goldenrod;
+    /* ridge - 액자틀모양 */
+}
+
+/* 작품명 */
+.work figcaption {
+    font-family: 'Gugi';
+    font-size: 20px;
+    padding: 10px;
+}
+/* 작품명 인용구 */
+.work figcaption cite{
+    font-style: normal;
+    color: darkmagenta;
+}
+
+
+/* 뉴스 파트 공통 class */
+.nbx{
+    border-top: 2px dashed #ccc;
+    margin: 20px 0;
+    padding: 20px 0;
+}
