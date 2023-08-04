@@ -368,7 +368,7 @@ h2.st5 {
 }
 
 /* 한줄 말줄임표시하기 공통처리 */
-.nbx li, .nbx dd, .nbx td {
+.nbx li, .nbx dd {
     /* 1. 줄바꿈방지 wh */
     white-space: nowrap;
     /* 2. 넘치는 컨텐츠 숨기기 oh */
@@ -463,4 +463,104 @@ h2.st5 {
 
     (단, n은 1부터)
 */
+
+/* 사진뉴스박스 */
+/* 타이틀 */
+.pnews h3{
+    /* 배경그라데이션 없앰 */
+    background-image: none;
+    /* 중앙정렬 */
+    text-align: center;
+}
+
+/* 가상요소로 사진기 아이콘 넣기 */
+.pnews h3::before{
+    content: '📷';
+    vertical-align: -1px;
+    font-size: 31px;
+    margin-right: 8px;
+}
+.pnews h3::after{
+    content: '📺';
+    vertical-align: -1px;
+    font-size: 31px;
+    margin-left: 8px;
+}
+
+/* 사진뉴스 테이블 */
+.pnews table{
+    /* 최대 가로크기지정 maw */
+    max-width: 500px;
+
+    /* 테이블은 기본적으로 내용만큼 가로크기를 가지며
+    부모박스의 크기가 작아질 경우 그 크기에 맞춰진다! */
+
+    /* 테이블 중앙 - 마영오! */
+    margin: 0 auto;
+
+    /* 테두리 */
+    border: 2px solid #ccc;
+
+    /* 테이블 기본 간격없앰 */
+    border-collapse: collapse;
+    /* 기본값은 seperate */
+
+}
+
+/* tr이나 td에 child 선택자 사용가능!
+ 왜? table tr td 정해짐! 같은종류만 옴 */
+
+ /* 첫번째 td - 숫자부분 */
+.pnews td:first-child{
+    /* 가로크기 w */
+    width: 50px;
+    /* 세로크기 h */
+    height: 84px;
+    /* 텍스트 중앙 tac */
+    text-align: center;
+    /* 배경색 bgc */
+    background-color: #ccc;
+}
+
+/* 두번째 td */
+.pnews td:nth-child(2){
+    /* 배경색 bgc */
+    background-color: #e4e4e4;
+    /* 패딩 양쪽 */
+    padding: 0 20px;
+}
+
+/* 세번째 td */
+.pnews td:last-child{
+    background-color: #e4e4e4;
+    /* 오른쪽 패딩 */
+    padding-right: 7px;
+}
+
+/* 사진뉴스 이미지 */
+.pnews img{
+    height: 70px;
+    /* 높이만 주면 가로크기는 자동! */
+    /* 인라인요소가 세로정렬 vam */
+    vertical-align: middle;
+}
+
+/* 기사타이틀 처리박스 */
+.pnews td div{
+    /* 말줄임 처리하기(2줄처리) */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    /* 줄간격변경 */
+    line-height: 1.7;
+}
+
+/* 앞에 tr이 있는 tr만 하위 td에 디자인 */
+.pnews tr+tr td{
+    /* 사이구분선 보더탑 bdt */
+    border-top: 2px solid #ccc;
+}
 
