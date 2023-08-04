@@ -1,0 +1,541 @@
+@charset "utf-8";
+/* 서브페이지 공통 CSS - sub.css */
+
+/* 
+    [import 로 파일 합치기]
+    외부 CSS 파일에서 다른 외부 CSS 파일을
+    import방식으로 불러올때 장점은?
+    html파일에서 link요소로 호출할 경우
+    http request (웹요청) 이 많아져서
+    페이지 랜더링 속도에 영향을 미친다!
+    따라서 import방식을 쓰면 더 적은 
+    웹요청에 따라 처리 속도에 도움이 된다!    
+
+    - 주의 : import는 CSS파일 상단에서 처리한다!
+    */
+    /* @import url(파일주소); */
+    @import url(./common.css);
+    
+    /* 본 CSS 설정 코드는 하단에 한다! */
+    
+    /* 메인영역박스 */
+    .cont{
+        /* 패딩 15px (기존20px 재정의) */
+        padding: 15px;
+    }
+
+/* 2-1.언론사로고 */
+.prlogo img{
+    height: 32px;
+    /* 이미지는 가로,세로 중 한쪽만
+    주면 자동 비율유지를 함! */
+}
+/* 2-2.기사제목 */
+.atit{
+    /* 글자크기 fz30 */
+    font-size: 30px;
+    /* 글자두께 보통 fwn */
+    font-weight: normal;
+    /* 글자간격(자간) letter-spacing : ls 
+    기본값 0(normal), 양수는 멀어짐,음수는 가까워짐*/
+    letter-spacing: -1px;
+    /* 단어간격 word-spacing : ws 
+    기본값 0(normal), 양수는 멀어짐,음수는 가까워짐*/
+    word-spacing: 1px;
+
+    /* 줄바꿈 방지 : 공백->백공->white-space
+    값-> nowrap 박스끝에서 줄바꿈 안되고 계속감 
+         normal(기본값) 박스끝에서 줄바꿈 
+    [언제쓰나?]
+    -> 줄바꿈이 되면 안될때
+    (예: 한줄에 오는 버튼글자, 한줄에 말줄임표)     
+    */
+    /* white-space: nowrap; */
+}
+
+/* 2-3.기사사진(+사진설명) */
+.afig{
+    /* 마진 m : 2개값 -> 위아래 양쪽 */
+    margin: 15px 0;
+    /* 인라인 가로중앙 : tac */
+    text-align: center;
+}
+/* 기사이미지 */
+.afig img{
+    width: 100%;
+}
+/* 기사이미지 설명글 */
+.afig small{
+    /* 글자체 : ff */
+    font-family: 'Jua', sans-serif;
+    /* 글자크기 : fz 
+    - 글자크기 최저 한계는 10px임*/
+    font-size: 12px;
+    /* 글자색 : c */
+    color: #333;
+}
+
+/* 2-4.기사내용 */
+.arti p{
+    /* 글자크기 : fz */
+    font-size: 17px;
+    /* 줄간격 : lh 
+    -> 주의: 단위가 없으면 배수임
+    기준은 글자크기임! */
+    line-height: 1.7;
+    /* 양쪽패딩 : 위아래 양쪽 */
+    padding: 0 10px;
+    /* 자간 : ls */
+    letter-spacing: 1px;
+    /* 글자 들여쓰기 ti
+    값: 양수는 들여쓰기, 음수는 내어쓰기*/
+    /* text-indent: 20px; */
+
+    /* 양쪽정렬 : taj */
+    text-align: justify;
+}
+
+/* mark요소 변경하기! */
+.arti p mark{
+    /* 인라인을 블록으로 출신변경! */
+    display: block;
+    /* 글자크기변경 */
+    font-size: 20px;
+    /* 줄간격 주기 */
+    line-height: 2;
+    /* 위아래, 양쪽 패딩 */
+    padding: 20px 50px;
+    /* 배경색 */
+    background-color: #ebebeb;
+    /* 보더 위,아래 
+    위(top),아래(bottom),
+    왼쪽(left),오른쪽(right) */
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+
+    /* 중앙정렬 */
+    text-align: center;
+
+    /* 위아래 마진 */
+    margin: 15px 0;
+}
+
+/* p요소 아래 em요소 디자인 변경 */
+.arti p em {
+    /* 글자그림자 : text-shadow 
+    값: x축 y축 블러 색 
+    블러는 그림자 경계흐림정도*/
+    text-shadow: 2px 2px 2px rgba(252, 27, 222, 0.645);
+    /* 이탤릭해제 : fsn */
+    font-style: normal;
+    /* 글자색 */
+    color: darkmagenta;
+    /* 글자두껍게 : fwb */
+    font-weight: bold;
+}
+
+
+/* 2-5.기자정보 */
+.rpt {
+    /* display 출신변경하기 
+    디자인 적용과 동시에 인라인특성인
+    글자만큼만 크기가 잡히도록 
+    인라인블록으로 변경함*/
+    display: inline-block;
+    /* 글자크기 fz */
+    font-size: 14px;
+    /* 배경색 bgc */
+    background-color: #dbdbdb;
+    /* 패딩 */
+    padding: 5px;
+    /* 마진 */
+    margin: 15px 20px;
+}
+/* 2-6.기사원문 
+별도의 이름없이 구조로만
+기사원문을 선택한다! 직계자식! */
+.cont>h5{
+    /* 내부의 인라인요소 오른쪽 정렬 */
+    text-align: right;
+}
+.cont>h5>a{
+    /* 디자인 적용위해 display변경! */
+    display: inline-block;
+    /* 기본없애기 */
+    margin: 20px 0;
+    padding: 0;
+    /* 가로,세로지정 */
+    width: 70px;
+    height: 70px;
+    /* 테두리 bd */
+    border: 2px solid #dbdbdb;
+    /* 글자중앙 */
+    text-align: center;
+    /* 세로중앙 : 줄간격으로! */
+    line-height: 70px;
+    /* 모서리 둥글게하기 border-radius 
+    brad -> 50%는 원 */
+    border-radius: 50%;
+    /* 배경색 bgc */
+    background-color: lightsteelblue;
+}
+/* 가상클래스로 오버시 박스그림자 넣기 */
+.cont>h5>a:hover{
+    /* 박스그림자 
+        box-shadow: x y blur spread 색;
+        (내부그림자는 inset씀)
+        - spread 박스그림자 크기(필요시씀)
+    */
+    box-shadow: 0 0 5px darkblue;
+}
+
+/* 메인 공통 article 박스 디자인 */
+.cont article{
+    /* 구분선 : 보더 위 bdt */
+    border-top: 2px dashed #ccc;
+    /* 마진 위 mt */
+    margin-top: 40px;
+    /* 패딩 p */
+    padding: 15px;
+}
+
+/* 각 파트별 공통 타이틀 */
+
+/* 기사관련 타이틀 h5 */
+/* .cont>h5와 구분하기 위해 중간경로 article씀 */
+.cont article h5 {
+    /* 내용만큼 자동크기 위해 inline-block */
+    display: inline-block;
+    /* 패딩 : 위아래 양쪽 */
+    padding: 10px 20px;
+    /* 배경색 : bgc */
+    background-color: #ebebeb;
+    /* 헤딩요소 기본마진 없앰! */
+    margin: 0;
+    /* 둥근모서리 brad */
+    border-radius: 20px;
+
+    /* 내부그림자 : bsh 
+    inset 은 내부그림자 설정 */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.462);
+
+    /* 글자 두께 : 얇게 (기본값) fwn */
+    font-weight: normal;
+    /* 글자 크기 : fz */
+    font-size: 20px;
+    /* 글자 들여쓰기 : ti */
+    /* text-indent: 20px; */
+    /* 글자색 c */
+    color: #333;
+}
+/* 개별파트 타이틀 h3 */
+.cont h3 {
+    /* 글자체 : 웹폰트 ff */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자 두께 : 얇게 (기본값) fwn */
+    font-weight: normal;
+    /* 글자 크기 : fz */
+    font-size: 26px;
+    /* 글자 들여쓰기 : ti */
+    text-indent: 20px;
+    /* 글자색 c */
+    color: #333;
+}
+
+/* 주해박스 */
+.desc div {
+    /* 패딩 p : 위 양쪽 아래 */
+    padding: 20px 5px 0;
+    /* 줄간격 : lh */
+    line-height: 1.8;
+    /* 자간 : ls */
+    letter-spacing: 1px;
+    
+    /* 양쪽정렬 : taj */
+    text-align: justify;
+}
+/* 인용박스 */
+.qb blockquote {
+    /* 기본마진 없앰 */
+    margin: 0;
+    /* 패딩 p : 위 양쪽 아래 */
+    padding: 20px 5px 0;
+    /* 줄간격 : lh */
+    line-height: 1.5;
+    /* 자간 : ls */
+    /* letter-spacing: 0px; */
+
+    /* 글자크기 : fz */
+    font-size: 14px;
+    
+    /* 양쪽정렬 : taj */
+    text-align: justify;
+}
+
+/* 오늘의 작품 & 느낌 */
+.work{
+    /* 글자중앙 : tac */
+    text-align: center;
+    /* 배경색 */
+    /* background-color: lightpink; */
+
+    /* 그라데이션 -> 이미지로! bgi */
+    background-image: 
+    linear-gradient(35deg, rgb(247, 160, 231),rgb(199, 249, 197), rgb(69, 247, 241));
+    /* linear-gradient(15deg, red 10%, yellow 20%, yellow 80%, blue) */
+    /* linear-gradient(방향,색1 %,색2 %,...); 
+        * 방향: to top, to bottom, to left , to right
+        (방향에 각도를 쓰면 그라데이션 각도가 표현됨)
+        -> 방향대신 각도 : 수치deg (예: 45deg)
+        * 색상을 콤마로 나열하면 등분할 하여 
+        그라데이션 표현되고 색상뒤에 %수치를 쓰면
+        특정 비율을 나타낼 수 있다!
+    */
+    /* 배경옵션 추가!!!
+        background-clip : 배경이 적용되는 범위설정
+        1. border-box -> 보더까지 적용(기본값)
+        2. padding-box -> 패딩까지 적용
+        3. content-box -> 내용영역만적용(패딩,보더빠짐)
+    */
+    background-clip: content-box;
+}
+
+/* 작품명 */
+.work figcaption{
+    font-family: 'Jua', sans-serif;
+}
+.work figcaption cite{
+    /* 기본 이탤릭 해제 : fsn */
+    font-style: normal;
+}
+/* 작품이미지 */
+.work img{
+    border: 15px ridge goldenrod;
+}
+
+/* 파트별 a링크 요소 공통 디자인 */
+.cont article a{
+    /* 글자크기 fz */
+    font-size: 17px;
+    /* 줄간격 lh */
+    line-height: 2.5;
+    /* 자간 ls */
+    letter-spacing: -1px;
+}
+/* 가상클래스 hover 오버시 */
+.cont article a:hover{
+    /* 글자색 c */
+    color: greenyellow;
+    /* 글자그림자 ts */
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* 공통 ul */
+.cont article ul{
+    /* 리스트 타입 lst */
+    list-style-type: "🧟‍♂️";
+    /* 
+        square 사각형, disc 원형, circle 빈원
+        -> 따옴표안에 다른 문자형을 넣을 수 있음
+        -> 윈도우키+점(.) -> 아이콘 넣기
+    */
+}
+/* 공통 ol */
+.cont article ol {
+    /* 숫자형 리스트 스타일 lit */
+    list-style-type: upper-roman;
+    /* upper-roman 로마자 대문자 */
+    /* 순서를 표시하는 종류는 너무 많다~! */
+}
+
+/* 주요뉴스 li별 글자색 변경하기 */
+/* 
+    [ 자식요소 선택 가상클래스 : 자식요소 종류가 같아야함! ]
+    요소:first-child -> 첫번째 자식요소
+    요소:nth-child(n) -> n번째 자식요소
+    요소:last-child -> 마지막째 자식요소
+*/
+/* 첫번째 li */
+.cont article ul li:first-child a{
+    color: red;
+}
+.cont article ul li:nth-child(2) a{
+    color: green;
+}
+.cont article ul li:last-child a{
+    color: blue;
+}
+/* 블릿과 글자사이 간격주기 */
+.cont article ul li,
+.cont article ol li{
+    /* 패딩 left : 블릿 뒤쪽이 적용됨 */
+    padding-left: 10px;
+}
+
+/* 
+    [ CSS 적용 우선순위 ]
+    type < class < id < inline < !important
+
+    -> 더 쎈 선택자이여도 부모요소를 업고 
+    있는 것이 더 쎄다!
+    예) #my < .cont .my
+*/
+
+/* 분야별 뉴스 */
+/* 각 분야명 dt 공통 디자인 */
+.secnews dt{
+    /* 글자체 : 웹폰트 */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자 크기만큼 디자인적용위해 dib */
+    display: inline-block;
+    /* 보더 db */
+    border: 4px dashed darkseagreen;
+    /* 패딩 p */
+    padding: 10px;
+    /* 둥근모서리 : 원 50% */
+    border-radius: 50%;
+    /* 글자크기 : fz */
+    font-size: 20px;
+    /* 왼쪽마진으로 이동하기 */
+    margin-left: 20px;
+    /* 박스그림자 : bsh 
+    (inset) x y blur spread 색 */
+    box-shadow: 
+    0 0 5px 5px rgba(207, 65, 207, 0.614);
+
+    
+}
+/* 앞에 dd가 있는 dt만 마진탑 밀기 */
+.secnews dd+dt {
+    /* 마진탑 밀기 */
+    margin-top: 20px;
+}
+
+/* 
+    [ 여러종류가 섞여 있을 경우 형제 선택하기 ]
+    요소:first-of-type -> 같은 요소 중 첫번째
+    요소:nth-of-type(n) -> 같은 요소 중 n번째
+    요소:last-of-type -> 같은 요소 중 마지막째
+*/
+
+/* dt별 글자색 다르게 하기 */
+/* dt는 형제중 dd가 섞여 있어서 -of-type을 사용! */
+.secnews dt:first-of-type{
+    color: blue;
+}
+.secnews dt:nth-of-type(2){
+    color: red;
+}
+.secnews dt:last-of-type{
+    color: green;
+}
+
+
+/* dd 공통 */
+.secnews dd{
+    /* 왼쪽마진 ml */
+    margin-left: 100px;
+}
+/* 사진뉴스 타이틀 */
+.pnews h3{
+    text-align: center;
+}
+/* 사진뉴스 타이틀 가상요소 아이콘 넣기 */
+/* 맨 앞 가상요소 ::before 
+태그를 사용하지 않고 요소를 넣는 방법! */
+.pnews h3::before{
+    content: '📷';
+}
+/* 사진뉴스 테이블박스 */
+.pnews table{
+    /* 가로중앙이동 : 마영오씨!
+    -> 블록요소 또는 table 에 적용된다!  */
+    margin: 0 auto;
+    border: 2px solid #ccc;
+
+    /* 테이블 기본 사이간격 없애기 */
+    border-collapse: collapse;
+    /* seperate(기본값) */
+}
+/* 테이블 a요소 */
+/* 기존 .cont article a 로 셋팅된것이
+더 쎄기 때문에 여기서 윗 부모를 같은
+레벨로 넣어서 선택하면 하위에 클래스가
+요소(타입)보다 더 높기때문에 우선적용된다! */
+.cont .pnews a{
+    /* 글자크기 */
+    font-size: 14px;
+    /* 줄간격 */
+    line-height: 1.5;
+
+}
+
+/* 
+    tr 이나 td에 child 선택자를 사용가능
+    왜? 같은 종류의 요소만 올 수 있으므로!
+*/
+
+/* 첫번째 td - 숫자부분 */
+.pnews td:first-child{
+    /* 가로크기 w */
+    width: 50px;
+    /* 세로크기 h */
+    height: 84px;
+    
+    /* 인라인 가로중앙 */
+    text-align: center;
+    /* 배경색 */
+    background-color: #ccc;
+}
+/* 두번째 td */
+.pnews td:nth-child(2){
+    /* 배경색 */
+    background-color: #e4e4e4;
+    /* 양쪽패딩 : 위아래 양쪽 */
+    padding: 0 20px;
+}
+
+/* 세번째 td */
+.pnews td:last-child{
+    background-color: #e4e4e4;
+    /* 오른쪽 패딩 */
+    padding-right: 7px;
+}
+
+/* 사진뉴스 이미지 */
+.pnews img{
+    height: 70px;
+    /* 이미지는 한쪽만
+    크기줄때 나머지는 자동비율유지 */
+    /* 세로정렬 */
+    vertical-align: middle;
+    /* td에서만 세로정렬이 
+    적용되고 일반적으로는 
+    vertical-align은 인라인요소간
+    세로방향 정렬이다! */
+}
+
+/* 앞에 tr이 있는 tr만 하위 td에 디자인 */
+.pnews tr+tr td{
+    /* 보더탑 bdt */
+    border-top: 2px solid #ccc;
+}
+
+/************************** 
+    말줄임 표시 셋팅하기! 
+**************************/
+ul a, ol a, dl a{
+    /* 1.디자인 적용위해 block */
+    display: block;
+    /* 2.가로크기 한계주기 */
+    width: 315px;
+    /* 3.줄바꿈방지(한줄짜리) */
+    white-space: nowrap;
+    /* 4.넘치는자식숨기기 */
+    overflow: hidden;
+    /* 5.넘치는텍스트 말줄임표 설정 */
+    text-overflow: ellipsis;
+    /* border: 1px solid red; */
+}
+
+
