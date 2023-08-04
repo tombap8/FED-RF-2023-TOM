@@ -23,6 +23,8 @@ Debugger-> disable Javascript 를 체크하여
 웹 페이지에 열고 (open in new tab)
 새창에서 동영상 재생시
 다운로드 옵션을 클릭하여 저장함
+-> Network개발자 메뉴에서 media 선택하여 맨아래 선택
+동영상을 더블클릭하면 브라우저에 로딩됨. 이것을 저장!
 
 - 유튜브 동영상은 검색한 url에서 youtube.com 앞에 ss를
 붙여서 엔터치고 이동하는 사이트에서 저장함!(ssyoutube.com/...)
