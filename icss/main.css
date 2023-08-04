@@ -18,6 +18,16 @@ html,body,h1,h2,h3,ul,ol{
     padding: 0;
 }
 
+html,body{
+    height: 100%;
+}
+
+/* 공통 클래스 */
+.page{
+    height: 100%;
+    overflow: hidden;
+}
+
 /* 전체배경이미지 */
 body{
     background: url(../imgs/worksbg.jpg) no-repeat fixed center/cover;
