@@ -76,9 +76,24 @@
             div를 쓴것 같다. 다른 display로 변경
             가능하다~! */
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: red;
+            width: 40px;
+            height: 60px;
+            /* background-color: red; */
+            background: 
+            url(./imgs/bg_logo_a_01.png) no-repeat center/80%;
+
+            border: 2px solid gray;
+            border-radius: 5px;
+
+            box-shadow: 
+            0 0 10px purple,
+            /* 10px 10px 5px 2px rgba(0, 0, 0, 0.292); */
+            10px 10px 5px 2px rgba(0 0 0 / 40%);
+
+            /* 인라인요소간 세로정렬 */
+            vertical-align: middle;
+            /* 왼쪽마진 ml */
+            margin-left: 20px;
         }
         
         
@@ -99,25 +114,41 @@
         }
 
         /* 반복되는 요소의 앞에 아이콘 가상요소로 넣기 */
-        
+        dt::before{
+            content: '🎪★';
+            font-size: 30px;
+            vertical-align: 2px;
+            color: red;
+        }
         
 
-        /* dd전체와 
-        dd.story>h3에 가상요소 before적용하기 */
-        
-        
+        /* dd전체 before적용하기 */
+        dd::before {
+            content: '😍';
+            margin-right: 10px;
+        }        
 
 
         /* 출연배우의 dd부터 아이콘변경 */
-        
+        dt:nth-of-type(2) ~ dd::before{
+            content: '🍓';
+        }
         
         /* 아티스트의 dd부터 아이콘변경 */
-        
+        dt:nth-of-type(3) ~ dd::before{
+            content: '📀';
+        }
 
         /* 스토리의 dd는 가상요소 없애기 */
+        dd.story::before{
+            display: none;
+        }
         
-        
-        /* 스토리의 dd 아래 h3 이모지변경 */
+        /* 스토리의 dd 아래 h3 이모지넣기 */
+        dd.story h3::before{
+            content: '🎥';
+            margin-right: 20px;
+        }
         
         
 
@@ -133,6 +164,13 @@
 
         /* 두번째 p태그는 태그로 
         첫번째 글자(b태그), 첫번째 줄(span)변경 */
+        .story p:nth-of-type(2) b{
+            font-size: 50px;
+            color: hotpink;
+        }
+        .story p:nth-of-type(2) span{
+            color: blue;
+        }
         
 
         
