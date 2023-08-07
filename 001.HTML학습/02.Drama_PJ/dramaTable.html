@@ -6,6 +6,50 @@
         <link rel="stylesheet" href="./css/drama.css">
     </head>
     <body>
+
+        <!-- 
+            [ 가장 복잡한 그룹요소인 테이블 !!! ]
+            1. table : 테이블 전체 부모요소
+            2. tr : 테이블 레코드행요소(table row)
+            3. td : 테이블 데이터요소(table data)
+            4. th : 테이블 머릿부분에 사용될 경우 
+                td대신 th를 사용할 수 있다!
+                (기본디자인 - 중앙정렬+두꺼운글자)
+            _____________________________________
+
+            [ 테이블 구조를 위한 추가요소들 ]
+            5. caption : 테이블 제목
+            6. thead : 테이블 머릿부분
+            7. tbody : 테이블 중앙 내용부분
+            8. tfoot : 테이블 하단부분
+
+            ※tbody는 일반적으로  table tr td로
+            구성되는 테이블일 경우 자동으로 생성된다!
+
+            ※thead나 tfoot은 코딩순서와 상관없이
+            테이블 맨위와 맨아래에 출력된다!
+            ________________________________
+
+            [ 테이블 열관련 레이아웃 요소 ]
+            9. colgroup : 테이블 열별로 디자인 컨트롤할때 사용
+            -> 하위필수요소 col : 개별 컬럼(열)별 셋팅
+            -> col 속성들
+                - span 속성 : 값은 적용범위열 개수를 숫자로 입력함
+            -> 기타 열별로 스타일시트를 따로 쓸 수 있음!
+
+            예)
+            <table>
+                <colgroup>
+                    <col span="2" style="background-color:red">
+                    <col style="background-color:yellow;width:200px">
+                </colgroup>
+                <tr>...</tr>
+            </table>
+
+            -> 원본 W3 Schools
+            https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_colgroup_test            
+
+         -->
         
     </body>
 </html>
