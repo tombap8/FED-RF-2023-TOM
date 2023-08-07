@@ -68,3 +68,31 @@ html,body{
     border-bottom: 2px solid #555;
 
 }
+/* 짝수번째 tbody tr의 td에 배경색 넣기 */
+#drama tbody tr:nth-child(even) td{
+    background-color: #dfdfdf;
+}
+
+/* 하단부분(tfoot) */
+#drama tfoot td{
+    text-align: center;
+    padding: 45px 0;
+}
+
+/* 링크 a 공통변경 */
+#drama a{
+    color: #222;
+    text-decoration: none;
+}
+/* 드라마명 a 오버시 */
+#drama tbody a:hover{
+    color: hotpink;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+/* 페이징 a 오버시 */
+#drama tfoot a:hover{
+    color: darkgreen;
+    text-decoration: overline;
+    text-decoration-style: double;
+}
