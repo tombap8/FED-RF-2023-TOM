@@ -48,6 +48,28 @@ h1.tit{
 }
 
 /* 라디오버튼 체크시 보이기/숨기기 */
+/* #rdo1 라디오버튼 체크시 
+형제들 선택자 틸드(~)로 table변경 */
+
+/* 첫번째 table 보이기/ 두번째 table 숨기기 */
+#rdo1:checked ~
+.drama>table:first-child{
+    display: table;
+}
+#rdo1:checked ~
+.drama>table:last-child{
+    display: none;
+}
+
+/* 두번째 table 보이기/ 첫번째 table 숨기기 */
+#rdo2:checked ~
+.drama>table:first-child{
+    display: none;
+}
+#rdo2:checked ~
+.drama>table:last-child{
+    display: table;
+}
 
 
 /* 테이블 이미지 */
