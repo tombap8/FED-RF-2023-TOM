@@ -10,19 +10,45 @@ h1.tit{
     /* 글자그림자: x y 블러 색 */
 }
 /* 라디오버튼 숨기기 */
+.rdo{
+    display: none;
+}
 
 /* 메뉴 */
 .menu{
-    
+    display: inline-block;
+    /* 디자인적용위해 display변경! */
     width: 49%;
+    /* 50% 로 쓰면 엔터간극때문에 아래로 떨어진다! */
     margin-bottom: 50px;
     font-size: 24px;
     font-weight: bold;
     color: #222;
     cursor: pointer;
+
+    /* 패딩넣기 */
+    padding: 5px;
+    /* 패딩,보더 크기포함 보더박스 bxb */
+    box-sizing: border-box;
 }
 .mn1{
     text-align: right;
+}
+/* 라디오버튼 체크시 lable 디자인 변경하기!
++는 바로다음에 있는 형제요소 선택자 */
+.rdo:checked + .menu{
+    color: darkcyan;
+    text-decoration: overline;
+}
+
+/* 메뉴 사이 구분선 가상요소로 넣기 */
+/* 두번째 메뉴lable요소 */
+.mn2::before{
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 21px;
+    background-color: darkblue;
 }
 
 /* 드라마 테이블 박스 */
