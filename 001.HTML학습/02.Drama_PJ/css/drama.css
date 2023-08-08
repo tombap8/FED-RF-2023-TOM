@@ -38,9 +38,16 @@ html,body{
 #drama{
     font-size: 24px;
     margin: 0 auto;
-    max-width: 1000px;
+    
+    width: 1000px;
+    /* 가로크기 1000px */
+    max-width: 95%;
+    /* 최대크기 95%란 싸고 있는 박스의 95%를 유지함 */
+
+    /* max-width: 1000px; */
     /* 테이블은 가로크기설정이 없으면
-    내용만큼 늘어남. max-width로 가로스크롤대비! */
+    내용만큼 늘어남. 
+    max-width를 특정 px로 줄때 table은 적용안됨! */
 }
 /* 테이블 제목 - 기본 중앙정렬되어 있음! */
 #drama caption{
@@ -58,10 +65,17 @@ html,body{
 #drama tbody td{
     border-bottom: 1px solid #ccc;
 }
-/* th에 윗줄, 아랫줄 두꺼운 보더넣기 */
+/* tbody의 tr의 첫번째 td 중앙정렬 */
+#drama tbody tr td:first-child{
+    text-align: center;
+}
+
+
+/* th에 윗줄, 아랫줄 두꺼운 보더넣기+배경색 */
 #drama th{
     border-top: 2px solid #555;
     border-bottom: 2px solid #555;
+    background-color: #ccc;
 }
 /* tbody의 마지막 tr의 td 아랫줄 두꺼운 보더넣기 */
 #drama tbody tr:last-child td{
@@ -95,4 +109,14 @@ html,body{
     color: darkgreen;
     text-decoration: overline;
     text-decoration-style: double;
+}
+
+/* 구분테이블 박스 */
+.gubun{
+    width: 1000px;
+    /* 가로크기 1000px */
+    max-width: 95%;
+    /* 최대크기 95%란 싸고 있는 박스의 95%를 유지함 */
+    margin: 0 auto;
+    outline: 2px dashed red;
 }
