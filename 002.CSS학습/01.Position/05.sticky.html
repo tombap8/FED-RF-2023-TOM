@@ -321,6 +321,22 @@
             vertical-align: middle;
         }
 
+        /* 구간적용 스티키 */
+        .stickyBox{
+            height: 1000px;
+            padding-top: 500px;
+            border: 5px dashed darkblue;
+        }
+
+        /* 스티키박스 */
+        .iambox{
+            position: sticky;
+            top: 500px;
+            width: 200px;
+            height: 200px;
+            border: 5px dotted red;
+        }
+
 
     </style>
 </head>
@@ -383,6 +399,18 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <!-- 스티키 구간적용박스 -->
+    <div class="stickyBox">
+        <div class="iambox"></div>
+    </div>
+    <div class="stickyBox">
+        <div class="iambox"></div>
+    </div>
+    <div class="stickyBox">        
+        <div class="iambox"></div>
     </div>
 
     <!-- 
