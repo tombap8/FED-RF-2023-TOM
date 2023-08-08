@@ -86,6 +86,33 @@
                 5. 앱솔루트 자식요소는 부모 박스가 overflow:hidden
                 으로 셋팅되어있을때 부모자격이 있어야만 숨겨진다!
 
+                6. 위치설정값과 같은 방향의 마진만 적용됨!
+                예컨데 bottom으로 위치이동하였으면 margin-bottom만 적용된다!
+                (위치이동값이 없는 앱솔루트의 마진은?
+                기본적으로 top,left를 기준하므로 같은방향의 마진만 적용된다!)
+
+                7. 위치이동값의 초기화는?
+                top: 50px -> 초기화는? -> top: auto
+                초기화는 언제하나?
+                기존에 셋팅된 위치이동값을 다른 기준으로 변경할 경우
+                초기화를 사용한다!
+                예) top: 30px;
+                -> bottom기준으로 변경할 경우
+                top: auto;
+                bottom: 50px;
+
+                8. 위치이동값을 전부 다 쓰는 경우도 있다!
+                -> 부모박스를 가득채우거나 일정위치를 잡고
+                크기가 유동적이어야 할때 사용함!
+
+                예) 부모박스를 채우는 앱솔루트는?
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    (단, width, height값을 설정안함!)
+
 
                 
             ************************************/
@@ -98,6 +125,13 @@
             position: absolute;
             bottom: 0;
             right: 0;
+
+            /* 위치설정값과 같은 방향의 마진만 적용됨! */
+            margin-bottom: 50px;
+            margin-right: 50px;
+            /* margin-top: 50px;
+            margin-left: 50px; */
+
             /* 부모는? 보이는 화면 (window) */
             background: url(./images/ab1.jpg) no-repeat center/cover;
         }
