@@ -118,5 +118,42 @@ html,body{
     max-width: 95%;
     /* 최대크기 95%란 싸고 있는 박스의 95%를 유지함 */
     margin: 0 auto;
-    outline: 2px dashed red;
+    margin-bottom: 200px;
+    /* outline: 2px dashed red; */
+
+    /* 자식table의 float 감싸기 */
+    overflow: hidden;
+}
+/* 구분테이블 */
+/* 요소명#아이디명 - 종속선택자 */
+table#gubun{
+    font-size: 20px;
+    border: 1px solid #999;
+
+    /* 테이블을 오른쪽 끝으로 보내기 */
+    float: right;
+
+    /* td에 사이간격주기 */
+    border-collapse: separate;
+    border-spacing: 10px;
+    /* 
+        td 셀 사이간격
+        border-spacing: 가로 세로;
+        border-spacing: 양방향;
+
+    */
+}
+/* 구분테이블 td */
+#gubun td{
+    padding: 10px;
+}
+/* 구분테이블 첫번째 tr의 
+첫번째 td의 오른쪽 점선 넣기 */
+#gubun tr:first-child td:first-child{
+    border-right: 1px dotted #999;
+}
+/* 구분테이블의 두번째 tr부터 끝까지
+td 윗쪽점선보더 넣기 */
+#gubun tr+tr td{
+    border-top: 4px dotted #999;
 }

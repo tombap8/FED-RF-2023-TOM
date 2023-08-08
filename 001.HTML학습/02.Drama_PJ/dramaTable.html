@@ -138,21 +138,27 @@
 
         <!-- 구분테이블 박스 -->
         <div class="gubun">
-            <table class="tbl">
+            <table id="gubun" class="tbl">
                 <tr>
-                    <td>구분</td>
+                    <td rowspan="4">구분</td>
                     <td>월화:월화드라마</td>
+                    <!-- 
+                        [ 테이블 rowspan 속성 ]
+                        - 같은 tr의 td셀을 세로방향으로 합칠때 사용
+                        - row(가로줄) + span(범위)
+                        - 합칠 td의 개수만큼 숫자를 쓴다!
+                     -->
                 </tr>
                 <tr>
-                    <td>구분</td>
+                    <!-- <td>구분</td> -->
                     <td>수목:수목드라마</td>
                 </tr>
                 <tr>
-                    <td>구분</td>
+                    <!-- <td>구분</td> -->
                     <td>금토:금토드라마</td>
                 </tr>
                 <tr>
-                    <td>구분</td>
+                    <!-- <td>구분</td> -->
                     <td>토일:토일드라마</td>
                 </tr>
             </table>
