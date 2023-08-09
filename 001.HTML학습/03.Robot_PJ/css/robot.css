@@ -270,11 +270,27 @@ body *{
     display: block;
     position: absolute;
     top: 100%;
-    left: calc(50% - 50px/2);
-    width: 50px;
-    height: 70px;
-    outline: 2px dashed lime;
+    left: calc(50% - 80px/2);
+    width: 80px;
+    height: 120px;
+    /* 배경이미지 */
+    background: 
+    url(../images/hand_left.png) no-repeat 0/100%;
 
+    outline: 2px dashed lime;
+}
+
+/* 공통 left조정후 미세개별 위치조정은
+마진으로 하자! */
+
+/* 왼손 가상요소 변경 */
+.arm1 span::after{
+    margin-left: 7px;
+}
+/* 오른손 가상요소 변경 */
+.arm2 span::after{
+    margin-left: -6px;
+    background-image: url(../images/hand_right.png);
 }
 /* 왼팔 */
 .arm1{
