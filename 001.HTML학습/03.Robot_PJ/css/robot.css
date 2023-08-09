@@ -76,6 +76,8 @@ body *{
     url(../images/metal01.jpg) no-repeat center/cover;
     /* 둥근모서리 */
     border-radius: 100px 100px 50% 50%;
+    /* .body보다 위 */
+    z-index: 1;
 }
 /* 가상요소로 머리에 가발씌우기 */
 .head::after{
@@ -108,8 +110,9 @@ body *{
     url(../images/hair_new3.png);
 }
 
-/* 머리 하위요소 공통 */
-.head>div{
+/* 머리/몸통 하위요소 공통 */
+.head>div,
+.body>div{
     position: absolute;
     /* 모든 직계하위요소는 앱솔루트! */
 }
@@ -191,10 +194,43 @@ body *{
     border-radius: 0 20px 20px 0;
 }
 
-
-
-
 /* 2-1-2.몸통 */
+.body{
+    position: relative;
+    /* 부모자격 - 하위직계자식 div앱솔루트 */
+    width: 250px;
+    height: 400px;
+    /* 무대중앙 - 마영오 */
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+
+/* 목 */
+.neck{
+    top: -70px;
+    left: calc(50% - 50px/2);
+    /* 중앙보내기 원리
+    부모박스의 50%보내고
+    자신크기의 절반빼기
+    자신크기는 left는 width
+    top은 height 이다! */
+    width: 50px;
+    height: 80px;
+    border-radius: 20px;
+}
+/* 왼팔 */
+/* 오른팔 */
+/* 왼다리 */
+/* 오른다리 */
+/* 왼어깨 */
+/* 오른어깨 */
+/* TV */
+
+
+
+
+
 /* 2-2. 로봇설명박스 */
 /******************* 3. 하단영역 *******************/
 /* 3-1. 회사정보 */
