@@ -277,7 +277,7 @@ body *{
     background: 
     url(../images/hand_left.png) no-repeat 0/100%;
 
-    outline: 2px dashed lime;
+    /* outline: 2px dashed lime; */
 }
 
 /* 공통 left조정후 미세개별 위치조정은
@@ -319,6 +319,37 @@ body *{
     /* 부모는? .leg */
     border-radius: 20%;
 }
+/* 가상요소로 부츠만들기 */
+.leg span::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: -5%;
+    width: 110%;
+    height: 80%;
+    background-image: 
+    linear-gradient(to right,#ccc,#393939);
+    border-top: 5px solid #000;
+}
+/* 가상요소로 신발만들기 */
+.leg span::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 110%;
+    left: -20%;
+    width: 140%;
+    height: 60px;
+    background-image: 
+    linear-gradient(to right,#ccc,#393939);
+    border: 2px solid #000;
+    border-bottom: 10px solid #000;
+    border-radius: 40px 40px 0 0;
+    /* 크기에 보더까지 포함하는 박스 */
+    box-sizing: border-box;
+}
+
 /* 왼다리 */
 .leg1{
     left: 10px;
