@@ -113,14 +113,39 @@ body *{
 /* 입 */
 .mouth{
     /* 위치 */
-    left: 50px;
-    bottom: 10px;
+    left: 68px;
+    bottom: 23px;
     /* 크기 */
-    width: 120px;
-    height: 80px;
+    width: 109px;
+    height: 45px;
     /* 배경 */
     background: 
     url(../images/mouth.png) no-repeat 0/100% 100%;
+}
+/* 귀공통 */
+.ear{
+    /* 위치 */
+    top: 100px;
+    /* 크기 */
+    width: 50px;
+    height: 80px;
+    /* 배경 */
+    background: 
+    url(../images/metal02.jpg) no-repeat center/cover;
+}
+/* 왼귀 */
+.ear1{
+    /* 개별위치 왼쪽바깥 */
+    left: -50px;
+    /* 둥근모서리 : 왼쪽위 왼쪽아래 */
+    border-radius: 20px 0 0 20px;
+}
+/* 오른귀 */
+.ear2{
+    /* 개별위치 오른쪽바깥 */
+    right: -50px;
+    /* 둥근모서리 : 오른쪽위 오른쪽아래 */
+    border-radius: 0 20px 20px 0;
 }
 
 
