@@ -203,6 +203,9 @@ body *{
     /* 무대중앙 - 마영오 */
     margin: 0 auto;
     margin-top: 50px;
+    /* 배경이미지 사이즈 조정하기 
+    - 가로크기 80%, 세로크기 auto(생략가능) */
+    background-size: 80%;
 }
 /* 몸통의 가상요소로 상체만들기 */
 .body::before{
@@ -215,18 +218,20 @@ body *{
     height: 200px;
     background-image: 
     linear-gradient(to top,#00677e,#6bffff);
+    border-radius: 30px;
 }
 /* 몸통의 가상요소로 하체만들기 */
 .body::after{
     content: '';
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -7px;
     left: -18px;
     width: 257px;
     height: 140px;
     background-image: 
     linear-gradient(to top,#71007e,#f06aff);
+    border-radius: 30px;
 }
 
 
@@ -258,6 +263,18 @@ body *{
     height: 80%;
     /* 부모는? .arm */
     border-radius: 20%;
+}
+/* 가상요소로 손만들기 */
+.arm span::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: calc(50% - 50px/2);
+    width: 50px;
+    height: 70px;
+    outline: 2px dashed lime;
+
 }
 /* 왼팔 */
 .arm1{
