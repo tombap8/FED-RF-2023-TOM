@@ -210,7 +210,7 @@ body *{
 .neck{
     top: -70px;
     left: calc(50% - 50px/2);
-    /* 중앙보내기 원리
+    /* 중앙보내기 원리 : 
     부모박스의 50%보내고
     자신크기의 절반빼기
     자신크기는 left는 width
@@ -219,12 +219,58 @@ body *{
     height: 80px;
     border-radius: 20px;
 }
+/* 팔공통 */
+.arm{
+    width: 50px;
+    height: 200px;
+}
 /* 왼팔 */
+.arm1{
+    left: -50px;
+}
 /* 오른팔 */
+.arm2{
+    right: -50px;
+}
+/* 다리공통 */
+.leg{
+    top: 100%;
+    /* 부모박스 높이만큼 나감!
+    아랫쪽 바깥에 위치! */
+    width: 80px;
+    height: 250px;
+}
 /* 왼다리 */
+.leg1{
+    left: 0;
+}
 /* 오른다리 */
+.leg2{
+    right: 0;
+}
+/* 어깨공통 */
+.shdr{
+    top: -15px;
+    width: 80px;
+    height: 80px;
+}
 /* 왼어깨 */
+.shdr1{
+    left: -65px;
+    border-radius: 50% 0 0 50%;
+    /* 
+        [둥근모서리 값설정]
+        1. 1개 - 네방향
+        2. 2개 - 왼위 오른아래 / 오른위 왼아래
+        3. 3개 - 왼위 / 오른위 왼아래 / 오른아래
+        4. 4개 - 왼위 / 오른위 / 오른아래 / 왼아래
+    */
+}
 /* 오른어깨 */
+.shdr2{
+    right: -65px;
+    border-radius: 0 50% 50% 0;
+}
 /* TV */
 
 
