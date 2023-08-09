@@ -53,14 +53,28 @@ body *{
 }
 /* 2-1-1.머리 */
 .head{
+    position: relative;
+    /* 부모자격 - 하위 앱솔루트 자식들 */
     width: 250px;
     height: 250px;
     /* 무대중앙 마영오! */
     margin: 0 auto;
+    /* 메탈배경 */
+    background: 
+    url(../images/metal01.jpg) no-repeat center/cover;
+}
+
+/* 머리 하위요소 공통 */
+.head>div{
+    position: absolute;
+    /* 모든 직계하위요소는 앱솔루트! */
 }
 
 /* 눈공통 */
 .eye{
+    /* 앱솔루트 top값은 공통임 */
+    top: 50px;
+
     width: 50px;
     height: 50px;
     /* 원형 */
@@ -75,13 +89,38 @@ body *{
 }
 /* 왼눈 */
 .eye1{
+    left: 50px;/* l50 */
     background-image: 
     url(../images/e1.jpg);
 }
 /* 오른눈 */
 .eye2{
+    right: 50px;/* r50 */
     background-image: 
     url(../images/e2.jpg);
+}
+/* 코 */
+.nose{
+    /* 위치 */
+    top: 101px;
+    left: 94px;
+    /* 크기 */
+    width: 60px;
+    height: 69px;
+    border-radius: 26px;
+    background: url(../images/nose.jpg) no-repeat -4px -4px/122%;
+}
+/* 입 */
+.mouth{
+    /* 위치 */
+    left: 50px;
+    bottom: 10px;
+    /* 크기 */
+    width: 120px;
+    height: 80px;
+    /* 배경 */
+    background: 
+    url(../images/mouth.png) no-repeat 0/100% 100%;
 }
 
 
