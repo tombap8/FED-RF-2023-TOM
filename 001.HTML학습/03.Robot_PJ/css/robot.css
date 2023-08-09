@@ -35,7 +35,7 @@ body *{
 /* 1-3.탑이동버튼 */
 /******************* 2. 메인영역 *******************/
 .main-aria{
-    overflow: hidden;
+    /* overflow: hidden; */
     /* 첫번째 자식요소 블록박스에 마진탑을 준경우
     그 마진값은 부모요소 바깥쪽으로 나간다!(기본성질)
     마진탑을 포함하려면 부모요소에 overflow:hidden
@@ -47,7 +47,7 @@ body *{
     /* 패딩 : 위,양쪽, 아래 */
     padding: 200px 0 50px;
     /* 마진탑 */
-    margin-top: 30px;
+    /* margin-top: 30px; */
 
 
 }
@@ -55,13 +55,45 @@ body *{
 .head{
     position: relative;
     /* 부모자격 - 하위 앱솔루트 자식들 */
-    width: 250px;
+    width: 200px;
     height: 250px;
     /* 무대중앙 마영오! */
     margin: 0 auto;
     /* 메탈배경 */
     background: 
     url(../images/metal01.jpg) no-repeat center/cover;
+    /* 둥근모서리 */
+    border-radius: 100px 100px 50% 50%;
+}
+/* 가상요소로 머리에 가발씌우기 */
+.head::after{
+    content: '';
+    display: block;
+    /* 마치 div를 넣은것 같다~! */
+    position: absolute;
+    /* 앱솔루트요소 */
+    top: -75px;
+    left: -71px;
+    /* 부모는? .head */
+    width: 339px;
+    height: 383px;
+
+    /* 배경 */
+    background: 
+    url(../images/hair_new2.png) no-repeat 0/100% 100%;
+}
+/* 오버시 가상요소 가발 변경하기 */
+.head:hover::after{
+    /* 앱솔루트요소 */
+    top: -74px;
+    left: -127px;
+    /* 부모는? .head */
+    width: 436px;
+    height: 551px;
+
+    /* 배경 */
+    background-image: 
+    url(../images/hair_new3.png);
 }
 
 /* 머리 하위요소 공통 */
@@ -73,8 +105,7 @@ body *{
 /* 눈공통 */
 .eye{
     /* 앱솔루트 top값은 공통임 */
-    top: 50px;
-
+    top: 60px;
     width: 50px;
     height: 50px;
     /* 원형 */
@@ -89,35 +120,35 @@ body *{
 }
 /* 왼눈 */
 .eye1{
-    left: 50px;/* l50 */
+    left: 30px;/* l50 */
     background-image: 
     url(../images/e1.jpg);
 }
 /* 오른눈 */
 .eye2{
-    right: 50px;/* r50 */
+    right: 30px;/* r50 */
     background-image: 
     url(../images/e2.jpg);
 }
 /* 코 */
 .nose{
     /* 위치 */
-    top: 101px;
-    left: 94px;
+    top: 109px;
+    left: 74px;
     /* 크기 */
-    width: 60px;
-    height: 69px;
+    width: 52px;
+    height: 63px;
     border-radius: 26px;
-    background: url(../images/nose.jpg) no-repeat -4px -4px/122%;
+    background: url(../images/nose.jpg) no-repeat -4px -4px/auto 105%;
 }
 /* 입 */
 .mouth{
     /* 위치 */
-    left: 68px;
-    bottom: 23px;
+    left: 57px;
+    bottom: 32px;
     /* 크기 */
-    width: 109px;
-    height: 45px;
+    width: 88px;
+    height: 35px;
     /* 배경 */
     background: 
     url(../images/mouth.png) no-repeat 0/100% 100%;
