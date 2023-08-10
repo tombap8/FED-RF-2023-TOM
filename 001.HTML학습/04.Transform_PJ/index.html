@@ -110,7 +110,7 @@
             */
             #trans3:hover img {
                 /* 트랜스폼 X축 위치이동 tftx */
-                
+                transform: translateX(-50%);
             }
             /* 
                 4. translateY(거리) - Y축이동
@@ -122,7 +122,7 @@
             */
             #trans4:hover img {
                 /* 트랜스폼 Y축 위치이동 tfty */
-                
+                transform: translateY(200%);
             }
             /* 
                 5. translate(x축거리,y축거리) - X,Y축이동
@@ -135,7 +135,7 @@
             */
             #trans5:hover img {
                 /* 트랜스폼 X,Y축 위치이동 tft */
-                
+                transform: translate(-500px, 300px);
             }
 
             /* 
@@ -147,9 +147,9 @@
             */
             #trans6:hover img {
                 /* 평면회전 tfr */
-                
+                transform: rotate(8756deg);
                 /* 트랜지션 시간 늘리기 */
-                
+                transition-duration: 20s;
                 /* 
                 transition: 속시이지
                 개별 설정이 가능함!
@@ -166,7 +166,8 @@
 
             /* 회전축 변경하기 */
             #trans6 img {
-                
+                /* transform-origin: right bottom; */
+                transform-origin: 20% 30%;
                 /* 
                 [ 트랜스폼 회전축 변경속성 ]
                 transform-origin: 가로 세로;
@@ -182,7 +183,7 @@
                 - 각도가 양수/음수에 따라 기울임 방향이 달라짐
             */
             #trans7:hover img {
-                
+                transform: skewY(30deg);
             }
 
             /* 
@@ -196,11 +197,12 @@
             */
             #trans8:hover img {
                 /* 트랜스폼 스케일 tf:s */
+                transform: scale(2);
                 
             }
             /* 초기배율설정 */
             #trans8 img {
-                
+                transform: scale(.5);                
             }
 
             /* 
@@ -210,9 +212,10 @@
 
             #trans9:hover img {
                 /* 다중 트랜스폼 tf */
-                
+                transform: scale(5) translate(-200%, -100%) 
+                rotateX(1200deg) skewX(50deg) rotate(5300deg);
                 /* 트랜지션 시간늘리기 */
-                
+                transition-duration: 30s;                
             }
 
             /* 
