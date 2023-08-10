@@ -14,6 +14,12 @@
                 list-style: none;
                 /* 블릿없앰 */
             }
+            /* 가상요소로 플롯해제 */
+            .bx::after{
+                content: '';
+                display: block;
+                clear: both;
+            }
             .bx li{
                 width: 33.333%;
                 /* 가로크기 3등분 */
@@ -80,16 +86,22 @@
             .bx .bd1{
                 border: 10px dotted pink;
             }
+            .bx .bd3{
+                border: 20px ridge darkorchid;
+            }
             .bx .bd2{
                 border: 5px dashed darkcyan;
             }
-            .bx .bd3{
-                border: 20px ridge darkorchid;
+
+            /* 아이디 보더속성변경 */
+            #bd4{
+                border: 10px dotted darkgreen;
             }
             
 
             /* 
                 [ 클래스 다중사용 가이드 ]
+
                 1. 디자인분야별 별도작성된 클래스를 조합할때 사용함
                 2. 클래스 다중 사용법은 요소에 클래스속성에
                 띄어쓰기로 여러개의 클래스를 적용할 수 있다
@@ -120,15 +132,18 @@
     <body>
         <h1>클래스 다중적용</h1>
         <ul class="bx">
-            <li class="">클래스적용1</li>
-            <li class="">클래스적용2</li>
-            <li class="">클래스적용3</li>
-            <li class="">클래스적용4</li>
-            <li class="">클래스적용5</li>
-            <li class="">클래스적용6</li>
-            <li class="">클래스적용7</li>
-            <li class="">클래스적용8</li>
-            <li>클래스적용9</li>
+            <li class="fcls1 bd1">클래스적용1</li>
+            <li class="fcls2 bd3">클래스적용2</li>
+            <li class="fcls3 bd2">클래스적용3</li>
+            <li class="fcls1 bd3" id="bd4">클래스적용4</li>
+            <li class="fcls2">클래스적용5</li>
+            <li class="fcls3">클래스적용6</li>
+            <li class="fcls1 bd3 bd2">클래스적용7</li>
+            <li class="fcls2">클래스적용8</li>
+            <li class="fcls3">클래스적용9</li>
         </ul>
+
+        <!--  하단컨텐츠박스 -->
+        <div class="mybx" style="height: 200px;background: pink;border: 10px dotted darkmagenta;font-size: 40px;text-align: center;line-height: 200px;">내가누구게???</div>
     </body>
 </html>
