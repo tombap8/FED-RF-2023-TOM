@@ -2,3 +2,232 @@
 
 /* Robot PJ - 애니메이션 CSS */
 
+/****************************************** 
+    [ CSS 애니메이션 ]
+    - CSS 속성 변화를 장면으로 구성하여
+    애니메이션을 화면에 연출해주는 속성
+
+    [ 애니메이션 키프레임 ]
+    - 애니메이션 속성변화를 지정하는 코딩영역
+
+    [ 2장면 코딩법 ]
+
+    @keyframes 키프레임명 {
+        from{시작CSS}
+        to{끝CSS}
+    } 
+
+    또는
+
+    @keyframes 키프레임명 {
+        0%{시작CSS}
+        100%{끝CSS}
+    }
+    
+    __________________________________
+
+    [ 여러장면 코딩법 ]
+    
+    @keyframes 키프레임명 {
+        0%{시작CSS}
+        10%{중간CSS}
+        20%{중간CSS}
+        ...
+        70%{중간CSS}
+        90%{중간CSS}
+        100%{끝CSS}
+    }
+
+    -> 만약 첫장면이 이미 CSS에 설정되어 있으면
+    from 또는 0% 를 생략할 수 있다!
+
+    __________________________________
+
+    [ 애니메이션 연출 시간 계산법 ]
+
+    - 내가 지정한 %의 장면은 언제 등장하는가?
+
+    전체시간(초) * 몇% / 100 = 알고싶은시간
+
+    예) 60초 * 50%/100% = 30초
+    __________________________________
+
+
+    [ 설정된 키프레임 호출하는 방법 ]
+
+    animation : 이시이지반방마
+    (이름 시간 이징 지연 반복 방향 마지막상태)
+
+    1) 이름(animation-name) : keyframe 이름
+    2) 시간(animation-duration) : 애니메이션 동작시간(초단위:s)
+    3) 이징(animation-timing-function) : easing 가속도
+    4) 지연(animation-delay) : 애니메이션 시작지연시간(초단위:s)
+    5) 반복여부(animation-iteration-count) : 애니메이션 반복횟수
+        - 기본값 1, 숫자를 쓰면 반복횟수
+        - 영원히는 infinite(인피니트)
+    6) 방향(animation-direction) : 시작->끝
+        - 대체경로 설정하기 : alternate : 시작->끝,끝->시작
+        - 대체경로는 반복횟수가 2이상 또는 infinite 이여야함
+    7) 마지막상태(animation-fill-mode) : 애니메이션이 끝났을때
+        - 처음상태로 돌아가는 것이 기본!
+        - 마지막 상태를 유지하고 싶을때 forwards(앞쪽에...즉,애니끝장면)
+
+
+
+******************************************/
+
+/* 로고이동 키프레임 */
+@keyframes logo-ani {
+    /* from{} - 첫상태 이미설정해서 생략! */
+    60%{
+        top: 50px;
+        left: 50px;
+        transform: scale(1);
+    }
+    100%{
+        top: 50px;
+        left: 50px;
+        /* 처음회전상태 추가애니 rotate(-25deg) */
+        transform: scale(1) rotate(-25deg);
+    }
+}
+/* 로고이동+오뚜기애니 호출하기 - 대상: .logo */
+.logo{
+    animation: 
+    /* 이동/스케일 애니 1초후 작동 */
+    logo-ani 1.5s ease-in-out 1s forwards,
+    /* 기울기 애니 : 2.5초후 작동 */
+    swing-ani .5s ease-in-out 2.5s infinite alternate;
+}
+
+/* 오뚜기 애니 키프레임 */
+@keyframes swing-ani {
+    from{
+        transform: rotate(-25deg);
+    }
+    to{
+        transform: rotate(25deg);
+    }
+}
+
+/* 로봇 위치/크기변경 애니 */
+@keyframes robot-ani {
+    to{
+        transform: translate(0,-20%) scale(.6);
+    }
+}
+/* 로봇애니 호출 */
+.box-robot{
+    animation: robot-ani 5s linear 3s forwards;
+}
+
+/* 걷는다리 키프레임 */
+@keyframes walking-ani {
+    to{
+        transform: scaleY(.8);
+    }
+}
+
+/* 왼쪽다리 애니호출 */
+.leg1{
+    animation: walking-ani .4s ease-in-out 3s 13 alternate;
+}
+/* 오른쪽다리 애니호출 */
+.leg2{
+    animation: walking-ani .4s ease-in-out 3.4s 13 alternate;
+}
+
+/* 왼팔 애니1 키프레임 */
+@keyframes left-arm-ani-01 {
+    to{
+        transform: rotate(31deg);
+    }
+}
+/* 왼팔 애니2 키프레임 */
+@keyframes left-arm-ani-02 {
+    to{
+        transform: rotate(-82deg);
+    }
+}
+/* 왼팔 애니3 키프레임 */
+@keyframes left-arm-ani-03 {
+    to{
+        transform: rotate(90deg);
+    }
+}
+
+/* 왼팔 애니1 호출 */
+.arm1 {
+    animation: left-arm-ani-01 .3s ease-in 9s forwards;
+}
+/* 왼팔 애니2 호출 */
+.arm1 span {
+    transform-origin: top;
+    animation: left-arm-ani-02 .3s ease-in 9s forwards;
+}
+/* 왼팔 애니3 호출 */
+.arm1 span::after {
+    transform-origin: top;
+    animation: left-arm-ani-03 .3s ease-in 9s forwards;
+}
+
+
+
+/* 오른팔 애니1 키프레임 : 올리기 */
+@keyframes right-arm-ani-01 {
+    to{
+        transform: rotate(-136deg);
+    }
+}
+/* 오른팔 애니2 키프레임 : 흔들기 */
+@keyframes right-arm-ani-02 {
+    from{
+        transform: rotate(-136deg);
+    }
+    to{
+        transform: rotate(-156deg);
+    }
+}
+/* 오른팔 애니3 키프레임 : 흔들기2 */
+@keyframes right-arm-ani-03 {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-15deg);
+    }
+}
+/* 오른팔 애니4 키프레임 : 손목흔들기 */
+@keyframes right-arm-ani-04 {
+    from{
+        transform: rotate(10deg);
+    }
+    to{
+        transform: rotate(-10deg);
+    }
+}
+/* 오른팔 애니1,2 호출 */
+.arm2 {
+    transform-origin: right top;
+    right: -45px;/* 위치조정 */
+    animation: 
+    /* 팔들기 */
+    right-arm-ani-01 .4s ease-in-out 10s forwards,
+    /* 팔흔들기 */
+    right-arm-ani-02 .4s ease-in-out 10.4s infinite alternate;
+}
+/* 오른팔 애니3 호출 : 대상 - .arm2 span */
+.arm2 span {
+    transform-origin: top;
+    /* 팔흔들기3 */
+    animation: 
+    right-arm-ani-03 .4s ease-in-out 10.4s infinite alternate;
+}
+/* 오른팔 애니3 호출 : 대상 - .arm2 span */
+.arm2 span::after {
+    transform-origin: top;
+    /* 손목흔들기 */
+    animation: 
+    right-arm-ani-04 .4s ease-in-out 10.4s infinite alternate;
+}
+
