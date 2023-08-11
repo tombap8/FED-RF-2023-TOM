@@ -495,7 +495,8 @@ body *{
     top: 8%;
     left: 50%;
     /* left방향 중앙이동 */
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1);
+    z-index: 10;
 
     width: 180px;
     height: 125px;
@@ -507,8 +508,17 @@ body *{
     /* 배경이미지 */
     background: 
     url(../images/tv.jpg) no-repeat 0/100%;
+
+    /* 트랜지션: 속시이지 */
+    transition: 1.2s ease-in-out;
     
 }
+
+/* TV가 커지는 클래스 */
+.tv.on{
+    transform: translateX(-50%) scale(5);
+}
+
 /* 스크린 */
 .screen{
     position: absolute;
@@ -531,6 +541,21 @@ body *{
     width: 173px;
     height: 100px;
     /* 부모는? .screen */
+
+    /* 아이프레임 기본보더 없앰 */
+    border: none;
+}
+
+/* 동영상 선택버튼박스 */
+.box-btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 90px;
+}
+.box-btn button{
+    width: 100%;
 }
 
 

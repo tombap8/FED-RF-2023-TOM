@@ -231,3 +231,16 @@
     right-arm-ani-04 .4s ease-in-out 10.4s infinite alternate;
 }
 
+/* 입 나불나불 애니 */
+@keyframes mouth-ani {
+    to{
+        transform: scaleY(.5);
+    }
+}
+
+/* 입애니 호출 */
+.mouth{
+    animation: 
+    mouth-ani .06s linear 10.8s infinite alternate;
+}
+
