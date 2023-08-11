@@ -177,11 +177,22 @@
 
                 /**************************** 
                     [ JS 에서 클래스 제어하기 ]
+                    classList 내장객체
+                    1) add(클래스명) : 클래스추가
+                    2) remove(클래스명) : 클래스제거
+                    3) toggle(클래스명) : 클래스넣기/빼기
+                    -> toggle은 없으면 넣고 있으면 뺌!
                     
                 ****************************/
                document
                .getElementsByClassName('tv').item(0)
                .classList.toggle('on');    
+
+
+               // getElementsByClassName(클래스명)
+               // get Elements By ClassName
+               // 가져와 요소들 클래스명으로!
+               // item(순번) - 클래스 중 순번(0부터)
 
             } ////////////// 커짐함수 //////////////////
             ///////////////////////////////////////////
