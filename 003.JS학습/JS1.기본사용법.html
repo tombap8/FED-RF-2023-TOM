@@ -311,9 +311,40 @@
             바디.style.transition = '5s 3s';
 
 
-
-
        } ////////// 보여줘 함수 /////////////
+
+       /*************************************** 
+            함수명: 바꿔
+            기능: 기존 박스 구성요소 및 스타일변경
+       ***************************************/
+      function 바꿔(){
+            // 1. 호출확인
+            console.log('바꿔볼껴?');
+
+            // 2. 대상 : .pbox
+            var 목표 = 
+            document.getElementsByClassName('pbox').item(0);
+
+            // 3. CSS변경하기 : 배경이미지
+            목표.style.backgroundImage = "url(https://image.kmib.co.kr/online_image/2022/0727/2022072621325079008_1658838770_0017317378.jpg)";
+
+            // 4. html 변경하기 : innerHTML = 값
+            목표.innerHTML = 
+            '우 to the 영 to the 우<br>동 to the 그 to the 라미';
+            // 참고: innerText 는 태그가 그대로 출력됨
+            // 태그를 쓸때는 innerHTML쓸것!
+
+      } /////////////// 바꿔 함수 ///////////////
+
+      /******************************************** 
+        함수명 :  맘대로해라
+        기능 : 선택요소의 style과 html을 변경함
+      ********************************************/
+     function 맘대로해라(헐,헉스){
+        // 헐 - .원이야 순번 / 헉스 - 그림제목
+        // 1. 호출 및 전달값 확인
+        console.log("니맘대로하세요!",헐,헉스)
+     } ///////////// 맘대로해라 함수 ////////////////
 
 
     </script>
@@ -344,7 +375,39 @@
             /* 보더박스:보더,패딩포함 */
             box-sizing: border-box;
 
+            /* 사용자 텍스트 영역 선택방지 */
+            user-select: none;
+
             /* background: url(./images/kimbs.jpg) no-repeat center/cover; */
+        }
+
+        /* 원모양 */
+        .원이야{
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* 부모는? window */
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+
+            /* 배경공통 */
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* 보더박스:보더,패딩포함 */
+            box-sizing: border-box;
+        }
+        /* 원모양 개별셋팅 */
+        .원이야:nth-child(1){
+            right: 400px;
+            background-image: url(./images/01.png);
+        }
+        .원이야:nth-child(2){
+            right: 200px;
+            background-image: url(./images/02.png);
+        }
+        .원이야:nth-child(3){
+            background-image: url(./images/03.png);
         }
 
     </style>
@@ -353,11 +416,24 @@
 <body>
 
     <!-- 드라마 소개박스 -->
-    <p class="pbox" title="여기를 클릭하세요!" onclick="보여줘()">
+    <p class="pbox" title="여기를 클릭하세요! 더블클릭하면 우영우가 나옵니다!" onclick="보여줘()" ondblclick="바꿔()">
         나는 요즘 매일 생각한다! <br>
         도대체 <span id="name"></span>
         
     </p>
+
+    <!-- 원모양 박스 -->
+    <div class="박스야">
+        <!-- 원모양 -->
+        <div class="원이야" 
+        onmouseover="맘대로해라(0,'별이 빛나는 밤')"></div>
+        <div class="원이야" 
+        onmouseover="맘대로해라(1,'론강의 별이 빛나는 밤')"></div>
+        <div class="원이야" 
+        onmouseover="맘대로해라(2,'밤의 카페 테라스')"></div>
+    </div>
+    
+
 
 </body>
 
