@@ -204,6 +204,7 @@
             __________________________________________
 
             [ 선택자 문법을 그대로 사용하는 요소 선택법 ]
+
             1. querySelector(CSS선택자)
             -> 선택자에 맞는 요소를 처음만나는 것으로 선택
             -> 무조건 하나만 가져오므로 순번 불필요!
@@ -372,7 +373,9 @@
         var 멍청이 = 
         document.querySelectorAll(".박스야 .원이야");
 
-        // 기존 방식보다 더 간단한 querySelector를 사용함!
+        console.log('선택!',멍청이,멍청이.length);
+
+        // 기존 방식보다 더 간단한 querySelectorAll를 사용함!
         // document.getElementsByClassName("박스야").item(0)
         // .getElementsByClassName("원이야")
 
