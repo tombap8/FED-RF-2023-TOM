@@ -244,7 +244,7 @@
 
                 2. 한꺼번에 style속성값으로 넣기
                 -> style.cssText = 'css문법'
-                -> 이전에 코딩된 인라인 style 속성값을 무시됨!
+                -> 이전에 코딩된 인라인 style 속성값은 무시됨!
                 -> 백틱(`)을 사용하면 좀 더 가독성있는 코딩가능
 
             ________________________________________
@@ -410,10 +410,11 @@
         멍청이.style.border = '10px ridge goldenrod';
         // 멍청이.style.cssText = 'border:10px ridge goldenrod';
 
-        // 4. html 넣기 : 그림제목
+        // 4-1. html 넣기 : 그림제목
         멍청이.innerHTML = '<h4>고흐<br>'+헉스+'</h4>';
         // 헉스 - 그림제목값
 
+        // 4-2. 넣은 html h4요소에 CSS 한번에 넣기        
         // 한번에 css를 셋팅하는 방법 : style.cssText 사용!
         // 주의: 상단에 넣었던 style.속성명 은 무시됨!
         // 백틱(`)을 사용하여 엔터를 허용한 문자를 넣어준다
@@ -430,8 +431,13 @@
             padding: 0;
         `;
 
-
-
+        // 5. .원이야 클래스 on제거하여 회전애니없애기
+        // 대상 : .원이야(해당순번) -> 멍청이 할당!
+        멍청이.classList.remove('on');
+        // classList 는 선택요소의 클래스를 제어하는 객체
+        // add(클래스명) - 넣기
+        // remove(클래스명) - 빼기
+        // toggle(클래스명) - 넣기/빼기
 
 
      } ///////////// 맘대로해라 함수 ////////////////
@@ -500,6 +506,19 @@
             background-image: url(./images/03.png);
         }
 
+        /* .원이야.on 일 경우 애니적용하기! */
+        .원이야.on{
+            animation: rotate-ani 5s linear infinite;
+        }
+
+        /* .원이야 회전키프레임 */
+        @keyframes rotate-ani {
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+
     </style>
 </head>
 
@@ -515,14 +534,16 @@
     <!-- 원모양 박스 -->
     <div class="박스야">
         <!-- 원모양 -->
-        <div class="원이야" 
+        <div class="원이야 on" 
         onmouseover="맘대로해라(0,'별이 빛나는 밤')"></div>
-        <div class="원이야" 
+        <div class="원이야 on" 
         onmouseover="맘대로해라(1,'론강의 별이 빛나는 밤')"></div>
-        <div class="원이야" 
+        <div class="원이야 on" 
         onmouseover="맘대로해라(2,'밤의 카페 테라스')"></div>
     </div>
-    
+
+    <!-- 사각형으로 변할 전체 마무리 원박스 -->
+    <div class="넌뭐냐" title="오른쪽 버튼을 클릭해 주세요!" oncontextmenu=""></div>
 
 
 </body>
