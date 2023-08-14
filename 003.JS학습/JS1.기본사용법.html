@@ -442,11 +442,64 @@
 
      } ///////////// 맘대로해라 함수 ////////////////
 
+     /****************************************** 
+        함수명: 사각사각
+        기능 : 전체가 사각형으로 화면을 
+                채우며 애니메이션됨
+     ******************************************/
+    function 사각사각(){
+        // 1. 호출확인
+        console.log("사각사각!");
+
+        // 2. 대상선정 : .넌뭐냐
+        var 나야나 = document.querySelector('.넌뭐냐');
+        // querySelector(선택자) -> 하나만 가져옴!(순번불필요!)
+        console.log("나야나:",나야나);
+
+        // 3. 변경내용: top, 트랜지션, width, height
+        나야나.style.top = '0';
+        나야나.style.borderRadius = '0';
+        나야나.style.width = '100%';
+        나야나.style.height = '100%';
+        나야나.style.transition = '3s 1s,top 1s 0s';
+        /* top값 부터 1초간 작동함! */
+
+        // 4. 추가변경 : 글자넣기
+        // innerText = 글자내용 -> 태그없는 글자 데이터 넣기!
+        나야나.innerText = 'JS입문을 환영합니다!';
+
+        // 5. 글자관련 CSS변경하기
+        나야나.style.fontSize = '60px';
+        나야나.style.color = 'aqua';
+        나야나.style.fontWeight = 'bold';
+        나야나.style.textShadow = '5px 5px 3px #000';
+        나야나.style.lineHeight = window.innerHeight+'px';
+        // window.innerHeight : 현재 화면의 높이값을 리턴함!
+
+        // 화면높이값
+        console.log("화면높이:",window.innerHeight);
+
+
+
+
+
+    } /////////////// 사각사각 함수 ///////////////
+
 
     </script>
 
     <!-- CSS코딩구역 -->
     <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* 보이는 화면에 채우기 */
+        }
+        body{
+            overflow: hidden;
+        }
+
 
         .pbox{
             position: absolute;
@@ -518,6 +571,20 @@
             }
         }
 
+        /* 전체 사각형으로 변할 원 */
+        .넌뭐냐{
+            position: absolute;
+            top: 40%;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            white-space: nowrap;
+            border-radius: 50%;
+            background: #bbd3b3 url(./images/prog.jpg) no-repeat center/auto 100%;
+        }
+
 
     </style>
 </head>
@@ -543,7 +610,7 @@
     </div>
 
     <!-- 사각형으로 변할 전체 마무리 원박스 -->
-    <div class="넌뭐냐" title="오른쪽 버튼을 클릭해 주세요!" oncontextmenu=""></div>
+    <div class="넌뭐냐" title="오른쪽 버튼을 클릭해 주세요!" oncontextmenu="사각사각()"></div>
 
 
 </body>
