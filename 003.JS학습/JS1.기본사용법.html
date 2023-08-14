@@ -369,15 +369,29 @@
         // 1. 호출 및 전달값 확인
         console.log("니맘대로하세요!",헐,헉스)
 
-        // 2. 대상선정 : .박스야 .원이야
+        // 2. 대상선정 : .박스야 .원이야 
         var 멍청이 = 
-        document.querySelectorAll(".박스야 .원이야");
+        document.querySelectorAll(".박스야 .원이야")[헐];
+        // 헐 - .원이야 순번
 
         console.log('선택!',멍청이,멍청이.length);
 
         // 기존 방식보다 더 간단한 querySelectorAll를 사용함!
         // document.getElementsByClassName("박스야").item(0)
         // .getElementsByClassName("원이야")
+
+        // 3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로 
+        // 나열되도록 위치를 바꾸고 모양을 변경하고
+        // 작품명을 하단에 나오게 한다!
+
+        // 3-1. 트랜지션
+        멍청이.style.transition = 
+        '1s ease-out, border-radius 1s 1s';
+        // 3-2. 위치이동 : top, left
+        멍청이.style.top = 
+        'calc(100% - 200px)';
+        멍청이.style.right = 
+        'calc(100% - 200px - '+헐+'*200px)';
 
 
 
