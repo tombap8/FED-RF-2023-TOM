@@ -225,6 +225,8 @@
 
             [ JS에서 요소 선택 후 CSS변경하기 ]
 
+            1. 스타일시트 속성명으로 개별추가하기
+
             선택요소.style.스타일시트속성명 = 속성값
             - 선택요소의 CSS특정 속성값을 변경함
             - 스타일시트 속성명은 모두 변수형으로 JS브라우저
@@ -239,6 +241,11 @@
                 -> JS에서 CSS를 변경하면 요소 태그 내부에
                 style속성으로 인라인코딩 되어 들어간다!
                 (최우선 적용!)
+
+                2. 한꺼번에 style속성값으로 넣기
+                -> style.cssText = 'css문법'
+                -> 이전에 코딩된 인라인 style 속성값을 무시됨!
+                -> 백틱(`)을 사용하면 좀 더 가독성있는 코딩가능
 
             ________________________________________
 
@@ -392,6 +399,37 @@
         'calc(100% - 200px)';
         멍청이.style.right = 
         'calc(100% - 200px - '+헐+'*200px)';
+
+        // 계산식 확인
+        console.log('calc(100% - 200px - '+헐+'*200px)');
+
+        // 3-3. 원형을 사각형으로 변경
+        멍청이.style.borderRadius = '0';
+
+        // 3-4. 액자 보더 넣기
+        멍청이.style.border = '10px ridge goldenrod';
+        // 멍청이.style.cssText = 'border:10px ridge goldenrod';
+
+        // 4. html 넣기 : 그림제목
+        멍청이.innerHTML = '<h4>고흐<br>'+헉스+'</h4>';
+        // 헉스 - 그림제목값
+
+        // 한번에 css를 셋팅하는 방법 : style.cssText 사용!
+        // 주의: 상단에 넣었던 style.속성명 은 무시됨!
+        // 백틱(`)을 사용하여 엔터를 허용한 문자를 넣어준다
+        // 위에서 h4요소를 넣었으므로 아래에서 선택가능!
+        멍청이.querySelector('h4').style.cssText = 
+        `
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        `;
+
 
 
 
