@@ -98,14 +98,14 @@ h4 {
     background-color: lightblue;
 }
 .header .partbox {
-    height: 100px;
+    height: 120px;
 }
-/************* 2. 배너영역 *************/
+/************* 2. 캐릭터소개 *************/
 #banner {
     background-color: lightgreen;
 }
 .banner .partbox {
-    height: 300px;
+    height: 530px;
 }
 /************* 3. 메인영역 : .group-part *************/
 #main {
