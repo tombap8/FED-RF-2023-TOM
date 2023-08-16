@@ -89,6 +89,11 @@ body *{
 /* 1-3.탑이동버튼 */
 /******************* 2. 메인영역 *******************/
 .main-aria{
+    padding-top: 860px;
+    /* 자식요소인 .box-robot이 fixed포지션이
+    됨에 따라 상단부분이 없어졌으므로
+    패딩으로 로봇영역을 채워준다! */
+
     /* overflow: hidden; */
     /* 첫번째 자식요소 블록박스에 마진탑을 준경우
     그 마진값은 부모요소 바깥쪽으로 나간다!(기본성질)
@@ -99,6 +104,10 @@ body *{
 /* 2-1. 로봇박스 */
 .box-robot{
     position: fixed;
+    /* top값을 아주면 젠틀픽스드 이므로
+    패딩/static요소를 존중하므로
+    위치값을 줘서 화면을 기준한다! */
+    top: 0;
     width: 100%;
     /* 패딩 : 위,양쪽, 아래 */
     padding: 200px 0 520px;
@@ -265,6 +274,9 @@ body *{
     background-image: 
     linear-gradient(to top,#00677e,#6bffff);
     border-radius: 30px;
+
+    /* 클립패스 : 부분만 보이기 */
+    clip-path: polygon(0% 0%,100% 0%,84% 100%,16% 100%);
 }
 /* 몸통의 가상요소로 하체만들기 */
 .body::after{
@@ -278,6 +290,9 @@ body *{
     background-image: 
     linear-gradient(to top,#71007e,#f06aff);
     border-radius: 30px;
+
+    /* 클립패스 : 부분만 보이기 */
+    clip-path: polygon(6% 25%,15% 3%,87% 0%,95% 25%,90% 74%,58% 95%,41% 95%,10% 75%);
 }
 
 
