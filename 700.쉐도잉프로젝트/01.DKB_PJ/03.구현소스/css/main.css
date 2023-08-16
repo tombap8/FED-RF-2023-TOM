@@ -109,22 +109,27 @@ h4 {
 }
 /************* 3. 메인영역 : .group-part *************/
 #main {
-    background-color: lightpink;
+    background-color: lightgoldenrodyellow;
 }
+/* 방송편성소개파트 */
 .main .group-part-01 .partbox {
-    height: 360px;
+    height: 455px;
 }
+/* 미리보기파트 */
 .main .group-part-02 .partbox {
-    height: 120px;
+    height: 298px;
 }
+/* 현장포토파트 */
 .main .group-part-03 .partbox {
-    height: 220px;
+    height: 300px;
 }
+/* 대표이미지파트 */
 .main .group-part-04 .partbox {
-    height: 280px;
+    height: 542px;
 }
+/* 최신동영상파트 */
 .main .group-part-05 .partbox {
-    height: 240px;
+    height: 376px;
 }
 /************* 4. 하단영역 *************/
 #footer {
