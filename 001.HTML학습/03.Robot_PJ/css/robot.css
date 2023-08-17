@@ -622,6 +622,20 @@ body{
     border-radius: 20px;
 }
 /* 2-2-2.출처 */
+.box-text small{
+    /* 글자체 : 'Chakra Petch' */
+    font-family: 'Chakra Petch';
+    /* 글자크기 12px -> rem? */
+    font-size: 0.75rem;
+    /* 줄간격 : 3배 */
+    line-height: 3;
+    /* 글자색 : 노란색 */
+    color: #ff0;
+    /* 블록변경 */
+    display: block;
+    /* 글자중앙 */
+    text-align: center;
+}
 
 /* 2-2-3.내용단락 */
 
