@@ -167,6 +167,10 @@ body{
     position: absolute;
     /* 모든 직계하위요소는 앱솔루트! */
 }
+/* 각 몸에 글로우효과 주기 */
+.ear, .body>div, .body>div>span{
+    box-shadow: 0 0 10px 5px aqua;
+}
 
 /* 눈공통 */
 .eye{
@@ -571,6 +575,8 @@ body{
 
 /* 2-2. 로봇설명박스 */
 .box-text{
+    /* 로봇보다 위 - 포지션 있어야 위에옴 */
+    position: relative;
     /* 최대크기800px */
     max-width: 800px;
     /* 박스중앙 : 마영오 */
@@ -594,7 +600,30 @@ body{
     box-shadow: 
     inset 0 0 20px blue,
     inset 0 0 50px 10px cyan;
+    /* 박스그림자: x y blur spread color */
+
 }
+
+/* 2-2-1.제목 */
+.box-text h2{
+    /* 스티키 포지션 */
+    position: sticky;
+    /* top값 설정시 위치고정 */
+    top: 15px;
+    /* 글자 : 35px 'Chakra Petch' */
+    font: 2.18rem 'Chakra Petch';
+    /* 글자색 lime */
+    color: lime;
+    /* 글자중앙정렬 */
+    text-align: center;
+    /* 배경색 흰색 반투명  */
+    background-color: rgba(255, 255, 255, 0.7);
+    /* 둥근모서리 20px */
+    border-radius: 20px;
+}
+/* 2-2-2.출처 */
+
+/* 2-2-3.내용단락 */
 
 
 /******************* 3. 하단영역 *******************/
