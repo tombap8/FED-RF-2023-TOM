@@ -691,4 +691,40 @@ body{
 
 /******************* 3. 하단영역 *******************/
 /* 3-1. 회사정보 */
+#bottom-aria{
+    /* 순서가 위에 오도록! */
+    position: relative;
+    /* 글자색 : 흰색 */
+    color: #fff;
+    /* 글자크기 : 30px, 글자체 'Black Ops One' */
+    font: 3rem 'Black Ops One';
+    /* 글자그림자 : 2px 2px 2px #000 */
+    text-shadow: 2px 2px 2px #000;
+
+    /* 배경색 : 검정색 반투명 0.5 */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 글자중앙정렬 */
+    text-align: center;
+    /* 패딩 7vmin -> 가로/세로중 작은것 기준 10% */
+    padding: 7vmin;
+    
+}
+/* 속박스 가상요소로 아이콘 모양 넣기 */
+.bottom-aria::before{
+    content: '';
+    /* 디자인도 적용, 한줄에 오도록! */
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background: pink url(../images/robot_03.png) no-repeat;
+    background-position: -7px 2px;
+    background-size: 50px;
+
+    /* 인라인요소간 세로정렬 */
+    vertical-align: top;
+
+}
+
 
