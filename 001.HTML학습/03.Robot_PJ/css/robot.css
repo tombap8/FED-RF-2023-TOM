@@ -112,6 +112,15 @@ body{
     /* 줄간격은 높이값 100px - 보더10px = 90px */
     text-decoration: none;
 }
+/* 버튼 마우스 오버시 */
+.btn-top:hover{
+    background-color: #ff0;
+    border-style: inset;
+}
+/* 버튼 오버시 글자색 */
+.btn-top:hover a{
+    color: #f00;
+}
 
 /******************* 2. 메인영역 *******************/
 .main-aria{
