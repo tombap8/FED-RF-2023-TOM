@@ -38,30 +38,48 @@
 
             // 메시지 변수
             var message;
+            // 글자색 변수
+            var fontColor;
 
             // if문을 셋트로 작성시 구간처리 불필요!
             if(score >= 90){
                 message = '매우잘함';
+                fontColor = 'blue';
             } ////// if ////
             else if(score >= 80){
                 message = '잘함';
+                fontColor = 'green';
             }
             else if(score >= 70){
                 message = '보통';
+                fontColor = 'purple';
             }
             else if(score >= 60){
                 message = '노력요함';
+                fontColor = 'orange';
             }
             else{
                 message = '재시험';
+                fontColor = 'red';
             }
 
-            console.log('결과:',message);
+            // 메시지 완성하기 : 평가결과는 어쩌구...
+            message = '평가결과는 ' + message;
+
+            console.log('결과:',message,fontColor);
 
             // if문을 따로 작성하면 적용범위를 줘야함!
             // if(score >= 80 && score < 90){
             //     message = '';
             // } ////// if ////
+
+            // 5. 메시지 출력하기 ///////////
+            // 출력대상 : #jexp -> jexp변수
+            jexp.innerText = message;
+
+            // 6. 출력 글자색 변경하기 /////
+            // 대상 : #jexp -> jexp변수
+            jexp.style.color = fontColor;
 
         } /////////// jumsu 함수 /////////////////////
         /////////////////////////////////////////////
