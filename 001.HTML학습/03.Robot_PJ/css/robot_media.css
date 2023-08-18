@@ -1,3 +1,36 @@
 @charset "utf-8";
 
 /* Robot PJ 미디어쿼리 CSS - robot_media.css */
+
+/* 800px 이하 미디어쿼리 시작 */
+@media screen and (max-width: 800px) {
+    /* 2-2-3.내용단락 */
+    .desc {
+        /* 다중열 개수 */
+        column-count: 2;
+    }
+}
+/* 800px 이하 미디어쿼리 끝 */
+
+/* 500px 이하 미디어쿼리 시작 */
+@media screen and (max-width: 500px) {
+    /* 2-2-3.내용단락 */
+    .desc {
+        /* 다중열 개수 */
+        column-count: 1;
+    }
+
+    /* 1-2.탑이동버튼 */
+    .btn-top {
+        bottom: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+    }
+    /* 버튼 a요소 */
+    .btn-top a {
+        font-size: 22px;
+        line-height: 70px;
+    }
+}
+/* 500px 이하 미디어쿼리 끝 */
