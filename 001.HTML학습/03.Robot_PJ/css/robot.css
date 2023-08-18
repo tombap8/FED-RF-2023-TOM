@@ -87,10 +87,32 @@ body{
     z-index: 99;
     /* 가장위! */
 }
+/* 1-2.탑이동버튼 */
+.btn-top{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px outset #fff;
+    background-color: #ccc;
+}
+/* 버튼 a요소 */
+.btn-top a{
+    display: block;
+    /* 디자인확장! */
+    width: 100%;
+    height: 100%;
 
-/* 1-2.링크타이틀 */
-/* 1-3.탑이동버튼 */
+    /* 글자셋팅 */
+    color: blue;
+    font: 30px/90px 'Black Ops One';
+    /* 줄간격은 높이값 100px - 보더10px = 90px */
+    text-decoration: none;
+}
+
 /******************* 2. 메인영역 *******************/
 .main-aria{
     padding-top: 860px;
@@ -591,7 +613,7 @@ body{
     background-color: #fff;
     padding: 5vw 3vw;
     border-radius: 50%;
-    border: 10px dashed orangered;
+    border: 1vw dashed orangered;
     text-decoration: none;
 
     /* 처음에 안보임 */
@@ -603,19 +625,18 @@ body{
 .link-title::after{
     content: '';
     position: absolute;
-    bottom: -40px;
-    left: -14px;
-    transform: rotate(38deg);
+    bottom: -3.8vw;
+    left: -2.7vw;
+    transform: rotate(42deg);
 
     /* 삼각형만들기 필수
     - 양쪽방향 보더를 투명으로 한쪽방향 보더에 색
     - 가로,세로값 0 */
     width: 0;
-    height: 0;    
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-top: 113px solid orangered;
-
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-top: 10vw solid orangered;
 }
 /* 마우스 오버시 배경색 변경 */
 .link-title:hover {
