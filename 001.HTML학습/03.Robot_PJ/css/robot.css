@@ -573,7 +573,7 @@ body{
 
 /* TV가 커지는 클래스 */
 .tv.on{
-    transform: translateX(-50%) scale(5);
+    transform: translateX(-50%) scale(3);
 }
 
 /* 스크린 */
