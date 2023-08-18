@@ -27,7 +27,6 @@ html,body,h1,h2,h3,ul,ol{
 }
 
 body{
-    height: 100vh;
     /* 전체 배경이미지 */
     background: 
     url(../images/bg.jpg) no-repeat fixed top/cover;

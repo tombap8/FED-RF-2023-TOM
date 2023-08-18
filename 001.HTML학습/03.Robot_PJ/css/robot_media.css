@@ -4,6 +4,19 @@
 
 /* 800px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 800px) {
+    body{        
+        background: none;
+    }
+    body::before{
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: 
+        #000 url(../images/bg.jpg) no-repeat center/auto 100%;
+    }
     /* 2-2-3.내용단락 */
     .desc {
         /* 다중열 개수 */
@@ -14,6 +27,19 @@
 
 /* 500px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 500px) {
+    body{        
+        background: none;
+    }
+    body::before{
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: 
+        url(../images/bg.jpg) no-repeat center/auto 100%;
+    }
     /* 2-2-3.내용단락 */
     .desc {
         /* 다중열 개수 */
