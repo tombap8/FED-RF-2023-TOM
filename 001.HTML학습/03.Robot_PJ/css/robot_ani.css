@@ -244,3 +244,15 @@
     mouth-ani .06s linear 10.8s infinite alternate;
 }
 
+/* 말풍선 애니 */
+@keyframes balloon-ani {
+    to{
+        transform: scale(1);
+    }
+}
+/* 말풍선 애니 호출 */
+.link-title{
+    animation: 
+    balloon-ani .5s ease-in 10.8s forwards;
+}
+

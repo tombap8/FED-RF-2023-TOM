@@ -15,6 +15,9 @@
 html{
     font-size: 10px;
     /* 상대단위 rem 계산 편의를 위해 변경! */
+
+    /* 최상위요소인 html에 부드러운 스크롤적용 */
+    scroll-behavior: smooth;
 }
 
 /* 초기화 */
@@ -577,6 +580,81 @@ body{
 .box-btn button{
     width: 100%;
 }
+
+/* 2-1-3.링크타이틀 : 말풍선모양 */
+.link-title{
+    position: absolute;
+    top: 5vh;
+    right: -100px;
+    color: orangered;
+    font-size: 5vw;
+    background-color: #fff;
+    padding: 5vw 3vw;
+    border-radius: 50%;
+    border: 10px dashed orangered;
+    text-decoration: none;
+
+    /* 처음에 안보임 */
+    transform: scale(0);
+    /* 트랜스폼 축변경 : 가로 세로 */
+    transform-origin: left bottom;
+}
+/* 가상요소로 삼각형 만들기 */
+.link-title::after{
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -14px;
+    transform: rotate(38deg);
+
+    /* 삼각형만들기 필수
+    - 양쪽방향 보더를 투명으로 한쪽방향 보더에 색
+    - 가로,세로값 0 */
+    width: 0;
+    height: 0;    
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 113px solid orangered;
+
+}
+/* 마우스 오버시 배경색 변경 */
+.link-title:hover {
+    background-image: 
+    radial-gradient(darkgreen,darkorange);
+    color: #fff;
+}
+
+/* 
+    [ 원형 그라데이션 ]
+
+    - 기본형, 영역지정형은 박스모양을 따라감!
+
+    1) 기본형: 중앙중심, 모양은 박스크기에 맞춤
+    background-image: 
+        radial-gradient(색1,색2,색3,...);
+    - 시작색으로부터 중앙에서 시작됨
+
+    2) 영역 지정형:
+    background-image: 
+        radial-gradient(색1 몇%,색2 몇%,색3 몇%,...);
+    - 색 뒤에 한칸 띄고 %수치로 영역지정함
+
+    3) 그라데이션 모양을 원형으로 사용할 경우:
+    background-image: 
+        radial-gradient(circle,색1,색2,색3,...);
+    - circle 키워드를 첫번째에 사용함
+
+    4) 영역옵션 지정형: 중심점 변경
+    background-image: 
+        radial-gradient(옵션 at 가로위치 세로위치,색1,색2,색3,...);
+    - 옵션4가지 : closest-side / farthest-side
+                closest-corner / farthest-corner
+                ___________________________________
+                - closest는 중심점으로 좀더 모아진것
+                - farthest는 중심점에서 멀리 퍼진것
+                - side와 corner는 경계선과 끝부분옵션임
+    - 가로위치, 세로위치 (중심점) - 단위는 px / %
+*/
 
 /* 2-2. 로봇설명박스 */
 .box-text{
