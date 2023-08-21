@@ -18,6 +18,34 @@
             background: #0a134d url(./images/nav1bg.png) no-repeat fixed center/cover;
         }
 
+        /* ul,ol 초기화 : 3無 */
+        ul,ol{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* 클리어설정 가상요소 */
+        ul::after,ol::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+        /* 네비게이션 박스 */
+        .gnb li{
+            float: left;
+            /* 나는 왼쪽, 너는 오른쪽으로 올라와! */
+        }
+
+        /* 네비게이션 링크 */
+        .gnb a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 2vw;
+        }
+
+
     </style>
 </head>
 <body>
@@ -25,11 +53,52 @@
 
     <!-- 상단영역 -->
     <header class="top-area">
+        <!-- 로고박스 -->
         <h1 class="logo">
             <a href="#">
                 <img src="./images/nav1logo.png" alt="로고">
             </a>
         </h1>
+        <!-- 네비게이션박스 -->
+
+        <nav class="gnb">
+            <ul>
+                <li>
+                    <a href="#">Vision Processor</a>
+                </li>
+                <li>
+                    <a href="#">ADAS Processor</a>
+                </li>
+                <li>
+                    <a href="#">AHD™</a>
+                </li>
+                <li>
+                    <a href="#">News</a>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                </li>
+                <li>
+                    <a href="#">Career</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 
+            Vision Processor
+            RVC
+            In-cabin
+            FVC
+            SVM
+            E-mirror
+            ADAS Processor
+            AHD™
+            News
+            About Us
+            Career
+
+         -->
+
     </header>
     <!-- 컨텐츠영역 -->
     <main class="main-area">
