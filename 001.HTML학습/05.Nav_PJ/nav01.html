@@ -1,123 +1,168 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1. 가로네비 서브별 드롭다운 세로형</title>
-    <style>
-        html,body,h1{
-            margin: 0;
-            padding: 0;
-        }
-        h1{
-            text-align: center;
-            padding: 20px;
-        }
-        body{
-            color: #fff;
-            background: #0a134d url(./images/nav1bg.png) no-repeat fixed center/cover;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>1. 가로네비 서브별 드롭다운 세로형</title>
+        <style>
+            html,
+            body,
+            h1 {
+                margin: 0;
+                padding: 0;
+            }
+            h1.tit {
+                text-align: center;
+                padding: 20px;
+            }
+            body {
+                color: #fff;
+                background: #0a134d url(./images/nav1bg.png) no-repeat fixed center/cover;
+            }
 
-        /* ul,ol 초기화 : 3無 */
-        ul,ol{
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        /* 클리어설정 가상요소
+            /* ul,ol 초기화 : 3無 */
+            ul,
+            ol {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            /* 클리어설정 가상요소
         - .clb가 설정된 요소는 clear가 셋팅됨! */
-        ul::after,
-        ol::after,
-        .clb::after {
-            content: '';
-            display: block;
-            clear: both;
-        }
-        /* 공통클래스 */
-        .part-box{
-            float: left;
-            /* 옆으로 흐르게 */
-        }
+            ul::after,
+            ol::after,
+            .clb::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            /* 공통클래스 */
+            .part-box {
+                float: left;
+                /* 옆으로 흐르게 */
+            }
 
+            /* 메인로고 */
+            .logo {
+                line-height: 80px;
+            }
 
-        /* 네비게이션 박스 */
-        .gnb li{
-            float: left;
-            /* 나는 왼쪽, 너는 오른쪽으로 올라와! */
-        }
+            /* 네비게이션 박스 */
+            .gnb {
+                padding: 0 min(100px, 8vw);
+            }
+            .gnb li {
+                float: left;
+                /* 나는 왼쪽, 너는 오른쪽으로 올라와! */
+            }
 
-        /* 네비게이션 링크 */
-        .gnb a{
-            color: #fff;
-            text-decoration: none;
-            font-size: 2vw;
-        }
+            /* 네비게이션 링크 */
+            .gnb a {
+                color: #fff;
+                text-decoration: none;
 
-        /* 메인영역 */
-        .main-area{
-            max-width: 1000px;
-            min-height: 600px;
-            line-height: 600px;
-            text-align: center;
-            font-size: 2.5vw;
-            border: 10px dashed lightgreen;
-            margin: 0 auto;
-        }
+                font-size: min(18px, 1.8vw);
+                padding: 0 min(32px, 1.5vw);
+                line-height: 80px;
+            }
 
+            /* 메인영역 */
+            .main-area {
+                max-width: 1000px;
+                min-height: 600px;
+                line-height: 600px;
+                text-align: center;
+                font-size: 2.5vw;
+                border: 10px dashed lightgreen;
+                margin: 0 auto;
+            }
 
-    </style>
-</head>
-<body>
-    <h1>1. 가로네비 서브별 드롭다운 세로형</h1>
+            /* 서브메뉴 */
+            .sub-menu{
+                position: absolute;
+                width: 200px;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 128, 0.7);
+            }
+            /* 서브메뉴 li */
+            .sub-menu li{
+                width: 100%;
+                /* float설정이 있어도 한줄에 하나씩옴! */
+                text-align: center;
+            }
+            /* 서브메뉴 a */
+            .sub-menu a{
+                line-height: 40px;
+                font-size: min(14px,1.4vw);
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="tit">1. 가로네비 서브별 드롭다운 세로형</h1>
 
-    <!-- 상단영역 -->
-    <header class="top-area clb">
-        <div class="part-box">
-            <!-- 로고박스 -->
-            <h1 class="logo">
-                <a href="#">
-                    <img src="./images/nav1logo.png" alt="로고">
-                </a>
-            </h1>
-            
-        </div>
-        <div class="part-box">
-            <!-- 네비게이션박스 -->    
-            <nav class="gnb">
-                <ul>
-                    <li>
-                        <a href="#">Vision Processor</a>
-                    </li>
-                    <li>
-                        <a href="#">ADAS Processor</a>
-                    </li>
-                    <li>
-                        <a href="#">AHD™</a>
-                    </li>
-                    <li>
-                        <a href="#">News</a>
-                    </li>
-                    <li>
-                        <a href="#">About Us</a>
-                    </li>
-                    <li>
-                        <a href="#">Career</a>
-                    </li>
-                </ul>
-            </nav>
+        <!-- 상단영역 -->
+        <header class="top-area clb">
+            <div class="part-box">
+                <!-- 로고박스 -->
+                <h1 class="logo">
+                    <a href="#">
+                        <img src="./images/nav1logo.png" alt="로고" />
+                    </a>
+                </h1>
+            </div>
+            <div class="part-box">
+                <!-- 네비게이션박스 -->
+                <nav class="gnb">
+                    <ul>
+                        <li>
+                            <a href="#">Vision Processor</a>
+                            <div class="sub-menu">
+                                <ol>
+                                    <li>
+                                        <a href="#">RVC</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">In-cabin</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">FVC</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">SVM</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">E-mirror</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">ADAS Processor</a>
+                        </li>
+                        <li>
+                            <a href="#">AHD™</a>
+                        </li>
+                        <li>
+                            <a href="#">News</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Career</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="part-box"></div>
 
-        </div>
-        <div class="part-box">
-
-        </div>
-
-        <!-- 
+            <!-- 
             Vision Processor
-            RVC
-            In-cabin
-            FVC
-            SVM
-            E-mirror
+RVC
+In-cabin
+FVC
+SVM
+E-mirror
             ADAS Processor
             AHD™
             News
@@ -125,13 +170,8 @@
             Career
 
          -->
-
-    </header>
-    <!-- 컨텐츠영역 -->
-    <main class="main-area">
-        여기에 내용이 들어갑니다~!
-    </main>
-
-    
-</body>
+        </header>
+        <!-- 컨텐츠영역 -->
+        <main class="main-area">여기에 내용이 들어갑니다~!</main>
+    </body>
 </html>
