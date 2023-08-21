@@ -21,10 +21,14 @@
             // 2. 대상선정 //////////
             // 2-1. 점수입력요소 : input#jumsu
             var jumsu = document.querySelector('#jumsu');
+
             // 2-2. 출력요소 : #jexp
             var jexp = document.querySelector('#jexp');
 
-            // console.log('요소확인:',jumsu,jexp);
+            // 2-3. 칭찬스티커 : .jshow
+            var jshow = document.querySelector('.jshow');
+
+            console.log('요소확인:',jumsu,jexp,jshow);
 
             // 3. 입력값 읽어오기 ////////////
             var score = jumsu.value;
@@ -40,33 +44,41 @@
             var message;
             // 글자색 변수
             var fontColor;
+            // 위치변수
+            var bgPosition;
 
             // if문을 셋트로 작성시 구간처리 불필요!
             if(score >= 90){
                 message = '매우잘함';
                 fontColor = 'blue';
+                bgPosition = '100% 50%';
             } ////// if ////
             else if(score >= 80){
                 message = '잘함';
                 fontColor = 'green';
+                bgPosition = '100% 50%';
             }
             else if(score >= 70){
                 message = '보통';
                 fontColor = 'purple';
+                bgPosition = '100% 50%';
             }
             else if(score >= 60){
                 message = '노력요함';
                 fontColor = 'orange';
+                bgPosition = '100% 50%';
             }
             else{
                 message = '재시험';
                 fontColor = 'red';
+                bgPosition = '100% 50%';
             }
 
             // 메시지 완성하기 : 평가결과는 어쩌구...
             message = '평가결과는 ' + message;
 
-            console.log('결과:',message,fontColor);
+            console.log('결과:',
+            message,fontColor,bgPosition);
 
             // if문을 따로 작성하면 적용범위를 줘야함!
             // if(score >= 80 && score < 90){
@@ -80,6 +92,11 @@
             // 6. 출력 글자색 변경하기 /////
             // 대상 : #jexp -> jexp변수
             jexp.style.color = fontColor;
+
+            // 7. 칭찬스티커 배경이미지위치 변경하기 /////
+            // 대상 : .jshow -> jshow변수
+            jshow.style.backgroundPosition = bgPosition;
+
 
         } /////////// jumsu 함수 /////////////////////
         /////////////////////////////////////////////
@@ -148,6 +165,30 @@
                 text-align: center;
                 background-image: linear-gradient(to bottom, lightgreen, lightsalmon);
             }
+
+            /* if문 박스 */
+            .bx-if{
+                position: relative;
+                /* 부모자격 - .jshow */
+            }
+
+            /* 칭찬스티커박스 */
+            .jshow{
+                position: absolute;
+                top: 5vw;
+                left: 48vw;
+                width: 15vw;
+                height: 15vw;
+                outline: 2px solid red;
+                background: url(./images/ifshow.jpg) no-repeat;
+                /* 배경위치 : 처음에 안보임 */
+                background-position: -50% 0%;
+                /* 배경크기 */
+                background-size: 300%;
+
+                /* 트랜지션 : 배경위치만! */
+                transition: background-position 1s;
+            }
         </style>
         
     </head>
@@ -155,41 +196,47 @@
         <h1 class="tit">JS 제어문</h1>
         <hr />
         <!-- if문 연습 -->
-        <h2 class="tit">if문 연습</h2>
-        <h3 id="jexp">평가출력</h3>
-        <label for="jumsu">점수입력:</label>
-        <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3"
-        onkeypress="if(event.keyCode==13)jumsu()" />
+        <div class="bx-if">
+            <h2 class="tit">if문 연습</h2>
+            <h3 id="jexp">평가출력</h3>
+            <label for="jumsu">점수입력:</label>
+            <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3"
+            onkeypress="if(event.keyCode==13)jumsu()" />
+    
+            <!-- 
+            [ onkeypress 이벤트 속성 ]
+            -> 키보드를 치면 발생하는 이벤트 속성
+            if조건문
+            조건식 : event.keyCode === 13
+            -> 키보드의 키코드가 13번이냐? 엔터키 눌렀냐?
+            -> 엔터키의 키코드는 13번이다!
+            -> true이면 jumsu() 라는 함수를 호출해라!
+            -> event 브라우저 내장객체 : 이벤트관련 객체
+    
+            참고) 키코드 참조: 아스키코드 
+            (리턴키는 carriage return)
+            https://www.w3schools.com/charsets/ref_html_ascii.asp
+         -->
+            
+    
+            <!-- 버튼클릭시 클릭이벤트 속성과 미리만든 함수를 연결한다! -->
+            <button class="sbtn" onclick="jumsu()">평가하기</button>
+    
+            <!-- 
+            [ label요소 ]
+            input요소의 설명라벨요소
+            - for속성 : 클릭시 아이디 input요소로 포커스이동
+    
+            [ input 요소 : 입력요소 ]
+            - type = "text" -> 글자입력창
+            - placeholder  -> 안내문구출력
+            - maxlength -> 최대입력 글자수 제한
+         -->
+    
+         <!-- 칭찬스티커박스 -->
+         <div class="jshow"></div>
 
-        <!-- 
-        [ onkeypress 이벤트 속성 ]
-        -> 키보드를 치면 발생하는 이벤트 속성
-        if조건문
-        조건식 : event.keyCode === 13
-        -> 키보드의 키코드가 13번이냐? 엔터키 눌렀냐?
-        -> 엔터키의 키코드는 13번이다!
-        -> true이면 jumsu() 라는 함수를 호출해라!
-        -> event 브라우저 내장객체 : 이벤트관련 객체
-
-        참고) 키코드 참조: 아스키코드 
-        (리턴키는 carriage return)
-        https://www.w3schools.com/charsets/ref_html_ascii.asp
-     -->
-        
-
-        <!-- 버튼클릭시 클릭이벤트 속성과 미리만든 함수를 연결한다! -->
-        <button class="sbtn" onclick="jumsu()">평가하기</button>
-
-        <!-- 
-        [ label요소 ]
-        input요소의 설명라벨요소
-        - for속성 : 클릭시 아이디 input요소로 포커스이동
-
-        [ input 요소 : 입력요소 ]
-        - type = "text" -> 글자입력창
-        - placeholder  -> 안내문구출력
-        - maxlength -> 최대입력 글자수 제한
-     -->
+        </div> 
 
 
         <br /><br />
