@@ -42,6 +42,13 @@
                 clear: both;
             }
             /* 공통클래스 */
+            /* 속박스 */
+            .inbox{
+                max-width: 1650px;
+                margin: 0 auto;
+                outline: 2px dashed lime;
+            }
+            /* 파트박스 */
             .part-box {
                 float: left;
                 /* 옆으로 흐르게 */
@@ -202,128 +209,119 @@
         <h1 class="tit">1. 가로네비 서브별 드롭다운 세로형</h1>
 
         <!-- 상단영역 -->
-        <header class="top-area clb">
-            <div class="part-box">
-                <!-- 로고박스 -->
-                <h1 class="logo">
-                    <a href="#">
-                        <img src="./images/nav1logo.png" alt="로고" />
-                    </a>
-                </h1>
-            </div>
-            <div class="part-box">
-                <!-- 네비게이션박스 -->
-                <nav class="gnb">
-                    <ul>
-                        <li class="m5">
-                            <a href="#">Vision Processor</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">In-cabin</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">FVC</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">SVM</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">E-mirror</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                        <li class="m3">
-                            <a href="#">ADAS Processor</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">In-cabin</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">FVC</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                        <li class="m1">
-                            <a href="#">AHD™</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                        <li class="m1">
-                            <a href="#">News</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                        <li class="m3">
-                            <a href="#">About Us</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">In-cabin</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">FVC</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                        <li class="m1">
-                            <a href="#">Career</a>
-                            <!-- 서브메뉴 -->
-                            <div class="sub-menu">
-                                <ol>
-                                    <li>
-                                        <a href="#">RVC</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="part-box"></div>
+        <header class="top-area">
+            <div class="inbox clb">
+                <div class="part-box">
+                    <!-- 로고박스 -->
+                    <h1 class="logo">
+                        <a href="#">
+                            <img src="./images/nav1logo.png" alt="로고" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="part-box">
+                    <!-- 네비게이션박스 -->
+                    <nav class="gnb">
+                        <ul>
+                            <li class="m5">
+                                <a href="#">Vision Processor</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">In-cabin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">FVC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">SVM</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">E-mirror</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="m3">
+                                <a href="#">ADAS Processor</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">In-cabin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">FVC</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="m1">
+                                <a href="#">AHD™</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="m1">
+                                <a href="#">News</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="m3">
+                                <a href="#">About Us</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">In-cabin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">FVC</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="m1">
+                                <a href="#">Career</a>
+                                <!-- 서브메뉴 -->
+                                <div class="sub-menu">
+                                    <ol>
+                                        <li>
+                                            <a href="#">RVC</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="part-box">
 
-            <!-- 
-            Vision Processor
-RVC
-In-cabin
-FVC
-SVM
-E-mirror
-            ADAS Processor
-            AHD™
-            News
-            About Us
-            Career
+            </div>
 
-         -->
+            </div>
+
         </header>
         <!-- 컨텐츠영역 -->
         <main class="main-area">여기에 내용이 들어갑니다~!</main>
