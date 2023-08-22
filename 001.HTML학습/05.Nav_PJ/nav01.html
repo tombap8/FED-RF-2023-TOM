@@ -27,6 +27,11 @@
                 padding: 0;
                 list-style: none;
             }
+            /* a요소공통 */
+            a{                
+                color: #fff;
+                text-decoration: none;
+            }
             /* 클리어설정 가상요소
         - .clb가 설정된 요소는 clear가 셋팅됨! */
             ul::after,
@@ -61,16 +66,42 @@
                 /* 부모자격 - .sub-menu */
                 float: left;
                 /* 나는 왼쪽, 너는 오른쪽으로 올라와! */
+                padding: 29px 0;
             }
 
-            /* 네비게이션 링크 */
-            .gnb a {
-                color: #fff;
-                text-decoration: none;
+            /* 네비게이션 링크 상위a */
+            .gnb>ul>li>a {
+                display: block;
 
                 font-size: min(18px, 1.8vw);
                 padding: 0 min(32px, 1.5vw);
-                line-height: 80px;
+                /* line-height: 80px; */
+            }
+            /* 가상요소로 밑줄만들기 */
+            .gnb>ul>li>a::after {
+                content: '';
+                display: block;
+
+                /* 변경요소 */
+                width: 0%;
+                margin-left: 100%;
+
+                /* 글자와의 간격 */
+                margin-top: 4px;
+
+                height: 2px;
+                background-color: #fff;
+
+                /* 트랜지션 */
+                transition: .3s;
+            }
+            /* 상위메뉴 li에 오버시 밑줄 */
+            .gnb>ul>li:hover>a::after {
+                width: 100%;
+                margin-left: 0%;
+                
+                /* 트랜지션 : 오버시엔 왼쪽마진값은 무애니! */
+                transition: width .3s;
             }
 
 
@@ -83,6 +114,11 @@
                 left: 50%;
                 /* 가로방향 메뉴 정중앙이동! */
                 transform: translateX(-50%);
+
+                /* top은 현재 젠틀하다!
+                top을 주면 부모로부터 다시 수치를 크게
+                조정해야하므로 마진탑으로 세부조정한다! */
+                margin-top: 30px;
 
                 width: min(200px, 18vw);
                 border-radius: 15px;
