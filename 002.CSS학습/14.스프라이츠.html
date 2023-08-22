@@ -28,21 +28,27 @@
 
         /* 트위터 */
         .icons li:nth-child(1){
+            background-position: 0 0;
         }
         /* 트위터 오버시 */
         .icons li:nth-child(1):hover {
+            background-position: 0 -128px;
         }
         /* 인스타 */
         .icons li:nth-child(2){
+            background-position: -128px 0;
         }
         /* 인스타 오버시 */
         .icons li:nth-child(2):hover{
+            background-position: -128px -128px;
         }
         /* 페북 */
         .icons li:nth-child(3){
+            background-position: -256px 0;
         }
         /* 페북 오버시 */
         .icons li:nth-child(3):hover{
+            background-position: -256px -128px;
         }
 
         /* a요소 확장하기 */
@@ -142,6 +148,45 @@
 
 
         /* 스프라이츠 연습 */
+        .sp{
+            border: 1px solid #000;
+            background: url(./images/sp_main_dba1af.png) no-repeat;
+            background-size: 457px;
+        }
+        
+        /* 오디오클립 */
+        .sp1{
+            width: 85px;
+            height: 29px;
+            background-position: -194px -266px;
+        }
+
+        /* 네이버쇼핑 */
+        .sp2{
+            width: 55px;
+            height: 28px;
+            background-position: -125px -386px;
+        }
+
+        /* 쥬니어네이버 */
+        .sp3{
+            width: 65px;
+            height: 15px;
+            background-position: -260px -327px;
+        }
+        /* 오버시 */
+        .sp3:hover{
+            width: 65px;
+            height: 15px;
+            background-position: -198px -327px;
+        }
+
+        /* 추천크리에이터 */
+        .sp4{
+            width: 106px;
+            height: 47px;
+            background-position: -272px -163px;
+        }
         
         
     </style>
@@ -151,14 +196,17 @@
     <ul class="icons">
         <li>
             <a href="#">
+                <span class="ir">트위터 바로가기</span>
             </a>
         </li>
         <li>
             <a href="#">
+                <span class="ir">인스타그램 바로가기</span>
             </a>
         </li>
         <li>
             <a href="#">
+                <span class="ir">너도 인간이냐?</span>
             </a>
 
         </li>
