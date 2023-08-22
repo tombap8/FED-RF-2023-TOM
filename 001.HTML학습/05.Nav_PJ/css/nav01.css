@@ -240,6 +240,11 @@ ol::after,
     padding: 0 min(5px, 1.4vw);
 }
 
+/* 마지막요소에 밑줄애니 없애기 */
+.top-menu li:last-child a::after{
+    display: none;
+}
+
 /* 메인영역 */
 .main-area {
     max-width: 1000px;
