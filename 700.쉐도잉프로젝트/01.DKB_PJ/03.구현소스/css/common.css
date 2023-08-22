@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/* 도깨비 PJ : 공통 모듈 CSS - common.css */
+/* 공유기능 요소 셋팅 */
+
+/************* 1. 상단영역 *************/
+#header {
+    background-color: lightblue;
+}
+.header .partbox {
+    height: 120px;
+}
+/************* 2. 메인영역 *************/
+#main {
+    /* 본문영역 최소높이 셋팅! */
+    min-height: 800px;
+}
+/************* 3. 하단영역 *************/
+#footer {
+    background-color: lightskyblue;
+}
+.footer .partbox {
+    height: 100px;
+}

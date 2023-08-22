@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+/* 도깨비 PJ : 공통 클래스 CSS - core.css */
+/* 공통 셋팅을 위한 클래스 + 웹폰트 */
+
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Nanum+Gothic&family=Single+Day&family=ZCOOL+KuaiLe&display=swap');
+/* 
+    1. 캐릭터 설명 제목체
+    font-family: 'Gugi', cursive;
+    2. 캐릭터 설명 내용체
+    font-family: 'Single Day', cursive;
+    3. 캐릭터 설명 한자체
+    font-family: 'ZCOOL KuaiLe', cursive;
+    4. 전체 공통체(메뉴 등)
+    font-family: 'Nanum Gothic', sans-serif;
+*/
+
+/* 전체 글자크기 적용 */
+html{
+    font-size: 10px;
+    /* rem 단위를 위한 계산편의성 셋팅 
+    + 전체글자크기 제어 */
+}
+
+/* 전체 공통 글자체적용 */
+body{
+    font-family: 'Nanum Gothic';
+}
+
+
+/* 공통 레이아웃 클래스 */
+/* 속박스 */
+.inbox {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* 클리어 설정 가상요소
+        float에 의한 망가짐 방지! */
+.inbox::after,
+.group-part::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* 파트박스 */
+.partbox {
+    /* 옆으로 흐르게 */
+    float: left;
+    /* 보더/패딩 포함박스 */
+    box-sizing: border-box;
+    /* 내부패딩 */
+    padding: 15px;
+    /* 임시 보이게 보더 */
+    border: 2px dotted blue;
+    /* 높이값이 속박스에 있을 경우 
+            채우기셋팅 - 높이값이 파티션박스에 있으면 안씀! */
+    height: 100%;
+}
+
+/* 12 그리드 클래스 : 
+        한줄에 합이 12컬럼이 되도록 셋팅! */
+.col-1 {
+    width: 8.33%;
+}
+.col-2 {
+    width: 16.66%;
+}
+.col-3 {
+    width: 25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+.col-5 {
+    width: 41.66%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-7 {
+    width: 58.33%;
+}
+.col-8 {
+    width: 66.66%;
+}
+.col-9 {
+    width: 75%;
+}
+.col-10 {
+    width: 83.33%;
+}
+.col-11 {
+    width: 91.66%;
+}
+.col-12 {
+    width: 100%;
+}
+/* 참고: https://www.w3schools.com/css/css_rwd_grid.asp */
+
+/* 클리어 가상요소 클래스 */
+.clb::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* IR(Images Replacement) 
+- 배경이미지 설명 숨기기 클래스 */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
