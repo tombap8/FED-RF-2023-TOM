@@ -59,6 +59,9 @@
                 (1) load : 전체 요소가 모두 로딩후 발생
                 (2) DOMContentLoaded : html요소만 다그려지면 발생
                 -> 위의 2가지중 실행시점은 2번이 빠르다!
+             3. 외부JS 호출시 defer 키워드 사용!
+                <script src='외부JS경로' defer>
+                    -> html 요소 로딩후 외부JS를 실행함!
 
             [ 이벤트 함수연결 내장함수 ]
                 대상요소.addEventListener(이벤트명,함수)
