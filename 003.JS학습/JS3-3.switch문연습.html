@@ -40,7 +40,141 @@
                 font-size: 42px;
             }
         </style>
-        
+        <!-- JS코드구역 -->
+        <script>
+            // 이벤트까지 JS에서 걸어주면
+            // 코드가 분리된다!
+
+            /***************************************** 
+     html요소를 선택할 경우 실행순서가 중요함
+     html 본문요소가 모두 로딩후에 선택해야함!
+     로딩후 선택법:
+
+     1. script 코드를 body 태그 하단에 위치
+     2. 로딩구역을 만들어준다!
+     window.addEventListener('load',함수)
+     -> 대상: 전체 브라우저 window객체
+     -> 이벤트 : 
+        (1) load : 전체 요소가 모두 로딩후 발생
+        (2) DOMContentLoaded : html요소만 다그려지면 발생
+        -> 위의 2가지중 실행시점은 2번이 빠르다!
+
+    [ 이벤트 함수연결 내장함수 ]
+        대상요소.addEventListener(이벤트명,함수)
+        -> 이벤트 발생시 함수와 연결하는 기능을 가진
+        JS내장함수
+
+    *****************************************/
+
+            // 로딩구역만들기!!!
+            // 선택요소.addEventListener(이벤트,함수)
+            // window.addEventListener('load',loadFn);
+            window.addEventListener("DOMContentLoaded", loadFn);
+
+            function loadFn() {
+                // 1.호출확인
+                console.log("로딩완료!");
+
+                // 2.버튼요소선택
+                var btns = document.querySelectorAll(".btns");
+
+                console.log("버튼들:", btns);
+
+                // 3. 이벤트 설정하기
+                btns[0].onclick = changeImg;
+                btns[1].onclick = changeImg;
+                btns[2].onclick = changeImg;
+                btns[3].onclick = changeImg;
+                // -> 함수명만 써야 함수내부코드가 이벤트속성에
+                // 값으로 할당된다!
+
+                // 이퀄 오른쪽 함수에 소괄호를 하면
+                // 함수가 바로 실행됨!
+                // 이벤트속성에 함수명령어가 담기지 않음!
+                // btns[2].onclick = changeImg();
+
+                // 소괄호가 있는 함수호출은
+                // 함수호출 명령어를 사용하는 것임!
+                // 그래서 요소에 직접 이벤트속성으로
+                // 따옴표안에 값을 쓰는 것은 아래와
+                // 같이 익명함수구역안에 코드를
+                // 쓰는 것과 같기때문이다!
+                // btns[2].onclick = function(){
+                //     changeImg();
+                // }
+
+                // <button class="btns" onclick="changeImg()">
+            } //////////// loadFn 함수 /////////
+
+            /*********************************** 
+        함수명 : changeImg
+        기능 : 메인 이미지 src변경하기
+    ***********************************/
+            function changeImg() {
+                // 1. 호출확인
+                console.log("변경!!!", this.innerText);
+
+                // 2. 클릭된 버튼 텍스트 읽기
+                var btnTxt = this.innerText;
+                // this 키워드
+                // -> 함수를 호출한 요소 자신
+                // this키워드를 사용하면 요소내부의
+                // 속성, 데이터를 사용할 수 있다!
+
+                // console.log('나는누구?',this);
+
+                // 3. 대상선정 : 변경할 이미지
+                // img#scene -> scene변수
+                var scene = document.querySelector("#scene");
+
+                // console.log('메인이미지:',scene);
+
+                // 이미지src변수
+                var isrc;
+
+                // 4. 이미지 src속성값 만들기(switch문 분기)
+                switch (btnTxt) {
+                    case "포스터":
+                        isrc = "./images/ala1.jpg";
+                        break;
+                    case "장면1":
+                        isrc = "./images/ala4.jpg";
+                        break;
+                    case "장면2":
+                        isrc = "./images/ala2.jpg";
+                        break;
+                    case "장면3":
+                        isrc = "./images/ala3.jpg";
+                        break;
+                } ////////// switch case //////////
+
+                // if (btnTxt == "포스터") {
+                //     isrc = "./images/ala1.jpg";
+                // } else if (btnTxt == "장면1") {
+                //     isrc = "./images/ala4.jpg";
+                // } else if (btnTxt == "장면2") {
+                //     isrc = "./images/ala2.jpg";
+                // } else if (btnTxt == "장면3") {
+                //     isrc = "./images/ala3.jpg";
+                // }
+
+                // 참고: if문 조건식에서 비교연산자를
+                // 할당연산자로 쓰면 무조건 true처리됨!
+
+                console.log("경로:", isrc);
+
+                // 5. 이미지 src속성 변경하기
+                // scene.src = isrc;
+                scene.setAttribute("src", isrc);
+                /****************************************** 
+            [ 요소 속성값 넣기 ]
+            1. 선택요소.속성명 = 값
+            2. 선택요소.setAttribute(속성명,값)
+            참고) getAttribute(속성명) -> 속성값읽기
+        ******************************************/
+            } ///////// changeImg 함수 ////////////
+            //////////////////////////////////////
+        </script>
     </head>
 
     <body>
