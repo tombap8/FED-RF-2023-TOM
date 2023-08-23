@@ -372,6 +372,64 @@
             없으면 이 부분이 실행됨(단, 필요시 사용)
             -> default문에는 break를 쓰지 않는다!
         **********************************************/
+
+
+        /************************************* 
+            이벤트 설정 로딩구역 만들기
+        *************************************/
+    //    window.addEventListener(이벤트명,함수)
+    //    window.addEventListener('DOMContentLoaded',하하);
+
+    //    function 하하(){
+    //     console.log("나야나!");
+    //    }
+
+    // -> 외부에 함수를 만들고 이름만 써서 함수연결한 것은
+    // 내부에 직접 익명함수 코드를 작성한 것과 같다!
+    // 외부함수를 만들고 호출하는 이유는 코드의 재사용으로
+    // 효율성과 경제성을 높이기 위함이다!
+
+    //    window.addEventListener('DOMContentLoaded',
+    //    function(){
+    //     console.log("나야나!");
+    //    });
+
+    // 윈도우에 요소들이 모두 로딩된후 load이벤트 발생!
+    // 이벤트가 발생하면 동시에 등록된 코드를 실행!
+    window.addEventListener('load',function(){
+        console.log('로딩완료');
+
+        // 이제 body안의 모든요소를 선택할 수 있다!
+
+        // 구구단 선택박스에 change이벤트 설정하기
+        // 이벤트 대상선정 : select#sel
+        // 이벤트 종류 : change - 선택박스 옵션 변경시 발생
+        document.querySelector('#sel')
+        .onchange = function(){
+        // 1. 함수호출확인
+        console.log('보여줘!구구단!',this.value);
+
+
+       };
+
+
+    }); ////////// 로드구역 ////////////////
+
+
+
+
+        /************************************* 
+            함수명 : showGugu
+            기능 : 구구단을 출력한다!
+        *************************************/
+       function showGugu(){
+        // 1. 함수호출확인
+        console.log('보여줘!구구단!');
+
+
+       } ///////////// showGugu함수 /////////////
+       //////////////////////////////////////////
+
         </script>
         <style>
             h1 {
@@ -402,7 +460,7 @@
             .jshow {
                 position: absolute;
                 top: 5vw;
-                left: 48vw;
+                left: 73vw;
                 /* 부모는? .bx-if */
                 width: 15vw;
                 height: 15vw;
@@ -415,6 +473,22 @@
 
                 /* 트랜지션 : 배경위치만! */
                 transition: background-position 1s;
+            }
+
+            body{
+                text-align: center;
+            }
+
+            /* 구구단 출력박스 */
+            .gugu{
+                width: 40vw;
+                height: 40vw;
+                border: 2px dashed blue;
+                text-align: center;
+                margin: 3vh auto;
+                /* 박스 y축 스크롤 : 박스보다 내용 많으면
+                 스크롤바생김(스크롤바 트랙나와있음) */
+                overflow-y: scroll;
             }
         </style>
     </head>
@@ -504,13 +578,34 @@
             <option value="12">12단</option>
             <option value="13">13단</option>
             <option value="14">14단</option>
-            <option value="15">15단</option>
+            <option>나는십오단이야!</option>
             <option value="16">16단</option>
             <option value="17">17단</option>
             <option value="18">18단</option>
             <option value="19">19단</option>
             <option value="20">20단</option>
         </select>
+        <!-- 
+            [ select 요소 ]
+            
+            1. 보통 정해진 선택값을 나열하여 선택입력을
+            할 수 있는 입력요소
+
+            2. form요소 내부에 주로 사용되고 데이터를
+            DB에 전송하는 목적을 많이 이용됨!
+
+            3. id를 설정할때 name속성을 같이 셋팅할 경우가
+            많은데 이는 post방식 데이터 전송시 서버사이드에서
+            name으로 데이터를 읽어가기 때문에 일반적으로 씀.
+            보통 id명과 동일하게 이름짓는다
+
+            4. 필수하위 요소 : option
+                -> 속성으로 value를 쓰고 값을 사용하면
+                    JS등 프로그래밍에서 이 값을 읽어감!
+                -> value속성을 셋팅하지 않으면
+                    option의 데이터를 읽어감!
+
+         -->
         <!-- 구구단 출력박스 -->
         <div class="gugu g1"></div>
 
