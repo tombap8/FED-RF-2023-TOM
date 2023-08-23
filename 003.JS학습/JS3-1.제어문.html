@@ -424,6 +424,18 @@
         // -> 할당된 요소자신(여기서는 select요소 자신)
         // this.value -> value는 option요소의 속성값
 
+        // 2. 선택값 읽기
+        var optVal = this.value;
+
+        // 구구단 저장변수
+        var result;
+
+        // 3. 구구단 만들기
+        result = `<h2>${optVal}단</h2>`;
+
+        // 4. 화면출력
+        document.querySelector('.g1').innerHTML = result;
+
 
        } ///////////// showGugu함수 /////////////
        //////////////////////////////////////////
