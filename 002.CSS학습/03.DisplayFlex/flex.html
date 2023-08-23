@@ -18,6 +18,8 @@
                 list-style: none;
             }
 
+
+
             
 
             /*********************************************** 
@@ -124,10 +126,104 @@
 
             ***********************************************/
 
+
+            .wrap{
+                height: 100vh;
+                /* 보이는 화면 100%채우기 */
+            }
+            /* 등분할 flex적용박스 */
+            .flex-box{
+                
+                /* 플렉스박스 : df */
+                display: flex;
+                
+                height: 100%;
+
+            }
+            /* 자식요소 li 옆으로 보내기 */
+            .flex-box li{
+                flex: 1;
+
+
+
+                /* float방식 */
+                /* float: left;
+                width: 20%;
+                height: 100%; */
+            }
+
+            /* 
+                [ float속성을 이용한 가로방향 정렬 ]
+                1. 옆으로보낼 블록박스에 float:left설정
+                2. 부모박스에 맞추려면 height값 100%
+                3. 등분할 하려면 width값을 100%/나눌수
+                4. 부모박스에 가상요소로 clear:both설정
+            */
+
+            /* 등분할 박스 li 개별셋팅 */
+            .flex-box li:nth-child(1){
+                background: url(./images/m01_bg.jpg) no-repeat center/cover;
+            }
+            .flex-box li:nth-child(2){
+                background: url(./images/m02_bg.jpg) no-repeat center/cover;
+            }
+            .flex-box li:nth-child(3){
+                background: url(./images/m03_bg.jpg) no-repeat center/cover;
+            }
+            .flex-box li:nth-child(4){
+                background: url(./images/m04_bg.jpg) no-repeat center/cover;
+            }
+            .flex-box li:nth-child(5){
+                background: url(./images/m05_bg.jpg) no-repeat center/cover;
+            }
+            /* 타이틀 공통 */
+            .tit{
+                position: absolute;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                /* 가로방향 중앙이동 */
+
+                width: 500px;
+                height: 100px;
+                border: 5px double #fff;
+            }
+            /* 타이틀 하위 li 공통 */
+            .tit > li {
+                width: 50px;
+                height: 50px;
+                border: 3px  solid #fff;
+                border-radius: 50%;
+                background-color: #f00;
+                text-align: center;
+                font: bold 14px/50px Verdana;
+                color: #fff;                
+            }
+
             
         </style>
     </head>
     <body>
+        <!-- 전체 랩핑박스 -->
+        <div class="wrap">
+            <!-- 파티션박스 -->
+            <ul class="flex-box">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <!-- 타이틀박스 1 -->
+            <ol class="tit t1">
+                <li>L</li>
+                <li>O</li>
+                <li>T</li>
+                <li>T</li>
+                <li>E</li>
+            </ol>
+        </div>
         
     </body>
 </html>
