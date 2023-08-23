@@ -41,7 +41,24 @@ console.log('for문밖i:',i);
 ****************************************/
 function insertMini(){
     // 1. 호출확인
-    console.log('미니넣어!');
+    // console.log('미니넣어!',this);
+    // this 나자신! -> 호출한 .mini
+
+    // 2. 셋팅된 개수 속성(data-cnt) 가져오기
+    var cnt = this.getAttribute('data-cnt');
+    // getAttribute(속성명) -> 속성값 가져오기! 내장함수
+    // console.log('data-cnt:',cnt);
+
+    // 3. 미니언즈 넣기
+    // 대상: .Bcase -> blue_box
+    // for(시;한;증){코드}
+    // (0부터; 개수보다작을때까지; 1씩증가)
+    for(var j=0; j<cnt; j++){
+        blue_box.innerHTML += `
+        <img src="./images/Minions.png" alt="미니언즈">
+        `;
+    } ///////// for ////////////
+
 
 } //////// insertMini함수 ///////////////
 /////////////////////////////////////////
