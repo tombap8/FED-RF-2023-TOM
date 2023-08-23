@@ -439,7 +439,7 @@
         result = `<h2>${optVal}단</h2>`;
 
         // for(시;한;증){실행코드}
-        for(var i=1;i<9;i++){
+        for(var i=1;i<=9;i++){
             console.log('반복!',i);
             result += `${optVal} × ${i} ＝ ${optVal*i}<br>`;
         } /////// for //////////
@@ -506,7 +506,7 @@
         var i=1;
 
         // while(한계값){코드+증감}
-        while(i<9){
+        while(i<=9){ // ()안이 한계값!
             console.log('while반복!',i);
             result += 
             `${optVal} × ${i} ＝ ${optVal*i}<br>`;
