@@ -30,8 +30,14 @@
                 /* 크기줄임 */
             }
         </style>
-        <!-- JS코드구역 -->
-        <script></script>
+        <!-- 외부JS불러오기 -->
+        <script src="./js/for_ex.js" defer></script>
+        <!-- 
+            외부JS호출은 src속성에 외부JS경로를 쓴다!
+        주의: script 사이에 데이터는 작성하지 않는다!
+        defer를 사용하면 defer(지연)된다! 즉, html body
+        내부 요소가 로딩후 실행한다!
+    -->
     </head>
 
     <body>
