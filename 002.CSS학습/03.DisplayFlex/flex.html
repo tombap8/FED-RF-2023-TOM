@@ -90,13 +90,7 @@
 
                 _____________________________________________
 
-                [ flex-direction 속성 ]
-                    - 진행방향과 순서를 정함
-
-                    1) row : 좌->우(기본값)
-                    2) row-reverse : 우->좌
-                    3) column : 위->아래
-                    4) column-reverse : 아래->위
+                
 
             ***********************************************/
 
@@ -217,6 +211,81 @@
                 */
             }
 
+            /* 타이틀박스 2 */
+            .t2{
+                top: 250px;
+
+                /* 플렉스박스 : df */
+                display: flex;
+                /* 진행방향정렬 : jcspb */
+                justify-content: space-between;
+                /* 수직방향정렬 : aib  */
+                align-items: baseline;
+                /* baseline은 글자 하단라인 기준! */
+            }
+            /* 줄간격 조정 */
+            .t2 li:nth-child(2){
+                line-height: 80px;
+            }
+            .t2 li:nth-child(4){
+                line-height: 30px;
+            }
+
+
+            /* 타이틀박스 3 */
+            .t3{
+                top: 400px;
+
+                /* 플렉스박스 : df */
+                display: flex;
+                /* 수직방향정렬 : aic */
+                align-items: center;
+            }
+
+            /* 4번째 li부터 오른쪽끝으로 */
+            .t3 li:nth-child(4){
+                margin-left: auto;
+                /* 
+                    선택요소의 떨어뜨리려는
+                    방향으로 마진을 auto처리하면
+                    flex 박스 오른쪽끝으로 이동시켜준다!
+                */
+            }
+
+            /* 타이틀박스 4 */
+            /* 오른쪽위 기줄한 박스 */
+            .t4{
+                left: 10px;
+                transform: none;
+                width: 150px;
+                height: 500px;
+
+                /* 플렉스 박스 : df */
+                display: flex;
+                /* 플렉스 진행방향 : fxdc */
+                flex-direction: column;
+                /* 
+                    [ flex-direction 속성 ]
+                    - 진행방향과 순서를 정함
+
+                    1) row : 좌->우(기본값)
+                    2) row-reverse : 우->좌
+                    3) column : 위->아래
+                    4) column-reverse : 아래->위
+                */
+
+                /* 진행방향의 수직으로 중앙보내기
+                align-items:center */
+                align-items: center;
+            }
+
+            /* 수직방향일때 3번째 li부터 끝으로 보내기 */
+            .t4 li:nth-child(3){
+                margin-top: auto;
+                /* 윗쪽마진 auto면 끝으로 감! */
+            }
+
+
             
         </style>
     </head>
@@ -239,6 +308,32 @@
                 <li>T</li>
                 <li>T</li>
                 <li>E</li>
+            </ol>
+
+            <!-- 타이틀박스 2 -->
+            <ol class="tit t2">
+                <li>W</li>
+                <li>O</li>
+                <li>R</li>
+                <li>L</li>
+                <li>D</li>
+            </ol>
+
+            <!-- 타이틀박스 3 -->
+            <ol class="tit t3">
+                <li>W</li>
+                <li>O</li>
+                <li>R</li>
+                <li>L</li>
+                <li>D</li>
+            </ol>
+            <!-- 타이틀박스 4 -->
+            <ol class="tit t4">
+                <li>W</li>
+                <li>O</li>
+                <li>R</li>
+                <li>L</li>
+                <li>D</li>
             </ol>
         </div>
         
