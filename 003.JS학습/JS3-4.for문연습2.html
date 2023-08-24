@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS3-4.for문연습2 - 쇼핑몰 상품 리스트</title>
-    <!-- 외부JS불러오기 -->
-    <script src="./js/for_ex2.js" defer></script>
-    <!-- 스타일시트 구역 -->
-    <style>
-
-        /* 초기화 */
-        html,body{
-            margin: 0;
-            padding: 0;
-        }
-        ul,ol{
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        /* 공사중표시 */
-        body *{
-            outline: 2px dashed gray;
-        }
-        /* 타이틀 */
-        .tit{
-            text-align: center;
-        }
-        /* 쇼핑몰 리스트박스 */
-        .list-box{
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        /* 플렉스박스 */
-        .list-box ul{
-            display: flex;
-            /* 플렉스 랩핑
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS3-4.for문연습2 - 쇼핑몰 상품 리스트</title>
+        <!-- 외부JS불러오기 -->
+        <script src="./js/for_ex2.js" defer></script>
+        <!-- 스타일시트 구역 -->
+        <style>
+            /* 초기화 */
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            ul,
+            ol {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            /* 공사중표시 */
+            body * {
+                outline: 2px dashed gray;
+            }
+            /* 타이틀 */
+            .tit {
+                text-align: center;
+            }
+            /* 쇼핑몰 리스트박스 */
+            .list-box {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 15px;
+            }
+            /* 플렉스박스 */
+            .list-box ul {
+                display: flex;
+                /* 플렉스 랩핑
             - 랩핑하면 flex-shrink값이 자동으로 0으로
             전환되어 크기가 강제조정되지 않는다! */
-            flex-wrap: wrap;
-            /* 
+                flex-wrap: wrap;
+                /* 
                 [사이간격주기 속성 - gap] 
                 gap : 위아래 양쪽;(2개씀)
                 gap : 한번에모든방향;(1개씀)
@@ -47,98 +49,46 @@
                 간격단위는 여러가지 사용가능!
             
             */
-            gap: 3vw 2vw;
-        }
-        .list-box li{
-            /* 사이간격 gap값을 고려한 계산법 */
-            flex-basis: calc((100% - 2vw*2)/3);
-            /* 
-            flex-basis: 
-            calc((100% - 가로간격*분할수-1)/분할수); 
+                gap: 3vw 2vw;
+            }
+            .list-box li {
+                position: relative;
+                /* 부모자격 - .item-info */
+
+                /* 사이간격 gap값을 고려한 계산법 */
+                flex-basis: calc((100% - 2vw * 2) / 3);
+                /* 
+                    flex-basis: 
+                    calc((100% - 가로간격*분할수-1)/분할수); 
             
-            -> 사이간격은 분할수 보다 1개 적다!
-            */
+                    -> 사이간격은 분할수 보다 1개 적다!
+                */
 
-
-            /* flex-basis: calc(100%/3); */
-            /* 등분할 비율을 %로 줄때 직접 계산하기보다
+                /* flex-basis: calc(100%/3); */
+                /* 등분할 비율을 %로 줄때 직접 계산하기보다
             calc()를 이용하여 분할하자! */
-        }
-        /* 이미지채우기 */
-        .list-box img{
-            width: 100%;
-            /* 등분할된 박스의 가로를 채움
-            이미지의 height값은 자동 비율유지 */
-        }
-    </style>
-</head>
-<body>
-    <h1 class="tit">JS3-4.for문연습2 - 쇼핑몰 상품 리스트</h1>
-    <!-- 쇼핑몰 리스트박스 -->
-    <section class="list-box">
-        <ul>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-            <li>
-                <img src="./images/dress/1.jpg" alt="dress">
-                <h3>상품명</h3>
-                <h4>가격</h4>
-            </li>
-        </ul>
-    </section>
-    
-</body>
+            }
+            /* 이미지채우기 */
+            .list-box img {
+                width: 100%;
+                /* 등분할된 박스의 가로를 채움
+                이미지의 height값은 자동 비율유지 */
+            }
+
+            /* 상품정보 박스 */
+            .item-info {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                color: #fff;
+                background-color: rgb(0 0 0 / 53%);
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="tit">JS3-4.for문연습2 - 쇼핑몰 상품 리스트</h1>
+        <!-- 쇼핑몰 리스트박스 -->
+        <section class="list-box"></section>
+    </body>
 </html>
