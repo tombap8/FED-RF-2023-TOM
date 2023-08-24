@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3-4.for문연습2 - 쇼핑몰 상품 리스트</title>
+    <!-- 외부JS불러오기 -->
+    <script src="./js/for_ex2.js" defer></script>
+    <!-- 스타일시트 구역 -->
+    <style>
+
+        /* 초기화 */
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* 타이틀 */
+        .tit{
+            text-align: center;
+        }
+        /* 쇼핑몰 리스트박스 */
+        .list-box{
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* 플렉스박스 */
+        .list-box ul{
+            display: flex;
+            
+        }
+        .list-box li{
+            flex-basis: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="tit">JS3-4.for문연습2 - 쇼핑몰 상품 리스트</h1>
+    <!-- 쇼핑몰 리스트박스 -->
+    <section class="list-box">
+        <ul>
+            <li>
+                <img src="./images/dress/1.jpg" alt="dress">
+                <h3>상품명</h3>
+                <h4>가격</h4>
+            </li>
+            <li>
+                <img src="./images/dress/1.jpg" alt="dress">
+                <h3>상품명</h3>
+                <h4>가격</h4>
+            </li>
+            <li>
+                <img src="./images/dress/1.jpg" alt="dress">
+                <h3>상품명</h3>
+                <h4>가격</h4>
+            </li>
+        </ul>
+    </section>
+    
+</body>
+</html>
