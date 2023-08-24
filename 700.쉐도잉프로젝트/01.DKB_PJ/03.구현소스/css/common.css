@@ -42,7 +42,6 @@
 /* GNB메뉴 상위메뉴a */
 .gnb ul>li>a{
     font-size: 1.6rem;
-    font-weight: bold;
     display: block;
     padding: 28px 16px;
     /* 줄바꿈방지 */
