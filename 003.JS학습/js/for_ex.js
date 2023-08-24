@@ -103,6 +103,5 @@ function resetMini(){
     // 대상: cnt_spot변수
     cnt_spot.innerText = '0';
 
-
 } /////////// resetMini함수 ///////////////
 //////////////////////////////////////////
