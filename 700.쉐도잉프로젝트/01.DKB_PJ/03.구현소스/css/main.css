@@ -67,6 +67,22 @@ body > div > * {
     border-radius: 30px;
 }
 
+/* 도깨비 서브메뉴 */
+.dokebi-sub-menu{
+    position: absolute;
+    border: 1px solid red;
+    border-radius: 30px;
+    width: 180px;
+    background-color: #fff;
+
+}
+/* 도깨비 서브메뉴 a */
+.dokebi-sub-menu a{
+    display: block;
+    padding: 10px 15px;
+    font-size: 1.8rem;
+}
+
 /************* 4. 메인영역 : .group-part *************/
 #main {
     background-color: lightgoldenrodyellow;
