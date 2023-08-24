@@ -22,7 +22,7 @@ body > div > * {
 
 /************* 2. 캐릭터소개 *************/
 #banner {
-    background-color: lightgreen;
+    background: url(../images/bg_mainvisual2.jpg) no-repeat center/auto 100%;
 }
 .banner .partbox {
     height: 530px;

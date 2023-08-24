@@ -5,12 +5,62 @@
 
 /************* 1. 상단영역 *************/
 #header {
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 .header .partbox {
     height: 120px;
 }
-/************* 2. 메인영역 *************/
+/* 1-1.로고박스 */
+.header__logo img{
+    margin-top: 40px;
+    width: 126px;
+}
+/* 1-2-1. 탑메뉴 */
+.top-menu ul{
+    /* 플렉스박스 */
+    display: flex;
+    /* 진행방향정렬 */
+    justify-content: flex-end;   
+    padding: 14px 16px 7px 0;
+}
+/* 첫번째 빼고 li선택 */
+.top-menu li+li{
+    margin-left: 12px;
+}
+/* 탑메뉴 a */
+.top-menu a{
+    font-size: 1.3rem;
+}
+
+/* 1-2-2. GNB메뉴 */
+.gnb ul{
+    /* 플렉스박스 */
+    display: flex;
+    /* 진행방향정렬 */
+    justify-content: flex-end;   
+}
+/* GNB메뉴 상위메뉴a */
+.gnb ul>li>a{
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: block;
+    padding: 28px 16px;
+    /* 줄바꿈방지 */
+    white-space: nowrap;
+}
+/* GNB 상위li 오버시 a */
+.gnb ul>li:hover>a{
+    color: red;
+}
+/* 4번째 li ~ 6번째 li 하위메뉴 표시하기 */
+.gnb ul>li:nth-child(3)
+~li:nth-child(-n+6)>a::after{
+    content: '∨';
+    display: inline-block;
+    transform: scale(.5,.3);
+    margin-left: 3px;
+}
+************ 2. 메인영역 ************
 #main {
     /* 본문영역 최소높이 셋팅! */
     min-height: 800px;
