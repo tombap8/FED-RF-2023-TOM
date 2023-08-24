@@ -75,6 +75,12 @@ body > div > * {
     width: 180px;
     background-color: #fff;
 
+    /* 처음에 숨김 */
+    display: none;
+}
+/* 상위li에 마우스 오버시 서브 보이기 */
+.dokebi-menu ul>li:hover .dokebi-sub-menu{
+    display: block;
 }
 /* 도깨비 서브메뉴 a */
 .dokebi-sub-menu a{
