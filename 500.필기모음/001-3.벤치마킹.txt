@@ -58,6 +58,12 @@ https://dezea.digital/showcases/designing-balance-for-somati
 경계선 휘어지기 -> JS실험실에서 해보자!
 
 
+7.Le Fruit Studio
+https://lefruitstudio.fr/en/
+-> 전체 메뉴에서 글자위 오버시 이미지 따라다니는것
+->>>JS실험실에서 하자!
+
+
 *******************************************
 _______________________________________
 
