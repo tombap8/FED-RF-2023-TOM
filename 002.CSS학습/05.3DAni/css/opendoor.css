@@ -14,8 +14,9 @@ html,body,h1{
 body{
     background-color: #9c0;
     /* 배경색 애니메이션: 이시이지반방마 */
-    /* animation: bgAni 10s linear infinite; */
+    /* animation: bg-ani 10s linear infinite; */
 }
+/*  */
 
 /* 전체 타이틀 */
 .tit{
@@ -76,10 +77,16 @@ body{
         -> 두 값 중에 하나만 쓸 수 있고 복합일 경우
         2가지를 같이 셋팅함!
     ***********************************************/
-    
+    /* 파도치는 애니 호출 */
+    animation: wave-ani 3s ease-in-out infinite alternate;
 }
 
 /* 배경이미지 크기변경으로 파도치는 키프레임 */
+@keyframes wave-ani {
+    to{
+        background-size: auto 120%;
+    }
+}
 
 
 
@@ -160,7 +167,23 @@ body{
 }
 
 /* 엘사박스 */
+#elsa{
+    position: absolute;
+    top: 0;
 
+    /* 프레임과 같은 크기 */
+    width: 150px;
+    height: 280px;
+
+    /* 넘치는 요소숨기기 */
+    overflow: hidden;
+}
 /* 엘사이미지 */
+#elsa img{
+    margin-left: 100px;
+    /* 엘사 회전축변경 바닥 */
+    transform-origin: bottom;
+    transform: rotate(-10deg);
+}
 
 /* 엘사 애니 키프레임 */
