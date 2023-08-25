@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* Open Door CSS - opendoor.css */
+
+/* 웹폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
+/* font-family: 'Comfortaa', cursive; */
+
+/* 초기화 */
+html,body,h1{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #9c0;
+    /* 배경색 애니메이션: 이시이지반방마 */
+    animation: bgAni 10s linear infinite;
+}
+
+/* 전체 타이틀 */
+.tit{
+    /* height: 50px;
+    -> auto로 유동적인 글자크기만큼만
+    사이즈 주지 말자! */
+    font-family: 'Comfortaa', cursive;
+    /* 최대글자크기 지정 */
+    font-size: min(5vw,42px);
+    margin: 5vh 0;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 2px #222;
+    overflow: hidden;
+}
+
+/* 전체랩핑박스 */
+.wrap{
+    overflow: hidden;
+    /* 3D문이 잘려보이지 않게 위아래 패딩줌! */
+    padding: 50px 0;
+}
+
+/* 전체문부모 */
+.cont{
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #900;
+}
+/* 문프레임 */
+.frame{
+    position: relative;
+    top: 20px;
+    width: 150px;
+    height: 280px;
+    margin: 0 auto;
+    background: url(../images/seashore.jpg) no-repeat center/auto 100%;
+
+    /******************************* 
+        [ 3D 원근설정 ]
+        1. 셋팅위치 : 3D원근 설정을 할
+        대상의 부모요소
+        2. 설정방법 : 
+        perspective: 수치;
+        -> 수치는 px단위로 숫자가 클수록
+        소실점이 먼것이므로 각도가 작아짐
+        (이 거리는 기준점에서 소실점까지의
+        거리임)
+    *******************************/
+    
+
+     /*********************************************** 
+        [ 뷰포인트(관찰자위치) 변경옵션 ]
+        perpective-origin : 가로 세로;
+        - 가로축: left, center, right, px, % 등 단위
+        - 세로축: top, center, bottom, px, % 등 단위
+        -> 두 값 중에 하나만 쓸 수 있고 복합일 경우
+        2가지를 같이 셋팅함!
+    ***********************************************/
+    
+}
+
+/* 배경이미지 크기변경으로 파도치는 키프레임 */
+
+
+
+/* 문짝 */
+.door{
+    position: relative;
+    /* 부모자격 : .handle */
+    z-index: 1;
+    /* 엘사보다 위! */
+    width: 150px;
+    height: 280px;
+    background-color: #c90;
+
+    /* 문짝회전 */
+    
+    /* 축변경 */
+    
+    /* 
+        [트랜스폼 회전축 변경속성]
+        transform-origin: 가로축 세로축
+        - 가로축: left, center, right, px, % 등 단위
+        - 세로축: top, center, bottom, px, % 등 단위
+    */
+
+    /* 애니메이션: 이시이지반방마 */
+    
+}
+
+/* 문짝부모에 오버시 문짝애니작동! */
+.cont:hover .door{
+    animation-play-state: running;
+}
+
+/* 문짝 처음열기 키프레임 */
+
+
+/* 문짝 여닫기 키프레임 */
+
+
+
+
+
+/* 손잡이 */
+.handle{
+    position: absolute;
+    top: 140px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+/* 엘사박스 */
+
+/* 엘사이미지 */
+
+/* 엘사 애니 키프레임 */

@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+/* 큐브 애니메이션 CSS - cube.css */
+html,body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(to bottom, #a1f4e0, #ef95fb);
+    height: 100vh;
+}
