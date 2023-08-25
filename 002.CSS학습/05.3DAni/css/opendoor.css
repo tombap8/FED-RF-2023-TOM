@@ -33,6 +33,18 @@ body{
     overflow: hidden;
 }
 
+/* 타이틀 span */
+.tit span{
+    display: inline-block;
+    
+    /* 처음에 아랫쪽으로 나가있음 */
+    transform: translateY(150%);
+
+    /* 애니메이션 호출 */
+    animation: 
+    appear-ani .6s cubic-bezier(0.18, 0.89, 0.32, 1.28) 1.6s forwards;
+}
+
 /* 전체랩핑박스 */
 .wrap{
     overflow: hidden;
@@ -46,7 +58,22 @@ body{
     height: 300px;
     margin: 0 auto;
     background-color: #900;
+    /* 처음에 아랫쪽으로 나가있음 */
+    transform: translateY(150%);
+
+    /* 애니메이션 호출 */
+    animation: 
+    appear-ani .6s cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s forwards;
 }
+
+/* 문짝 등장애니 키프레임 */
+@keyframes appear-ani {
+    to{        
+        transform: translateY(0%);
+    }
+}
+
+
 /* 문프레임 */
 .frame{
     position: relative;
@@ -69,6 +96,7 @@ body{
     *******************************/
     perspective: 480px;
 
+    perspective-origin: 50% 50%;
      /*********************************************** 
         [ 뷰포인트(관찰자위치) 변경옵션 ]
         perpective-origin : 가로 세로;
@@ -180,10 +208,26 @@ body{
 }
 /* 엘사이미지 */
 #elsa img{
-    margin-left: 100px;
+    margin-left: 133px;
     /* 엘사 회전축변경 바닥 */
     transform-origin: bottom;
-    transform: rotate(-10deg);
+    
+    /* 애니메이션 호출 */
+    animation: 
+    elsa-ani 1s ease-in-out infinite alternate;
+
+    /* 오버전 애니멈춤 */
+    animation-play-state: paused;
+}
+/* 오버시 애니작동 */
+.cont:hover #elsa img{
+    animation-play-state: running;
 }
 
+
 /* 엘사 애니 키프레임 */
+@keyframes elsa-ani {
+    to{
+        transform: rotate(-10deg);
+    }
+}
