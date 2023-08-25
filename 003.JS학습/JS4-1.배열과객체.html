@@ -36,28 +36,24 @@
         </style>
         <!-- JS코드구역 -->
         <script>
-        
-          /// 로딩구역  //////////////
-          window
-          .addEventListener('DOMContentLoaded',loadFn);
-          // DOMContentLoaded 이벤트 : html DOM 로딩후발생
-          
-          /******************************************** 
+            /// 로딩구역  //////////////
+            window.addEventListener("DOMContentLoaded", loadFn);
+            // DOMContentLoaded 이벤트 : html DOM 로딩후발생
+
+            /******************************************** 
                 함수명 : loadFn
                 기능 : 로딩후 실행함수
           ********************************************/
-         function loadFn(){
+            function loadFn() {
+                // 1. 호출확인
+                console.log("로딩완료!");
 
-            // 1. 호출확인
-            console.log('로딩완료!');
+                // 2. 출력대상 : .cont
+                let target = document.querySelectorAll(".cont");
 
-            // 2. 출력대상 : .cont
-            let target = 
-            document.querySelectorAll('.cont');
+                console.log("타겟:", target);
 
-            console.log('타겟:',target);
-
-            /********************************************** 
+                /********************************************** 
                 [ 배열(Array) 변수란? ]
 
                 - 여러개의 데이터를 묶음으로 변수하나에 저장함
@@ -86,32 +82,23 @@
 
             **********************************************/
 
-           // 3. 내용 출력하기 ///////
+                // 3. 내용 출력하기 ///////
 
-           // 3-1. new 키워드와 함께 배열 선언,할당하기
-           const arr1 = new Array(
-            "1993년 10월 12일",
-            "183cm",
-            "65kg",
-            "너도 인간이니?,치인트",
-            4567,
-            "서강준"            
-           );
+                // 3-1. new 키워드와 함께 배열 선언,할당하기
+                const arr1 = new Array("1993년 10월 12일", "183cm", "65kg", "너도 인간이니?,치인트", 4567, "서강준");
 
-           console.log('arr1:',arr1,typeof arr1);
+                console.log("arr1:", arr1, typeof arr1);
 
-           target[0].innerHTML = 
-            '이름:'+arr1[5]+
-            ' / 키:'+arr1[1]+
-            ' / 몸무게:'+arr1[2]+
-            ' / 대표작:'+arr1[3];
+                target[0].innerHTML =
+                    "이름 : " + arr1[5] + 
+                    " / 키 : " + arr1[1] + 
+                    " / 몸무게 : " + arr1[2] + 
+                    " / 대표작 : " + arr1[3];
 
-
-         } //////////////// loadFn 함수 ////////////////
-         ///////////////////////////////////////////////
-
+                
+            } //////////////// loadFn 함수 ////////////////
+            ///////////////////////////////////////////////
         </script>
-        
     </head>
 
     <body>
@@ -123,6 +110,5 @@
         <div class="cont"></div>
         <div class="cont"></div>
         <div class="cont"></div>
-       
     </body>
 </html>
