@@ -14,9 +14,29 @@ html,body,h1{
 body{
     background-color: #9c0;
     /* 배경색 애니메이션: 이시이지반방마 */
-    /* animation: bg-ani 10s linear infinite; */
+    animation: bg-ani 10s linear infinite;
 }
-/*  */
+/* 배경색 애니 키프레임 */
+@keyframes bg-ani {
+    0%{
+        background-color: #9c0;
+    }
+    20%{
+        background-color: rgb(0, 207, 159);
+    }
+    40%{
+        background-color: rgb(217, 0, 225);
+    }
+    60%{
+        background-color: rgb(0, 112, 204);
+    }
+    80%{
+        background-color: rgb(204, 0, 75);
+    }
+    100%{
+        background-color: #9c0;
+    }
+}
 
 /* 전체 타이틀 */
 .tit{
@@ -36,7 +56,7 @@ body{
 /* 타이틀 span */
 .tit span{
     display: inline-block;
-    
+
     /* 처음에 아랫쪽으로 나가있음 */
     transform: translateY(150%);
 
