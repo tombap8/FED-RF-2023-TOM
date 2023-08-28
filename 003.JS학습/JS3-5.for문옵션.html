@@ -26,14 +26,14 @@
             ///////////////// 로드구역 ////////////////
             window.addEventListener('load',function(){
                 // 로드확인
-                console.log('로딩완료!');
+                // console.log('로딩완료!');
 
                 // 1. 대상선정 : 
                 // 이벤트 대상
                 let btns = document
                 .querySelectorAll('button');
 
-                console.log('대상:',btns);
+                // console.log('대상:',btns);
 
                 // 2. 이벤트 셋팅하기
                 // for(시;한;증){}
@@ -42,7 +42,7 @@
                 let cnt = btns.length;
 
                 for(let i=0;i<cnt;i++){
-                    console.log('순번:',i);
+                    // console.log('순번:',i);
                     btns.item(i).onclick = showNum;
                 } ////////// for //////////
 
@@ -51,7 +51,7 @@
                     기능: for문으로 숫자이미지 보이기
                 ************************************/
                 function showNum(){
-                    console.log('나야나!',this);
+                    // console.log('나야나!',this);
                     // 1. 클릭된 버튼의 요소데이터 읽기
                     let txt = this.innerText;
                     
@@ -64,12 +64,34 @@
                     // 나자신(버튼)에서 부모요소(div)로
                     // 올라간후 아래자식요소 중 .forCls를 찾음
                     
-                    console.log(
-                    '내용:',txt,
-                    '/부모:',this.parentElement,
-                    '/대상:',target);
+                    // console.log(
+                    // '내용:',txt,
+                    // '/부모:',this.parentElement,
+                    // '/대상:',target);
 
-                    // for문으로 대상에 이미지 넣기
+                   
+
+
+                    // 대상html초기화
+                    target.innerHTML = '';
+
+                    // 4. for문으로 대상에 이미지 넣기
+                    // for(시;한;증){코드}
+                    for(let i=1;i<=10;i++){
+                        // console.log('이미지순번:',i); 
+                        
+                    // [조건에 따른 for문 옵션]
+                    // 4-1. 4번과 7번빼고 돌리기
+                    if(i==4||i==7) continue;
+                    // continue 키워드
+                    // 해당 조건을 제외하고 계속 
+                    // 나머지 for문을 완료함!
+
+                        target.innerHTML +=
+                        `<img src="./images/num/num_0${i}.png" alt="number">`;
+                    } ///////// for /////////////
+
+
                 } ///////////// showNum 함수 //////////
                 ///////////////////////////////////////
 
