@@ -359,13 +359,62 @@
                 work:'도깨비,부산행',
                 msgFn:function(txt){ // txt - 팬레터내용
                     // 1. 메시지 띄우기
-                    alert('팬레터:',txt);
+                    alert('팬레터:'+txt);
+                    // alert에 콤마사용불가 +사용
+
+                    // 변경대상.style
+                    let mycss = target[4].style;
+
+                    // 2. 배경이미지 넣기
+                    mycss.background = 'url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Gong_Yoo_%28Sep_2016%29.png/250px-Gong_Yoo_%28Sep_2016%29.png) repeat-x top/auto 100%';
+                    // 3. 글자색
+                    mycss.color = "#fff";
+                    // 4. 글자그림자
+                    mycss.textShadow = '0 0 5px #000';
+                    // 6. 줄간격
+                    mycss.lineHeight = '30px';
+                    // 7. 높이값변경
+                    mycss.height = '100px';
+                    // 7. 상단패딩변경
+                    mycss.paddingTop = '100px';
+                    // 8. 트랜지션
+                    mycss.transition = '2s ease-in-out .5s';
                 } ////////// msgFn함수 //////
 
             }; //////////// GU객체 ////////
 
             // 객체확인
             console.log('GU객체:',GU);
+
+            // 출력대상 : target[4]
+
+            // 줄간격 조정
+            target[4].style.lineHeight = '24px';
+
+            // 내용출력
+            target[4].innerHTML = `
+                저는 ${GU.name}입니다.
+                몸무게는 비밀인데요 그래도 말씀드리자면
+                ${GU.weight}입니다. ㅎㅎㅎ<br>
+                제 대표작은 ${GU.work}입니다.<br>
+                제 소속사는 모르시는 분들이 많은데
+                ${GU.com}입니다. 빠이빠이~!
+            `;
+
+            // title속성넣기
+            target[4].title = 
+            `여기를 클릭하여 ${GU.name}팬레터를 확인하세요!`;
+
+            // 손가락 표시
+            target[4].style.cursor = 'pointer';
+
+            // 공유박스 클릭시 GU객체 메서드 호출하기
+            target[4].onclick = function(){
+                // 실행코드 구역에서 객체 메서드를 호출
+                // 전달값도 여기서 보내준다!
+                GU.msgFn("\n공유오빠, 오징어게임 싸다구 멋쪘어요! \n차기작도 기대해요!화이팅!!!");
+                // \n은 alert창에서 줄바꿈해줌!
+            }; ///////// click이벤트 함수 ///////
                 
             } //////////////// loadFn 함수 //////////////
             /////////////////////////////////////////////
