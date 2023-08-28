@@ -64,10 +64,10 @@
                     // 나자신(버튼)에서 부모요소(div)로
                     // 올라간후 아래자식요소 중 .forCls를 찾음
                     
-                    // console.log(
-                    // '내용:',txt,
-                    // '/부모:',this.parentElement,
-                    // '/대상:',target);
+                    console.log(
+                    '내용:',txt,
+                    '/부모:',this.parentElement,
+                    '/대상:',target);
 
                    
 
@@ -82,10 +82,30 @@
                         
                         // [조건에 따른 for문 옵션]
                         // 4-1. 4번과 7번빼고 돌리기
-                        if(i==4||i==7) continue;
+                        if(txt=='for문옵션1'&&
+                        (i==4||i==7)) continue;
                         // continue 키워드
                         // 해당 조건을 제외하고 계속 
                         // 나머지 for문을 완료함!
+                        // for문에서 continue를 만나면
+                        // for문 증감항목으로 올라가고
+                        // 아랫쪽 코드가 실행되지 않는다!
+
+                        // 4-2. 5번까지만 돌리기
+                        // break 키워드 : 제어문을 빠져나옴
+                        if(txt=='for문옵션2'&&i==6) break;
+
+                        // 4-3. 2~4,9빼고 돌리기(continue)
+                        if(txt=='for문옵션연습1'&&
+                        ((i>=2&&i<=4)||i==9)) continue;
+
+                        // 4-4. 짝수만빼고 돌리기(continue)
+                        if(txt=='for문옵션연습2'&&
+                        (i%2==0)) continue;
+
+                        // 4-5. 홀수만빼고 돌리기(continue)
+                        if(txt=='for문옵션연습3'&&
+                        (i%2!=0)) continue;
 
                         target.innerHTML +=
                         `<img src="./images/num/num_0${i}.png" alt="number">`;
@@ -135,6 +155,20 @@
         <div>
             <h2>2~4,9빼고 돌리기</h2>
             <button>for문옵션연습1</button>
+            <br /><br />
+            <div class="forCls"></div>
+        </div>
+
+        <div>
+            <h2>짝수만빼고 돌리기</h2>
+            <button>for문옵션연습2</button>
+            <br /><br />
+            <div class="forCls"></div>
+        </div>
+
+        <div>
+            <h2>홀수만빼고 돌리기</h2>
+            <button>for문옵션연습3</button>
             <br /><br />
             <div class="forCls"></div>
         </div>
