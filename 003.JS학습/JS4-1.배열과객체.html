@@ -478,8 +478,6 @@
                 // 최초호출!
                 showMovieInfo();
 
-                
-
                 // 초이스버튼 링크걸기
 
                 // 대상선정 : .choice button
@@ -492,19 +490,17 @@
                 // for문으로 버튼들을 click이벤트 설정함!
                 // for(시;한;증){코드}
                 for (let i = 0; i < choice_cnt; i++) {
-                    choice[i].onclick = function(){
+                    choice[i].onclick = function () {
                         // 1. 버튼텍스트
                         let btxt = this.innerText;
-                        console.log('난누구?',btxt);
+                        console.log("난누구?", btxt);
 
                         // 할당전 이전 영화객체
-                        console.log("이전객체:",tom_obj);
-                        
-
+                        console.log("이전객체:", tom_obj);
 
                         // 2. 버튼텍스트에 해당하는 객체를
                         // 기존 객체에 덮어쓰기
-                        switch(btxt){
+                        switch (btxt) {
                             case "조은초이스":
                                 tom_obj = zoe_obj;
                                 break;
@@ -517,38 +513,77 @@
                             case "수진초이스":
                                 tom_obj = csj_obj;
                                 break;
+                            case "혜경초이스":
+                                tom_obj = hg_obj;
+                                break;
+                            case "서진초이스":
+                                tom_obj = seo_obj;
+                                break;
+                            case "정현초이스":
+                                tom_obj = jh_obj;
+                                break;
+                            case "민정초이스":
+                                tom_obj = kmj_obj;
+                                break;
+                            case "경은초이스":
+                                tom_obj = lke_obj;
+                                break;
+                            case "주현초이스":
+                                tom_obj = an_obj;
+                                break;
+                            case "윤민초이스":
+                                tom_obj = kimyoonmin_obj;
+                                break;
+                            case "지민초이스":
+                                tom_obj = cake_obj;
+                                break;
+                            case "승준초이스":
+                                tom_obj = Moon_Obj;
+                                break;
+                            case "진구초이스":
+                                tom_obj = tonyFilm;
+                                break;
+                            case "승환초이스":
+                                tom_obj = yu_obj;
+                                break;
+                            case "내우초이스":
+                                tom_obj = naewoo_Obj;
+                                break;
+                            case "탐쌤초이스":
+                                tom_obj = tom_sam;
+                                break;
                         } //////// switch case ////////
 
-                        
                         // 할당후 영화객체
-                        console.log("이후객체:",tom_obj);
+                        console.log("이후객체:", tom_obj);
 
                         // 3. 객체 셋팅함수 호출!
                         showMovieInfo();
-
                     }; /////////// click 이벤트함수 /////
-
                 } ////////////// for //////////////
 
+
+                // 초이스 줄간격 조정
+                target[6].style.lineHeight = '20px';
 
 
             } //////////////// loadFn 함수 //////////////
             /////////////////////////////////////////////
 
-                /*************************************** 
-                    함수명 : playMovie
-                    기능: 영화예고편 화면 띄우기
-                ***************************************/
-                function playMovie(mcode) {
-                    // mcode - 영화아이디
-                    // 함수호출 및 전달값 확인
-                    console.log("난진짜야~!", mcode);
+            /*************************************** 
+                함수명 : playMovie
+                기능: 영화예고편 화면 띄우기
+            ***************************************/
+            function playMovie(mcode) {
+                // mcode - 영화아이디
+                // 함수호출 및 전달값 확인
+                console.log("난진짜야~!", mcode);
 
-                    // 1. 동영상 박스 대상선정 : #mvbox
-                    let mvbox = document.querySelector("#mvbox");
+                // 1. 동영상 박스 대상선정 : #mvbox
+                let mvbox = document.querySelector("#mvbox");
 
-                    // 2. 영화박스에 아이프레임 넣기
-                    mvbox.innerHTML = `
+                // 2. 영화박스에 아이프레임 넣기
+                mvbox.innerHTML = `
                     <div id="mv">
                         <!--유튜브 아이프레임-->
                         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${mcode}?autoplay=1" allow="autoplay"></iframe>
@@ -557,24 +592,24 @@
                     </div>
                 `;
 
-                    // 3. 삽입된 동영상 박스 CSS설정하기
-                    let mv = document.querySelector("#mv");
-                    let css = mv.style;
+                // 3. 삽입된 동영상 박스 CSS설정하기
+                let mv = document.querySelector("#mv");
+                let css = mv.style;
 
-                    css.position = "fixed";
-                    css.top = "50%";
-                    css.left = "50%";
-                    css.transform = "translate(-50%,-50%)";
-                    css.width = "700px";
-                    css.height = "450px";
-                    css.backgroundColor = "#000";
+                css.position = "fixed";
+                css.top = "50%";
+                css.left = "50%";
+                css.transform = "translate(-50%,-50%)";
+                css.width = "700px";
+                css.height = "450px";
+                css.backgroundColor = "#000";
 
-                    // 4. 닫기버튼 CSS 셋팅하기
-                    let cbtn = document.querySelector(".cbtn");
-                    // console.log(cbtn);
-                    // style.cssText는
-                    // css를 직접 style속성값으로 넣음!
-                    cbtn.style.cssText = `
+                // 4. 닫기버튼 CSS 셋팅하기
+                let cbtn = document.querySelector(".cbtn");
+                // console.log(cbtn);
+                // style.cssText는
+                // css를 직접 style속성값으로 넣음!
+                cbtn.style.cssText = `
                     position : absolute;
                     top : 0;
                     right : -70px;
@@ -590,26 +625,24 @@
                     line-height : 50px;
                 `;
 
-                    // 아이프레임 보더 없앰
-                    mv.querySelector("iframe").style.border = "none";
+                // 아이프레임 보더 없앰
+                mv.querySelector("iframe").style.border = "none";
 
-                    // 5. 닫기버튼 클릭시 #mv 제거하기
-                    cbtn.onclick = function () {
-                        mv.remove();
-                        // remove() 는 DOM 메서드로
-                        // 선택요소를 제거함!
+                // 5. 닫기버튼 클릭시 #mv 제거하기
+                cbtn.onclick = function () {
+                    mv.remove();
+                    // remove() 는 DOM 메서드로
+                    // 선택요소를 제거함!
 
-                        // body에 클래스 on 제거하기
-                        document.body.classList.remove("on");
-                    }; /////// click이벤트 함수 ///////
+                    // body에 클래스 on 제거하기
+                    document.body.classList.remove("on");
+                }; /////// click이벤트 함수 ///////
 
-                    // 6. body요소에 클래스 on 주기
-                    // 동영상 배경 암전효과
-                    document.body.classList.add("on");
-                } //////////////// playMovie 함수 ////////////
-                //////////////////////////////////////////////
-
-
+                // 6. body요소에 클래스 on 주기
+                // 동영상 배경 암전효과
+                document.body.classList.add("on");
+            } //////////////// playMovie 함수 ////////////
+            //////////////////////////////////////////////
         </script>
     </head>
 
@@ -628,14 +661,19 @@
             <button>동엽초이스</button>
             <button>용진초이스</button>
             <button>수진초이스</button>
-            <button>초이스</button>
-            <button>초이스</button><br />
-            <button>초이스</button>
-            <button>초이스</button>
-            <button>초이스</button>
-            <button>초이스</button>
-            <button>초이스</button>
-            <button>초이스</button><br />
+            <button>혜경초이스</button>
+            <button>서진초이스</button><br />
+            <button>정현초이스</button>
+            <button>민정초이스</button>
+            <button>경은초이스</button>
+            <button>주현초이스</button>
+            <button>윤민초이스</button>
+            <button>지민초이스</button><br />
+            <button>승준초이스</button>
+            <button>진구초이스</button>
+            <button>승환초이스</button>
+            <button>내우초이스</button>
+            <button>탐쌤초이스</button>
         </div>
 
         <!-- 영화예고편 동영상용 박스 -->
