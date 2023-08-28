@@ -415,6 +415,92 @@
                 GU.msgFn("\n공유오빠, 오징어게임 싸다구 멋쪘어요! \n차기작도 기대해요!화이팅!!!");
                 // \n은 alert창에서 줄바꿈해줌!
             }; ///////// click이벤트 함수 ///////
+
+            /************************************************ 
+                [ 미션 :  내가 만든 객체 활용하기 ]
+                1. 주제 : 영화정보
+                2. 조건 : 객체의 변수명을 자신만의 이름으로 작성
+                    -> 단, 속성명을 동일하게함!
+                3. 객체를 쌤과 모두에게 공유하기!(톡업!!)
+            ************************************************/
+
+            // 자신만의 오브젝트!
+            const tom_obj = {};
+            // 오브젝트 형만 만들고 객체내용은 아래에서!
+            // 1. 영화제목
+            tom_obj.title = '럭키';
+
+            // 2. 감독
+            tom_obj.director = '이계벽';
+
+            // 3. 배우
+            tom_obj.actor = '유해진,조윤희';
+
+            // 4. 장르
+            tom_obj.genre = '코미디';
+
+            // 5. 관람가
+            tom_obj.ratings = '15세';
+
+            // 6. 예고편
+            tom_obj.trailer = function(){
+                console.log('예고편:','G2zyFe4Z5w0');
+                // 플레이어함수 호출!
+                playMovie('G2zyFe4Z5w0');
+            } ///////// trailer 함수 ///////
+            
+            
+            
+            // 객체확인
+            console.log('나의객체:',tom_obj);
+
+            // 줄간격 조정
+            target[5].style.lineHeight = '34px';
+            // 손가락 모양
+            target[5].style.cursor = 'pointer';
+            // 글자크기
+            target[5].style.fontSize = '14px';
+            
+            // 화면에 정보를 보여주는 함수
+            const showMovieInfo = function(){
+                // 함수호출확인
+                console.log('영화정보!!!');
+
+                // 1. 대상선정 : target[5]
+                // 2. 내용넣기
+                target[5].innerHTML = `
+                    ♣ 영화명 : ${tom_obj.title}
+                    ♣ 감독 : ${tom_obj.director} <br>
+                    ♣ 배우 : ${tom_obj.actor}
+                    ♣ 장르 : ${tom_obj.genre}
+                    ♣ 등급 : ${tom_obj.ratings}
+                `;
+
+                // 툴팁 보이기
+                target[5].title = `클릭하시면 ${tom_obj.title} 예고편을 보실 수 있습니다!`;
+
+                // 예고편 메서드 호출!
+                target[5].onclick = tom_obj.trailer;
+                
+            }; ///////// showMovieInfo 함수 ///////
+            
+            // 최초호출!
+            showMovieInfo();
+
+
+            /*************************************** 
+                함수명 : playMovie
+                기능: 영화예고편 화면 띄우기
+            ***************************************/
+           function playMovie(mcode){ // mcode - 영화아이디
+                // 함수호출 및 전달값 확인
+                console.log('난진짜야~!',mcode);
+           } //////////////// playMovie 함수 ////////////
+           //////////////////////////////////////////////
+
+
+
+
                 
             } //////////////// loadFn 함수 //////////////
             /////////////////////////////////////////////
