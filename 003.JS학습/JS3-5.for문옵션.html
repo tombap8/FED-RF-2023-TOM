@@ -29,12 +29,49 @@
                 console.log('로딩완료!');
 
                 // 1. 대상선정 : 
-                // 1-1. 이벤트 대상
+                // 이벤트 대상
                 let btns = document
                 .querySelectorAll('button');
 
                 console.log('대상:',btns);
 
+                // 2. 이벤트 셋팅하기
+                // for(시;한;증){}
+
+                // 한계값을 위한 버튼 개수
+                let cnt = btns.length;
+
+                for(let i=0;i<cnt;i++){
+                    console.log('순번:',i);
+                    btns.item(i).onclick = showNum;
+                } ////////// for //////////
+
+                /************************************ 
+                    함수명: showNum
+                    기능: for문으로 숫자이미지 보이기
+                ************************************/
+                function showNum(){
+                    console.log('나야나!',this);
+                    // 1. 클릭된 버튼의 요소데이터 읽기
+                    let txt = this.innerText;
+                    
+                    // 2. 이미지넣을 대상선정 ///////
+                    // 클릭된 버튼요소의 부모는?
+                    // DOM 요소선택법 중 부모요소 선택은
+                    // parentElement -> 부모요소
+                    let target = this.parentElement
+                    .querySelector('.forCls')
+                    // 나자신(버튼)에서 부모요소(div)로
+                    // 올라간후 아래자식요소 중 .forCls를 찾음
+                    
+                    console.log(
+                    '내용:',txt,
+                    '/부모:',this.parentElement,
+                    '/대상:',target);
+
+                    // for문으로 대상에 이미지 넣기
+                } ///////////// showNum 함수 //////////
+                ///////////////////////////////////////
 
             }); ///////////// 로드구역 ////////////////
 
@@ -75,7 +112,7 @@
 
         <div>
             <h2>2~4,9빼고 돌리기</h2>
-            <button>for문옵션연습</button>
+            <button>for문옵션연습1</button>
             <br /><br />
             <div class="forCls"></div>
         </div>
