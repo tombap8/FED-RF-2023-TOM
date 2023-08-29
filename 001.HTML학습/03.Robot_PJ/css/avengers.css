@@ -70,3 +70,31 @@ body *{
     background: url(../ab_img/ab0.jpg) no-repeat center/cover;
 }
 
+/* 캐릭터 공통 */
+.hero{
+    position: absolute;
+    top: calc(50% - 150px/2);
+    left: calc(50% - 150px/2);
+    /* 부모는? .avengers-box 정중앙! */
+
+    width: 150px;
+    height: 150px;
+}
+/* 어벤저스 이미지 */
+.hero img{    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 
+        [ object-fit 속성 ]
+        -> 이미지나 동영상을 박스에 맞출때
+        옵션을 설정해 주는 속성
+        1. fill : 설정값에 강제적용(기본값)
+        2. contain : 박스에 모두 보임
+        3. cover : 박스를 비율에 맞게 채움
+            -> 빈틈없이 채우며 배경cover와
+            유사한 효과를 준다! 
+    */
+    border-radius: 50%;
+}
+
