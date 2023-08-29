@@ -5,7 +5,47 @@
         <title>JS5-1. 함수(function)</title>
         <style>
             body {
-                background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover;
+                margin: 0;
+                min-height: 100vh;
+                /* 최소 높이로 보이는 화면크기만큼 지정하면
+                기본적으로 body가 보이는 화면을 유지하다가
+                컨텐츠가 많아져서 스크롤 생성시 body도 늘어남! */
+
+                /* background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover; */
+            }
+            /* 배경박스 */
+            .bgbox{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: -1;
+                /* body가 투명하므로 아래쪽에 내려가 있어도
+                배경은 보인다! -> 배경처리시 이렇게 하면됨! */
+            }
+            .bgbox ul{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                width: 100%;
+                height: 100%;
+            }
+            .bgbox li{
+                position: absolute;
+                /* 서로겹쳐짐 */
+                width: 100%;
+                height: 100%;
+                /* 투명하게 */
+                opacity: 0;
+                /* 트랜지션 */
+                transition: 1s ease-in-out;
+            }
+            .bgbox li.on{
+                /* 보이게함 */
+                opacity: 1;
+                /* 맨위로 오게함 */
+                z-index: 1;
             }
 
             h2 {
@@ -165,9 +205,9 @@
 
         // 온라인상 배경이미지 주소를 배열로 셋팅
         const scene = [
-            "https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F1ee63066-4239-11ec-b414-b1f6389ab345.jpg?crop=2667%2C1500%2C0%2C0&resize=1200", 
-            "https://www.asml.com/-/media/asml/images/careers/working-at-asml/south-korea/gyeongbokgung_palace_south_korea.jpg?mw=1920&rev=5154661f5c8943bb8c81419c01b327e2&hash=30B844A1D30F8A9B2BB0A2FE6377E953", 
-            "https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564"
+            "https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F1ee63066-4239-11ec-b414-b1f6389ab345.jpg", 
+            "https://www.asml.com/-/media/asml/images/careers/working-at-asml/south-korea/gyeongbokgung_palace_south_korea.jpg", 
+            "https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg"
         ];
 
             /*////////////////////////////////
@@ -235,7 +275,7 @@
             //////////////////////////////////
 
             // 선언적함수보다 위에서 이 함수를 호출! //
-            callMe("함수위에서 호출!");
+            // callMe("함수위에서 호출!");
             // 호출됨! 어떻게? -> 미리로딩되었다는 증거!
             // 코드위에서 호출되므로 이것을 함수호출 호이스팅(Hoisting)
             // 이라고 부른다!
@@ -260,7 +300,7 @@
             }; /////// myHome 함수 ////////////////
 
             // 할당형 익명함수를 코드 아래에서 호출!
-            myHome("익명함수 아래에서 호출!");
+            // myHome("익명함수 아래에서 호출!");
             // 만약 함수를 처음부터 호출하는 경우라면 할당형 익명함수는
             // 반드시 생성후 아랫쪽에서 호출해야한다!
 
@@ -320,6 +360,32 @@
             /////////// 로드구역 /////////////////////
             window.addEventListener('load',function(){
                 console.log('로딩완료!');
+
+                // 1. 대상선정: .bgbox
+                let bgbox = document.querySelector('.bgbox');
+
+                // 2. 대상에 html 넣기
+                // html 넣을 변수
+                let hcode = '';
+
+                hcode += '<ul>';
+
+                // 반복코드 li는 for문으로!
+                // 명령문이 하나면 중괄호 생략가능!
+                for(let i=0;i<3;i++) hcode += 
+                `<li ${i==1?"class='on'":""}></li>`;
+
+                hcode += '</ul>';
+
+                // 대상넣기
+                bgbox.innerHTML = hcode;
+
+                // 배경 박스 li에 배경이미지 넣기
+                let bgli = bgbox.querySelectorAll('li');
+                for(let i=0; i<bgli.length;i++){
+                    bgli[i].style.background =
+                    `url(${scene[i]}) no-repeat center/cover`;
+                } ////////// for ///////////////
 
             });
             /////////// 로드구역 /////////////////////
