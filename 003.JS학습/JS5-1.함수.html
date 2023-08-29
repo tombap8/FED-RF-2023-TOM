@@ -368,8 +368,16 @@ https://wallpaperaccess.com/full/11682.jpg
                 기능: 파라미터 얼마든지 받아서 h2만들어 넣기
             *********************************************/
             // 함수의 전달변수가 없어도 보내는 전달값이 있으면
-            // 함수의 arguments라는 전달변수배열객체에
+            // 함수의 arguments라는 전달변수인 [유사배열객체]에
             // 값을 자동으로 담아준다!
+            
+            // [유사배열객체란? - 배열형식으로 생겼으나 배열이 
+            // 아니므로 배열 메서드를 직접 사용할 수 없다!]
+            // (1) 배열인지 여부검사 : Array.isArray(변수or값)
+            // -> 배열이면 treu / 아니면 false
+            // (2) 유사배열을 배열로 변경하는 메서드는? 
+            // -> Array.from(유사배열)
+            // (3) 기타유사배열 : html컬렉션 
 
             // arguments 는 익명함수에서 사용가능함!
             // 단, 화살표함수는 사용불가!
@@ -381,11 +389,25 @@ https://wallpaperaccess.com/full/11682.jpg
                 console.log('내함수!', 
                 arguments,
                 typeof arguments,
-                typeof scene);
+                'arguments는 배열인가?',Array.isArray(arguments),
+                typeof scene,
+                'scene는 배열인가?',Array.isArray(scene),
+                'arguments를 배열로 변경!',
+                Array.isArray(Array.from(arguments))
+                
+            
+                );
 
-                // 대상선정: body
+                // 대상선정: .letters
+                let letters = document.querySelector('.letters');
+                // body에 대상을 직접 추가하면
+                // 전체 DOM구조에 영향을 주므로
+                // 기존에 셋팅한 코드가 끊어질 수 있다!
+                // 따라서 변경요소는 처음부터 넣은
+                // 특정박스로 한정해 주는 것이 좋다!
+
                 for(let i=0;i<arguments.length;i++){
-                    document.body.innerHTML +=
+                    letters.innerHTML +=
                     `<h2>${arguments[i]}</h2>`;
                     // 기존body자식으로추가(+=대입연산자)
                 } ///////////// for ///////////////
@@ -472,6 +494,7 @@ https://wallpaperaccess.com/full/11682.jpg
         <!-- 배경박스 -->
         <div class="bgbox"></div>
 
+
         <!-- 프로젝트 버튼 -->
         <button onclick="alert(Korea('우'))">우리나라 대한민국 만세 프로젝트 시작!</button>
         <!-- 
@@ -482,5 +505,8 @@ https://wallpaperaccess.com/full/11682.jpg
             4. 함수바깥부터실행 호출시 함수실행
 
         -->
+
+        <!-- 애국가 가사 타이틀 넣기박스 -->
+        <div class="letters"></div>
     </body>
 </html>
