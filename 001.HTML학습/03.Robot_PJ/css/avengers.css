@@ -41,6 +41,8 @@ body *{
 /*********** 공통 클래스 ***********/
 /* 페이지 클래스 */
 .page{
+    position: relative;
+    /* 부모자격 */
     height: 100vh;
 }
 .tit{
@@ -49,5 +51,22 @@ body *{
 }
 
 /********** 개별요소 디자인 **********/
+.avengers-box{
+    position: absolute;
+    /* 부모는? .page */
+    top: calc(50% - 400px/2);
+    left: calc(50% - 300px/2);
+    /* 부모박스 정중앙 */
+    width: 300px;
+    height: 400px;
 
+    border-radius: 50%;
+    box-shadow: 
+    /* 바깥글로우 */
+    0 0 50px 10px cyan,
+    /* 내부글로우 */
+    inset 0 0 30px lightgreen;
+
+    background: url(../ab_img/ab0.jpg) no-repeat center/cover;
+}
 
