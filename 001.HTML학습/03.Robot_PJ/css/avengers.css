@@ -8,3 +8,46 @@
     font-family: 'Monoton', cursive;
     font-family: 'Single Day', cursive;
 */
+
+/* 파일 합치기 */
+@import url(./reset.css);
+
+/* 전체 배경넣기 
+- 가상요소로 배경고정을 대신함
+- 이유: ios에서 배경 fixed 미지원 */
+body::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: url(../ab_img/space.jpg) no-repeat center/cover;
+}
+html{
+    /* rem단위를 위한 root 글자설정! */
+    font-size: 10px;
+}
+body{
+    color: #fff;
+}
+/* 공사중 */
+body *{
+    outline: 2px dashed yellow;
+}
+
+
+/*********** 공통 클래스 ***********/
+/* 페이지 클래스 */
+.page{
+    height: 100vh;
+}
+.tit{
+    text-align: center;
+    font-size: 4rem;
+}
+
+/********** 개별요소 디자인 **********/
+
+
