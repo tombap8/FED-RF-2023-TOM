@@ -96,6 +96,42 @@
 
                     }; //////// click이벤트함수 ///////
                 } //////// for of /////////////
+
+
+                /***************************************** 
+                    추가기능: .wrap박스에 마우스무브시
+                            포스터이미지 포인터 따라다니기
+                *****************************************/
+               // 1.대상선정
+                // 1-1.이벤트 대상: .wrap
+                const wrap = qs('.wrap');
+
+                // 1-2.변경 대상: .flying-poster
+                const moving = qs('.flying-poster');
+
+                console.log('추가대상:',wrap,moving);
+
+                // 2. 이벤트 함수 구현하기
+                // 2-1. .wrap박스 위에 마우스무브시 따라오기
+                // 이벤트: mousemove
+                wrap.onmousemove = () => {
+                    console.log(
+                        'x:',event.pageX,
+                        '/y:',event.pageY);
+                    // x,y좌표값 구하기
+                    // 발생이벤트의 pageX,pageY로 구함
+                    // event.pageX / event.pageY
+                    // 전달변수를 하나쓰고 예컨데 e라고 쓰고
+                    // 내부에 e.pageX / e.pageY 로 사용!
+                }; ////////// mousemove 이벤트함수 //////////
+
+
+
+
+
+
+
+
             } ///////////// loadFn 함수 ////////////////
 
             /******************************************* 
@@ -142,6 +178,18 @@
 
             .wrap > div {
                 color: #444;
+            }
+
+            /* 따라다니는 포스터박스 */
+            .flying-poster{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 300px;
+                background: url(./images/ala1.jpg) no-repeat center/cover;
+                transition: .2s ease-out;
+                /* display: none; */
             }
 
             h1,
@@ -196,6 +244,10 @@
             <!--3.영화스토리-->
             <h3>영화스토리</h3>
             <div class="minfo"></div>
+
+            <!-- 4.따라다니는 영화포스터 박스 -->
+            <div class="flying-poster"></div>
+
         </div>
     </body>
 </html>
