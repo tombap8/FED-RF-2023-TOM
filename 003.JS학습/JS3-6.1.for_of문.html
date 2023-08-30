@@ -34,10 +34,13 @@
                 // 호출확인
                 console.log("로딩완료!");
 
-                // 1. 대상선정 : 버튼들
+                // 1. 대상선정 : 
+                // 1-1. 이벤트대상 : 버튼들 .btngo
                 const btns = qsa(".btngo");
+                // 1-2. 변경대상 : 박스 .minfo
+                const minfo = qsa('.minfo');
 
-                console.log("대상:", btns);
+                console.log("대상:", btns, minfo);
 
                 // 2. 버튼 클릭 이벤트 설정
                 for (let x of btns) {
@@ -69,7 +72,15 @@
                         } ///////// switch case ////////
 
                         // 데이터 확인
-                        console.log('데이터:',mv_info);
+                        console.log('데이터:',mv_info,
+                        '/배열인가?',Array.isArray(mv_info));
+
+                        // 3. 각 데이터 매칭하여 요소에 넣기
+                        // 변경대상 : .minfo -> minfo변수
+                        // for of문을 사용하여 배열순회!
+                        for(let y of mv_info){
+                            console.log('배열순회:',y);
+                        } /////////// for of문 ///////////
 
                         
 
