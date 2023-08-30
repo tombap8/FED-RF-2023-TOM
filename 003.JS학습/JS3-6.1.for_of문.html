@@ -22,6 +22,14 @@
                 "흙 맛만 봐도 보물을 찾아내는 타고난 천재 도굴꾼 강동구(이제훈).자칭 한국의 '인디아나 존스'로 불리는 고분벽화 도굴 전문가 존스 박사(조우진), 전설의 삽질 달인 삽다리(임원희)를 만나 환상(?)의 팀플레이를 자랑하며 위험천만하고도 짜릿한 도굴의 판을 키운다.",
             ];
 
+            // 영화별 포스터이미지 경로객체
+            const img_src={
+                "조제":"https://t1.daumcdn.net/movie/f954c555d152096c5a3c77dab117fbe34ba65aa8",
+                "원더 우먼 1984":"https://t1.daumcdn.net/movie/b1720df6b54fb7632590d5d05edd986a28433c9b",
+                "도굴":"https://t1.daumcdn.net/movie/99a4d42206a028764e86c5bff8cf0021db985223",
+            }
+
+
             // 로딩구역 /////
             window.addEventListener("DOMContentLoaded", loadFn);
             // DOM선택함수 ///
@@ -114,16 +122,49 @@
                 // 2. 이벤트 함수 구현하기
                 // 2-1. .wrap박스 위에 마우스무브시 따라오기
                 // 이벤트: mousemove
-                wrap.onmousemove = () => {
+                wrap.onmousemove = (e) => { // e - 이벤트전달변수
+                    // 이벤트 함수에 전달변수를 하나쓰면
+                    // 그 변수명이 무엇일지라도 event객체가
+                    // 내부로 전달된다!
+                    // 이것으로 이벤트관련 속성,메서드 사용가능!
+                    // event라고 쓰면 오리지널 브라우저 이벤트객체가
+                    // 호출되는 것임!
                     console.log(
-                        'x:',event.pageX,
-                        '/y:',event.pageY);
+                        'x:',e.pageX,
+                        '/y:',e.pageY);
+
+                    // console.log(
+                    //     'x:',event.pageX,
+                    //     '/y:',event.pageY);
+
                     // x,y좌표값 구하기
                     // 발생이벤트의 pageX,pageY로 구함
                     // event.pageX / event.pageY
                     // 전달변수를 하나쓰고 예컨데 e라고 쓰고
                     // 내부에 e.pageX / e.pageY 로 사용!
+                    // pageX 는 화면 왼쪽 끝에서 부터 px위치값
+                    // pageY 는 화면 위쪽 끝에서 부터 px위치값
+
+                    // 변경대상의 style top,left값 변경하기
+                    moving.style.top = e.pageY + 'px';
+                    moving.style.left = e.pageX + 'px';
+
                 }; ////////// mousemove 이벤트함수 //////////
+
+                // 마우스가 경계선 안으로 들어갈때 : mouseenter
+                wrap.onmouseenter = () => {
+                    // 포스터박스 배경이미지 셋팅하기
+                    moving.style.backgroundImage = 
+                    `url(${img_src[minfo[0].innerText]})`;
+                    // 포스터박스 보이기
+                    moving.style.display = 'block';
+                }; ////////// mouseenter 이벤트함수 ////////
+
+                // 마우스가 경계선 밖으로 나갈때 : mouseleave
+                wrap.onmouseleave = () => {
+                    // 포스터박스 숨기기
+                    moving.style.display = 'none';
+                }; ////////// mouseleave 이벤트함수 ////////
 
 
 
@@ -185,11 +226,27 @@
                 position: fixed;
                 top: 0;
                 left: 0;
+                transform: translate(-50%,-50%);
+                /* 정중앙이동! */
+
                 width: 200px;
                 height: 300px;
                 background: url(./images/ala1.jpg) no-repeat center/cover;
-                transition: .2s ease-out;
-                /* display: none; */
+                transition: .4s ease-out;
+                /* 트랜지션 ease-out을 줘야 처음이동시 
+                마우스 포인터와 같은 속도로 자연스럽게 이동됨! */
+                display: none;
+
+                pointer-events: none;
+                /* 
+                    포인터 이벤트 속성  
+                    pointer-events : auto;
+                    -> 기본값 : 아래쪽에 있는 요소 이벤트 발생함
+                    pointer-events : none;
+                    -> none : 아래쪽에 있는 요소 이벤트 무시함
+                    -> 따라다니는 요소 아래쪽 요소의 이벤트가 발생함!
+                */
+
             }
 
             h1,
