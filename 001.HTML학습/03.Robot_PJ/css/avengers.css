@@ -75,7 +75,7 @@ body *{
     position: absolute;
     top: calc(50% - 150px/2);
     left: calc(50% - 150px/2);
-    /* 부모는? .avengers-box 정중앙! */
+    /* 부모는? .avengers-box 정중앙! */    
 
     width: 150px;
     height: 150px;
@@ -96,5 +96,49 @@ body *{
             유사한 효과를 준다! 
     */
     border-radius: 50%;
+}
+
+/* 어벤저스 설명박스 */
+.txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 110%;
+    width: 320px;
+    font-size: 1.8rem;
+    padding: 2rem;
+    line-height: 1.7;
+    background-color: rgb(255 255 255 / 46%);
+    border-radius: 15px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+
+/* 설명박스 위치 오른쪽 클래스 */
+.txt.right{
+    right: auto;
+    left: 110%;
+}
+
+/* .hero 순서별 위치값셋팅 */
+.hero:nth-child(1){
+    /* 개별위치이동값 */
+    transform: translate(-170%,-110%);
+}
+.hero:nth-child(2){
+    /* 개별위치이동값 */
+    transform: translate(-170%,110%);
+}
+.hero:nth-child(3){
+    /* 개별위치이동값 */
+    transform: translate(0%,220%);
+}
+.hero:nth-child(4){
+    /* 개별위치이동값 */
+    transform: translate(170%,110%);
+}
+.hero:nth-child(5){
+    /* 개별위치이동값 */
+    transform: translate(170%,-110%);
 }
 
