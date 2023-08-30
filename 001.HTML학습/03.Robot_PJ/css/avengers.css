@@ -33,9 +33,9 @@ body{
     color: #fff;
 }
 /* 공사중 */
-body *{
+/* body *{
     outline: 2px dashed yellow;
-}
+} */
 
 
 /*********** 공통 클래스 ***********/
@@ -79,6 +79,7 @@ body *{
 
     width: 150px;
     height: 150px;
+
 }
 /* 어벤저스 이미지 */
 .hero img{    
@@ -96,21 +97,41 @@ body *{
             유사한 효과를 준다! 
     */
     border-radius: 50%;
+    /* 박스 글로우 */
+    box-shadow: 0 0 20px 10px lightgreen;
 }
 
 /* 어벤저스 설명박스 */
 .txt {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(25%);
+    /* translateY(-50%); */
     right: 110%;
     width: 320px;
-    font-size: 1.8rem;
-    padding: 2rem;
-    line-height: 1.7;
+    font-size: 1.4rem;
+    line-height: 1.6;
     background-color: rgb(255 255 255 / 46%);
     border-radius: 15px;
     text-shadow: 1px 1px 1px #000;
+
+    /* 숨기기 설정 */
+    height: 0;
+    overflow: hidden;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+
+/* 상위박스 .hero오버시 설명 보이기 */
+.hero:hover .txt{
+    height: 220px;
+    transform: translateY(-50%);
+}
+
+/* 패딩과 보더는 하위박스에 주고 완전히 숨기기 */
+.txt>div{
+    padding: 2rem;
 }
 
 
@@ -118,6 +139,13 @@ body *{
 .txt.right{
     right: auto;
     left: 110%;
+}
+
+/* 캐릭터 타이틀 */
+.txt h3{
+    font-size: 2.5rem;
+    text-align: center;
+    color: cyan;
 }
 
 /* .hero 순서별 위치값셋팅 */
