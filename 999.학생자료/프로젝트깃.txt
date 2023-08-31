@@ -1,21 +1,25 @@
 [ 훈련생 프로젝트 깃허브 ]
 
-권영혜 : kwonyounghye/FED-RF-2023-Project-YH
+권영혜 : 
 김내우 : FED-RF-2023-project-KNW
 김민정 : FED-RF-2023-Project-KMJ
 김범서 : FED-RF-2023-Project-KBS
+
 김윤민 : FED-RF-2023-Project-KYM
 문승준 : FED-RF-2023-Project-MSJ
 박서진 : FED-RF-2023-Project-PSJ 
-박수민 : ParkSuMin0611/my_project
+박수민 : my_project
+
 박정현 : FED-RF-2023-Project-PJH
 신용진 : FED-RF-2023-Project-SYJ
 안주현 : FED-RF-2023-Project-AJH
 유승환 : FED-RF-2023-Project-YUSH
-유혜경 : hyeppyday / FED-RF-2023-Project-YHG
+
+유혜경 : FED-RF-2023-Project-YHG
 이동엽 : FED-RF-2023-Project-NICK
 이조은 : FED-RF-2023-Project-LJE
-임경은 : 
+임경은 : FED-RF-2023-Project-LKE
+
 최수진 : FED_RF-2023-Project-CSJ
 최지민 : FED-RF-2023-Project-CJM
 최진구 : FED-RF-2023-PROJECT-CJK
