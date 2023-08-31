@@ -70,6 +70,11 @@
         .col-12 {width: 100%;}
         /* 참고: https://www.w3schools.com/css/css_rwd_grid.asp */
 
+        /* 숨길 박스 */
+        .col-none{display: none;}
+        /* 보일 박스 */
+        .col-block{display: block;}
+
         /* 개별영역 박스 -> 확장형 박스
         -> 개별영역 중앙속박스에 높이값을 주면
         파트박스가 늘어날 경우 높이값에 제한을 받게됨!
@@ -118,6 +123,10 @@
         /* 미디어쿼리 레이아웃 변경 적용 */
         /* 최대 800px 이하 시작 */
         @media screen and (max-width:800px) {
+            /* 원리 - 그리드구성 클래스셋을 다른이름으로
+            하나더 만들고 미리 요소에 클래스 주면
+            해당크기로 미디어쿼리 작동시 그리드값을 덮어씀! */
+
             /* 레이아웃구성 */
             .col2-1 {width: 8.33%;}
             .col2-2 {width: 16.66%;}
@@ -131,9 +140,32 @@
             .col2-10 {width: 83.33%;}
             .col2-11 {width: 91.66%;}
             .col2-12 {width: 100%;}
+
+            /* 숨길 박스 */
+            .col2-none{display: none;}
+            /* 보일 박스 */
+            .col2-block{display: block;}
         }
         /* 최대 800px 이하 종료 */
 
+        /* 최대 500px 이하 시작 */
+        @media screen and (max-width:500px) {
+            /* 모든 그리드 클래스 100%로 일괄변경하기! */
+            /* 
+                CSS 선택자 문법 : 속성선택자
+                [속성명=값] -> 어떤속성값이 정확히 일치
+                [속성명^=값] -> 어떤속성값이 어떤값으로 시작
+                [속성명$=값] -> 어떤속성값이 어떤값으로 끝남
+                [속성명*=값] -> 어떤속성값이 어떤값이 포함됨
+            */
+
+            /* [class^='fl']{ */
+            /* [class$='-9']{ */
+            [class*='col-']{
+                width: 100%;
+            }
+        }
+        /* 최대 500px 이하 종료 */
 
 
     </style>
@@ -158,7 +190,8 @@
             <!-- 파트박스 2개 -->
             <div class="flex-box">
                 <div class="partbox col-9 col2-6"></div>
-                <div class="partbox col-3 col2-6"></div>
+                <div class="partbox col-none col2-6 col2-block"></div>
+                <div class="partbox col-3 col2-12"></div>
             </div>
         </section>
     </div>
@@ -229,9 +262,9 @@
                 <div class="partbox col-6 col2-6"></div>
                 <div class="partbox col-6 col2-6"></div>
                 <div class="partbox col-2 col2-12"></div>
-                <div class="partbox col-4 col2-6"></div>
-                <div class="partbox col-2 col2-6"></div>
-                <div class="partbox col-4 col2-12"></div>
+                <div class="partbox col-4 col2-none"></div>
+                <div class="partbox col-2 col2-none"></div>
+                <div class="partbox col-4 col2-none"></div>
             </div>
         </footer>
     </div>
