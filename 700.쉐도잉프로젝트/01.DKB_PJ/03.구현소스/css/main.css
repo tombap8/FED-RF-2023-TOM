@@ -25,7 +25,8 @@ body > div > * {
     background: url(../images/bg_mainvisual2.jpg) no-repeat center/auto 100%;
 }
 .banner .partbox {
-    height: 530px;
+    aspect-ratio: 2/1;
+    /* height: 530px; */
 }
 
 /************* 3. 도깨비메뉴박스 *************/
@@ -71,7 +72,7 @@ body > div > * {
 .dokebi-sub-menu{
     position: absolute;
     border: 1px solid red;
-    border-radius: 30px;
+    border-radius: 20px;
     width: 180px;
     background-color: #fff;
 
@@ -89,7 +90,33 @@ body > div > * {
     font-size: 1.8rem;
 }
 
-/************* 4. 메인영역 : .group-part *************/
+
+
+/************* 4. 메인배너 *************/
+/* 캐릭터 파트박스 */
+.cat-area{
+    position: relative;
+    /* 부모자격 */
+}
+.cat-box{
+    position: absolute;
+    bottom: 5%;
+    /* 플렉스박스 */
+    display: flex;
+    flex-wrap: wrap;
+    /* 진행방향정렬 */
+    justify-content: center;
+
+    width: 100%;
+    margin: 0 auto;
+}
+/* 개별캐릭터 박스 */
+.cat-box article{
+    width: calc(95%/4);
+    aspect-ratio: 2/1.5;
+    outline: 2px dashed blue;
+}
+/************* 5. 메인영역 : .group-part *************/
 #main {
     background-color: lightgoldenrodyellow;
 }
