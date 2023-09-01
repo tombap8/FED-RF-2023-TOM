@@ -31,14 +31,28 @@ function loadFn(){
     console.log('대상:',btngo,cube);
 
     // 2. 이벤트 함수 설정하기
-    btngo.onclick = () => {
+    btngo.onclick = e => { // e - 이벤트전달변수
         // 호출확인
         console.log('돌아!');
         // 1. 대상: .cube -> cube변수
+
         // 2. 변경내용 : 
         // 클래스on 없으면넣고 있으면 빼기
         // classList.toggle(클래스명)
         cube.classList.toggle('on');
+
+        // 3. 텍스트 읽어오기(버튼글자변경위해)
+        let btxt = e.target.innerText;
+        console.log(
+            "화살표함수에서 this:",this,
+            "화살표함수에서 e.target",e.target,
+            '현재버튼글자:',btxt);
+
+        // 4. 버튼글자 변경하기: "돌아!"<->"멈춰!"
+        e.target.innerText = 
+        btxt=='돌아!'?'멈춰!':'돌아!';
+        // 할당할 데이터를 삼항연산자로 결정!
+        // 비?집:놀이동산
     }; /////////// click이벤트 함수 ///////
 
 
