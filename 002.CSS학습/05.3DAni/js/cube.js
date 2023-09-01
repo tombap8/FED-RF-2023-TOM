@@ -23,9 +23,23 @@ function loadFn(){
     // 함수호출확인
     console.log('로딩완료!');
 
-    // 1. 대상선정: .btngo
+    // 1. 대상선정: 
+    // 1-1. 이벤트대상: .btngo
     const btngo = qs('.btngo');
-    console.log('대상:',btngo);
+    // 1-2. 변경대상: .cube
+    const cube = qs('.cube');
+    console.log('대상:',btngo,cube);
+
+    // 2. 이벤트 함수 설정하기
+    btngo.onclick = () => {
+        // 호출확인
+        console.log('돌아!');
+        // 1. 대상: .cube -> cube변수
+        // 2. 변경내용 : 
+        // 클래스on 없으면넣고 있으면 빼기
+        // classList.toggle(클래스명)
+        cube.classList.toggle('on');
+    }; /////////// click이벤트 함수 ///////
 
 
 } /////////////// loadFn함수 //////////////
