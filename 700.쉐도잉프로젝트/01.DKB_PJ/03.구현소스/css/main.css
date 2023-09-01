@@ -35,11 +35,14 @@ body > div > * {
 .cat-box{
     position: absolute;
     bottom: 5%;
+
     /* 플렉스박스 */
     display: flex;
     flex-wrap: wrap;
     /* 진행방향정렬 */
     justify-content: center;
+    /* 사이간격 */
+    gap: 0 1.2vw;
 
     width: 100%;
     margin: 0 auto;
@@ -59,8 +62,15 @@ body > div > * {
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 93%;
+    /* 트랜지션 */
+    transition: height .4s ease-in-out;
+}
+/* 개별상위 박스 오버시 컨텐트박스 설명보이기 */
+.cat-box article:hover .cat-content{
     height: 200%;
 }
+
 .cat-content .part{
     flex: 1;
     /* 등분할 */
@@ -103,6 +113,7 @@ body > div > * {
     overflow: auto;
     background: 
     url(../images/eachBG.jpg) no-repeat bottom/cover;
+    border-radius: 10px 5px 5px 10px;
 }
 /* 캐릭터 타이틀 */
 .desc-box h3{
