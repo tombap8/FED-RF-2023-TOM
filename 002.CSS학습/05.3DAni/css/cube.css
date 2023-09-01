@@ -62,3 +62,67 @@ body{
     transform: 
     translateZ(calc(var(--cube-size)/2));
 }
+/* 2. 오른쪽면 */
+.cube span:nth-child(2){
+    background: url(../images/newyorkCity.jpg) no-repeat right/auto 105%;
+
+    /* y축회전 + 화면방향이동 : z축 */
+    transform: rotateY(90deg)
+    translateZ(calc(var(--cube-size)/2));
+}
+/* 3. 뒷면 */
+.cube span:nth-child(3){
+    background: url(../images/parisCity.jpg) no-repeat center/cover;
+
+    /* y축회전 + 화면방향이동 : z축 */
+    transform: rotateY(180deg)
+    translateZ(calc(var(--cube-size)/2));
+}
+/* 4. 왼쪽면 */
+.cube span:nth-child(4){
+    background: url(../images/cityMain.jpg) no-repeat center/cover;
+
+    /* y축회전 + 화면방향이동 : z축 */
+    transform: rotateY(-90deg)
+    translateZ(calc(var(--cube-size)/2));
+}
+/* 5. 윗면 */
+.cube span:nth-child(5){
+    background: url(../images/citys.jpg) no-repeat center/cover;
+
+    /* x축회전 + 화면방향이동 : z축 */
+    transform: rotateX(90deg)
+    translateZ(calc(var(--cube-size)/2));
+}
+/* 6. 아랫면 */
+.cube span:nth-child(6){
+    background: url(../images/London_city.jpg) no-repeat center/cover;
+
+    /* x축회전 + 화면방향이동 : z축 */
+    transform: rotateX(-90deg)
+    translateZ(calc(var(--cube-size)/2));
+}
+
+/* 큐브회전 클래스 */
+.rotate-cube{
+    /* 애니메이션 */
+    animation: cube-ani 4s linear infinite;
+}
+
+/* 큐브회전 키프레임 */
+@keyframes cube-ani {
+    to{
+        transform: rotateX(370deg) rotateY(-330deg);
+        
+        /* 
+            x축 양의 방향으로 10도에서 출발
+            양의 방향 360도+10도=370도
+            음의 방향 -360도+10도=-350도
+            ____________________________
+
+            y축 양의 방향으로 30도에서 출발
+            양의 방향 360도+30도=390도
+            음의 방향 -360도+30도=-330도
+        */
+    }
+}
