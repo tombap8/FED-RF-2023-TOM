@@ -17,6 +17,21 @@ body{
     --cube-size: 300px;
 }
 
+
+/* 작동버튼 */
+.btngo{
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    border-radius: 10px; 
+    cursor: pointer;   
+}
+.btngo:hover{
+    background-color: lime;
+}
+
 /* 큐브 */
 .cube{
     position: absolute;
@@ -39,7 +54,7 @@ body{
     /* 입체를 잘보이게 하기위해 약간 회전함 */
     transform: rotateX(10deg) rotateY(30deg);
 
-    outline: 2px solid red;
+    /* outline: 2px solid red; */
 }
 
 /* 큐브 각면 공통 */
@@ -107,12 +122,22 @@ body{
 .rotate-cube{
     /* 애니메이션 */
     animation: cube-ani 4s linear infinite;
+    /* 애니메이션 멈춤상태 */
+    animation-play-state: paused;
+}
+/* 큐브회전 클래스.on 작동 */
+.rotate-cube.on{
+    /* 애니메이션 작동상태 */
+    animation-play-state: running;
 }
 
 /* 큐브회전 키프레임 */
 @keyframes cube-ani {
     to{
-        transform: rotateX(370deg) rotateY(-330deg);
+        transform: 
+        rotateX(370deg) rotateY(-330deg);
+        /* transform: 
+        rotateX(370deg) rotateY(390deg) rotateZ(360deg); */
         
         /* 
             x축 양의 방향으로 10도에서 출발
