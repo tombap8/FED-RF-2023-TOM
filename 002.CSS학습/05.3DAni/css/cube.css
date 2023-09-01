@@ -6,6 +6,59 @@ html,body{
     padding: 0;
 }
 body{
-    background-image: linear-gradient(to bottom, #a1f4e0, #ef95fb);
+    background-image: 
+    linear-gradient(to bottom, #a1f4e0, #ef95fb);
     height: 100vh;
+}
+
+/* CSS 변수셋팅 */
+:root{
+    /* 큐브 공통크기 */
+    --cube-size: 300px;
+}
+
+/* 큐브 */
+.cube{
+    position: absolute;
+    top: calc(50% - var(--cube-size)/2);
+    left: calc(50% - var(--cube-size)/2);
+    width: var(--cube-size);
+    height: var(--cube-size);
+
+    /* 
+        [ 입체로 설정하기 ]
+        - 입체로 설정할 요소의 부모박스에
+        아래와 같이 설정해준다!
+        (부모는 싸고 있는 요소)
+        transform-style: preserve-3d
+        - 기본값은 flat : 2D
+        - preserve-3d : 3D
+    */
+    transform-style: preserve-3d;
+
+    /* 입체를 잘보이게 하기위해 약간 회전함 */
+    transform: rotateX(10deg) rotateY(30deg);
+
+    outline: 2px solid red;
+}
+
+/* 큐브 각면 공통 */
+.cube span{
+    position: absolute;
+    /* 앱솔루트는 자동 block! */
+    width: 100%;
+    height: 100%;
+
+    /* 투명도 */
+    opacity: 0.8;
+    outline: 1px solid gray;
+}
+
+/* 1. 앞면 */
+.cube span:nth-child(1){
+    background: url(../images/seoulCity.jpg) no-repeat center/cover;
+
+    /* 화면방향 : z축 */
+    transform: 
+    translateZ(calc(var(--cube-size)/2));
 }
