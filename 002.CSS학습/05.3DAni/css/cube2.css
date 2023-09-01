@@ -5,7 +5,10 @@
 /* CSS 변수셋팅 */
 :root{
     /* 큐브 공통크기 */
-    --cube-size: 300px;
+    --box-width: 150px;
+    --box-height: 200px;
+    /* z축거리 */
+    --z-size: 30vh;
 }
 
 html,body{
@@ -73,24 +76,24 @@ body{
 /* 큐브 */
 .cube{
     position: absolute;
-    top: calc(50vh - var(--cube-size)/2);
-    left: calc(50vw - var(--cube-size)/2);
-    width: var(--cube-size);
-    height: var(--cube-size);
+    top: calc(50vh - var(--box-height)/2);
+    left: calc(50vw - var(--box-width)/2);
+    width: var(--box-width);
+    height: var(--box-height);
 
     /* 하위 span을 위한 3D설정 */
     transform-style: preserve-3d;
    
 
     /* 입체를 잘보이게 하기위해 약간 회전함 */
-    transform: rotateY(30deg);
+    /* transform: rotateY(30deg); */
 
     /* outline: 2px solid red; */
 }
 
 /* 또 하나의 큐브 */
 .cube2{
-    top: calc(150vh - var(--cube-size)/2);
+    top: calc(150vh - var(--box-height)/2);
 }
 
 /* 큐브 각면 공통 */
@@ -105,59 +108,94 @@ body{
     outline: 1px solid gray;
 }
 
-/* 1. 앞면 */
+/* 1번 */
 .cube span:nth-child(1){
-    background: url(../images/seoulCity.jpg) no-repeat center/cover;
+    background: 
+    url(../images/imgs_moving/mv1.jpg) no-repeat center/cover;
 
     /* 화면방향 : z축 */
     transform: 
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(var(--z-size));
 }
-/* 2. 오른쪽면 */
+/* 2번 */
 .cube span:nth-child(2){
-    background: url(../images/newyorkCity.jpg) no-repeat right/auto 105%;
+    background: 
+    url(../images/imgs_moving/mv2.jpg) no-repeat center/cover;
 
-    /* y축회전 + 화면방향이동 : z축 */
-    transform: rotateY(90deg)
-    translateZ(calc(var(--cube-size)/2));
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*1)) 
+    translateZ(var(--z-size));
 }
-/* 3. 뒷면 */
+/* 3번 */
 .cube span:nth-child(3){
-    background: url(../images/parisCity.jpg) no-repeat center/cover;
+    background: 
+    url(../images/imgs_moving/mv3.jpg) no-repeat center/cover;
 
-    /* y축회전 + 화면방향이동 : z축 */
-    transform: rotateY(180deg)
-    translateZ(calc(var(--cube-size)/2));
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*2)) 
+    translateZ(var(--z-size));
 }
-/* 4. 왼쪽면 */
+/* 4번 */
 .cube span:nth-child(4){
-    background: url(../images/cityMain.jpg) no-repeat center/cover;
+    background: 
+    url(../images/imgs_moving/mv4.jpg) no-repeat center/cover;
 
-    /* y축회전 + 화면방향이동 : z축 */
-    transform: rotateY(-90deg)
-    translateZ(calc(var(--cube-size)/2));
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*3)) 
+    translateZ(var(--z-size));
 }
-/* 5. 윗면 */
+/* 5번 */
 .cube span:nth-child(5){
-    background: url(../images/citys.jpg) no-repeat center/cover;
+    background: 
+    url(../images/imgs_moving/mv5.jpg) no-repeat center/cover;
 
-    /* x축회전 + 화면방향이동 : z축 */
-    transform: rotateX(90deg)
-    translateZ(calc(var(--cube-size)/2));
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*4)) 
+    translateZ(var(--z-size));
 }
-/* 6. 아랫면 */
+/* 6번 */
 .cube span:nth-child(6){
-    background: url(../images/London_city.jpg) no-repeat center/cover;
+    background: 
+    url(../images/imgs_moving/mv6.jpg) no-repeat center/cover;
 
-    /* x축회전 + 화면방향이동 : z축 */
-    transform: rotateX(-90deg)
-    translateZ(calc(var(--cube-size)/2));
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*5)) 
+    translateZ(var(--z-size));
 }
+/* 7번 */
+.cube span:nth-child(7){
+    background: 
+    url(../images/imgs_moving/mv7.jpg) no-repeat center/cover;
+
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*6)) 
+    translateZ(var(--z-size));
+}
+/* 8번 */
+.cube span:nth-child(8){
+    background: 
+    url(../images/imgs_moving/mv8.jpg) no-repeat center/cover;
+
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*7)) 
+    translateZ(var(--z-size));
+}
+/* 9번 */
+.cube span:nth-child(9){
+    background: 
+    url(../images/imgs_moving/mv9.jpg) no-repeat center/cover;
+
+    /* 화면방향 : z축 */
+    transform: rotateY(calc(40deg*8)) 
+    translateZ(var(--z-size));
+}
+
+
 
 /* 큐브회전 클래스 */
 .rotate-cube{
     /* 애니메이션 */
-    animation: cube-ani 4s linear infinite;
+    animation: cube-ani 10s linear infinite;
     /* 애니메이션 멈춤상태 */
     /* animation-play-state: paused; */
 }
@@ -170,19 +208,6 @@ body{
 /* 큐브회전 키프레임 */
 @keyframes cube-ani {
     to{
-        transform: rotateY(-330deg);
-        /* transform: 
-        rotateX(370deg) rotateY(390deg) rotateZ(360deg); */
-        
-        /* 
-            x축 양의 방향으로 10도에서 출발
-            양의 방향 360도+10도=370도
-            음의 방향 -360도+10도=-350도
-            ____________________________
-
-            y축 양의 방향으로 30도에서 출발
-            양의 방향 360도+30도=390도
-            음의 방향 -360도+30도=-330도
-        */
+        transform: rotateY(-360deg);
     }
 }
