@@ -6,9 +6,9 @@
 // startSS()함수를 호출하여 사용
 function startSS() {
     // 전체 스크롤 대상일때 document를 보냄
-    // new SmoothScroll(document, 60, 12)
+    new SmoothScroll(document, 30, 22)
     // 특정박스일 경우 document.querySelector(선택요소)를 씀!
-    new SmoothScroll(document.querySelector('.wrap'), 30, 22)
+    // new SmoothScroll(document.querySelector('.wrap'), 60, 12)
 }
 
 // 전역변수 스크롤 위치값
