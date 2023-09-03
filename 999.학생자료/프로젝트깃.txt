@@ -21,9 +21,9 @@
 임경은 : FED-RF-2023-Project-LKE
 
 최수진 : FED_RF-2023-Project-CSJ
-최지민 : FED-RF-2023-Project-CJM
-최진구 : FED-RF-2023-PROJECT-CJK
 최정우 : FED_RF-2023-Project-CJW
+최지민 : FDE-RF-2023-Project-CJM
+최진구 : FED-RF-2023-PROJECT-CJK
 
 
 
