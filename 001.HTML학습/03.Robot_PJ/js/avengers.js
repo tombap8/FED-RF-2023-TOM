@@ -1,4 +1,10 @@
 // 어벤저스 JS - avengers.js
+
+// 공통 DOM 선택함수
+const qs = x => document.querySelector(x);
+const qsa = x => document.querySelectorAll(x);
+
+
 window.addEventListener('wheel',(e)=>{
     // 기본기능 막기 : preventDefault()
     e.preventDefault();
@@ -12,18 +18,29 @@ window.addEventListener('wheel',(e)=>{
     // 윈도우높이값 * 음수명 1곱하고 양수면 0곱함
     // 아랫방향은 윈도우높이값만큼 가고 윗방향은 위치값 0임!
 },{passive:false});
+
 // passive:false 설정값 변경을 해야
 // window,document,body 이 세가지 중요객체에 대하여
 // 막기설정을 할 수 있다!(모바일때문 passsive:true로 기본값 바뀜)
+
+// 추가 : 위의 기능 자동 스크롤 이동시
+// 유튜브 동영상 박스위에서 스크롤하면 자동스크롤 기능이 안됨!
+// 따라서 유튜브 박스 영역에서 wheel하면 휠을 막아줘야함!
+// 이벤트는 위로 전달되므로 (이벤트버블링) 이를 막아준다!
+// 막는방법은 
+// 그만해 stop!
+// 전파를 propagation ->>> event.stopPropagation()
+// qs('.trailer-box').addEventListener('wheel',
+// function(e){
+//     e.stopPropagation();
+//     e.preventDefault();
+//     console.log('하하');
+// });
 
 // 초기 데이터 셋팅하기
 // 데이터 : 어벤저스 데이터 - data.js > character
 
 // console.log(character);
-
-// 공통 DOM 선택함수
-const qs = x => document.querySelector(x);
-const qsa = x => document.querySelectorAll(x);
 
 // 어벤저스 캐릭터 박스 셋팅하기
 // 1. 대상선정 : .avengers-box
