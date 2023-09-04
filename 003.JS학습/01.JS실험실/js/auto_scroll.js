@@ -98,3 +98,67 @@ function wheelFn(e){ // 이벤트전달변수(자동)
 
 } /////////// wheelFn 함수 ////////////////
 ///////////////////////////////////////////
+
+
+
+
+
+/********************************************************* 
+    [ 모바일 이벤트처리 ]
+    
+    [ 모바일 터치 스크린에서 사용하는 이벤트 종류 ]
+    1. touchstart - 손가락이 화면에 닿을때 발생
+    2. touchend - 손가락이 화면에서 떨어질때 발생
+    3. touchmove - 손가락이 화면에 닿은채로 움직일때 발생
+    
+    [ 화면터치 이벤트관련 위치값 종류 ]
+    1. screenX, screenY : 
+        디바이스 화면을 기준한 x,y 좌표
+    2. clientX, clientY : 
+        브라우저 화면을 기준한 x,y 좌표(스크롤미포함)
+    3. pageX, pageY : 
+        스크롤을 포함한 브라우저 화면을 기준한 x,y 좌표
+*********************************************************/
+
+// 1. 모바일 이벤트 등록하기 //////////
+// 대상: window
+window.addEventListener('touchstart',touchStart);
+window.addEventListener('touchend',touchEnd);
+
+// 2. 모바일 이벤트 함수 만들기 ///////////
+
+// 터치시작 이벤트호출함수 ////////////
+function touchStart(e){ // e - 이벤트 전달변수
+    // 모바일 이벤트 화면 위치값 구하기
+    // 모바일 오리저널 이벤트 객체 - originalEvent(제이쿼리에서만씀)
+    // 하위 터치 이벤트 컬렉션 - touches[0]
+    // 변경된 터치이벤트를 담는 컬렉션 - changedTouches[0]
+
+    // 스크린 위치값 구하기
+    // 제이쿼리는 originalEvent를 사용해야 나옴!
+    // let scY = e.originalEvent.touches[0].screenY;
+    let scY = e.touches[0].screenY;
+
+    // 함수호출확인
+    console.log('터치시작~!',scY);
+
+} ////////// mobileFn 함수 ///////////////
+//////////////////////////////////////////
+
+// 터치끝 이벤트호출함수 ////////////
+function touchEnd(e){ // e - 이벤트 전달변수
+    // 모바일 이벤트 화면 위치값 구하기
+    // 모바일 오리저널 이벤트 객체 - originalEvent(제이쿼리에서만씀)
+    // 하위 터치 이벤트 컬렉션 - touches[0]
+    // 변경된 터치이벤트를 담는 컬렉션 - changedTouches[0]
+
+    // 스크린 위치값 구하기
+    // 제이쿼리는 originalEvent를 사용해야 나옴!
+    // let scY = e.originalEvent.touches[0].screenY;
+    let scY = e.touches[0].screenY;
+
+    // 함수호출확인
+    console.log('터치끝~!',scY);
+
+} ////////// mobileFn 함수 ///////////////
+//////////////////////////////////////////
