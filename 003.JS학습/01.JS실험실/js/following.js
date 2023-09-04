@@ -78,7 +78,7 @@ function loadFn(){
     myBody.onmousemove = e => { // e - 이벤트 전달변수
         // 1.위치값 가져오기(박스중앙위치로 보정)
         let posx = e.pageX - gap;
-        let posy = e.clientY - gap;
+        let posy = e.pageY - gap;
 
         // 2.무버에 위치값 적용하기
         mover.style.top = posy + 'px';
@@ -91,6 +91,30 @@ function loadFn(){
         // console.log('clientX:',e.clientX,'/clientY:',e.clientY);
 
     }; ///////// onmousemove //////////
+
+    // 이벤트 구역을 들어올때만 보이기 / 나가면 숨기기
+    myBody.onmouseenter = () => {
+        mover.style.opacity = 1;
+    }; ////////// mouseenter ////////////
+
+    myBody.onmouseleave = () => {
+        mover.style.opacity = 0;
+    }; ////////// mouseleave ////////////
+
+    // [3] a요소에 오버시 원 크게만들기 /////
+    // 대상: .link
+    const link = qsa('.link');
+    console.log('링크:',link);
+
+    // 한번에 셋팅하기
+    link.forEach(ele=>{
+        // a요소에 마우스 들어올때
+        ele.onmouseenter = 
+        () => mover.style.transform = 'scale(2)';
+        // a요소에 마우스 나갈때
+        ele.onmouseleave = 
+        () => mover.style.transform = 'scale(1)';
+    }); /////////// forEach //////////
 
 
 
