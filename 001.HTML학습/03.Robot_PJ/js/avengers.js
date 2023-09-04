@@ -55,6 +55,32 @@ console.log(hcode);
 // 3. 대상에 html 넣어 출력하기
 avengers.innerHTML = hcode;
 
+// 4. 로딩후 2초후 avengers박스에 클래스 on넣기
+setTimeout(() => {
+    avengers.classList.add('on');
+}, 2000);
+
+// 5. 타이틀 애니위해 한글자씩 싸기
+
+// 대상: .t1
+let mytit = qs('.t1');
+let my_text = mytit.innerText;
+
+// 글자담기변수
+let tit_one = '';
+
+// for of문으로 한글자씩 순회하기
+for(let x of my_text){
+    console.log(x);
+    tit_one += `<span>${x}</span>`;
+}
+
+console.log(tit_one);
+
+// 다시 타이틀에 넣기
+mytit.innerHTML = tit_one;
+
+
 
  /************************************************* 
     [ 객체를 위한 for in 문 ]

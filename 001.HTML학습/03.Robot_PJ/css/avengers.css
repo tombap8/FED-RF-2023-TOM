@@ -50,6 +50,14 @@ body{
     font-size: 4rem;
 }
 
+/* 첫페이지 타이틀 */
+.t1{
+    font-family: "Monoton", cursive;
+    font-weight: normal;
+    font-size: 70px;
+    transform: translateY(5vh);
+}
+
 /********** 개별요소 디자인 **********/
 .avengers-box{
     position: absolute;
@@ -68,6 +76,15 @@ body{
     inset 0 0 30px lightgreen;
 
     background: url(../ab_img/ab0.jpg) no-repeat center/cover;
+
+    /* 트랜스폼 처음에 안보임 */
+    transform: scale(0);
+    /* 트랜지션 */
+    transition: 2s ease-in-out;
+}
+/* 클래스 on을 주면 등장!!! */
+.avengers-box.on{
+    transform: scale(1);
 }
 
 /* 캐릭터 공통 */
@@ -80,7 +97,19 @@ body{
     width: 150px;
     height: 150px;
 
+    /* 처음에 모두 안보임! */
+    opacity: 0;
+
+    /* 트랜지션 */
+    transition: 1s ease-in-out 2s;
+
 }
+
+/* 부모박스 .on 적용시 동시에 보이게함! */
+.avengers-box.on .hero{
+    opacity: 1;
+}
+
 /* 어벤저스 이미지 */
 .hero img{    
     width: 100%;
@@ -149,24 +178,24 @@ body{
 }
 
 /* .hero 순서별 위치값셋팅 */
-.hero:nth-child(1){
+.avengers-box.on .hero:nth-child(1){
     /* 개별위치이동값 */
-    transform: translate(-170%,-110%);
+    transform: translate(-170%,-110%) rotateY(720deg);
 }
-.hero:nth-child(2){
+.avengers-box.on .hero:nth-child(2){
     /* 개별위치이동값 */
-    transform: translate(-170%,110%);
+    transform: translate(-170%,110%) rotateY(720deg);
 }
-.hero:nth-child(3){
+.avengers-box.on .hero:nth-child(3){
     /* 개별위치이동값 */
-    transform: translate(0%,220%);
+    transform: translate(0%,220%) rotateY(720deg);
 }
-.hero:nth-child(4){
+.avengers-box.on .hero:nth-child(4){
     /* 개별위치이동값 */
-    transform: translate(170%,110%);
+    transform: translate(170%,110%) rotateY(720deg);
 }
-.hero:nth-child(5){
+.avengers-box.on .hero:nth-child(5){
     /* 개별위치이동값 */
-    transform: translate(170%,-110%);
+    transform: translate(170%,-110%) rotateY(720deg);
 }
 
