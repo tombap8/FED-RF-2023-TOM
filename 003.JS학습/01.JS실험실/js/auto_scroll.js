@@ -94,7 +94,7 @@ function wheelFn(e){ // 이벤트전달변수(자동)
     // 화면단위로 이동하므로 윈도우 높이값을 기본값으로 처리
     // window.innerHeight -> window 높이값 구해온다!
 
-    window.scrollTo(0,qs('.page')[pg_num].offsetTop);
+    window.scrollTo(0,qsa('.page')[pg_num].offsetTop);
 
 } /////////// wheelFn 함수 ////////////////
 ///////////////////////////////////////////
