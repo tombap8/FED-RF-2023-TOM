@@ -1,4 +1,20 @@
 // 어벤저스 JS - avengers.js
+window.addEventListener('wheel',(e)=>{
+    // 기본기능 막기 : preventDefault()
+    e.preventDefault();
+    // 이벤트 호출확인
+    console.log('휠~~~',e.wheelDelta);
+    // event.wheelDelta 는 휠방향알림(마이너스 아랫방향)
+    // 휠방향 분기
+    // 페이지 이동하기 : scrollTo(x스크롤위치값,y스크롤위치값)
+    window.scrollTo(0,window.innerHeight*(e.wheelDelta<0?1:0));
+    // window.innerHeight*(e.wheelDelta<0?1:0)
+    // 윈도우높이값 * 음수명 1곱하고 양수면 0곱함
+    // 아랫방향은 윈도우높이값만큼 가고 윗방향은 위치값 0임!
+},{passive:false});
+// passive:false 설정값 변경을 해야
+// window,document,body 이 세가지 중요객체에 대하여
+// 막기설정을 할 수 있다!(모바일때문 passsive:true로 기본값 바뀜)
 
 // 초기 데이터 셋팅하기
 // 데이터 : 어벤저스 데이터 - data.js > character
