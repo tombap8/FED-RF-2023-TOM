@@ -28,6 +28,8 @@ body::before{
 html{
     /* rem단위를 위한 root 글자설정! */
     font-size: 10px;
+    /* 부드러운 스크롤 */
+    scroll-behavior: smooth;
 }
 body{
     color: #fff;
@@ -52,6 +54,10 @@ body{
 
 /* 첫페이지 타이틀 */
 .t1{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+
     font-family: "Monoton", cursive;
     font-weight: normal;
     font-size: 70px;
@@ -67,6 +73,50 @@ body{
 .t1.on span{
     transform: translateY(0) scale(1);
 }
+
+/* 두번째 페이지 타이틀 */
+.t2{
+    position: sticky;
+    top: 15vh;
+    font-family: 'Single Day', cursive;
+}
+
+/* 최외곽박스 공통 */
+.wrap-box{
+    position: relative;
+    /* 부모자격 */
+    height: 100vh;
+}
+
+/* 이동버튼 디자인 */
+.gobtn {
+    position: absolute;
+    right: 3%;
+    /* 부모는? .page */
+    font-size: 30px;
+    z-index: 99999; /* 제일위! */
+}
+/* 가상클래스로 화살표모양 넣기 */
+#pg1 .gobtn::after {
+    content: "👇";
+}
+#pg2 .gobtn::after {
+    content: "👆";
+}
+/* 개별위치 */
+#pg1 .gobtn {
+    bottom: 2%;
+}
+#pg2 .gobtn {
+    top: 2%;
+}
+/* 오버시 a변경 */
+.gobtn:hover {
+    color: hotpink;
+    text-decoration: overline;
+    text-decoration-style: wavy;
+}
+
 
 /********** 개별요소 디자인 **********/
 .avengers-box{
@@ -209,5 +259,28 @@ body{
 .avengers-box.on .hero:nth-child(5){
     /* 개별위치이동값 */
     transform: translate(170%,-110%) rotateY(720deg);
+}
+
+/* 두번째 페이지 영역 */
+.trailer{
+    position: relative;
+    /* 부모자격 - .trailer-box */
+}
+.trailer-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* 동영상박스 크기 제한줌!(글자가려짐 방지) */
+    width: min(900px,70%);
+    /* 비율설정 - 16 : 9 */
+    aspect-ratio: 16/9;
+    /* 비율설정시 유의사항 - height를 설정하지말것! */
+}
+.trailer-box iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
