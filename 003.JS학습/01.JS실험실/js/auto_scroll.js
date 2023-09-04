@@ -94,7 +94,7 @@ function wheelFn(e){ // 이벤트전달변수(자동)
     // 화면단위로 이동하므로 윈도우 높이값을 기본값으로 처리
     // window.innerHeight -> window 높이값 구해온다!
 
-    window.scrollTo(0,qsa('.page')[pg_num].offsetTop);
+    window.scrollTo(0,window.innerHeight*pg_num);
 
 } /////////// wheelFn 함수 ////////////////
 ///////////////////////////////////////////
@@ -195,6 +195,8 @@ function movePage(dir){ // dir은 방향값(1-아랫쪽,0-윗쪽)
     if(pg_num==total_pg) pg_num = total_pg-1;
 
     // 3. 페이지 이동하기 ///////
-    window.scrollTo(0,window.innerHeight*pg_num);
+    
+    window.scrollTo(0,qsa('.page')[pg_num].offsetTop);
+    console.log('여기야!',qsa('.page')[pg_num].offsetTop);
 
 } //////////// movePage함수 /////////////
