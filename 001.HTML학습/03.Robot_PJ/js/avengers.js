@@ -73,12 +73,35 @@ let tit_one = '';
 for(let x of my_text){
     console.log(x);
     tit_one += `<span>${x}</span>`;
-}
+} ////////// for of //////////
 
 console.log(tit_one);
 
 // 다시 타이틀에 넣기
 mytit.innerHTML = tit_one;
+
+// 생성된 span요소 선택
+let new_span = qsa('.t1 span');
+
+// 셋팅된 span요소를 돌면서 하나씩 transition-delay시간
+// 일정시간 간격으로 주기!
+new_span.forEach((ele,idx)=>{
+    ele.style.transitionDelay = (0.1*idx)+'s';
+});
+
+// 어벤저스 박스 나올때까지(5초) 기다린 후
+// span 의 transform 변경하기
+// + .hero 오버시 설정 적용되도록 어벤저스 박스에
+// 클래스 active 넣기!
+setTimeout(() => {
+    // for(let x of new_span) 
+    //     x.style.transform = 'translateY(0) scale(1)';
+    // // console.log(x);
+    mytit.classList.add('on');
+    avengers.classList.add('active');
+}, 5000);
+
+
 
 
 

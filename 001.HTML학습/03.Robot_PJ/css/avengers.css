@@ -57,6 +57,16 @@ body{
     font-size: 70px;
     transform: translateY(5vh);
 }
+/* 하위 span */
+.t1 span{
+    transform: translateY(200%) scale(0);
+    display: inline-block;
+    transition: .4s ease-in;
+}
+/* 타이틀에 .on일 경우 등장속성변경 */
+.t1.on span{
+    transform: translateY(0) scale(1);
+}
 
 /********** 개별요소 디자인 **********/
 .avengers-box{
@@ -152,7 +162,9 @@ body{
     transition: .4s ease-in-out;
 }
 
-/* 상위박스 .hero오버시 설명 보이기 */
+/* 상위박스 .hero오버시 설명 보이기
+어벤저스 박스에 .active가 부여된 후 오버작동함 */
+.avengers-box.active 
 .hero:hover .txt{
     height: 220px;
     transform: translateY(-50%);
