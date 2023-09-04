@@ -79,6 +79,9 @@ function loadFn(){
         // 1.위치값 가져오기(박스중앙위치로 보정)
         let posx = e.pageX - gap;
         let posy = e.pageY - gap;
+        // let posy = e.clientY - gap;
+        // -> 만약 .mover가 fixed 포지션이면
+        // 브라우저 화면에서의 위치인 clientY를 사용한다!
 
         // 2.무버에 위치값 적용하기
         mover.style.top = posy + 'px';
