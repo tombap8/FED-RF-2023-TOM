@@ -82,8 +82,13 @@
                         // console.log('오버:',x);
                         // 1. 대상: 하위의 div
                         let target = x.querySelector('div');
-                        // 2. 높이값 변경
-                        target.style.height = '200px';
+
+                        // 2. 하위 ol요소의 높이값 알아오기
+                        let hv = target.querySelector('ol').offsetHeight;
+                        console.log('높이값:',hv);
+
+                        // 3. 높이값 변경
+                        target.style.height = hv+'px';
                         target.style.transition = 'height .4s ease-out';
                     }; ///////// mouseover ///////
 
@@ -98,7 +103,13 @@
 
                } /////////// for of ///////////
 
-
+                /********************************************** 
+                    [ 선택요소의 현재 크기, 위치값 알아오는 JS속성 ]
+                    1. 선택요소.offsetWidth : 가로값
+                    2. 선택요소.offsetHeight : 높이값
+                    3. 선택요소.offsetTop : top 위치값
+                    4. 선택요소.offsetLeft : left 위치값            
+                **********************************************/
 
 
 
