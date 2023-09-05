@@ -266,6 +266,7 @@ body{
     position: relative;
     /* 부모자격 - .trailer-box */
 }
+/* 아이프레임 박스 */
 .trailer-box{
     position: absolute;
     top: 50%;
@@ -277,6 +278,15 @@ body{
     /* 비율설정 - 16 : 9 */
     aspect-ratio: 16/9;
     /* 비율설정시 유의사항 - height를 설정하지말것! */
+}
+/* 가상요소로 아이프레임 가리기 */
+.trailer-box::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
 }
 .trailer-box iframe{
     width: 100%;
