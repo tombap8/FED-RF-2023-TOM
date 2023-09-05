@@ -49,6 +49,62 @@
         </style>
         <script>
             
+            // DOM 선택함수
+            const qs = x => document.querySelector(x);
+            const qsa = x => document.querySelectorAll(x);
+
+            ////////// 로드구역 ///////////////
+            window.addEventListener('DOMContentLoaded',()=>{
+
+                // 로딩확인
+                console.log('로딩완료!');
+
+                /* 
+                    마우스오버시
+                    1. 서브메뉴 보이기
+                    2. 링크이동하기
+                */
+               // 1. 대상선정: .smenu
+               const smenu = qsa('.smenu');
+
+            //    console.log('메뉴:',smenu);
+
+               // 2. 이벤트 설정하기
+               // 이벤트 종류: mouseover / mouseout
+
+               // for of문
+               for(let x of smenu){
+
+                    // console.log('x:',x);
+
+                    // 오버시 //////////////
+                    x.onmouseover = () => {
+                        // console.log('오버:',x);
+                        // 1. 대상: 하위의 div
+                        let target = x.querySelector('div');
+                        // 2. 높이값 변경
+                        target.style.height = '200px';
+                        target.style.transition = 'height .4s ease-out';
+                    }; ///////// mouseover ///////
+
+                    // 아웃시 ///////////////
+                    x.onmouseout = () => {
+                        // console.log('아웃:',x);
+                        // 1. 대상: 하위의 div
+                        let target = x.querySelector('div');
+                        // 2. 높이값 변경
+                        target.style.height = '0';
+                    }; ///////// mouseout ///////
+
+               } /////////// for of ///////////
+
+
+
+
+
+
+
+            }); ///////////// 로드구역 //////////////////////
         </script>
     </head>
 
