@@ -54,7 +54,8 @@
 
             // addEvent 함수
             // ele - 요소, evt - 이벤트, fn - 함수
-            const addEvt = (ele, evt, fn) => ele.addEventListener(evt, fn);
+            const addEvt = (ele, evt, fn) => 
+            ele.addEventListener(evt, fn);
 
             ////////// 로드구역 ///////////////
             window.addEventListener("DOMContentLoaded", () => {
@@ -244,6 +245,80 @@
                     -> 선택요소.setAttributeNode(새로운속성)
 
                 **************************************************/
+
+                //////// 새리스트 요소 생성하기 ///////
+                // 이벤트 종류: click
+                // 이벤트 대상: .nbt
+                // 변경대상: #div02 ul
+                /////////////////////////////////////
+
+                // 1. 대상선정 
+                // 1-1. 새로생성 버튼 담기
+                const btnNew = qs('.nbt');
+                // 1-2. 변경대상
+                const box2 = qs('#div02 ul');
+
+                console.log('대상:',btnNew,box2);
+
+                // 이미지 alt 설명 배열
+                const avenName = 
+                ['아이언맨','딱딱이','토르','닥스','스타로드'];
+
+                // 2. 이벤트 걸기
+                addEvt(btnNew,'click',makeEle);
+
+                // 3. 새요소만들기 함수
+                function makeEle(){
+                    // 호출확인
+                    console.log('만들어!');
+
+                    // 1. 새로운 li를 생성하여 변수에 할당
+                    let newEle = document.createElement('li');
+
+                    // 2. 랜덤수 만들기
+                    // 1부터 최대수까지의 랜덤수구하기:
+                    // Math.ceil(Math.random()*최대수)
+                    // Math.ceil() 소수점 올림처리 메서드
+                    // Math.random() 난수발생 메서드
+                    let rdnNum = Math.ceil(Math.random()*5);
+                    console.log(rdnNum);
+
+                    // 3. 메모리상에 생성된 li에 이미지요소 넣기
+                    newEle.innerHTML = 
+                    `<img 
+                    src="images/ab${rdnNum}.jpg" 
+                    alt="${avenName[rdnNum-1]}"
+                    title="클릭하시면 지워집니다!">`;
+
+
+                    // 4. li 클릭시 li 지우기
+                    newEle.onclick = () => newEle.remove();
+
+                    // 5. 변경대상에 새로운 li넣기
+                    // appendChild(요소)
+                    // -> 맨뒤에 새로운 요소 추가!!!
+                    box2.appendChild(newEle);
+
+
+                } /////////// makeEle 함수 ////////////
+
+
+                // 기존에 있는 li에 지우기 넣기
+                // box2 변수 아래 li
+                box2.querySelectorAll('li')
+                .forEach(ele=>{
+                    // 지움설정
+                    ele.onclick = () => ele.remove();
+                    // 툴팁넣기
+                    ele.querySelector('img').title = 
+                    '클릭하시면 지워집니다!';
+                })
+
+
+
+
+
+
             }); ///////////// 로드구역 //////////////////////
         </script>
     </head>
