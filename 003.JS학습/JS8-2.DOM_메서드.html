@@ -48,65 +48,60 @@
             }
         </style>
         <script>
-            
             // DOM 선택함수
-            const qs = x => document.querySelector(x);
-            const qsa = x => document.querySelectorAll(x);
+            const qs = (x) => document.querySelector(x);
+            const qsa = (x) => document.querySelectorAll(x);
 
             // addEvent 함수
             // ele - 요소, evt - 이벤트, fn - 함수
-            const addEvt = 
-            (ele,evt,fn) => ele.addEventListener(evt,fn);
+            const addEvt = (ele, evt, fn) => ele.addEventListener(evt, fn);
 
             ////////// 로드구역 ///////////////
-            window.addEventListener('DOMContentLoaded',()=>{
-
+            window.addEventListener("DOMContentLoaded", () => {
                 // 로딩확인
-                console.log('로딩완료!');
+                console.log("로딩완료!");
 
                 /* 
                     마우스오버시
                     1. 서브메뉴 보이기
                     2. 링크이동하기
                 */
-               // 1. 대상선정: .smenu
-               const smenu = qsa('.smenu');
+                // 1. 대상선정: .smenu
+                const smenu = qsa(".smenu");
 
-            //    console.log('메뉴:',smenu);
+                //    console.log('메뉴:',smenu);
 
-               // 2. 이벤트 설정하기
-               // 이벤트 종류: mouseover / mouseout
+                // 2. 이벤트 설정하기
+                // 이벤트 종류: mouseover / mouseout
 
-               // for of문
-               for(let x of smenu){
-
+                // for of문
+                for (let x of smenu) {
                     // console.log('x:',x);
 
                     // 오버시 //////////////
                     x.onmouseover = () => {
                         // console.log('오버:',x);
                         // 1. 대상: 하위의 div
-                        let target = x.querySelector('div');
+                        let target = x.querySelector("div");
 
                         // 2. 하위 ol요소의 높이값 알아오기
-                        let hv = target.querySelector('ol').offsetHeight;
+                        let hv = target.querySelector("ol").offsetHeight;
                         // console.log('높이값:',hv);
 
                         // 3. 높이값 변경
-                        target.style.height = hv+'px';
-                        target.style.transition = 'height .4s ease-out';
+                        target.style.height = hv + "px";
+                        target.style.transition = "height .4s ease-out";
                     }; ///////// mouseover ///////
 
                     // 아웃시 ///////////////
                     x.onmouseout = () => {
                         // console.log('아웃:',x);
                         // 1. 대상: 하위의 div
-                        let target = x.querySelector('div');
+                        let target = x.querySelector("div");
                         // 2. 높이값 변경
-                        target.style.height = '0';
+                        target.style.height = "0";
                     }; ///////// mouseout ///////
-
-               } /////////// for of ///////////
+                } /////////// for of ///////////
 
                 /********************************************** 
                     [ 선택요소의 현재 크기, 위치값 알아오는 JS속성 ]
@@ -118,25 +113,103 @@
 
                 // [추가기능: 링크 클릭시 페이지새창이동]
                 // 1. 대상선정 : .smenu ol a
-                const link = qsa('.smenu ol a');
+                const link = qsa(".smenu ol a");
 
                 // console.log('링크대상:',link);
 
                 // 2. forEach() 메서드로 대상에 이벤트 걸기
-                link.forEach(ele=>{
+                link.forEach((ele) => {
                     // 내가만든 이벤트 등록 함수 호출!
-                    addEvt(ele,'click',linkFn);
+                    addEvt(ele, "click", linkFn);
                 }); ///////// forEach /////////////
 
+                // link.forEach(ele=>addEvt(ele,'click',linkFn));
+
                 // 3. 실행함수 만들기
-                function linkFn(){
-                    // 호출확인
-                    console.log('나야나!',this.innerText);
+                function linkFn(e) {
+                    // 호출확인 : this는 a요소 자신!
+                    // console.log('나야나!',this.innerText);
+
+                    // 0. a요소 텍스트 읽기
+                    let atxt = this.innerText;
+
+                    // 1. a요소 기본이동막기
+                    e.preventDefault();
+
+                    // 2. 이동할 주소 분기하여 할당하기
+                    // 주소변수
+                    let url;
+
+                    switch (atxt) {
+                        case "Google":
+                            url = "http://www.google.com";
+                            break;
+                        case "Naver":
+                            url = "http://www.naver.com";
+                            break;
+                        case "Daum":
+                            url = "http://www.daum.net";
+                            break;
+                        case "Nate":
+                            url = "http://www.nate.com";
+                            break;
+                        case "SK":
+                            url = "http://www.sktelecom.com";
+                            break;
+                        case "KT":
+                            url = "http://www.kt.com";
+                            break;
+                        case "Uplus":
+                            url = "http://www.uplus.co.kr";
+                            break;
+                        case "CGV":
+                            url = "http://www.cgv.co.kr";
+                            break;
+                        case "MEGABOX":
+                            url = "http://www.megabox.co.kr";
+                            break;
+                        case "LOTTE CINEMA":
+                            url = "https://www.lottecinema.co.kr/NLCHS";
+                            break;
+                        case "GMARKET":
+                            url = "http://www.gmarket.co.kr";
+                            break;
+                        case "11번가":
+                            url = "http://www.11st.co.kr";
+                            break;
+                        case "Auction":
+                            url = "http://www.auction.co.kr";
+                            break;
+                        case "스토어팜":
+                            url = "https://shopping.naver.com/";
+                            break;
+                        case "인터파크":
+                            url = "http://www.interpark.co.kr";
+                            break;
+                        case "쿠팡":
+                            url = "http://www.coopang.co.kr";
+                            break;
+                        case "Apple":
+                            url = "http://www.apple.com";
+                            break;
+                        case "Samsung":
+                            url = "http://www.samsung.com";
+                            break;
+                        case "넷마블":
+                            url = "http://www.netmarble.net";
+                            break;
+                        case "넥슨":
+                            url = "https://www.nexon.com";
+                            break;
+                        case "IMC":
+                            url = "http://www.imc.co.kr";
+                            break;
+                    } ///////// switch case /////////
+
+                    console.log("할당url:", url);
+
+                    // 3. 페이지 이동하기
                 } ////////// linkFn 함수 ////////////
-
-
-
-
             }); ///////////// 로드구역 //////////////////////
         </script>
     </head>
