@@ -342,6 +342,43 @@
                 } ////////// moveLast함수 ///////////
 
 
+                /// 맨앞이동버튼 클릭시 ////////////
+                // 맨뒤li가 맨 앞으로 이동됨
+                // 이벤트 대상: .mvf
+                // 변경대상: #div02 ul -> box2변수
+
+                // 1. 대상선정: .mvf
+                const btnMoveFirst = qs('.mvf');
+
+                // 2. 이벤트 연결하기
+                addEvt(btnMoveFirst,'click',moveFirst);
+
+                // 3. 함수만들기
+                function moveFirst(){
+                    console.log('맨앞으로!');
+
+                    // 1. 변경대상선정
+                    let eles = box2.querySelectorAll('li');
+
+                    // 2. 마지막 컬렉션 순번 계산 : 개수 - 1
+                    let seq = eles.length - 1;
+
+                    // 3. 맨뒤li 맨앞으로 이동
+                    // insertBefore(넣을놈,넣을놈전놈)
+                    // 넣을놈 : 맨뒤li -> eles[eles.length-1]
+                    // 넣을놈전놈 : 맨앞li -> eles[0]
+                    // 맨뒤 배열이나 컬렉션 번호는 [개수-1]
+                    box2.insertBefore(eles[seq],eles[0])
+
+
+                } //////////// moveFirst함수 /////////////
+
+        /************************************************** 
+            ※ appendChild() 와 insertBefore()는 
+            대상을 정하는 것에 따라 중간에 적용할 수 있다!
+        ************************************************/
+
+
 
 
 
