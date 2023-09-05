@@ -329,6 +329,16 @@
                 // 3. 함수만들기
                 function moveLast(){
                     console.log('끝으로!');
+
+                    // 1. 맨앞요소 선택하기
+                    let firstEle = 
+                    box2.querySelectorAll('li')[0]
+
+                    // 2. 맨앞요소 맨뒤로 이동하기
+                    // appendChild(맨앞요소)
+                    // -> 기존요소를 선택하면 이동됨!
+                    box2.appendChild(firstEle);
+
                 } ////////// moveLast함수 ///////////
 
 
