@@ -315,6 +315,23 @@
                 }); //////////// forEach ///////////
 
 
+                // 맨뒤이동 버튼 클릭시 /////////
+                // 맨앞요소를 맨뒤로 이동하기 ///
+                // 이벤트 대상: .mvl
+                // 변경대상: #div02 ul -> box2변수
+
+                // 1. 대상선정
+                const btnMoveLast = qs('.mvl');
+
+                // 2. 이벤트 연결하기
+                addEvt(btnMoveLast,'click',moveLast);
+
+                // 3. 함수만들기
+                function moveLast(){
+                    console.log('끝으로!');
+                } ////////// moveLast함수 ///////////
+
+
 
 
 
