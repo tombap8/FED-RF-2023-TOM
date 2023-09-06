@@ -34,6 +34,11 @@ a {
 /* 개별 셋팅 */
 
 /* 메뉴박스 */
+.gnb{
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
 .gnb>ul{
     /* 플렉스박스 */
     display: flex;
@@ -44,8 +49,26 @@ a {
 /* 상위메뉴 a */
 .gnb>ul>li>a{
     display: block;
-    padding: 10px 15px;
-    font-size: 13px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* 오버시 */
+.gnb>ul>li>a:hover{
+    position: relative;
+    /* 부모자격 */
+    color: hotpink;
+}
+/* 가상요소 밑줄 */
+.gnb>ul>li>a:hover::after{
+    content: '';
+    position: absolute;
+    top: 48px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: hotpink;
 }
 
 
