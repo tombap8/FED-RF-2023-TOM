@@ -31,13 +31,21 @@ a {
     text-decoration: none;
 }
 
+body{
+    background-color: darkcyan;
+    height: 200vh;
+}
+
 /* 개별 셋팅 */
 
 /* 메뉴박스 */
 .gnb{
+    position: sticky;
+    top: 0;
     padding: 10px 0;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    background-color: #fff;
 }
 .gnb>ul{
     /* 플렉스박스 */
@@ -75,4 +83,27 @@ a {
 /* 서브메뉴 */
 .smenu{
     display: none;
+}
+.gnb>ul>li:first-child .smenu{
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 11px;
+}
+/* 서브메뉴 ul */
+.smenu ul{
+    display: flex;
+}
+/* 서브메뉴 li */
+.smenu li{
+    padding: 20px 15px;
+}
+/* 서브메뉴 a */
+.smenu a{
+    display: block;
+    background-color: darkblue;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 10px;
 }
