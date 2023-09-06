@@ -98,6 +98,24 @@ function loadFn() {
             // 놈.놈.놈 -> insertBefore(넣을놈,넣을놈전놈)
             slide.insertBefore(
                 eachOne[eachOne.length-1], eachOne[0]);
+            // 2. left값 -100% 만들기 : 들어올 준비 위치!
+            slide.style.left = '-100%';
+            // 3. 트랜지션 없애기
+            slide.style.transition = 'none';
+            
+            // 같은 left값을 동시에 변경하면 효과가 없음!
+            // 비동기적으로 처리해야함!
+            // -> setTimeout으로 싸주기!
+            // 시간은 0이어도 비동기 처리므로 효과있음!
+
+            setTimeout(() => {
+                // 4. left값 0으로 들어오기
+                slide.style.left = '0';
+                
+                // 5. 트랜지션주기
+                slide.style.transition = '.4s ease-in-out';
+ 
+            }, 0);
 
 
         } /////// else //////////////
