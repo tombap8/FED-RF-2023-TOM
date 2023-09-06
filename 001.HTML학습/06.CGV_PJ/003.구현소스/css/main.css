@@ -19,7 +19,28 @@ body{
 /**************** 1.상단영역 ****************/
 .header{
     height: 80px;
+    background: url(../images/curtain.jpg) repeat-x;
 }
+/* 로고 */
+.tit{
+    color: aquamarine;
+    font-size: 40px;
+    font-family: 'Jua', sans-serif;
+    text-align: center;
+    line-height: 80px;
+    /* 글자 글로우효과 */
+    text-shadow: 0 0 4px aquamarine;
+    /* 애니메이션 */
+    animation: tit-ani .5s ease-in infinite alternate;
+
+}
+/* 타이틀 애니 키프레임 */
+@keyframes tit-ani {
+    to{
+        text-shadow: 0 0 12px aquamarine;
+    }
+}
+
 /**************** 2.메인영역 ****************/
 .main{
     height: 788px;
