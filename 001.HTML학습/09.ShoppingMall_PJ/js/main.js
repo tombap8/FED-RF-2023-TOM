@@ -41,6 +41,10 @@ addEvt(window,"DOMContentLoaded", loadFn);
 
 *****************************************************/
 
+// 전역변수구역 //////////
+// 1. 광클금지상태변수 : 0-허용,1-불허용
+let clickSts = 0;
+
 /****************************************** 
     함수명: loadFn
     기능: 로딩 후 버튼 이벤트 및 기능구현
@@ -63,6 +67,12 @@ function loadFn() {
 
     // 3. 함수만들기
     function goSlide(){
+        // 광클금지
+        if(clickSts) return;//나가!
+        clickSts=1;//잠금!
+        setTimeout(()=>clickSts=0,400);//해제!
+
+
         // 호출확인
         console.log('나야나!',this,
         this.classList.contains('ab2'));
