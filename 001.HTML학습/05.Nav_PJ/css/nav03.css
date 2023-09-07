@@ -47,12 +47,12 @@ a {
 .blind img:last-child{
     display: none;
 }
-/* .top에 오버시 마지막 이미지보이기 */
-.top:hover .blind img:last-child{
+/* #top에 오버시 마지막 이미지보이기 */
+#top:hover .blind img:last-child{
     display: inline;
 }
-/* .top에 오버시 첫번째 이미지숨기기 */
-.top:hover .blind img:first-child{
+/* #top에 오버시 첫번째 이미지숨기기 */
+#top:hover .blind img:first-child{
     display: none;
 }
 
@@ -67,6 +67,28 @@ a {
 
 
 /* 상단영역 */
+/* 겉박스 */
+#top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* 전체 숨기기설정 */
+    overflow: hidden;
+    height: 100px;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+/* 가상요소로 구분선 오버시 나오게 하기 */
+#top:hover::after{
+    content: '';
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+/* 속박스 */
 .top{
     /* 플렉스박스 - 상단영역 큰 레이아웃 3개 */
     display: flex;
@@ -75,20 +97,15 @@ a {
     /* 상단영역 글자체 */
     font-family: 'Maven Pro','Noto Sans KR', sans-serif;
 
-    /* 전체 숨기기설정 */
-    overflow: hidden;
-    height: 100px;
-
-    /* 트랜지션 */
-    transition: .4s ease-in-out;
+    
 }
 /* .top에 마우스 오버시 높이값 늘어나기 */
-.top:hover{
+#top:hover{
     height: 400px;
     background-color: #fff;
 }
 /* .top에 마우스 오버시 글자색 */
-.top:hover a{
+#top:hover a{
     color: #222;
 }
 /* 로고 */
@@ -124,8 +141,8 @@ a {
     font-size: 17px;
 }
 /* a요소 오버시 */
-.gnb dl:hover dt a,
-.gnb dd:hover a {
+#top .gnb dl:hover dt a,
+#top .gnb dd:hover a {
     color: red;
 }
 /* 하위메뉴 : dd */
@@ -148,4 +165,21 @@ a {
 /* 기타파트 이미지 */
 .tlink img{
     height: 30px;
+}
+
+/* 기타파트 가상요소로 글자넣기 */
+.lang a::after{
+    content: 'KOR';
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -10px;
+    font-size: 12px;
+}
+/* 기타파트 가상요소로 글자넣기 */
+.store a::after{
+    content: 'STORE';
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -15px;
+    font-size: 12px;
 }
