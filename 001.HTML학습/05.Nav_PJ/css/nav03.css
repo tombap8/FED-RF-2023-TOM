@@ -34,6 +34,12 @@ a {
   text-decoration: none;
 }
 
+/* 공통 적용 */
+/* 숨기기 */
+.blind img:last-child{
+    display: none;
+}
+
 /* 전체 타이틀 */
 .tit {
   position: fixed;
@@ -43,7 +49,26 @@ a {
   color: #fff;
 }
 
+
+/* 상단영역 */
+.top{
+    display: flex;
+}
+/* 로고 */
+.logo img{
+    height: 50px;
+}
+.logo img:last-child{
+    display: none;
+}
 /* 네비게이션 박스 */
 .gnb{
-    
+    display: flex;
+}
+.gnb dl:first-child dt img:last-child{
+    display: none;
+}
+/* 기타파트 */
+.tlink{
+    display: flex;
 }
