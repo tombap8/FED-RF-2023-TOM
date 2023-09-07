@@ -22,6 +22,9 @@ ol {
   margin: 0;
   padding: 0;
 }
+ul{
+    list-style: none;
+}
 body {
   width: 100vw;
   height: 100vh;
@@ -35,8 +38,21 @@ a {
 }
 
 /* 공통 적용 */
-/* 숨기기 */
+/* 중앙속박스 */
+.inbox{
+    max-width: 1600px;
+    margin: 0 auto;
+}
+/* 이미지 숨기기 클래스 */
 .blind img:last-child{
+    display: none;
+}
+/* .top에 오버시 마지막 이미지보이기 */
+.top:hover .blind img:last-child{
+    display: inline;
+}
+/* .top에 오버시 첫번째 이미지숨기기 */
+.top:hover .blind img:first-child{
     display: none;
 }
 
@@ -52,23 +68,84 @@ a {
 
 /* 상단영역 */
 .top{
+    /* 플렉스박스 - 상단영역 큰 레이아웃 3개 */
     display: flex;
+    /* 진행방향 정렬 : 사이간격 일정하게 */
+    justify-content: space-between;
+    /* 상단영역 글자체 */
+    font-family: 'Maven Pro','Noto Sans KR', sans-serif;
+
+    /* 전체 숨기기설정 */
+    overflow: hidden;
+    height: 100px;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+/* .top에 마우스 오버시 높이값 늘어나기 */
+.top:hover{
+    height: 400px;
+    background-color: #fff;
+}
+/* .top에 마우스 오버시 글자색 */
+.top:hover a{
+    color: #222;
 }
 /* 로고 */
-.logo img{
+.logo img{    
+    margin-top: 25px;
     height: 50px;
 }
-.logo img:last-child{
+/* .logo img:last-child{
     display: none;
-}
+} */
+
 /* 네비게이션 박스 */
+.nav-part{
+    width: 70%;
+}
 .gnb{
     display: flex;
+    justify-content: center;
+    gap: 0 2vw;
 }
-.gnb dl:first-child dt img:last-child{
+/* 각 메뉴박스 : dl */
+.gnb dl{
+    text-align: center;
+}
+/* 첫번째 이미지 메뉴(STORY) 위치조정 */
+.gnb dl:first-child dt img{
+    transform: translateY(22px);
+}
+
+/* 상위메뉴 : dt */
+.gnb dt {
+    line-height: 110px;
+    font-size: 17px;
+}
+/* a요소 오버시 */
+.gnb dl:hover dt a,
+.gnb dd:hover a {
+    color: red;
+}
+/* 하위메뉴 : dd */
+.gnb dd {
+    font-size: 15px;
+    line-height: 3;
+}
+
+
+/* .gnb dl:first-child dt img:last-child{
     display: none;
-}
+} */
+
 /* 기타파트 */
 .tlink{
     display: flex;
+    gap: 0 1.5vw;
+    padding-top: 35px;
+}
+/* 기타파트 이미지 */
+.tlink img{
+    height: 30px;
 }
