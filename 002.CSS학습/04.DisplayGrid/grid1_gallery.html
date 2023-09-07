@@ -117,12 +117,32 @@
 
     }
 
+    /* 그리드 각 박스 공통 */
+    .grid>div{
+        position: relative;
+        /* 부모자격 */
+        aspect-ratio: 280/400;
+    }
+    /* 설명박스 */
+    .grid>div aside{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background-color: #00000074;
+        font-size: min(1.2vw,12px);
+    }
+
     /* 이미지셋팅 */
     .grid img{
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: top;
+        
+        /* 박스 이미지 하단 공백제거위한 셋팅 */
+        vertical-align: middle;
     }
     </style>
 </head>
