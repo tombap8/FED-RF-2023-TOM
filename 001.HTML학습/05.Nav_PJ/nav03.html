@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>3. 가로네비 서브 전체 드롭다운 전체창</title>
+        <style>
+            /* 웹폰트 CDN */
+            @import url("https://fonts.googleapis.com/css2?family=Maven+Pro&family=Noto+Sans+KR&display=swap");
+
+            /* 
+        font-family: 'Maven Pro', sans-serif;
+        font-family: 'Noto Sans KR', sans-serif; 
+        */
+
+            /* 초기화 */
+            html,
+            body,
+            h1,
+            dl,
+            dt,
+            dd,
+            ul,
+            ol {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                width: 100vw;
+                height: 100vh;
+                background: url(./images/nav03/main_intro_banner_1_ksr.jpg) no-repeat center/cover;
+            }
+            /* 공통 */
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            /* 전체 타이틀 */
+            .tit {
+                position: fixed;
+                top: 40vh;
+                left: 5vw;
+                font-size: 7vh;
+                color: #fff;
+            }
+
+        </style>
+        <!-- JS코드구역 -->
+        <script>
+           
+        </script>
+    </head>
+    <body>
+        <h1 class="tit">
+            3. 가로네비 <br />
+            서브 전체 <br />
+            드롭다운 전체창
+        </h1>
+
+        <!-- 네비게이션 전체 박스 -->
+        <div id="top">
+            <header class="top">
+                <!-- 1.로고파트 -->
+                <div>
+                    <h1 class="logo">
+                        <a href="#">
+                            <!-- 오버전 이미지 -->
+                            <img src="./images/nav03/logo_w.png" alt="로고" />
+                            <!-- 오비시 이미지 -->
+                            <img src="./images/nav03/logo_b.png" alt="로고" />
+                        </a>
+                    </h1>
+                </div>
+                <!-- 2.네비파트 -->
+                <div>
+                    <nav class="gnb">
+                        <!-- 1.스토리 -->
+                        <dl>
+                            <dt>
+                                <a href="#" class="simg">
+                                    <!-- 오버전 이미지 -->
+                                    <img src="./images/nav03/story_white_s.png" alt="스토리 이미지" />
+                                    <!-- 오버시 이미지 -->
+                                    <img src="./images/nav03/story_gray_s.png" alt="스토리 이미지" />
+                                </a>
+                            </dt>
+                            <dd>
+                                <a href="#">셀리턴 스토리</a>
+                            </dd>
+                            <dd>
+                                <a href="#">뷰티풀 셀리턴</a>
+                            </dd>
+                            <dd>
+                                <a href="#">아름다운 공장</a>
+                            </dd>
+                            <dd>
+                                <a href="#">알파레이S<br />개발스토리</a>
+                            </dd>
+                        </dl>
+                        <!-- 2.About US -->
+                        <dl>
+                            <dt>
+                                <a href="#">ABOUT US</a>
+                            </dt>
+                            <dd>
+                                <a href="#">경영이념</a>
+                            </dd>
+                            <dd>
+                                <a href="#">연혁</a>
+                            </dd>
+                            <dd>
+                                <a href="#">수상내역</a>
+                            </dd>
+                            <dd>
+                                <a href="#">글로벌 셀리턴</a>
+                            </dd>
+                            <dd>
+                                <a href="#">셀리턴 앰버서더</a>
+                            </dd>
+                            <dd>
+                                <a href="#">그룹사</a>
+                            </dd>
+                        </dl>
+                        <!-- 3. PRODUCT -->
+                        <dl>
+                            <dt>
+                                <a href="#">PRODUCT</a>
+                            </dt>
+                            <dd>
+                                <a href="#">페이스케어</a>
+                            </dd>
+                            <dd>
+                                <a href="#">두피케어</a>
+                            </dd>
+                            <dd>
+                                <a href="#">바디케어</a>
+                            </dd>
+                            <dd>
+                                <a href="#">넥케어</a>
+                            </dd>
+                            <dd>
+                                <a href="#">뷰티케어</a>
+                            </dd>
+                            <dd>
+                                <a href="#">의료기기</a>
+                            </dd>
+                        </dl>
+                        <!-- 4. R & D -->
+                        <dl>
+                            <dt>
+                                <a href="#">R & D</a>
+                            </dt>
+                            <dd>
+                                <a href="#">라이트테라피 역사</a>
+                            </dd>
+                            <dd>
+                                <a href="#">셀리턴 기술력</a>
+                            </dd>
+                            <dd>
+                                <a href="#">특허 및 출원</a>
+                            </dd>
+                            <dd>
+                                <a href="#">인체적용시험</a>
+                            </dd>
+                            <dd>
+                                <a href="#">셀리턴 자문위원회</a>
+                            </dd>
+                        </dl>
+                        <!-- 5. ARCHIVE -->
+                        <dl>
+                            <dt>
+                                <a href="#">ARCHIVE</a>
+                            </dt>
+                            <dd>
+                                <a href="#">브랜드 아이덴티티</a>
+                            </dd>
+                            <dd>
+                                <a href="#">비쥬얼 영상</a>
+                            </dd>
+                            <dd>
+                                <a href="#">비쥬얼 이미지</a>
+                            </dd>
+                        </dl>
+                        <!-- 6. CAREER -->
+                        <dl>
+                            <dt>
+                                <a href="#">CAREER</a>
+                            </dt>
+                            <dd>
+                                <a href="#">셀리터너</a>
+                            </dd>
+                            <dd>
+                                <a href="#">채용정보</a>
+                            </dd>
+                        </dl>
+                        <!-- 7. NEWS -->
+                        <dl>
+                            <dt>
+                                <a href="#">NEWS</a>
+                            </dt>
+                            <dd>
+                                <a href="#">셀리턴 소식↗</a>
+                            </dd>
+                            <dd>
+                                <a href="#">문의</a>
+                            </dd>
+                        </dl>
+                    </nav>
+                </div>
+                <!-- 3.기타파트 -->
+                <div>
+                    <ul class="tlink">
+                        <li>
+                            <a href="#">
+                                <img src="./images/nav03/cpl_bi.png" alt="나눔명문기업" />
+                            </a>
+                        </li>
+                        <li class="lang">
+                            <a href="#">
+                                <!-- 오버전 이미지 -->
+                                <img src="./images/nav03/lang_i_w.png" alt="다국어아이콘" />
+                                <!-- 오버시 이미지 -->
+                                <img src="./images/nav03/lang_i.png" alt="다국어아이콘" />
+                            </a>
+                        </li>
+                        <li class="store">
+                            <a href="#">
+                                <!-- 오버전 이미지 -->
+                                <img src="./images/nav03/store_i3_w.png" alt="스토아아이콘" />
+                                <!-- 오버시 이미지 -->
+                                <img src="./images/nav03/store_i3.png" alt="스토아아이콘" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+    </body>
+</html>
