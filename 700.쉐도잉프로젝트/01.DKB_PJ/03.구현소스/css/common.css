@@ -66,7 +66,7 @@
 }
 /************* 3. 하단영역 *************/
 #footer {
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
 }
 .footer .partbox {
     height: 100px;
