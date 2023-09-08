@@ -45,16 +45,18 @@ body{
 .main{
     position: relative;
     /* 부모자격 */
-    height: 788px;
-    background: url(../images/bg.jpg) no-repeat center;
+    /* height: 788px; */
+    /* 비율박스는 높이값을 주지 않는다! */
+    aspect-ratio: 1200/788;
+    background: url(../images/bg.jpg) no-repeat 0/100%;
 }
 /* 2-1.스크린 */
 .screen{
     position: absolute;
-    top: 137px;
-    left: 258px;
-    width: 698px;
-    height: 395px;
+    top: 17.2%;
+    left: 21.4%;
+    width: 58.5%;
+    height: 50.5%;
     background-color: #000;
 }
 /* 아이프레임 */
