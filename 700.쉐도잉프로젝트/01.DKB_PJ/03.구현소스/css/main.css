@@ -42,7 +42,7 @@ body > div > * {
     /* 진행방향정렬 */
     justify-content: center;
     /* 사이간격 */
-    gap: 0 1.2vw;
+    gap: 0 min(1.1vw,5px);
 
     width: 100%;
     margin: 0 auto;
