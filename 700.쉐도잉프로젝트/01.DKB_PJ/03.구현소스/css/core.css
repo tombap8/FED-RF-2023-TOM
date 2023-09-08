@@ -46,6 +46,11 @@ body{
     display: block;
     clear: both;
 }
+/* 그룹파트박스 */
+.group-part{
+    /* 상하패딩 넣기 */
+    padding: 60px 0;
+}
 /* 파트박스 */
 .partbox {
     /* 옆으로 흐르게 */
@@ -59,6 +64,12 @@ body{
     /* 높이값이 속박스에 있을 경우 
             채우기셋팅 - 높이값이 파티션박스에 있으면 안씀! */
     height: 100%;
+}
+
+/* 공통 서브타이틀 */
+.stit{
+    padding-bottom: 32px;
+    font-size: 3.8rem;
 }
 
 /* 12 그리드 클래스 : 
@@ -140,3 +151,4 @@ body{
     background-color: #ddd;
     border-radius: 5px;
 }
+
