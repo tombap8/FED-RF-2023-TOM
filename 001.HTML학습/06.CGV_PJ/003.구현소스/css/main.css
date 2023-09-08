@@ -68,7 +68,7 @@ body{
 /* 2-2. 포스터메뉴 */
 .poster-menu{
     position: absolute;
-    width: 700px;
+    width: 60%;
     left: 50%;
     bottom: 5%;
     transform: translateX(-50%);
