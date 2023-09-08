@@ -57,6 +57,7 @@ body{
     left: 21.4%;
     width: 58.5%;
     height: 50.5%;
+    /* 비율박스 부모기준 크기값,위치값% 설정 */
     background-color: #000;
 }
 /* 아이프레임 */
@@ -69,6 +70,7 @@ body{
 .poster-menu{
     position: absolute;
     width: 60%;
+    /* 비율박스 부모기준 가로크기%설정 */
     left: 50%;
     bottom: 5%;
     transform: translateX(-50%);
@@ -78,19 +80,38 @@ body{
     display: flex;
     /* 가로사이간격 */
     gap: 0 10px;
+    /* 원근설정 */
+    perspective: 50vh;
 }
 .poster-menu>ul>li{
     position: relative;
     /* 부모자격 */
-
+    
     /* 앱솔루트 영화정보 
     부모자격요소가 숨길 수 있다! */
     overflow: hidden;
-
+    
     /* 등분할 */
     flex: 1;
-
+    
+    /* X축 회전 */
+    transform: rotateX(30deg);
+    /* 회전축 하단으로 변경 */
+    transform-origin: bottom;
+    /* 트랜지션 */
+    transition: .3s;
+    
 }
+/* 포스터메뉴 각 li에 오버시 + 클래스on적용시 */
+.poster-menu>ul>li:hover,
+.poster-menu>ul>li.on{
+    transform: rotateX(0);
+    outline: 1px solid aqua;
+
+    /* 일어서는 li가 항상위! */
+    z-index: 1;
+}
+
 .poster-menu img{
     /* li에 이미지 가로채움! */
     width: 100%;
@@ -107,7 +128,7 @@ body{
 
     /* 글자셋팅 */
     font-family: 'Cute Font', cursive;
-    font-size: 14px;
+    font-size: min(1.3vw,14px);
     /* 줄바꿈방지 */
     white-space: nowrap;
 
@@ -116,7 +137,7 @@ body{
 }
 /* 영화정보박스 제목만 변경 */
 .mv-info li:first-child {
-    font-size: 17px;
+    font-size: min(1.5vw,17px);
     color: aqua;
 }
 /* 상위 li에 오버시 영화정보박스 보이기 */
