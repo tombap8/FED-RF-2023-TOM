@@ -48,7 +48,7 @@ body{
 /* 2-2.GNB */
 .gnb{
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     right: 10px;
 }
 .gnb ul{
@@ -75,8 +75,8 @@ body{
     /* 트랜지션 */
     transition: .3s;
 }
-/* 상위메뉴 a오버시 */
-.gnb ul>li>a:hover{
+/* 상위메뉴 li오버시 a */
+.gnb ul>li:hover>a{
     color: aquamarine;
     /* 글자확대 */
     transform: scale(1.3);
@@ -96,6 +96,19 @@ body{
     padding: 3px;
     border-radius: 5px;
     background: url(../images/bg_smenu.png) no-repeat center/cover;
+
+    /* 필터를 이용한 그림자로 글로우효과주기
+    -> box-shadow를 사용하면 본 박스에만 효과가 적용되고
+    가상요소 삼각형에는 적용안됨. 필터는 내부 구성요소
+    모두의 외곽선에 그림자효과를 적용함!  */
+    filter: drop-shadow(0 0 5px #fff);
+
+    /* 처음에 숨기기 */
+    display: none;
+}
+/* 상위메뉴 li에 오버시 서브메뉴 보이기 */
+.gnb ul>li:hover .smenu{
+    display: block;
 }
 /* 서브메뉴 가상요소로 삼각형 만들기 */
 .smenu::before{
@@ -106,14 +119,30 @@ body{
     transform: translateX(-50%);
     width: 20px;
     height: 15px;
-    background-color: red;
+    background-color: #373737;
     clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+/* 서브메뉴 ol */
+.smenu ol{
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 /* 서브메뉴 a */
 .smenu a{
     font-size: 1.6rem;
     line-height: 1.7;
 }
+/* 서브메뉴 li오버시 a */
+.smenu li:hover a{
+    color: orangered;
+}
+/* 서브메뉴 li오버시 a가상요소로 이미지넣기! */
+.smenu li:hover a::after{
+    content: '🎪';
+    float: right;
+}
+
+
 
 /**************** 2.메인영역 ****************/
 .main{
