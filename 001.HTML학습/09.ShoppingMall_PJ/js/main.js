@@ -228,6 +228,9 @@ function loadFn() {
         clearInterval(autoI);
         console.log('멈춤!!!');
 
+        // 일정시간후 다시 인터발호출셋팅하기!!!
+        setTimeout(slideAuto,5000);
+
    } //////////// clearAuto 함수 ///////////
 
 
