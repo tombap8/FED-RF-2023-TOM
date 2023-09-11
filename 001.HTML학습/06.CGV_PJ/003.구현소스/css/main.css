@@ -22,6 +22,9 @@ body{
     /* 부모자격 - .gnb */
     height: 80px;
     background: url(../images/curtain.jpg) repeat-x;
+
+    /* 상단영역박스 가장위! */
+    z-index: 999;
 }
 /* 1-1.로고 */
 .tit{
@@ -55,12 +58,20 @@ body{
     gap: 0 20px;
     font-family: 'Jua';
 }
+/* 상위메뉴 li */
+.gnb ul>li{
+    position: relative;
+    /* 부모자격: .smenu */
+}
 /* 상위메뉴 a */
 .gnb ul>li>a{
     display: inline-block;
     /* a는 원래 inline인데 트랜스폼이 적용안됨!
     따라서 inline-block로 변경해야 적용됨! */
     font-size: 2rem;
+    padding-bottom: 10px;
+    /* 패딩으로 젠틀앱솔루트인 .smenu를 아랫쪽으로
+    밀려서 이동되게함! li에 연결상태유지! */
     /* 트랜지션 */
     transition: .3s;
 }
@@ -73,6 +84,35 @@ body{
     text-shadow: 0 0 4px aquamarine;
     /* 애니메이션 */
     animation: tit-ani .5s ease-in infinite alternate;
+}
+
+/* GNB 서브메뉴 */
+.smenu{
+    position: absolute;
+    left: 50%;
+    /* x축방향 중앙이동 */
+    transform: translateX(-50%);
+    width: 140px;
+    padding: 3px;
+    border-radius: 5px;
+    background: url(../images/bg_smenu.png) no-repeat center/cover;
+}
+/* 서브메뉴 가상요소로 삼각형 만들기 */
+.smenu::before{
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+    background-color: red;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+/* 서브메뉴 a */
+.smenu a{
+    font-size: 1.6rem;
+    line-height: 1.7;
 }
 
 /**************** 2.메인영역 ****************/
