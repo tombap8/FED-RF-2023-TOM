@@ -18,10 +18,12 @@ body{
 
 /**************** 1.상단영역 ****************/
 .header{
+    position: relative;
+    /* 부모자격 - .gnb */
     height: 80px;
     background: url(../images/curtain.jpg) repeat-x;
 }
-/* 로고 */
+/* 1-1.로고 */
 .tit{
     color: aquamarine;
     font-size: 40px;
@@ -39,6 +41,38 @@ body{
     to{
         text-shadow: 0 0 12px aquamarine;
     }
+}
+/* 2-2.GNB */
+.gnb{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.gnb ul{
+    /* 플렉스박스 */
+    display: flex;
+    /* 사이간격 */
+    gap: 0 20px;
+    font-family: 'Jua';
+}
+/* 상위메뉴 a */
+.gnb ul>li>a{
+    display: inline-block;
+    /* a는 원래 inline인데 트랜스폼이 적용안됨!
+    따라서 inline-block로 변경해야 적용됨! */
+    font-size: 2rem;
+    /* 트랜지션 */
+    transition: .3s;
+}
+/* 상위메뉴 a오버시 */
+.gnb ul>li>a:hover{
+    color: aquamarine;
+    /* 글자확대 */
+    transform: scale(1.3);
+    /* 글자 글로우효과 */
+    text-shadow: 0 0 4px aquamarine;
+    /* 애니메이션 */
+    animation: tit-ani .5s ease-in infinite alternate;
 }
 
 /**************** 2.메인영역 ****************/
