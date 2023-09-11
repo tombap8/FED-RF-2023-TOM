@@ -90,7 +90,7 @@ function loadFn() {
         // 광클금지 //////////////
         if(clickSts) return;//나가!
         clickSts=1;//잠금!
-        setTimeout(()=>clickSts=0,TIME_SLIDE);//해제!
+        setTimeout(()=>clickSts=0,TIME_SLIDE);//해제!       
 
 
         // 호출확인
@@ -108,21 +108,8 @@ function loadFn() {
 
         // 3. 버튼분기하기 '.ab2' 이면 오른쪽버튼
         if(isRight){ // 오른쪽버튼
-            //1.대상이동하기
-            slide.style.left = '-100%';
-            //2.트랜지션주기
-            slide.style.transition = 
-                TIME_SLIDE+'ms ease-in-out';
-            // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
-            // appendChild(요소)
-            setTimeout(() => {
-                // 3.맨앞li 맨뒤로 이동
-                slide.appendChild(eachOne[0]);
-                // 4.slide left값 0
-                slide.style.left = '0';
-                // 5.트랜지션 없애기
-                slide.style.transition = 'none';
-            }, TIME_SLIDE);
+            // 오른쪽에서 들어오는 슬라이드함수 호출!
+            rightSlide();
         } ////// if //////////////
         else{ // 왼쪽버튼
             // 1. 맨뒤li 맨앞으로 이동
@@ -152,7 +139,15 @@ function loadFn() {
 
         } /////// else //////////////
 
-        // 4. 슬라이드 순번과 일치하는 블릿에 클래스 넣기
+        // 4. 블릿순번 변경 함수 호출
+        chgIndic(isRight); // 방향값을 보냄!
+
+        
+    } ////////// goSlide 함수 /////////
+
+    // 블릿순번 변경 함수 /////////////
+    function chgIndic(isRight){ // isRight(0-왼쪽,1-오른쪽)
+        // 슬라이드 순번과 일치하는 블릿에 클래스 넣기
         // 대상: .indic li -> indic변수
         // 맨앞 슬라이드 li의 'data-seq' 값 읽어오기
         // isRight값이 true이면 오른쪽버튼이고 순번은 [1]
@@ -172,7 +167,66 @@ function loadFn() {
             else ele.classList.remove('on');
         }); ///////// forEach ///////////
 
-    } ////////// goSlide 함수 /////////
+    } /////////// chgIndic함수 ////////////
+
+    // 슬라이드 오른쪽방향 함수 ////////////
+    function rightSlide(){
+        //1.대상이동하기
+        slide.style.left = '-100%';
+        //2.트랜지션주기
+        slide.style.transition = 
+            TIME_SLIDE+'ms ease-in-out';
+        // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
+        // appendChild(요소)
+        setTimeout(() => {
+            // 3.맨앞li 맨뒤로 이동
+            slide.appendChild(
+                slide.querySelectorAll('li')[0]);
+            // 4.slide left값 0
+            slide.style.left = '0';
+            // 5.트랜지션 없애기
+            slide.style.transition = 'none';
+        }, TIME_SLIDE);
+    } //////////// rightSlide 함수 ////////////
+
+
+    /********************************** 
+        자동넘기기 기능구현
+        -> 일정시간간격으로 오른쪽버튼 클릭
+        -> 사용JS내장함수 : setInterval()
+        -> 버튼클릭 실행 메서드: click()
+        대상: 오른쪽버튼 - .ab2 -> abtn[1]
+    **********************************/
+   // 인터발변수
+   let autoI;
+   // 인터발상태변수(0-일반호출/1-인터발호출)
+   let stsI = 0;
+   
+   // 인터발호출 함수 //////////
+   function slideAuto(){
+       autoI= setInterval(() => {
+       // console.log('실행!');
+       // 오른쪽버튼 클릭이벤트 강제발생!
+       // 선택요소.click()
+       abtn[1].click();   
+      }, 3000);
+
+   } ///////// slideAuto 함수 //////////////
+
+   // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
+   function clearAuto(){
+    // 자동넘김 지우기
+        // clearInterval(인터발할당변수)
+        clearInterval(autoI);
+
+   } //////////// clearAuto 함수 ///////////
+
+
+
+
+
+
+
 
 
 } //////////////// loadFn 함수 ///////////////
