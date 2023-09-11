@@ -201,6 +201,11 @@ function loadFn() {
    let autoI;
    // 인터발타이밍함수를 변수에 할당후
    // clearInterval(할당변수) 해야 멈출 수 있다!
+
+   // 타임아웃변수
+   let autoT;
+   // 타임아웃함수도 마찬가지임!
+   // clearTimeout(할당변수) 해야 실행 쓰나미를 막을 수 있다!
    
    // 인터발호출 함수 //////////
    function slideAuto(){
@@ -225,11 +230,15 @@ function loadFn() {
    function clearAuto(){
     // 자동넘김 지우기
         // clearInterval(인터발할당변수)
-        clearInterval(autoI);
         console.log('멈춤!!!');
 
-        // 일정시간후 다시 인터발호출셋팅하기!!!
-        setTimeout(slideAuto,5000);
+        // 1. 인터발 지우기
+        clearInterval(autoI);
+        // 2. 타임아웃 지우기(재실행호출 쓰나미 방지)
+        clearTimeout(autoT);
+        // 3. 일정시간후 다시 인터발호출셋팅하기!!!
+        autoT = setTimeout(slideAuto,5000);
+        // 결과적으로 5초후 인터발재실행은 하나만 남는다!
 
    } //////////// clearAuto 함수 ///////////
 
