@@ -328,5 +328,44 @@ body{
 }
 /**************** 3.하단영역 ****************/
 .footer{
+    display: flex;
+    align-items: center;
     height: 100px;
+}
+/* 3-1.로고박스 */
+.logo{
+    margin-right: 15px;
+}
+
+/* 3-2.회사주소 */
+.co-info address{
+    color: #fff;
+    font-family: 'cute font';
+    font-size: 1.6rem;
+    font-style: normal;
+}
+
+/* 3-3.SNS박스 */
+.sns-box{
+    margin-left: auto;
+}
+.sns-box ol{
+    display: flex;
+    gap: 0 15px;
+}
+.sns-box a{
+    font-size: 4rem;
+}
+/* 각 sns별 오버시 아이콘색(글자색)넣기 */
+.fa-square-facebook:hover{
+    color: cornflowerblue;
+}
+.fa-square-twitter:hover{
+    color: lightskyblue;
+}
+.fa-square-instagram:hover{
+    color: orange;
+}
+.fa-square-youtube:hover{
+    color: orangered;
 }
