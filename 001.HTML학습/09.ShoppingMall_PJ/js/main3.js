@@ -38,4 +38,19 @@ addEvt(window,"DOMContentLoaded", loadFn);
 function loadFn() {
     console.log("로딩완료!");
 
+    // 슬라이드 순번 전역변수
+    let snum = 0;
+
+    // 1. 대상선정
+    // 1-1.이벤트 대상: .abtn
+    const abtn = qsa('.abtn');
+    // 1-2.변경 대상: #slide li
+    const slide = qsa('#slide li');
+    // 1-3.블릿박스 대상:
+    const indic = qsa('.indic li');
+
+
+    // 대상확인
+    console.log('대상',abtn,slide,indic);
+
 }/////////////// loadFn 함수 //////////////
