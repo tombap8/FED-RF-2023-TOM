@@ -20,3 +20,5 @@ const domFn = {
 // 2. 대상선정: .gnb
 const gnbBox = domFn.qs('.gnb');
 console.log('대상',gnbBox);
+
+// ul>li>a{1차}+.smenu>aside.smbx>h2>(.stit{2차}+a{전체보기})+.swrap>dl>dt+dd>a{요기}
