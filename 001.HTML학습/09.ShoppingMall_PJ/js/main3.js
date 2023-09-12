@@ -46,11 +46,40 @@ function loadFn() {
     const abtn = qsa('.abtn');
     // 1-2.변경 대상: #slide li
     const slide = qsa('#slide li');
+    // 슬라이드 개수
+    const CNT_SLIDE = slide.length;
     // 1-3.블릿박스 대상:
     const indic = qsa('.indic li');
 
 
     // 대상확인
     console.log('대상',abtn,slide,indic);
+
+    // 2. 이벤트 설정하기
+    abtn.forEach(ele=>{
+        addEvt(ele,'click',goSlide);
+    }); ///////// forEach ///////////
+
+    // 3. 함수만들기
+    function goSlide(){
+        console.log('나야나!',this);
+
+        // 1. 버튼 구분하기
+        let isR = this.classList.contains('ab2')
+        console.log('오른쪽?',isR);
+
+        // 2. 버튼별 분기하기
+        if(isR){ // 오른쪽버튼
+            snum++;
+            if(snum)
+        } ///// if //////
+        else{ // 왼쪽버튼 
+
+        } ///// else /////////
+
+        // 3. 해당li에 클래스 "on"넣기
+        slide[snum].classList.add('on');
+
+    } /////////// goSlide 함수 //////////
 
 }/////////////// loadFn 함수 //////////////
