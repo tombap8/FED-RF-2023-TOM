@@ -7,9 +7,9 @@
 
 
 /* 공사중 표시 */
-body * {
+/* body * {
     outline: 1px dashed ghostwhite;
-}
+} */
 
 /* 전체배경색 */
 body{
@@ -331,6 +331,7 @@ body{
     display: flex;
     align-items: center;
     height: 100px;
+    padding: 0 15px;
 }
 /* 3-1.로고박스 */
 .logo{
