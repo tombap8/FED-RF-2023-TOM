@@ -60,16 +60,38 @@ body {
   background-image: url(http://www.ccoart.com/news/photo/202301/3855_8223_1250.jpg);
 }
 
-/* 스크롤 등장 초기화 클래스 */
-.set-it{
+/* 스크롤 등장 초기화 클래스1 */
+.set-it1{
   transform: translateY(20%);
   opacity: 0;
   transition: 1.2s ease-in-out;
 }
 /* 스크롤 등장 클래스 .on */
-.set-it.on{
+.set-it1.on{
   transform: translateY(0);
   opacity: 1;
+}
+
+/* 스크롤 등장 초기화 클래스2 */
+.set-it2{
+  transform: rotate(360deg);
+  opacity: 0;
+  transition: 1.2s ease-in-out;
+}
+/* 스크롤 등장 클래스2 .on */
+.set-it2.on{
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+/* 스크롤 등장 초기화 클래스3 */
+.set-it3{
+  transform: translate(-100%,-100%) scale(0);
+  transition: 1.2s ease-in-out;
+}
+/* 스크롤 등장 클래스2 .on */
+.set-it3.on{
+  transform: translate(0,0) scale(1);
 }
 
 
