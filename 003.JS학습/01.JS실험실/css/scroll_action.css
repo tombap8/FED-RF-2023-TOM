@@ -96,3 +96,13 @@ body {
   transform: translate(0, 0);
   opacity: 1;
 }
+
+
+/* 떨어지는 여자 */
+#woman{
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
+}
