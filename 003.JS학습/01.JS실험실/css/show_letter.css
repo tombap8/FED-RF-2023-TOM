@@ -1,2 +1,32 @@
 @charset "utf-8";
 /* 글자등장1 CSS - show_letter.css */
+
+body {
+    background-color: darkslateblue;
+}
+/* 글자스테이지 */
+.stage {
+    position: fixed;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: 2px dashed yellow;
+
+    /* 글자설정 */
+    font-size: 5vw;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* 글자개별박스 셋팅 */
+.stage span {
+    /* 트랜스폼 적용위해 */
+    display: block;
+    /* 현재위치로 부터 이동 */
+    transform: translate(500%, -300%);
+    /* 투명도 0 */
+    opacity: 0;
+    /* 트랜지션: 속시이지 */
+    transition: 0.3s ease-in;
+}
