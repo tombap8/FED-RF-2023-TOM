@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* 네비 유형6 시코르 상단공통 CSS - common.css */
+
+
+/* 속박스 */
+.ibx{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+    outline: 2px dashed yellow;
+}
+
+/* 1.상단영역 */
+#top-area{
+    background-color: #000;
+}
+/* 탑메뉴박스 */
+.top-menu{
+    padding-top: 28px;
+}
+/* 로고박스 */
+.logo-box{
+    text-align: center;
+}
+/********* GNB박스 *********/
+.gnb {
+    display: flex;
+    gap: 0 20px;
+    line-height: 60px;
+}
+/* 상위메뉴 ul */
+.gnb ul{
+}
+/* gnb공통 a */
+.gnb>ul>li:first-child>a{
+    color: #fff;
+}
+/* 서브메뉴 박스 */
+.smenu{
+    position: absolute;
+    display: none;
+}
+/* 임시 첫번째 */
+.gnb>ul:first-child .smenu{
+    display: block;
+}
