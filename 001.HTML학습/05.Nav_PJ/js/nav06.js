@@ -78,7 +78,7 @@ function makeCode(obj){ // obj - 객체 전달값
 
 } //////////// makeCode 함수 ///////////////
 
-// 최종 GNB출력하기 ////////////
+// 4. 최종 GNB출력하기 ////////////
 gnbBox.innerHTML = hcode;
 
 
