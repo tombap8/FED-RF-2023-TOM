@@ -25,42 +25,57 @@ console.log('대상',gnbBox);
 // 3. 객체 데이터로 html 코드만들기
 let hcode = '';
 
-for(let x in mdata){
+for(let x in mdata){ // x는 속성명
   console.log('속성명:',x); 
   hcode +=
-  `  
-  <ul>
-  <li>
-      <a href="">${x}</a>
-      <div class="smenu">
-          <aside class="smbx">
-              <h2>
-                  <div class="stit">2차</div>
-                  <a href="">전체보기</a>
-                  <div class="swrap">
-                      <dl>
-                          <dt></dt>
-                          <dd><a href="">요기</a></dd>
-                      </dl>
-                  </div>
-              </h2>
-          </aside>
-      </div>
-  </li>
-</ul>
-
-
-
-  `
+  `<ul>
+      <li>
+          <a href="#">${x}</a>
+          <div class="smenu">
+              <aside class="smbx">
+                  <h2>
+                      <div class="stit">${x}</div>
+                      <a href="#">전체보기</a>
+                      <div class="swrap">
+                          ${makeCode(mdata[x])}
+                      </div>
+                  </h2>
+              </aside>
+          </div>
+      </li>
+    </ul>`
 } //////// for in /////////////
 
 // 확인
 console.log('코드:',hcode);
 
 
+// 내부 for in문 코드 생성함수 만들기 /////
+function makeCode(obj){ // obj - 객체 전달값
+    console.log('나야나',obj);
+    // 코드변수
+    let hcode = '';
+
+    // 객체반복문 for in사용!
+    for(let x in obj){ // x - 속성명(2차메뉴)
+      hcode +=
+      `
+        <dl>
+            <dt>${x}</dt>
+            <dd><a href="#">3차</a></dd>
+        </dl>
+      `;
+      
+    } /////// for in /////////////
+
+    // 결과리턴
+    return hcode;
+
+} //////////// makeCode 함수 ///////////////
 
 
 
-// ul>li>a{1차}+.smenu>aside.smbx>h2>(.stit{2차}+a{전체보기})+.swrap>dl>dt+dd>a{요기}
+
+// ul>li>a[href='#']{1차}+.smenu>aside.smbx>h2>(.stit{1차}+a[href='#']{전체보기})+.swrap>dl>dt{2차}+dd>a[href='#']{3차}
 
 
