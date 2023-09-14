@@ -63,7 +63,11 @@ function makeCode(obj){ // obj - 객체 전달값
       `
         <dl>
             <dt>${x}</dt>
-            <dd><a href="#">3차</a></dd>
+            <!-- 3차메뉴 dd생성 -->
+            ${obj[x].map(
+              val=>
+              `<dd><a href="#">${val}</a></dd>`).join('')}
+            
         </dl>
       `;
       
