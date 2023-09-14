@@ -14,6 +14,11 @@
 #top-area{
     background-color: #000;
 }
+/* 상단속박스 */
+.top-area{
+    /* position: relative; */
+    /* 부모자격 - .smenu */
+}
 /* 탑메뉴박스 */
 .top-menu{
     padding-top: 28px;
@@ -28,8 +33,15 @@
     gap: 0 20px;
     line-height: 60px;
 }
-/* 상위메뉴 ul */
-.gnb ul{
+/* 상위메뉴 li 가상요소 배경 */
+.gnb>ul>li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /* 부모는? */
+    height: 400px;
+    background-color: red;
 }
 /* gnb공통 a */
 .gnb>ul>li:first-child>a{
@@ -38,9 +50,46 @@
 /* 서브메뉴 박스 */
 .smenu{
     position: absolute;
+    left: 0;
+    /* 부모는? .top-area */
     display: none;
+    outline: 2px dashed orangered;
+}
+.gnb>ul>li:hover .smenu{
+    display: block;
 }
 /* 임시 첫번째 */
-.gnb>ul:first-child .smenu{
+/* .gnb>ul:first-child .smenu{
     display: block;
+} */
+/* 서브 첫타이틀 */
+.stit{
+    font-size: 30px;
+}
+/* 서브 내부 랩핑박스 */
+.smbx{
+    display: flex;
+    gap: 0 70px;
+}
+/* 서브 2차 타이틀박스 */
+.smbx h2{
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+/* 서브 메뉴 dl랩핑박스 */
+.swrap{
+    display: flex;
+}
+/* 서브 dl */
+.swrap dl{
+    width: 180px;
+}
+/* 2차메뉴 : dt */
+.swrap dt{
+    font-size: 20px;
+}
+/* 3차메뉴 : dd */
+.swrap dd{
+    font-size: 14px;
+    line-height: 2;
 }
