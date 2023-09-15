@@ -85,6 +85,9 @@ body{
 
     /* 하위 span을 위한 3D설정 */
     transform-style: preserve-3d;
+
+    /* 트랜지션 */
+    transition: .3s ease-out;
    
 
     /* 입체를 잘보이게 하기위해 약간 회전함 */
