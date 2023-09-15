@@ -1,29 +1,25 @@
-// 큐브 애니2 JS - cube2.js //////////////
+// 회전제어 JS - cube2.js //////////////
 
 /************************************* 
     [구현내용]
-    - "돌아!"버튼을 클릭하면 멈춰있던
-    큐브가 돌아감. 이때 버튼이 "멈춰!"
-    버튼으로 변경되어 있음!
-    - "멈춰!" 버튼을 클릭하면 돌고있던
-    큐브가 멈춤. 이때 버튼이 "돌아!"
-    버튼으로 변경되어 있음!
+    - 마우스휠 이벤트에 따라 기본기능은
+    막고 큐브를 회전하는 속성인 transform의
+    rotateY(각도)의 값변경을 이용한
+    큐브 회전을 적용함!
+    - 사용이벤트 : wheel
+    - 단위각도 : 360도 / 9개 = 40도
+    - CSS 이징적용 : ease-out
 
 *************************************/
 
-// window 로드 이벤트 호출 ///
-window.addEventListener('DOMContentLoaded',loadFn);
-
-// DOM 선택함수 //////
-const qs = x => document.querySelector(x);
-const qsa = x => document.querySelectorAll(x);
-
-/////// 로딩함수 //////////////
-function loadFn(){
-    // 함수호출확인
-    console.log('로딩완료!');
-
-    // 부드러운 스크롤함수 호출!
-    startSS();
-} /////////////// loadFn함수 //////////////
-///////////////////////////////////////////
+// DOM 함수 객체 //////////////
+const domFn = {
+    // 요소선택함수 ////////
+    qs: (x) => document.querySelector(x),
+    qsEl: (el, x) => el.querySelector(x),
+    qsa: (x) => document.querySelectorAll(x),
+    qsaEl: (el, x) => el.querySelectorAll(x),
+  
+    // 이벤트셋팅함수
+    addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
+  }; /////// domFn 객체 /////////////

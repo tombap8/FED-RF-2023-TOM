@@ -14,6 +14,8 @@
 html,body{
     margin: 0;
     padding: 0;
+    /* 스크롤 없앰 */
+    overflow: hidden;
 }
 body{
     background-image: 
@@ -43,7 +45,7 @@ body{
 /* preserve-3d 적용범위박스 + 높이값설정박스 */
 .content{
     position: relative;
-    height: 300vh;
+    height: 100vh;
 
      /* 
         [ 입체로 설정하기 ]
