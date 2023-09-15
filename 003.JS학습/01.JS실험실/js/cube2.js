@@ -56,12 +56,12 @@ const domFn = {
     
     // 2. 방향에 따른 휠단위수 증감하기
     if(delta<0){
-        // 휠단위수 증가
-        numWheel++;
-    }
-    else{
         // 휠단위수 감소
         numWheel--;
+    }
+    else{
+        // 휠단위수 증가
+        numWheel++;
     }
 
     // 호출확인
@@ -73,3 +73,5 @@ const domFn = {
     `rotateY(${numWheel*DEG}deg)`;
 
   } //////////// rotateMem 함수 ///////////
+
+

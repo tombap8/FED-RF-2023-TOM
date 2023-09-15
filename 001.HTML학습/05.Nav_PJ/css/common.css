@@ -1,9 +1,14 @@
 @charset "utf-8";
 /* 네비 유형6 시코르 상단공통 CSS - common.css */
 
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
 body{
     background-image: linear-gradient(to bottom,lightcoral,lightgreen);
     height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* 속박스 */
