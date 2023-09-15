@@ -119,6 +119,9 @@ const gnbList = domFn.qsa('.gnb li');
 const indicList = domFn.qsa('.indic li');
 console.log(gnbList,indicList);
 
+// 메뉴처리 대상요소 배열로 묶어주기!
+const menuGrp = [gnbList,indicList];
+
 /******************************************* 
     함수명: chgMenu
     기능 : 마우스 휠작동/메뉴클릭시 메뉴변경
@@ -129,27 +132,41 @@ function chgMenu(){
     // 메뉴li를 순회하여 해당순번(pg_num)에 .on넣기
     // 나머지는 .on빼기
 
-    // 내부함수 만들기 //////
-    const comFn = (ele) => {
-        
-    };
+    // 1. 내부함수 만들기 //////
+    const comFn = (target) => { // target - 메뉴리스트요소
+        target.forEach((ele,idx)=>{
+            if(idx==pg_num)
+                ele.classList.add('on');
+            else
+                ele.classList.remove('on');
+        });        
+    }; /////////// comFn 내부함수 //////
 
-    gnbList.forEach((ele,idx)=>{
-        if(idx==pg_num)
-            ele.classList.add('on');
-        else
-            ele.classList.remove('on');
-    });
-
-    indicList.forEach((ele,idx)=>{
-        if(idx==pg_num)
-            ele.classList.add('on');
-        else
-            ele.classList.remove('on');
-    });
+    // 2. 처리할 요소 배열 불러오기 : menuGrp
+    menuGrp.forEach(val=>comFn(val));
+    // forEach()가 gnbList와 indicList를 각각 comFn()에 전달함!
 
 } //////////// chgMenu 함수 //////////////////
 
+/////////////////////////////////////
+// [GNB li 를 클릭시 메뉴 변경하기] ////
+// -> pg_num 을 업데이트 후 chgMenu()함수를 호출한다!
+
+// 메뉴그룹 배열만큼 클릭 기능 만들기 ///
+// for of문 사용!
+for(let x of menuGrp){ // x - gnbList, indicList 순회!
+    x.forEach((ele,idx)=>{
+        domFn.addEvt(ele,'click',()=>{
+            // 1. 전역 페이지변수 업데이트하기
+            pg_num = idx; // 메뉴순번으로 업뎃!
+            console.log('페이지번호:',pg_num);
+    
+            // 2. 메뉴변경함수 호출
+            chgMenu();
+        }); /////////// addEvt /////////
+    }); ////////// forEach ///////////////
+
+} /////////// for of ///////////
 
 
 
