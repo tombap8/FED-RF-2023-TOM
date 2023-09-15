@@ -5,6 +5,8 @@
 
 /************* 1. 상단영역 *************/
 #header {
+    position: relative;
+    z-index: 999;/* 상단 맨위 */
     /* background-color: lightblue; */
 }
 .header .partbox {
@@ -59,7 +61,53 @@
     transform: scale(.5,.3);
     margin-left: 3px;
 }
-************ 2. 메인영역 ************
+
+/* 서브메뉴 박스 */
+.smenu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+
+    /* 메뉴 숨기기 */
+    overflow: hidden;
+    height: 0;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+
+/* 서브메뉴 속박스 */
+aside.smbx {
+    max-width: 1000px;
+    margin: 0 auto;
+    outline: 4px dashed green;
+}
+
+.smbx h2 {
+    font-size: 3.2rem;
+}
+
+.smbx ol {
+    /* 플렉스박스 */
+    display: flex;
+    /* 랩핑박스 */
+    flex-wrap: wrap;
+    font-size: 1.6rem;
+    line-height: 3;
+    padding-bottom: 20px;
+}
+.smbx ol li{
+    /* 가로크기 제한 - 한줄에 4개 */
+    flex-basis: 25%;
+    /* 글자말줄임 셋팅 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/************ 2. 메인영역 ************/
 #main {
     /* 본문영역 최소높이 셋팅! */
     min-height: 800px;

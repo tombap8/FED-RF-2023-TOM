@@ -98,7 +98,61 @@ gnbList.forEach(ele=>{
     // console.log('텍스트:',atxt,gData);
 
     // 3.해당 서브 데이터가 있을 경우 태그 만들어 넣기
+    // Array.isArray(gData)로 배열여부를 확인함!
+    // 배열값은 태그를 만들어 그자리에 출력: 배열.map().join('')
     if(gData){ // 데이터없으면 undefined -> false처리!
       console.log('만들어!',atxt);
+      ele.innerHTML += 
+      `
+        <div class="smenu">
+          <aside class="smbx">
+            <h2>${atxt}</h2>
+            <ol>
+            ${gData.map(val=>`
+              <li>
+                <a href="#">${val}</a>
+              </li>
+            `).join('')}
+            </ol>
+          </aside>
+        </div>
+      `;
     } ////////// if /////////
 }); ///////// forEach ////////////
+
+
+/************************************* 
+  [ 상위메뉴 li오버시 하위메뉴 보이기 ]
+  이벤트 대상: .gnb>ul>li
+  변경 대상: .smenu
+*************************************/
+// 1. 대상선정
+const gnb = domFn.qsa('.gnb>ul>li');
+
+// 2. 이벤트 설정하기
+// 이벤트 종류: mouseover / mouseout
+gnb.forEach(ele=>{
+  // 서브메뉴가 있을때만 이벤트 설정하기!
+  // if문에서 undefined/null 은 false처리됨!
+  if(domFn.qsEl(ele,'.smenu')){
+    domFn.addEvt(ele,'mouseover',overFn);
+    domFn.addEvt(ele,'mouseout',outFn);
+  }
+});
+
+// 3.함수만들기
+function overFn(){
+  // console.log('오버',this);
+  // 1.하위 .smbx 높이값 알아오기
+  let hv = domFn.qsEl(this,'.smbx').clientHeight;
+  console.log('높이:',hv);
+  // 2.하위 서브메뉴박스 만큼 .smenu 높이값 주기
+  domFn.qsEl(this,'.smenu').style.height = hv + 'px';
+} //////////// overFn 함수 ////////////
+
+function outFn(){
+  // console.log('아웃',this);
+  // 서브메뉴 박스 높이값 0만들기!
+  domFn.qsEl(this,'.smenu').style.height = '0px';
+} //////////// outFn 함수 ////////////
+
