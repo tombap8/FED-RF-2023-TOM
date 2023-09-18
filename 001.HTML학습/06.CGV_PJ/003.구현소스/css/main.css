@@ -26,6 +26,34 @@ body{
     /* 상단영역박스 가장위! */
     z-index: 999;
 }
+/* 1-0.맵버튼박스 */
+.btn-map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 80px;
+    /* outline: 2px dashed yellow; */
+    /* 나간배경 숨기기 */
+    overflow: hidden;
+}
+/* 맵버튼 가상요소로 무한이동 배경넣기 */
+.btn-map::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url(../images/street.jpg) repeat-x 0/50% 100%;
+    /* 애니메이션 */
+    animation: bg-ani 2s linear infinite;
+}
+/* 무한반복 배경애니 키프레임 */
+@keyframes bg-ani {
+    to{
+        left: -100%;
+    }
+}
 /* 1-1.로고 */
 .tit{
     color: aquamarine;
