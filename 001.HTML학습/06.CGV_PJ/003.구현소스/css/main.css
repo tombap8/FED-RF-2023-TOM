@@ -15,6 +15,19 @@
 body{
     background-color: #000;
 }
+/* 전체반투명가림막 body가상요소 */
+body.on::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 9999;
+    /* 보여줄 요소는 이것보다 숫자가 크면됨! */
+}
 
 /**************** 1.상단영역 ****************/
 .header{
@@ -423,7 +436,7 @@ body{
     border: 20px solid hotpink;
     border-radius: 10px;
 
-    z-index: 999;
+    z-index: 999999;
     /* 트랜지션: 속시이지 */
     transition: top .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
