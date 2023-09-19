@@ -36,6 +36,13 @@ setTimeout(() => {
     setPos(0);
     // 안하면 원래 위치로 스크롤시 튐!
 }, 400);
+// 0. 스크롤바 트랙을 잡고 위치이동시 위치값 반영
+dFn.addEvt(window,'mouseup',()=>setPos(window.scrollY)); 
+//////// mouseup /////////////
+
+// 0. 키보드 방향키 이동시 위치값 반영
+dFn.addEvt(window,'keyup',()=>setPos(window.scrollY)); 
+//////// mouseup /////////////
 
 // 1. 대상선정 ///////////////
 // 1-1. 글자박스
@@ -52,7 +59,7 @@ dFn.addEvt(window,'scroll',scrollFn);
 // 3. 함수 만들기 ////////////////
 // 3-1. 스크롤 이벤트 함수 ////
 function scrollFn(){
-    console.log('스크롤~~~!');
+    // console.log('스크롤~~~!');
 
     // 1. 대상1 : 글자박스 패럴렉스 호출!
     txtBox.forEach(ele=>
@@ -76,10 +83,10 @@ function moveEl(elPos,ele,setH){
     // (1) elPos - 위치값(getBCL값)
     // (2) ele - 대상요소(패럴렉스대상)
     // (3) setH - 움직일범위수(클수록 빠르게 이동)
-    console.log(
-        '위치:',elPos,
-        '\n대상:',ele,
-        '\n범위:',setH);
+    // console.log(
+    //     '위치:',elPos,
+    //     '\n대상:',ele,
+    //     '\n범위:',setH);
 
     // [ 패럴렉스 범위 : 윈도우 높이값 ~ 0 ]
     // 화면에서 완전히 사라질때 범위는 0보다 작다(약간의 마이너스값)
