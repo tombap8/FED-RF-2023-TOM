@@ -92,7 +92,7 @@ function moveEl(elPos, ele, setH) {
     // 1. 위치이동값 계산
     // 실제이동값 = 정한범위 - (위치값*정한범위 / 전체범위)
     let x = setH - (elPos * setH) / winH;
-    console.log("x:", -x);
+    // console.log("x:", -x);
 
     // 2. 해당요소의 위치값 이동 CSS반영하기
     // Y축이동시 윗쪽방향은 마이너스임! -x
