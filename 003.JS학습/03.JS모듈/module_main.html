@@ -18,7 +18,14 @@
             margin-bottom: 50px;
         }
     </style>
-    
+    <!-- 외부JS불러오기 -->
+    <script type="module" src="./module/main.js"></script>
+    <!-- 
+        스크립트 호출시에 type="module" 이라고 써야 모듈화 문법인
+        import를 사용할 수 있다!
+        그리고 동시에 자동으로 defer가 셋팅된다!(써줄필요없음!)
+        -> html요소가 모두 로딩후 실행됨~!
+     -->
 </head>
 <body>
     <h1>Javascrpt Module</h1>
