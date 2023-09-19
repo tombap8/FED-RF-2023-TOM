@@ -54,7 +54,21 @@ dFn.addEvt(window,'scroll',scrollFn);
 function scrollFn(){
     console.log('스크롤~~~!');
 
+    // 1. 대상1 : 글자박스 패럴렉스 호출!
+    txtBox.forEach(ele=>
+        moveEl(dFn.getBCR(ele),ele,setH2));
+
+    // 2. 대상2 : 아이콘 패럴렉스 호출!
+    icon.forEach(ele=>
+        moveEl(dFn.getBCR(ele),ele,setH1));
+
 } /////////// scrollFn 함수 ////////
+
+// 셋팅값 변수 ////
+// 윈도우 높이값
+const winH = window.innerHeight;
+// 패럴렉스 범위변수
+const setH1 = 100, setH2 = 200;
 
 // 3-2. 패럴렉스 이동함수 /////
 function moveEl(elPos,ele,setH){
@@ -66,6 +80,41 @@ function moveEl(elPos,ele,setH){
         '위치:',elPos,
         '\n대상:',ele,
         '\n범위:',setH);
+
+    // [ 패럴렉스 범위 : 윈도우 높이값 ~ 0 ]
+    // 화면에서 완전히 사라질때 범위는 0보다 작다(약간의 마이너스값)
+    if(elPos < winH && elPos > -200){
+        // 1. 위치이동값 계산
+        // 실제이동값 = 정한범위 - (위치값*정한범위 / 전체범위)
+        let x = setH - (elPos*setH / winH);
+        console.log('x:',-x);
+
+        // 2. 해당요소의 위치값 이동 CSS반영하기
+        // Y축이동시 윗쪽방향은 마이너스임! -x
+        ele.style.transform = 
+            `translateY(${-x}px)`;
+    } ///////////// if //////////////////
+    
+
+    /***************************** 
+        [ 패럴렉스 위치계산 ]
+        1. 전체범위 : 윈도우높이값
+        2. 위치값 : getBoundingClientRect().top
+        3. 정한범위 : 이동할 수치
+        4. 실제이동값 : transform:translateY(이동수치px)
+        __________________________
+
+        ((비례식으로 실제 이동값 알아내기))
+        전체범위 : 위치값 = 정한범위 : 실제이동값
+        실제이동값 = 위치값*정한범위 / 전체범위
+
+        -> 그.런.데...
+        Y축 위치이동은 처음에 0부터 서서히 커지므로
+        이동수치값은 정한범위에서 실제이동값을 빼야함!
+
+        실제이동값 = 정한범위 - (위치값*정한범위 / 전체범위)
+
+    *****************************/
 } //////////// moveEl 함수 //////////
 
 

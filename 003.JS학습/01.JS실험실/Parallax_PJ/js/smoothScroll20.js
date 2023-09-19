@@ -87,5 +87,5 @@ function SmoothScroll(target, speed, smooth) {
 }
 
 
-// 내보내기 : 시작함수+위치값변수
+// 내보내기 : 시작함수 + 위치값변경함수
 export {startSS,setPos};
