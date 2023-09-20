@@ -29,25 +29,31 @@ desc_box.forEach((ele) => {
 });
 
 /**************************************** 
-    [ 현장포토파트 데이터 구성하기 ]
+    [ 그리드박스 공통파트 데이터 구성하기 ]
     - 배열데이터를 이용하여 HTML코드 구성
   ****************************************/
-// 1. 대상선정 : .live-box
-const liveBox = dFn.qs(".live-box");
-console.log("대상:", liveBox);
+// 1. 대상선정 : .grid-box (.live-box/.poster-box)
+const gridBox = dFn.qsa(".grid-box");
+console.log("대상:", gridBox);
 
-// 2. 그리드 스타일 데이터 생성하기 함수
-function makeGrid() {
+// 2. 대상 코드넣기 함수 호출설정하기 ///////
+gridBox.forEach((ele,idx)=>makeGrid(ele,idx));
+
+// 3. 그리드 스타일 데이터 생성하기 함수
+function makeGrid(ele,idx) { 
+  // ele - 대상요소 / idx - 순번(데이터순번)
   // 1. 현장포토 데이터를 기반으로 HTML코드 만들기
   let hcode = "<ul>";
 
   // 반복코드 만들기 /////
   // 현장포토 데이터 - data_drama.js에서 가져옴
-  gridData[0].forEach((val) => {
+  gridData[idx].forEach((val) => {
     // html변수에 계속 넣기
+    // 폴더경로는 idx가 0이면'live_photo' 
+    // 1이면'poster_img'로 셋팅함!
     hcode += ` <li>
               <figure>
-                  <img src="images/live_photo/${val.imgName}.jpg" alt="${val.title}">
+                  <img src="images/${idx?'poster_img':'live_photo'}/${val.imgName}.jpg" alt="${val.title}">
                   <figcaption>${val.title}</figcaption>
               </figure>
           </li>
@@ -59,7 +65,7 @@ function makeGrid() {
   //   console.log(hcode);
 
   // 2. 대상박스에 html코드 넣기
-  liveBox.innerHTML = hcode;
+  ele.innerHTML = hcode;
 } /////////// makeGrid함수 //////////////
 
 /////////////////////////////
