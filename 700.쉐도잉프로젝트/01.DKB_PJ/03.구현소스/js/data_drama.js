@@ -35,6 +35,10 @@ const posterData = [
   { idx: "5", title: "공유, 이동욱, 육성재 포스터", imgName: "poster1", date: "2023-09-18" },
 ]; /////////// posterData 배열 /////////
 
+// liveData와 posterData 배열로 합치기
+// -> 그리드 스타일 모듈 데이터 하나로 보내기!
+const gridData = [liveData,posterData];
+
 
 // 3. GNB 하위메뉴 구성 데이터
 /************************************* 
@@ -71,3 +75,6 @@ const gnbData = {
     "[종영] 그때 나는 내가 되기로 했다",
   ],
 };
+
+// 모듈화 내보내기 ///////////
+export {gridData, gnbData};

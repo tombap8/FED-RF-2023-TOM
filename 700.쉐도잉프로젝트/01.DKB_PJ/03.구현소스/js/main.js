@@ -5,6 +5,8 @@
 import dFn from './dom.js';
 // 부드러운 스크롤 모듈
 import { startSS, setPos } from './smoothScroll23.js';
+// 데이터 모듈
+import { gridData, gnbData } from './data_drama.js';
 
   // 부드러운 스크롤 적용 //////////
   startSS();
@@ -39,7 +41,7 @@ import { startSS, setPos } from './smoothScroll23.js';
 
   // 반복코드 만들기 /////
   // 현장포토 데이터 - data_drama.js에서 가져옴
-  liveData.forEach(val=>{
+  gridData[0].forEach(val=>{
     // html변수에 계속 넣기
     hcode +=     
       ` <li>
