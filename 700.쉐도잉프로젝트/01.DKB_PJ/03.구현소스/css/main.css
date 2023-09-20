@@ -206,22 +206,23 @@ body > div > * {
 .main .group-part-02 .partbox {
     height: 298px;
 }
-/*********** 현장포토파트 ***********/
+/*********** 그리드박스 공통파트 ***********/
+/* 현장포토(.live-box) / 대표이미지(.poster-box) */
 
 /* 현장포토 그리드 구성박스 */
-.live-box ul{
+.grid-box ul{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: 24px;
     grid-row-gap: 48px;
 }
 /* 현장포토 이미지 공통 */
-.live-box img {
+.grid-box img {
     width: 100%;
     border-radius: 10px;
 }
 /* 현장포토 이미지 설명 타이틀 */
-.live-box figcaption{
+.grid-box figcaption{
     font-size: 2rem;
     font-weight: 500;
     padding-top: 14px;
