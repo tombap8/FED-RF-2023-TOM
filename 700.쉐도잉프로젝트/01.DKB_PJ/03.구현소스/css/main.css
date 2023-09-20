@@ -228,6 +228,18 @@ body > div > * {
     padding-top: 14px;
 }
 
+/* 대표이미지 박스 조정 */
+.poster-box ul{
+    /* 그리드 템플릿 줄속성 반복 사이즈 지정하기 */
+    grid-template-rows: repeat(2,min(16.5vw,238px));
+    /* min() 으로 최대사이즈 지정, 작아질때 화면맞춤(vw) */
+}
+/* 마지막 박스 그리드 줄조정 */
+.poster-box ul li:last-child{
+    /* 윗줄로 올라오게 그리드 줄 위치속성 셋팅! */
+    grid-row: 2/3;
+}
+
 
 /*********** 대표이미지파트 ***********/
 .main .group-part-04 .partbox {
