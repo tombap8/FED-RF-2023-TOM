@@ -268,10 +268,46 @@ body > div > * {
 }
 
 
-/*********** 미리보기파트 ***********/
-.main .group-part-02 .partbox {
+/*********** 미리보기파트 : .preview-part ***********/
+.main .preview-part .partbox {
     height: 298px;
 }
+.preview-box .partbox{
+    padding: 15px;
+    color: #888;
+    cursor: pointer;
+}
+.preview-box .partbox:hover{
+    color: #222;
+}
+/* 각 박스 외곽선 디자인 */
+.preview-box .partbox>div{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.504);
+}
+/* 각 미리보기 타이틀 */
+.preview-box h3{
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+/* 각 미리보기 내용박스 */
+.preview-box p{
+    font-size: 1.5rem;
+    line-height: 2;
+
+    /* 여러줄 말줄임표시 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+
 /*********** 그리드박스 공통파트 ***********/
 /* 현장포토(.live-box) / 대표이미지(.poster-box) */
 

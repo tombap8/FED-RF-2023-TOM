@@ -230,7 +230,9 @@ console.log(preBox);
 // 데이터 : 역순정렬을 한 미리보기 데이터넣기
 preBox.forEach((ele,idx)=>{
   ele.innerHTML = `
-    <h3>${preNewData[idx].title}</h3>
-    <p>${preNewData[idx].story}</p>
+    <div>
+      <h3>${preNewData[idx].title}</h3>
+      <p>${preNewData[idx].story}</p>
+    </div>
   `;
 }); //////// forEach ///////////////
