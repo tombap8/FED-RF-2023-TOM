@@ -164,3 +164,30 @@ function outFn() {
   // 서브메뉴 박스 높이값 0만들기!
   dFn.qsEl(this, ".smenu").style.height = "0px";
 } //////////// outFn 함수 ////////////
+
+
+
+/////////////////////////////////////
+/// 인트로 동영상 클릭시 플레이하기 ////
+// 대상: .intro-mv-img
+// 이벤트: click
+// -> 가상요소 플레이버튼 클릭시 
+// 이벤트 버블링으로 본 박스가 반응함!
+
+// 1. 대상 선정하기
+const mvBox = dFn.qs('.intro-mv-img');
+
+// 2. 이벤트 설정하기
+dFn.addEvt(mvBox,'click',showMv);
+
+// 3. 함수만들기
+function showMv(){
+  console.log('보여줘~!!!!!');
+  // 동영상 넣기
+  // 대상: 나자신
+  this.innerHTML = `
+    <video src='./images/intro_mv.mp4' controls></video>
+  `;
+
+
+} ///////// showMv 함수 ///////////
