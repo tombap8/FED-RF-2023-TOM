@@ -6,7 +6,7 @@ import dFn from "./dom.js";
 // 부드러운 스크롤 모듈
 import { startSS, setPos } from "./smoothScroll23.js";
 // 데이터 모듈
-import { gridData, gnbData } from "./data_drama.js";
+import { gridData, gnbData, previewData } from "./data_drama.js";
 
 // 부드러운 스크롤 적용 //////////
 startSS();
@@ -200,3 +200,37 @@ function showMv(){
 
 
 } ///////// showMv 함수 ///////////
+
+
+
+/////////////////////////////////////////////
+// 오름차순 데이트를 내림차순으로 변경하여 화면에 뿌리기!
+
+// 1. 데이터 정렬 변경하기
+let preNewData = 
+previewData.sort((x,y)=>{
+  // x,y는 배열값 앞뒤를 계속 가지고 들어옴
+  // 배열값 중 idx속성값을 가져와서 숫자형변환후 사용
+  let a = Number(x.idx);
+  let b = Number(y.idx);
+
+  // 배열 순서변경 메서드인 sort() 내부에 return값을
+  // 사용하여 순서를 변경한 새로운 배열을 만들어준다!
+  return a == b ? 0 : (a > b? -1:1);
+  // 비?집:(눈?집:놀이동산)
+
+});
+console.log(preNewData);
+
+// 2. 대상선정: .preview-box>div
+const preBox = dFn.qsa('.preview-box>div');
+console.log(preBox);
+
+// 3. 대상을 순회하여 태그 넣기
+// 데이터 : 역순정렬을 한 미리보기 데이터넣기
+preBox.forEach((ele,idx)=>{
+  ele.innerHTML = `
+    <h3>${preNewData[idx].title}</h3>
+    <p>${preNewData[idx].story}</p>
+  `;
+}); //////// forEach ///////////////
