@@ -13,17 +13,17 @@
        console.log(rep1); 
        
        // "태국"->"코리아"로 변경
-       
+       rep1 = rep1.replace("태국","코리아");
        console.log(rep1); 
 
        // 콤마(,)를 별(☆)로 변경
-       
+       rep1 = rep1.replace(',','☆');
        console.log(rep1); 
 
        // 일반적으로 replace는 한개의 값을 다른값으로 변경함!
        // 여러개를 모두 찾아 바꾸려면 정규표현식을 써야함!
             
-      
+       rep1 = rep1.replace(/,/g,'★');
        console.log(rep1); 
 
         /*********************************************************** 
@@ -68,10 +68,16 @@
             console.log(sub1);
 
             // "도깨비"만 추출
+            console.log(sub1.substr(10,3));
+            console.log(sub1.substring(10,13));
 
             // "공유"만 추출
+            console.log(sub1.substr(15,2));
+            console.log(sub1.substring(15,17));
 
             // "도깨비, 공유씨!" 중간부터 끝까지 추출
+            console.log(sub1.substr(10));
+            console.log(sub1.substring(10));
 
             /*********************************************************** 
             3. 문자 자르기 함수 : split(자를기준문자열)
@@ -81,10 +87,11 @@
             console.log(sp1);
 
             // 특수문자(^)잘라서 변수에 할당!
-            
+            let arr = sp1.split('^');
+            console.log(arr);
 
             // "한반도"만 출력
-            
+            console.log(arr[3]);
             
 
         /************************************** 
@@ -96,10 +103,11 @@
        // 결과출력
        let res1 = str1 + str2; 
        // 숫자+숫자=숫자
-       
+       console.log(res1);
 
        let res2 = String(str1) + String(str2); 
        // 문자+문자=문자
+       console.log(res2);
        
 
         </script>
