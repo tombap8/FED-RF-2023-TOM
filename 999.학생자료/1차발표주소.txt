@@ -1,0 +1,86 @@
+[ 1차 발표 깃주소 ]
+
+1.최수진 :
+https://choisj01.github.io/FED_RF-2023-Project-CSJ/01.first_PJ_CSJ/index.html
+https://choisj01.github.io/FED_RF-2023-Project-CSJ/FED_RF_2023_Project_CSJ/1%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20SHAKESHACK(%EC%B5%9C%EC%88%98%EC%A7%84)_230922.pdf
+
+2.권영혜 : 
+https://kwonyounghye.github.io/FED-RF-2023-Project-YH/main.html
+https://kwonyounghye.github.io/FED-RF-2023-Project-YH/%ED%8F%AC%ED%8F%B4/%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC.pptx
+
+
+3.김내우 : 
+https://kimnaewoo.github.io/FED-RF-2023-project-KNW/%EB%B9%88%ED%8F%B4%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.html
+https://kimnaewoo.github.io/FED-RF-2023-project-KNW/%EB%B9%88%ED%8F%B4%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C.pdf
+
+4.김민정 : 
+https://minjxx.github.io/FED-RF-2023-Project-KMJ/01.Seoul_WallPaper_PJ/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/
+https://minjxx.github.io/FED-RF-2023-Project-KMJ/01.Seoul_WallPaper_PJ/%EC%84%9C%EC%9A%B8%EB%B2%BD%EC%A7%80_%EB%B0%9C%ED%91%9C.pdf
+
+5.김범서 : 
+https://bumstop.github.io/FED-RF-2023-Project-KBS/
+https://bumstop.github.io/FED-RF-2023-Project-KBS/ppt/LCK_GUIDE.pdf
+
+6.김윤민 : 
+https://yoonminkim.github.io/FED-RF-2023-Project-KYM/05.%20New/HTML_01.Main_new.html
+https://yoonminkim.github.io/FED-RF-2023-KYM/999.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/FED-RF-2023-%EA%B9%80%EC%9C%A4%EB%AF%BC-%EB%B0%9C%ED%91%9C%EB%AC%B8%EC%84%9C.pdf
+
+7.문승준 : 
+https://moonlyong.github.io/FED-RF-2023-Project-MSJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/
+https://moonlyong.github.io/FED-RF-2023-Project-MSJ/%EC%B5%9C%EA%B0%95%EC%95%BC%EA%B5%AC.pptx
+
+8.박서진 : 
+
+
+9.박수민 : 
+
+10.박정현 : 
+https://parkjjung79.github.io/FED-RF-2023-Project-PJH/
+https://parkjjung79.github.io/FED-RF-2023-Project-PJH/PJH_project01_guide.pdf
+
+11.신용진 : 
+https://novall9633.github.io/FED-RF-2023-Project-SYJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/index.html
+https://novall9633.github.io/FED-RF-2023-Project-SYJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/MK%20%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%94%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C.pdf
+
+12.안주현 : 
+https://itjuh.github.io/FED-RF-2023-Project-AJH/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/index.html
+https://itjuh.github.io/FED-RF-2023-Project-AJH/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/04.%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C/%EC%98%A8%EA%B3%A0%EB%A1%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C_01.pdf
+
+13.유승환 : 
+https://yush0723.github.io/FED-RF-2023-YUSH/999.%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/mrs.html
+https://yush0723.github.io/FED-RF-2023-YUSH/MRS.pdf
+
+14.유혜경 : 
+https://hyeppyday.github.io/FED-RF-2023-Project-YHG/3.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/
+https://hyeppyday.github.io/FED-RF-2023-Project-YHG/%EB%B8%8C%EB%A0%88%EB%93%9C%20%EC%9D%B4%EB%B0%9C%EC%86%8C.pdf
+
+15.이동엽 : 
+https://zdzd3643.github.io/FED-RF-2023-Project-NICK/800.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.html
+https://zdzd3643.github.io/FED-RF-2023-Project-NICK/800.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/04.%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C/GS25%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_230922.pdf
+
+
+16.이조은 : 
+https://zoe-world.github.io/FED-RF-2023-Project-LJE/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/index.html
+https://zoe-world.github.io/FED-RF-2023-Project-LJE/04.%EB%B0%9C%ED%91%9C/MDLA_%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf
+
+17.임경은 : 
+https://imlimge.github.io/FED-RF-2023-Project-LKE/01.1%EC%B0%A8%EA%B3%BC%EC%A0%9C/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/
+https://imlimge.github.io/FED-RF-2023-Project-LKE/01.1%EC%B0%A8%EA%B3%BC%EC%A0%9C/%EB%B2%84%EA%B1%B0%ED%82%B9%EA%B8%B0%ED%9A%8D%EC%84%9C%EC%9E%84%EA%B2%BD%EC%9D%80.pdf
+
+
+18.최정우 : 
+https://hiano1.github.io/FED_RF-2023-Project_CJW/
+
+19.최지민 : 
+https://ogreencakeo.github.io/FED-RF-2023-CJM/homeplus/homepage/index.html
+https://ogreencakeo.github.io/FED-RF-2023-CJM/%EC%B5%9C%EC%A7%80%EB%AF%BC_%ED%99%88%ED%94%8C%EB%9F%AC%EC%8A%A4%EC%A0%9C%EC%9E%91%EC%82%AC%EC%9D%B4%ED%8A%B8.pdf
+
+20.최진구 : 
+https://jingoochoi.github.io/FED-RF-2023-PROJECT-CJK/
+https://jingoochoi.github.io/FED-RF-2023-PROJECT-CJK/%EC%B5%9C%EC%A7%84%EA%B5%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EB%AC%B8%EC%84%9C.pptx
+
+
+
+
+
+
