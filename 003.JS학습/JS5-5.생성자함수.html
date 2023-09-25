@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS5-4.생성자함수</title>
     <script>
-        /* 
+      /* 
             [ 생성자 함수란? ]
             - 쉽게 말해서 함수를 이용해서 객체를 생성하는
             템플릿이다!
@@ -45,7 +45,7 @@
             그냥 return키워드만 쓰게 되면 자동으로 this가 반환됨!)
         */
 
-        /* 
+      /* 
             객체모델:
             1. 속성6가지-포스터,제목,개요,감독,출연,문구
             2. 함수1가지-실행함수
@@ -62,11 +62,233 @@
         
         */
 
-       
-       
-</script>
-</head>
-<body>
+      // 생성자함수의 인스턴스 생성시 전달값 셋팅함!
+      function MovieInfo(pos, tit, sum, dir, act, des) {
+        // 속성 6가지 셋팅
+        this.포스터 = pos;
+        this.제목 = tit;
+        this.개요 = sum;
+        this.감독 = dir;
+        this.출연 = act;
+        this.문구 = des;
+
+        // 메서드 1가지 셋팅 : 영화감독 정보 리턴함!
+        this.함수 = () =>
+          `영화${this.제목} 의 감독님 이름은 ${this.감독}입니다!`;
+      } ///////////// MovieInfo 생성자함수 ///////////////
+
+      // 생성자함수의 데이터형은?
+      console.log("생성자함수 데이터형:", typeof MovieInfo);
+
+      // 영화정보 배열변수
+      const mi = [];
+
+      // 1. 생성자함수로 객체만들기
+      mi[0] = new MovieInfo(
+        "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+        "조제",
+        "멜로/로맨스, 드라마",
+        "김종관",
+        "한지민, 남주혁",
+        "조제 보러 오세요"
+      );
+
+      // 추가 객체생성하기
+      mi[1] = new MovieInfo(
+        "https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2",
+        "영웅",
+        "드라마, 뮤지컬",
+        "윤제균",
+        "정성화, 김고은",
+        "누가 죄인인가"
+      );
+
+      // 인스턴스 생성후 각 속성을 직접 셋팅할 수 있다!
+      mi[2] = new MovieInfo();
+      mi[2].포스터 =
+        "https://movie-phinf.pstatic.net/20221227_112/16721270739480lDiS_JPEG/movie_image.jpg?type=m203_290_2";
+      mi[2].제목 = "교섭";
+      mi[2].개요 = "드라마";
+      mi[2].감독 = "임순례";
+      mi[2].출연 = "황정민(정재호), 현빈(박대식)";
+      mi[2].문구 = "아쌀라말라이쿰";
+
+      // 객체 확인
+      console.log(mi);
+
+      //////////////////// 로드구역 ///////////////////////
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("로딩완료");
+
+        /* DOM선택 함수 */
+        const qs = (x) => document.querySelector(x);
+        const qsa = (x) => document.querySelectorAll(x);
+        // 화살표함수 원형 : () => {}
+        /* 
+                선언적 함수로 만들면?
+                function qs(x) {
+                    return document.querySelector(x)
+                }
+            */
+
+        // 0. 배열에 할당된 객체를 순회하기
+        let addCode = "";
+
+        // mi는 생성자함수로 만들어진 객체가 배열에 담긴것!
+        // for of로 배열을 순횐함!
+        for (let y of mi) {
+          console.log(y);
+          addCode += makeCode(y);
+        } //////// for of문 //////////
+        
+        console.log(addCode);
+
+        // 1. 페이지 요소에 코드 넣기
+        qs(".wrap").innerHTML = addCode;
+
+        // 2. 각 코드 생성후 개별박스 클릭시
+        // 객체 메서드 호출하여 메시지 창 띄우기!
+        // 대상
+        // 이벤트 설정
+        // 기능구현
+
+
+
+        // 코드 생성함수 : 단일객체로 코드 구성함!
+        function makeCode(mvi) {
+          return `
+            <section class="cbx">
+                <div class="minfo">
+                    <!-- 1. 포스터 -->
+                    <div class="photo">
+                        <img src="${mvi["포스터"]}" 
+                        alt="${mvi["제목"]}의 포스터">  
+                    </div>
+                    <div class="cont">
+                        <!-- 2. 제목 -->
+                        <h2 class="tit">
+                            ${mvi["제목"]}</h2>
+                        <!-- 3. 개요 -->
+                        <h3 class="sum">
+                            ★장르 : ${mvi["개요"]}</h3>
+                        <!-- 4. 감독 -->
+                        <h3 class="dir">
+                            ★감독 : ${mvi["감독"]}</h3>
+                        <!-- 5. 출연 -->
+                        <h3 class="act">
+                            ★출연 : ${mvi["출연"]}</h3>
+                    </div>
+                </div>
     
-</body>
+                <!-- 영화 한마디 -->
+                <h2 class="showtit">♥ 영화한마디!</h2>
+                <!-- 6. 문구 -->
+                <div class="show">
+                    ${wrapSpan(mvi["문구"])}
+                </div>
+            </section>
+            
+            `;
+        } /////// makeCode 함수 ////////////
+
+        // 3. 영화한마디 처리함수 : 한글자씩 span싸기
+        function wrapSpan(txt) {
+          let hcode = "";
+          for (let x of txt) {
+            if (x == " ") hcode += "&nbsp;&nbsp;";
+            else hcode += `<span>${x}</span>`;
+          } ///// for of //////
+
+          // 결과리턴 : 만들어진 코드
+          return hcode;
+        } ///////////// wrapSpan 함수 ///////
+
+        /************************************************* 
+                [ 객체를 위한 for in 문 ]
+
+                - 구문: 
+                for(변수 in 객체){코드}
+
+                - 작동원리:
+                객체의 개수만큼 순서대로 속성명과 속성값을 가져옴
+
+                - 변수는 객체의 속성명이다!
+
+                - 객체의 값을 사용하려면 for in 문 안에
+                    객체[변수] 로 쓰면됨!
+
+            *************************************************/
+      }); //////////////// 로드구역 ///////////////////////
+      /////////////////////////////////////////////////////
+    </script>
+    <style>
+      h1,
+      .btns,
+      .show {
+        text-align: center;
+      }
+      button {
+        font-size: 30px;
+      }
+
+      .minfo {
+        display: flex;
+        /* 자식요소 박스 옆으로 흐르게! */
+        /* outline: 1px solid red; */
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      .wrap {
+        /* 플렉스박스 */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+      .cbx {
+        margin: 10px;
+        padding: 10px;
+        border: 4px double gray;
+        border-radius: 10px;
+      }
+
+      .photo img {
+        height: 200px;
+        margin-right: 20px;
+      }
+
+      /* 영화한마디 글자박스 */
+      .showtit {
+        /* display: none; */
+        text-align: center;
+      }
+
+      .show span {
+        display: inline-block;
+        /* 가로,세로 등 디자인 적용+한줄에 나옴 */
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        /* 원 */
+        border: 2px solid #d30000;
+        background-color: #00f;
+        font-size: 20px;
+        color: #fff;
+
+        /* 동그라미 박스 정중앙 */
+        text-align: center;
+        line-height: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">생성자함수로 만든 객체</h1>
+    <main class="cont ibx">
+      <h2 style="text-align: center">무비차트</h2>
+      <!-- 영화정보박스 -->
+      <div class="wrap"></div>
+    </main>
+  </body>
 </html>
