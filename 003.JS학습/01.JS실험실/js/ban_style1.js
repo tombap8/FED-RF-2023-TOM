@@ -4,8 +4,17 @@
 import dFn from "./dom.js";
 
 
-// 슬라이드 함수 호출하기
-slideFn('.banbx');
+// 슬라이드 대상요소 : .banbx
+const banBox = dFn.qsa('.banbx');
+console.log('슬라이드 대상:',banBox);
+
+// 슬라이드 만큼 모두 호출하기!
+banBox.forEach(ele=>{
+    // 슬라이드 함수 호출하기
+    slideFn(ele);
+    // 실제 DOM요소를 보낸다!
+
+}); /////// forEach ///////////
 
 /***************************************************** 
     [ 슬라이드 이동 기능정의 ]
@@ -59,7 +68,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
     
     // 1. 대상선정
     // 1-1. 슬라이드 부모요소 : 전달된 선택요소 -> selEl
-    const sldWrap = dFn.qs(selEl);
+    const sldWrap = selEl;// DOM요소를 직접 받음!!!
     // 1-2.변경 대상: 선택요소 하위 .slide
     const slide = dFn.qsEl(sldWrap,'.slide');
     // 1-3.이벤트 대상: 선택요소 하위 .abtn
