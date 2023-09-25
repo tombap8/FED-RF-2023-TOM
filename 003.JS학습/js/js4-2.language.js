@@ -45,6 +45,11 @@ dFn.addEvt(selBox,'change',()=>{
 
     // 3. 데이터 셋팅하기 //////
     // 3-1. GNB 데이터 셋팅하기
+    gnbList.forEach((ele,idx)=>{
+        ele.innerText = selData['메뉴'][idx];
+    });
     // 3-2. 메인이미지 src 데이터 셋팅하기
+    mainImg.src = `images/${selVal}.jpg`;
     // 3-3. 회사주소 데이터 셋팅하기
+    addrBox.innerText = selData['주소'];
 });
