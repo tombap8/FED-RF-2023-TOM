@@ -112,6 +112,10 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
 
     // 3. 함수만들기
     function goSlide(){
+
+        // a요소 기본이동 막기
+        event.preventDefault();
+
         // 광클금지 //////////////
         if(clickSts) return;//나가!
         clickSts=1;//잠금!
