@@ -148,8 +148,14 @@
 
         // 2. 각 코드 생성후 개별박스 클릭시
         // 객체 메서드 호출하여 메시지 창 띄우기!
-        // 대상
+        // 대상: .cbx
+        const cbx = qsa('.cbx');
         // 이벤트 설정
+        cbx.forEach((ele,idx)=>{
+            ele.onclick = () => {
+                alert(mi[idx].함수());
+            }; ////// click ///////
+        })
         // 기능구현
 
 
