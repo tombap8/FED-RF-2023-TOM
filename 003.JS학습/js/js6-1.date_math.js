@@ -22,6 +22,7 @@ const addZero = (num) => (num < 10 ? "0" + num : num);
 
 // 인터발호출하기
 setInterval(showTime,1000);
+
 // 최초호출
 showTime();
 

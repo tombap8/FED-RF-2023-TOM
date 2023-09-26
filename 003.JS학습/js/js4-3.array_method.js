@@ -38,13 +38,46 @@ const mbtn = dFn.qsa('.mbtn');
 // 2-2. 변경 대상 : .showit (배열정보출력) / .cont (과일출력박스)
 const showit = dFn.qs('.showit');
 const cont = dFn.qs('.cont');
+// 2-3. 전체과일콤보박스 : #sel
+const sel = dFn.qs('#sel');
+// 2-4. 선택과일콤보박스(anum=array number) : #anum
+const anum = dFn.qs('#anum');
 
-console.log('대상:',mbtn,showit,cont);
 
+console.log('대상:',mbtn,showit,cont,sel,anum);
 
- // 3. 처음 배열 출력하기 ///////////
+// 3. 초기화 작업 : 처음배열출력 / 콤보박스 바인딩
+
+ // 3-1. 처음 배열 출력하기 함수 ///////////
+ const showArray = () =>
  showit.innerText = fruit.join('♥');
  // join() : 전체배열을 사이구분자를 넣고 문자열출력
+
+ // 처음배열출력함수 최초호출!
+ showArray();
+
+ // 3-2. 전체과일 콤보박스 바인딩
+ // 대상: #sel / 데이터: frObj[] 배열변수
+ // option 태그 변수
+ let opTag = '';
+ for(let x in frObj){ 
+    // x - 객체의 속성 / frObj[x] - 객체의 값
+    console.log(x);
+    // 내용 넣기
+    opTag += `<option>${x}</option>`;    
+ } ///////// for in //////////////
+ // 전체과일콤보박스 바인딩하기
+ sel.innerHTML = opTag;
+
+ // 3-3. 선택과일콤보박스 바인딩
+ // 대상: #anum / 데이터 : fruit[] 배열
+ // 갱신시 계속 재바인딩해야 하므로 함수로 만든다!!!
+ const bindCombo = () => {
+
+ }; ///////// bindCombo 함수 ////////////
+
+ // 객체는 끕이 높아 forEach를 쓸수 없다! -> for in
+//  console.log(frObj.forEach(val=>{console.log(val);}));
 
 // 4. 이벤트 설정하기 ////////
 mbtn.forEach(ele=>{
@@ -79,5 +112,33 @@ function showFruit(){
         cont.innerHTML = hcode;
 
     } //////////// if /////////
+    // 배열 뒤에 추가하기 메서드 : push()
+    else if(btxt == '뒷배열추가요~!'){
+        // 대상: fruit 배열
+        // 읽어올곳 : #sel 박스 -> 값은 value
+        fruit.push(sel.value);
+    } ///////// else if ////////////
+    // 배열 앞에 추가하기 메서드 : unshift() <-> shift()반대
+    else if(btxt == '앞배열추가요~!'){
+        // 대상: fruit 배열
+        // 읽어올곳 : #sel 박스 -> 값은 value
+        fruit.unshift(sel.value);
+    } ///////// else if ////////////
+    
+    // 뒷배열 삭제 메서드 : pop()
+    else if(btxt == '뒷배열삭제요~!'){
+        // 대상 : fruit
+        fruit.pop();
+    } ///////// else if ////////////
+    // 앞배열 삭제 메서드 : shift()
+    else if(btxt == '앞배열삭제요~!'){
+        // 대상 : fruit
+        fruit.shift();
+    } ///////// else if ////////////
+
+    // console.log(fruit);
+
+    // 배열화면찍기함수호출
+    showArray();
 
 } /////////// showFruit /////////////////
