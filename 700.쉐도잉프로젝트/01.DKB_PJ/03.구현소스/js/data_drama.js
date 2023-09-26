@@ -505,4 +505,4 @@ const clipData = [
   },
 ];
 // 모듈화 내보내기 ///////////
-export { gridData, gnbData, previewData };
+export { gridData, gnbData, previewData, clipData };
