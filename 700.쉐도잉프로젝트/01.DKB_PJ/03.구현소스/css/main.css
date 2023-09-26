@@ -345,6 +345,31 @@ body > div > * {
     height: 542px;
 }
 /*********** 최신동영상파트 ***********/
-.main .group-part-05 .partbox {
-    height: 376px;
+.clip-box ul {
+    display: flex;
+    gap: 0 2%;
+}
+
+.clip-box li {
+    flex-basis: calc(25% - 2%);
+    flex-shrink: 0;
+}
+
+.clip-box iframe {
+    width: 100%;
+}
+
+.clip-box h4 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.clip-box h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #555;
+}
+
+.clip-box {
+    overflow: hidden;
 }
