@@ -111,21 +111,21 @@ function showTime(){
 ***************************************/
 
 // 난수 발생시키기
-let rdm = Math.random();
-console.log(rdm);
+// let rdm = Math.random();
+// console.log(rdm);
 
 // 1~7 사이 난수발생하기
 // 방법: 난수에 발생할 최대수 곱하기 -> 올림/내림
-rdm = rdm * 7;
-console.log('난수*7:',rdm);
-console.log('난수*7 내림:',Math.floor(rdm));
-console.log('난수*7 올림:',Math.ceil(rdm));
+// rdm = rdm * 7;
+// console.log('난수*7:',rdm);
+// console.log('난수*7 내림:',Math.floor(rdm));
+// console.log('난수*7 올림:',Math.ceil(rdm));
 // -> 1부터 최대수는 올림처리 / 0부터 최대수-1은 내림처리
 
 // 중간난수는?
 // 예) 4~12 사이 난수는?
-console.log('4~12사이 난수:',
-Math.ceil(Math.random()*9)+3)
+// console.log('4~12사이 난수:',
+// Math.ceil(Math.random()*9)+3)
 
 /**************************************** 
     [ 내가 원하는 난수 만들기 ]
@@ -166,4 +166,23 @@ Math.ceil(Math.random()*9)+3)
 
 
 ****************************************/
+
+// 이미지 웹경로 배열
+const rimg = ["https://img.etnews.com/photonews/2110/1461216_20211007085904_466_0001.jpg", "https://d2qqqnyszmt41w.cloudfront.net/wp-content/uploads/2021/04/23150534/202104231445162082.jpg", "https://img.imbc.com/adams/Program/202111/132804027350463581.jpg", "https://image.ytn.co.kr/general/jpg/2021/0925/202109251350012465_d.jpg"];
+
+// 1. 요구사항 : 웹경로 이미지를 화면에 넣고 랜덤하게
+// 이미지를 칼라로 약간커지게 클래스 on을 주어서 변경함!
+
+// 2. 대상선정 : .imbx
+const imbx = dFn.qs('.imbx');
+
+// 3. 이미지 넣기
+// 배열만큼 이미지 넣기
+rimg.forEach(val=>{
+    imbx.innerHTML += `
+        <div>
+            <img src="${val}" alt="드라마이미지">
+        </div>
+    `;
+}); ///////// forEach ///////////
 
