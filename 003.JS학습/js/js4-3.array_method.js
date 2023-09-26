@@ -42,9 +42,12 @@ const cont = dFn.qs('.cont');
 const sel = dFn.qs('#sel');
 // 2-4. 선택과일콤보박스(anum=array number) : #anum
 const anum = dFn.qs('#anum');
+// 2-5. 지울개수입력창 : #delnum
+const delNum = dFn.qs('#delnum');
 
 
-console.log('대상:',mbtn,showit,cont,sel,anum);
+
+console.log('대상:',mbtn,showit,cont,sel,anum,delNum);
 
 // 3. 초기화 작업 : 처음배열출력 / 콤보박스 바인딩
 
@@ -59,22 +62,47 @@ console.log('대상:',mbtn,showit,cont,sel,anum);
  // 3-2. 전체과일 콤보박스 바인딩
  // 대상: #sel / 데이터: frObj[] 배열변수
  // option 태그 변수
- let opTag = '';
- for(let x in frObj){ 
-    // x - 객체의 속성 / frObj[x] - 객체의 값
-    console.log(x);
-    // 내용 넣기
-    opTag += `<option>${x}</option>`;    
- } ///////// for in //////////////
- // 전체과일콤보박스 바인딩하기
- sel.innerHTML = opTag;
+
+ ////////////////////////////////////////////////////////
+// [객체의 속성(키값)을 배열로 변환하여 배열메서드 이용하기]
+// 객체형식 -> {키:값}
+// 키만가지고 배열로 변환하는 Object 객체의 메서드 : keys()
+// Object.key(객체) -> 객체의 키를 값으로하는 배열생성!
+////////////////////////////////////////////////////////
+sel.innerHTML = 
+Object.keys(frObj)
+.map(v=>`<option>${v}</option>`).join('');
+
+// [1]객체의 키를 배열로!
+// console.log(Object.keys(frObj));
+
+// [2]객체의 값을 배열로! : 키스맵 객체[키] 변환!
+// console.log(Object.keys(frObj).map(v=>frObj[v]));
+
+
+
+//  let opTag = '';
+//  for(let x in frObj){ 
+//     // x - 객체의 속성 / frObj[x] - 객체의 값
+//     console.log(x);
+//     // 내용 넣기
+//     opTag += `<option>${x}</option>`;    
+//  } ///////// for in //////////////
+//  // 전체과일콤보박스 바인딩하기
+//  sel.innerHTML = opTag;
+
 
  // 3-3. 선택과일콤보박스 바인딩
  // 대상: #anum / 데이터 : fruit[] 배열
  // 갱신시 계속 재바인딩해야 하므로 함수로 만든다!!!
  const bindCombo = () => {
-
+    anum.innerHTML = 
+    fruit.map((v,i)=>
+    `<option value="${i}">${v}</option>`).join('');
  }; ///////// bindCombo 함수 ////////////
+
+ // 선택과일콤보 바인딩함수 최초호출!
+ bindCombo();
 
  // 객체는 끕이 높아 forEach를 쓸수 없다! -> for in
 //  console.log(frObj.forEach(val=>{console.log(val);}));
@@ -135,10 +163,31 @@ function showFruit(){
         // 대상 : fruit
         fruit.shift();
     } ///////// else if ////////////
+    // 중간배열 삭제 메서드 : splice()
+    // 삭제시: splice(순번) -> 순번부터 뒤를 모두 삭제
+    //         splice(순번,개수) -> 순번부터 개수만큼 삭제
+    else if(btxt == '중간배열삭제'){
+        // 대상 : fruit
+        fruit.splice(anum.value,delNum.value);
+        console.log('지울순번:',anum.value,
+        '/지울개수:',delNum.value);
+    } ///////// else if ////////////
+    // 중간배열삽입 메서드 : splice()
+    // 삽입시: splice(순번,0,넣을값,넣을값,...)
+    // -> 순번뒤에 0을 쓰고 그 뒤에 값을 쓰면 삽입됨
+    // -> 선택순번 앞쪽에 배열값이 삽입됨!
+    else if(btxt == '중간배열삽입'){
+        // 대상 : fruit
+        fruit.splice(anum.value,0,sel.value);
+        console.log('삽입순번:',anum.value);
+    } ///////// else if ////////////
 
     // console.log(fruit);
 
     // 배열화면찍기함수호출
     showArray();
+
+    // 선택배열콤보박스 바인딩 함수 호출!
+    bindCombo();
 
 } /////////// showFruit /////////////////
