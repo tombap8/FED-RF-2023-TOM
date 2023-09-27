@@ -21,6 +21,11 @@
 // DOM메서드 모듈
 import domFn from "./dom.js";
 
+// 데이터 제이슨 불러오기 : 어서써 타입 제이슨!
+import mvData from './data_moving.json' assert{type:'json'};
+
+// console.log(mvData);
+
 // 0. 변수셋팅
 // 단위각도
 const DEG = 40;
@@ -72,6 +77,7 @@ function rotateMem() {
   // 호출확인
 //   console.log("휠!~~~~", delta, numWheel);
   console.log("캐릭터 고유번호:", catNum);
+  console.log("캐릭터 데이터:", mvData[catNum]);
 
   // 3. 회전대상요소에 각도 적용하기
   // 적용각도 = 단위각도 * 휠단위수
