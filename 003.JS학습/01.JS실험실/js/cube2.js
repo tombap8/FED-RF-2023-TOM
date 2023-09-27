@@ -44,7 +44,10 @@ let autoT;
 
 // 1. 대상선정 : .cube
 const cube = domFn.qs(".cube");
-console.log("대상:", cube);
+// 정보표시박스 : .cat-info
+const infoBox = domFn.qs('.cat-info');
+// console.log("대상:", cube, infoBox);
+
 
 /// 2. 이벤트 설정하기
 domFn.addEvt(window, "wheel", rotateMem);
@@ -90,6 +93,9 @@ function rotateMem() {
   // 0.5초후 캐릭터 정보 셋팅함수 호출!
   autoT = setTimeout(showInfo,500);
 
+  // 5. 기본 캐릭터정보 박스 클래스on지우기
+  infoBox.classList.remove('on');
+
 
 } //////////// rotateMem 함수 ///////////
 
@@ -100,5 +106,14 @@ function rotateMem() {
  ****************************************/
 function showInfo(){
     console.log('보여줄께...', mvData[catNum]);
+
+    // 정보표시박스에 h2,p요소 정보와 함께 넣기
+    infoBox.innerHTML = `
+        <h2>${mvData[catNum].name}</h2>
+        <p>${mvData[catNum].desc}</p>
+    `;
+    // 등장 클래스 on주기
+    infoBox.classList.add('on');
+
 
 } ////////////// showInfo 함수 ////////////

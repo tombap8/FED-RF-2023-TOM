@@ -2,6 +2,9 @@
 
 /* 큐브 애니메이션2 CSS - cube2.css */
 
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
 /* CSS 변수셋팅 */
 :root{
     /* 큐브 공통크기 */
@@ -21,7 +24,59 @@ body{
     background-image: 
     linear-gradient(to bottom, #a1f4e0, #ef95fb);
     height: 100vh;
+    font-family: 'East Sea Dokdo', cursive;
 }
+
+/* 캐릭터 정보 표시박스 */
+
+.cat-info{
+    position: absolute;
+    top: 100vh;
+    left: 50%;
+    transform: translateX(-50%) rotateX(360deg);
+    width: 50vw;
+    height: 20vh;
+    background-color: rgb(255 255 255 / 0.5);
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #00000089;
+    overflow: hidden;
+}
+/* 클래스 on넣으면 위로 올라옴! */
+.cat-info.on{
+    top: 5vh;
+    transform: translateX(-50%) rotateX(0deg);
+    /* 등장할때만 애니메이션효과! */
+    transition: 0.5s ease-out;
+}
+.cat-info h2{
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    
+    text-align: center;
+    height: 35%;
+    font-size: 6vh;
+    color: goldenrod;
+    text-shadow: 2px 2px 3px #000;
+
+    /* 겹쳐지는 아랫쪽요소가 블러처리됨! */
+    backdrop-filter: blur(3px);
+
+    /* 아랫쪽 보더 */
+    border-bottom: 2px solid #ccc;
+}
+.cat-info p{
+    padding: 2vh;
+    margin: 0;
+    height: 50%;
+    padding-top: 7vh;
+    font-size: 3vh;
+    overflow: auto;
+    color: #777;
+}
+
+
 /* 큐브를 직접 싸고 있는 대상 */
 /* 
     [ 전체 랩핑박스 : .wrap ]
