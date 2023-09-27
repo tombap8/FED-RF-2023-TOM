@@ -2,7 +2,7 @@
 
 
 // DOM메서드 모듈
-import domFn from "./dom.js";
+import dFn from "./dom.js";
 
 /********************************************** 
             [ 게임 기능정의 ]
@@ -27,20 +27,27 @@ import domFn from "./dom.js";
 
 // 1. 대상선정 ///////////////////
 // (1) 거북 : #t1
+const t1 = dFn.qs('#t1');
 
 // (2) 토끼 : #r1
+const r1 = dFn.qs('#r1');
 
 // (3) 버튼 : #btns a
+const btns = dFn.qsa('#btns a');
 
 // (4) 레벨 : #level
+const level = dFn.qs('#level');
 
 // (5) 메시지박스 : #msg
+const msg = dFn.qs('#msg');
 
 // (6) 토끼, 거북 위치값 변수
+let r1pos = 0, t1pos = 0;
 
 // 토끼위치 : r1pos / 거북위치 : t1pos 
 
-// cg(msg);
+
+console.log('대상:',t1,r1,btns,level,msg);
 
 // 2. 이벤트 설정하기 ////////////
 // 대상: 버튼들 - btns변수
