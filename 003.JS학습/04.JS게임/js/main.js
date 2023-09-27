@@ -169,9 +169,36 @@ function whoWinner(){
         // 랜덤수 만들기
         let rdmNum = 
         Math.floor(Math.random()*selMsg.length);
-        console.log('랜덤수:',rdmNum,
-        '/개수:',selMsg.length);
-        console.log('랜덤메시지:',selMsg[rdmNum]);
+        // console.log('랜덤수:',rdmNum,
+        // '/개수:',selMsg.length);
+        // console.log('랜덤메시지:',selMsg[rdmNum]);
+
+        // 랜덤 메시지
+        let rdmMsg = selMsg[rdmNum];
+
+        // (5) 메시지 박스에 메시지 넣기
+        msg.innerText = rdmMsg;
+
+        // (6) 메시지 박스 보이기
+        msg.style.display = 'block';
+        msg.style.zIndex = '100';
+
+        // (7) 전체 반투명 커버 암전주기
+        dFn.qs('.cover').innerHTML += 
+        `<div 
+            style='
+                position:fixed;
+                top:0;
+                left:0;
+                width:100vw;
+                height:100vh;
+                background-color:#000;
+                opacity:0.5;
+                z-index:99;
+        '></div>`;
+
+        // (8) 버튼박스 위로 올리기
+        dFn.qs('#btns').style.zIndex = '200';
 
 
 
