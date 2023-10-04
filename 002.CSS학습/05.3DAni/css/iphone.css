@@ -113,3 +113,18 @@ body {
     /* z축 밀기 + y축회전 : 180도 */
     transform: translateZ(calc(var(--phone-side)/-2)) rotateY(calc(var(--rotate-deg)*2));
 }
+
+/* 아이폰 회전클래스 */
+.ip-ani{
+    /* 애니메이션 : 이시이지반방마 */
+    animation: iphone-ani 1.5s ease-in-out 1s 2 alternate;
+}
+
+/* 아이폰 회전 키프레임 */
+@keyframes iphone-ani {
+    to{
+        transform: rotateX(370deg) rotateY(-330deg);
+        /* x축 10도에서 시작, y축은 30도에서 시작
+        -> x축은 정방향이므로 더하고 y축은 역방향이므로 뺌 */
+    }
+}
