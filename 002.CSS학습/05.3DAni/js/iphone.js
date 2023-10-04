@@ -37,3 +37,20 @@ const iphone = dFn.qs('.iphone');
 
 console.log('대상:',evtBox,iphone);
 
+// 2. 이벤트설정 : 이벤트 종류 - mouseenter(경계선안에들어옴)
+evtBox.forEach(
+    (ele,idx)=>
+    dFn.addEvt(ele,'mouseenter',()=>seeMe(idx))); 
+
+// 3. 함수 만들기 ////////////////
+function seeMe(seq){// seq - 순번받기
+    // console.log('나를봐!',event.currentTarget,seq);
+
+    // 1. 변경적용하기 : 대상 - .iphone
+    iphone.style.transform = 
+    `rotateX(${iDeg[seq][0]}deg) rotateY(${iDeg[seq][1]}deg)`;
+    // 트랜지션 변경하기
+    iphone.style.transition = '.4s ease-out';
+
+} //////// seeMe 함수 //////////////
+
