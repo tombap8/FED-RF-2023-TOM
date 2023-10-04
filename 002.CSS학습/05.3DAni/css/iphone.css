@@ -202,10 +202,42 @@ body {
     animation: txt-ani2 10s linear infinite;
 }
 
-/* 흘러가는 글자 키프레임1 */
+/* 흘러가는 글자 키프레임2 */
 @keyframes txt-ani2 {
     to{
         left: 0;
+    }
+}
+
+/* 글자내용이 긴 경우 글자흘러가기 */
+.f3{
+    bottom: 5vh;
+}
+.f3 .tbx{
+    width: 7583px;
+}
+.f3 span{
+    display: block;
+    /* 글자설정 */
+    font-family: 'Anton';
+    font-size: 40px;
+    color: orangered;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
+}
+
+
+/* 흘러가는 텍스트애니 클래스3 */
+.txt-ani3{
+    /* 애니메이션: 이시이지반방마 */
+    animation: txt-ani3 30s linear infinite;
+}
+
+/* 흘러가는 글자 키프레임3 
+-> 기본단위 크기가 7583px이므로 
+left 하나당 크기는 7583px의 절반크기 마이너스 */
+@keyframes txt-ani3 {
+    to{
+        left: calc(7583px/-2);
     }
 }
 
