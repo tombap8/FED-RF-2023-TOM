@@ -34,6 +34,8 @@ const iDeg = [
 const evtBox = dFn.qsa('.evt-box div');
 // 1-2.변경대상: .iphone
 const iphone = dFn.qs('.iphone');
+// 1-3.스크린: #screen
+const screen = dFn.qs('#screen');
 
 console.log('대상:',evtBox,iphone);
 
