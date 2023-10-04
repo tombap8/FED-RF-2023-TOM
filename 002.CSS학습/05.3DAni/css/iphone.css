@@ -28,252 +28,271 @@ body {
   height: 100vh;
   /* 넘치는 자식요소 숨기기 */
   overflow: hidden;
+
+  /* [ 커서 이미지로 보이기 ]
+    cursor: url(이미지경로),auto;
+    사이즈등의 이유로 안나올 수 있음
+    때를 대비하여 auto/pointer 등 대체항목을 url() 뒤에
+    콤마하고 써야함!
+    - 커서 이미지의 기본위치는 맨위/왼쪽끝 이다
+    - 이위치를 변경하는 옵션이 있다
+    cursor: url(이미지경로) x위치 y위치,auto;
+    예) cursor: url(이미지경로) 10 20,auto;
+    숫자만 써도 px로 처리, 이미지 한계값을 넘어가면 처리안됨!  
+  */
+
+  /* 나오는 케이스 */
+  /* cursor: url(../images/door.png), auto; */
+  cursor: url(../images/door.png) 10 50, auto;
+
+  /* 안나오는 케이스 */
+  /* cursor: url(../images/car.png),auto; */
+  /* cursor: url(../images/car.png),pointer; */
+  /* cursor: url(../images/car.png),move; */
 }
 
 /* 폰박스 */
 .iphone {
-    /* 위치정중앙 : 50%위치 - 크기절반 */
-    position: absolute;
-    top: calc(50% - var(--phone-height)/2);
-    left: calc(50% - var(--phone-width)/2);
+  /* 위치정중앙 : 50%위치 - 크기절반 */
+  position: absolute;
+  top: calc(50% - var(--phone-height) / 2);
+  left: calc(50% - var(--phone-width) / 2);
 
-    width: var(--phone-width);
-    height: var(--phone-height);
+  width: var(--phone-width);
+  height: var(--phone-height);
 
-    /* 입체설정 : tfs */
-    transform-style: preserve-3d;
-    /* 입체를 잘보이게 약간회전 */
-    transform: rotateX(10deg) rotateY(30deg);
+  /* 입체설정 : tfs */
+  transform-style: preserve-3d;
+  /* 입체를 잘보이게 약간회전 */
+  transform: rotateX(10deg) rotateY(30deg);
 
-    /* outline: 2px solid blue; */
+  /* outline: 2px solid blue; */
 }
 
 /* 폰 각면 공통 */
-.iphone span{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.iphone span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
-    /* 배경공통속성 */
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+  /* 배경공통속성 */
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
-    /* outline: 1px dashed red; */
+  /* outline: 1px dashed red; */
 }
 
 /* 1. 앞면 */
-.iphone span:nth-child(1){
-    background-image: url(../images/ip01.png);
-    
-    /* z축 밀기 */
-    transform: translateZ(calc(var(--phone-side)/2));
+.iphone span:nth-child(1) {
+  background-image: url(../images/ip01.png);
+
+  /* z축 밀기 */
+  transform: translateZ(calc(var(--phone-side) / 2));
 }
 /* 앞면 화면변경박스 */
-.iphone span:nth-child(1) b#screen{
-    position: absolute;
-    top: 47px;
-    left: 12px;
-    width: 175px;
-    height: 305px;
-    /* background-color: rgba(255, 0, 0, 0.454); */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
+.iphone span:nth-child(1) b#screen {
+  position: absolute;
+  top: 47px;
+  left: 12px;
+  width: 175px;
+  height: 305px;
+  /* background-color: rgba(255, 0, 0, 0.454); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 /* 2. 오른쪽면 */
-.iphone span:nth-child(2){
-    background-image: url(../images/ip03.png);
-    width: var(--phone-side);
-    right: calc(var(--phone-side)/-2);
+.iphone span:nth-child(2) {
+  background-image: url(../images/ip03.png);
+  width: var(--phone-side);
+  right: calc(var(--phone-side) / -2);
 
-    /*  y축회전 : 90도 */
-    transform: rotateY(var(--rotate-deg));
+  /*  y축회전 : 90도 */
+  transform: rotateY(var(--rotate-deg));
 }
 /* 3. 왼쪽면 */
-.iphone span:nth-child(3){
-    background-image: url(../images/ip04.png);
-    width: var(--phone-side);
-    left: calc(var(--phone-side)/-2);
+.iphone span:nth-child(3) {
+  background-image: url(../images/ip04.png);
+  width: var(--phone-side);
+  left: calc(var(--phone-side) / -2);
 
-    /*  y축회전 : -90도 */
-    transform: rotateY(calc(var(--rotate-deg)*-1));
+  /*  y축회전 : -90도 */
+  transform: rotateY(calc(var(--rotate-deg) * -1));
 }
 /* 4. 윗면 */
-.iphone span:nth-child(4){
-    background-image: url(../images/ip06.png);
-    height: var(--phone-side);
-    top: calc(var(--phone-side)/-2);
+.iphone span:nth-child(4) {
+  background-image: url(../images/ip06.png);
+  height: var(--phone-side);
+  top: calc(var(--phone-side) / -2);
 
-    /*  x축회전 : -90도 */
-    transform: rotateX(calc(var(--rotate-deg)*-1));
+  /*  x축회전 : -90도 */
+  transform: rotateX(calc(var(--rotate-deg) * -1));
 }
 /* 5. 아랫면 */
-.iphone span:nth-child(5){
-    background-image: url(../images/ip05.png);
-    height: var(--phone-side);
-    bottom: calc(var(--phone-side)/-2);
+.iphone span:nth-child(5) {
+  background-image: url(../images/ip05.png);
+  height: var(--phone-side);
+  bottom: calc(var(--phone-side) / -2);
 
-    /*  평면회전 : 180도 + x축회전 : 90도 */
-    transform: rotate(calc(var(--rotate-deg)*2)) rotateX(var(--rotate-deg));
+  /*  평면회전 : 180도 + x축회전 : 90도 */
+  transform: rotate(calc(var(--rotate-deg) * 2)) rotateX(var(--rotate-deg));
 }
 
 /* 6. 뒷면 */
-.iphone span:nth-child(6){
-    background-image: url(../images/ip02.png);
+.iphone span:nth-child(6) {
+  background-image: url(../images/ip02.png);
 
-    /* z축 밀기 + y축회전 : 180도 */
-    transform: translateZ(calc(var(--phone-side)/-2)) rotateY(calc(var(--rotate-deg)*2));
+  /* z축 밀기 + y축회전 : 180도 */
+  transform: translateZ(calc(var(--phone-side) / -2))
+    rotateY(calc(var(--rotate-deg) * 2));
 }
 
 /* 아이폰 회전클래스 */
-.ip-ani{
-    /* 애니메이션 : 이시이지반방마 */
-    animation: iphone-ani 1.5s ease-in-out 1s 2 alternate;
+.ip-ani {
+  /* 애니메이션 : 이시이지반방마 */
+  animation: iphone-ani 1.5s ease-in-out 1s 2 alternate;
 }
 
 /* 아이폰 회전 키프레임 */
 @keyframes iphone-ani {
-    to{
-        transform: rotateX(370deg) rotateY(-330deg);
-        /* x축 10도에서 시작, y축은 30도에서 시작
+  to {
+    transform: rotateX(370deg) rotateY(-330deg);
+    /* x축 10도에서 시작, y축은 30도에서 시작
         -> x축은 정방향이므로 더하고 y축은 역방향이므로 뺌 */
-    }
+  }
 }
 
 /* 흘러가는 글자박스 */
-.fbx{
-    position: absolute;
-    width: 100vw;
+.fbx {
+  position: absolute;
+  width: 100vw;
 }
 /* 내부 흘러가는 박스
 (움직일박스) */
-.tbx{
-    position: relative;
-    left: 0;
+.tbx {
+  position: relative;
+  left: 0;
 
-    /* 크기는 부모박스의 2배수 */
-    width: 200vw;
+  /* 크기는 부모박스의 2배수 */
+  width: 200vw;
 
-    display: flex;
-    /* 하위ul박스 옆으로 흐름 */
+  display: flex;
+  /* 하위ul박스 옆으로 흐름 */
 }
 /* .tbx ul */
-.tbx ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.tbx ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-    /* .tbx의 자식으로 등분할 */
-    flex: 1;
+  /* .tbx의 자식으로 등분할 */
+  flex: 1;
 
-    display: flex;
-    /* 하위 li 옆으로 흐름 */
+  display: flex;
+  /* 하위 li 옆으로 흐름 */
 }
 
 /* 글자를 담고 있는 li 등분할 */
 
-.tbx li{
-    flex: 1;
+.tbx li {
+  flex: 1;
 
-    /* 글자설정 */
-    text-align: center;
-    font-family: 'Anton';
-    font-size: 4vw;
-    color: #a0a0a0;
-    text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
+  /* 글자설정 */
+  text-align: center;
+  font-family: "Anton";
+  font-size: 4vw;
+  color: #a0a0a0;
+  text-shadow: 2px 2px 2px rgb(0 0 0 / 0.8);
 
-    /* outline: 2px dotted red; */
+  /* outline: 2px dotted red; */
 }
 
 /* 흘러가는 텍스트애니 클래스1 */
-.txt-ani1{
-    /* 애니메이션: 이시이지반방마 */
-    animation: txt-ani1 10s linear infinite;
+.txt-ani1 {
+  /* 애니메이션: 이시이지반방마 */
+  animation: txt-ani1 10s linear infinite;
 }
 
 /* 흘러가는 글자 키프레임1 */
 @keyframes txt-ani1 {
-    to{
-        left: -100%;
-    }
+  to {
+    left: -100%;
+  }
 }
 
 /* 반대방향 글자박스 */
-.f2{
-    top: 12vh;
+.f2 {
+  top: 12vh;
 }
 /* 오른쪽으로 흘러가게 left를 셋팅! -> 0으로 애니 */
-.f2 .tbx{
-    left: -100%;
+.f2 .tbx {
+  left: -100%;
 }
 
 /* 흘러가는 텍스트애니 클래스2 */
-.txt-ani2{
-    /* 애니메이션: 이시이지반방마 */
-    animation: txt-ani2 10s linear infinite;
+.txt-ani2 {
+  /* 애니메이션: 이시이지반방마 */
+  animation: txt-ani2 10s linear infinite;
 }
 
 /* 흘러가는 글자 키프레임2 */
 @keyframes txt-ani2 {
-    to{
-        left: 0;
-    }
+  to {
+    left: 0;
+  }
 }
 
 /* 글자내용이 긴 경우 글자흘러가기 */
-.f3{
-    bottom: 5vh;
+.f3 {
+  bottom: 5vh;
 }
-.f3 .tbx{
-    width: 7623px;
+.f3 .tbx {
+  width: 7623px;
 }
-.f3 span{
-    display: block;
-    /* 글자설정 */
-    font-family: 'Anton';
-    font-size: 40px;
-    color: orangered;
-    text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
+.f3 span {
+  display: block;
+  /* 글자설정 */
+  font-family: "Anton";
+  font-size: 40px;
+  color: orangered;
+  text-shadow: 2px 2px 2px rgb(0 0 0 / 0.8);
 
-    padding-left: 20px;
+  padding-left: 20px;
 }
-
 
 /* 흘러가는 텍스트애니 클래스3 */
-.txt-ani3{
-    /* 애니메이션: 이시이지반방마 */
-    animation: txt-ani3 30s linear infinite;
+.txt-ani3 {
+  /* 애니메이션: 이시이지반방마 */
+  animation: txt-ani3 30s linear infinite;
 }
 
 /* 흘러가는 글자 키프레임3 
 -> 기본단위 크기가 7623px이므로 
 left 하나당 크기는 7623px의 절반크기 마이너스 */
 @keyframes txt-ani3 {
-    to{
-        left: calc(7623px/-2);
-    }
+  to {
+    left: calc(7623px / -2);
+  }
 }
-
-
 
 /* 아이폰 따라보기 이벤트 박스 */
-.evt-box{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 0;
-    height: 100vh;
+.evt-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 0;
+  height: 100vh;
 
-    /* 플렉스박스 */
-    display: flex;
-    /* 랩핑박스 */
-    flex-wrap: wrap;
+  /* 플렉스박스 */
+  display: flex;
+  /* 랩핑박스 */
+  flex-wrap: wrap;
 }
-.evt-box div{
-    width: 20%;
-    height: 33.33%;
-    /* outline: 1px dashed green; */
+.evt-box div {
+  width: 20%;
+  height: 33.33%;
+  /* outline: 1px dashed green; */
 }
