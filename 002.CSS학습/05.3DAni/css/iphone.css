@@ -243,3 +243,24 @@ left 하나당 크기는 7623px의 절반크기 마이너스 */
     }
 }
 
+
+
+/* 아이폰 따라보기 이벤트 박스 */
+.evt-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+
+    /* 플렉스박스 */
+    display: flex;
+    /* 랩핑박스 */
+    flex-wrap: wrap;
+}
+.evt-box div{
+    width: 20%;
+    height: 50%;
+    outline: 1px dashed green;
+}
