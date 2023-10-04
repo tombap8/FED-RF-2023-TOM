@@ -128,3 +128,84 @@ body {
         -> x축은 정방향이므로 더하고 y축은 역방향이므로 뺌 */
     }
 }
+
+/* 흘러가는 글자박스 */
+.fbx{
+    position: absolute;
+    width: 100vw;
+}
+/* 내부 흘러가는 박스
+(움직일박스) */
+.tbx{
+    position: relative;
+    left: 0;
+
+    /* 크기는 부모박스의 2배수 */
+    width: 200vw;
+
+    display: flex;
+    /* 하위ul박스 옆으로 흐름 */
+}
+/* .tbx ul */
+.tbx ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    /* .tbx의 자식으로 등분할 */
+    flex: 1;
+
+    display: flex;
+    /* 하위 li 옆으로 흐름 */
+}
+
+/* 글자를 담고 있는 li 등분할 */
+
+.tbx li{
+    flex: 1;
+
+    /* 글자설정 */
+    text-align: center;
+    font-family: 'Anton';
+    font-size: 4vw;
+    color: #a0a0a0;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
+
+    outline: 2px dotted red;
+}
+
+/* 흘러가는 텍스트애니 클래스1 */
+.txt-ani1{
+    /* 애니메이션: 이시이지반방마 */
+    animation: txt-ani1 10s linear infinite;
+}
+
+/* 흘러가는 글자 키프레임1 */
+@keyframes txt-ani1 {
+    to{
+        left: -100%;
+    }
+}
+
+/* 반대방향 글자박스 */
+.f2{
+    top: 15vh;
+}
+/* 오른쪽으로 흘러가게 left를 셋팅! -> 0으로 애니 */
+.f2 .tbx{
+    left: -100%;
+}
+
+/* 흘러가는 텍스트애니 클래스2 */
+.txt-ani2{
+    /* 애니메이션: 이시이지반방마 */
+    animation: txt-ani2 10s linear infinite;
+}
+
+/* 흘러가는 글자 키프레임1 */
+@keyframes txt-ani2 {
+    to{
+        left: 0;
+    }
+}
+
