@@ -16,17 +16,17 @@ import dFn from './dom.js';
 // 0.데이터 셋팅 : x,y축 회전 각도를 배열에 셋팅!
 const iDeg = [
     // 상단영역
-    [20,60],
-    [20,30],
-    [20,0],
-    [20,-30],
-    [20,-60],
+    [25,-60,"Bart_Simpson.png"],
+    [25,-30,"simpson.png"],
+    [25,0,"Lisa_Simpson.png"],
+    [25,30,"Maggie_Simpson.png"],
+    [25,60,"Marge_Simpson.png"],
     // 하단영역
-    [-20,60],
-    [-20,30],
-    [-20,0],
-    [-20,-30],
-    [-20,-60],
+    [-25,-60,"capma.png"],
+    [-25,-30,"elsa.png"],
+    [-25,0,"jupiter.png"],
+    [-25,30,"pluto.png"],
+    [-25,60,"sun.png"],
 ];
 
 // 1. 대상선정
@@ -46,11 +46,14 @@ evtBox.forEach(
 function seeMe(seq){// seq - 순번받기
     // console.log('나를봐!',event.currentTarget,seq);
 
-    // 1. 변경적용하기 : 대상 - .iphone
+    // 1. 변경적용하기 : 폰 회전
+    // 대상 - .iphone
     iphone.style.transform = 
     `rotateX(${iDeg[seq][0]}deg) rotateY(${iDeg[seq][1]}deg)`;
     // 트랜지션 변경하기
     iphone.style.transition = '.4s ease-out';
+
+    // 2. 변경적용하기 : 앞면 이미지
 
 } //////// seeMe 함수 //////////////
 

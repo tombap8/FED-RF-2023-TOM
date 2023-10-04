@@ -65,10 +65,23 @@ body {
 /* 1. 앞면 */
 .iphone span:nth-child(1){
     background-image: url(../images/ip01.png);
-
+    
     /* z축 밀기 */
     transform: translateZ(calc(var(--phone-side)/2));
 }
+/* 앞면 화면변경박스 */
+.iphone span:nth-child(1) b#screen{
+    position: absolute;
+    top: 47px;
+    left: 12px;
+    width: 175px;
+    height: 305px;
+    /* background-color: rgba(255, 0, 0, 0.454); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
 /* 2. 오른쪽면 */
 .iphone span:nth-child(2){
     background-image: url(../images/ip03.png);
