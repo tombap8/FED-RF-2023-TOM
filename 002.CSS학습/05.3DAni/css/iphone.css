@@ -171,7 +171,7 @@ body {
     color: #a0a0a0;
     text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
 
-    outline: 2px dotted red;
+    /* outline: 2px dotted red; */
 }
 
 /* 흘러가는 텍스트애니 클래스1 */
@@ -189,7 +189,7 @@ body {
 
 /* 반대방향 글자박스 */
 .f2{
-    top: 15vh;
+    top: 12vh;
 }
 /* 오른쪽으로 흘러가게 left를 셋팅! -> 0으로 애니 */
 .f2 .tbx{
@@ -214,7 +214,7 @@ body {
     bottom: 5vh;
 }
 .f3 .tbx{
-    width: 7583px;
+    width: 7623px;
 }
 .f3 span{
     display: block;
@@ -223,6 +223,8 @@ body {
     font-size: 40px;
     color: orangered;
     text-shadow: 2px 2px 2px rgb(0 0 0 / .8);
+
+    padding-left: 20px;
 }
 
 
@@ -233,11 +235,11 @@ body {
 }
 
 /* 흘러가는 글자 키프레임3 
--> 기본단위 크기가 7583px이므로 
-left 하나당 크기는 7583px의 절반크기 마이너스 */
+-> 기본단위 크기가 7623px이므로 
+left 하나당 크기는 7623px의 절반크기 마이너스 */
 @keyframes txt-ani3 {
     to{
-        left: calc(7583px/-2);
+        left: calc(7623px/-2);
     }
 }
 
