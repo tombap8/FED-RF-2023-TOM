@@ -22,7 +22,7 @@ const listCode = data.map(val=>
         </tr>
     ); ///// map으로 데이터를 변경하여 다시 새로운 배열을 생성! ///
 
-    // console.log(listCode);
+    console.log(listCode);
 
 
 // 전체 테이블 코드 ///////
