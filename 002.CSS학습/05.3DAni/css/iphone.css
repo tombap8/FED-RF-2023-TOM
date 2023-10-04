@@ -264,7 +264,7 @@ left 하나당 크기는 7623px의 절반크기 마이너스 */
     top: 0;
     left: 0;
     z-index: 999;
-    width: 100vw;
+    width: 0;
     height: 100vh;
 
     /* 플렉스박스 */
@@ -275,5 +275,5 @@ left 하나당 크기는 7623px의 절반크기 마이너스 */
 .evt-box div{
     width: 20%;
     height: 33.33%;
-    outline: 1px dashed green;
+    /* outline: 1px dashed green; */
 }

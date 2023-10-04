@@ -69,3 +69,48 @@ function seeMe(seq) {
   screen.style.backgroundImage = `url(images/imgs_moving/${iDeg[seq][2]})`;
   screen.style.backgroundColor = `white`;
 } //////// seeMe 함수 //////////////
+
+
+// 이벤트영역 박스 5초후 작동되도록 width값 변경하기 ///
+// 대상: .evt-box -> eBox변수
+setTimeout(()=>{
+    eBox.style.width = '100vw';
+},5000);
+
+////////////////////////////////////////////
+// 마우스 포인터 변경하기! ///////////////////
+// 대상: .evt-box -> eBox변수
+dFn.addEvt(eBox,'mouseenter',function(){
+    console.log('마우스 포인터바뀜');
+    // 1. 이 박스범위안에서 커서 없애기
+    this.style.cursor = 'none';  
+
+    // 2. 커서박스 읽어와서 셋팅하기
+    let cursorImg = dFn.qs('.cursor-box');
+    cursorImg.style.position = 'fixed';
+    cursorImg.style.width = '150px';
+    cursorImg.style.height = '250px';
+    cursorImg.style.background = 
+    'url(./images/capma.png) no-repeat 0/100% 100%';
+
+
+    // 3.이 박스 범위에서 mousemove이벤트 발생시 커서 위치이동셋팅
+    dFn.addEvt(this,'mousemove',(e)=>{
+        cursorImg.style.top = e.pageY + 'px';
+        cursorImg.style.left = e.pageX + 'px';
+    });
+    
+}); /////////////// mouseenter 함수 ////////////
+
+/* 
+    [ 마우스 오버/아웃 관련 이벤트 차이점 ]
+    1. mouseover/mouseout : 요소자체를 기준
+    2. mouseenter/mouseleave : 요소 경계선 기준
+    -> 둘의 차이는 이벤트 버블링에 있다!
+    -> 경계선 기준의 이벤트인 mouseenter/mouseleave는
+    자체요소에서만 발생하고 버블링되지 않는다!
+    -> 자손요소에서 버블링되어 발생하는 mouseover/mouseout으로
+    셋팅할 경우 빈번한 이벤트발생이 문제가 될 경우
+    mouseenter/mouseleave를 사용할 것을 w3c가 권고함!
+*/
+
