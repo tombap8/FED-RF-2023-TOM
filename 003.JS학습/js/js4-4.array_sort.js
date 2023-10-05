@@ -32,3 +32,11 @@ import dFn from './dom.js';
 
 
 ******************************************************/
+
+// 숫자값 배열
+const arrNumber = [4, 5, 8, 10, 2, 1, 9, 3, 7, 6];
+// 문자값 배열
+const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"];
+
+console.log('숫자배열:',arrNumber);
+console.log('문자배열:',arrString);
