@@ -1,7 +1,7 @@
 // JS4-4. 배열의 정렬과 검색 JS
 
 // DOM메서드
-import dFn from './dom.js';
+import dFn from "./dom.js";
 
 // console.log(dFn);
 
@@ -119,13 +119,16 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 // map()메서드로 배열값을 태그로 감싸서 출력하기
 
 // (1) 출력대상: .showNum
-const showNum = dFn.qs('.showNum');
+const showNum = dFn.qs(".showNum");
 
 // (2) 배열 숫자 데이터 만큼 이미지로 변환하여 출력
 // map().join() 맵쬬잉!
 const showScreen = () =>
-showNum.innerHTML = arrNumber.map(val=>
-    `<img src="./images/num/num_0${val}.png" alt="숫자${val}이미지">`).join('');
+  (showNum.innerHTML = arrNumber
+    .map(
+      (val) => `<img src="./images/num/num_0${val}.png" alt="숫자${val}이미지">`
+    )
+    .join(""));
 
 // 최초출력
 showScreen();
@@ -133,33 +136,35 @@ showScreen();
 // (3) 정렬 기준에 선택박스 변경 이벤트 발생시
 // 정렬 변경하기 (오름차순/내림차순)
 // (3-1) 대상: #sel
-const selBox = dFn.qs('#sel');
+const selBox = dFn.qs("#sel");
 // (3-2) 이벤트 연결하기 : 이벤트 종류 - change
-dFn.addEvt(selBox,'change',function(){
-    // 1. 선택 option value값
-    let optVal = this.value;
-    console.log('숫자정렬변경:',optVal);
-    // 2. 정렬 분기 : 1 - 오름차순 / 2 - 내림차순
-    if(optVal==1){ // 오름차순        
-        // [sort()메서드 내부함수사용법]
-        // a > b 일때 true이면 1처리 -> 순서바꿈!
-        arrNumber.sort((a,b)=>a==b?0:a>b?1:-1);
+dFn.addEvt(selBox, "change", function () {
+  // 1. 선택 option value값
+  let optVal = this.value;
+  console.log("숫자정렬변경:", optVal);
+  // 2. 정렬 분기 : 1 - 오름차순 / 2 - 내림차순
+  if (optVal == 1) {
+    // 오름차순
+    // [sort()메서드 내부함수사용법]
+    // a > b 일때 true이면 1처리 -> 순서바꿈!
+    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? 1 : -1));
 
-        // sort() 빼기연산처리 : 앞수-뒷수
-        // arrNumber.sort((a,b)=>a-b);
-    } /////// if ///
-    else if(optVal==2){ // 내림차순        
-        // [sort()메서드 내부함수사용법]
-        // a > b 일때 true이면 -1처리 -> 순서안바꿈!
-        arrNumber.sort((a,b)=>a==b?0:a>b?-1:1);
+    // sort() 빼기연산처리 : 앞수-뒷수
+    // arrNumber.sort((a,b)=>a-b);
+  } /////// if ///
+  else if (optVal == 2) {
+    // 내림차순
+    // [sort()메서드 내부함수사용법]
+    // a > b 일때 true이면 -1처리 -> 순서안바꿈!
+    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
 
-        // sort() 빼기연산처리 : 뒷수-앞수
-        // arrNumber.sort((a,b)=>b-a);
-    } ///// else if ////
+    // sort() 빼기연산처리 : 뒷수-앞수
+    // arrNumber.sort((a,b)=>b-a);
+  } ///// else if ////
 
-    // 화면출력 
-    // -> 원본 배열의 정렬이 변경된 후 다시 출력 
-    showScreen();
+  // 화면출력
+  // -> 원본 배열의 정렬이 변경된 후 다시 출력
+  showScreen();
 }); ///// change 이벤트 함수 //////////
 
 //////////////////////////////////////////
@@ -167,13 +172,12 @@ dFn.addEvt(selBox,'change',function(){
 // map()메서드로 배열값을 태그로 감싸서 출력하기
 
 // (1) 출력대상: .showNum
-const showNum2 = dFn.qs('.showNum2');
+const showNum2 = dFn.qs(".showNum2");
 
 // (2) 배열 숫자 데이터 만큼 이미지로 변환하여 출력
 // map().join() 맵쬬잉!
 const showScreen2 = () =>
-showNum2.innerHTML = arrString.map(val=>
-    `<span>${val}</span>`).join('');
+  (showNum2.innerHTML = arrString.map((val) => `<span>${val}</span>`).join(""));
 
 // 최초출력
 showScreen2();
@@ -181,31 +185,33 @@ showScreen2();
 // (3) 정렬 기준에 선택박스 변경 이벤트 발생시
 // 정렬 변경하기 (오름차순/내림차순)
 // (3-1) 대상: #sel
-const selBox2 = dFn.qs('#sel2');
+const selBox2 = dFn.qs("#sel2");
 // (3-2) 이벤트 연결하기 : 이벤트 종류 - change
-dFn.addEvt(selBox2,'change',function(){
-    // 1. 선택 option value값
-    let optVal = this.value;
-    console.log('숫자정렬변경:',optVal);
-    // 2. 정렬 분기 : 1 - 오름차순 / 2 - 내림차순
-    if(optVal==1){ // 오름차순
-        // [sort()메서드 내부함수사용법]
-        // a > b 일때 true이면 1처리 -> 순서바꿈!
-        arrString.sort((a,b)=>a==b?0:a>b?1:-1);
+dFn.addEvt(selBox2, "change", function () {
+  // 1. 선택 option value값
+  let optVal = this.value;
+  console.log("숫자정렬변경:", optVal);
+  // 2. 정렬 분기 : 1 - 오름차순 / 2 - 내림차순
+  if (optVal == 1) {
+    // 오름차순
+    // [sort()메서드 내부함수사용법]
+    // a > b 일때 true이면 1처리 -> 순서바꿈!
+    arrString.sort((a, b) => (a == b ? 0 : a > b ? 1 : -1));
 
-        // 오름차순 기본 메서드 sort() 사용
-        // arrString.sort();
-    } /////// if ///
-    else if(optVal==2){ // 내림차순
-        // [sort()메서드 내부함수사용법]
-        // a > b 일때 true이면 -1처리 -> 순서안바꿈!
-        arrString.sort((a,b)=>a==b?0:a>b?-1:1);
+    // 오름차순 기본 메서드 sort() 사용
+    // arrString.sort();
+  } /////// if ///
+  else if (optVal == 2) {
+    // 내림차순
+    // [sort()메서드 내부함수사용법]
+    // a > b 일때 true이면 -1처리 -> 순서안바꿈!
+    arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
 
-        // 내림차순 기본 메서드 reverse() 사용
-        // arrString.reverse();
-    } ///// else if ////
+    // 내림차순 기본 메서드 reverse() 사용
+    // arrString.reverse();
+  } ///// else if ////
 
-    // 화면출력 
-    // -> 원본 배열의 정렬이 변경된 후 다시 출력 
-    showScreen2();
+  // 화면출력
+  // -> 원본 배열의 정렬이 변경된 후 다시 출력
+  showScreen2();
 }); ///// change 이벤트 함수 //////////
