@@ -136,6 +136,22 @@
         background: url(./images/black.jpg) no-repeat top/cover;
       }
       /* 사각형 svg - rect */
+      .rt1{
+        fill:none;
+        stroke: black;
+        stroke-width: 20;
+        stroke-linecap: round;
+        /* 데쉬선 */
+        stroke-dasharray: 15%;
+        stroke-dashoffset: 102%;
+        /* 트랜지션 */
+        transition: .6s;
+      }
+      /* 오버시 선 움직이기 */
+      .svg2:hover .rt1{
+        stroke-dashoffset: 0;
+      }
+
 
       /* 3. 닥스박스 : 다각형(6각형) */
       .svg3 {
@@ -143,6 +159,9 @@
       }
 
       /* 다각형 */
+      .pg1{
+        
+      }
 
       /* 4. 완다 : path */
       .svg4 svg {
@@ -176,7 +195,9 @@
       <!-- 3.닥스박스 : 다각형(6각형) -->
       <section>
         <div class="cbx svg3">
-          <svg></svg>
+          <svg>
+            <polygon class="pg1" points="150,10 290,100 290,200 150,290 10,200 10,100" />
+          </svg>
         </div>
       </section>
 
