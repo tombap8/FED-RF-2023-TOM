@@ -345,3 +345,43 @@ function moveClip() {
 const brandBox = dFn.qs('#brand');
 const corpBox = dFn.qs('#corp');
 console.log('콤보박스:',brandBox,corpBox);
+
+// 4. 데이터 바인딩하기
+// 4-1. 브랜드 바로가기 콤보박스 : 단순바인딩(option만)
+// 데이터 대상: linkData.brand
+
+// 내부초기화
+brandBox.innerHTML = '';
+
+linkData.brand.forEach(val=>{
+  brandBox.innerHTML += 
+  `<option value="${val}">${val}</option>`;
+}); ///////// forEach ////////
+
+// 4-2. 계열사 바로가기 콤보박스 : 
+// -> 복합바인딩(optgroup>option)
+// 데이터는 객체형이므로 속성만 모아 배열로 변환하여
+// forEach를 사용한다!
+const corpData = Object.keys(linkData.corp);
+
+// 내부 초기화
+corpBox.innerHTML = '';
+
+// console.log('계열사 데이터:',corpData);
+corpData.forEach(val=>{
+  corpBox.innerHTML += `
+  <optgroup label="${val}">
+    ${linkData.corp[val].map(v=>
+      `<option value="${v}">${v}</option>`).join('')}
+  </optgroup>
+  `;
+})
+
+
+/***************************************** 
+  [ 복합바인딩 요소 구성형식 ]
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+*****************************************/
