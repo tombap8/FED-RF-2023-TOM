@@ -7,12 +7,12 @@
 @import url(./common.css);
 
 /* 공사중표시 */
-body * {
+/* body * {
     outline: 2px dashed #ccc;
-}
-body > div > * {
+} */
+/* body > div > * {
     outline-color: red;
-}
+} */
 
 
 /* 개별영역 박스 -> 확장형 박스
@@ -53,7 +53,7 @@ body > div > * {
     width: calc(95%/4);
     /* 개별박스 비율설정 : height설정안함! */
     aspect-ratio: 2/1.2;
-    outline: 2px dashed blue;
+    /* outline: 2px dashed blue; */
 }
 /* 캐릭터 컨텐츠박스 */
 .cat-content{
