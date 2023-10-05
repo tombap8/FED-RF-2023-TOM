@@ -1,120 +1,139 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SVG 기본원리 및 애니메이션</title>
     <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        body{
-            background-image: linear-gradient(to bottom,lightgreen,lightpink,lightblue);
-        }
-        /* 로고 */
-        
-        /* 전체박스 */
-        .wrap{
-            /* 플렉스박스 */
-            display: flex;
-            /* 플렉스 랩핑박스 */
-            flex-wrap: wrap;
-            width: 100vw;
-            height: 100vh;
-        }
-        /* 내부구역박스 */
-        .wrap>section {
-            /* 렐러티브 부모자격 */
-            position: relative;
-            /* 가로, 세로 등분할 채우기 */
-            flex: 1;
-            /* 한줄에 2개씩 */
-            flex-basis: 50%;
-        }
-        /* 컨텐츠 박스 */
-        .cbx{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* 정중앙이동 */
-            width: 300px;
-            height: 300px;
-            /* outline: 2px dotted blue; */
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      body {
+        background-image: linear-gradient(
+          to bottom,
+          lightgreen,
+          lightpink,
+          lightblue
+        );
+      }
+      /* 로고 */
 
-        /* svg요소 공통 */
-        .cbx svg{
-            width: 100%;
-            height: 100%;
-        }
+      /* 전체박스 */
+      .wrap {
+        /* 플렉스박스 */
+        display: flex;
+        /* 플렉스 랩핑박스 */
+        flex-wrap: wrap;
+        width: 100vw;
+        height: 100vh;
+      }
+      /* 내부구역박스 */
+      .wrap > section {
+        /* 렐러티브 부모자격 */
+        position: relative;
+        /* 가로, 세로 등분할 채우기 */
+        flex: 1;
+        /* 한줄에 2개씩 */
+        flex-basis: 50%;
+      }
+      /* 컨텐츠 박스 */
+      .cbx {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 정중앙이동 */
+        width: 300px;
+        height: 300px;
+        /* outline: 2px dotted blue; */
+      }
 
-        /* 1. 아이언맨 */
-        .svg1 {
-            background: url(./images/man.jpg) no-repeat top/cover;
-            /* 원형박스 */
-            border-radius: 50%;
-        }
-        
+      /* svg요소 공통 */
+      .cbx svg {
+        width: 100%;
+        height: 100%;
+      }
 
-        /* circle 설정 */
-        
-        
+      /* 1. 아이언맨 */
+      .svg1 {
+        background: url(./images/man.jpg) no-repeat top/cover;
+        /* 원형박스 */
+        border-radius: 50%;
+      }
 
-        /* 2. 블랙위도우 */
-        .svg2 {
-            background: url(./images/black.jpg) no-repeat top/cover;
-        }
-        /* 사각형 svg - rect */
-        
+      /* circle 설정 */
+      .c1{
+        /* 채우기색 - 기본색 검정
+            투명 - transparent
+            없음 - none (뚫린상태)
+        */
+        /* fill: red; */
+        /* fill: transparent; */
+        fill: none;
+        /* 선색 - 기본은 안나옴 */
+        stroke : red;
+        /* 선두께 - 기본값은 1px
+        단위를 안쓰면 모두 px단위
+        선두께는 선의 중심선으로부터 생김 */
+        stroke-width: 20;
+      }
 
-        /* 3. 닥스박스 : 다각형(6각형) */
-        .svg3{
-            background: url(./images/doc.jpg) no-repeat top/cover;
-        }
+      /* 2. 블랙위도우 */
+      .svg2 {
+        background: url(./images/black.jpg) no-repeat top/cover;
+      }
+      /* 사각형 svg - rect */
 
-        /* 다각형 */
-        
-        
+      /* 3. 닥스박스 : 다각형(6각형) */
+      .svg3 {
+        background: url(./images/doc.jpg) no-repeat top/cover;
+      }
 
-        /* 4. 완다 : path */
-        .svg4 svg{
-            background: url(./images/wan.jpg) no-repeat top/cover;
-            
-        }
-        /* 패스 */
-        
-        
+      /* 다각형 */
 
-        /* 미디어쿼리 */
-        
+      /* 4. 완다 : path */
+      .svg4 svg {
+        background: url(./images/wan.jpg) no-repeat top/cover;
+      }
+      /* 패스 */
+
+      /* 미디어쿼리 */
     </style>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <!-- 전체 랩핑박스 -->
     <div class="wrap">
-        <!-- 1.아이언맨 : 원 -->
-        <section>
-            
-        </section>
-        <!-- 2. 블랙위도우 : 사각형 -->
-        <section>
-            
-        </section>
-        <!-- 3.닥스박스 : 다각형(6각형) -->
-        <section>
-            
-        </section>
-        
-        <!-- 4.완다박스 : 자유도형 -->
-        <section>
-            
-        </section>
+      <!-- 1.아이언맨 : 원 -->
+      <section>
+        <div class="cbx svg1">
+          <svg>
+            <circle class="c1" cx="150" cy="150" r="140" />
+          </svg>
+        </div>
+      </section>
+      <!-- 2. 블랙위도우 : 사각형 -->
+      <section>
+        <div class="cbx svg2">
+          <svg></svg>
+        </div>
+      </section>
+      <!-- 3.닥스박스 : 다각형(6각형) -->
+      <section>
+        <div class="cbx svg3">
+          <svg></svg>
+        </div>
+      </section>
+
+      <!-- 4.완다박스 : 자유도형 -->
+      <section>
+        <div class="cbx svg4">
+          <svg></svg>
+        </div>
+      </section>
     </div>
-
-
 
     <!-- 
         [ SVG란? ]
@@ -206,5 +225,5 @@
 
 
      -->
-</body>
+  </body>
 </html>
