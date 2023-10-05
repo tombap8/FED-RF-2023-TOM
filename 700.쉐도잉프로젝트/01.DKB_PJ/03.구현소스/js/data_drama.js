@@ -436,7 +436,8 @@ const clipData = [
   {
     idx: "7",
     title: "도깨비7화",
-    subtit: "'나 진짜 신부 맞다니까' 공유, 애써 씩씩한 김고은에 눈물 어린 고백!",
+    subtit:
+      "'나 진짜 신부 맞다니까' 공유, 애써 씩씩한 김고은에 눈물 어린 고백!",
     mvid: "xS9Q_pQW7FQ",
     date: "2023-09-26",
   },
@@ -457,7 +458,8 @@ const clipData = [
   {
     idx: "10",
     title: "도깨비10화",
-    subtit: "공유, 유인나가 전생의 자신의 동생이라는 사실 알고 충격! 용포를 입은 이동욱, 그의 전생은?!",
+    subtit:
+      "공유, 유인나가 전생의 자신의 동생이라는 사실 알고 충격! 용포를 입은 이동욱, 그의 전생은?!",
     mvid: "eJV9GorDC4k",
     date: "2023-09-26",
   },
@@ -492,17 +494,53 @@ const clipData = [
   {
     idx: "15",
     title: "도깨비15화",
-    subtit: "공유, 마침내 날이 적당한 어느 날 첫사랑이었다 고백하며 김고은에게 청혼",
+    subtit:
+      "공유, 마침내 날이 적당한 어느 날 첫사랑이었다 고백하며 김고은에게 청혼",
     mvid: "gT3j8QqNEvY",
     date: "2023-09-26",
   },
   {
     idx: "16",
     title: "도깨비16화",
-    subtit: "[예고]끝나지 않은 깨요일! 공동재부터 깨비.저승 커플 키스신 비하인드까지! #하드털이 #스페셜",
+    subtit:
+      "[예고]끝나지 않은 깨요일! 공동재부터 깨비.저승 커플 키스신 비하인드까지! #하드털이 #스페셜",
     mvid: "bYQtj1cSlBA",
     date: "2023-09-26",
   },
 ];
+
+// 6. 링크정보 ///////////////////
+const linkData = {
+  brand: [
+    "브랜드 바로가기",
+    "MNET",
+    "MWAVE",
+    "tvN",
+    "tvN SPORTS",
+    "tvN STORY",
+    "tvN DRAMA",
+    "tvN SHOW",
+    "OCN",
+    "중화TV",
+    "UXN",
+    "CATCHON",
+    "Tooniverse",
+  ],
+  corp: {
+    "CJ 그룹": ["CJ주식회사"],
+    "엔터테인먼트 & 미디어": ["CJ ENM 엔터테인먼트부문", "TVING", "CJ CGV"],
+    "식품 & 식품 서비스": ["CJ제일제당", "CJ푸드빌", "CJ프레시웨이"],
+    생명공학: ["CJ제일제당 BIO사업부문", "CJ Feed & Care"],
+    "물류 & 신유통": [
+      "CJ대한통운",
+      "CJ대한통운 건설부문",
+      "CJ올리브영",
+      "CJ올리브네트웍스",
+      "CJ ENM 커머스부문",
+      "CJ텔레닉스",
+    ],
+  },
+}; ///////////// linkData ///////////////
+
 // 모듈화 내보내기 ///////////
-export { gridData, gnbData, previewData, clipData };
+export { gridData, gnbData, previewData, clipData, linkData };

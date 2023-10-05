@@ -6,7 +6,7 @@ import dFn from "./dom.js";
 // 부드러운 스크롤 모듈
 import { startSS, setPos } from "./smoothScroll23.js";
 // 데이터 모듈
-import { gridData, gnbData, previewData, clipData } from "./data_drama.js";
+import { gridData, gnbData, previewData, clipData, linkData } from "./data_drama.js";
 
 // 부드러운 스크롤 적용 //////////
 startSS();
@@ -331,3 +331,17 @@ function moveClip() {
   // 3. 이동반영하기 : - (단위수*이동수) %
   clipList.style.left = -(BLOCK_NUM * mvNum) + "%";
 } /////////// moveClip 함수 //////////
+
+
+///////////////////////////////////////////
+// 하단링크 콤보 박스 바인딩하기 ////////////
+//////////////////////////////////////////
+// 1. 요구사항 - 콤보박스에 맞는 데이터를 바인딩한다
+// 2. 데이터 - linkData
+// console.log('하단콤보박스 데이터:',linkData);
+
+// 3. 대상선정 : 바인딩할 콤보박스
+// #brand, #corp
+const brandBox = dFn.qs('#brand');
+const corpBox = dFn.qs('#corp');
+console.log('콤보박스:',brandBox,corpBox);
