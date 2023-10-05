@@ -38,5 +38,41 @@ const arrNumber = [4, 5, 8, 10, 2, 1, 9, 3, 7, 6];
 // 문자값 배열
 const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"];
 
-console.log('숫자배열:',arrNumber);
-console.log('문자배열:',arrString);
+// console.log('숫자배열:',arrNumber);
+// console.log('숫자배열.sort():',arrNumber.sort());
+// console.log('숫자배열.reverse():',arrNumber.reverse());
+// console.log('문자배열:',arrString);
+// console.log('문자배열.sort():',arrString.sort());
+// console.log('문자배열.reverse():',arrString.reverse());
+
+/////////////////////////////////////////
+/// 배열 데이터 화면 출력하기 /////////////
+
+// 1. 숫자로만 된 배열의 화면 뿌리기 ////////
+// map()메서드로 배열값을 태그로 감싸서 출력하기
+
+// (1) 출력대상: .showNum
+const showNum = dFn.qs('.showNum');
+
+// (2) 배열 숫자 데이터 만큼 이미지로 변환하여 출력
+// map().join() 맵쬬잉!
+showNum.innerHTML = arrNumber.map(val=>
+    `<img src="./images/num/num_0${val}.png" alt="숫자${val}이미지">`).join('');
+
+// (3) 정렬 기준에 선택박스 변경 이벤트 발생시
+// 정렬 변경하기 (오름차순/내림차순)
+// (3-1) 대상: #sel
+const selBox = dFn.qs('#sel');
+// (3-2) 이벤트 연결하기 : 이벤트 종류 - change
+dFn.addEvt(selBox,'change',function(){
+    // 1. 선택 option value값
+    let optVal = this.value;
+    console.log('숫자정렬변경:',optVal);
+    // 2. 정렬 분기 : 1 - 오름차순 / 2 - 내림차순
+    if(optVal==1){ // 오름차순
+
+    } /////// if ///
+    else if(optVal==2){ // 내림차순
+
+    } ///// else if ////
+}); ///// change 이벤트 함수 //////////
