@@ -43,12 +43,12 @@ import dFn from './dom.js';
     [-> 기준정렬 : 내림차순]
     배열변수.reverse() -> 기본정렬
 
-    //////////////////////////////////////////////
+    ++++++++++++++++++++++++++++++++++++++++++++++
 
     ->>> 숫자형, 문자형에 무관하게 하나로 처리하기!!!
      [ sort() 메서드만 사용하여 정렬잡기 ]
 
-    (비교함수사용)
+    ((비교함수사용))
     배열변수.sort(function(x,y){
         if(x>y) return 1;
         if(x<y) return -1;
@@ -74,22 +74,24 @@ import dFn from './dom.js';
     -> 내림차순은 양수/음수만 반대로 써주면 된다!
 
     [ 정렬시 데이터 유의사항 ]
+
     1. 문자형일 경우 대소문자가 섞여있으면 대문자나 소문자중
     하나로 통일하여 비교해야함(toUpperCase()/toLowerCase())
+
     예)
-    배열변수.sort((x,y)=>{
-        let a = x.toUpperCase(),
-            b = y.toUpperCase();
-        
-        return a == b ? 0 : a > b ? 1 : -1;
-    })
+        배열변수.sort((x,y)=>{
+            let a = x.toUpperCase(),
+                b = y.toUpperCase();
+            
+            return a == b ? 0 : a > b ? 1 : -1;
+        })
 
     2. 날짜정렬도 숫자와 동일함
     (날짜데이터 자체가 숫자형으로 되어있음)
 
     3. 특정언어의 특수문자일 경우 
     localeCompare() 메서드로 문자열 비교를 한다!
-    
+
     예) 특수문자 x변수를 y변수와 변환후 비교 
         x.localeCompare(y)
 
