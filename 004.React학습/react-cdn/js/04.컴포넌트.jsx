@@ -35,7 +35,7 @@
 
 *************************************************/
 
-// [ 클래스형 컴포넌트 만들기 ]
+// [ 클래스형 컴포넌트 만들기 ] //////////
 class Gogh extends React.Component {
     // render() 메서드 사용하여 리턴함!
     render(){
@@ -44,9 +44,34 @@ class Gogh extends React.Component {
             <React.Fragment>
                 <h2>안녕! 나는 고흐그림이야!</h2>
                 <img src="./images/01.png" alt="고흐1" />
+                <img src="./images/02.png" alt="고흐2" />
+                <img src="./images/03.png" alt="고흐3" />
+                <img src="./images/04.png" alt="고흐4" />
                 {/* 홀로태그는 반드시 스스로 닫아준다! */}
             </React.Fragment>
         );
     }
 
 } ///////////// Gogh 클래스 컴포넌트 /////////
+
+// 첫번째 #root1에 출력하기
+// ReactDOM.render(컴포넌트리턴코드,찍을요소)
+// 컴포넌트 리턴코드는 어떻게 쓰나?
+// <컴포넌트명 />
+ReactDOM.render(
+<Gogh />,document.querySelector('#root1'));
+
+/// [ 함수형 컴포넌트 만들기 ] //////////
+// 첫글자는 대문자!
+function IronMan(){
+    return(
+        <div>
+            <h2>안녕! 나는 아이언맨이야!</h2>
+            <img src="./images/ab1.jpg" alt="아이언맨" />
+        </div>
+    );
+} /////////// IronMan 컴포넌트 /////////
+
+// 두번째 #root2 에 출력하기
+ReactDOM.render(
+<IronMan />,document.querySelector('#root2'));
