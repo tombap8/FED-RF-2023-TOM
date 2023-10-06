@@ -115,13 +115,23 @@ const mydata = [
 // 출력형식:
 // <li>배우명 : 영화명</li>
 // 배열변수.map() 을 사용하자! -> 여기서도 맵쬬잉! 인가???
+// -> JS map()과는 다른 별도의 출력처리가 이루어짐!
+// 결론: map() 만 사용하여 바로 출력가능~!
 
 
 const myEle5 = (
     <React.Fragment>
         <h2>[ 배우리스트 ]</h2>
         <ul>
-            {mydata.map(v=><li>{v.name} : {v.movie}</li>)}
+            {
+            mydata.map(v=>
+                <li>
+                    {v.name} : 
+                    {v.movie} : 
+                    {v.idx==3?"예뻐!♥":"멋쪄!♠"}
+                </li>
+                )
+            }
         </ul>
     </React.Fragment>
 );
@@ -130,5 +140,21 @@ const myEle5 = (
 // 다섯번째에 출력하기 //////
 ReactDOM.render(
     myEle5, document.querySelectorAll('#root>div')[4]);
+
+
+/***************************************************** 
+    [ JSX는 홀로태그라도 끝에 닫기를 해줘야한다! ]
+    예) <br> -> <br />
+        <input type="text"> -> <input type="text" />
+*****************************************************/
+
+// 6. 홀로태그 출력해 보기
+const myEle6 = <input type="text" value="홀로태그는 스스로 닫아라!" />;
+
+
+
+// 여섯번째에 출력하기 //////
+ReactDOM.render(
+    myEle6, document.querySelectorAll('#root>div')[5]);
 
 
