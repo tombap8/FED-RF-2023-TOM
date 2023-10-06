@@ -64,8 +64,7 @@
         border-radius: 50%;
       }
       /* circle 부모 svg */
-      .svg1>svg{
-        
+      .svg1 > svg {
         /* 트랜스폼 적용되나?
         -> 하위 백터요소에는 일반 트랜스폼
         적용안됨! 부모요소인 svg는 적용됨! */
@@ -73,7 +72,7 @@
       }
 
       /* circle 설정 */
-      .c1{
+      .c1 {
         /* 채우기색 - 기본색 검정
             투명 - transparent
             없음 - none (뚫린상태)
@@ -82,7 +81,7 @@
         /* fill: transparent; */
         fill: none;
         /* 선색 - 기본은 안나옴 */
-        stroke : red;
+        stroke: red;
         /* 선두께 - 기본값은 1px
         단위를 안쓰면 모두 px단위
         선두께는 선의 중심선으로부터 생김 */
@@ -123,14 +122,13 @@
         */
 
         /* 트랜지션 : 속시이지 */
-        transition: stroke-dashoffset .8s ease-in-out;
-
+        transition: stroke-dashoffset 0.8s ease-in-out;
       }
       /* 오버시 선보이기 */
-      .svg1:hover .c1{
+      .svg1:hover .c1 {
         stroke-dashoffset: 0;
       }
-      
+
       /* 끝날때 빠져나가는 다른방식 연구~ */
       /* .svg1:hover .c1.on{
         stroke-dashoffset: -300%;
@@ -141,8 +139,8 @@
         background: url(./images/black.jpg) no-repeat top/cover;
       }
       /* 사각형 svg - rect */
-      .rt1{
-        fill:none;
+      .rt1 {
+        fill: none;
         stroke: black;
         stroke-width: 20;
         stroke-linecap: round;
@@ -150,25 +148,23 @@
         stroke-dasharray: 15%;
         stroke-dashoffset: 102%;
         /* 트랜지션 */
-        transition: .6s;
+        transition: 0.6s;
       }
       /* 오버시 선 움직이기 */
-      .svg2:hover .rt1{
+      .svg2:hover .rt1 {
         stroke-dashoffset: 0;
       }
-
 
       /* 3. 닥스박스 : 다각형(6각형) */
       .svg3 {
         background: url(./images/doc.jpg) no-repeat top/cover;
         /* 다각형 클리핑 적용하기 
         clip-path: polygon(x1 y1,x2 y2,...) */
-        clip-path: polygon(50% 0,100% 33%,100% 66%, 50% 100%, 0% 66%,0% 33%);
-
+        clip-path: polygon(50% 0, 100% 33%, 100% 66%, 50% 100%, 0% 66%, 0% 33%);
       }
 
       /* 다각형 */
-      .pg1{
+      .pg1 {
         fill: none;
         stroke: lightgreen;
         stroke-width: 20;
@@ -177,10 +173,10 @@
         stroke-dasharray: 300%;
         stroke-dashoffset: 300%;
         /* 트랜지션 */
-        transition: .6s;
+        transition: 0.6s;
       }
       /* 오버시 선보이기 */
-      .svg3:hover .pg1{
+      .svg3:hover .pg1 {
         stroke-dashoffset: 0;
       }
 
@@ -217,7 +213,32 @@
       <section>
         <div class="cbx svg3">
           <svg>
-            <polygon class="pg1" points="150,10 290,100 290,200 150,290 10,200 10,100" />
+            <!-- 
+              [defs요소] : 요소에 효과를 정의함
+
+              [linearGradient요소] : 선형그라데이션
+              - id속성 : 적용할 요소에 이 id명을 연결함
+                  예) stroke:url(#아이디명)
+              - x1,y1 하나의점에서 x2,y2 하나의 점
+                방향으로 그라데이션이 적용된다!
+
+              [stop요소] : 색상옵션 설정요소
+              - offset속성: 색상변경 지점
+              - stop-color속성: 실제색적용
+            -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="red" />
+                <stop offset="30%" stop-color="blue" />
+                <stop offset="60%" stop-color="green" />
+                <stop offset="100%" stop-color="orange" />
+              </linearGradient>
+            </defs>
+            <polygon
+              style="stroke:url(#grad1)"
+              class="pg1"
+              points="150,10 290,100 290,200 150,290 10,200 10,100"
+            />
           </svg>
         </div>
       </section>
