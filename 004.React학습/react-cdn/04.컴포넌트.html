@@ -17,6 +17,10 @@
         브라우저 호환성 보완해주는 역할 (ES6->ES5변환) -->
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
+        <!-- import로 호출한 JSX도 여기에 등록한다(CDN에서만!) -->
+        <script src="./js/avengers.jsx" 
+  data-plugins="transform-es2015-modules-umd" 
+  type="text/babel"></script>
        
 
         <!-- 4.리액트 컴포넌트 JSX 호출 -->
