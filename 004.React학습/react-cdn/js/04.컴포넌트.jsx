@@ -43,10 +43,7 @@ class Gogh extends React.Component {
         return(
             <React.Fragment>
                 <h2>안녕! 나는 고흐그림이야!</h2>
-                <img src="./images/01.png" alt="고흐1" />
-                <img src="./images/02.png" alt="고흐2" />
-                <img src="./images/03.png" alt="고흐3" />
-                <img src="./images/04.png" alt="고흐4" />
+                <MakeImg iname="01.png" />
                 {/* 홀로태그는 반드시 스스로 닫아준다! */}
             </React.Fragment>
         );
@@ -67,11 +64,85 @@ function IronMan(){
     return(
         <div>
             <h2>안녕! 나는 아이언맨이야!</h2>
-            <img src="./images/ab1.jpg" alt="아이언맨" />
+            <MakeImg iname="ab1.jpg" />
         </div>
     );
 } /////////// IronMan 컴포넌트 /////////
 
+// 이미지 생성 컴포넌트 //////////////
+function MakeImg(props){
+    return(
+        <img src={"./images/"+props.iname} alt="아이언맨" />
+    );
+
+} ///////// MakeImg 컴포넌트 /////////////
+
+
+
 // 두번째 #root2 에 출력하기
 ReactDOM.render(
 <IronMan />,document.querySelector('#root2'));
+
+
+/************************************************* 
+    [ Props 사용하기 ]
+    props는 properties 에서 나온말
+    속성들... 즉, 변수에 값을 할당하여 전달하는 방법
+    함수의 전달값과 같고 속성으로 컴포넌트에 보낸다!
+    -> props는 05번 다음번에 자세히 다룬다!
+*************************************************/
+
+// 내가 좋아하는 색 표시하기 컴포넌트 /////////
+function Favorite(헐){
+    return(
+        <h2>
+            내가 좋아하는 색은 {헐.color}이야! <br />
+            그리고 좋아하는 음식은 {헐.food}야! <br />
+            취미는 {헐.hobby}다! 알겠니???
+        </h2>
+    );
+} /////////// Favorite 컴포넌트 /////////////
+
+/// 좋아하는 색과 음식, 취미를 각각 속성명으로 생성하여
+// 컴포넌트를 호출하면 개별적으로 속성을 구분할 수 있다!
+// 출력: #root3
+ReactDOM.render(
+<Favorite color="빨간색" food="피자" hobby="게임" />,
+document.querySelector('#root3'));
+
+// 함수 컴포넌트에서는 표현식 안에서
+// {props.호출시사용한속성명} 이 형식으로 전달된 값을 읽음!
+
+// 컴포넌트 재사용하기!!
+// #root4에 다른사람의 좋아하는 색,음식,취미를 출력한다!
+
+ReactDOM.render(
+    <Favorite color="파란색" food="알리오올리오" hobby="야구" />,
+    document.querySelector('#root4'));
+
+
+/******************************************************** 
+    컴포넌트 내부에서 다른 컴포넌트를 호출 할 수 있다!
+********************************************************/
+function Who(){
+    return(
+        <div>
+            <h1>김똑팔이가 누구야?</h1>
+            {/* 다른컴포넌트 넣기 */}
+            <Ans />
+        </div>
+    );
+} ///////// Who 컴포넌트 ////////////
+
+// 컴포넌트 내부에서 호출할 컴포넌트
+function Ans(){
+    return(
+        <h2>김씨가 똑하고 팔이 부러졌대!</h2>
+    );
+} ///////// Ans 컴포넌트 /////////////
+
+// #root5에 출력하기 /////////
+ReactDOM.render(<Who />,document.querySelector('#root5'));
+
+
+
