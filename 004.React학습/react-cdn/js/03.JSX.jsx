@@ -186,7 +186,7 @@ ReactDOM.render(
 *****************************************************/
 
 // 8. JSX외부에서 if문 사용하여 출력하기 /////////
-const x = 100000;
+const x = 1000;
 let txt = '이 돈으로는 충분히 살 수 있어!';
 if(x<10000){
     txt = '돈이 부족해서 살 수 없어!';
@@ -205,4 +205,20 @@ ReactDOM.render(
     myEle8, document.querySelectorAll('#root>div')[7]);
 
     
+// 9. JSX의 표현식에 삼항연산자 사용하여 출력하기 ///////
+let time = 8;
+
+const myEle9 = (
+    <React.Fragment>
+        <h1>지금 몇시지? {time}시야!</h1>
+        <h1>
+            {time>9?"지금 집에 들어와!":"더 놀다와~!"}
+        </h1>
+    </React.Fragment>
+);
+
+// 아홉번째에 출력하기 //////
+ReactDOM.render(
+    myEle9, document.querySelectorAll('#root>div')[8]);
+
 
