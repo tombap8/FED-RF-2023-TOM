@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* 보그 PJ 공통모듈 CSS - common.css */
+
+/************* 1. 상단영역 *************/
+.top-area{
+    min-height: 206px;
+}
+/************* 2. 메인영역 *************/
+.main-area{
+    min-height: 700px;
+}
+/************* 3. 하단영역 *************/
+.footer-area{
+    min-height: 285px;
+}
