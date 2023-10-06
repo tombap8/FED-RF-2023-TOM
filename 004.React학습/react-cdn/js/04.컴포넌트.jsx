@@ -3,8 +3,6 @@
 import Avengers from "./avengers";
 // import시에 CDN에서도 js/jsx 확장자는 생략가능함!
 
-
-
 /************************************************* 
     [ 리액트 컴포넌트 ]
     - 컴포넌트는 HTML요소를 반환하는 함수다!
@@ -42,52 +40,43 @@ import Avengers from "./avengers";
 
 // [ 클래스형 컴포넌트 만들기 ] //////////
 class Gogh extends React.Component {
-    // render() 메서드 사용하여 리턴함!
-    render(){
-        // html 태그 리턴
-        return(
-            <React.Fragment>
-                <h2>안녕! 나는 고흐그림이야!</h2>
-                <MakeImg iname="01.png" />
-                {/* 홀로태그는 반드시 스스로 닫아준다! */}
-            </React.Fragment>
-        );
-    }
-
+  // render() 메서드 사용하여 리턴함!
+  render() {
+    // html 태그 리턴
+    return (
+      <React.Fragment>
+        <h2>안녕! 나는 고흐그림이야!</h2>
+        <MakeImg iname="01.png" />
+        {/* 홀로태그는 반드시 스스로 닫아준다! */}
+      </React.Fragment>
+    );
+  }
 } ///////////// Gogh 클래스 컴포넌트 /////////
 
 // 첫번째 #root1에 출력하기
 // ReactDOM.render(컴포넌트리턴코드,찍을요소)
 // 컴포넌트 리턴코드는 어떻게 쓰나?
 // <컴포넌트명 />
-ReactDOM.render(
-<Gogh />,document.querySelector('#root1'));
+ReactDOM.render(<Gogh />, document.querySelector("#root1"));
 
 /// [ 함수형 컴포넌트 만들기 ] //////////
 // 첫글자는 대문자!
-function IronMan(){
-    return(
-        <div>
-            <h2>안녕! 나는 아이언맨이야!</h2>
-            <MakeImg iname="ab1.jpg" />
-        </div>
-    );
+function IronMan() {
+  return (
+    <div>
+      <h2>안녕! 나는 아이언맨이야!</h2>
+      <MakeImg iname="ab1.jpg" />
+    </div>
+  );
 } /////////// IronMan 컴포넌트 /////////
 
 // 이미지 생성 컴포넌트 //////////////
-function MakeImg(props){
-    return(
-        <img src={"./images/"+props.iname} alt="아이언맨" />
-    );
-
+function MakeImg(props) {
+  return <img src={"./images/" + props.iname} alt="아이언맨" />;
 } ///////// MakeImg 컴포넌트 /////////////
 
-
-
 // 두번째 #root2 에 출력하기
-ReactDOM.render(
-<IronMan />,document.querySelector('#root2'));
-
+ReactDOM.render(<IronMan />, document.querySelector("#root2"));
 
 /************************************************* 
     [ Props 사용하기 ]
@@ -98,22 +87,23 @@ ReactDOM.render(
 *************************************************/
 
 // 내가 좋아하는 색 표시하기 컴포넌트 /////////
-function Favorite(헐){
-    return(
-        <h2>
-            내가 좋아하는 색은 {헐.color}이야! <br />
-            그리고 좋아하는 음식은 {헐.food}야! <br />
-            취미는 {헐.hobby}다! 알겠니???
-        </h2>
-    );
+function Favorite(헐) {
+  return (
+    <h2>
+      내가 좋아하는 색은 {헐.color}이야! <br />
+      그리고 좋아하는 음식은 {헐.food}야! <br />
+      취미는 {헐.hobby}다! 알겠니???
+    </h2>
+  );
 } /////////// Favorite 컴포넌트 /////////////
 
 /// 좋아하는 색과 음식, 취미를 각각 속성명으로 생성하여
 // 컴포넌트를 호출하면 개별적으로 속성을 구분할 수 있다!
 // 출력: #root3
 ReactDOM.render(
-<Favorite color="빨간색" food="피자" hobby="게임" />,
-document.querySelector('#root3'));
+  <Favorite color="빨간색" food="피자" hobby="게임" />,
+  document.querySelector("#root3")
+);
 
 // 함수 컴포넌트에서는 표현식 안에서
 // {props.호출시사용한속성명} 이 형식으로 전달된 값을 읽음!
@@ -122,38 +112,33 @@ document.querySelector('#root3'));
 // #root4에 다른사람의 좋아하는 색,음식,취미를 출력한다!
 
 ReactDOM.render(
-    <Favorite color="파란색" food="알리오올리오" hobby="야구" />,
-    document.querySelector('#root4'));
-
+  <Favorite color="파란색" food="알리오올리오" hobby="야구" />,
+  document.querySelector("#root4")
+);
 
 /******************************************************** 
     컴포넌트 내부에서 다른 컴포넌트를 호출 할 수 있다!
 ********************************************************/
-function Who(){
-    return(
-        <div>
-            <h1>김똑팔이가 누구야?</h1>
-            {/* 다른컴포넌트 넣기 */}
-            <Ans />
-        </div>
-    );
+function Who() {
+  return (
+    <div>
+      <h1>김똑팔이가 누구야?</h1>
+      {/* 다른컴포넌트 넣기 */}
+      <Ans />
+    </div>
+  );
 } ///////// Who 컴포넌트 ////////////
 
 // 컴포넌트 내부에서 호출할 컴포넌트
-function Ans(){
-    return(
-        <h2>김씨가 똑하고 팔이 부러졌대!</h2>
-    );
+function Ans() {
+  return <h2>김씨가 똑하고 팔이 부러졌대!</h2>;
 } ///////// Ans 컴포넌트 /////////////
 
 // #root5에 출력하기 /////////
-ReactDOM.render(<Who />,document.querySelector('#root5'));
-
+ReactDOM.render(<Who />, document.querySelector("#root5"));
 
 // #root6에 외부JSX 파일 컴포넌트 출력하기
-ReactDOM.render(
-<Avengers />,document.querySelector('#root6'));
-
+ReactDOM.render(<Avengers />, document.querySelector("#root6"));
 
 /*************************************************** 
     [ 컴포넌트의 파일분리 ]
@@ -200,6 +185,3 @@ ReactDOM.render(
   이 속성과 값이 바벨에서 모듈을 사용하게 하는
   es2015 즉 ES6버전에서의 모듈문법을 사용하게끔 해준다!
 *************************************************/
-
-
-
