@@ -216,39 +216,50 @@ dFn.addEvt(selBox2, "change", function () {
   showScreen2();
 }); ///// change 이벤트 함수 //////////
 
-
 ///////////////////////////////////////////
 // 3. 객체 데이터 배열의 정렬 //////////////
 ///////////////////////////////////////////
-// (1) 데이터 
+// (1) 데이터
 const list1 = [
   {
-      idx: 8,
-      tit: "나는 구누?",
-      cont: "공동구매) 슬로건 공구 (계좌와 네이버폼)",
+    idx: 8,
+    tit: "나는 구누?",
+    cont: "공동구매) 슬로건 공구 (계좌와 네이버폼)",
   },
   {
-      idx: 4,
-      tit: "여기는 어디?",
-      cont: "총공 공지] 오늘부터 일 2회, 총공 진행합니다",
+    idx: 4,
+    tit: "여기는 어디?",
+    cont: "총공 공지] 오늘부터 일 2회, 총공 진행합니다",
   },
   {
-      idx: 1,
-      tit: "나야나",
-      cont: "연합 갈라 서포트 계좌오픈",
+    idx: 1,
+    tit: "나야나",
+    cont: "연합 갈라 서포트 계좌오픈",
   },
   {
-      idx: 15,
-      tit: "이제 얼마나 남은거니?",
-      cont: "음악프로그램에 출연 요청글도 써볼까요?",
+    idx: 15,
+    tit: "이제 얼마나 남은거니?",
+    cont: "음악프로그램에 출연 요청글도 써볼까요?",
   },
 ]; /////////////// list1 /////////////
 
 // 출력대상: .showList3
-const showList3 = dFn.qs('.showList3');
+const showList3 = dFn.qs(".showList3");
 
 // (2) html 코드 생성하여 출력하는 함수 만들기
 const upCode = () => {
+  // 반복코드 만들기
+  // 대상코드 : list1 배열
+  let hcode = list1.map(
+    (val) => `
+      <tr>
+          <td>${val.idx}</td>
+          <td>${val.tit}</td>
+          <td>${val.cont}</td>
+      </tr>
+  `
+  );
+  // console.log('새로운배열:',hcode);
 
   // 테이블 생성코드 넣기
   showList3.innerHTML = `
@@ -261,11 +272,42 @@ const upCode = () => {
         </tr>
       </thead>
       <tbody>
-
+        ${hcode.join("")}
       </tbody>
     </table>
   `;
 }; //////////// upCode 함수 //////////////
 
-// (3) 요소에 데이터 코드 넣기 함수호출
+// (3) 요소에 데이터 코드 넣기 함수호출 : 기본출력
 upCode();
+
+// (4) 정렬변경 이벤트 발생시 실제 정렬 변경하기 ///
+// 이벤트 대상: .sel3
+const sel3 = dFn.qs(".sel3");
+// 정렬기준 대상: .cta3
+const cta3 = dFn.qs(".cta3");
+
+// 이벤트 설정하기 ////
+dFn.addEvt(sel3, "change", sortingFn);
+
+// 정렬변경 함수 만들기 ///
+function sortingFn() {
+  // 1. 선택값 담기
+  let optVal = this.value;
+  console.log("바꿔! 정렬!", optVal);
+
+  // 2. 분기하기
+  // 데이터 대상: list1 배열
+  if (optVal == 1) {
+    // 오름차순
+    list1.sort((a, b) => {
+      // a,b는 모두 객체 데이터
+      // 따라서 내부 속성을 구체적으로 비교함!
+      // idx,tit,cont 세가지 중 하나로 비교
+      a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1;
+    });
+  } //// if //////
+  else if (optVal == 2) {
+    // 내림차순
+  } //// else if //////
+} ////////// sortingFn 함수 /////////
