@@ -250,18 +250,22 @@ const showList3 = dFn.qs('.showList3');
 // (2) html 코드 생성하여 출력하는 함수 만들기
 const upCode = () => {
 
+  // 테이블 생성코드 넣기
+  showList3.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  `;
 }; //////////// upCode 함수 //////////////
 
-// (3) 요소에 데이터 코드 넣기
-// 기본 데이블 모양 넣기
-showList3.innerHTML = `
-  <table>
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>내용</th>
-      </tr>
-    </thead>
-  </table>
-`;
+// (3) 요소에 데이터 코드 넣기 함수호출
+upCode();
