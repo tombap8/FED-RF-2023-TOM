@@ -243,6 +243,8 @@ const list1 = [
   },
 ]; /////////////// list1 /////////////
 
+console.log(list1);
+
 // 출력대상: .showList3
 const showList3 = dFn.qs(".showList3");
 
@@ -294,7 +296,11 @@ dFn.addEvt(sel3, "change", sortingFn);
 function sortingFn() {
   // 1. 선택값 담기
   let optVal = this.value;
-  console.log("바꿔! 정렬!", optVal);
+  
+  // 2. 정렬기준값 읽기
+  let cta = cta3.value;
+  
+  console.log("바꿔! 정렬!", optVal,cta);
 
   // 2. 분기하기
   // 데이터 대상: list1 배열
@@ -304,10 +310,21 @@ function sortingFn() {
       // a,b는 모두 객체 데이터
       // 따라서 내부 속성을 구체적으로 비교함!
       // idx,tit,cont 세가지 중 하나로 비교
-      a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1;
+      return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1;
     });
   } //// if //////
   else if (optVal == 2) {
     // 내림차순
+    list1.sort((a, b) => {
+      // a,b는 모두 객체 데이터
+      // 따라서 내부 속성을 구체적으로 비교함!
+      // idx,tit,cont 세가지 중 하나로 비교
+      return a.idx == b.idx ? 0 : a.idx > b.idx ? -1 : 1;
+    });
   } //// else if //////
+
+  console.log(list1);
+
+  // 리스트 코드 반영하기
+  upCode();
 } ////////// sortingFn 함수 /////////
