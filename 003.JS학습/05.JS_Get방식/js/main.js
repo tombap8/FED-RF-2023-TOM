@@ -31,13 +31,18 @@ Post방식은 데이터 크기에 제한이 없다!)
 const gnb = document.querySelectorAll('#gnb a');
 
 // 2. 이벤트 설정
-gnb.addEventListener('click',goSub);
+gnb.forEach(ele=>ele.addEventListener('click',goSub));
 
 // 3. 함수만들기
 function goSub(){
-    // 샵명 글자읽기
+    // 1. 샵명 글자읽기
     let atxt = this.innerText;
     console.log('서브로가!',atxt);
+
+    // 2. 서브 페이지로 이동하기
+    // location.href = 페이지URL
+    // 현재 브라우저창에서 URL이동함!
+    location.href = 'Get02.html?shop='+encodeURIComponent(atxt);
 
 } ///////// goSub 함수 ////////////
 
