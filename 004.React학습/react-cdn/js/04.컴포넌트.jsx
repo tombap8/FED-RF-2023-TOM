@@ -46,7 +46,7 @@ class Gogh extends React.Component {
     return (
       <React.Fragment>
         <h2>안녕! 나는 고흐그림이야!</h2>
-        <MakeImg iname="01.png" />
+        <MakeImg iname="01.png" ialt="고흐그림" />
         {/* 홀로태그는 반드시 스스로 닫아준다! */}
       </React.Fragment>
     );
@@ -65,14 +65,14 @@ function IronMan() {
   return (
     <div>
       <h2>안녕! 나는 아이언맨이야!</h2>
-      <MakeImg iname="ab1.jpg" />
+      <MakeImg iname="ab1.jpg" ialt="아이언맨" />
     </div>
   );
 } /////////// IronMan 컴포넌트 /////////
 
 // 이미지 생성 컴포넌트 //////////////
 function MakeImg(props) {
-  return <img src={"./images/" + props.iname} alt="아이언맨" />;
+  return <img src={"./images/" + props.iname} alt={props.ialt} />;
 } ///////// MakeImg 컴포넌트 /////////////
 
 // 두번째 #root2 에 출력하기
