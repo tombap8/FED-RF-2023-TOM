@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Gallery</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* 갤러리 타이틀 */
+        .mtit {
+            margin: 0;
+            padding: 100px 0;
+            text-align: center;
+            color: #fff;
+            font: bold 3.2rem arial;
+        }
+
+        /* 갤러리박스 */
+        #gallery {
+            display: flex;
+            /* 플렉스박스 */
+            justify-content: space-between;
+            /* 가로배열 컨텐츠 사이간격일정(양쪽끝에 위치) */
+            width: 950px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 10px;
+            outline: 1px solid lime;
+        }
+
+        /* 각 갤러리박스 공통 */
+        .photobox {
+            position: relative;
+            /* 부모자격 */
+            width: 180px;
+            height: 250px;
+            cursor: pointer;
+            /* margin: 5px; */
+            overflow: hidden;
+            /* 자식요소숨김 */
+        }
+
+        .photobox img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 이미지 비율유지 채우기 */
+        }
+
+        /* 커버 */
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0.5;
+        }
+
+        /* 이미지설명박스 */
+        .txt {
+            position: absolute;
+            top: 100%;
+            /* 글자박스 하단바깥에 나감! */
+            left: 0;
+            width: 100%;
+            height: 30%;
+            color: #fff;
+            font: 0.68rem/4.68rem sans-serif;
+            /* 0.68rem=11px, 4.68rem=75px */
+            text-align: center;
+            white-space: nowrap;
+            /* 줄바꿈방지 */
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* IR 클래스 */
+        .ir {
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* 큰 이미지 배경박스 */
+        #bgbx {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: none;
+            /* 처음에 안보임 */
+        }
+
+        /* 이동버튼 공통 */
+        .abtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* 세로중앙이동 */
+            width: 56px;
+            height: 111px;
+            background: url(images/mv_btns.png) no-repeat;
+        }
+
+        /* 오른쪽버튼 */
+        .rb {
+            right: 5%;
+            background-position: 0 -100px;
+        }
+
+        .rb:hover {
+            background-position: -167px 0;
+        }
+
+        /* 왼쪽버튼 */
+        .lb {
+            left: 5%;
+            background-position: -232px 0;
+        }
+
+        .lb:hover {
+            background-position: 0 -221px;
+        }
+
+        /* 닫기버튼 */
+        .cbtn {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            width: 40px;
+            height: 39px;
+            background: url(images/mv_btns.png) no-repeat;
+            background-position: -129px -342px;
+
+            /* 트랜지션 */
+            transition: transform .3s;
+        }
+
+        /* 닫기버튼 오버시 */
+        .cbtn:hover {
+            transform: rotate(-90deg);
+        }
+
+        /* 큰 이미지박스 */
+        #imbx {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 정중앙이동 */
+
+            height: 60vmin;
+            /* vmin은 보이는 화면에서 가로/세로중 작은쪽기준! */
+            display: none;
+            /* 처음에 안보임 */
+        }
+
+        /* 큰 이미지 */
+        #imbx img {
+            height: 100%;
+        }
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    
+</head>
+
+<body>
+    <!-- 갤러리 타이틀 -->
+    <h1 class="mtit">Fashion Gallery</h1>
+
+    <!-- 갤러리 박스 -->
+    <div id="gallery"></div>
+
+    <!-- 큰이미지 배경박스 -->
+    <div id="bgbx">
+        <!-- 오른쪽버튼 -->
+        <a href="#" class="abtn rb">
+            <span class="ir">오른쪽버튼</span>
+        </a>
+        <!-- 왼쪽버튼 -->
+        <a href="#" class="abtn lb">
+            <span class="ir">왼쪽버튼</span>
+        </a>
+        <!-- 닫기버튼 -->
+        <a href="#" class="cbtn">
+            <span class="ir">닫기버튼</span>
+        </a>
+    </div>
+
+    <!-- 큰이미지 박스 -->
+    <div id="imbx">
+        <!-- 큰 이미지 -->
+        <img src="images/1.jpg" alt="큰 이미지">
+        <!-- 이미지 설명 -->
+        <h4></h4>
+    </div>
+
+</body>
+
+</html>
