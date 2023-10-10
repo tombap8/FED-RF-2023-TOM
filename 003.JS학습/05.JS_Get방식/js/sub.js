@@ -4,6 +4,17 @@
 // location.href를 오른쪽에 쓰면 상단의 URL값을 읽어온다!
 let pm = location.href;
 
+// 기본 Get방식 파라미터의 물음표시그널이 있는지 확인하여
+// 없으면 자르기전에 첫 페이지로 돌려보낸다!
+// indexOf('?') -> 물음표 문자열의 순번리턴
+// 찾는문자열이 없으면 -1리턴함 -> 이것으로 존재유무 판별함
+if(pm.indexOf('?')==-1){
+    alert('올바른 접근이 아닙니다!');
+    // 없으면 첫페이지로 돌아가라!
+    location.href = 'Get01.html';
+}
+// console.log(pm.indexOf('?'));
+
 // ?(물음표) 로 잘라서 뒤엣것!
 // split(자를기준문자열) -> 배열데이터가 됨!
 pm = pm.split('?')[1];
