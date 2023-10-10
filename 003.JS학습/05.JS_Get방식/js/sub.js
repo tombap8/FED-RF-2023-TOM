@@ -9,5 +9,51 @@ let pm = location.href;
 pm = pm.split('?')[1];
 
 // =(이퀄) 로 잘라서 뒤엣것!
-// pm = decodeURIComponent(pm.split('=')[1]);
-console.log('URL:',pm);
+pm = pm.split('=')[1];
+
+// 인코딩 처리된 문자열 디코딩하기!
+pm = decodeURIComponent(pm);
+
+console.log('전달값:',pm);
+
+
+/// 데이터 셋업하기! //////
+let sdata = {
+    레드샵: {
+        배경색: "red",
+        이미지: "shop_red.jpg",
+    },
+    오렌지샵: {
+        배경색: "orange",
+        이미지: "shop_orange.jpg",
+    },
+    블루샵: {
+        배경색: "blue",
+        이미지: "shop_blue.jpg",
+    },
+    블랙샵: {
+        배경색: "black",
+        이미지: "shop_black.jpg",
+    },
+    그린샵: {
+        배경색: "green",
+        이미지: "shop_green.jpg",
+    },
+}; ///////// sdata객체 /////////////
+
+console.log('매칭data:',sdata[pm])
+
+// 데이터 매칭하여 페이지 데이터 구성하기 ///////
+// 1. 대상선정 : #title, #main
+const title = document.querySelector("#title");
+const main = document.querySelector("#main");
+
+// 2. 변경반영하기
+// 2-1. 타이틀 넣기
+title.innerText = pm;
+
+// 2-2. 타이틀 배경색 넣기
+title.style.backgroundColor = sdata[pm].배경색;
+
+// 2-3. 메인 배경이미지 변경하기
+main.style.backgroundImage = `url(images/${sdata[pm].이미지})`;

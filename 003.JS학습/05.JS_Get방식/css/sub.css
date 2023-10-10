@@ -29,5 +29,5 @@ body {
     width: 800px;
     height: 500px;
     margin: 0 auto;
-    background: url(images/shop_red.jpg) no-repeat 0/100% 100%;
+    background: url(../images/shop_red.jpg) no-repeat 0/100% 100%;
 }
