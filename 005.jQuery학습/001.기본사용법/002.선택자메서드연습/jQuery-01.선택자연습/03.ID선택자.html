@@ -8,7 +8,6 @@
 <!-- 이징과 색상 애니메이션을 위해 제이쿼리 UI 넣기! -->
 <script src="../jquery-ui.min.js"></script>
 <script>
-$(document).ready(function(e) {
   /******************************************************* 
     [ 제이쿼리 글자넣기 메서드 : text() ]
 
@@ -48,6 +47,58 @@ $(document).ready(function(e) {
 
 
   *******************************************************/
+ $(()=>{
+
+   // 미션: h2요소를 클릭하면
+   $('h2').click(()=>{
+
+     // 1. 아이디가 sub인 요소의 글자를 "이승기" 라고 쓰고 
+     // 배경색은 노란색, 글자색은 파란색, 
+     // 테두리는 10px 녹색 , 글자크기 42px로 변경하시오.
+     $("#sub").text('이승기')
+     .css({border:"1px dotted #000"})
+     .animate({
+      backgroundColor:"yellow",
+      color:"blue",
+      borderWidth:"10px",
+      borderColor:"green",
+      fontSize:"42px"
+     },800,"easeOutElastic"); ////// animate /////
+
+  
+  
+  // 2. 아이디가 main인 요소의 글자를 "공유"라고 쓰고 배경색은 파란색, 글자색은 흰색, 테두리는 13px 노란색, 글자크기는 100px로 변경하시오.
+  $("#main").text('공유')
+     .css({border:"1px dotted #000"})
+     .delay(1000)
+     .animate({
+      backgroundColor:"blue",
+      color:"white",
+      borderWidth:"13px",
+      borderColor:"yellow",
+      fontSize:"100px"
+     },800,"easeOutBounce"); ////// animate /////
+  
+  // 3. 아이디가 total인 요소의 글자를 "싸랑해요~!"라고 쓰고 배경색은 검은색, 글자색은 빨간색, 테두리는 20px 보라색, 글자크기는 152px로 변경하시오.
+
+  $("#total").text('싸랑해요~!')
+     .css({border:"1px dotted #000"})
+     .delay(2000)
+     .animate({
+      backgroundColor:"black",
+      color:"red",
+      borderWidth:"20px",
+      borderColor:"purple",
+      fontSize:"152px"
+     },800,"easeInExpo"); ////// animate /////
+  
+  // 위의 세가지 아이디를 1초간격으로 애니메이션 설정하시오(transition) - 기본은 "all .8s 지연시간"
+
+   }); //////// click /////////////
+  
+
+ }); /////////// jQB ////////////////////
+
 
 </script>
 </head>

@@ -4,7 +4,36 @@
 <meta charset="utf-8">
 <title> 클래스 선택자  </title>
 <script src="../jquery-3.6.3.min.js"></script>
-	
+	<script>
+    $(()=>{
+      // 미션: 클래스가 group인 요소를 선택하여
+        // li를 클릭할 경우 배경색을 lime
+        // 글자크기는 52px로 변경하시오.
+        // 단, transition 을 "all .6s"로 
+        // 설정하여 애니메이션 되게 하시오.
+        // 그리고 개별적으로 적용되게할것!(this사용)
+
+        // 대상: .group li
+
+        $('.group li').click(
+          // function(){
+          ()=>{
+          // this -> 클릭된 li요소 자신!
+          // 화살표함수는 this대신 event.currentTarget
+          console.log(this,event.currentTarget);
+          // $(this).css({
+          $(event.currentTarget).css({
+          backgroundColor:"lime",
+            fontSize:"52px",
+            transition:"all .6s"
+          }); //// css ///
+
+        }); //////// click /////
+
+    }); /////////// jQB /////////////////
+
+
+  </script>
 	
 	
 	

@@ -63,6 +63,25 @@
 
     
     *************************************************/
+
+    $(()=>{
+
+      // 미션: header태그의 h2를 클릭하면 큰제목 배경색을 노란색으로 변경하시오.
+      $('header h2').click(()=>{
+        $('h2').css({backgroundColor:"yellow"});
+        // 추가미션: 동시에 nav태그의 배경색은 녹색, 
+        // 테두리는 2px 빨간색선, 글자크기는 40px, 글자색은 파란색으로 변경하시오.
+        $('nav').css({
+          backgroundColor:"green",
+          border:"2px solid red",
+          fontSize:"40px",
+          color:"blue",
+          transition:"2s ease-in-out"
+        })
+      }); /////// click ///////////
+
+
+    }); ////////////// jQB ////////////////
 	
 	
 			
