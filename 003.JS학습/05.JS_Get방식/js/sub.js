@@ -9,5 +9,5 @@ let pm = location.href;
 pm = pm.split('?')[1];
 
 // =(이퀄) 로 잘라서 뒤엣것!
-pm = decodeURIComponent(pm.split('=')[1]);
+// pm = decodeURIComponent(pm.split('=')[1]);
 console.log('URL:',pm);
