@@ -204,6 +204,10 @@ body {
     animation: 
     spani3X 1s steps(6) infinite,
     spani3Y 3s steps(3) infinite;
+    /* 
+        x축은 6장면을 1초간 작동
+        y축은 3줄을 3초간 작동
+    */
     
 }
 
@@ -237,20 +241,22 @@ body {
     transform: scale(.5);
 
     /* 애니메이션: 이시이지반방마 */
-    
+    animation: 
+    spani4X .8s steps(5) infinite,
+    spani4Y 2.4s steps(3) infinite;    
 
 
 }
 /* 웃는여자 키프레임 X축 */
 @keyframes spani4X {
     to{
-       
+       background-position-x: -1280px;
     }
 }
 /* 웃는여자 키프레임 Y축 */
 @keyframes spani4Y {
     to{
-        
+        background-position-y: -1222px;
     }
 }
 
