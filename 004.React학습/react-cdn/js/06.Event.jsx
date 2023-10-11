@@ -65,6 +65,14 @@ function EventShow(){
                 onMouseOver={()=>{
                     aladin('./images/ala4.jpg')}} />
             </div>
+            {/* 램프가 들어갈 요소 */}
+            <div className="lamp"></div>
+            {/* 버튼들 */}
+            <button onClick={getLamp}>램프가져오기~!</button>
+            <br />
+            <button onClick={getFerrari}>
+                소원빌기~! 페라리주세요~!!!
+            </button>
         </React.Fragment>
     );
 
