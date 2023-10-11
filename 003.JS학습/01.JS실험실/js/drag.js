@@ -78,8 +78,10 @@ function goDrag(ele) {
     // 드래그 상태일때만 실행
     if (drag) {
       // 1. 드래그 상태에서 움직일때 위치값 : mvx, mvy
-      mvx = e.pageX;
-      mvy = e.pageY;
+      // - pageX,pageY 는 일반브라우저용
+      // - touches[0].screenX, touches[0].screenY는 터치스크린용
+      mvx = e.pageX || e.touches[0].screenX;
+      mvy = e.pageY || e.touches[0].screenY;
 
       // 2. 움직일때 위치값 - 처음위치값 : rx, ry
       // x축값은 left값, y축값은 top값 이동이다!
@@ -109,8 +111,8 @@ function goDrag(ele) {
 
   // (4) 첫번째 위치포인트 셋팅함수 : fx, fy
   const firstPoint = () => {
-    fx = event.pageX;
-    fy = event.pageY;
+    fx = event.pageX || event.touches[0].screenX;
+    fy = event.pageY || event.touches[0].screenY;
     // console.log('첫포인트:',fx,' | ',fy);
   }; ///////// firstPoint함수 //////////
 
@@ -129,7 +131,7 @@ function goDrag(ele) {
     dTrue();
     firstPoint();
   }); //////////// mousemove 함수 ///////////
-  
+
   // 모바일 이벤트 추가 ///////
   dFn.addEvt(ele, "touchstart", () => {
     dTrue();
