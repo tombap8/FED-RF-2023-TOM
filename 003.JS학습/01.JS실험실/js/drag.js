@@ -109,15 +109,16 @@ function goDrag(ele) {
       console.log(`lx:${lx} | ly:${ly}`);
     } //////////// if ///////////
 
+    // 커서 편손(grab)/쥔손(grabbing) 상태 변경하기
     ele.style.cursor = drag?'grabbing':'grab';
 
 
   }; ////////// dMove함수 ///////////
 
   // (4) 첫번째 위치포인트 셋팅함수 : fx, fy
-  const firstPoint = () => {
-    fx = event.pageX || event.touches[0].screenX;
-    fy = event.pageY || event.touches[0].screenY;
+  const firstPoint = (e) => {
+    fx = e.pageX || e.touches[0].screenX;
+    fy = e.pageY || e.touches[0].screenY;
     // console.log('첫포인트:',fx,' | ',fy);
   }; ///////// firstPoint함수 //////////
 
@@ -132,15 +133,15 @@ function goDrag(ele) {
   // 3. 이벤트 등록하기 /////////////////
   // 대상 : 호출시 보내준 드래그 대상요소 -> ele변수
   // (1) 마우스 내려갈때 : 드래그 true + 첫번째 위치값 업데이트
-  dFn.addEvt(ele, "mousedown", () => {
+  dFn.addEvt(ele, "mousedown", (e) => {
     dTrue();
-    firstPoint();
+    firstPoint(e);
   }); //////////// mousemove 함수 ///////////
 
   // 모바일 이벤트 추가 ///////
-  dFn.addEvt(ele, "touchstart", () => {
+  dFn.addEvt(ele, "touchstart", (e) => {
     dTrue();
-    firstPoint();
+    firstPoint(e);
   }); //////////// touchstart 함수 ///////////
 
   // (2) 마우스 올라올때 : 드래그 false + 마지막 위치값 업데이트
