@@ -98,8 +98,9 @@ function goDrag(ele) {
       // -> 항상 최종위치에서 움직인 위치를 더한다!!!
 
       // 4. z-index값을 모두 초기화후 드래그 대상만 높여줌!
-    //   dtg.forEach(ele=>ele.style.zIndex=0);
-    //   ele.style.zIndex = 1;
+      dtg.forEach(ele=>ele.style.zIndex=0);
+      ele.style.zIndex = 1;
+
 
       // 값확인
       console.log(`fx:${fx} | fy:${fy}`);
@@ -107,6 +108,10 @@ function goDrag(ele) {
       console.log(`rx:${rx} | ry:${ry}`);
       console.log(`lx:${lx} | ly:${ly}`);
     } //////////// if ///////////
+
+    ele.style.cursor = drag?'grabbing':'grab';
+
+
   }; ////////// dMove함수 ///////////
 
   // (4) 첫번째 위치포인트 셋팅함수 : fx, fy
@@ -158,4 +163,6 @@ function goDrag(ele) {
 
   // (4) 마우스 벗어날때 : 드래그 상태 false처리 함수 호출
   dFn.addEvt(ele, "mouseleave", dFalse);
+
+
 } //////////// goDrag 함수 //////////////////
