@@ -50,10 +50,68 @@ function EventShow(){
             `;
         }, 500); //////// 타임아웃 /////////
 
+        // (1-4) 램프 가져오기 버튼 3초후 보이기
+        setTimeout(() => {
+            document.querySelectorAll('button')[0]
+            .style.display = 'inline-block';
+        }, 3000);
 
+        // (1-5) #ala요소에 이미지 출력하기
+        // ReactDOM.render(어쩌구,저쩌구)
+        ReactDOM.render(
+        <MakeImg isrc={lamp} ialt="램프소원빌기" />,
+        document.querySelector('#ala'));
 
 
     }; //////// aladin 함수 ////////////////
+
+    // (2) 램프 가져오기 함수 /////////////////////
+    const getLamp = () => {
+        console.log('나 불렀어? 가져와! 램프!');
+
+        // 1. 램프 선택 : 컴포넌트 구성요소에 넣음
+        let lamp = document.querySelector('.lamp');
+
+        // 2. 램프 이미지 넣기
+        ReactDOM.render(
+        <MakeImg isrc="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/3168457870/B.png" ialt="알라딘 램프" />,lamp);
+
+        // 3. 램프 이미지 초기셋팅
+        let lampImg = lamp.querySelector('img');
+        lampImg.style.cssText = `
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            border-radius: 50%;
+            transition: 2s;
+        `;
+
+        // 4. 0.5초후 램프 이미지 중앙이동하기
+        setTimeout(() => {
+            lampImg.style.cssText = `
+                position: absolute;
+                top: 310px;
+                right: calc(50% - 100px);
+                width: 200px;
+                border-radius: 50%;
+                transform: rotate(720deg);
+                transition: 2s, right 1s 2s;
+            `;
+        }, 500);
+
+        // 5. 소원빌기 버튼 3초후 보이기
+        setTimeout(() => {
+            document.querySelectorAll('button')[1]
+            .style.display = 'inline-block';
+        }, 3000);
+
+    }; ///////////// getLamp함수 ///////////////////
+
+    // (3) 페라리 가져오기 함수 /////////////////////
+    const getFerrari = () => {
+
+    }; ///////////// getFerrari함수 ///////////////////
 
     // 2. 컴포넌트 리턴은 가장 아랫쪽에서 함!
     return(
@@ -77,6 +135,12 @@ function EventShow(){
     );
 
 } /////////// EventShow 컴포넌트 /////////////////////
+
+
+/// 이미지 생성 컴포넌트 //////////////////////////////
+function MakeImg(props){ // isrc - 이미지경로 / ialt - 이미지설명
+    return <img src={props.isrc} alt={props.ialt} />
+} /////////// MakeImg 컴포넌트 ///////////////////////
 
 
 // 최초 컴포넌트 출력하기 ///////////
