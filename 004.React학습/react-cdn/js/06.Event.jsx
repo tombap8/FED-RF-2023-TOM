@@ -162,9 +162,26 @@ function MakeImg(props){ // isrc - 이미지경로 / ialt - 이미지설명
     );
 } /////////// MakeImg 컴포넌트 ///////////////////////
 
+
+// 번갈아 실행체크 변수
+let actOne=1;
+
 /// 일반함수로 페라리 움직이기 구현!!!! ///////////
 function moveCar(){
     console.log('움직여!페라리!');
+    let car = document.querySelector('#car');
+
+    // 번갈아서 갔다왔다함!
+    car.style.transform = 
+    actOne?
+    "translateX(150%) scale(2)":
+    "translateX(0) scale(1)";
+
+    // 트랜지션 셋팅
+    car.style.transition = "2s ease-in-out";
+
+    // 번갈아서 1/0전환
+    actOne?actOne=0:actOne=1;
 
 } ///////////// moveCar 함수 ////////////////////
 
