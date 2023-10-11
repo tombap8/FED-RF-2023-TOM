@@ -62,7 +62,69 @@ room.each((idx,ele)=>{
         case 7:
             $(ele).append(mz2);
             break;
+        case 2:
+            $(ele).append(inj);
+            break;
+        case 1:
+            $(ele).append(zom);
+            break;
 
     } /////// switch case //////
 
 }); /////////// each 메서드 //////////////
+
+// 좀비는 모두 숨기기
+$('.mz').hide();
+// 시간이 없는 hide()는 display:none 처리함!
+
+// 2. 버튼 셋팅하기 //////////////////
+// 대상: .btns button -> btns변수
+btns.hide().first().show();
+// 버튼들.숨겨().첫번째().보여()
+// btns.hide().eq(4).show();
+
+
+// 3. 미니언즈 공통 기능함수 /////////
+// (1) ele - 클릭된 버튼요소
+// (2) seq - 이동할 li방 순번
+// (3) fn - 이동후 실행할 코드(콜백함수)
+const actMini = (ele, seq, fn) => {
+
+}; /////////// actMini함수 //////////////
+
+// 4. "들어가기" 버튼 클릭시 /////////////
+btns.first() // 첫번째버튼
+    .click(function(){
+
+        // 0. 메시지 숨기기
+        msg.fadeOut(300)
+
+        // 1. 위치값 읽기
+        // 원리: 이동할 li방 위치값을 읽은 후 이동함
+        let myRoom = room.eq(8);
+        // 위치값 배열변수
+        let pos = [];
+        // top 위치값
+        pos[0] = myRoom.offset().top;
+        // left 위치값
+        pos[1] = myRoom.offset().left;
+
+        console.log('위치값:',pos[0],'/',pos[1]);
+
+        // 2. 이동하기
+        // 대상: .mi -> mi변수
+        // animate({CSS설정},시간,이징,콜백함수)
+        mi.animate({
+            top: pos[0] + 'px',
+            left: pos[1] + 'px'
+        },800,"easeOutElastic",()=>{
+            // 메시지변경 + 메시지 보이기
+            msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`)
+            .delay(1000).fadeIn(300);
+        }); ///////// animate ////////
+
+
+
+
+    }); //// "들어가기" 버튼 끝 //////////
+
