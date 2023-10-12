@@ -5,14 +5,10 @@ const dFn = {
     qs : x => document.querySelector(x),
     qsa : x => document.querySelectorAll(x),
     cg : x => console.log(x),
+    addZero : x => x < 10 ? '0' + x : x,
     fm : x => `${x.getFullYear()}-${
-            x.getMonth()+1 < 10 ?
-            '0' + (x.getMonth() + 1) :
-            x.getMonth() + 1
-        }-${
-            x.getDate() < 10 ?
-            '0' + x.getDate() : x.getDate()
-        }(${week[x.getDay()]})`
+        dFn.addZero(x.getMonth()+1)}-${
+        dFn.addZero(x.getDate())}(${week[x.getDay()]})`
 }; ///////// dFn 객체 //////////
     
 // 요일변경배열 ////
@@ -59,19 +55,19 @@ function makeDallyeok(){
         // 1. 전달 마지막 날짜(옵션:0) 
         // -> 달력처음 전달끝쪽날짜표시
         const prevLast = 
-        new Date(cYr,cMt+1,0);
+        new Date(cYr,cMt,0);
 
         dFn.cg('전달끝날짜:'+dFn.fm(prevLast));
 
         // 2. 현재달 첫째날짜(옵션:1->전달로 셋팅)
         // -> 달력 전달셋팅을 위한 요일 구하기 위해!
         const thisFirst = 
-        new Date(cYr,cMt+1,1);
+        new Date(cYr,cMt,1);
             
         dFn.cg('현재달 첫째날짜:'+dFn.fm(thisFirst));
 
         // 3. 현재달 마지막날짜(옵션:0)
-        const thisLast = new Date(cYr,cMt+2,0);
+        const thisLast = new Date(cYr,cMt+1,0);
         
         dFn.cg('현재달 마지막날짜:'+dFn.fm(thisLast));
 
@@ -79,7 +75,7 @@ function makeDallyeok(){
         yearTit.innerHTML = cYr;
 
         // 5. 월표시하기
-        monthTit.innerHTML = cMt + 2;
+        monthTit.innerHTML = cMt + 1;
 
         // 6. 날짜 데이터 태그 구성하기
         // 6-1. 전달 날짜 앞쪽 채우기
@@ -122,8 +118,15 @@ function makeDallyeok(){
 
         } //////////// for //////////////
         
-        dFn.cg('날짜배열:'+dateSet);
-
+        
+        // 7. 날짜배열로 날짜태그 구성하여 출력하기
+        // 7일 * 6주 = 42개
+        dates.innerHTML = dateSet.map((v,i)=>
+        i<42?`<div class="date">${v}</div>`:'').join('');
+        
+        // dFn.cg('날짜배열:'+dateSet.map((v,i)=>
+        // i<42?`<div class="date">${v}</div>`:'').join(''));
+        
     }; /////// initDallyeok 함수 ////////
 
 
