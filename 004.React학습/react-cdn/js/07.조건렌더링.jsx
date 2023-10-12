@@ -41,7 +41,7 @@ function Developer(props){
                 <MakeImg
                     isrc={props.isrc}
                     ialt={props.ialt}
-                    title={props.itit} />
+                    itit={props.itit} />
             </React.Fragment>
         );
 
