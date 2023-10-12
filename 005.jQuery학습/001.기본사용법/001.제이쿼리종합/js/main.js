@@ -40,6 +40,30 @@ let mz2 = `<img src="./images/mz2.png" alt="좀비2" class="mz">`;
 let zom = `<img src="./images/zom.png" alt="좀비들" class="mz">`;
 let inj = `<img src="./images/inj.png" alt="주사기" class="inj">`;
 
+// (6) 메시지 배열셋팅
+const msgTxt = [
+  // 0번방
+  "",
+  // 1번방
+  "",
+  // 2번방
+  "",
+  // 3번방
+  "",
+  // 4번방
+  "",
+  // 5번방
+  "",
+  // 6번방
+  "",
+  // 7번방
+  "",
+  // 8번방
+  `와~! 아늑하다!<br>옆방으로 가보자!`,
+  // 9번방
+  "악!;;;; 좀비!<br>어서피하자!",
+];
+
 // console.log('대상:',mi,room,btns,msg);
 
 // 1. 건물 각 방에 번호넣기 + 좀비/주사기 넣기
@@ -123,6 +147,11 @@ const actMini = (ele, seq, fn) => {
   ); ///////// animate ////////
 }; /////////// actMini함수 //////////////
 
+// 다음버튼 보이기 함수 //////////////////
+const showNextBtn = (ele) => 
+$(ele).next().delay(1000).slideDown(400);
+////////// showNextBtn함수 ///////////////
+
 // 4. "들어가기" 버튼 클릭시 /////////////
 btns
   .first() // 첫번째버튼
@@ -131,20 +160,50 @@ btns
     // ()=>{
 
     // 버튼별 콜백함수 만들기 ////////
-    let fn =     
-    // function(){ -> this가 mi임!
-    () => {
-      // this가 싸고있는 버튼요소임!
+    let fn =
+      // function(){ -> this가 mi임!
+      () => {
+        // this가 싸고있는 버튼요소임!
 
-      // 메시지변경 + 메시지 보이기
-      msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`)
-      .delay(1000).fadeIn(300);
+        // 메시지변경 + 메시지 보이기
+        msg.html(msgTxt[8])
+        .delay(1000).fadeIn(300);
 
-      // console.log('미니언즈 콜백함수:',this);
-      // 다음버튼 보이기
-      $(this).next().delay(1000).slideDown(400);
-    }; ////////// 콜백함수 /////////////
+        // console.log('미니언즈 콜백함수:',this);
+        // 다음버튼 보이기
+        showNextBtn(this);
+      }; ////////// 콜백함수 /////////////
 
     // 미니언즈 공통함수 호출
     actMini(this, 8, fn);
-  }); //// "들어가기" 버튼 끝 //////////
+  }) //// "들어가기" 버튼 끝 //////////
+
+  // 5. "옆방으로!" 버튼 클릭시 /////////////
+  // 위의 버튼에서 이어짐!
+  .next() // 두번째버튼
+  .click(function () {
+    // 하위 이벤트함수 this의미!
+    // ()=>{
+
+    // 버튼별 콜백함수 만들기 ////////
+    let fn =
+      // function(){ -> this가 mi임!
+      () => {
+        // 좀비 나타나기(2초후)
+        room
+          .eq(9)
+          .find(".mz")
+          .delay(2000)
+          .fadeIn(400, () => {
+            // 콜백함수
+            // 메시지 보이기
+            msg.html(msgTxt[9])
+            .css({ left: "-89%" }).fadeIn(300);
+            // 다음버튼 보이기
+            showNextBtn(this);
+          }); /////// fadeIn ///////
+      }; ////////// 콜백함수 /////////////
+
+    // 미니언즈 공통함수 호출
+    actMini(this, 9, fn);
+  }); //// "옆방으로!" 버튼 끝 //////////
