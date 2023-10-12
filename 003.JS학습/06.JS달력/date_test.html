@@ -10,14 +10,14 @@
         //console.log(x);
         // 날짜찍기 형식변경함수(yyyy-mm-dd시간)
         const fm = x => `
-        ${test.getFullYear()}-${
-            test.getMonth()+1 < 10 ?
-            '0' + (test.getMonth() + 1) :
-            test.getMonth() + 1
+        ${x.getFullYear()}-${
+            x.getMonth()+1 < 10 ?
+            '0' + (x.getMonth() + 1) :
+            x.getMonth() + 1
         }-${
-            test.getDate() < 10 ?
-            '0' + test.getDate() : test.getDate()
-        }(${week[test.getDay()]})`;
+            x.getDate() < 10 ?
+            '0' + x.getDate() : x.getDate()
+        }(${week[x.getDay()]})`;
         // 요일변경배열
         const week = ["일","월","화","수","목","금","토"];
 
@@ -36,11 +36,11 @@
         // 4. 현재달 끝날짜
 
         // -> 전달  끝날짜, 첫날짜 알아오기
-        // new Date(,,)
+        // new Date(년도,월,옵션)
         // 전달값
         // (1) 년도
         // (2) 월
-        // (3) 0 - 현재달끝날짜 / 1 - 다음달첫날짜
+        // (3) 옵션 : 0 - 현재달끝날짜 / 1 - 다음달첫날짜
 
         let test = new Date(2023,2,0);
         // let test = new Date(2023,2,1);
