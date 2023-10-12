@@ -106,8 +106,10 @@ btns.first() // 첫번째버튼
         let pos = [];
         // top 위치값
         pos[0] = myRoom.offset().top;
-        // left 위치값
-        pos[1] = myRoom.offset().left;
+        // left 위치값 : 방에서 중앙에 위치하도록 보정
+        // -> left값 + 방width절반 - 미니언즈width절반
+        pos[1] = myRoom.offset().left 
+        + myRoom.width() / 2 - mi.width() / 2 ;
 
         console.log('위치값:',pos[0],'/',pos[1]);
 
@@ -117,7 +119,9 @@ btns.first() // 첫번째버튼
         mi.animate({
             top: pos[0] + 'px',
             left: pos[1] + 'px'
-        },800,"easeOutElastic",()=>{
+        },800,"easeOutElastic",
+        // 콜백함수
+        ()=>{
             // 메시지변경 + 메시지 보이기
             msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`)
             .delay(1000).fadeIn(300);
