@@ -94,7 +94,9 @@ const actMini = (ele, seq, fn) => {
 
 // 4. "들어가기" 버튼 클릭시 /////////////
 btns.first() // 첫번째버튼
-    .click(function(){
+    .click(
+        function(){ // 하위 이벤트함수 this의미!
+        // ()=>{
 
         // 0. 메시지 숨기기 + 버튼 숨기기
         msg.fadeOut(300);
@@ -124,10 +126,16 @@ btns.first() // 첫번째버튼
             left: pos[1] + 'px'
         },800,"easeOutElastic",
         // 콜백함수
-        ()=>{
+        // function(){ -> this가 mi임!
+        ()=>{ // this가 싸고있는 버튼요소임!
+
             // 메시지변경 + 메시지 보이기
             msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`)
             .delay(1000).fadeIn(300);
+
+            // console.log('미니언즈 콜백함수:',this);
+            // 다음버튼 보이기
+            $(this).next().delay(1000).slideDown(400);
         }); ///////// animate ////////
 
 
