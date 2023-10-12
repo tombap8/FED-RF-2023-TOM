@@ -85,8 +85,44 @@ function makeDallyeok(){
         // 6-1. 전달 날짜 앞쪽 채우기
         // 조건: 현재달 첫날짜 요일이 0이 아니면 내용있음!
         // -> 왜0인가? 0은 일요일 이므로 0이면 앞에 내용없음!
-        dFn.cg('이번달첫날요일:'+thisFirst.getDay());
+        let fDay = thisFirst.getDay();
+        dFn.cg('이번달첫날요일:'+fDay);
+        if(fDay != 0){
+            // 만약 요일번호가 0이 아니면 for문 돌림
+            for(let i = 0; i < fDay;i++){
+                // 반복횟수 만큼 배열 앞쪽에 추가
+                // 앞에 추가 메서드: unshift()
+                dateSet.unshift(`
+                    <span style="color:#ccc" class="bm">
+                        ${prevLast.getDate() - i}
+                    </span>
+                `)
+                // 전달마지막날짜 - for문i값(0,1,2,...)
 
+            } //////// for //////////////
+
+        } //////////// if ///////////////
+
+        
+        // 6-2. 현재월 삽입하기 ///////////
+        // 반복문 구성: 현재월 1일부터 마지막날짜까지 반복 배열추가
+        for(let i = 1; i <= thisLast.getDate(); i++){
+            dateSet.push(i);
+        } ///////////// for ////////////////////
+
+        // 6-3. 다음달 나머지 칸 삽입하기 ////
+        // 다음달은 클래스 'am'으로 구분
+        // 반복구성: 1부터 2주분량정도 넣는다!
+        for(let i = 1; i <= 14; i++){
+            dateSet.push(`
+                <span style="color:#ccc" class="am">
+                    ${i}
+                </span>
+            `);
+
+        } //////////// for //////////////
+        
+        dFn.cg('날짜배열:'+dateSet);
 
     }; /////// initDallyeok 함수 ////////
 
