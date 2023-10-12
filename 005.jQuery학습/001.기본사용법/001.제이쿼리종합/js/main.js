@@ -120,7 +120,6 @@ const actMini = (ele, seq, fn) => {
     "easeOutElastic",
     // 콜백함수
     fn
-    // function(){ -> this가 mi임!
   ); ///////// animate ////////
 }; /////////// actMini함수 //////////////
 
@@ -132,11 +131,14 @@ btns
     // ()=>{
 
     // 버튼별 콜백함수 만들기 ////////
-    let fn = () => {
+    let fn =     
+    // function(){ -> this가 mi임!
+    () => {
       // this가 싸고있는 버튼요소임!
 
       // 메시지변경 + 메시지 보이기
-      msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`).delay(1000).fadeIn(300);
+      msg.html(`와~! 아늑하다!<br>옆방으로 가보자!`)
+      .delay(1000).fadeIn(300);
 
       // console.log('미니언즈 콜백함수:',this);
       // 다음버튼 보이기
