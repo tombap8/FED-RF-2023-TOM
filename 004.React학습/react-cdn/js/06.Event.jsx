@@ -113,7 +113,7 @@ function EventShow(){
         console.log('페라리 줄께~!');
         // 페라리 이미지 넣기
         // 대상: #ferrari
-        ReactDOM.render(<MakeImg isrc="https://www.pngplay.com/wp-content/uploads/13/Ferrari-458-Transparent-PNG.png" ialt="페라리레드" info="true" idnm="car" tit="클릭하면 시운전해요!" />,
+        ReactDOM.render(<MakeImg isrc="./images/ferrari.png" ialt="페라리레드" info="true" idnm="car" tit="클릭하면 시운전해요!" />,
         document.querySelector('#ferrari'));
 
     }; ///////////// getFerrari함수 ///////////////////
