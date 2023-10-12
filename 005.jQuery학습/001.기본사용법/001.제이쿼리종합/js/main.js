@@ -96,8 +96,11 @@ const actMini = (ele, seq, fn) => {
 btns.first() // 첫번째버튼
     .click(function(){
 
-        // 0. 메시지 숨기기
-        msg.fadeOut(300)
+        // 0. 메시지 숨기기 + 버튼 숨기기
+        msg.fadeOut(300);
+        // this는 클릭된 버튼자신!
+        $(this).slideUp(400);
+
 
         // 1. 위치값 읽기
         // 원리: 이동할 li방 위치값을 읽은 후 이동함
