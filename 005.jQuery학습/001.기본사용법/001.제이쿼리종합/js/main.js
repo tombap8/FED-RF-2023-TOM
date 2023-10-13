@@ -304,7 +304,12 @@ btns
             .animate({ 
               // 윗층으로 올라옴! li높이값 만큼
               bottom: room.eq(7).height()+'px'
-            },500,'easeOutBack')
+            },500,'easeOutElastic')
+            .delay(500) // 기다림
+            .animate({
+              // right값을 li width값 만큼 이동(120%보정)
+              right: room.eq(7).width()*1.2 + 'px'
+            },1000,'easeOutBounce')
 
           }); /////// fadeIn ///////////
 
