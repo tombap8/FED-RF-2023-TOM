@@ -4,6 +4,8 @@
 const dFn = {
     qs : x => document.querySelector(x),
     qsa : x => document.querySelectorAll(x),
+    qsEl: (el, x) => el.querySelector(x),
+    qsaEl: (el, x) => el.querySelectorAll(x),
     addEvt : (ele,evt,fn) => 
             ele.addEventListener(evt,fn),
     cg : x => console.log(x),
@@ -169,9 +171,55 @@ function makeDallyeok(){
 
 
         // 9. 날짜정보를 사용하도록 셋팅하기 ////
-        // 대상: .date -> 위에서 새로 담겼으므로 새로읽음!
+        // (1) 대상선정 : .date -> 위에서 새로 담겼으므로 새로읽음!
         let newDate = dFn.qsa('.date');
-        console.log(newDate);
+        // console.log(newDate);
+
+        // (2) 각 날짜 .date요소에 링크설정하기
+        newDate.forEach(ele=>{
+            dFn.addEvt(ele,'click',()=>{
+                // 1. 년도읽기
+                let nowY = yearTit.innerText;
+                // 2. 월읽기
+                let nowM = monthTit.innerText;
+                // 3. 날짜읽기
+                let nowD = ele.innerText;                
+                
+                // 4. 전달/다음달 구분하기
+                let isSpan = dFn.qsEl(ele,'span');
+                console.log('span있니?',isSpan);
+                // span이 있으면 true 처리됨!
+                if(isSpan){
+                    // span의 클래스가 'bm'/'am' 인지구분하기
+                    let isAM = isSpan.classList.contains('am');
+                    if(isAM){ // 다음달이므로 1 더함
+                        nowM++;
+                        if(nowM==13){ 
+                            // 13월은 1월로 처리
+                            nowM = 1; 
+                            // 1월은 다음해로 처리
+                            nowY++;
+                        } ///// if //////                       
+
+                    } //// else ////////
+                    else{ /// 'bm'일 경우  즉, 전달!
+                        nowM--;
+                        if(nowM==0){
+                            // 0월은 12월로 처리
+                            nowM = 12;
+                            // 12월은 전해로 처리
+                            nowY--;
+                        }
+                    } ////// else //////
+                } ////////// if ///////////
+                
+                console.log(
+                    `${nowY}-${dFn.addZero(nowM)}-${dFn.addZero(nowD)}`);
+
+            }); /////// click 함수 ////////
+
+        }); //////////// forEach /////////////////
+
         
     }; /////// initDallyeok 함수 ////////
 
