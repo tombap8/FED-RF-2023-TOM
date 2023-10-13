@@ -33,6 +33,8 @@ function makeDallyeok(){
     const dates = dFn.qs('.dates');
     // (6) 날짜넣을 배열변수
     const dateSet = [];
+    // (7) html 코드 저장변수
+    let hcode = '';
 
     // dFn.cg(yearTit);
     // dFn.cg(monthTit);
@@ -119,10 +121,37 @@ function makeDallyeok(){
         } //////////// for //////////////
         
         
-        // 7. 날짜배열로 날짜태그 구성하여 출력하기
+        // 7. 날짜배열로 날짜태그 구성하기 ///////
         // 7일 * 6주 = 42개
-        dates.innerHTML = dateSet.map((v,i)=>
-        i<42?`<div class="date">${v}</div>`:'').join('');
+        for(let i = 0; i < 42; i++){
+
+            // 오늘날짜와 같은 경우 클래스"today"넣기
+            if(
+                // [년,월,일이 모두 일치하는 오늘만 표시]
+                // (1) 오늘날짜 == 배열값날짜 AND
+                today.getDate() == dateSet[i] &&
+                // (2) 현재달 == 선택달 AND
+                today.getMonth() == currDate.getMonth() &&
+                // (3) 현재년도 == 선택년도
+                today.getFullYear() == currDate.getFullYear()
+            ){
+                hcode += `<div class="date today">${dateSet[i]}</div>`;
+            } ///// if //////
+            else{
+
+                hcode += `<div class="date">${dateSet[i]}</div>`;
+            } ///// else /////
+
+
+
+        } /////////// for /////////////////
+
+        // 8. 날짜태그 출력하기 ////////
+        dates.innerHTML = hcode;
+
+
+        // dates.innerHTML = dateSet.map((v,i)=>
+        // i<42?`<div class="date">${v}</div>`:'').join('');
         
         // dFn.cg('날짜배열:'+dateSet.map((v,i)=>
         // i<42?`<div class="date">${v}</div>`:'').join(''));

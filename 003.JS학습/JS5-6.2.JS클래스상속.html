@@ -79,7 +79,7 @@
           return `
                     영화 ${this.제목}의
                     감독님 이름은 ${this.감독},
-                    나의 응원은 ${txt}
+                    <br>나의 응원은 ${txt}
                 `;
         } /////// myMethod 메서드 /////////
       } ///////// MovieInfo 클래스 //////////
@@ -103,7 +103,7 @@
         // CGV만의 메서드 만들기 //////
         showCGV(txt) {
           // txt전달변수를 부모메서드에 전달
-          return super.공통메서드(txt) + ", CGV안내 : " + this.극장안내;
+          return super.공통메서드(txt) + ", <br>CGV안내 : " + this.극장안내;
         } /////////// showCGV ////////////////
 
         ///// 겟터, 셋터 만들기 ////////////
@@ -146,7 +146,7 @@
         // super.부모메서드 -> 이방법으로 부모메서드 가져오기!
         show(mm) {
           // mm 부모메서드에 전달값변수
-          return super.공통메서드(mm) + ", MegaBox 팝콘소식 : " + this.팝콘소식;
+          return super.공통메서드(mm) + ", <br>MegaBox 팝콘소식 : " + this.팝콘소식;
         } //////////// show 메서드 //////
 
         //// 겟터 셋터 셋팅하기 //////////
@@ -278,7 +278,7 @@
       window.addEventListener("load", () => {
         let hcode = `
         <div class="mega-info">
-          <h1> [ 🎪mega 상영관 영화안내 ] </h1>
+          <h1> [ 🎪메가박스 상영관 영화안내 ] </h1>
           <h2>
           <ol>`;
 
@@ -295,7 +295,7 @@
         hcode += `
         <li>
           🎁 메시지 : 
-          ${megaInfo.show("mega는 항상 훌륭합니다!")}  
+          ${megaInfo.show("메가박스는 항상 위대합니다!")}  
         </li>
       `;
 
@@ -329,6 +329,7 @@
         hcode += "</ol></h2></div>";
 
         // body에 직접 출력 : += 추가출력
+        document.body.innerHTML += '<hr>';
         document.body.innerHTML += hcode;
       }); /////////// load /////////////////
     </script>
