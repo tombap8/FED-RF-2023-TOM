@@ -45,6 +45,13 @@ function makeDallyeok(){
     // 2. 함수 만들기 ///////////////////
     // (1) 달력 초기화구성 함수 ///////
     const initDallyeok = () => {
+        // 변수초기화
+        // 날짜 배열 초기화 : splice(시작순번,개수)
+        // -> 배열변수.splice(0) 첫배열부터 모두지움!
+        dateSet.splice(0);
+        // html코드 변수 초기화
+        hcode = '';
+
         // 현재년
         let cYr = currDate.getFullYear();
         // 현재달
@@ -156,31 +163,36 @@ function makeDallyeok(){
         
         // dFn.cg('날짜배열:'+dateSet.map((v,i)=>
         // i<42?`<div class="date">${v}</div>`:'').join(''));
+
+        // dFn.cg(dateSet);
+        // dFn.cg(hcode);
+
+
+        // 9. 날짜정보를 사용하도록 셋팅하기 ////
+        // 대상: .date -> 위에서 새로 담겼으므로 새로읽음!
+        let newDate = dFn.qsa('.date');
+        console.log(newDate);
         
     }; /////// initDallyeok 함수 ////////
 
 
 
-    // (2) 이전달력 출력하기 함수 ////////////////////
-    const prevCalendar = () => {
-        console.log('이전달력 고고!');
-        // 이전달로 변경하여 initDallyeok() 함수호출!
+    // (2) 이전/다음달력 출력하기 함수 ////////////////////
+    const chgCalendar = (num) => { 
+        // num(1이면 다음, -1이면 이전)
+        console.log('달력변경 고고!');
+        // 이전/다음달로 변경하여 initDallyeok() 함수호출!
         // getMonth() 월가져오기 / setMonth() 월 셋팅하기!
-        currDate.setMonth(currDate.getMonth()-1);
+        currDate.setMonth(currDate.getMonth()+num);
         initDallyeok();
     }; //////// prevCalendar 함수 ///////////////////
 
-    // (3) 다음달력 출력하기 함수 ////////////////////
-    const nextCalendar = () => {
-        console.log('다음달력 고고!');
-    }; //////// nextCalendar 함수 ///////////////////
-
 
     // 3. 이벤트 설정하기 ////////////////////
-    // 이전버튼에 함수연결하기
-    dFn.addEvt(dFn.qs('.btnL'),'click',prevCalendar);
-    // 다음버튼에 함수연결하기
-    dFn.addEvt(dFn.qs('.btnR'),'click',nextCalendar);
+    // 이전버튼에 함수연결하기 : 달을 빼기위해 -1전달
+    dFn.addEvt(dFn.qs('.btnL'),'click',()=>chgCalendar(-1));
+    // 다음버튼에 함수연결하기 : 달을 더하기위해 1전달
+    dFn.addEvt(dFn.qs('.btnR'),'click',()=>chgCalendar(1));
 
 
 
