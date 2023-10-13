@@ -199,8 +199,7 @@ function makeDallyeok(){
                             nowM = 1; 
                             // 1월은 다음해로 처리
                             nowY++;
-                        } ///// if //////                       
-
+                        } ///// if //////
                     } //// else ////////
                     else{ /// 'bm'일 경우  즉, 전달!
                         nowM--;
@@ -209,7 +208,7 @@ function makeDallyeok(){
                             nowM = 12;
                             // 12월은 전해로 처리
                             nowY--;
-                        }
+                        } //// if ////
                     } ////// else //////
                 } ////////// if ///////////
                 
