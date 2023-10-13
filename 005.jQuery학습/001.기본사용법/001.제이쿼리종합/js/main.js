@@ -312,7 +312,7 @@ btns
             },1000,'easeOutBounce',
             ()=>{ // 물린후 대사
               msg.html(msgTxt[4][1])
-              .css({left:"-46%"});
+              .css({left:"-64%"});
 
               // 미니언즈 좀비 이미지 변경(1초후)
               setTimeout(()=>{
