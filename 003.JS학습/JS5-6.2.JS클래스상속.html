@@ -84,58 +84,97 @@
         } /////// myMethod 메서드 /////////
       } ///////// MovieInfo 클래스 //////////
 
-
       /**************************************** 
       /////////   CGV 영화상영관 클래스 ////////
       ****************************************/
-     class CGV extends MovieInfo {
-      // 속성셋팅 생성자 메서드는 필수
-      // 기본적으롤 부모 생성자 메서드 전달변수사용!
-      constructor(pos, tit, sum, dir, act, des, msg, num){
-        // msg, num 전달변수는 CGV전용!
-        // super() 메서드 : 부모생성자 메서드 호출
-        super(pos, tit, sum, dir, act, des);
+      class CGV extends MovieInfo {
+        // 속성셋팅 생성자 메서드는 필수
+        // 기본적으롤 부모 생성자 메서드 전달변수사용!
+        constructor(pos, tit, sum, dir, act, des, msg, num) {
+          // msg, num 전달변수는 CGV전용!
+          // super() 메서드 : 부모생성자 메서드 호출
+          super(pos, tit, sum, dir, act, des);
 
-        // CGV만의 개별적인 속성만들기
-        this.극장안내 = msg;
-        this.수용인원 = num;
+          // CGV만의 개별적인 속성만들기
+          this.극장안내 = msg;
+          this.수용인원 = num;
+        } ////////// 생성자 메서드 /////////
 
-      } ////////// 생성자 메서드 /////////
-      
-      // CGV만의 메서드 만들기 //////
-      showCGV(txt){ // txt전달변수를 부모메서드에 전달
-        return super.공통메서드(txt) + 
-              ", CGV안내 : " + this.극장안내
+        // CGV만의 메서드 만들기 //////
+        showCGV(txt) {
+          // txt전달변수를 부모메서드에 전달
+          return super.공통메서드(txt) + ", CGV안내 : " + this.극장안내;
+        } /////////// showCGV ////////////////
 
-      } /////////// showCGV ////////////////
+        ///// 겟터, 셋터 만들기 ////////////
+        // 목적 : 수용인원 속성값에 대한 유효성검사 및 캡슐화
+        get people() {
+          return this.수용인원;
+        } //// getter ///
 
-      ///// 겟터, 셋터 만들기 ////////////
-      // 목적 : 수용인원 속성값에 대한 유효성검사 및 캡슐화
-      get people(){
-        return this.수용인원;
-      } //// getter ///
-
-      set people(num){ // num - 수용인원 숫자데이터
-        this.수용인원 = num;
-      } //// setter ////
-
-     } /////////// CGV 영화상영관 클래스 ///////
-
+        set people(num) {
+          // num - 수용인원 숫자데이터
+          // 전달값 유효성검사하기!
+          if (isNaN(num)) {
+            // 숫자가 아닌값이면
+            num = 300; // 기본데이터 대신넣음!
+            console.log("데이터가 업데이트 되지 않았습니다!");
+          } else {
+            this.수용인원 = num;
+            console.log("데이터가 업데이트 완료되었습니다!");
+          }
+        } //// setter ////
+      } /////////// CGV 영화상영관 클래스 ///////
 
       /**************************************** 
       ///////   MegaBox 영화상영관 클래스 //////
       ****************************************/
-     class MegaBox extends MovieInfo {
+      class MegaBox extends MovieInfo {
+        // 속성셋팅 생성자 메서드는 필수!
+        // 기본적으로 부모 생성자 메서드 전달변수사용!
+        constructor(pos, tit, sum, dir, act, des, msg, num) {
+          // super() 메서드 : 부모 생성자,메서드호출!
+          super(pos, tit, sum, dir, act, des);
 
-     } //////// MegaBox 영화상영관 클래스 ///////
+          // MegaBox만의 개별 속성만들기
+          this.팝콘소식 = msg;
+          this.상영관수 = num;
+        } ////// 생성자 메서드 /////
 
-     //////////////////////////////////////////////
-     /////// 클래스로 객체 생성하고 화면출력하기 /////
-     //////////////////////////////////////////////
+        /// MegaBox만의 메서드 만들기
+        // this.메서드() 는 부모클래스의 메서드임!(접근가능!)
+        // super.부모메서드 -> 이방법으로 부모메서드 가져오기!
+        show(mm) {
+          // mm 부모메서드에 전달값변수
+          return super.공통메서드(mm) + ", MegaBox 팝콘소식 : " + this.팝콘소식;
+        } //////////// show 메서드 //////
 
-     // 1. CGV 클래스 활용하기 ///////
-     const cgvInfo = new CGV(
-      "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+        //// 겟터 셋터 셋팅하기 //////////
+        // 목적: 상영관수 속성값에 대한 유효성검사 //
+        get hallNum() {
+          return this.상영관수;
+        }
+        set hallNum(n) {
+          // n - 셋팅값
+          // 숫자가 아니면 걸러주기!
+          if (isNaN(n)) {
+            n = 50;
+            console.log("데이터가 업데이트 되지 않았습니다!");
+          } else {
+            // 값 셋팅코드
+            this.상영관수 = n;
+            console.log("데이터가 업데이트 완료!");
+          }
+        }
+      } //////// MegaBox 영화상영관 클래스 ///////
+
+      //////////////////////////////////////////////
+      /////// 클래스로 객체 생성하고 화면출력하기 /////
+      //////////////////////////////////////////////
+
+      // 1. CGV 클래스 활용하기 ///////
+      const cgvInfo = new CGV(
+        "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
         "조제",
         "멜로/로맨스, 드라마",
         "김종관",
@@ -144,78 +183,155 @@
         // 자식 클래스용 전달값(극장안내,수용인원)
         "CGV는 항상  영화팬들과 함께합니다~!",
         300
-     ); ////////// cgvInfo 객체 생성 ///////
+      ); ////////// cgvInfo 객체 생성 ///////
 
-     // 객체확인
-     console.log("CGV객체확인:",cgvInfo);
+      // 객체확인
+      console.log("CGV객체확인:", cgvInfo);
 
-     // cgvInfo객체 화면출력
-     // <div class="cgv-info"><ol><li>...</li></ol></div>
+      // cgvInfo객체 화면출력
+      // <div class="cgv-info"><ol><li>...</li></ol></div>
 
-     // 이미지태그 리턴함수 ///
-     const makeImg = x => `<img src="${x}" alt="포스터">`;
+      // 이미지태그 리턴함수 ///
+      const makeImg = (x) => `<img src="${x}" alt="포스터">`;
 
-     window.addEventListener('load',()=>{
-      let hcode = `
+      window.addEventListener("load", () => {
+        let hcode = `
         <div class="cgv-info">
           <h1> [ 🎪CGV 상영관 영화안내 ] </h1>
           <h2>
           <ol>`;
 
-      // 객체를 배열화 하여 forEach사용!
-      // Object.keys(객체)-> 속성만 배열화!
-      Object.keys(cgvInfo).forEach(v=>{
-        hcode += `<li>${
-          v=='포스터'? 
-          makeImg(cgvInfo[v]):
-          v + ' : ' +cgvInfo[v]
-        }</li>`;
-      });
+        // 객체를 배열화 하여 forEach사용!
+        // Object.keys(객체)-> 속성만 배열화!
+        Object.keys(cgvInfo).forEach((v) => {
+          hcode += `<li>${
+            v == "포스터" ? makeImg(cgvInfo[v]) : v + " : " + cgvInfo[v]
+          }</li>`;
+        });
 
-      // CGV 객체 메서드 호출하기!
-      // : 상속된 부모 메서드와 함께 구현됨!
-      hcode += `
+        // CGV 객체 메서드 호출하기!
+        // : 상속된 부모 메서드와 함께 구현됨!
+        hcode += `
         <li>
           🎁 메시지 : 
           ${cgvInfo.showCGV("CGV는 항상 훌륭합니다!")}  
         </li>
       `;
 
-      // CGV 극장 수용인원 보고
-      hcode += `
+        // 수용인원을 Getter / Setter 사용하여 표현하기!
+
+        // CGV 극장 수용인원 보고
+        hcode += `
         <li>
           👓 2022년도 CGV 극장수용인원은 
-          ${cgvInfo.수용인원}명이었습니다!
+          ${cgvInfo.people}명이었습니다!
         </li>
       `;
 
-      // 극장수용인원 업데이트
-      cgvInfo.수용인원 = 500;
+        // 극장수용인원 업데이트
+        // Setter에서 데이터 유효성검사함!
 
-      // CGV 극장 수용인원 변경보고
-      hcode += `
+        // cgvInfo.people = "멍멍";
+        cgvInfo.people = 500;
+        // cgvInfo.수용인원 = 500;
+
+        // CGV 극장 수용인원 변경보고
+        // cgvInfo.수용인원 -> cgvInfo.people
+        // -> 원본 속성은 은닉하고 겟터를 통하여 읽어옴!
+        hcode += `
         <li>
           🎀 2023년도 CGV 극장수용인원은 
-          ${cgvInfo.수용인원}명이 되었습니다!
+          ${cgvInfo.people}명이 되었습니다!
         </li>
       `;
 
+        hcode += "</ol></h2></div>";
 
-
-      hcode += '</ol></h2></div>';
-
-      // body에 직접 출력
-      document.body.innerHTML = hcode;
-
-
-     }); /////////// load /////////////////
+        // body에 직접 출력
+        document.body.innerHTML = hcode;
+      }); /////////// load /////////////////
 
 
 
 
-</script>
+
+      // 2. MegaBox 클래스 활용하기 ///////
+      const megaInfo = new MegaBox(
+        "https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2",
+        "영웅",
+        "드라마, 뮤지컬",
+        "윤제균",
+        "정성화, 김고은",
+        "누가 죄인인가",
+        // 자식 클래스용 전달값(팝콘소식,상영관수)
+        "롤리팝과 먹는 새로운 롤리팝콘 출시!!!",
+        50
+      ); ////////// cgvInfo 객체 생성 ///////
+
+      // 객체확인
+      console.log("mega객체확인:", megaInfo);
+
+      // megaInfo객체 화면출력
+      // <div class="mega-info"><ol><li>...</li></ol></div>
+
+
+      window.addEventListener("load", () => {
+        let hcode = `
+        <div class="mega-info">
+          <h1> [ 🎪mega 상영관 영화안내 ] </h1>
+          <h2>
+          <ol>`;
+
+        // 객체를 배열화 하여 forEach사용!
+        // Object.keys(객체)-> 속성만 배열화!
+        Object.keys(megaInfo).forEach((v) => {
+          hcode += `<li>${
+            v == "포스터" ? makeImg(megaInfo[v]) : v + " : " + megaInfo[v]
+          }</li>`;
+        });
+
+        // mega 객체 메서드 호출하기!
+        // : 상속된 부모 메서드와 함께 구현됨!
+        hcode += `
+        <li>
+          🎁 메시지 : 
+          ${megaInfo.show("mega는 항상 훌륭합니다!")}  
+        </li>
+      `;
+
+        // 수용인원을 Getter / Setter 사용하여 표현하기!
+
+        // mega 극장 수용인원 보고
+        hcode += `
+        <li>
+          👓 2022년도 메가박스 극장상영관수는 
+          ${megaInfo.hallNum}개였습니다!
+        </li>
+      `;
+
+        // 극장상영관수 업데이트
+        // Setter에서 데이터 유효성검사함!
+
+        // megaInfo.hallNum = "멍멍";
+        megaInfo.hallNum = 200;
+        // megaInfo.상영관수 = 500;
+
+        // mega 극장 상영관수 변경보고
+        // megaInfo.상영관수 -> megaInfo.hallNum
+        // -> 원본 속성은 은닉하고 겟터를 통하여 읽어옴!
+        hcode += `
+        <li>
+          🎀 2023년도 메가박스 극장상영관수은 
+          ${megaInfo.hallNum}개가 되었습니다!
+        </li>
+      `;
+
+        hcode += "</ol></h2></div>";
+
+        // body에 직접 출력 : += 추가출력
+        document.body.innerHTML += hcode;
+      }); /////////// load /////////////////
+    </script>
   </head>
-  <body>
-    
-  </body>
+  <body></body>
 </html>
