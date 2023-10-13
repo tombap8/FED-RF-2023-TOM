@@ -51,7 +51,11 @@ const msgTxt = [
   // 3번방
   "",
   // 4번방
-  "",
+  [
+    ['무','무.','무.서','무.서.',
+  '무.서.워','무.서.워.','무.서.워..','무.서.워...'],
+  `아~악! 물렸다!<br>어서 치료주사방으로!`
+  ],
   // 5번방
   "",
   // 6번방
@@ -271,5 +275,43 @@ btns
     // 미니언즈 공통함수 호출
     actMini(this, 6, fn);
   }) //// "다시옆방으로!" 버튼 끝 //////////
+
+  // 8. "무서우니 윗층으로!" 버튼 클릭시 /////////////
+  // 위의 버튼에서 이어짐!
+  .next() // 다섯번째버튼
+  .click(function () {
+    // 하위 이벤트함수 this의미!
+    // ()=>{
+
+    // 버튼별 콜백함수 만들기 ////////
+    let fn =
+      // function(){ -> this가 mi임!
+      () => {
+        // 무.서.워... 메시지-배배배
+        msg
+        .html(msgTxt[4][0][0]).fadeIn(200)
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][1]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][2]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][3]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][4]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][5]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][6]))
+        .delay(500).fadeIn(200,()=>msg.html(msgTxt[4][0][7]))
+        .delay(500).fadeIn(200,
+          ()=>{ // 무서워 대사후 좀비 올라와 달겨들기!
+            // 7번방좀비가 올라옴
+            room.eq(7).find('.mz')
+            .animate({ 
+              // 윗층으로 올라옴! li높이값 만큼
+              bottom: room.eq(7).height()+'px'
+            },500,'easeOutBack')
+
+          }); /////// fadeIn ///////////
+
+      }; ////////// 콜백함수 /////////////
+
+    // 미니언즈 공통함수 호출
+    actMini(this, 4, fn);
+  }) //// "무서우니 윗층으로!" 버튼 끝 //////////
 
 
