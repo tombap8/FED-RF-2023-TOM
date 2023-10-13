@@ -311,7 +311,8 @@ btns
               right: room.eq(7).width()*1.2 + 'px'
             },1000,'easeOutBounce',
             ()=>{ // 물린후 대사
-              msg.html(msgTxt[4][1]);
+              msg.html(msgTxt[4][1])
+              .css({left:"-46%"});
 
               // 미니언즈 좀비 이미지 변경(1초후)
               setTimeout(()=>{
