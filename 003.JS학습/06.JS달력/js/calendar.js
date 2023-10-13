@@ -4,6 +4,8 @@
 const dFn = {
     qs : x => document.querySelector(x),
     qsa : x => document.querySelectorAll(x),
+    addEvt : (ele,evt,fn) => 
+            ele.addEventListener(evt,fn),
     cg : x => console.log(x),
     addZero : x => x < 10 ? '0' + x : x,
     fm : x => `${x.getFullYear()}-${
@@ -138,7 +140,6 @@ function makeDallyeok(){
                 hcode += `<div class="date today">${dateSet[i]}</div>`;
             } ///// if //////
             else{
-
                 hcode += `<div class="date">${dateSet[i]}</div>`;
             } ///// else /////
 
@@ -157,6 +158,30 @@ function makeDallyeok(){
         // i<42?`<div class="date">${v}</div>`:'').join(''));
         
     }; /////// initDallyeok 함수 ////////
+
+
+
+    // (2) 이전달력 출력하기 함수 ////////////////////
+    const prevCalendar = () => {
+        console.log('이전달력 고고!');
+        // 이전달로 변경하여 initDallyeok() 함수호출!
+        // getMonth() 월가져오기 / setMonth() 월 셋팅하기!
+        currDate.setMonth(currDate.getMonth()-1);
+        initDallyeok();
+    }; //////// prevCalendar 함수 ///////////////////
+
+    // (3) 다음달력 출력하기 함수 ////////////////////
+    const nextCalendar = () => {
+        console.log('다음달력 고고!');
+    }; //////// nextCalendar 함수 ///////////////////
+
+
+    // 3. 이벤트 설정하기 ////////////////////
+    // 이전버튼에 함수연결하기
+    dFn.addEvt(dFn.qs('.btnL'),'click',prevCalendar);
+    // 다음버튼에 함수연결하기
+    dFn.addEvt(dFn.qs('.btnR'),'click',nextCalendar);
+
 
 
     // 초기셋팅함수 호출!
