@@ -101,7 +101,9 @@ function Title(props){ // 컴포넌트 호출시 tit를 셋팅함
 
 
 // 음식리스트
-const foods = ["스파게티","짜파게티","냉면","짜장면","마라탕"];
+const foods = 
+// ["스파게티","짜파게티","냉면","짜장면","마라탕"];
+[];
 
 // 2-2. 반복리스트를 위한 컴포넌트 ////////
 function FoodList(props){ // 음식명은 fname에 담아서 전달한다!
@@ -117,7 +119,8 @@ function WishList(props){ // wlist 속성에 담아서 보내준다!
         <React.Fragment>
             <Title tit="음식" />
             {/* 음식 위시리스트의 길이가 0보다 클때만 출력 */}
-
+            {
+            myFood.length > 0 &&
             <div>
                 <h2>
                     개발자가 좋아하는 음식은 모두
@@ -129,11 +132,23 @@ function WishList(props){ // wlist 속성에 담아서 보내준다!
                         // map(변수=>바로리턴컴포넌트)
                         // 리액트 map()은 JS map()과 다름!
                         // 맵쪼잉! 하지 않으니까~~!
-                        myFood.map(x=><FoodList fname={x} />)
+                        myFood.map(
+                            x=><FoodList fname={x} />)
                     }
                 </ul>
             </div>
+            } 
+            {/* 다른 경우의 출력은 별도의 JSX출력
+            중괄호 구역에 코딩한다! */}
+            {
+                myFood.length == 0 &&
+                <h2>아직 개발자음식 리스트가 업데이트 되지 않았습니다!</h2>
+            }
             
         </React.Fragment>
     );
 } ///////// WishList 컴포넌트 ///////////////
+
+// 컴포넌트 출력하기 /////////
+ReactDOM.render(<WishList wlist={foods} />,
+document.querySelector('#root3'));
