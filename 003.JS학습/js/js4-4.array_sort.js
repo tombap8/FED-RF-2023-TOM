@@ -291,8 +291,17 @@ const sel3 = dFn.qs(".sel3");
 // 정렬기준 대상: .cta3
 const cta3 = dFn.qs(".cta3");
 
-// 이벤트 설정하기 ////
+// sel3 이벤트 설정하기 ////
+// 데이터와 출력 타겟부터 설정후 정렬함수 호출!
+dFn.addEvt(sel3, "change", ()=>{
+  targetData = list1;
+  targetEle = showList3;
+}); /////// change ///////////
 dFn.addEvt(sel3, "change", sortingFn);
+
+// 정렬변경함수의 데이터 및 출력요소 셋팅변수
+let targetData = list1;
+let targetEle = showList3;
 
 // 정렬변경 함수 만들기 ///
 function sortingFn() {
@@ -312,10 +321,10 @@ function sortingFn() {
   console.log("바꿔! 정렬!", optVal,cta);
 
   // 2. 분기하기
-  // 데이터 대상: list1 배열
+  // 데이터 대상: targetData 배열
   if (optVal == 1) {
     // 오름차순
-    list1.sort((a, b) => {
+    targetData.sort((a, b) => {
       // a,b는 모두 객체 데이터
       // 따라서 내부 속성을 구체적으로 비교함!
       // idx,tit,cont 세가지 중 하나로 비교
@@ -324,7 +333,7 @@ function sortingFn() {
   } //// if //////
   else if (optVal == 2) {
     // 내림차순
-    list1.sort((a, b) => {
+    targetData.sort((a, b) => {
       // a,b는 모두 객체 데이터
       // 따라서 내부 속성을 구체적으로 비교함!
       // idx,tit,cont 세가지 중 하나로 비교
@@ -332,10 +341,14 @@ function sortingFn() {
     });
   } //// else if //////
 
-  console.log(list1);
+  console.log(targetData);
 
-  // 리스트 코드 반영하기
-  upCode(list1,showList3);
+  // 리스트 코드 반영하기 : 대상데이터,출력요소는
+  // 호출시 설정된 것으로 셋팅됨!
+  upCode(targetData,targetEle);
+
+  console.log('타겟데이터:',targetData,
+  '\n타겟요소:',targetEle);
 } ////////// sortingFn 함수 /////////
 
 //////////////////////////////////////////////
@@ -374,4 +387,12 @@ const list2 = [
 
 // 위의  upCode() 함수를 호출하여 페이지 찍기
 upCode(list2,showList4);
+
+// sel4 이벤트 설정하기 ////
+// 데이터와 출력 타겟부터 설정후 정렬함수 호출!
+dFn.addEvt(sel4, "change", ()=>{
+  targetData = list2;
+  targetEle = showList4;
+}); /////// change ///////////
+dFn.addEvt(sel4, "change", sortingFn);
 
