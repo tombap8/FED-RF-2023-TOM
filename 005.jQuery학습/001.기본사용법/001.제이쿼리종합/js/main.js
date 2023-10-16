@@ -355,11 +355,20 @@ btns
 
         // 주사기 돌리기
         $('.inj')
+        .css({zIndex:"9999"})
         .delay(500)
         .animate({
-          rotate:"-150deg",
-          zIndex:"9999"
-        },500)
+          rotate:"-150deg"
+        },500,"easeInOutCirc",
+        ()=>{ // 주사기회전후 콜백함수
+          // 미니언즈 이미지 변경하기
+          // attr(속성명,값) -> 값설정하기 
+          // attr(속성명) -> 값읽어오기
+          mi.find('img')
+          .attr('src','images/m2.png') // 이미지변경
+          .css({filter:"grayscale(0)"});//다시컬러
+
+        }) /////////// animate ///////
         /* 
           jquery.rotate.js 는
           jQuery animate메서드에 
