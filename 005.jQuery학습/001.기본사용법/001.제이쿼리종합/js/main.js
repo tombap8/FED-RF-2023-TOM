@@ -461,6 +461,14 @@ btns
         // 메시지 보이기
         msg.html(msgTxt[0]).fadeIn(300);
 
+        // 1번방 단체좀비들 달겨들기!
+        room.eq(1).find('.mz')
+        .fadeIn(300)
+        .animate({
+          right: room.eq(1).width() + "px"
+        },3000,"easeInCirc")
+
+
       }; ////////// 콜백함수 /////////////
 
     // 미니언즈 공통함수 호출
