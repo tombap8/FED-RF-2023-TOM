@@ -466,7 +466,13 @@ btns
         .fadeIn(300)
         .animate({
           right: room.eq(1).width() + "px"
-        },3000,"easeInCirc")
+        },3000,"easeInCirc");
+
+        // 헬기등장!
+        $('.heli')
+        .animate({
+          left:'23%'
+        },4000,"easeOutBack")
 
 
       }; ////////// 콜백함수 /////////////
