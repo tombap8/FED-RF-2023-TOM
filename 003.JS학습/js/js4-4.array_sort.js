@@ -357,11 +357,11 @@ function sortingFn() {
 
 // 4. 객체데이터 검색후 배열의 정렬 ////////////
 
-// 출력대상: showList4
+// (1) 출력대상선정: showList4
 const showList4 = dFn.qs('.showList4');
 // console.log(showList4);
 
-// (1) 데이터 : 객체 데이터 배열
+// (2) 데이터셋팅 : 객체 데이터 배열
 const list2 = [
   {
       idx: 15,
@@ -385,10 +385,11 @@ const list2 = [
   },
 ]; /////////////// list2 /////////////     
 
+// (3) 리스트 초기호출!
 // 위의  upCode() 함수를 호출하여 페이지 찍기
 upCode(list2,showList4);
 
-// sel4 이벤트 설정하기 ////
+// (4) sel4 이벤트 설정하기 ////
 // 데이터와 출력 타겟부터 설정후 정렬함수 호출!
 dFn.addEvt(sel4, "change", ()=>{
   targetData = list2;
