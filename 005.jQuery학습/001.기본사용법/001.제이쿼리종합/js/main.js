@@ -473,13 +473,16 @@ btns
         .animate({
           left:'25%',
           rotate:'20deg'
-        },3500,"easeOutQuint")
+        },3000,"easeOutQuint")
         .animate({
           left:'23%',
           rotate:'0deg'
-        },500,"easeInOutSine",
-        ()=>{ // 헬기이동완료후 콜백함수
-
+        },1000,"easeInOutBack",
+        function(){ // 헬기이동완료후 콜백함수
+          // 헬기 이미지 변경하기(this->function(){}사용시)
+          $(this).attr('src','images/heli2.png');
+          // 원본 미니언즈 사라지기
+          mi.hide();
         })
 
 
