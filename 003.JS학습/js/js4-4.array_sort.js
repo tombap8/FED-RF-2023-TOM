@@ -491,10 +491,32 @@ function searchingFn(){
   // 그 변수에 값은 업데이트 한다!
   // 단, 그 변수 데이터는 정렬시에 사용하도록 한다!
   // -> newList변수
-  newList = res;
-  
+  newList = res;  
 
 } /////////// searchingFn 함수 //////////////
+
+// (7) 전체 리스트 돌아가기 버튼 클릭시 기능구현 ///////
+// 대상: .fbtn
+dFn.addEvt(dFn.qs('.fbtn'),'click',()=>{
+  // 1. newList를 원본 list2 로 업데이트
+  newList = list2;
+  upCode(newList,showList4);
+
+  // 2. 검색 초기화
+  initSearch();
+  
+}); /////////// click /////////////////
+
+/// 초기화함수 : 검색선택박스 초기화
+function initSearch(){
+  // 1. 검색어 초기화
+  dFn.qs('#stxt').value = '';
+  // 2. 검색어 기준 선택초기화
+  dFn.qs('.cta4').value = 'idx';
+  // 3. 정렬초기화
+  dFn.qs('.sel4').value = '0';
+
+} ////////// initSearch 함수 ////////////
 
 
 
