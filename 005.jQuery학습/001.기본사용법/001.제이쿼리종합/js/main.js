@@ -471,8 +471,16 @@ btns
         // 헬기등장!
         $('.heli')
         .animate({
-          left:'23%'
-        },4000,"easeOutBack")
+          left:'25%',
+          rotate:'20deg'
+        },3500,"easeOutQuint")
+        .animate({
+          left:'23%',
+          rotate:'0deg'
+        },500,"easeInOutSine",
+        ()=>{ // 헬기이동완료후 콜백함수
+
+        })
 
 
       }; ////////// 콜백함수 /////////////
