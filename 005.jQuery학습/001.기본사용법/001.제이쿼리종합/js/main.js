@@ -506,9 +506,15 @@ btns
           setTimeout(() => {
             tit.addClass('on2');
           }, 3000);
-
           
-          // 건물무너지기
+          // 2.건물무너지기
+          // - 간판떨어진 후(6초후) 
+          // 1단계: 건물흔들리기(클래스 'on')
+          setTimeout(() => {
+            room.parent().addClass('on');
+            // parent() -> 부모요소인 .building
+            // -> JS의 parentElement와 유사함!
+          }, 6000);
 
         })
 
