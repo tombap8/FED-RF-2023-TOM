@@ -546,8 +546,11 @@ btns
                 color: 'white',
                 fontSize:'20vh',
                 textShadow:'0 0 5px #000',
-                fontFamily:'Vladimir'
+                fontFamily:'vladimir script'
               })
+              .hide() // 숨기기
+              .fadeIn(1000) // 페이드애니로 보이기
+              .animate({color:'red'},1000); // 글자색바꾸기애니
 
             }); /// animate ///
 
