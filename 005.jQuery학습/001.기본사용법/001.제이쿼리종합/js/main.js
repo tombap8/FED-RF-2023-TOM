@@ -47,7 +47,7 @@ const msgTxt = [
   // 1번방
   "",
   // 2번방
-  "",
+  `이제 조금만 더<br>가면 탈출이닷!`,
   // 3번방
   "",
   // 4번방
@@ -367,6 +367,14 @@ btns
           mi.find('img')
           .attr('src','images/m2.png') // 이미지변경
           .css({filter:"grayscale(0)"});//다시컬러
+
+          // 주사기 없애기
+          $(".inj").hide();
+
+          // 대사 : 2번방
+          msg.html(msgTxt[2])
+          .fadeIn(200)
+          // .css({left:'0'})
 
         }) /////////// animate ///////
         /* 
