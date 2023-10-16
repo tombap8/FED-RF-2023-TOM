@@ -507,22 +507,38 @@ btns
             tit.addClass('on2');
           }, 3000);
           
-          // 2.건물무너지기
-          // - 간판떨어진 후(6초후) 
-          // 1단계: 건물흔들리기(클래스 'on')
+          // 2.건물무너지기 : 건물흔들리기 + 무너지기
+          // - 간판떨어진 후(6초후) 클래스 'on'
           setTimeout(() => {
             room.parent().addClass('on');
             // parent() -> 부모요소인 .building
             // -> JS의 parentElement와 유사함!
           }, 6000);
 
-        })
-
-
+        }); /////////// animate //////////
       }; ////////// 콜백함수 /////////////
 
     // 미니언즈 공통함수 호출
     actMini(this, 0, fn);
-  }) //// "헬기를 호출!" 버튼 끝 //////////
+  }); //// "헬기를 호출!" 버튼 끝 - 모든버튼 마무리 ////
+
+
+  // 간판에 마우스 오버/아웃시 색상변경하기
+  // hover(함수1,함수1)
+  // -> 오버시 함수1 호출, 아웃시 함수2 호출
+  $('.tit').hover(
+    function(){ // over
+      $(this).css({
+        backgroundColor:"blue",
+        color:"cyan"
+      }); /////////// css //////
+    },
+    function(){ // out
+      $(this).css({
+        backgroundColor:"pink",
+        color:"yellow"
+      }); /////////// css //////
+
+    }); /////// hover 메서드 //////////
 
 
