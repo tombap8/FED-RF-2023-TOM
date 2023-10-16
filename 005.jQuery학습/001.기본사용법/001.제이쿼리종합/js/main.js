@@ -106,9 +106,9 @@ $(".mz").hide();
 
 // 2. 버튼 셋팅하기 //////////////////
 // 대상: .btns button -> btns변수
-btns.hide().first().show();
+// btns.hide().first().show();
 // 버튼들.숨겨().첫번째().보여()
-// btns.hide().eq(4).show();
+btns.hide().eq(4).show();
 
 // 3. 미니언즈 공통 기능함수 /////////
 // (1) ele - 클릭된 버튼요소
@@ -314,16 +314,22 @@ btns
               msg.html(msgTxt[4][1])
               .css({left:"-64%"});
 
-              // 미니언즈 좀비 이미지 변경(1초후)
+              // 미니언즈 이미지 흑백처리(1초후)
               setTimeout(()=>{
                 mi.find('img')
-                .attr('src','images/mz1.png')
                 .css({filter:'grayscale(100%)'});
+                // 흑백변경: 필터(그레이스케일)
+              },1000); ///// setTimeout /////
+
+              // 미니언즈 좀비 이미지 변경(2초후)
+              setTimeout(()=>{
+                mi.find('img')
+                .attr('src','images/mz1.png');
                 // 흑백변경: 필터(그레이스케일)
 
                 // 다음버튼 보이기
                 showNextBtn(this);
-              },1200); ///// setTimeout /////
+              },2000); ///// setTimeout /////
 
             }); ////// animate /////
 
