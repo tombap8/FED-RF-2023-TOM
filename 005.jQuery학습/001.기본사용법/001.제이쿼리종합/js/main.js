@@ -106,9 +106,9 @@ $(".mz").hide();
 
 // 2. 버튼 셋팅하기 //////////////////
 // 대상: .btns button -> btns변수
-// btns.hide().first().show();
+btns.hide().first().show();
 // 버튼들.숨겨().첫번째().보여()
-btns.hide().eq(5).show();
+// btns.hide().eq(5).show();
 
 // 3. 미니언즈 공통 기능함수 /////////
 // (1) ele - 클릭된 버튼요소
@@ -529,8 +529,27 @@ btns
             .delay(3000)
             // (3) 오른쪽으로 나가기(5초)
             .animate({
-              right: '0%'
-            },5000); /// animate ///
+              right: '-240%'
+            },5000,()=>{
+              // 마지막 좀비 퇴장후 'THE END'화면 중앙보이기
+              // body에 append 하여 태그 출력하기
+              $('body').append(
+                '<h1 class="ending">THE END</h1>');
+
+              $('.ending').css({
+                position:'fixed',
+                top:'50%',
+                left:'50%',
+                transform:'translate(-50%,-50%)',
+                margin:'0',
+                padding:'0',
+                color: 'white',
+                fontSize:'20vh',
+                textShadow:'0 0 5px #000',
+                fontFamily:'Vladimir'
+              })
+
+            }); /// animate ///
 
           }, 20000);
 
