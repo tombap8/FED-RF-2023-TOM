@@ -352,7 +352,30 @@ btns
     let fn =
       // function(){ -> this가 mi임!
       () => {
-        
+
+        // 주사기 돌리기
+        $('.inj')
+        .delay(500)
+        .animate({
+          rotate:"-150deg",
+          zIndex:"9999"
+        },500)
+        /* 
+          jquery.rotate.js 는
+          jQuery animate메서드에 
+          transform rotate를 사용할 수 있도록 
+          해주는 플러그인임! -> 제이쿼리 라이브러리 아래위치
+          [ 사용법(animate css설정에 씀)
+            -> rotate:"각도deg" ]
+        */
+
+        // animate는 트랜스폼 적용안됨! 따라서 CSS로 처리!
+        // .css({
+        //   transform:"rotate(-150deg)",//반시계방향
+        //   transition: ".5s .5s",//0.5초후 0.5초간 애니
+        //   zIndex: "9999" // 미니언즈(999)보다 위
+        // })
+
       }; ////////// 콜백함수 /////////////
 
     // 미니언즈 공통함수 호출
