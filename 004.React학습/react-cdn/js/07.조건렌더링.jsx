@@ -152,3 +152,79 @@ function WishList(props){ // wlist 속성에 담아서 보내준다!
 // 컴포넌트 출력하기 /////////
 ReactDOM.render(<WishList wlist={foods} />,
 document.querySelector('#root3'));
+
+
+/////// 3. 좀 더 복잡한 리스트를 출력하는 컴포넌트 ///////
+
+// 전달할 배열변수 /////
+const movs = [
+    {year:"2021",mtit:"모가디슈"},
+    {year:"2022",mtit:"범죄도시2"},
+    {year:"2023",mtit:"가디언즈 오브 갤럭시3"},
+];
+// const movs = [];
+
+// 개발자가 좋아하는 영화 찍기 ////
+// 컴포넌트를 구성하여 찍기 ///
+/* 
+    [ 출력형태 ]
+    👨‍🔧개발자👩‍🔧가 좋아하는 영화
+    개발자가 좋아하는 영화는 최근 3년간 아래와 같습니다!
+    2021년도 영화1
+    2022년도 영화2
+    2023년도 영화3
+*/
+
+
+// 3-1. 제목을 찍기위한 타이틀 컴포넌트
+// -> 2-1 컴포넌트 재사용~!
+
+// 3-2. 반복리스트를 위한 컴포넌트 /////
+function MovieList(props){ 
+    // year - 영화개봉년도 / mname - 영화명
+    return <li>{props.year}년도 {props.mname}</li>;
+} /////////// MovieList 컴포넌트 //////////
+
+// 3-3. 개발자 선호 영화 리스트 출력 컴포넌트 //////
+function WishList2(props){
+    // 위시리스트 속성으로 담기
+    const mymv = props.wlist;
+
+    return(
+        <React.Fragment>
+            <Title tit="영화" />
+            {/* 영화 위시리스트의 길이가 0보다 클때만 출력 */}
+            {
+                mymv.length > 0 &&
+                <div>
+                    <h2>
+                        개발자가 좋아하는 영화는
+                        최근 {mymv.length}년간 아래와 같습니다!
+                    </h2>
+                    <ul>
+                        {
+                            mymv.map(x=>
+                            <MovieList 
+                            year={x.year} 
+                            mname={x.mtit} /> )
+                        }
+                    </ul>
+                </div>
+            }
+            {/* 다른 조건은 아랫쪽에 다른 중괄호안에 표현 */}
+            {
+                mymv.length == 0 &&
+                <h2>아직 개발자 영화 리스트가 
+                    업데이트 되지 않았습니다!</h2>
+            }
+        </React.Fragment>
+    );
+
+} ////////////// WishList2 컴포넌트 ////////////
+
+// 3-4.개발자가 좋아하는 영화 출력하기
+ReactDOM.render(<WishList2 wlist={movs} />,
+document.querySelector('#root4'));
+// ReactDOM.render(어쩌구,저쩌구)
+
+
