@@ -400,8 +400,14 @@ corpData.forEach(val=>{
 /// 제이쿼리로 기능구현하기 //////////////////
 
 // 1. 서브컨텐츠 보이기 기능구현 /////////
-// 대상: .sub-view-box 하위 .partbox 또는 li
+
+// (1) 대상선정 : .sub-view-box 하위 .partbox 또는 li
 const subViewBox = 
 $('.sub-view-box .partbox,.sub-view-box li');
-console.log(subViewBox);
+// console.log(subViewBox);
+
+// (2) 이벤트 함수 만들기 ////////
+subViewBox.click(function(){
+  console.log('나야나!',this);
+}); /////////// click //////////
 
