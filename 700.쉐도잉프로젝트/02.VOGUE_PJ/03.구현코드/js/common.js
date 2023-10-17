@@ -6,12 +6,6 @@ import dFn from './dom.js';
 // 상단,하단 공통 데이터 불러오기
 import tData from './data/com_module.js';
 
-// 부드러운 스크롤 모듈
-import { startSS, setPos } from "./smoothScroll23.js";
-
-
-// [1] 부드러운 스크롤 적용 //////////
-startSS();
 
 // [2] 상단/하단 공통 모듈 넣기 ////////
 
