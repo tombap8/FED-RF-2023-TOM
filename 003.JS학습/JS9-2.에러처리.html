@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS9-2. 에러처리</title>
+        <style>
+            /* 칭찬스티커 */
+            #jshow {
+                position: absolute;
+                top: -19px;
+                left: 133px;
+                width: 322px;
+                height: 322px;
+                background: url(./images/ifshow.jpg) no-repeat;
+                /* 배경포지션으로 처음에 안보이게함! */
+                background-position: 322px 0;
+                /* 크기줄이기 - 30%크기 */
+                transform: scale(0.3);
+                /* 트랜지션: 속시이지 */
+                transition: all 0.4s ease-out;
+            }
+
+            /* IR(배경이미지 설명 숨기기) */
+            .ir {
+                display: block;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+            }
+        </style>
+        <script>
+            /********************************************* 
+                [ 에러처리 기본구문 ]
+
+                try{} 실행코드블록
+                catch(err){} 오류처리를 위한 코드블록
+                finally{} 무조건 실행 코드블록
+                _______________________________
+
+                -> 에러 처리를 위한 구문구성
+                try{
+                    if문사용 -> throw 키워드로 에러처리!
+                }
+                catch(err){
+                    throw로 들어온 메시지로 에러처리!
+                }
+
+                -> throw 문:
+                사용자지정 오류를 기술적으로 예외처리방법
+                예외처리형태 : 문자형, 숫자형, 불린형, 객체
+            
+            *********************************************/
+
+        </script>
+    </head>
+    <body>
+        <h1>JS 에러처리</h1>
+        <hr />
+        <!-- if문 연습 -->
+        <h2>if문 연습</h2>
+        <h3 id="jexp">평가출력</h3>
+        <label for="jumsu">점수입력:</label>
+        <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3" onkeypress="if(event.keyCode===13)jumsu()" />
+        <button class="sbtn" onclick="jumsu()">평가하기</button>
+        <!-- 칭찬스티커 -->
+        <div id="jshow">
+            <span class="ir">칭찬스티커</span>
+        </div>
+    </body>
+</html>
