@@ -394,3 +394,14 @@ corpData.forEach(val=>{
     <option value="saab">Saab</option>
   </optgroup>
 *****************************************/
+
+/////////////////////////////////////////////
+
+/// 제이쿼리로 기능구현하기 //////////////////
+
+// 1. 서브컨텐츠 보이기 기능구현 /////////
+// 대상: .sub-view-box 하위 .partbox 또는 li
+const subViewBox = 
+$('.sub-view-box .partbox,.sub-view-box li');
+console.log(subViewBox);
+
