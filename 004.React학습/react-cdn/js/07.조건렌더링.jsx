@@ -267,13 +267,31 @@ function MakeWork(props){
 function ExpComp(props){
     // 작품변경 전달변수 : props.isChange
     // isChange의 값은 true / false
-    let result = props.isChange; 
+    // [일반변수]
+    // let result = props.isChange;
+    // [후크변수] 
+    const [result,setResult] = 
+        React.useState(props.isChange);
+    // const [변수명,set변수명] = React.useState(초기값)
+    // -> set변수명 : 변수명 첫글자는 대문자로!
+    // useState() 메서드가 변수값이 업데이트 되는 여부를
+    // 관리하여 변경시 이 변수를 사용하는 컴포넌트를
+    //  자동으로!!!! 업데이트!!! 한!! 다!!!
+    // 후크변수 업데이트는 set변수명(값) 형식으로 한다!
 
     // 변경버튼 호출 함수 //////
     const againFn = () => {
         // Not 연산자 !(느낌표)는 true/false를 반대로전환
-        result = !result;
+        // [일반변수 업데이트]
+        // result = !result;
+        // [후크변수 업데이트]
+        setResult(!result);
+
         console.log('다시변경해!',result);
+        // 단순히 변수값만 변경한다고 해서
+        // 이변수를 사용하는 컴포넌트를 변경할 수 없다!
+        // 이런 변수의 상태를 관리하는 후크(Hook)를 사용하면
+        // 이것을 반영할 수 있다!!!^^
 
     }; /////// againFn함수 ///////////////
 
@@ -283,7 +301,10 @@ function ExpComp(props){
             <Title tit="명화" />
             {/* 2. 변경버튼 : 클릭시 again함수를 호출함 */}
             <button onClick={againFn}>작가변경!!!</button>
-            {/* 3. 작품출력 : 3항연산자로 작품변경하기 */}
+            {/* 3. 작품출력 : 3항연산자로 작품변경하기
+            result 변수를 후크변수로 셋팅하면
+            컴포넌트가 이 변수의 값이 변경됨에 따라
+            자동으로 재설정된다! */}
             {
                 result ? 
                 <MakeWork 
