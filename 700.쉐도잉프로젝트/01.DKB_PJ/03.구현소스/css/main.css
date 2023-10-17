@@ -427,3 +427,15 @@
     right: -35px;
 }
 
+/* 서브 컨텐츠 박스 */
+.sub-cont{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 999999;
+    overflow: hidden;
+    display: none;
+}
