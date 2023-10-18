@@ -26,6 +26,13 @@ function MakeDallyeok(selEl){
     // selEl - 달력넣을요소(선택자만 보냄)
     dFn.cg('달력만들어!');
 
+    // [ 생성자함수 속성/메서드 공개 연습하기 ] ////////
+    // 요일정보 변환 배열
+    this.week = ["일","월","화","수","목","금","토"];
+    // 한자릿수 날짜 앞에 0추가 메서드
+    this.addZero = x => x < 10 ? '0' + x : x;
+    //////////////////////////////////////////////////
+
     // 0. 달력 컴포넌트 HTML넣기
     dFn.qs(selEl).innerHTML = insertHcode();
 
@@ -285,7 +292,7 @@ function insertHcode(){
     // 달력 html 코드를 리턴함!
     return `
     <!-- 달력전체박스 -->
-    <div class="calender">
+    <div class="calendar">
       <!-- 달력상단:해당년/월표시 -->
       <header class="header">
         <!-- 달력이동버튼:이전 -->
