@@ -13,3 +13,4 @@ const dc2 = new DalCom('.dalcom2');
 // 다음달 달력을 쓸 수 있게 이전/다음달 달력변경 내부함수를
 // 생성자함수에 this키워드로 등록하여 노출해야한다!!!
 dc2.chgCalendar(1);
+
