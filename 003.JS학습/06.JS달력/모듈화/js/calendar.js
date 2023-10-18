@@ -18,12 +18,15 @@ const dFn = {
 // 요일변경배열 ////
 const week = ["일","월","화","수","목","금","토"];
 
-// 달력함수 호출
-makeDallyeok();
+// 달력함수 호출 -> 이젠 여기서 안함!
+// makeDallyeok();
 
 function makeDallyeok(selEl){ 
-    // selEl - 달력넣을요소
+    // selEl - 달력넣을요소(선택자만 보냄)
     dFn.cg('달력만들어!');
+
+    // 0. 달력 컴포넌트 HTML넣기
+    dFn.qs(selEl).innerHTML = insertHcode();
 
     // 1. 변수셋팅 ////////////////////
     // (1) 변경할 현재날짜 객체
@@ -31,11 +34,11 @@ function makeDallyeok(selEl){
     // (2) 오늘날짜 객체
     const today = new Date();
     // (3) 년도요소 : .yearTit
-    const yearTit = dFn.qs('.yearTit');
+    const yearTit = dFn.qs(selEl+' .yearTit');
     // (4) 월요소 : .monthTit
-    const monthTit = dFn.qs('.monthTit');
+    const monthTit = dFn.qs(selEl+' .monthTit');
     // (5) 날짜요소 : .dates
-    const dates = dFn.qs('.dates');
+    const dates = dFn.qs(selEl+' .dates');
     // (6) 날짜넣을 배열변수
     const dateSet = [];
     // (7) html 코드 저장변수
@@ -173,7 +176,7 @@ function makeDallyeok(selEl){
 
         // 9. 날짜정보를 사용하도록 셋팅하기 ////
         // (1) 대상선정 : .date -> 위에서 새로 담겼으므로 새로읽음!
-        let newDate = dFn.qsa('.date');
+        let newDate = dFn.qsa(selEl+' .date');
         // console.log(newDate);
 
         // (2) 각 날짜 .date요소에 링크설정하기
@@ -246,9 +249,9 @@ function makeDallyeok(selEl){
 
     // 3. 이벤트 설정하기 ////////////////////
     // 이전버튼에 함수연결하기 : 달을 빼기위해 -1전달
-    dFn.addEvt(dFn.qs('.btnL'),'click',()=>chgCalendar(-1));
+    dFn.addEvt(dFn.qs(selEl+' .btnL'),'click',()=>chgCalendar(-1));
     // 다음버튼에 함수연결하기 : 달을 더하기위해 1전달
-    dFn.addEvt(dFn.qs('.btnR'),'click',()=>chgCalendar(1));
+    dFn.addEvt(dFn.qs(selEl+' .btnR'),'click',()=>chgCalendar(1));
 
 
 
@@ -256,6 +259,7 @@ function makeDallyeok(selEl){
     initDallyeok();
 
 } /////////////// makeDallyeok함수 ////////////
+
 
 /*********************************************** 
         함수명 : insertHcode
@@ -297,4 +301,6 @@ function insertHcode(){
 
 } //////////////// insertHcode 함수 ///////////////
 
+// 달력 내보내기 ////////
+export default makeDallyeok;
 
