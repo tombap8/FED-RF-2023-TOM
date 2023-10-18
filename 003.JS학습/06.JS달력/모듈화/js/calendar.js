@@ -231,7 +231,11 @@ function MakeDallyeok(selEl){
                 console.log(setDate+`(${week[setDay]})`);
 
                 // 히든필드에 날짜정보 넣기: 날짜정보공개
-                dateInfo.value = setDate+`(${week[setDay]})`
+                // 활용도를 높이기 위해 일반구분자로 정보공개
+                // 예) 년도/월/일/요일 -> 2023/10/20/2
+                dateInfo.value =
+                `${nowY}/${nowM}/${nowD}/${setDay}`;
+                // setDate+`(${week[setDay]})`
 
 
             }); /////// click 함수 ////////
@@ -308,8 +312,8 @@ function insertHcode(){
         <!-- 해당월의 달력날짜 구성박스 -->
         <div class="dates"></div>
       </section>
-      <!-- 달력날짜 저장용 히든필드 -->
-      <input type="text" class="date-info">
+      <!-- 달력날짜 저장용 히든필드 : type="hidden" -->
+      <input type="hidden" class="date-info">
     </div>
     `;
 
