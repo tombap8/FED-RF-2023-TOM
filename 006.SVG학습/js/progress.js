@@ -37,24 +37,48 @@ btnAct.one('click',function(){
     else if(btxt == '팽수2'){
         // 0. 바텍스트 요소
         let barTxt = lineper.find('.ltxt b');
-        // 반복실행부분 함수화하기////
-        // 1. 퍼센트 수치 증가하기
-        let num = barTxt.text();
+        // 0. 진행바 대상요소
+        let barBox = lineper.find('.lbar'); 
 
+        // 수치변경 변수 : 최초값 읽어옴!
+        let num = barTxt.text();
+        
+        // [ 반복실행부분 함수화하기 ] ////
         const progBar = () => {
+            // 1. 퍼센트 수치 증가하기
             num++;
             // 2. 퍼센트 수치 반영
             barTxt.text(num);
+            // 3. 진행바 수치와 같이 증가하기
+            barBox.css({width: num + '%'});
 
-            // 재귀호출 
+            // 4.100% 도달시 음악재생하기!
+            if(num==100){
+                console.log('음악틀어~!');
+                // 이미 페이지에 삽입된 오디오를
+                // 재생시킨다!
+                // 비디오/오디오 재생메서드:play()
+                // 비디오/오디오 멈춤메서드:pause()
+                // 비디오/오디오 요소는 제이쿼리에서
+                // get() 메서드를 사용하여 선택함!
+                // $(선택요소).get(0).play() 또는
+                // $(선택요소)[0].play()
+                // $('#myaud').get(0).play();
+                $('#myaud')[0].play();
+
+                // 비교 JS코드 : get() 안씀!
+                // document.querySelector('#myaud').play();
+            } ////// if ///////
+
+            // 5.재귀호출 ///////////
             setTimeout(() => {
                 if(num<100) progBar();
-            }, 40);
+            }, 40); //// 타임아웃 ///
         }; /////// progBar 함수 //////
-
+        
         // 최초호출
         progBar();
-
+        
     } /////// else if //////////
 
 }); //////// click /////////////
