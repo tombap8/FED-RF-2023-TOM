@@ -21,7 +21,8 @@ const week = ["일","월","화","수","목","금","토"];
 // 달력함수 호출 -> 이젠 여기서 안함!
 // makeDallyeok();
 
-function makeDallyeok(selEl){ 
+// 함수명을 대문자로 시작하여 생성자함수로 변환함!
+function MakeDallyeok(selEl){ 
     // selEl - 달력넣을요소(선택자만 보냄)
     dFn.cg('달력만들어!');
 
@@ -43,6 +44,8 @@ function makeDallyeok(selEl){
     const dateSet = [];
     // (7) html 코드 저장변수
     let hcode = '';
+    // (8) 날짜정보 저장히든필드
+    const dateInfo = dFn.qs(selEl+' .date-info');
 
     // dFn.cg(yearTit);
     // dFn.cg(monthTit);
@@ -227,6 +230,10 @@ function makeDallyeok(selEl){
                 // 날짜요일출력 : yyyy-mm-dd(요일)
                 console.log(setDate+`(${week[setDay]})`);
 
+                // 히든필드에 날짜정보 넣기: 날짜정보공개
+                dateInfo.value = setDate+`(${week[setDay]})`
+
+
             }); /////// click 함수 ////////
 
         }); //////////// forEach /////////////////
@@ -237,7 +244,9 @@ function makeDallyeok(selEl){
 
 
     // (2) 이전/다음달력 출력하기 함수 ////////////////////
-    const chgCalendar = (num) => { 
+    // 이전/다음달 함수는 this키워드로 생성자함수에 등록하여
+    // 인스턴스생성시 접근할 수 있도록 한다!!!
+    this.chgCalendar = (num) => { 
         // num(1이면 다음, -1이면 이전)
         console.log('달력변경 고고!');
         // 이전/다음달로 변경하여 initDallyeok() 함수호출!
@@ -249,10 +258,13 @@ function makeDallyeok(selEl){
 
     // 3. 이벤트 설정하기 ////////////////////
     // 이전버튼에 함수연결하기 : 달을 빼기위해 -1전달
-    dFn.addEvt(dFn.qs(selEl+' .btnL'),'click',()=>chgCalendar(-1));
+    dFn.addEvt(dFn.qs(selEl+' .btnL'),'click',
+    ()=>this.chgCalendar(-1));
     // 다음버튼에 함수연결하기 : 달을 더하기위해 1전달
-    dFn.addEvt(dFn.qs(selEl+' .btnR'),'click',()=>chgCalendar(1));
-
+    dFn.addEvt(dFn.qs(selEl+' .btnR'),'click',
+    ()=>this.chgCalendar(1));
+    // this키워드로 등록된 생성자함수 속성/메서드는
+    // 반드시 this키워드를 사용하여 호출해야함!
 
 
     // 초기셋팅함수 호출!
@@ -296,11 +308,13 @@ function insertHcode(){
         <!-- 해당월의 달력날짜 구성박스 -->
         <div class="dates"></div>
       </section>
+      <!-- 달력날짜 저장용 히든필드 -->
+      <input type="text" class="date-info">
     </div>
     `;
 
 } //////////////// insertHcode 함수 ///////////////
 
 // 달력 내보내기 ////////
-export default makeDallyeok;
+export default MakeDallyeok;
 
