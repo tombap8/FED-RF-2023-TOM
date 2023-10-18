@@ -7,22 +7,37 @@
 // 1-1. 버튼 : .act button
 const btnAct = $('.act button');
 // 1-2. 퍼센트원 : .btns
-const btns = $('.btns')
+const btns = $('.btns');
+// 1-3. 진행바 : .lineper
+const lineper = $('.lineper');
 
-console.log('대상:',btns);
+console.log('대상:',lineper);
 
 // 2. 이벤트 설정
+// 대상.click() 하면 계속 이벤트 적용되므로
+// 대상.one('click',함수) 한번만 이벤트 적용하는 메서드사용!
+// 제이쿼리는 내부적으로 여러요소는 개별적으로 for문으로
+// 셋팅하므로 forEach같은 제어를 할 필요가 없다!
 
-btnAct.click(function(){
-    console.log('나버튼!',$(this).text());
+btnAct.one('click',function(){
+
+    // 0. 선택버튼 텍스트 읽기
+    let btxt = $(this).text();
+    console.log('나버튼!',btxt);
 
     // 1. 버튼별 분기하기 ////
-    if($(this).text()=='팽수1'){
+    if(btxt == '팽수1'){
         progFn(0,75);
-        // progFn(1,63);
-        // progFn(2,89);
-        // progFn(3,95);
+        progFn(1,63);
+        progFn(2,89);
+        progFn(3,95);
     } /////// if /////
+
+    // 두번째 버튼은 내부에서 재귀호출하기!
+    else if(btxt == '팽수2'){
+        // 1. 퍼센트 수치 증가하기
+
+    } /////// else if //////////
 
 }); //////// click /////////////
 
@@ -34,6 +49,7 @@ btnAct.click(function(){
 function progFn(seq,max){ 
     // seq - 순번, max - 최대%값
 
+    // [1] 숫자 퍼센트 증가
     // 1. 해당순번의 숫자요소
     let ptxt = btns.eq(seq).find('.ptxt');
     // 2. 퍼센트 증가 : 읽어온 숫자를 1씩 증가시킨다!
@@ -41,7 +57,30 @@ function progFn(seq,max){
     num++;
     // 3. 개별숫자 반영하기
     ptxt.text(num);
-    // 4. 재귀호출하기 : 기준수보다 작을동안 타임아웃호출
+
+    // [2] SVG 원 퍼센트 증가
+    // 대상: 선택.btns .c1
+    btns.eq(seq).find('.c1')
+    .css({
+        strokeDashoffset : (300*(100-num)/100)+'%'
+    })
+
+    console.log('계산값:',(300*(100-num)/100));
+
+    /* 
+        수치계산법:
+        전체값 * (100 - 현재퍼센트수치)/100 = 원하는값
+
+        -> 300에서부터 거꾸로 작아져야함!
+        -> 퍼센트수치를 큰값에서 작은값으로 가도록함
+        [ 100 - 현재퍼센트수치 ]
+    */
+
+
+
+
+
+    // 999. 재귀호출하기 : 기준수보다 작을동안 타임아웃호출
     if(num < max){ // max로 최대한계% 지정
         setTimeout(() => {
             progFn(seq,max);            
