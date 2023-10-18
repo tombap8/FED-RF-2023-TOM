@@ -46,7 +46,18 @@
       .calendar{
         transform: scale(.8);
         transform-origin: left top;
+        /* display: none; */
       }
+
+      /* css자체로 달력 보이기 
+      -> input에 포커스 가상클래스
+      -> 그.러.나... 너무빨리사라져서 
+      이벤트 정보처리가 미쳐되기전에 없어지므로
+      CSS로는 하지 못함ㅠ.ㅠ;;; */
+
+      /* .dalcom input:focus + div > .calendar{
+        display: block;
+      } */
     </style>
   </head>
   <body>
@@ -55,6 +66,7 @@
     <div class="dalcom">
       <!-- 달력 첫번째 영역 -->
       <div>
+        <!-- readonly는 읽기전용! -->
         <input type="text" readonly />
         <div class="dalcom1"></div>
       </div>
