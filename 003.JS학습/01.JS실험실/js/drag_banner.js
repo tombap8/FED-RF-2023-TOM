@@ -315,7 +315,7 @@ function goDrag(ele) {
 
   // (3) 드래그 움직일때 작동함수
   const dMove = (e) => {
-    console.log("드래그상태:", drag);
+    // console.log("드래그상태:", drag);
 
     // 드래그 상태일때만 실행
     if (drag) {
@@ -424,9 +424,22 @@ function goWhere(target){
     
     // 2. 기준위치값 : 부모박스를 기준한 -220%의 left 위치값
     let pointLeft = target.parentElement.clientWidth * 2.2;
+    // parentElement 상위 부모요소로 이동
+    // clientWidth 박스의 가로크기값
+    // 220% 이므로 2.2를 곱하면 된다!
     
     console.log('슬라이드LEFT:',tgLeft,
     '\n기준LEFT:',-pointLeft);
+
+    // 3. 방향판별하기 : 기준값에 특정값을 더하고 뺌
+    // 3-1. 왼쪽방향이동(오른쪽버튼 클릭과 동일)
+    if(tgLeft < -pointLeft - 50){
+        console.log('왼쪽방향으로~!');
+    } //// if ////
+    // 3-2. 오른쪽방향이동(왼쪽버튼 클릭과 동일)
+    else if(tgLeft < -pointLeft + 50){
+        console.log('오른쪽방향으로~!');
+    } //// else if ////
 
 
 } //////////////// goWhere 함수 /////////////////
