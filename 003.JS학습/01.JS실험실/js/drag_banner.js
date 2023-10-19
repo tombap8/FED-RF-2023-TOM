@@ -209,22 +209,36 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
 
     // 슬라이드 오른쪽방향 함수 ////////////
     function rightSlide(){
-        //1.대상이동하기 : -330%
-        slide.style.left = '-330%';
-        //2.트랜지션주기
-        slide.style.transition = 
-            TIME_SLIDE+'ms ease-in-out';
-        // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
-        // appendChild(요소)
+        // 1. 슬라이드 이동전 먼저 잘라낸다!
+        // 이유: 슬라이드 순서를 왼쪽이동과 동일하게 하여
+        // 중앙확대 트랜지션 순번 적용이 같아지게 한다!
+        // 맨앞li 맨뒤로 이동
+        slide.appendChild(
+            slide.querySelectorAll('li')[0]);
+        // 2.slide left값 -110%
+        slide.style.left = '-110%';
+        slide.style.left = 
+        -(slide.parentElement.clientWidth*1.1-rx)+'px';
+        // rx는 드래그시 이동한 수치임(보정해야 안튐!)
+        // 이동후엔 rx=0으로 초기화 해야 버튼클릭시 정상작동함!
+        console.log('rx보정값:',rx);
+
+
+        // 3.트랜지션 없애기
+        slide.style.transition = 'none';
+
         setTimeout(() => {
-            // 3.맨앞li 맨뒤로 이동
-            slide.appendChild(
-                slide.querySelectorAll('li')[0]);
-            // 4.slide left값 -220%
+            // 4.대상이동하기 : -220%
             slide.style.left = '-220%';
-            // 5.트랜지션 없애기
-            slide.style.transition = 'none';
-        }, TIME_SLIDE);
+            // 5.트랜지션주기
+            slide.style.transition = 
+                TIME_SLIDE+'ms ease-in-out';
+            // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
+            // appendChild(요소)
+            
+            // 6. 드래그 보정값 rx초기화
+                rx = 0; // 버튼 클릭이동시 정상작동함!
+        }, 0);
     } //////////// rightSlide 함수 ////////////
 
 
