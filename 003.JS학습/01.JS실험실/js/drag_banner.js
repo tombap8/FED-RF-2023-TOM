@@ -278,7 +278,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
 //// 드래그 기능 함수 파트 ////////////////////
 /////////////////////////////////////////////
 // 드래그 적용 이벤트 설정하기 ///////
-// 1. 대상 선정
+// 1. 대상 선정 : .dtg 는 .slide와 일치함!
 const dtg = dFn.qsa(".dtg");
 // 2. 드래그 설정하기
 dtg.forEach((ele) => goDrag(ele));
@@ -289,7 +289,7 @@ dtg.forEach((ele) => goDrag(ele));
     기능 : 다중 드래그 기능 적용
 ******************************************/
 function goDrag(ele) {
-  // ele - 드래그 대상요소
+  // ele - 드래그 대상요소(.slide임!)
 
   // 1. 변수 셋팅
   // (1) 드래그 상태변수 : true - 드래그중, false - 드래그아님
@@ -297,7 +297,8 @@ function goDrag(ele) {
   // (2) 첫번째 위치 포인트 first x, first y
   let fx, fy;
   // (3) 마지막 위치 포인트 last x, last y
-  let lx = 0,
+  // 처음 위치는 슬라이드 최초 left위치값으로 읽어옴!
+  let lx = ele.offsetLeft,
     ly = 0;
   // -> 마지막위치로부터 처음 작동하므로 초기값 0셋팅!
   // (4) 움직일때 위치 포인트 : move x, move y
@@ -322,18 +323,18 @@ function goDrag(ele) {
       // - pageX,pageY 는 일반브라우저용
       // - touches[0].screenX, touches[0].screenY는 터치스크린용
       mvx = e.pageX || e.touches[0].screenX;
-      mvy = e.pageY || e.touches[0].screenY;
+    //   mvy = e.pageY || e.touches[0].screenY;
 
       // 2. 움직일때 위치값 - 처음위치값 : rx, ry
       // x축값은 left값, y축값은 top값 이동이다!
       rx = mvx - fx;
-      ry = mvy - fy;
+    //   ry = mvy - fy;
       // 순수하게 움직인 거리를 계산! -> 가장중요한 핵심!!!
 
       // 3. x,y 움직인 위치값을 타겟요소에 적용!
       // 대상 : 전달된 드래그 요소 -> ele변수
       ele.style.left = rx + lx + "px";
-      ele.style.top = ry + ly + "px";
+    //   ele.style.top = ry + ly + "px";
       // 한번 드래그 후 다시 드래그시 움직인 위치값이 필요함!
       // -> 마지막 위치값 저장필요! -> lx, ly
       // -> 항상 최종위치에서 움직인 위치를 더한다!!!
@@ -344,10 +345,10 @@ function goDrag(ele) {
 
 
       // 값확인
-      console.log(`fx:${fx} | fy:${fy}`);
-      console.log(`mvx:${mvx} | mvy:${mvy}`);
-      console.log(`rx:${rx} | ry:${ry}`);
-      console.log(`lx:${lx} | ly:${ly}`);
+    //   console.log(`fx:${fx} | fy:${fy}`);
+    //   console.log(`mvx:${mvx} | mvy:${mvy}`);
+    //   console.log(`rx:${rx} | ry:${ry}`);
+    //   console.log(`lx:${lx} | ly:${ly}`);
     } //////////// if ///////////
 
     // 커서 편손(grab)/쥔손(grabbing) 상태 변경하기
@@ -359,7 +360,7 @@ function goDrag(ele) {
   // (4) 첫번째 위치포인트 셋팅함수 : fx, fy
   const firstPoint = (e) => {
     fx = e.pageX || e.touches[0].screenX;
-    fy = e.pageY || e.touches[0].screenY;
+    // fy = e.pageY || e.touches[0].screenY;
     // console.log('첫포인트:',fx,' | ',fy);
   }; ///////// firstPoint함수 //////////
 
@@ -367,7 +368,7 @@ function goDrag(ele) {
   const lastPoint = () => {
     // 움직일때 위치값을 기존값에 계속 더함
     lx += rx;
-    ly += ry;
+    // ly += ry;
     // console.log('끝포인트:',lx,' | ',ly);
   }; ///////// lastPoint함수 ///////////
 
@@ -389,12 +390,16 @@ function goDrag(ele) {
   dFn.addEvt(ele, "mouseup", () => {
     dFalse();
     lastPoint();
+    // 드래그이동 판별함수 호출 : ele -> 선택한 슬라이드
+    goWhere(ele);
   }); //////////// mousemove 함수 ///////////
 
   // 모바일 이벤트 추가 ///////
   dFn.addEvt(ele, "touchend", () => {
     dFalse();
     lastPoint();
+    // 드래그이동 판별함수 호출 : ele -> 선택한 슬라이드
+    goWhere(ele);
   }); //////////// touchend 함수 ///////////
 
   // (3) 마우스 움직일때 : 움직일때 처리함수 호출
@@ -405,9 +410,23 @@ function goDrag(ele) {
 
   // (4) 마우스 벗어날때 : 드래그 상태 false처리 함수 호출
   dFn.addEvt(ele, "mouseleave", dFalse);
-
-
 } //////////// goDrag 함수 //////////////////
+
+/************************************************ 
+    함수명 : goWhere
+    기능 : 드래그시 왼쪽/오른쪽 이동 판별
+    호출 : 드래그시 mouseup/touchend 이벤트에서 호출
+************************************************/
+function goWhere(target){
+    // target - 드래그 대상(슬라이드요소)
+    // 1. 현재 드래그 대상 left 위치값
+    let tgLeft = target.offsetLeft;
+    console.log('슬라이드LEFT:',tgLeft);
+
+    // 2.
+
+
+} //////////////// goWhere 함수 /////////////////
 
 
 
