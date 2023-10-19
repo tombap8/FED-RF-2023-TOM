@@ -188,7 +188,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
                 
                 // 5. 트랜지션주기
                 slide.style.transition = 
-                    TIME_SLIDE+'ms ease-in-out';
+                    TIME_SLIDE+'ms ease-out';
 
                 // 6. 드래그 보정값 rx초기화
                 rx = 0; // 버튼 클릭이동시 정상작동함!
@@ -257,7 +257,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
             slide.style.left = '-220%';
             // 5.트랜지션주기
             slide.style.transition = 
-                TIME_SLIDE+'ms ease-in-out';
+                TIME_SLIDE+'ms ease-out';
             // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
             // appendChild(요소)
 
@@ -509,11 +509,13 @@ function goWhere(target){
     else{
         console.log('제자리로~!');
         target.style.left = '-220%';
-        target.style.transition = 'left .2s ease-in-out';
+        target.style.transition = 'left .2s ease-out';
     } //// else /////
 
 
 } //////////////// goWhere 함수 /////////////////
 
+// 화면 리사이즈 시 페이지 리로드하기! ///////
+dFn.addEvt(window,'resize',()=>location.reload());
 
 
