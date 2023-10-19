@@ -26,17 +26,17 @@ banBox.forEach(ele=>{
 
         (1) 오른쪽 버튼 클릭시 다음 슬라이드가
             나타나도록 슬라이드 박스의 left값을
-            -100%로 변경시킨다.
+            -330%로 변경시킨다.
             -> 슬라이드 이동후!!! 
             바깥에 나가있는 첫번째 슬라이드
             li를 잘라서 맨뒤로 보낸다!
-            동시에 left값을 0으로 변경한다!
+            동시에 left값을 -220%로 변경한다!
 
         (2) 왼쪽버튼 클릭시 이전 슬라이드가
             나타나도록 하기위해 우선 맨뒤 li를
             맨앞으로 이동하고 동시에 left값을
-            -100%로 변경한다.
-            그 후 left값을 0으로 애니메이션하여
+            -330%로 변경한다.
+            그 후 left값을 -220%으로 애니메이션하여
             슬라이드가 왼쪽에서 들어온다.
 
         (3) 공통기능: 슬라이드 위치표시 블릿
@@ -173,7 +173,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
         chgIndic(isRight); // 방향값을 보냄!
 
         // 5. 자동넘김 멈춤함수 호출하기
-        clearAuto();
+        // clearAuto();
         
     } ////////// goSlide 함수 /////////
 
@@ -254,7 +254,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
    } ///////// slideAuto 함수 //////////////
 
    // 인터발함수 최초호출!
-   slideAuto();
+//    slideAuto();
 
    // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
    function clearAuto(){
@@ -273,3 +273,141 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
    } //////////// clearAuto 함수 ///////////
 } //////////////// slideFn 함수 ///////////////
 /////////////////////////////////////////////
+
+/////////////////////////////////////////////
+//// 드래그 기능 함수 파트 ////////////////////
+/////////////////////////////////////////////
+// 드래그 적용 이벤트 설정하기 ///////
+// 1. 대상 선정
+const dtg = dFn.qsa(".dtg");
+// 2. 드래그 설정하기
+dtg.forEach((ele) => goDrag(ele));
+
+/****************************************** 
+    [ 드래그 다중적용 함수 만들기 ]
+    함수명 : goDrag
+    기능 : 다중 드래그 기능 적용
+******************************************/
+function goDrag(ele) {
+  // ele - 드래그 대상요소
+
+  // 1. 변수 셋팅
+  // (1) 드래그 상태변수 : true - 드래그중, false - 드래그아님
+  let drag = false;
+  // (2) 첫번째 위치 포인트 first x, first y
+  let fx, fy;
+  // (3) 마지막 위치 포인트 last x, last y
+  let lx = 0,
+    ly = 0;
+  // -> 마지막위치로부터 처음 작동하므로 초기값 0셋팅!
+  // (4) 움직일때 위치 포인트 : move x, move y
+  let mvx, mvy;
+  // (5) 위치이동 차이 결과변수 : result x, rersult y
+  let rx, ry;
+
+  // 2. 함수 만들기 ///////////
+  // (1) 드래그 상태 true로 변경함수
+  const dTrue = () => (drag = true);
+
+  // (2) 드래그 상태 false로 변경함수
+  const dFalse = () => (drag = false);
+
+  // (3) 드래그 움직일때 작동함수
+  const dMove = (e) => {
+    console.log("드래그상태:", drag);
+
+    // 드래그 상태일때만 실행
+    if (drag) {
+      // 1. 드래그 상태에서 움직일때 위치값 : mvx, mvy
+      // - pageX,pageY 는 일반브라우저용
+      // - touches[0].screenX, touches[0].screenY는 터치스크린용
+      mvx = e.pageX || e.touches[0].screenX;
+      mvy = e.pageY || e.touches[0].screenY;
+
+      // 2. 움직일때 위치값 - 처음위치값 : rx, ry
+      // x축값은 left값, y축값은 top값 이동이다!
+      rx = mvx - fx;
+      ry = mvy - fy;
+      // 순수하게 움직인 거리를 계산! -> 가장중요한 핵심!!!
+
+      // 3. x,y 움직인 위치값을 타겟요소에 적용!
+      // 대상 : 전달된 드래그 요소 -> ele변수
+      ele.style.left = rx + lx + "px";
+      ele.style.top = ry + ly + "px";
+      // 한번 드래그 후 다시 드래그시 움직인 위치값이 필요함!
+      // -> 마지막 위치값 저장필요! -> lx, ly
+      // -> 항상 최종위치에서 움직인 위치를 더한다!!!
+
+      // 4. z-index값을 모두 초기화후 드래그 대상만 높여줌!
+      dtg.forEach(ele=>ele.style.zIndex=0);
+      ele.style.zIndex = 1;
+
+
+      // 값확인
+      console.log(`fx:${fx} | fy:${fy}`);
+      console.log(`mvx:${mvx} | mvy:${mvy}`);
+      console.log(`rx:${rx} | ry:${ry}`);
+      console.log(`lx:${lx} | ly:${ly}`);
+    } //////////// if ///////////
+
+    // 커서 편손(grab)/쥔손(grabbing) 상태 변경하기
+    ele.style.cursor = drag?'grabbing':'grab';
+
+
+  }; ////////// dMove함수 ///////////
+
+  // (4) 첫번째 위치포인트 셋팅함수 : fx, fy
+  const firstPoint = (e) => {
+    fx = e.pageX || e.touches[0].screenX;
+    fy = e.pageY || e.touches[0].screenY;
+    // console.log('첫포인트:',fx,' | ',fy);
+  }; ///////// firstPoint함수 //////////
+
+  // (5) 마지막 위치포인트 셋팅함수 : lx, ly
+  const lastPoint = () => {
+    // 움직일때 위치값을 기존값에 계속 더함
+    lx += rx;
+    ly += ry;
+    // console.log('끝포인트:',lx,' | ',ly);
+  }; ///////// lastPoint함수 ///////////
+
+  // 3. 이벤트 등록하기 /////////////////
+  // 대상 : 호출시 보내준 드래그 대상요소 -> ele변수
+  // (1) 마우스 내려갈때 : 드래그 true + 첫번째 위치값 업데이트
+  dFn.addEvt(ele, "mousedown", (e) => {
+    dTrue();
+    firstPoint(e);
+  }); //////////// mousemove 함수 ///////////
+
+  // 모바일 이벤트 추가 ///////
+  dFn.addEvt(ele, "touchstart", (e) => {
+    dTrue();
+    firstPoint(e);
+  }); //////////// touchstart 함수 ///////////
+
+  // (2) 마우스 올라올때 : 드래그 false + 마지막 위치값 업데이트
+  dFn.addEvt(ele, "mouseup", () => {
+    dFalse();
+    lastPoint();
+  }); //////////// mousemove 함수 ///////////
+
+  // 모바일 이벤트 추가 ///////
+  dFn.addEvt(ele, "touchend", () => {
+    dFalse();
+    lastPoint();
+  }); //////////// touchend 함수 ///////////
+
+  // (3) 마우스 움직일때 : 움직일때 처리함수 호출
+  dFn.addEvt(ele, "mousemove", dMove);
+
+  // 모바일 이벤트 추가 ///////
+  dFn.addEvt(ele, "touchmove", dMove);
+
+  // (4) 마우스 벗어날때 : 드래그 상태 false처리 함수 호출
+  dFn.addEvt(ele, "mouseleave", dFalse);
+
+
+} //////////// goDrag 함수 //////////////////
+
+
+

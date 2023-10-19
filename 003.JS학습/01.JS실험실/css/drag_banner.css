@@ -5,6 +5,9 @@ html,body,h1{
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #ccc;
+}
 /* 페이지 클래스 */
 .page{
     position: relative;
@@ -75,7 +78,7 @@ ol {
     outline: 5px dotted blue;
 }
 
-#slide {
+.slide {
     display: flex;
     /* 플렉스박스!!! */
     gap: 0 5vw;
@@ -95,13 +98,13 @@ ol {
 
 /* 슬라이드 드래그 기능을 위해 
 선택/드래그 금지셋팅 */
-#slide * {
+.slide * {
     user-select: none;
     -webkit-user-drag: none;
 }
 
 
-#slide li {
+.slide li {
     flex-shrink: 0;
     /* 부모박스크기만큼 줄어들지 않음 -> 0 */
     flex-basis: 100%;
@@ -117,11 +120,11 @@ ol {
     transition: .4s ease-in-out;
 }
 /* 3번째가 주인공이므로 원래밝기로 조금 크게변경! */
-#slide li:nth-child(3){
+.slide li:nth-child(3){
     filter: brightness(100%);
     transform: scale(1.1);
 }
-#slide li img {
+.slide li img {
     /*이미지는 박스에 맞춤!*/
     width: 100%;
     height: 100%;
