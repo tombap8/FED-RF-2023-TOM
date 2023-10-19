@@ -26,7 +26,7 @@ banBox.forEach((ele,idx)=>{
     // 슬라이드 li를 넣을 부모ul 슬라이드요소
     dFn.qsEl(ele,'.slide').innerHTML = hcode;
 
-  } /////// 
+  } /////// if //////
 
 
     // 슬라이드 함수 호출하기
