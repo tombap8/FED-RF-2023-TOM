@@ -192,8 +192,13 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
         // 맨앞 슬라이드 li의 'data-seq' 값 읽어오기
         // isRight값이 true이면 오른쪽버튼이고 순번은 [1]
         // isRight값이 false이면 왼쪽버튼이고 순번은 [0]
+        // 이전방식:
+        // slide.querySelectorAll('li')[isRight?1:0]
+        
+        // ->>> 먼저잘라내고 이동하는 것으로 통일했으므로
+        // 순번은 항상 ->>>>>> 0번!!!
         let nowSeq = 
-        slide.querySelectorAll('li')[isRight?1:0]
+        slide.querySelectorAll('li')[0]        
         .getAttribute('data-seq');
 
         console.log('현재슬라이드 순번:',nowSeq);
@@ -235,7 +240,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
                 TIME_SLIDE+'ms ease-in-out';
             // 이동시간 후 맨앞li 잘라서 맨뒤로 이동하기
             // appendChild(요소)
-            
+
             // 6. 드래그 보정값 rx초기화
                 rx = 0; // 버튼 클릭이동시 정상작동함!
         }, 0);
