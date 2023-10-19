@@ -421,9 +421,12 @@ function goWhere(target){
     // target - 드래그 대상(슬라이드요소)
     // 1. 현재 드래그 대상 left 위치값
     let tgLeft = target.offsetLeft;
-    console.log('슬라이드LEFT:',tgLeft);
-
-    // 2.
+    
+    // 2. 기준위치값 : 부모박스를 기준한 -220%의 left 위치값
+    let pointLeft = target.parentElement.clientWidth * 2.2;
+    
+    console.log('슬라이드LEFT:',tgLeft,
+    '\n기준LEFT:',-pointLeft);
 
 
 } //////////////// goWhere 함수 /////////////////
