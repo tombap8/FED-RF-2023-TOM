@@ -147,7 +147,11 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
             slide.insertBefore(
                 eachOne[eachOne.length-1], eachOne[0]);
             // 2. left값 -330% 만들기 : 들어올 준비 위치!
-            slide.style.left = '-330%';
+            // slide.style.left = '-330%';
+            slide.style.left = 
+            -(slide.parentElement.clientWidth*3.3-rx)+'px';
+            // rx는 드래그시 이동한 수치임(보정해야 안튐!)
+
             // 3. 트랜지션 없애기
             slide.style.transition = 'none';
             
@@ -288,9 +292,11 @@ dtg.forEach((ele) => goDrag(ele));
     함수명 : goDrag
     기능 : 다중 드래그 기능 적용
 ******************************************/
+//(5) 위치이동 차이 결과변수 : result x -> 슬라이드와 공유
+let rx = 0;
+
 function goDrag(ele) {
   // ele - 드래그 대상요소(.slide임!)
-
   // 1. 변수 셋팅
   // (1) 드래그 상태변수 : true - 드래그중, false - 드래그아님
   let drag = false;
@@ -304,7 +310,10 @@ function goDrag(ele) {
   // (4) 움직일때 위치 포인트 : move x, move y
   let mvx, mvy;
   // (5) 위치이동 차이 결과변수 : result x, rersult y
-  let rx, ry;
+//   let rx, ry; -> 위치이동차이값은 슬라이드 오른쪽 이동시
+// 보정값으로 슬라이드 이동파트에서도 써야하므로 함수바깥에
+// 선언하여 공유한다!
+
 
   // 2. 함수 만들기 ///////////
   // (1) 드래그 상태 true로 변경함수
@@ -319,6 +328,9 @@ function goDrag(ele) {
 
     // 드래그 상태일때만 실행
     if (drag) {
+        // 0. 슬라이드의 드래그 상태일때는 트랜지션을 없앰!
+        ele.style.transition = 'none';
+
       // 1. 드래그 상태에서 움직일때 위치값 : mvx, mvy
       // - pageX,pageY 는 일반브라우저용
       // - touches[0].screenX, touches[0].screenY는 터치스크린용
@@ -389,7 +401,10 @@ function goDrag(ele) {
   // (2) 마우스 올라올때 : 드래그 false + 마지막 위치값 업데이트
   dFn.addEvt(ele, "mouseup", () => {
     dFalse();
-    lastPoint();
+    // lastPoint(); 
+    // -> 슬라이드 드래그는 마지막 위치 업데이트 불필요!
+    // 왜? 자유드래그와 달리 슬라이드는 마지막에 항상 특정위치에 
+    // 가있기 때문. 그리고 중간에 업데이트를 하면 슬라이드가 튐!
     // 드래그이동 판별함수 호출 : ele -> 선택한 슬라이드
     goWhere(ele);
   }); //////////// mousemove 함수 ///////////
@@ -397,7 +412,8 @@ function goDrag(ele) {
   // 모바일 이벤트 추가 ///////
   dFn.addEvt(ele, "touchend", () => {
     dFalse();
-    lastPoint();
+    // lastPoint(); 
+    // -> 모바일도 마찬가지로 마지막 위치 업데이트 불필요!
     // 드래그이동 판별함수 호출 : ele -> 선택한 슬라이드
     goWhere(ele);
   }); //////////// touchend 함수 ///////////
@@ -449,6 +465,8 @@ function goWhere(target){
     // 3-3. 중간영역은 제자리로 돌아옴
     else{
         console.log('제자리로~!');
+        target.style.left = '-220%';
+        target.style.transition = 'left .2s ease-in-out';
     } //// else /////
 
 
