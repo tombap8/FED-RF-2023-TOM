@@ -435,11 +435,21 @@ function goWhere(target){
     // 3-1. 왼쪽방향이동(오른쪽버튼 클릭과 동일)
     if(tgLeft < -pointLeft - 50){
         console.log('왼쪽방향으로~!');
+        // 오른쪽버튼 클릭 이벤트 발생하기!
+        // 상대적으로 현재위치에서 찾음        
+        dFn.qsEl(target.parentElement,'.ab2').click();
     } //// if ////
     // 3-2. 오른쪽방향이동(왼쪽버튼 클릭과 동일)
-    else if(tgLeft < -pointLeft + 50){
+    else if(tgLeft > -pointLeft + 50){
         console.log('오른쪽방향으로~!');
+        // 왼쪽버튼 클릭 이벤트 발생하기!
+        // 상대적으로 현재위치에서 찾음
+        dFn.qsEl(target.parentElement,'.ab1').click();
     } //// else if ////
+    // 3-3. 중간영역은 제자리로 돌아옴
+    else{
+        console.log('제자리로~!');
+    } //// else /////
 
 
 } //////////////// goWhere 함수 /////////////////
