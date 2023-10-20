@@ -48,6 +48,7 @@
             position: absolute;
             width: 5vw;
             z-index: 9999;
+            transition: width .3s ease-out;
         }
         
     </style>
@@ -105,18 +106,19 @@
             // -> 대상에서 pageX, pageY 이벤트 마우스 포인터 위치값으로 구함!
             let mPosX, mPosY;
 
-            // 커서용 이미지요소
+            // 5. 마우스 커서 관련 구현 ////
+            // 5-1. 커서용 이미지요소
             const csImg = $('#cs-img');
 
-            // 커서 이미지 이름배열
+            // 5-2. 커서 이미지 이름배열
             const csName = [
                 '13148a1','cursor','strtail','Tail2.gif-c200','yoshi-cursor'
             ];
 
-            // 커서용 숫자변수
+            // 5-3. 커서용 숫자변수
             let csNum = 0;
 
-            // 일정시간 간격으로 커서이미지 변경하기
+            // 5-4. 일정시간 간격으로 커서이미지 변경하기
             setInterval(()=>{
                 // 이미지 경로 속성변경하기 : attr(속성,값)
                 csImg.attr('src',
@@ -127,7 +129,11 @@
                 if(csNum==csName.length) csNum=0;
             },3000); ///// 인터발 ///////
 
-            // 5. 위의 비례식에 맞게 실제 이동값으로 적용하기
+            // 5-5. 윈도우 높이값 : 커서크기 기준 계산위해
+            let winH = $(window).height();
+
+            ////////////////////////////////////////////
+            // 6. 위의 비례식에 맞게 실제 이동값으로 적용하기
             // 이벤트 대상: #cover -> cover변수
             cover.mousemove(e=>{
                 // 1. 마우스위치값 구하기
@@ -170,6 +176,20 @@
                 // csImg.css({transform:'rotateY(180deg)'});
                 // else 
                 // csImg.css({transform:'rotateY(0deg)'});
+
+                // 5. 커서 Y축 위치에 따라 크기변경
+                // 멀리가면 작아지고 가까우면 커짐
+                // 기준: 윈도우 높이값에 20%단위로 기준정함!
+                if(mPosY < winH*0.2) 
+                    csImg.css({width:'2vw'});
+                else if(mPosY >= winH*0.2 && mPosY < winH*0.4) 
+                    csImg.css({width:'5vw'});
+                else if(mPosY >= winH*0.4 && mPosY < winH*0.6) 
+                    csImg.css({width:'10vw'});
+                else if(mPosY >= winH*0.6 && mPosY < winH*0.8) 
+                    csImg.css({width:'15vw'});
+                else if(mPosY >= winH*0.8) 
+                    csImg.css({width:'20vw'});
 
             }); ///////// mousemove /////////
 
