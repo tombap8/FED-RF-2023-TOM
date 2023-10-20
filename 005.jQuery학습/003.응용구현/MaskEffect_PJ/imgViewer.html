@@ -39,9 +39,11 @@
             height: 100%;
         }
 
-        body{
+        /* 커서없앰 */
+        body{            
             cursor: none;
         }
+        /* 커서이미지 */
         #cs-img{
             position: absolute;
             width: 5vw;
@@ -101,6 +103,8 @@
             // 4-3. 마우스 이동값(마이)
             // -> 대상에서 pageX, pageY 이벤트 마우스 포인터 위치값으로 구함!
             let mPosX, mPosY;
+
+            // 커서용 이미지요소
             const csImg = $('#cs-img');
 
             // 5. 위의 비례식에 맞게 실제 이동값으로 적용하기
@@ -135,6 +139,7 @@
                     left: iPosX + 'px'
                 }); ///////// css ///////
 
+                // 4. 커서 이미지 마우스 포인터 위치로 이동하기
                 csImg.css({
                     top: mPosY + 'px',
                     left: mPosX + 'px',
@@ -152,6 +157,8 @@
         <div id="imgbox"></div>
         <div id="cover"></div>
     </div>
+
+    <!-- 커서용 이미지 -->
     <img src="./images/cursor/yoshi-cursor.gif" alt="커서" id="cs-img">
 </body>
 </html>
