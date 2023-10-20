@@ -1,5 +1,8 @@
 // 01.공유신발 JSX
 import myData from "./data.js";
+import myData2 from "./data2.js";
+
+console.log('여성의류Data:',myData2);
 
 // 메인 컴포넌트 /////////////////
 // 메인의 의미는? 다른 구성요소 컴포넌트들을 모아
@@ -39,4 +42,5 @@ function GoodsCode() {
 } /////////// GoodsCode //////////////////
 
 // 메인컴포넌트 출력하기 //////////
-ReactDOM.render(<MainComponent />, document.querySelector("#root"));
+ReactDOM.render(<MainComponent />, 
+document.querySelector("#root"));
