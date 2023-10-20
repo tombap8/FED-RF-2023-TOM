@@ -57,7 +57,52 @@
             // 1-2. 변경대상: #imgbox
             const imgBox = $('#imgbox');
 
-            console.log('대상:',cover,imgBox);
+            // console.log('대상:',cover,imgBox);
+
+            // 2. 이미지박스 처음에 정중앙 위치하기
+            // 2-1. 중앙위치 top값 : (윈도우높이-이미지박스높이)/2
+            let cTop = ($(window).height()-imgBox.height())/2;
+            // 2-2. 중앙위치 left값 : (윈도우가로폭-이미지박스가로폭)/2
+            let cLeft = ($(window).width()-imgBox.width())/2;
+
+            console.log('위치값:',cTop,'/',cLeft);
+
+            // 3. 이미지박스 중앙위치 반영하기
+            imgBox.css({
+                top: cTop + 'px',
+                left: cLeft + 'px'
+            }); ///////// css ////////
+
+            // 4. 이미지박스 움직일 값을 위한 비례식만들기
+            // 마우스최대값 : 마우스이동값 = 이미지최대값 : 이미지이동값
+            // 마최 : 마이 = 이최 : 이이
+            // 이이 = 마이 * 이최 / 마최
+
+            // 4-1.이미지 최대 이동값 구하기 : top / left
+            let iTopMax = $(window).height() - imgBox.height();
+            let iLeftMax = $(window).width() - imgBox.width();
+
+            // 4-2.마우스 최대 이동값 구하기 : top / left
+            let mTopMax = $(window).height();
+            let mLeftMax = $(window).width();
+
+            console.log(`이최top:${iTopMax}\n이최left:${iLeftMax}\n마최top:${mTopMax}\n마최left:${mLeftMax}`);
+
+            // 4-3. 마우스 이동값(마이)
+            // -> 대상에서 pageX, pageY 이벤트 마우스 포인터 위치값으로 구함!
+            let mPosX, mPosY;
+
+            // 5. 위의 비례식에 맞게 실제 이동값으로 적용하기
+            // 이벤트 대상: #cover -> cover변수
+            cover.mousemove(e=>{
+                // 1. 마우스위치값 구하기
+                mPosX = e.pageX;
+                mPosY = e.pageY;
+
+                console.log(`x:${mPosX}\ny:${mPosY}`);
+
+            }); ///////// mousemove /////////
+
 
         }); ///////////// jQB ////////////////
     </script>
