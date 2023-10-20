@@ -79,6 +79,8 @@
             // 이이 = 마이 * 이최 / 마최
 
             // 4-1.이미지 최대 이동값 구하기 : top / left
+            // 작은수에서 큰수를 빼서 마이너스 값으로 구함
+            // 아래에서 비례식 계산시 자연스럽게 마이너스결과가 나옴!
             let iTopMax = $(window).height() - imgBox.height();
             let iLeftMax = $(window).width() - imgBox.width();
 
@@ -99,10 +101,32 @@
                 mPosX = e.pageX;
                 mPosY = e.pageY;
 
-                console.log(`x:${mPosX}\ny:${mPosY}`);
+                // console.log(`x:${mPosX}\ny:${mPosY}`);
+
+                // 2. 비례식 적용하기 /////
+                // 이이 = 마이 * 이최 / 마최
+                // 마이 -> mPosX, mPosY
+                // 마최 -> mTopMax, mLeftMax
+                // 이최 -> iTopMax, iLeftMax
+
+                // 2-1. 이미지 Y축 이동값 : top값 연결
+                // -> 마이 * 이최 / 마최
+                let iPosY = mPosY * iTopMax / mTopMax;
+
+                // 2-2. 이미지 X축 이동값 : left값 연결
+                // -> 마이 * 이최 / 마최
+                let iPosX = mPosX * iLeftMax / mLeftMax;
+
+                console.log('최종위치:',iPosX,'/',iPosY);
+
+                // 3. 실제 이미지 위치이동 적용하기
+                // 대상: .imgbox -> imgBox변수
+                imgBox.css({
+                    top: iPosY + 'px',
+                    left: iPosX + 'px'
+                }); ///////// css ///////
 
             }); ///////// mousemove /////////
-
 
         }); ///////////// jQB ////////////////
     </script>
