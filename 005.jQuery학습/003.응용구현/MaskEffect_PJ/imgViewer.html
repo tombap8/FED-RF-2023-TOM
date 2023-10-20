@@ -42,7 +42,25 @@
     </style>
     <script src="js/jquery-1.8.1.min.js"></script>
     <script src="js/jquery-ui-1.10.4.min.js"></script>
-    
+    <script>
+        $(()=>{ ////// jQB //////////////////
+
+            //////////////////////////////////////
+            // 요구사항: 화면범위에서 마우스 포인터가
+            // 움직일때 큰 이미지박스가 범위안에서
+            // 비율에 맞게 애니메이션 되며 위치이동함
+            //////////////////////////////////////
+
+            // 1. 대상선정
+            // 1-1. 이벤트대상: #cover
+            const cover = $('#cover');
+            // 1-2. 변경대상: #imgbox
+            const imgBox = $('#imgbox');
+
+            console.log('대상:',cover,imgBox);
+
+        }); ///////////// jQB ////////////////
+    </script>
     
 </head>
 <body>
