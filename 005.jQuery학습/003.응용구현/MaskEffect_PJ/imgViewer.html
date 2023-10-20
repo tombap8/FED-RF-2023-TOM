@@ -47,6 +47,7 @@
         #cs-img{
             position: absolute;
             width: 5vw;
+            z-index: 9999;
         }
         
     </style>
@@ -107,6 +108,25 @@
             // 커서용 이미지요소
             const csImg = $('#cs-img');
 
+            // 커서 이미지 이름배열
+            const csName = [
+                '13148a1','cursor','strtail','Tail2.gif-c200','yoshi-cursor'
+            ];
+
+            // 커서용 숫자변수
+            let csNum = 0;
+
+            // 일정시간 간격으로 커서이미지 변경하기
+            setInterval(()=>{
+                // 이미지 경로 속성변경하기 : attr(속성,값)
+                csImg.attr('src',
+                `./images/cursor/${csName[csNum]}.gif`);
+                // 다음을 위해 숫자증가
+                csNum++;
+                // 배열개수와 같아지면 첫번호로가라!
+                if(csNum==csName.length) csNum=0;
+            },3000); ///// 인터발 ///////
+
             // 5. 위의 비례식에 맞게 실제 이동값으로 적용하기
             // 이벤트 대상: #cover -> cover변수
             cover.mousemove(e=>{
@@ -143,7 +163,13 @@
                 csImg.css({
                     top: mPosY + 'px',
                     left: mPosX + 'px',
-                })
+                }); ////// css //////
+
+                // 예컨데 커서 방향을 위치에 따라 변경하기
+                // if(mPosX < 300) 
+                // csImg.css({transform:'rotateY(180deg)'});
+                // else 
+                // csImg.css({transform:'rotateY(0deg)'});
 
             }); ///////// mousemove /////////
 
