@@ -16,7 +16,28 @@ $(()=>{
         stack: '.draggable', 
         // 이동중 투명도 설정
         opacity: 0.7
-    });
+    }); ///////// draggable메서드 /////
+
+    // 3. 상세 요구사항 반영하기
+    // 드래그 중 포스트잍 이미지 변경하기
+    // .invert를 .draggable에 주면 배경이미지 변경됨!
+    // 제이쿼리에 미리 만들어지지 않은 이벤트는 일반적으로
+    // on(이벤트명,함수) -> 이 메서드를 사용함!
+
+    // 3-1.드래그 시작 이벤트 : dragstart -> 이미지변경
+    dgEle.on('dragstart',function(){
+        console.log('드래그시작:',this);
+
+    }); /////////// dragstart 이벤트 함수 ////////
+
+    // 3-2.드래그 종료 이벤트 : dragstop -> 이미지복귀
+    dgEle.on('dragstop',function(){
+        console.log('드래그끝:',this);
+
+    }); /////////// dragstop 이벤트 함수 ////////
+
+
+
 
 
 
