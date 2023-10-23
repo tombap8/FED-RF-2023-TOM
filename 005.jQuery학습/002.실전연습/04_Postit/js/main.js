@@ -70,6 +70,29 @@ $(()=>{
             // 5. 드롭영역에 글자넣기
             $(this).text(ptxt+' 당첨~!!!');
 
+            // 6. 유튜브 동영상 박스넣기
+            // 넣을 대상: .u-box
+            $('.u-box').html(`
+                <div id="m-box">
+                    <a href="#">×</a>
+                </div>
+            `); ////// html ///////
+
+            // 7. 생성된 동영상 박스 CSS 셋팅하기
+            let mbox = $('#m-box');
+
+            mbox.css({
+                position: "fixed",
+                top:"0",
+                left:"0",
+                width:"100%",
+                height:"100%",
+                zIndex:"999",
+                backgroundColor:"#000",
+            }); /////// css //////////
+
+            // 8. 
+
 
         }, ///// drop 이벤트 옵션 메서드 /////
     }); /////////// droppabel 이벤트함수 ////////
