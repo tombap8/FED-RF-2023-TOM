@@ -150,9 +150,9 @@ function sessionSFn(){
         
         // 세션 스토리지 셋팅 : 
         // -> sessionStorage.setItem(키명,값)
-        sessionStorage.setItem('lname','이정재');
-        sessionStorage.setItem('lrole','박평호역');
-        sessionStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
+        sessionStorage.setItem('lname','정우성');
+        sessionStorage.setItem('lrole','김정도역');
+        sessionStorage.setItem('lcat','국내팀 안기부팀장, 박평호랑 사이나쁨');
         
         // console.log('세션쓰 lname:',
         // sessionStorage.getItem('lname'));
@@ -164,16 +164,16 @@ function sessionSFn(){
         // 개별 세션쓰로 지우는 방법은 removeItem(키명)
     } /////// else if : 전체삭제 ////////////
     else if(btxt == '보여줘'){
-        dFn.qs('.local .nm').innerText = 
+        dFn.qs('.session .nm').innerText = 
         sessionStorage.getItem('lname');
-        dFn.qs('.local .role').innerText = 
+        dFn.qs('.session .role').innerText = 
         sessionStorage.getItem('lrole');
-        dFn.qs('.local .cat').innerText = 
+        dFn.qs('.session .cat').innerText = 
         sessionStorage.getItem('lcat');
 
     } /////// else if : 보여줘 ////////////
 
-} //////////// localSFn 함수 ////////////////
+} //////////// sessionSFn 함수 ////////////////
 
 
 
