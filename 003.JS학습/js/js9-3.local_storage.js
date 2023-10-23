@@ -114,29 +114,36 @@ function localSFn(){
 
     // -> 객체를 생성하여 로컬 스토리지에 넣기
     else if(btxt = '처리'){
-        // 게시판 형식의 객체를 생성함!
-        let obj = [
-            {
-                idx: 1,
-                tit: '내가 왕이될 상인가?',
-                cont: '이정재형은 진정 왕이십니다~!',
-            },
-        ];
-
-        // 로컬 스토리지에 넣기
-        // 배열/객체를 직접 넣으면 데이터형 표시 문자값만
-        // 입력되고 실제 객체는 입력되지 않는다!
-        // -> 왜??? 로컬스토리지는 문자형만 받으니까!
-        // 그래서 배열/객체를 문자데이터화 해서 넣는다!!!
-        // JSON.stringify(배열/객체)
-        // localStorage.setItem('minfo',obj);
-        localStorage.setItem('minfo',JSON.stringify(obj));
-
+        if(!localStorage.getItem('minfo')) makeObj();
+        
     } //////// else if : 처리 ////////////////
-
-
-
+    
+    
+    
 } //////////// localSFn 함수 ////////////////
+
+/// 객체가 없으면 로컬스토리지에 생성하기 ///////
+function makeObj(){  
+    console.log('배열/객체만들기!!!');  
+    
+    // 게시판 형식의 객체를 생성함!
+    let obj = [
+        {
+            idx: 1,
+            tit: '내가 왕이될 상인가?',
+            cont: '이정재형은 진정 왕이십니다~!',
+        },
+    ];
+    
+    // 로컬 스토리지에 넣기
+    // 배열/객체를 직접 넣으면 데이터형 표시 문자값만
+    // 입력되고 실제 객체는 입력되지 않는다!
+    // -> 왜??? 로컬스토리지는 문자형만 받으니까!
+    // 그래서 배열/객체를 문자데이터화 해서 넣는다!!!
+    // JSON.stringify(배열/객체)
+    // localStorage.setItem('minfo',obj);
+    localStorage.setItem('minfo',JSON.stringify(obj));
+} /////////////// makeObj 함수 ///////////////
 
 
 
