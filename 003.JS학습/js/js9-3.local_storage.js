@@ -58,6 +58,36 @@ import dFn from './dom.js';
 const btnLocal = dFn.qsa('.local-box button');
 console.log('대상:',btnLocal);
 
+// 2. 버튼에 이벤트 설정
+btnLocal.forEach(ele=>dFn.addEvt(ele,'click',localSFn));
+
+// 3. 로컬쓰 처리 함수 만들기 /////////
+function localSFn(){
+    // 1. 버튼 텍스트 읽기
+    let btxt = this.innerText;
+    console.log('로컬쓰:',btxt);
+    // 2. 버튼별 기능 분기하기 ////
+    if(btxt == '처음'){
+        // 로컬 스토리지 읽기 : 
+        // -> localStorage.getItem(키명)
+        console.log('로컬쓰 lname:',
+            localStorage.getItem('lname'));
+        // 만약 값이 셋팅안됐으면 null 값이 나옴!
+        // 로컬 스토리지 셋팅 : 
+        // -> localStorage.setItem(키명,값)
+        localStorage.setItem('lname','이정재');
+        
+        console.log('로컬쓰 lname:',
+            localStorage.getItem('lname'));
+    } ///////// if : 처음 /////////
+    else if(btxt == '전체삭제'){
+        // 해당 url로 관리되는 로컬쓰를 모두 지움! : clear()
+        localStorage.clear();
+        // 개별 로컬쓰로 지우는 방법은 removeItem(키명)
+    }
+
+} //////////// localSFn 함수 ////////////////
+
 
 
 // [ 2. 세션 스토리지 연습 ] //////////////////////
