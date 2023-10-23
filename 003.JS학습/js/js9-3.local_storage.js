@@ -79,6 +79,7 @@ function localSFn(){
     // 1. 버튼 텍스트 읽기
     let btxt = this.innerText;
     console.log('로컬쓰:',btxt);
+
     // 2. 버튼별 기능 분기하기 ////
     if(btxt == '처음'){
         // 로컬 스토리지 읽기 : 
@@ -115,6 +116,9 @@ function localSFn(){
     // -> 객체를 생성하여 로컬 스토리지에 넣기
     else if(btxt = '처리'){
         if(!localStorage.getItem('minfo')) makeObj();
+
+        // 바인딩 함수 호출!
+        bindData();
         
     } //////// else if : 처리 ////////////////
     
@@ -125,7 +129,7 @@ function localSFn(){
 /// 객체가 없으면 로컬스토리지에 생성하기 ///////
 function makeObj(){  
     console.log('배열/객체만들기!!!');  
-    
+
     // 게시판 형식의 객체를 생성함!
     let obj = [
         {
@@ -144,6 +148,69 @@ function makeObj(){
     // localStorage.setItem('minfo',obj);
     localStorage.setItem('minfo',JSON.stringify(obj));
 } /////////////// makeObj 함수 ///////////////
+
+
+/// 화면에 게시판 리스트를 데이터에 맞게 바인딩하기 /////
+function bindData(){
+
+    // 1. 로컬스토리지 데이터 : 문자형(string)
+    let localData = localStorage.getItem('minfo');
+    console.log(localData,"데이터형:",typeof localData);
+
+    
+    // 바인딩 데이터변수
+    let bindCode = '';
+    
+    // 2. 데이터 존재 여부 확인하기
+    if(localData){ // null이 아니면 true!
+        // 문자형을 배열로 형변환해야함!!!
+        // 로컬스토리지 데이터 배열객체형변환 
+        // -> JSON.parse(문자형배열객체)
+        localData = JSON.parse(localData);
+        console.log(localData,
+            "데이터형:", typeof localData, 
+            "배열인가? ",Array.isArray(localData));
+        
+        // 배열이니까 map()사용하여 태그만들기!
+        // -> 맵쬬잉~!!!! map().join('')
+        bindCode = localData.map((v,i)=>`
+            <tr>
+                <td>${v.idx}</td>
+                <td>${v.tit}</td>
+                <td>${v.cont}</td>
+                <td>
+                    <a href="#" onclick="delRec(${i})">×</a>
+                </td>
+            </tr>
+        `).join(''); // 태그를 연결자없는 배열전체로 저장
+    }
+
+
+    // 3. 화면에 테이블 요소로 데이터바인딩 구성하기
+    let hcode = `
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>삭제</th>
+            </tr>
+            <!-- 데이터에 따른 반복바인딩 -->
+            ${bindCode}
+        </table>
+    `;
+
+    // 4. 화면출력 : 대상 - .board
+    dFn.qs('.board').innerHTML = hcode;
+
+} /////////////// bindData 함수 ////////////////
+
+
+/// 삭제 처리함수 /////////////////////
+function delRec(idx){
+    console.log('지울순번:',idx);
+
+} ////////// delRec함수 //////////////////
 
 
 
