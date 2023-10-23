@@ -45,7 +45,16 @@ $(()=>{
         drop: function(evt,ele){
             // evt - 이벤트 전달변수
             // ele - 드롭관련객체
-            console.log('나,빠졌다~!');
+            // 드롭된 요소는 ele.draggable
+            let target = ele.draggable;
+
+            // console.log('나,빠졌다~!',target);
+
+            // 1. 드롭된요소의 이미지 src를 읽어오기
+            let isrc = target.find('img').attr('src');
+            console.log('이미지경로:',isrc);
+
+
         }, ///// drop 이벤트 옵션 메서드 /////
     }); /////////// droppabel 이벤트함수 ////////
 
