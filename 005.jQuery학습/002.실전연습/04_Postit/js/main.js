@@ -26,15 +26,28 @@ $(()=>{
 
     // 3-1.드래그 시작 이벤트 : dragstart -> 이미지변경
     dgEle.on('dragstart',function(){
-        console.log('드래그시작:',this);
-
+        // console.log('드래그시작:',this);
+        // 클래스 .invert 넣기
+        $(this).addClass('invert');
     }); /////////// dragstart 이벤트 함수 ////////
 
     // 3-2.드래그 종료 이벤트 : dragstop -> 이미지복귀
     dgEle.on('dragstop',function(){
-        console.log('드래그끝:',this);
-
+        // console.log('드래그끝:',this);
+        // 클래스 .invert 넣기
+        $(this).removeClass('invert');
     }); /////////// dragstop 이벤트 함수 ////////
+
+    // 4. 드롭 대상 박스에 드롭될때 동영상 보여주기
+    // droppable() 메서드 : 드롭되는 요소처리
+    // 이벤트 대상: .dropshow
+    $('.dropshow').droppable({
+        drop: function(evt,ele){
+            // evt - 이벤트 전달변수
+            // ele - 드롭관련객체
+            console.log('나,빠졌다~!');
+        }, ///// drop 이벤트 옵션 메서드 /////
+    }); /////////// droppabel 이벤트함수 ////////
 
 
 
