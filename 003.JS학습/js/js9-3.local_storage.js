@@ -70,21 +70,34 @@ function localSFn(){
     if(btxt == '처음'){
         // 로컬 스토리지 읽기 : 
         // -> localStorage.getItem(키명)
-        console.log('로컬쓰 lname:',
-            localStorage.getItem('lname'));
+        // console.log('로컬쓰 lname:',
+        //     localStorage.getItem('lname'));
         // 만약 값이 셋팅안됐으면 null 값이 나옴!
+        
         // 로컬 스토리지 셋팅 : 
         // -> localStorage.setItem(키명,값)
         localStorage.setItem('lname','이정재');
+        localStorage.setItem('lrole','박평호역');
+        localStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
         
-        console.log('로컬쓰 lname:',
-            localStorage.getItem('lname'));
+        // console.log('로컬쓰 lname:',
+        // localStorage.getItem('lname'));
+
     } ///////// if : 처음 /////////
     else if(btxt == '전체삭제'){
         // 해당 url로 관리되는 로컬쓰를 모두 지움! : clear()
         localStorage.clear();
         // 개별 로컬쓰로 지우는 방법은 removeItem(키명)
-    }
+    } /////// else if : 전체삭제 ////////////
+    else if(btxt == '보여줘'){
+        dFn.qs('.local .nm').innerText = 
+        localStorage.getItem('lname');
+        dFn.qs('.local .role').innerText = 
+        localStorage.getItem('lrole');
+        dFn.qs('.local .cat').innerText = 
+        localStorage.getItem('lcat');
+
+    } /////// else if : 보여줘 ////////////
 
 } //////////// localSFn 함수 ////////////////
 
