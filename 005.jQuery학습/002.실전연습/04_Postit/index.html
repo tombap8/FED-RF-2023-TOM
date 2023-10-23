@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>drag and drop 기능</title>
         <style>
+            html,body{
+                overflow-x: hidden;
+            }
             div.draggable {
                 float: left;
                 width: 160px;
@@ -30,8 +33,8 @@
 
             /* 드롭박스 */
             .dropshow {
-                width: 500px;
-                height: 400px;
+                max-width: 500px;
+                min-height: 400px;
                 text-align: center;
                 background: url(addimg/effect2.jpg) no-repeat center/cover;
                 font: bold 36px/400px "맑은 고딕", "굴림";
@@ -44,15 +47,22 @@
 
             /* 드래그 박스 */
             .dbox {
-                width: 720px;
-                height: 170px;
+                max-width: 720px;
+                min-height: 170px;
                 margin: 0 auto;
                 border: 2px dashed blue;
+            }
+            .dbox::after{
+                content: '';
+                display: block;
+                clear: both;
             }
         </style>
 
         <script src="./js/jquery-3.6.0.min.js"></script>
         <script src="./js/jquery-ui.min.js"></script>
+        <!-- 모바일용 드래그/드롭 이벤트 전환 플러그인JS -->
+        <script src="./js/jquery-touch-punch.min.js"></script>
         <!-- 메인 JS -->
         <script src="./js/main.js"></script>
         <!-- 

@@ -118,7 +118,7 @@ $(()=>{
                 textDecoration: "none",
                 font: "bold 48px Verdana",
                 color: "#fff",
-                textShadow: "0 0 5px #777",
+                textShadow: "0 0 5px #777", 
             })
             .click(function(){ // 닫기버튼 a요소 클릭시
                 // 1. mbox 닫기
