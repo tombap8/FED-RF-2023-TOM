@@ -10,6 +10,7 @@ import dFn from './dom.js';
     [ JS 로컬스토리지 : localStorage ]
     - window하위객체 window.localStorage
     -> window는 주로 생략함!
+    -> 개발자 모드 'Application' 탭에서 확인가능!!
 
     1. 정의 : 
         브라우저별 로컬 어플리케이션 영역에 저장되는 
@@ -36,6 +37,7 @@ import dFn from './dom.js';
         (6) 개수 : length
 
     [ JS 세션 스토리지 : sessionStorage ]
+    -> 로컬스토리지와 세션 스토리지의 메서드는 동일함!
     -> 로컬스토리지와 차이점은?
     -> 브라우저가 닫히면 데이터가 사라진다!
     (로컬세션의 개념은 서버세션과 달리 하나의 브라우저탭을
@@ -60,6 +62,17 @@ console.log('대상:',btnLocal);
 
 // 2. 버튼에 이벤트 설정
 btnLocal.forEach(ele=>dFn.addEvt(ele,'click',localSFn));
+
+// -> 개별 로컬스토리지 삭제 이벤트 설정하기
+dFn.qsa('.local ol li').forEach((ele,idx)=>{
+    // 로컬스토리지 키명 배열
+    const keyName = ["lname","lrole","lcat"];
+    ele.onclick = function(){
+        // 개별 로컬스토리지 키삭제
+        console.log('삭제할키:',keyName[idx]);
+        localStorage.removeItem(keyName[idx]);
+    }; //////// click ////////
+}); /////////// forEach /////////////
 
 // 3. 로컬쓰 처리 함수 만들기 /////////
 function localSFn(){
@@ -104,6 +117,63 @@ function localSFn(){
 
 
 // [ 2. 세션 스토리지 연습 ] //////////////////////
+// 1. 버튼 기능 이벤트 대상: .session-box button
+const btnSession = dFn.qsa('.session-box button');
+console.log('대상:',btnSession);
+
+// 2. 버튼에 이벤트 설정
+btnSession.forEach(ele=>dFn.addEvt(ele,'click',sessionSFn));
+
+// -> 개별 세션스토리지 삭제 이벤트 설정하기
+dFn.qsa('.session ol li').forEach((ele,idx)=>{
+    // 세션스토리지 키명 배열
+    const keyName = ["lname","lrole","lcat"];
+    ele.onclick = function(){
+        // 개별 세션스토리지 키삭제
+        console.log('삭제할키:',keyName[idx]);
+        sessionStorage.removeItem(keyName[idx]);
+    }; //////// click ////////
+}); /////////// forEach /////////////
+
+// 3. 세션쓰 처리 함수 만들기 /////////
+function sessionSFn(){
+    // 1. 버튼 텍스트 읽기
+    let btxt = this.innerText;
+    console.log('세션쓰:',btxt);
+    // 2. 버튼별 기능 분기하기 ////
+    if(btxt == '처음'){
+        // 세션 스토리지 읽기 : 
+        // -> sessionStorage.getItem(키명)
+        // console.log('세션쓰 lname:',
+        //     sessionStorage.getItem('lname'));
+        // 만약 값이 셋팅안됐으면 null 값이 나옴!
+        
+        // 세션 스토리지 셋팅 : 
+        // -> sessionStorage.setItem(키명,값)
+        sessionStorage.setItem('lname','이정재');
+        sessionStorage.setItem('lrole','박평호역');
+        sessionStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
+        
+        // console.log('세션쓰 lname:',
+        // sessionStorage.getItem('lname'));
+
+    } ///////// if : 처음 /////////
+    else if(btxt == '전체삭제'){
+        // 해당 url로 관리되는 세션쓰를 모두 지움! : clear()
+        sessionStorage.clear();
+        // 개별 세션쓰로 지우는 방법은 removeItem(키명)
+    } /////// else if : 전체삭제 ////////////
+    else if(btxt == '보여줘'){
+        dFn.qs('.local .nm').innerText = 
+        sessionStorage.getItem('lname');
+        dFn.qs('.local .role').innerText = 
+        sessionStorage.getItem('lrole');
+        dFn.qs('.local .cat').innerText = 
+        sessionStorage.getItem('lcat');
+
+    } /////// else if : 보여줘 ////////////
+
+} //////////// localSFn 함수 ////////////////
 
 
 
