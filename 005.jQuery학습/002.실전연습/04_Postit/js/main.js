@@ -54,6 +54,22 @@ $(()=>{
             let isrc = target.find('img').attr('src');
             console.log('이미지경로:',isrc);
 
+            // 2. 드롭영역의 배경이미지 변경하기
+            // this - 드롭박스
+            $(this).css({
+                backgroundImage:`url(${isrc})`
+            }); ///////// css ///////////
+
+            // 3. 드롭된 요소 사라지기
+            target.hide();
+
+            // 4. 드롭된 요소의 자식 p태그의 글자 읽어오기
+            let ptxt = target.find('p').text();
+            console.log('읽어온글자:',ptxt);
+
+            // 5. 드롭영역에 글자넣기
+            $(this).text(ptxt+' 당첨~!!!');
+
 
         }, ///// drop 이벤트 옵션 메서드 /////
     }); /////////// droppabel 이벤트함수 ////////
