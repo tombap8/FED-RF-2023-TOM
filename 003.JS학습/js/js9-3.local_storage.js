@@ -126,6 +126,9 @@ function localSFn(){
     
 } //////////// localSFn 함수 ////////////////
 
+// 처음에 바인딩 함수 호출하여 게시판 보이기 ////
+bindData();
+
 /// 객체가 없으면 로컬스토리지에 생성하기 ///////
 function makeObj(){  
     console.log('배열/객체만들기!!!');  
