@@ -91,7 +91,12 @@ $(()=>{
                 backgroundColor:"#000",
             }); /////// css //////////
 
-            // 8. 
+            // 8. 동영상 박스에 유튜브 iframe 넣기
+            // html()로 넣으면 닫기버튼 지워짐
+            // 맨뒤에 요소 추가는 append() 메서드!
+            mbox.append(`
+            <iframe src="https://www.youtube.com/embed/miSL86dtqis?autoplay=1" allow="autoplay" style="width:100%;height:100%;border:none"></iframe>
+            `)
 
 
         }, ///// drop 이벤트 옵션 메서드 /////
