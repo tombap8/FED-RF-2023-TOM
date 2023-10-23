@@ -131,6 +131,14 @@ $(()=>{
                         top:"0",
                         left:"0",
                     }); ///// css ///////
+
+                    //4. 드롭박스 초기화
+                    $('.dropshow')
+                    .text('여기에 드롭하세요~~!')
+                    .css({
+                        backgroundImage:
+                        'url(addimg/effect2.jpg)'
+                    }); ///// css //////
                 }); /////// slideUp //////////
 
             })
