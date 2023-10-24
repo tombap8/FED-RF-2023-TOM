@@ -233,8 +233,19 @@ dFn.addEvt(dFn.qs('#sbtn'),'click',insData);
 
 /// 입력 처리함수 /////////////////////
 function insData(){
-    console.log('입력이양~!!');
     // 1. 입력항목 읽어오기
+    let tit = dFn.qs('#tit').value;
+    let cont = dFn.qs('#cont').value;
+    
+    // 2. 만약 하나라도 비었다면 돌아가!
+    // trim() 앞뒤공백제거 -> 스페이스바만 쳐도 불통과!
+    if(tit.trim()=="" || cont.trim()==""){
+        alert('입력데이터가 없습니다! 모두 입력하세요!');
+        return;
+    } //////////// if /////////////
+    
+    // 3. 입력처리하기
+    console.log('입력처리함~!!');
 
 
 } ///////////// insData 함수 //////////////////
