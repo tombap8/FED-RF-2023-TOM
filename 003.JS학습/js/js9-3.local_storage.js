@@ -255,7 +255,12 @@ function insData(){
         'idx':orgData.length+1,
         'tit':tit,
         'cont':cont
-    })
+    }); //////// push ///////
+
+    // 3-4. 배열/객체 데이터를 문자화하여 로컬쓰에 넣기
+    // JSON.stringify()
+    localStorage.setItem('minfo',
+    JSON.stringify(orgData));
 
     console.log('입력처리함~!!',orgData);
 
