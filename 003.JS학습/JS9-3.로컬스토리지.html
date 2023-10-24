@@ -87,11 +87,12 @@
                     <button>보여줘</button>
                     <button>전체삭제</button>
                     <button>처리</button>
-                    <button>업데이트</button>
                 </div>
 
+                <!-- 리스트 출력박스 -->
                 <div class="board"></div>
 
+                <!-- 입력창박스 -->
                 <div class="inbx">
                     <!-- <form action="" method="post"> -->
                     <ul>
@@ -105,6 +106,31 @@
                         </li>
                         <li>
                             <input type="submit" value="입력" id="sbtn" />
+                        </li>
+                    </ul>
+                    <!-- </form> -->
+                </div>
+
+                <!-- 수정창박스 -->
+                <div class="mobx">
+                    <h2>수정할 항목을 선택하세요!</h2>
+                    <div class="mosel">
+                        <select name="sel" id="sel">
+                            <option value="show">항목선택</option>
+                        </select>
+                    </div>
+                    <!-- <form action="" method="post"> -->
+                    <ul>
+                        <li>
+                            <label for="tit">제목</label>
+                            <input type="text" id="tit" />
+                        </li>
+                        <li>
+                            <label for="cont">내용</label>
+                            <input type="text" id="cont" />
+                        </li>
+                        <li>
+                            <input type="submit" value="수정" id="sbtn" />
                         </li>
                     </ul>
                     <!-- </form> -->
@@ -127,8 +153,6 @@
                     <button>처음</button>
                     <button>보여줘</button>
                     <button>전체삭제</button>
-                    <button>처리</button>
-                    <button>추가</button>
                 </div>
             </div>
         </div>
