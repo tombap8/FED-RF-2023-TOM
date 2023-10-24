@@ -3,7 +3,7 @@
 // DOM 메서드 ////
 import dFn from './dom.js';
 
-// console.log(dFn);
+// // console.log(dFn);
 
 
     /*************************************************************** 
@@ -58,7 +58,7 @@ import dFn from './dom.js';
 // [ 1. 로컬 스토리지 연습 ] //////////////////////
 // 1. 버튼 기능 이벤트 대상: .local-box button
 const btnLocal = dFn.qsa('.local-box button');
-console.log('대상:',btnLocal);
+// console.log('대상:',btnLocal);
 
 // 2. 버튼에 이벤트 설정
 btnLocal.forEach(ele=>dFn.addEvt(ele,'click',localSFn));
@@ -69,7 +69,7 @@ dFn.qsa('.local ol li').forEach((ele,idx)=>{
     const keyName = ["lname","lrole","lcat"];
     ele.onclick = function(){
         // 개별 로컬스토리지 키삭제
-        console.log('삭제할키:',keyName[idx]);
+        // console.log('삭제할키:',keyName[idx]);
         localStorage.removeItem(keyName[idx]);
     }; //////// click ////////
 }); /////////// forEach /////////////
@@ -78,13 +78,13 @@ dFn.qsa('.local ol li').forEach((ele,idx)=>{
 function localSFn(){
     // 1. 버튼 텍스트 읽기
     let btxt = this.innerText;
-    console.log('로컬쓰:',btxt);
+    // console.log('로컬쓰:',btxt);
 
     // 2. 버튼별 기능 분기하기 ////
     if(btxt == '처음'){
         // 로컬 스토리지 읽기 : 
         // -> localStorage.getItem(키명)
-        // console.log('로컬쓰 lname:',
+        // // console.log('로컬쓰 lname:',
         //     localStorage.getItem('lname'));
         // 만약 값이 셋팅안됐으면 null 값이 나옴!
         
@@ -95,10 +95,10 @@ function localSFn(){
         localStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
 
         // 로컬스토리지.key(순번) -> 키이름을 리턴함!
-        console.log('두번째(1) 키명은?',localStorage.key(1),
+        // console.log('두번째(1) 키명은?',localStorage.key(1),
         '\n전체개수:',localStorage.length);
         
-        // console.log('로컬쓰 lname:',
+        // // console.log('로컬쓰 lname:',
         // localStorage.getItem('lname'));
 
     } ///////// if : 처음 /////////
@@ -145,7 +145,7 @@ bindData();
 
 /// 객체가 없으면 로컬스토리지에 생성하기 ///////
 function makeObj(){  
-    console.log('배열/객체만들기!!!');  
+    // console.log('배열/객체만들기!!!');  
 
     // 게시판 형식의 객체를 생성함!
     let obj = [
@@ -172,7 +172,7 @@ function bindData(){
 
     // 1. 로컬스토리지 데이터 : 문자형(string)
     let localData = localStorage.getItem('minfo');
-    console.log(localData,"데이터형:",typeof localData);
+    // console.log(localData,"데이터형:",typeof localData);
 
     
     // 바인딩 데이터변수
@@ -184,7 +184,7 @@ function bindData(){
         // 로컬스토리지 데이터 배열객체형변환 
         // -> JSON.parse(문자형배열객체)
         localData = JSON.parse(localData);
-        console.log(localData,
+        // console.log(localData,
             "데이터형:", typeof localData, 
             "배열인가? ",Array.isArray(localData));
         
@@ -290,7 +290,7 @@ function insData(){
     let lastArr = orgData.length==0?
      0 : orgData[orgData.length-1].idx;
 
-    console.log('정렬결과:',orgData,'\n마지막idx값:',lastArr);
+    // console.log('정렬결과:',orgData,'\n마지막idx값:',lastArr);
 
 
     // 3-4.입력된 데이터 추가하기 : 배열 push() 메서드
@@ -306,7 +306,7 @@ function insData(){
     localStorage.setItem('minfo',
     JSON.stringify(orgData));
 
-    console.log('입력처리함~!!',orgData);
+    // console.log('입력처리함~!!',orgData);
 
     // 4. 리스트 업데이트하기
     bindData();  
@@ -319,7 +319,7 @@ function insData(){
 
 /// 삭제 처리함수 /////////////////////
 function delRec(idx){
-    console.log('지울순번:',idx);
+    // console.log('지울순번:',idx);
     // 1.a요소 기본이동막기
     event.preventDefault();
 
@@ -336,7 +336,7 @@ function delRec(idx){
     // -> 확인,취소 중 확인 클릭시 true리턴함!(취소는 false)
     if(confirm('정말정말정말정말로 지우시게요?????')){
         orgData.splice(idx,1);
-        console.log('제거후배열:',orgData);
+        // console.log('제거후배열:',orgData);
 
         // 4. 배열/객체 데이터를 문자화하여 로컬쓰에 넣기
         // JSON.stringify()
@@ -356,8 +356,15 @@ function delRec(idx){
 /////////////////////////////////////////////
 //// 데이터 수정하여 반영하기 //////////////////
 //////////////////////////////////////////////
-// 1. 선택박스 대상선정: .sel
+// 1.  대상선정: 
+// 1-1. 선택박스 : .sel
 const modSel = dFn.qs('#sel');
+// 1-2. 제목 입력박스
+const modTit = dFn.qs('#tit2');
+// 1-3. 내용 입력박스
+const modCont = dFn.qs('#cont2');
+
+
 // 2. 데이터 바인딩하기
 // 바인딩 함수 만들어서 사용~!!!
 function bindMod(){
@@ -392,6 +399,15 @@ function bindMod(){
 // 최초호출!
 bindMod();
 
+/// 3. 선택항목 변경 이벤트 설정하기 //////
+dFn.addEvt(modSel,'change',setMod);
+
+// 4. 수정데이터 수정모드에 셋팅하기 /////
+function setMod(){
+    console.log('수정셋업:',this.value);
+
+} ///////////// setMod 함수 //////////////
+
 
 
 
@@ -407,7 +423,7 @@ bindMod();
 // [ 2. 세션 스토리지 연습 ] //////////////////////
 // 1. 버튼 기능 이벤트 대상: .session-box button
 const btnSession = dFn.qsa('.session-box button');
-console.log('대상:',btnSession);
+// console.log('대상:',btnSession);
 
 // 2. 버튼에 이벤트 설정
 btnSession.forEach(ele=>dFn.addEvt(ele,'click',sessionSFn));
@@ -418,7 +434,7 @@ dFn.qsa('.session ol li').forEach((ele,idx)=>{
     const keyName = ["lname","lrole","lcat"];
     ele.onclick = function(){
         // 개별 세션스토리지 키삭제
-        console.log('삭제할키:',keyName[idx]);
+        // console.log('삭제할키:',keyName[idx]);
         sessionStorage.removeItem(keyName[idx]);
     }; //////// click ////////
 }); /////////// forEach /////////////
@@ -427,12 +443,12 @@ dFn.qsa('.session ol li').forEach((ele,idx)=>{
 function sessionSFn(){
     // 1. 버튼 텍스트 읽기
     let btxt = this.innerText;
-    console.log('세션쓰:',btxt);
+    // console.log('세션쓰:',btxt);
     // 2. 버튼별 기능 분기하기 ////
     if(btxt == '처음'){
         // 세션 스토리지 읽기 : 
         // -> sessionStorage.getItem(키명)
-        // console.log('세션쓰 lname:',
+        // // console.log('세션쓰 lname:',
         //     sessionStorage.getItem('lname'));
         // 만약 값이 셋팅안됐으면 null 값이 나옴!
         
@@ -442,7 +458,7 @@ function sessionSFn(){
         sessionStorage.setItem('lrole','김정도역');
         sessionStorage.setItem('lcat','국내팀 안기부팀장, 박평호랑 사이나쁨');
         
-        // console.log('세션쓰 lname:',
+        // // console.log('세션쓰 lname:',
         // sessionStorage.getItem('lname'));
 
     } ///////// if : 처음 /////////
