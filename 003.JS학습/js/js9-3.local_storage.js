@@ -409,8 +409,11 @@ function setMod(){
     // 0. 선택한 옵션값
     let optVal = this.value;
     console.log('수정셋업:',optVal);
-    // 1. 해당 idx의 값을 가지는 배열값을 선택
 
+    // 만약 수정선택박스의 값이 'show'이면 돌아가!
+    if(optVal=='show') return;
+
+    // 1. 해당 idx의 값을 가지는 배열값을 선택
     // 1. 로컬쓰 가져오기
     // 1-1.로컬쓰 데이터 가져오기 : minfo
     let orgData = localStorage.getItem('minfo');
@@ -449,7 +452,9 @@ function setMod(){
 dFn.addEvt(moBtn,'click',modifyData);
 
 // 6. 수정내용 반영 함수 만들기 //////////
-function modifyData(){
+function modifyData(){    
+    // 만약 수정선택박스의 값이 'show'이면 돌아가!
+    if(modSel.value=='show') return;
     console.log('수정할꼬양~!');
 
 } ////////////// modifyData 함수 //////////
