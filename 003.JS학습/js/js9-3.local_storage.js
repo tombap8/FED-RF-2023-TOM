@@ -106,6 +106,7 @@ function localSFn(){
         // 해당 url로 관리되는 로컬쓰를 모두 지움! : clear()
         localStorage.clear();
         // 개별 로컬쓰로 지우는 방법은 removeItem(키명)
+        bindData();
     } /////// else if : 전체삭제 ////////////
     else if(btxt == '보여줘'){
         dFn.qs('.local .nm').innerText = 
