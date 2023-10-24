@@ -243,10 +243,20 @@ function insData(){
         alert('입력데이터가 없습니다! 모두 입력하세요!');
         return;
     } //////////// if /////////////
+
     
     // 3. 입력처리하기
     // 3-1.로컬쓰 데이터 가져오기 : minfo
     let orgData = localStorage.getItem('minfo');
+
+    // 만약 minfo 로컬쓰가 null이면 빈 배열로 생성하기!
+    if(!orgData){
+        // 빈 배열로 생성하기
+        localStorage.setItem('minfo','[]');
+        // 초기 로컬쓰 재할당!
+        orgData = localStorage.getItem('minfo');
+    } ////////// if /////////////
+
     // 3-2.제이슨 파싱!
     orgData = JSON.parse(orgData);
 
@@ -258,12 +268,18 @@ function insData(){
     // return a == b ? 0 : a > b ? 1 : -1})
     // -> 배열.sort((a,b)=>{
     // return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1})
-    orgData.sort((a,b)=>{
-        return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1
-    }); ///// sort /////
+
+    // 배열값이 있을때만 정렬적용!
+    if(orgData.length != 0){
+        orgData.sort((a,b)=>{
+            return a.idx == b.idx ? 
+            0 : a.idx > b.idx ? 1 : -1
+        }); ///// sort /////
+    }
 
     // 3-3-2. idx값으로 마지막배열값 읽기
-    let lastArr = orgData[orgData.length-1].idx;
+    let lastArr = orgData.length==0?
+     0 : orgData[orgData.length-1].idx;
 
     console.log('정렬결과:',orgData,'\n마지막idx값:',lastArr);
 
