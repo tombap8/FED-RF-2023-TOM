@@ -96,7 +96,7 @@ function localSFn(){
 
         // 로컬스토리지.key(순번) -> 키이름을 리턴함!
         // console.log('두번째(1) 키명은?',localStorage.key(1),
-        '\n전체개수:',localStorage.length);
+        // '\n전체개수:',localStorage.length);
         
         // // console.log('로컬쓰 lname:',
         // localStorage.getItem('lname'));
@@ -185,8 +185,8 @@ function bindData(){
         // -> JSON.parse(문자형배열객체)
         localData = JSON.parse(localData);
         // console.log(localData,
-            "데이터형:", typeof localData, 
-            "배열인가? ",Array.isArray(localData));
+            // "데이터형:", typeof localData, 
+            // "배열인가? ",Array.isArray(localData));
         
         // 배열이니까 map()사용하여 태그만들기!
         // -> 맵쬬잉~!!!! map().join('')
@@ -404,7 +404,37 @@ dFn.addEvt(modSel,'change',setMod);
 
 // 4. 수정데이터 수정모드에 셋팅하기 /////
 function setMod(){
-    console.log('수정셋업:',this.value);
+    // 0. 선택한 옵션값
+    let optVal = this.value;
+    console.log('수정셋업:',optVal);
+    // 1. 해당 idx의 값을 가지는 배열값을 선택
+
+    // 1. 로컬쓰 가져오기
+    // 1-1.로컬쓰 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+
+    // 만약 minfo 로컬쓰가 null이면 빈 배열로 생성하기!
+    if(!orgData){
+        // 빈 배열로 생성하기
+        localStorage.setItem('minfo','[]');
+        // 초기 로컬쓰 재할당!
+        orgData = localStorage.getItem('minfo');
+    } ////////// if /////////////
+
+    // 1-2.제이슨 파싱!
+    orgData = JSON.parse(orgData);
+
+    // 1-3.해당 아이디 배열값 찾기 : 배열 find()메서드
+    let selRec = orgData.find(v=>{
+        if(v.idx==)
+    })
+    /* 
+        변수 = 배열.find(v=>{
+            if(v.idx==인덱스값) return true;
+        })
+        -> 값이 있는 배열을 만나면 바로 순회를 마침!
+        배열값을 변수에 저장함! 
+    */
 
 } ///////////// setMod 함수 //////////////
 
