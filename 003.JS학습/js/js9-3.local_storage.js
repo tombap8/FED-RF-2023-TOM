@@ -124,7 +124,8 @@ function localSFn(){
 
     // -> 객체를 생성하여 로컬 스토리지에 넣기
     else if(btxt = '처리'){
-        // 1. 로컬쓰에 'minfo'가 없으면 makeObj() 호출!
+        // 1. 로컬쓰에 'minfo'가 없거나 
+        //'minfo'값이 '[]'배열 초기화값이면 makeObj() 호출!
         if(!localStorage.getItem('minfo')||
         localStorage.getItem('minfo')=='[]') makeObj();
 
