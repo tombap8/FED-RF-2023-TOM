@@ -453,9 +453,44 @@ dFn.addEvt(moBtn,'click',modifyData);
 
 // 6. 수정내용 반영 함수 만들기 //////////
 function modifyData(){    
-    // 만약 수정선택박스의 값이 'show'이면 돌아가!
+    // 0.만약 수정선택박스의 값이 'show'이면 돌아가!
     if(modSel.value=='show') return;
-    console.log('수정할꼬양~!');
+    
+    // 1. 현재 선택된 배열의 유일한 값 idx읽기
+    // -> 현재 선택된 수정선택박스의 value값
+    let selIdx = modSel.value;
+    console.log('수정할꼬양~!',selIdx);
+
+    // 2. 로컬쓰 가져오기
+    // 2-1.로컬쓰 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+
+    // 만약 minfo 로컬쓰가 null이면 빈 배열로 생성하기!
+    if(!orgData){
+        // 빈 배열로 생성하기
+        localStorage.setItem('minfo','[]');
+        // 초기 로컬쓰 재할당!
+        orgData = localStorage.getItem('minfo');
+    } ////////// if /////////////
+
+    // 2-2.제이슨 파싱!
+    orgData = JSON.parse(orgData);
+
+    // 2-3.해당 아이디 배열값 찾기 : 배열 find()메서드
+    orgData.find(v=>{
+        if(v.idx==selIdx){ 
+            // 고유idx값인 경우 입력값으로 업데이트하기
+            // 선택 배열값인 객체의 제목과 내용을 
+            // 다시넣고 업데이트하기
+            v.tit = modTit.value;
+            v.cont = modCont.value;
+        } /////// if /////////
+    }); // find() 메서드 /////////////////
+
+
+    console.log('변경후배열:',orgData);
+
+
 
 } ////////////// modifyData 함수 //////////
 
