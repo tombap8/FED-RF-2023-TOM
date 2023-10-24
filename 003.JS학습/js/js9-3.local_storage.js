@@ -501,9 +501,6 @@ function modifyData(){
 
     // 5. 수정 선택박스 업데이트
     bindMod(); 
-
-
-
 } ////////////// modifyData 함수 //////////
 
 
