@@ -93,6 +93,10 @@ function localSFn(){
         localStorage.setItem('lname','이정재');
         localStorage.setItem('lrole','박평호역');
         localStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
+
+        // 로컬스토리지.key(순번) -> 키이름을 리턴함!
+        console.log('두번째(1) 키명은?',localStorage.key(1),
+        '\n전체개수:',localStorage.length);
         
         // console.log('로컬쓰 lname:',
         // localStorage.getItem('lname'));
@@ -115,6 +119,7 @@ function localSFn(){
 
     // -> 객체를 생성하여 로컬 스토리지에 넣기
     else if(btxt = '처리'){
+        // 로컬쓰에 'minfo'가 없으면 makeObj() 호출!
         if(!localStorage.getItem('minfo')) makeObj();
 
         // 바인딩 함수 호출!
@@ -181,8 +186,8 @@ function bindData(){
                 <td>${v.idx}</td>
                 <td>${v.tit}</td>
                 <td>${v.cont}</td>
-                <td>
-                    <a href="#" onclick="delRec(${i})">×</a>
+                <td class="del-link">
+                    <a href="#" data-idx="${i}">×</a>
                 </td>
             </tr>
         `).join(''); // 태그를 연결자없는 배열전체로 저장
@@ -216,8 +221,23 @@ function bindData(){
     // 4. 화면출력 : 대상 - .board
     dFn.qs('.board').innerHTML = hcode;
 
+    // 5. 화면출력 후 지우기 링크 셋팅하기
+    dFn.qsa('.board .del-link a')
+    .forEach(ele=>dFn.addEvt(ele,'click',
+    ()=>delRec(ele.getAttribute('data-idx'))));
+
 } /////////////// bindData 함수 ////////////////
 
+/// 입력 처리함수 호출 이벤트설정하기 ///////
+dFn.addEvt(dFn.qs('#sbtn'),'click',insData);
+
+/// 입력 처리함수 /////////////////////
+function insData(){
+    console.log('입력이양~!!');
+    // 1. 입력항목 읽어오기
+
+
+} ///////////// insData 함수 //////////////////
 
 /// 삭제 처리함수 /////////////////////
 function delRec(idx){
