@@ -477,6 +477,7 @@ function modifyData(){
     orgData = JSON.parse(orgData);
 
     // 2-3.해당 아이디 배열값 찾기 : 배열 find()메서드
+    // find()로 찾아서 해당값을 직접 업데이트한다!
     orgData.find(v=>{
         if(v.idx==selIdx){ 
             // 고유idx값인 경우 입력값으로 업데이트하기
@@ -489,6 +490,17 @@ function modifyData(){
 
 
     console.log('변경후배열:',orgData);
+
+    // 3. 배열/객체 데이터를 문자화하여 로컬쓰에 넣기
+    // JSON.stringify()
+    localStorage.setItem('minfo',
+    JSON.stringify(orgData));
+
+    // 4. 리스트 업데이트하기
+    bindData();  
+
+    // 5. 수정 선택박스 업데이트
+    bindMod(); 
 
 
 
