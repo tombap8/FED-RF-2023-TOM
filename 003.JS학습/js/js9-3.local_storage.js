@@ -426,8 +426,9 @@ function setMod(){
 
     // 1-3.해당 아이디 배열값 찾기 : 배열 find()메서드
     let selRec = orgData.find(v=>{
-        if(v.idx==)
-    })
+        if(v.idx==optVal) return true;
+    }); // find() 메서드 /////////////////
+    console.log('선택배열값:',selRec);
     /* 
         변수 = 배열.find(v=>{
             if(v.idx==인덱스값) return true;
