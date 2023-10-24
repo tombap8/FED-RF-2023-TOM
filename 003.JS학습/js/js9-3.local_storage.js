@@ -245,7 +245,19 @@ function insData(){
     } //////////// if /////////////
     
     // 3. 입력처리하기
-    console.log('입력처리함~!!');
+    // 3-1.로컬쓰 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+    // 3-2.제이슨 파싱!
+    orgData = JSON.parse(orgData);
+    // 3-3.입력된 데이터 추가하기 : 배열 push() 메서드
+    // 자동 증가번호는 배열개수+1
+    orgData.push({
+        'idx':orgData.length+1,
+        'tit':tit,
+        'cont':cont
+    })
+
+    console.log('입력처리함~!!',orgData);
 
 
 } ///////////// insData 함수 //////////////////
