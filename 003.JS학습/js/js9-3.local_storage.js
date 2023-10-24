@@ -264,12 +264,34 @@ function insData(){
 
     console.log('입력처리함~!!',orgData);
 
+    // 4. 리스트 업데이트하기
+    bindData();   
+
 
 } ///////////// insData 함수 //////////////////
 
 /// 삭제 처리함수 /////////////////////
 function delRec(idx){
     console.log('지울순번:',idx);
+    // 1.a요소 기본이동막기
+    event.preventDefault();
+
+    // 2. 로컬쓰 가져오기
+    // 2-1.로컬쓰 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+    // 2-2.제이슨 파싱!
+    orgData = JSON.parse(orgData);
+
+    // 3. 특정 데이터 배열항목 삭제
+    // splice(순번,개수) -> 특정순번부터 몇개지움
+    // 여기서는 1개삭제 이므로 splice(순번,1)
+    // confirm(메시지)
+    // -> 확인,취소 중 확인 클릭시 true리턴함!(취소는 false)
+    if(confirm('정말정말정말정말로 지우시게요?????')){
+        orgData.splice(idx,1);
+        console.log('제거후배열:',orgData);
+    } ////////// if ///////////////
+
 
 } ////////// delRec함수 //////////////////
 
