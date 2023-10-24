@@ -249,10 +249,29 @@ function insData(){
     let orgData = localStorage.getItem('minfo');
     // 3-2.제이슨 파싱!
     orgData = JSON.parse(orgData);
-    // 3-3.입력된 데이터 추가하기 : 배열 push() 메서드
+
+    // 3-3. 자동증가번호 처리하기
+    // 배열을 오름차순으로 정렬하여 맨끝 배열데이터의 idx값을
+    // 읽어온후 숫자화 하여 +1처리함!
+    // 3-3-1. 배열 오름차순처리 : 
+    // -> 배열.sort((a,b)=>{
+    // return a == b ? 0 : a > b ? 1 : -1})
+    // -> 배열.sort((a,b)=>{
+    // return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1})
+    orgData.sort((a,b)=>{
+        return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1
+    }); ///// sort /////
+
+    // 3-3-2. idx값으로 마지막배열값 읽기
+    let lastArr = orgData[orgData.length-1].idx;
+
+    console.log('정렬결과:',orgData,'\n마지막idx값:',lastArr);
+
+
+    // 3-4.입력된 데이터 추가하기 : 배열 push() 메서드
     // 자동 증가번호는 배열개수+1
     orgData.push({
-        'idx':orgData.length+1,
+        'idx': lastArr+1,
         'tit':tit,
         'cont':cont
     }); //////// push ///////
@@ -290,6 +309,14 @@ function delRec(idx){
     if(confirm('정말정말정말정말로 지우시게요?????')){
         orgData.splice(idx,1);
         console.log('제거후배열:',orgData);
+
+        // 4. 배열/객체 데이터를 문자화하여 로컬쓰에 넣기
+        // JSON.stringify()
+        localStorage.setItem('minfo',
+        JSON.stringify(orgData));
+
+        // 5. 리스트 업데이트하기
+        bindData();   
     } ////////// if ///////////////
 
 
