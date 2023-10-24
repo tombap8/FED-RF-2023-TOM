@@ -437,6 +437,10 @@ function setMod(){
         배열값을 변수에 저장함! 
     */
 
+    // 2. 선택배열값으로 제목,내용 넣기
+    modTit.value = selRec.tit;
+    modCont.value = selRec.cont;
+
 } ///////////// setMod 함수 //////////////
 
 
