@@ -80,9 +80,9 @@ export default {
             </li>
             <li>
                 <!-- 돋보기 검색버튼 -->
-                <a href="#" class="fi fi-search">
+                <i href="#" class="fi fi-search">
                     <span class="ir">search</span>
-                </a>
+                </i>
             </li>
         </ul>
     </nav>
