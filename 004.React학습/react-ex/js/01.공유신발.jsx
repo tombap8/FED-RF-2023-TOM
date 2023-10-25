@@ -27,6 +27,10 @@ function MainComponent() {
   const [dataNum,setDataNum] = React.useState(0);
   // 2. 리스트/상세보기 상태관리변수
   const [subView,setSubView] = React.useState(0);
+  // 3. 선택아이템 고유번호 상태관리변수
+  const [selItem,setSelItem] = React.useState(0);
+  // 4. JS 효과적용여부 상태관리변수
+  const [effectOK,setEffectOK] = React.useState(1);
   /////////////////////////////////////////////////
   
   // 테스트 후크상태변수
