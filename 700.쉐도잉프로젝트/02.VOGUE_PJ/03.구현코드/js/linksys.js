@@ -15,7 +15,8 @@ $(()=>{
     logo.click(()=>location.href='index.html');
 
     // 2-2. gnb 메뉴 클릭시 카테고리 서브 이동
-    gnb.click(e=>console.log($(e.target).text().toLowerCase()))
+    gnb.click(e=>
+        console.log($(e.target).text().toLowerCase()))
         // location.href='category.html?cat='+)
 
 
