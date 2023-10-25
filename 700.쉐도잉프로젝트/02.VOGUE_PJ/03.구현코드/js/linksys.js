@@ -12,7 +12,7 @@ $(()=>{
     const logo = $('.logo a');
     // 1-2. GNB 메뉴 : .gnb a
     const gnb = $('.gnb a');
-    console.log('대상:',logo,gnb);
+    // console.log('대상:',logo,gnb);
 
     // 2. 이벤트 설정 및 이동기능 구현하기
     // 2-1. 로고클릭시 홈이동
