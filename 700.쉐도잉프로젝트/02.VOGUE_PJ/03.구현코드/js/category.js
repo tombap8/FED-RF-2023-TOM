@@ -61,4 +61,26 @@ function setValue(){
     // ' & ' -> '-'로 변경하기 : time-gem 로 변경
     $('.main-area').addClass(pm.replace(' & ','-'));
 
+    // 5-2. 카테고리 타이틀 변경하기
+    $('.cat-tit').text(selData.제목);
+
+    // 5-3. 메뉴 변경하기
+    // 5-3-1.대상: .lnb
+    let lnb = $('.lnb');
+    // 5-3-2.메뉴데이터: selData.메뉴
+    let mData = selData.메뉴;
+    // 5-3-3.메뉴리턴함수
+    const retMenu = () => 
+    mData.map(v=>`<li><a href="#">${v}</a></li>`).join('');
+
+    // 5-3-4.메뉴 없음에 따라 분기하기 ////
+    if(mData=='없음'){ // lnb없애기
+        lnb.remove();
+    } /////// if //////
+    else{ // 메뉴 만들기
+        lnb.html(`<ul>${retMenu()}</ul>`);
+    } ///// else //////
+
+
+
 } ////////////// setValue 함수 ///////////
