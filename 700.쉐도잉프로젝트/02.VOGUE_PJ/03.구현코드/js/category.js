@@ -81,6 +81,13 @@ function setValue(){
         lnb.html(`<ul>${retMenu()}</ul>`);
     } ///// else //////
 
+    // 5-4. 서브 섹션 타이틀 넣기 
+    // $(선택자).each((순번,요소)=>{구현부})
+    // 대상: .cat-cont-area h2
+    $('.cat-cont-area h2').each((idx,ele)=>{
+        $(ele).html(selData.타이틀[idx]);
+    }); ////////////// each /////////////
+
 
 
 } ////////////// setValue 함수 ///////////
