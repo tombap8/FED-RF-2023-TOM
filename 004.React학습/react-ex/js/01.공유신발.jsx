@@ -51,10 +51,10 @@ function MainComponent() {
     ///////////////////////////////////////////////////
 
     // [ 1. 컴포넌트가 뿌려지기 애니메이션 적용하기 ]
-    React.useLayoutEffect(initFn);
+    React.useLayoutEffect(()=>{if(effectOK)initFn()});
 
     // [ 2. 처음 한번만 타이틀 글자 커졌다가 작아지기 ]
-    React.useEffect(firstOneFn,[])
+    React.useEffect(()=>{if(effectOK)firstOneFn()},[])
     ////////////////////////////////////////////////////
 
 
@@ -114,18 +114,30 @@ function MainComponent() {
     // 데이터 키 후크변수를 업데이트함
     setDataNum(dataNum?0:1);
     console.log('업데이트값:',dataNum);
+    // 상세보기에서 넘어와도 항상 리스트보기로 전환!
+    setSubView(0);
   }; //////// chgData함수 ///////////
 
   /**************************************** 
     함수명: chgSubView
-    상태변수: subView / setSubView
+    상태변수: 
+      (1) 뷰전환 : subView / setSubView
+      (2) 선택아이템 : selItem / setSelItem
+      (3) 효과여부 : effectOK / setEffectOK
     기능: 상태관리변수 중 리스트/상세보기
     선택변수를 업데이트하여 실제뷰를 전환함
   ****************************************/
  const chgSubView = (num,idx) => {
+  // a요소 기본이동막기
+  event.preventDefault();
   console.log('뷰바꿔!',num,'/고유번호:',idx);
-  // 리스트/상세보기 뷰 상태관리변수 변경하기
+
+  // 1.리스트/상세보기 뷰 상태관리변수 변경하기
   setSubView(num);
+  // 2.선택아이템고유번호 변경
+  setSelItem(idx);
+  // 3.JS 효과상태 변경
+  setEffectOK(0);
 
  }; /////////// chgSubView ///////////////
 
@@ -150,7 +162,7 @@ function MainComponent() {
         </div>
       </section>
       {/* 3. 데이터 변경 버튼 */}
-      <button onClick={chgData} className="btn-gong">
+      <button onClick={()=>{chgData();setEffectOK(1);}} className="btn-gong">
         {dataNum?'공유':'효진'}초이스 바로가기
       </button>
       <button onClick={testFn} >의존성테스트</button>
@@ -162,13 +174,18 @@ function MainComponent() {
       <div className="gwrap">        
         { // 상품리스트 컴포넌트 출력
         subView==0 &&
-          <GoodsCode idx={dataNum} chgFn={chgSubView} />}
+          <GoodsCode 
+          idx={dataNum} 
+          chgFn={chgSubView} />}
         { // 상품상세보기 컴포넌트 출력
         // 부모의 함수 chgSubView를 props로 전달함!
         // 변수명에 할당하는 방식으로 전달!
         // 자식컴포넌트는 props.속성명() 방식으로 호출!
         subView==1 &&
-          <SubViewCode idx={dataNum} chgFn={chgSubView} />}        
+          <SubViewCode 
+          idx={dataNum} 
+          chgFn={chgSubView} 
+          itemNum={selItem} />}        
       </div>
     </React.Fragment>
   );
@@ -215,23 +232,33 @@ function SubViewCode(props){
   // props.chgFn() 함수로 사용가능!
   // ->부모 chgSubView()함수를 호출하는 것임!
   // -> 프롭스 다운, 프롭스 펑션 업/다운
+  // props.itemNum - 선택아이템번호
+
+  // 선택 전체데이터 /////
+  const selData = twoData[props.idx];
+
   // 선택데이터 //////////////////
-  const selData = twoData[props.idx][0];
-  // -> 전체선택배열[특정배열값순번]
+  // 배열.find(v=>{if(조건)return true})
+  // -> 전달된 고유idx와 같은 배열 데이터 하나를 리턴함
+  const selItem = selData.find(v=>{
+    if(v.idx == props.itemNum) return true;
+  }); //////////// find ////////////
+  // -> 고유데이터인 idx값으로 데이터를 찾아서
+  // 데이터를 화면에 바인딩해야한다!
 
   // 코드 리턴파트 //////////
   return(
-    <ol>
+    <ol style={{display:'flex',listStyle:'none'}}>
       <li>
         <img src={
           props.idx?
-          "./images/gallery/"+selData.idx+".jpg":
-          "./images/vans/vans_"+selData.idx+".jpg"
+          "./images/gallery/"+selItem.idx+".jpg":
+          "./images/vans/vans_"+selItem.idx+".jpg"
           } alt={props.idx?"드레스":"신발"} />
       </li>
-      <li>
-        상품명 : {selData.gname} <br />
-        가격 : {selData.gprice}원 <br />
+      <li style={{lineHeight:'8',padding:'10px'}}>
+        상품명 : {selItem.gname} <br />
+        가격 : {selItem.gprice}원 <br />
         <button onClick={()=>props.chgFn(0,0)}>
           리스트로 가기</button>
       </li>
