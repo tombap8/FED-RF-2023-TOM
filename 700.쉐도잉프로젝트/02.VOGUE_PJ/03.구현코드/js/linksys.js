@@ -31,5 +31,91 @@ $(()=>{
 
 
 
+    /************************************************** 
+        로그인, 회원가입, 갤러리 아이콘 넣기
+        - 대상 : .sns a:last (마지막 카카오 스토리a요소)
+        - 대상추가 : 모바일모드
+        - 변경내용 : 대상요소 앞에 형제요소로 a요소 추가
+        - 제이쿼리 메서드 :
+        - before(요소) -> 선택요소 앞에 형제요소 추가
+        - after(요소) -> 선택요소 뒤에 형제요소 추가
+    **************************************************/
+        // $('.sns a:last').before(`<헐></헐>`);
+        // $('.sns a:last').after(`<크></크>`);
+        $('.sns a:last').before(`
+            <a href="#" class="fi fi-laptop">
+                <span class="ir">로그인</span>
+            </a>
+            <a href="#" class="fi fi-user-secret">
+                <span class="ir">회원가입</span>
+            </a>
+            <a href="#" class="fi fi-camera">
+                <span class="ir">갤러리</span>
+            </a>
+        `); //////////// before ///////////
+
+        // sns파트 a요소에 툴팁넣기 ////////
+        // 새로추가된 a요소까지 다시 선택하여
+        // each() 메서드로 돌면서 글자를 읽어와서
+        // title속성으로 넣는다! -> attr('title',값)
+        $('.sns a').each((idx,ele)=>{
+            // ele - 각a요소
+            $(ele).attr('title',$(ele).text().trim())
+        }) ////////// each ////////////
+        // 위에서 이어서 a요소에 링크 설정하기 ////
+        .click(function(){
+            // 1. 클릭시 해당요소 텍스트읽기
+            let atxt = $(this).text().trim();
+            console.log('sns파트메뉴:',atxt);
+
+            // 2. 이동할 페이지 주소 할당
+            let url;
+            switch(atxt){
+                // 외부시스템 페이지
+                case '인스타그램':
+                    url="https://www.instagram.com/VOGUEKOREA/";
+                    break;
+                case '페이스북':
+                    url="https://www.facebook.com/VOGUEkr";
+                    break;
+                case '트위터':
+                    url="https://twitter.com/VogueKorea";
+                    break;
+                case '유튜브':
+                    url="https://www.youtube.com/user/VogueKorea";
+                    break;
+                case '카카오스토리':
+                    url="https://story.kakao.com/ch/voguekr";
+                    break;
+                // 내부 시스템 페이지
+                case '로그인':
+                    url="login";
+                    break;
+                case '회원가입':
+                    url="member";
+                    break;
+                case '갤러리':
+                    url="gallery";
+                    break;
+
+            } ////////////// switch case ////////
+
+            // 3. 페이지 이동하기
+            // 내부페이지는 현재페이지에서 이동하기
+            if(atxt=='로그인'||atxt=='회원가입'||atxt=='갤러리'){
+                location.href = url+'.html';
+            } ////// if /////
+            else{ // SNS 타 시스템은 새창열기
+                // window.open(주소) - 새창열기(브라우저 탭메뉴)
+                window.open(url);
+
+            }
+
+        }); /////////// click /////////////////
+
+
+
+
+
 
 }); //////////// jQB ///////////////////
