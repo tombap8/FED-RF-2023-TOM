@@ -44,6 +44,14 @@ function setValue(){
     pm = pm.split('?')[1].split('=')[1];
     // 특수문자 변환하기 : time & gem 때문
     pm = decodeURIComponent(pm);
+    // ' & ' -> '-'로 변경하기 : time-gem 로 변경
+    pm = pm.replace(' & ','-');
     console.log('최종키값:',pm);
+
+    // 4. 데이터 바인딩하기
+    // 4-1. 배경이미지 셋팅을 위한 main요소에 클래스넣기
+    // pm에 담아놓은 이름으로 넣어준다!
+    // 대상: .main-area
+    $('.main-area').addClass(pm);
 
 } ////////////// setValue 함수 ///////////
