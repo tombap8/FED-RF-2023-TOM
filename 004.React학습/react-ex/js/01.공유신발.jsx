@@ -96,7 +96,6 @@ function MainComponent() {
   const testFn = () => {
     setTest(test?0:1);
     console.log('test 후크변수 변경!',test);
-    setSubView(1)
 
   }; //////// testFn함수 ////////////
 
