@@ -133,8 +133,8 @@
     width: 200px;
   }
 
-  /* 13. 카테고리 페이지 서브 타이틀 */
-  .stit{
+  /* 13. 카테고리 페이지 서브 타이틀 + 일반서브타이틀 */
+  .cat-tit,.stit{
     font-size: 30px;
     padding: 25px 0 5px;
   }
