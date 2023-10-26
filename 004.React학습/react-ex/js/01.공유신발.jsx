@@ -1,13 +1,10 @@
 // 01.공유신발 JSX
-import data from "./data.js";
-import myData from "./data.js";
-import myData2 from "./data2.js";
-
 // JS 기능함수 : 순수 JS함수호출임!
 import { initFn,firstOneFn } from "./act_effect.js";
 
-// 두개의 데이터를 배열로 구성
-const twoData = [myData, myData2];
+// 서브컴포넌트 불러오기 ////
+import { GoodsCode } from "./01.sub_com/goods_code.jsx";
+import { SubViewCode } from "./01.sub_com/sub_view_code.jsx";
 
 // console.log('데이터:',twoData);
 
@@ -196,79 +193,6 @@ function MainComponent() {
 // 서브 컴포넌트(자식컴포넌트 
 // ->부모컴포넌트로 부터 데이터를
 // props 속성을 통하여 전달받는다!)
-
-/************************************
- * 서브컴포넌트 1 : GoodsCode
- * 상품리스트 html코드 구성 컴포넌트
-************************************/
-function GoodsCode(props) { // idx - 데이터 배열순번
-  // 선택데이터
-  const selData = twoData[props.idx];
-
-  // 코드 리턴파트 //////////
-  return selData.map((v) => (
-    /* props.chgFn(뷰상태1,상품고유번호idx) */
-    <a href="#" onClick={()=>props.chgFn(1,v.idx)}>
-    <ol class="glist">
-      <li>
-        <img src={
-          props.idx?
-          "./images/gallery/"+v.idx+".jpg":
-          "./images/vans/vans_"+v.idx+".jpg"
-          } alt={props.idx?"드레스":"신발"} />
-      </li>
-      <li>{v.gname}</li>
-      <li>가격 : {v.gprice}원</li>
-    </ol></a>
-  ));
-} /////////// GoodsCode //////////////////
-
-/************************************
- * 서브컴포넌트 2 : SubViewCode
- * 상품상세보기 html코드 구성 컴포넌트
-************************************/
-function SubViewCode(props){
-  // props.idx - 선택데이터 순번(신발/드레스)
-  // props.chgFn() 함수로 사용가능!
-  // ->부모 chgSubView()함수를 호출하는 것임!
-  // -> 프롭스 다운, 프롭스 펑션 업/다운
-  // props.itemNum - 선택아이템번호
-
-  // 선택 전체데이터 /////
-  const selData = twoData[props.idx];
-
-  // 선택데이터 //////////////////
-  // 배열.find(v=>{if(조건)return true})
-  // -> 전달된 고유idx와 같은 배열 데이터 하나를 리턴함
-  const selItem = selData.find(v=>{
-    if(v.idx == props.itemNum) return true;
-  }); //////////// find ////////////
-  // -> 고유데이터인 idx값으로 데이터를 찾아서
-  // 데이터를 화면에 바인딩해야한다!
-
-  // 코드 리턴파트 //////////
-  return(
-    <ol style={{display:'flex',listStyle:'none'}}>
-      <li>
-        <img src={
-          props.idx?
-          "./images/gallery/"+selItem.idx+".jpg":
-          "./images/vans/vans_"+selItem.idx+".jpg"
-          } alt={props.idx?"드레스":"신발"} />
-      </li>
-      <li style={{lineHeight:'8',padding:'10px'}}>
-        상품명 : {selItem.gname} <br />
-        가격 : {selItem.gprice}원 <br />
-        <button onClick={()=>props.chgFn(0,0)}>
-          리스트로 가기</button>
-      </li>
-    </ol>
-  );
-
-} ////////// SubViewCode /////////////
-
-
-
 
 // 메인컴포넌트 출력하기 //////////
 ReactDOM.render(<MainComponent />, 
