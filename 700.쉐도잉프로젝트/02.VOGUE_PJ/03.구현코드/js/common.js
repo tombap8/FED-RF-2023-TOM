@@ -22,6 +22,12 @@ comArea[0].innerHTML = tData.topArea;
 // 하단영역 html 넣기
 comArea[1].innerHTML = tData.footerArea;
 
+// 모바일 메뉴버튼 요소 추가로 넣기 : .top-area 맨끝추가
+comArea[0].innerHTML += tData.mobtn;
+// 모바일 메뉴 박스 추가로 넣기 : #top-area 맨끝추가
+comArea[0].parentElement.innerHTML += tData.mobx;
+
+
 
 // [2] 부드러운 스크롤 적용 //////////
 startSS();
