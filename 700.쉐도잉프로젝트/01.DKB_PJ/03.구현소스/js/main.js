@@ -19,6 +19,10 @@ const chkMob = () => {
 if($(window).width()<=1024)mob=1;
 else mob=0;
 console.log('모바일?',mob);
+
+// 부가기능 : 모바일일때 서브메뉴 기본 스타일 지우기
+if(mob) $('.smenu').attr('style','');
+
 } /////// chkMob함수 ///////
 
 // 모바일 검사함수 최초호출
