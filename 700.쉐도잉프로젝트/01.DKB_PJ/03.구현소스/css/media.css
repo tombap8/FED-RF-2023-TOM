@@ -4,6 +4,11 @@
 
 /********* 최대사이즈 1024px 이하 시작 *********/
 @media screen and (max-width:1024px) {
+    /* x축 스크롤없앰 */
+    html,body{
+        overflow-x: hidden;
+    }
+
     /* 화면에서 사라짐 */
     .top-menu, .gnb {
         display: none;
@@ -123,3 +128,22 @@
 
 }
 /********* 최대사이즈 1024px 이하 끝 *********/
+
+/********* 최대사이즈 500px 이하 시작 *********/
+@media screen and (max-width:500px) {
+    /* 동영상이동버튼 */
+    .btn-box button:first-child {
+        left: -18px;
+    }
+    .btn-box button:last-child {
+        right: -18px;
+    }
+    .btn-box button {
+        top: 40%;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 15px;
+    }
+}
+/********* 최대사이즈 500px 이하 끝 *********/
