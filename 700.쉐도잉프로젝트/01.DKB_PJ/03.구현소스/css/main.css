@@ -201,6 +201,7 @@
 /*********** 방송편성소개파트 : .intro-part ***********/
 .main .intro-part .partbox {
     height: 455px;
+    padding: 10px;
 }
 /* 서브타이틀 */
 .intro-part .stit{

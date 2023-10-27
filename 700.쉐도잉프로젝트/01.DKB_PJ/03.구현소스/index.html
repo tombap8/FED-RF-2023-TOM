@@ -17,8 +17,8 @@
     <!-- 메인CSS -->
     <link rel="stylesheet" href="./css/main.css" />
     <!-- 미디어쿼리 CSS -->
-    <link rel="stylesheet" href="./css/media.css">
-    
+    <link rel="stylesheet" href="./css/media.css" />
+
     <!-- 제이쿼리 라이브러리 + 제이쿼리UI -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery-ui.min.js"></script>
@@ -29,7 +29,7 @@
     <!-- 확장형 레이아웃 -->
     <!-- 1. 상단영역 -->
     <div id="header">
-      <header class="header inbox">
+      <header class="header inbox fx-box">
         <!-- 파트박스 2개 -->
         <!-- 1-1.로고박스영역 -->
         <div class="partbox col-3">
@@ -87,6 +87,8 @@
             </ul>
           </nav>
         </div>
+        <!-- 모바일 햄버거버튼 -->
+        <button class="ham"></button>
       </header>
     </div>
     <!-- 2. 캐릭터소개영역 -->
@@ -309,9 +311,9 @@
     <div id="main">
       <main class="main inbox">
         <!-- 파트그룹박스 5개 -->
-        <div class="intro-part group-part group-part-01">
+        <div class="intro-part group-part group-part-01 fx-box">
           <!-- 파트박스 2개 -->
-          <div class="partbox col-6">
+          <div class="partbox col-6 col-s-12">
             <!-- 드라마소개파트 제목 -->
             <h2 class="stit">도깨비</h2>
             <!-- 하위제목+아이콘 -->
@@ -355,7 +357,7 @@
             <!-- 인트로 버튼 -->
             <button class="intro-btn">방송편성보기</button>
           </div>
-          <div class="partbox col-6">
+          <div class="partbox col-6 col-s-12">
             <figure class="intro-mv-box">
               <div class="intro-mv-img off">
                 <img
@@ -374,15 +376,15 @@
         <div class="preview-part group-part group-part-02">
           <h2 class="stit">미리보기</h2>
           <!-- 파트박스 8개 -->
-          <section class="preview-box sub-view-box">
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
-            <div class="partbox col-3"></div>
+          <section class="preview-box sub-view-box fx-box">
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
+            <div class="partbox col-3 col-s-6"></div>
           </section>
         </div>
         <!-- 현장포토 박스영역 -->
@@ -410,54 +412,55 @@
     <div id="footer">
       <footer class="footer inbox">
         <!-- 파트박스 5개 -->
-
-        <!-- 하단링크박스 -->
-        <div class="partbox col-8">
+        <div class="fx-box">
+          <!-- 하단링크박스 -->
+          <div class="partbox col-8">
             <aside class="info-link">
-                <ul>
-                    <li>
-                        <a href="#">회사소개</a>
-                    </li>
-                    <li>
-                        <a href="#">광고/제휴문의</a>
-                    </li>
-                    <li>
-                        <a href="#">이용약관</a>
-                    </li>
-                    <li>
-                        <a href="#">개인정보 처리방침</a>
-                    </li>
-                    <li>
-                        <a href="#">청소년보호정책</a>
-                    </li>
-                    <li>
-                        <a href="#">법적고지</a>
-                    </li>
-                    <li>
-                        <a href="#">이메일무단수집거부</a>
-                    </li>
-                    <li>
-                        <a href="#">큐톤표</a>
-                    </li>
-                    <li>
-                        <a href="#">고객센터</a>
-                    </li>
-                    <li>
-                        <a href="#">공지사항</a>
-                    </li>
-                </ul>
+              <ul>
+                <li>
+                  <a href="#">회사소개</a>
+                </li>
+                <li>
+                  <a href="#">광고/제휴문의</a>
+                </li>
+                <li>
+                  <a href="#">이용약관</a>
+                </li>
+                <li>
+                  <a href="#">개인정보 처리방침</a>
+                </li>
+                <li>
+                  <a href="#">청소년보호정책</a>
+                </li>
+                <li>
+                  <a href="#">법적고지</a>
+                </li>
+                <li>
+                  <a href="#">이메일무단수집거부</a>
+                </li>
+                <li>
+                  <a href="#">큐톤표</a>
+                </li>
+                <li>
+                  <a href="#">고객센터</a>
+                </li>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
             </aside>
-        </div>
-        <!-- 바로가기 콤보박스 영역 -->
-        <div class="partbox col-4 combo-area">
+          </div>
+          <!-- 바로가기 콤보박스 영역 -->
+          <div class="partbox col-4 combo-area">
             <select name="brand" id="brand">
-                <option value="어쩌구">저쩌구</option>
-                <option value="어쩌구">저쩌구</option>
-                <option value="어쩌구">저쩌구</option>
+              <option value="어쩌구">저쩌구</option>
+              <option value="어쩌구">저쩌구</option>
+              <option value="어쩌구">저쩌구</option>
             </select>
             <select name="corp" id="corp">
-                <option value="어쩌구">저쩌구</option>
+              <option value="어쩌구">저쩌구</option>
             </select>
+          </div>
         </div>
 
         <!-- 하단로고박스 -->
@@ -471,50 +474,49 @@
         <!-- 회사주소박스 -->
         <div class="partbox col-9">
           <address class="corp-info">
-            시청자 상담실 (편성 문의 및 시청자 의견) : 080-080-0780 <br>
-            (주)씨제이이엔엠?대표이사 : 구창근, 윤상현 사업자정보확인 <br>
-            본점 :
-            (06761) 서울시 서초구 과천대로 870-13 사업장 : (03926) 서울시 마포구
-            상암산로 66 사업자 등록번호 : 106-81-51510 개인정보 보호책임자 :
-            강봉관
+            시청자 상담실 (편성 문의 및 시청자 의견) : 080-080-0780 <br />
+            (주)씨제이이엔엠?대표이사 : 구창근, 윤상현 사업자정보확인 <br />
+            본점 : (06761) 서울시 서초구 과천대로 870-13 사업장 : (03926) 서울시
+            마포구 상암산로 66 사업자 등록번호 : 106-81-51510 개인정보
+            보호책임자 : 강봉관
           </address>
         </div>
         <!-- SNS박스 -->
         <div class="partbox col-3">
-            <aside class="sns-box">
-                <ul>
-                    <li>
-                      <a href="#" class="fa-brands fa-instagram">
-                        <span class="ir"> 인스타그램 </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="fa-brands fa-facebook">
-                        <span class="ir"> 페이스북 </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="fa-brands fa-twitter">
-                        <span class="ir"> 트위터 </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="fa-brands fa-youtube">
-                        <span class="ir"> 유튜브 </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="fa-solid fa-play">
-                        <span class="ir"> 네이버 TV </span>
-                      </a>
-                    </li>
-                  </ul>
-            </aside>
+          <aside class="sns-box">
+            <ul>
+              <li>
+                <a href="#" class="fa-brands fa-instagram">
+                  <span class="ir"> 인스타그램 </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="fa-brands fa-facebook">
+                  <span class="ir"> 페이스북 </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="fa-brands fa-twitter">
+                  <span class="ir"> 트위터 </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="fa-brands fa-youtube">
+                  <span class="ir"> 유튜브 </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="fa-solid fa-play">
+                  <span class="ir"> 네이버 TV </span>
+                </a>
+              </li>
+            </ul>
+          </aside>
         </div>
       </footer>
     </div>
 
     <!-- 서브 컨텐츠 박스 -->
-    <section class="sub-cont"></section>  
+    <section class="sub-cont"></section>
   </body>
 </html>

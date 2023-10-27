@@ -20,5 +20,70 @@
         padding: 9px;
     }
 
+    /* 햄버거 버튼 보이기 */
+    .ham {
+        display: block;
+    }
+    /* 햄버거 버튼 상위.top에 클래스on 
+    줄경우 x버튼으로 변경 */
+    .header.on .ham {
+        z-index: 9999;
+        transform: scale(1.5);
+    }
+    .header.on .ham::before {
+        content: '×';
+    }
+
+    /* 현장포토 */
+    .live-box ul{
+        /* 한줄에 2개씩 */
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    /* 이동욱 이동 */
+    .live-box ul li:nth-child(7){
+        transform: translate(106%,-115%);
+    }
+
+
+
+    /* 레이아웃 col- 파트 */
+    .col-s-1 {
+        width: 8.33%;
+    }
+    .col-s-2 {
+        width: 16.66%;
+    }
+    .col-s-3 {
+        width: 25%;
+    }
+    .col-s-4 {
+        width: 33.33%;
+    }
+    .col-s-5 {
+        width: 41.66%;
+    }
+    .col-s-6 {
+        width: 50%;
+    }
+    .col-s-7 {
+        width: 58.33%;
+    }
+    .col-s-8 {
+        width: 66.66%;
+    }
+    .col-s-9 {
+        width: 75%;
+    }
+    .col-s-10 {
+        width: 83.33%;
+    }
+    .col-s-11 {
+        width: 91.66%;
+    }
+    .col-s-12 {
+        width: 100%;
+    }
+
 }
 /********* 최대사이즈 1024px 이하 끝 *********/
