@@ -3,175 +3,184 @@
 /* 도깨비 PJ 미디어쿼리 CSS - media.css */
 
 /********* 최대사이즈 1024px 이하 시작 *********/
-@media screen and (max-width:1024px) {
-    /* x축 스크롤없앰 */
-    html,body{
-        overflow-x: hidden;
-    }
+@media screen and (max-width: 1024px) {
+  /* x축 스크롤없앰 */
+  html,
+  body {
+    overflow-x: hidden;
+  }
 
-    /* 화면에서 사라짐 */
-    .top-menu, .gnb {
-        display: none;
-    }
-    /* 상단영역 높이값 auto */
-    .header .partbox {
-        height: auto;
-    }
-    /* 상단로고 조정 */
-    .header__logo img {
-        width: auto;
-        height: 38px;
-        margin: 0;
-        padding: 9px;
-    }
+  /* 화면에서 사라짐 */
+  .top-menu,
+  .gnb {
+    display: none;
+  }
+  /* 상단영역 높이값 auto */
+  .header .partbox {
+    height: auto;
+  }
+  /* 상단로고 조정 */
+  .header__logo img {
+    width: auto;
+    height: 38px;
+    margin: 0;
+    padding: 9px;
+  }
 
-    /* 햄버거 버튼 보이기 */
-    .ham {
-        display: block;
-    }
-    /* 햄버거 버튼 상위.top에 클래스on 
+  /* 햄버거 버튼 보이기 */
+  .ham {
+    display: block;
+  }
+  /* 햄버거 버튼 상위.top에 클래스on 
     줄경우 x버튼으로 변경 */
-    .header.on .ham {
-        z-index: 9999;
-        transform: scale(1.5);
-    }
-    .header.on .ham::before {
-        content: '×';
-    }
+  .header.on .ham {
+    z-index: 9999;
+    transform: scale(1.5);
+  }
+  .header.on .ham::before {
+    content: "×";
+  }
 
-    /* 현장포토 */
-    .live-box ul {
-        /* 한줄에 2개씩 */
-        grid-template-columns: repeat(2,1fr);
-        /* 5줄 생성하기:이동배치위해 repeat(개수,특정크기) */
-        grid-template-rows: repeat(5,34vw);
-    }
-    /* 동욱이 옆으로 이동 : 원래 grid-row: 4/5 */
-    .live-box ul li:nth-child(7) {
-        grid-column: 2/3;
-    }
-    /* 고은이 아래로 이동 */
-    .live-box ul li:nth-child(8) {
-        grid-row: 5/6;
-        grid-column: 2/3;
-    }
+  /* 현장포토 */
+  .live-box ul {
+    /* 한줄에 2개씩 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 5줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+    grid-template-rows: repeat(5, 34vw);
+  }
+  /* 동욱이 옆으로 이동 : 원래 grid-row: 4/5 */
+  .live-box ul li:nth-child(7) {
+    grid-column: 2/3;
+  }
+  /* 고은이 아래로 이동 */
+  .live-box ul li:nth-child(8) {
+    grid-row: 5/6;
+    grid-column: 2/3;
+  }
 
-    /* 대표이미지 */
-    .poster-box ul {
-        /* 한줄에 2개씩 */
-        grid-template-columns: repeat(2,1fr);
-        /* 4줄 생성하기:이동배치위해 repeat(개수,특정크기) */
-        grid-template-rows: repeat(4,34vw);
-        /* grid-template-rows: auto; */
-    }
-    /* 공유, 이동욱 포스터 */
-    .poster-box ul li:nth-child(4) {
-        grid-row: 3;
-        grid-column: 2;
-    }
-    /* 공유, 이동욱, 육성재 포스터 */
-    .poster-box ul li:nth-child(5) {
-        grid-row: 4
-    }
+  /* 대표이미지 */
+  .poster-box ul {
+    /* 한줄에 2개씩 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 4줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+    grid-template-rows: repeat(4, 34vw);
+    /* grid-template-rows: auto; */
+  }
+  /* 공유, 이동욱 포스터 */
+  .poster-box ul li:nth-child(4) {
+    grid-row: 3;
+    grid-column: 2;
+  }
+  /* 공유, 이동욱, 육성재 포스터 */
+  .poster-box ul li:nth-child(5) {
+    grid-row: 4;
+  }
 
-    /* 최신동영상 - 한번에 2개만 보이기 */
-    .clip-box li {
-        flex-basis: calc(51% - 2%);
-    }
+  /* 최신동영상 - 한번에 2개만 보이기 */
+  .clip-box li {
+    flex-basis: calc(51% - 2%);
+  }
 
-    /* 하단 바로가기 콤보박스 : 한줄 차지하기 */
-    .combo-area{
-        text-align: center;
-    }
-    .combo-area select {
-        width: 45%;
-    }
+  /* 하단 바로가기 콤보박스 : 한줄 차지하기 */
+  .combo-area {
+    text-align: center;
+  }
+  .combo-area select {
+    width: 45%;
+  }
 
 
-    /* 레이아웃 col- 파트 */
-    .col-s-1 {
-        width: 8.33%;
-    }
-    .col-s-2 {
-        width: 16.66%;
-    }
-    .col-s-3 {
-        width: 25%;
-    }
-    .col-s-4 {
-        width: 33.33%;
-    }
-    .col-s-5 {
-        width: 41.66%;
-    }
-    .col-s-6 {
-        width: 50%;
-    }
-    .col-s-7 {
-        width: 58.33%;
-    }
-    .col-s-8 {
-        width: 66.66%;
-    }
-    .col-s-9 {
-        width: 75%;
-    }
-    .col-s-10 {
-        width: 83.33%;
-    }
-    .col-s-11 {
-        width: 91.66%;
-    }
-    .col-s-12 {
-        width: 100%;
-    }
-
+  /* 레이아웃 col- 파트 */
+  .col-s-1 {
+    width: 8.33%;
+  }
+  .col-s-2 {
+    width: 16.66%;
+  }
+  .col-s-3 {
+    width: 25%;
+  }
+  .col-s-4 {
+    width: 33.33%;
+  }
+  .col-s-5 {
+    width: 41.66%;
+  }
+  .col-s-6 {
+    width: 50%;
+  }
+  .col-s-7 {
+    width: 58.33%;
+  }
+  .col-s-8 {
+    width: 66.66%;
+  }
+  .col-s-9 {
+    width: 75%;
+  }
+  .col-s-10 {
+    width: 83.33%;
+  }
+  .col-s-11 {
+    width: 91.66%;
+  }
+  .col-s-12 {
+    width: 100%;
+  }
 }
 /********* 최대사이즈 1024px 이하 끝 *********/
 
 /********* 최대사이즈 500px 이하 시작 *********/
-@media screen and (max-width:500px) {
-    /* 소제목 공통 */
-    .stit {
-        padding-bottom: 9vw;
-        font-size: 8vw;
-    }
-    /* 그룹파트 공통 */
-    .group-part {
-        padding: 10vw 0;
-    }
-    /* 인트로 파트 : 높이값 자동 */
-    .main .intro-part .partbox {
-        height: auto;
-    }
-    /* 미리보기파트 */
-    .main .preview-part .partbox {
-        height: auto;
-    }
-    /* 각 미리보기 타이틀 */
-    .preview-box h3{
-        font-size: 4.2vw;
-        text-align: center;
-    }
-    /* 각 미리보기 내용박스 */
-    .preview-box p{
-        font-size: 3.5vw;
-        line-height: 1.7;
-        -webkit-line-clamp: 3;
-    }
-    /* 동영상이동버튼 */
-    .btn-box button:first-child {
-        left: -18px;
-    }
-    .btn-box button:last-child {
-        right: -18px;
-    }
-    .btn-box button {
-        top: 40%;
-        width: 36px;
-        height: 36px;
-        line-height: 36px;
-        font-size: 15px;
-    }
+@media screen and (max-width: 500px) {
+  /* 소제목 공통 */
+  .stit {
+    padding-bottom: 9vw;
+    font-size: 8vw;
+  }
+  /* 그룹파트 공통 */
+  .group-part {
+    padding: 10vw 0;
+  }
+  /* 인트로 파트 : 높이값 자동 */
+  .main .intro-part .partbox {
+    height: auto;
+  }
+  
+  /* 인트로 설명박스 */
+  .intro-txt {
+    padding: 2vw;
+    font-size: 4.5vw;
+    line-height: 1.7;
+  }
+  
+  /* 미리보기파트 */
+  .main .preview-part .partbox {
+    height: auto;
+  }
+  /* 각 미리보기 타이틀 */
+  .preview-box h3 {
+    font-size: 4.2vw;
+    text-align: center;
+  }
+  /* 각 미리보기 내용박스 */
+  .preview-box p {
+    font-size: 3.5vw;
+    line-height: 1.7;
+    -webkit-line-clamp: 3;
+  }
+  /* 동영상이동버튼 */
+  .btn-box button:first-child {
+    left: -18px;
+  }
+  .btn-box button:last-child {
+    right: -18px;
+  }
+  .btn-box button {
+    top: 40%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+  }
 }
 /********* 최대사이즈 500px 이하 끝 *********/
