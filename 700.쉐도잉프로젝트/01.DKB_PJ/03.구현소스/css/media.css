@@ -1,3 +1,24 @@
 @charset "utf-8";
 
 /* 도깨비 PJ 미디어쿼리 CSS - media.css */
+
+/********* 최대사이즈 1024px 이하 시작 *********/
+@media screen and (max-width:1024px) {
+    /* 화면에서 사라짐 */
+    .top-menu, .gnb {
+        display: none;
+    }
+    /* 상단영역 높이값 auto */
+    .header .partbox {
+        height: auto;
+    }
+    /* 상단로고 조정 */
+    .header__logo img {
+        width: auto;
+        height: 38px;
+        margin: 0;
+        padding: 9px;
+    }
+
+}
+/********* 최대사이즈 1024px 이하 끝 *********/
