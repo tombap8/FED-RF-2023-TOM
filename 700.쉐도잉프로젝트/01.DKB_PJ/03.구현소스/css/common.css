@@ -183,6 +183,8 @@ aside.smbx {
 .sns-box li{
     width: 35px;
     height: 35px;
+    /* 플렉스 강제줄이기 해제 */
+    flex-shrink: 0;
     line-height: 38px;
     font-size: 1.8rem;
     text-align: center;
