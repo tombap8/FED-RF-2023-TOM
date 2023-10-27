@@ -89,7 +89,6 @@
     width: 45%;
   }
 
-
   /* 레이아웃 col- 파트 */
   .col-s-1 {
     width: 8.33%;
@@ -145,14 +144,27 @@
   .main .intro-part .partbox {
     height: auto;
   }
-  
+
   /* 인트로 설명박스 */
   .intro-txt {
     padding: 2vw;
     font-size: 4.5vw;
     line-height: 1.7;
   }
-  
+  /* 인트로 설명박스 제목 */
+  .intro-desc h3 {
+    margin-right: 0;
+    font-size: 5vw;
+  }
+
+  /* 인트로버튼 */
+  .intro-btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5vw;
+    padding: 8px 15px;
+  }
+
   /* 미리보기파트 */
   .main .preview-part .partbox {
     height: auto;
