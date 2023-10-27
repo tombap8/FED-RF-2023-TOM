@@ -35,10 +35,19 @@ $(window).resize(chkMob);
 // 모바일시 기능구현 ///////////////
 ///////////////////////////////////
 // 1. 햄버거 버튼 클릭시 메뉴 보이기/숨기기
-// 대상: .ham
+// 대상: .ham / .header
+const hEle = $('.header');
 $('.ham').click(()=>{
-  $('.header').toggleClass('on');
-})
+  hEle.toggleClass('on');
+
+  console.log('지금.header에 .on있니?',hEle.is('.on'));
+  // 만약 .header.on 이면 body에 스크롤바 숨기기
+  if(hEle.is('.on')) 
+    $('html,body').css({overflow:'hidden'});
+  // 아니면 넣었던 스타일 지우기
+  else $('html,body').attr('style','');
+
+}); //////// click ////////////
 
 // 2. 메뉴 클릭시 하위메뉴 보이기 //////
 // 대상: .gnb>li

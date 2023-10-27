@@ -58,6 +58,8 @@
     top: 59px;
     left: 100%;
     height: calc(100% - 59px);
+    /* 내용많아지면 스크롤바 자동생성(y축) */
+    overflow: auto;
     z-index: 9999999;
     width: 100%;
     background-color: #fff;
