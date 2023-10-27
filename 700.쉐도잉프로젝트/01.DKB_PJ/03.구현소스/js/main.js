@@ -71,7 +71,9 @@ $('.gnb li').click(function(){
 $('.dokebi-menu ul')
 .draggable({
   axis:'x', // x축고정
-})
+}); /////////// draggable ////////////
+
+//////////////////////////////////////////////
 
 
 
