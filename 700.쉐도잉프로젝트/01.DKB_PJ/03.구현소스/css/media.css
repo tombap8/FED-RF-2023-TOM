@@ -35,16 +35,37 @@
     }
 
     /* 현장포토 */
-    .live-box ul{
+    .live-box ul {
         /* 한줄에 2개씩 */
         grid-template-columns: repeat(2,1fr);
+        /* 5줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+        grid-template-rows: repeat(5,34vw);
+    }
+    /* 동욱이 옆으로 이동 : 원래 grid-row: 4/5 */
+    .live-box ul li:nth-child(7) {
+        grid-column: 2/3;
+    }
+    /* 고은이 아래로 이동 */
+    .live-box ul li:nth-child(8) {
+        grid-row: 5/6;
+        grid-column: 2/3;
     }
 
-    /* 이동욱 이동 */
-    .live-box ul li:nth-child(7){
-        transform: translate(106%,-115%);
+    /* 대표이미지 */
+    .poster-box ul {
+        /* 한줄에 2개씩 */
+        grid-template-columns: repeat(2,1fr);
+        /* 4줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+        grid-template-rows: repeat(4,34vw);
+        /* grid-template-rows: auto; */
     }
-
+    .poster-box ul li:nth-child(4) {
+        grid-row: 3;
+        grid-column: 2;
+    }
+    .poster-box ul li:nth-child(5) {
+        grid-row: 4
+    }
 
 
     /* 레이아웃 col- 파트 */
