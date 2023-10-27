@@ -59,10 +59,12 @@
         grid-template-rows: repeat(4,34vw);
         /* grid-template-rows: auto; */
     }
+    /* 공유, 이동욱 포스터 */
     .poster-box ul li:nth-child(4) {
         grid-row: 3;
         grid-column: 2;
     }
+    /* 공유, 이동욱, 육성재 포스터 */
     .poster-box ul li:nth-child(5) {
         grid-row: 4
     }
