@@ -74,6 +74,14 @@
         flex-basis: calc(51% - 2%);
     }
 
+    /* 하단 바로가기 콤보박스 : 한줄 차지하기 */
+    .combo-area{
+        text-align: center;
+    }
+    .combo-area select {
+        width: 47%;
+    }
+
 
     /* 레이아웃 col- 파트 */
     .col-s-1 {
