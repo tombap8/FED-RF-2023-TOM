@@ -153,6 +153,32 @@
     z-index: 99999;
     background-color: #fff;
   }
+  /* 전체메뉴박스 */
+  .gnb {
+    display: block;
+    position: fixed;
+    top: 59px;
+    left: 100%;
+    height: calc(100% - 59px);
+    z-index: 9999999;
+    width: 100%;
+    background-color: #fff;
+    /* 트랜지션 */
+    transition: left .4s ease-in-out;
+  }
+  /* 메뉴박스 등장 */
+  .header.on .gnb{
+    left: 0;
+  }
+
+  .gnb ul {
+    flex-direction: column;
+  }
+
+  .gnb ul > li > a {
+    font-size: 4vw;
+    padding: 3vw 6vw;
+  }
   /* 인트로 파트 : 높이값 자동 */
   .main .intro-part .partbox {
     height: auto;
