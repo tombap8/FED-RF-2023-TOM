@@ -27,6 +27,23 @@ chkMob();
 $(window).resize(chkMob);
 //////////////////////////////////////
 
+///////////////////////////////////
+// 모바일시 기능구현 ///////////////
+///////////////////////////////////
+// 1. 햄버거 버튼 클릭시 메뉴 보이기/숨기기
+// 대상: .ham
+$('.ham').click(()=>{
+  $('.header').toggleClass('on');
+})
+
+// 2. 메뉴 클릭시 하위메뉴 보이기 //////
+// 대상: .gnb>li
+$('.gnb li').click(function(){
+  if(!mob) return;//모바일 아니면 나가!
+  console.log('나클릭?');
+
+}); //////////// click ////////////////
+
 
 
 // 0. 새로고치면 스크롤바 위치캐싱후 맨위로 이동
@@ -171,6 +188,7 @@ gnb.forEach((ele) => {
 
 // 3.함수만들기
 function overFn() {
+  if(mob)return; // 모바일이면 나감!
   // console.log('오버',this);
   // 1.하위 .smbx 높이값 알아오기
   let hv = dFn.qsEl(this, ".smbx").clientHeight;
