@@ -140,6 +140,19 @@
   .group-part {
     padding: 10vw 0;
   }
+  /* 상단영역고정으로 가려지는 공간밀기 */
+  body {
+    padding-top: 59px;
+  }
+  /* 상단영역 고정 */
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    background-color: #fff;
+  }
   /* 인트로 파트 : 높이값 자동 */
   .main .intro-part .partbox {
     height: auto;
@@ -163,6 +176,12 @@
     margin: 0 auto;
     margin-bottom: 5vw;
     padding: 8px 15px;
+  }
+
+  /* 동영상 설명박스 */
+  .intro-mv-box figcaption {
+    font-size: 4vw;
+    padding-top: 2vw;
   }
 
   /* 미리보기파트 */
