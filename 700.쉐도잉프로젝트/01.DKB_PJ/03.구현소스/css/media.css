@@ -69,6 +69,11 @@
         grid-row: 4
     }
 
+    /* 최신동영상 - 한번에 2개만 보이기 */
+    .clip-box li {
+        flex-basis: calc(51% - 2%);
+    }
+
 
     /* 레이아웃 col- 파트 */
     .col-s-1 {
