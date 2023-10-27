@@ -11,6 +11,24 @@ import { gridData, gnbData, previewData, clipData, linkData } from "./data_drama
 // 부드러운 스크롤 적용 //////////
 startSS();
 
+///////////////////////////////
+// 모바일적용 여부 코드 ////////
+let mob = 0; // 0-DT, 1-모바일
+// 모바일 검사함수 /////
+const chkMob = () => {
+if($(window).width()<=1024)mob=1;
+else mob=0;
+console.log('모바일?',mob);
+} /////// chkMob함수 ///////
+
+// 모바일 검사함수 최초호출
+chkMob();
+// 화면 리사이즈 시 모바일 검사함수 호출
+$(window).resize(chkMob);
+//////////////////////////////////////
+
+
+
 // 0. 새로고치면 스크롤바 위치캐싱후 맨위로 이동
 setTimeout(() => {
   // 윈도우 스크롤 맨위로!
@@ -153,7 +171,7 @@ gnb.forEach((ele) => {
 
 // 3.함수만들기
 function overFn() {
-  // // // console.log('오버',this);
+  // console.log('오버',this);
   // 1.하위 .smbx 높이값 알아오기
   let hv = dFn.qsEl(this, ".smbx").clientHeight;
   // // console.log("높이:", hv);

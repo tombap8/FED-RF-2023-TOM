@@ -11,8 +11,7 @@
   }
 
   /* 화면에서 사라짐 */
-  .top-menu,
-  .gnb {
+  .top-menu {
     display: none;
   }
   /* 상단영역 높이값 auto */
@@ -39,6 +38,61 @@
   }
   .header.on .ham::before {
     content: "×";
+  }
+  /* 상단영역고정으로 가려지는 공간밀기 */
+  body {
+    padding-top: 59px;
+  }
+  /* 상단영역 고정 */
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    background-color: #fff;
+  }
+  /* 전체메뉴박스 */
+  .gnb {
+    position: fixed;
+    top: 59px;
+    left: 100%;
+    height: calc(100% - 59px);
+    z-index: 9999999;
+    width: 100%;
+    background-color: #fff;
+    /* 트랜지션 */
+    transition: left 0.4s ease-in-out;
+  }
+  /* 메뉴박스 등장 */
+  .header.on .gnb {
+    left: 0;
+  }
+
+  .gnb ul {
+    flex-direction: column;
+  }
+
+  .gnb ul > li > a {
+    font-size: min(4vw, 20px);
+    padding: min(3vw, 11px) min(6vw, 20px);
+  }
+
+  /* 하위메뉴 자리차지하기 */
+  .smenu {
+    position: static;
+    overflow: visible;
+    height: auto;
+    display: none;
+  }
+
+  .smbx ol {
+    flex-direction: column;
+    text-indent: 40px;
+  }
+
+  .smbx h2 {
+    display: none;
   }
 
   /* 현장포토 */
@@ -140,45 +194,7 @@
   .group-part {
     padding: 10vw 0;
   }
-  /* 상단영역고정으로 가려지는 공간밀기 */
-  body {
-    padding-top: 59px;
-  }
-  /* 상단영역 고정 */
-  #header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99999;
-    background-color: #fff;
-  }
-  /* 전체메뉴박스 */
-  .gnb {
-    display: block;
-    position: fixed;
-    top: 59px;
-    left: 100%;
-    height: calc(100% - 59px);
-    z-index: 9999999;
-    width: 100%;
-    background-color: #fff;
-    /* 트랜지션 */
-    transition: left .4s ease-in-out;
-  }
-  /* 메뉴박스 등장 */
-  .header.on .gnb{
-    left: 0;
-  }
 
-  .gnb ul {
-    flex-direction: column;
-  }
-
-  .gnb ul > li > a {
-    font-size: 4vw;
-    padding: 3vw 6vw;
-  }
   /* 인트로 파트 : 높이값 자동 */
   .main .intro-part .partbox {
     height: auto;
