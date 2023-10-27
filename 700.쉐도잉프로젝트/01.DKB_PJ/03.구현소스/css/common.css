@@ -115,7 +115,9 @@ aside.smbx {
 /************* 3. 하단영역 *************/
 #footer {
     border-top: 1px solid #ccc;
+    padding-top: 20px;
     padding-bottom: 80px;
+    background: url(../images/footer_bg_tvn-pc.png) no-repeat center/cover;
 }
 
 /* 하단링크박스 */
