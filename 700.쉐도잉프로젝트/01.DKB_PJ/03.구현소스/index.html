@@ -22,6 +22,8 @@
     <!-- 제이쿼리 라이브러리 + 제이쿼리UI -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery-ui.min.js"></script>
+    <!-- 모바일드래그 터치펀치JS -->
+    <script src="./js/jquery-touch-punch.min.js"></script>
     <!-- 메인 JS -->
     <script src="./js/main.js" type="module"></script>
   </head>
@@ -265,12 +267,12 @@
             <a href="#">메인</a>
           </li>
           <li class="be-sub">
-            <a href="#">프로그램 소개</a>
+            <a href="#intro-part">프로그램 소개</a>
             <!-- 서브메뉴 -->
             <div class="dokebi-sub-menu">
               <ol>
                 <li>
-                  <a href="#">프로그램 소개</a>
+                  <a href="#intro-part">프로그램 소개</a>
                 </li>
                 <li>
                   <a href="#">인물 소개</a>
@@ -282,27 +284,27 @@
             </div>
           </li>
           <li>
-            <a href="#">미리보기</a>
+            <a href="#preview-part">미리보기</a>
           </li>
           <li>
-            <a href="#">동영상</a>
+            <a href="#clip-area">동영상</a>
           </li>
           <li class="be-sub">
-            <a href="#">사진첩</a>
+            <a href="#live-photo-area">사진첩</a>
             <!-- 서브메뉴 -->
             <div class="dokebi-sub-menu">
               <ol>
                 <li>
-                  <a href="#">현장 포토</a>
+                  <a href="#live-photo-area">현장 포토</a>
                 </li>
                 <li>
-                  <a href="#">대표 포스터</a>
+                  <a href="#poster-area">대표 포스터</a>
                 </li>
               </ol>
             </div>
           </li>
           <li>
-            <a href="#">OST</a>
+            <a href="#clip-area">OST</a>
           </li>
         </ul>
       </nav>
@@ -311,7 +313,7 @@
     <div id="main">
       <main class="main inbox">
         <!-- 파트그룹박스 5개 -->
-        <div class="intro-part group-part group-part-01 fx-box">
+        <div class="intro-part group-part group-part-01 fx-box" id="intro-part">
           <!-- 파트박스 2개 -->
           <div class="partbox col-6 col-s-12">
             <!-- 드라마소개파트 제목 -->
@@ -373,7 +375,7 @@
           </div>
         </div>
         <!-- 미리보기 파트 : .preview-part -->
-        <div class="preview-part group-part group-part-02">
+        <div class="preview-part group-part group-part-02" id="preview-part">
           <h2 class="stit">미리보기</h2>
           <!-- 파트박스 8개 -->
           <section class="preview-box sub-view-box fx-box">
@@ -388,16 +390,16 @@
           </section>
         </div>
         <!-- 현장포토 박스영역 -->
-        <div class="group-part group-part-03 live-photo-area">
+        <div class="group-part group-part-03 live-photo-area" id="live-photo-area">
           <h2 class="stit">현장포토</h2>
           <div class="grid-box live-box part-box col-12 sub-view-box"></div>
         </div>
         <!-- 대표이미지 박스영역 -->
-        <div class="group-part group-part-04 poster-area">
+        <div class="group-part group-part-04 poster-area" id="poster-area">
           <h2 class="stit">대표이미지</h2>
           <div class="grid-box poster-box part-box col-12 sub-view-box"></div>
         </div>
-        <div class="group-part group-part-05 clip-area">
+        <div class="group-part group-part-05 clip-area" id="clip-area">
           <h2 class="stit">최신동영상</h2>
           <div class="clip-box part-box col-12 sub-view-box"></div>
           <!-- 이동버튼박스 -->

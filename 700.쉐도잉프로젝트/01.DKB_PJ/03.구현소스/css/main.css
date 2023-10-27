@@ -144,6 +144,7 @@
     /* 플렉스박스 */
     display: flex;
     padding: 12px 0;
+    transition: .4s ease-out;
 }
 /* 도깨비메뉴 상위메뉴a */
 .dokebi-menu ul>li>a{

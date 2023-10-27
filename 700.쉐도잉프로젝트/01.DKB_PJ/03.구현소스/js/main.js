@@ -40,6 +40,7 @@ const hEle = $('.header');
 $('.ham').click(()=>{
   hEle.toggleClass('on');
 
+  // is() 메서드 : 선택요소의 이름확인!
   console.log('지금.header에 .on있니?',hEle.is('.on'));
   // 만약 .header.on 이면 body에 스크롤바 숨기기
   if(hEle.is('.on')) 
@@ -48,6 +49,7 @@ $('.ham').click(()=>{
   else $('html,body').attr('style','');
 
 }); //////// click ////////////
+
 
 // 2. 메뉴 클릭시 하위메뉴 보이기 //////
 // 대상: .gnb>li
@@ -63,6 +65,13 @@ $('.gnb li').click(function(){
   .slideUp(300,'easeInOutQuad') // 스르륵 닫힘! 모두
 
 }); //////////// click ////////////////
+
+// 3. 스티키 메뉴 박스 드래그 하여 움직여보기
+// 대상: .dokebi-menu ul
+$('.dokebi-menu ul')
+.draggable({
+  axis:'x', // x축고정
+})
 
 
 

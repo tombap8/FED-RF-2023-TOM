@@ -4,10 +4,16 @@
 
 /********* 최대사이즈 1024px 이하 시작 *********/
 @media screen and (max-width: 1024px) {
-  /* x축 스크롤없앰 */
-  html,
-  body {
+  /* x축 스크롤없앰 -> html,body에 줄때
+  하위 박스중 sticky박스가 작동하지 않음!
+  따라서 body>* 박스에 이것을 준다! */
+  body>* {
     overflow-x: hidden;
+  }
+  /* 스티키 박스 메뉴 아래쪽에 걸리게 top값 조정 */
+  #dokebi-menu{
+    top: 58px;
+    z-index: 999;
   }
 
   /* 화면에서 사라짐 */
