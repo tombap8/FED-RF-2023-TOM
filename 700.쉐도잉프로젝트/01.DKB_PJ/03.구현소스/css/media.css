@@ -131,6 +131,15 @@
 
 /********* 최대사이즈 500px 이하 시작 *********/
 @media screen and (max-width:500px) {
+    /* 소제목 공통 */
+    .stit {
+        padding-bottom: 9vw;
+        font-size: 8vw;
+    }
+    /* 인트로 파트 : 높이값 자동 */
+    .main .intro-part .partbox {
+        height: auto;
+    }
     /* 동영상이동버튼 */
     .btn-box button:first-child {
         left: -18px;
