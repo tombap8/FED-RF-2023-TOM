@@ -76,6 +76,11 @@
     /* 트랜지션 */
     transition: .4s ease-in-out;
 }
+/* 모바일 모드에서 트랜지션 없애기 : 
+제이쿼리작동이므로 충돌남! */
+.header.on .smenu{
+    transition: none;
+}
 
 /* 서브메뉴 속박스 */
 aside.smbx {

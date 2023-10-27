@@ -41,6 +41,13 @@ $('.ham').click(()=>{
 $('.gnb li').click(function(){
   if(!mob) return;//모바일 아니면 나가!
   console.log('나클릭?');
+  // 서브메뉴 슬라이드 애니로 보이기/숨기기
+  // 대상: .smenu
+  $(this).find('.smenu') // 클릭된li 하위 .smenu
+  .slideToggle(300,'easeInOutQuad') // 열거나 닫거나함
+  .parent() // 부모로 올라감 li
+  .siblings().find('.smenu') // 다른 li들 하위 .smenu
+  .slideUp(300,'easeInOutQuad') // 스르륵 닫힘! 모두
 
 }); //////////// click ////////////////
 
@@ -198,6 +205,7 @@ function overFn() {
 } //////////// overFn 함수 ////////////
 
 function outFn() {
+  if(mob)return; // 모바일이면 나감!
   // // // console.log('아웃',this);
   // 서브메뉴 박스 높이값 0만들기!
   dFn.qsEl(this, ".smenu").style.height = "0px";
