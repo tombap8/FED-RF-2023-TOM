@@ -136,6 +136,10 @@
         padding-bottom: 9vw;
         font-size: 8vw;
     }
+    /* 그룹파트 공통 */
+    .group-part {
+        padding: 10vw 0;
+    }
     /* 인트로 파트 : 높이값 자동 */
     .main .intro-part .partbox {
         height: auto;
