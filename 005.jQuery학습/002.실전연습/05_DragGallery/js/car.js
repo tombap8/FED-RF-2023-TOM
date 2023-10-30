@@ -51,7 +51,8 @@ cbx.on('mousemove touchmove',e=>{
     // 타임아웃 시간에 따라 이벤트수를 조절할 수 있다!
 
     // 1. x축 위치값
-    let pos = e.pageX;
+    let pos = e.pageX || e.changedTouches[0].pageX;
+    // e.changedTouches[0].pageX - 모바일용 x축위치값
 
     // 2. 방향알아내기
     // 계산방법:  처음클릭위치 - 현재위치
@@ -72,12 +73,12 @@ cbx.on('mousemove touchmove',e=>{
 
 // (2) 드래그 상태 시작 이벤트함수 //////
 // - 이벤트 종류 : mousdown - touchstart
-cbx.on("mousedown",e=>{
+cbx.on("mousedown touchstart",e=>{
     // 1. 드래그 상태값 변경
     drag = 1;
 
     // 2. x축 처음 위치값 업데이트
-    point = e.pageX;
+    point = e.pageX || e.changedTouches[0].pageX;
 
     // 3. 커서 움켜쥔 모양
     cbx.css({
@@ -86,9 +87,9 @@ cbx.on("mousedown",e=>{
 }); ///////////// mousedown ////////////
 
 // (3) 드래그 상태 시작 이벤트함수 //////
-// - 이벤트 종류 : mousup - touchend
+// - 이벤트 종류 : mouseup - touchend
 // 마우스가 나갈때도 해제처리해야 드래스하다가 나갈때 괜찮음
-cbx.on("mouseup mouseout",e=>{
+cbx.on("mouseup mouseout touchend",e=>{
     // 1. 드래그 상태값 변경
     drag = 0;
 
