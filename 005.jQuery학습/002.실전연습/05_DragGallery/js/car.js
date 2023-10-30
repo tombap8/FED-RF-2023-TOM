@@ -42,7 +42,13 @@ let protEvt = 0;
 
 // (1) 드래그 중 이벤트함수 ///////////
 // - 이벤트 종류 : mousemove - touchmove
-cbx.on('mousemove',e=>{
+cbx.on('mousemove touchmove',e=>{
+
+    // 0. 이벤트 횟수 줄이기 : 광클금지원리와 같음!
+    if(protEvt) return;// 돌아가!
+    protEvt = 1;//잠금! - 이벤트하나만 통과!
+    setTimeout(()=>protEvt=0,30);// 해제
+    // 타임아웃 시간에 따라 이벤트수를 조절할 수 있다!
 
     // 1. x축 위치값
     let pos = e.pageX;
@@ -72,30 +78,50 @@ cbx.on("mousedown",e=>{
 
     // 2. x축 처음 위치값 업데이트
     point = e.pageX;
+
+    // 3. 커서 움켜쥔 모양
+    cbx.css({
+        cursor: "grabbing"
+    }); ///// css ///////
 }); ///////////// mousedown ////////////
 
 // (3) 드래그 상태 시작 이벤트함수 //////
 // - 이벤트 종류 : mousup - touchend
-cbx.on("mouseup",e=>{
+// 마우스가 나갈때도 해제처리해야 드래스하다가 나갈때 괜찮음
+cbx.on("mouseup mouseout",e=>{
     // 1. 드래그 상태값 변경
     drag = 0;
+
+    // 2. 커서 편손 모양
+    cbx.css({
+        cursor: "grab"
+    }); ///// css ///////
 
 }); ///////////// mouseup ////////////
 
 // 이미지순번변수
 let fnum = 0;
+// 이미지박스의 이미지
+const carImg = cbx.find('img');
 
 // (4) 이미지 순번 변경함수 ////////////
 const rotateCar = dir => { // dir방향
+
+    // [ 1.fnum 증감전 숨기기 -> 현재이미지 숨기기 ]
+    carImg.eq(fnum).hide();
+
+    // [ 2.이미지번호 증감처리 ]
     // dir -> 1이면 오른쪽에서 왼쪽 드래그 : 정방향
     // -> 사진번호가 증가!
-    // 1. 이미지 순번 증가 처리
+    // (1) 이미지 순번 증가 처리
     if(dir){
         fnum++;
         if(fnum == 50) fnum = 0;
         // 마지막순번은 49번이므로 50번에서는 0으로 변경!
-    } /////// if ///////
-    // 2. 이미지 순번 감소 처리
+    } /////// if ///////   
+    // dir -> 0이면 왼쪽에서 오른쪽 드래그 : 역방향
+    // -> 사진번호가 감소!
+    // (2) 이미지 순번 감소 처리
     else{
         fnum--;
         if(fnum == -1) fnum = 49;
@@ -103,6 +129,11 @@ const rotateCar = dir => { // dir방향
     } ///// else /////
 
     console.log('순번:',fnum);
+
+    
+    // [ 3.fnum 증감후 보이기 -> 다음이미지 보이기 ]
+    carImg.eq(fnum).show();
+
 
 
 }; /////////// rotateCar 함수 ///////////
