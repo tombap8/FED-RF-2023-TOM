@@ -19,6 +19,11 @@ form.logF input[type=password]`)
 
     // 1. 현재 블러가 발생한 요소의 아이디는?
     let cid = $(this).attr('id');
-    console.log('id는?',cid);
+    // cid 는 current id 즉, 현재 아이디
+
+    // 2. 현재 블러가 발생한 요소의 값은?
+    let cv = $(this).val();
+
+    console.log('id는?',cid,'/값은?',cv);
 
 }); ///////////////// blur 메서드 /////////////////
