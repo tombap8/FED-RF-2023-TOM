@@ -100,11 +100,24 @@ form.logF input[type=password]`)
     } /////// else //////
   }); ///////////////// blur 메서드 /////////////////
 
+  // 비밀번호 글자 보이기/숨기기 셋팅 //////////////
   let eyeNum = 1;
-  $('.eye').click(()=>{
+  $('.eye')
+  .css({ // 처음상태는 중간줄있고 흐림
+    textDecoration: 'line-through',
+    opacity: 0.5
+  }) //// css ////
+  .click((e)=>{
+    // 1. 글자보이기 타입전환 : type='text|password'
     $('#mpw').attr('type',eyeNum?'text':'password');
-    eyeNum=eyeNum?0:1;
-  })
+    // 2. CSS 디자인 전환 (안보일때는 흐리게 중간줄표시)
+    $(e.target).css({
+        textDecoration: eyeNum?'none':'line-through',
+        opacity: eyeNum ? 1 : 0.5
+    })
+    // 상태값 전환 (eyeNum이 1이면 0, 0이면 1 할당!)
+    eyeNum = eyeNum ? 0 : 1;
+  }); ////////// click ///////////////
 
 
 /*////////////////////////////////////////////////////////
