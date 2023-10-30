@@ -16,6 +16,9 @@ $(`form.logF input[type=text][id!=email2],
 form.logF input[type=password]`)
 // .on('blur',function(){})
 .blur(function(){
-    console.log('나야나!',this);
+
+    // 1. 현재 블러가 발생한 요소의 아이디는?
+    let cid = $(this).attr('id');
+    console.log('id는?',cid);
 
 }); ///////////////// blur 메서드 /////////////////
