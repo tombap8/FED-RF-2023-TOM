@@ -69,6 +69,12 @@ cbx.on('mousemove touchmove',e=>{
 
     } ///////// if ///////////
 
+    // 2. x축 처음 위치값 업데이트
+    point = e.pageX || e.changedTouches[0].pageX;
+    // -> 마우스다운이 아닌 마우스무브에서
+    // 처음위치값을 업데이트하면 드래그 상태일때
+    // 그대로 방향을 다시 설정하여 원하는 방향으로
+    // 이미지를 변경할 수 있다!
 }); /////////////// mousemove ///////////
 
 // (2) 드래그 상태 시작 이벤트함수 //////
@@ -78,7 +84,7 @@ cbx.on("mousedown touchstart",e=>{
     drag = 1;
 
     // 2. x축 처음 위치값 업데이트
-    point = e.pageX || e.changedTouches[0].pageX;
+    // point = e.pageX || e.changedTouches[0].pageX;
 
     // 3. 커서 움켜쥔 모양
     cbx.css({
@@ -141,8 +147,6 @@ const rotateCar = dir => { // dir방향
     
     // [ 3.fnum 증감후 보이기 -> 다음이미지 보이기 ]
     carImg.eq(fnum).show();
-
-
 
 }; /////////// rotateCar 함수 ///////////
 
