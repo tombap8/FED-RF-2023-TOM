@@ -14,16 +14,37 @@
 **********************************************/
 $(`form.logF input[type=text][id!=email2],
 form.logF input[type=password]`)
-// .on('blur',function(){})
-.blur(function(){
-
+  // .on('blur',function(){})
+  .blur(function () {
     // 1. 현재 블러가 발생한 요소의 아이디는?
-    let cid = $(this).attr('id');
+    let cid = $(this).attr("id");
     // cid 는 current id 즉, 현재 아이디
 
+    // 모든 공백 제거함수(get rid of Space)
+    const groSpace = x => x.replace(/\s/,'');
+    // replace(정규식,바꿀문자)
+    // 정규식은 슬래쉬 사이에 표현 : \s 공백문자
+
     // 2. 현재 블러가 발생한 요소의 값은?
-    let cv = $(this).val();
+    let cv = groSpace($(this).val());
 
-    console.log('id는?',cid,'/값은?',cv);
 
-}); ///////////////// blur 메서드 /////////////////
+
+    console.log("id는?", cid, "/값은?", cv);
+
+    /************************************* 
+        3. 빈값 여부 검사하기 (필수입력항목)
+    *************************************/
+    if (cv == "") {
+      //메시지 출력하기
+      $(this).siblings(".msg").text("필수입력!");
+      // 입력창 초기화
+      $(this).val("");
+    } //////// if //////
+
+    /// 모두 통과일 경우 메시지 지우기 ///////
+    else {
+      $(this).siblings(".msg").empty();
+      // empty() - 내용을 지우는 메서드
+    } /////// else //////
+  }); ///////////////// blur 메서드 /////////////////
