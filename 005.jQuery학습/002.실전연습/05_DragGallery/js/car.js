@@ -57,6 +57,9 @@ cbx.on('mousemove',e=>{
 
         console.log('현재방향은?',dir);
 
+        // 이미지넘김 함수 호출 : 방향보냄!
+        rotateCar(dir);
+
     } ///////// if ///////////
 
 }); /////////////// mousemove ///////////
