@@ -45,7 +45,8 @@ form.logF input[type=password]`)
     *************************************/
     if (cv == "") {
       //메시지 출력하기
-      $(this).siblings(".msg").text("필수입력!");
+      $(this).siblings(".msg").text("필수입력!")
+      .removeClass('on');
     } //////// if //////
 
     /**************************************** 
@@ -58,6 +59,7 @@ form.logF input[type=password]`)
         if(!vReg(cv,cid)){ // 아이디검사 불통과시 들어감(!NOT)
             $(this).siblings('.msg')
             .text('영문자로 시작하는 6~20글자 영문자/숫자')
+            .removeClass('on');
         } //////// if ///////
         else{ // 통과시
             // 1. DB에 조회하여 같은 아이디가 있다면
@@ -68,9 +70,28 @@ form.logF input[type=password]`)
             // 메시지 띄우기
             $(this).siblings('.msg')
             .text('멋진 아이디네요~!')
+            .addClass('on');
         } ////// else //////
 
    } /////////////// else if : 아이디검사 ///////
+
+    /**************************************** 
+        5. 비밀번호일 경우 유효성 검사
+        - 검사기준: 
+        특수문자,문자,숫자포함 형태의 5~15자리
+    ****************************************/
+   else if(cid == 'mpw'){
+        // console.log('비밀번호 검사결과:',vReg(cv,cid));
+        if(!vReg(cv,cid)){ // 비밀번호검사 불통과시 들어감(!NOT)
+            $(this).siblings('.msg')
+            .text('특수문자,문자,숫자포함 형태의 5~15자리');
+        } //////// if ///////
+        else{ // 통과시            
+            // 메시지 지우기
+            $(this).siblings('.msg').empty();
+        } ////// else //////
+
+   } /////////////// else if : 비밀번호검사 ///////
 
     /// 모두 통과일 경우 메시지 지우기 ///////
     else {
@@ -78,6 +99,12 @@ form.logF input[type=password]`)
       // empty() - 내용을 지우는 메서드
     } /////// else //////
   }); ///////////////// blur 메서드 /////////////////
+
+  let eyeNum = 1;
+  $('.eye').click(()=>{
+    $('#mpw').attr('type',eyeNum?'text':'password');
+    eyeNum=eyeNum?0:1;
+  })
 
 
 /*////////////////////////////////////////////////////////
