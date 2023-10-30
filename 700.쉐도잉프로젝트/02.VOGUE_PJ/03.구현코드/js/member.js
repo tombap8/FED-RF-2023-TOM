@@ -27,9 +27,16 @@ form.logF input[type=password]`)
     // g는 global 즉, 전역적으로 찾으라는 플래그 문자
 
     // 2. 현재 블러가 발생한 요소의 값은?
-    let cv = groSpace($(this).val());
-
-
+    // 이름입력창(id=='mnm')이면 trim() 나머지는 groSpace()
+    // 로 처리하여 공백을 제거한다!
+    let cv = 
+    cid=='mnm'? 
+    $(this).val().trim():
+    groSpace($(this).val());
+    // 비?집:놀이동산
+    
+    // 입력창 공백처리후 재입력하기!
+    $(this).val(cv);
 
     console.log("id는?", cid, "/값은?", cv);
 
@@ -39,8 +46,6 @@ form.logF input[type=password]`)
     if (cv == "") {
       //메시지 출력하기
       $(this).siblings(".msg").text("필수입력!");
-      // 입력창 초기화
-      $(this).val("");
     } //////// if //////
 
     /// 모두 통과일 경우 메시지 지우기 ///////
