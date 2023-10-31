@@ -154,6 +154,31 @@ form.logF input[type=password]`)
     let cv = $(this).val();
     console.log('선택값:',cv);
 
+    // 2. 선택옵션별 분기
+    // 2-1."선택해주세요"일 경우
+    if(cv == 'init'){
+        // 1. 메시지 출력
+        eml1.siblings('.msg')
+        .text('이메일 옵션선택 필수!')
+        .removeClass('on');
+        // 2. 직접입력창 숨기기
+        eml2.fadeOut(300);
+    } /////// if : 선택해주세요 ///////
+
+    // 2-2.'직접입력'일 경우
+    else if(cv == 'free'){
+        // 1. 직접입력창 보이기
+        eml2.fadeIn(300).val('').focus();
+        // 숨긴입력창.나타나(300).값('').포커스()
+    } ////// else if : 직접입력 //////
+
+    // 2-3. 기타 이메일주소 선택일 경우
+    else{
+        // 직접입력창 숨기기
+        eml2.fadeOut(300);
+    } ////// else : 기타 이메일주소 ////
+
+
  }); ///////// change메서드 ///////////////////
 
 
