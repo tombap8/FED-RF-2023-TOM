@@ -177,6 +177,7 @@ form.logF input[type=password]`)
             $(this).siblings('.msg')
             .text('멋진 아이디네요~!')
             .addClass('on');
+            // -> 비동기 통신 Ajax로 서버쪽에 아이디 중복검사필요!
         } ////// else //////
 
    } /////////////// else if : 아이디검사 ///////
@@ -441,6 +442,17 @@ $('#email1,#email2')
 
         // 최종통과 여부
         console.log('통과여부:',pass);
+
+        // 4. 검사결과에 따라 메시지 보이기
+        if(pass){
+            alert('회원가입을 축하드립니다! 짝짝짝!');
+            // 원래는 POST방식으로 DB에 회원가입정보를
+            // 전송하여 입력후 DB처리완료시 성공메시지나
+            // 로그인 페이지로 넘겨준다!
+
+            // 로그인 페이지로 리디렉션!
+            location.href = 'login.html';
+        }
 
     }); ///////////// click ///////////
 
