@@ -188,8 +188,6 @@ form.logF input[type=password]`)
         resEml(comp);
 
     } ////// else : 기타 이메일주소 ////
-
-
  }); ///////// change메서드 ///////////////////
 
 
