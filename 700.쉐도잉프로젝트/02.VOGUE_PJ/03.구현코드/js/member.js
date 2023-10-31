@@ -147,6 +147,7 @@ form.logF input[type=password]`)
   ******************************************/
  const resEml = comp => { // comp - 이메일주소
     console.log('이메일주소:',comp);
+    console.log('이메일검사결과:',vReg(comp,'eml'));
 
  }; ///////////// resEml /////////////////
 
