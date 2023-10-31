@@ -185,7 +185,7 @@ form.logF input[type=password]`)
 *///////////////////////////////////////////////////////
 function vReg(val, cid) {
     // val - 검사할값, cid - 처리구분아이디
-    console.log("검사:"+val+"/"+cid);
+    // console.log("검사:"+val+"/"+cid);
 
     // 정규식 변수
     let reg;
