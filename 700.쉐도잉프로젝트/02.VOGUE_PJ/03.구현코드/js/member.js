@@ -170,12 +170,23 @@ form.logF input[type=password]`)
         // 1. 직접입력창 보이기
         eml2.fadeIn(300).val('').focus();
         // 숨긴입력창.나타나(300).값('').포커스()
+
+        // 2. 기존 메시지 지우기
+        eml1.siblings('.msg').empty();
     } ////// else if : 직접입력 //////
 
     // 2-3. 기타 이메일주소 선택일 경우
     else{
-        // 직접입력창 숨기기
+        // 1.직접입력창 숨기기
         eml2.fadeOut(300);
+
+        // 2.이메일 전체주소 조합하기
+        let comp = eml1.val() + '@' + cv;
+        // cv 는 select의 option의 value값
+
+        // 3. 이메일 유효성 검사함수 호출
+        resEml(comp);
+
     } ////// else : 기타 이메일주소 ////
 
 
