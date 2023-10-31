@@ -209,11 +209,28 @@ $('#email1,#email2')
 .on('keyup',function(){
     // 1. 현재 이벤트 대상 아이디 읽어오기
     let cid = $(this).attr('id');
-    
-    // 2. 현재 입력된 값 읽어오기
-    let cv = $(this).val();
 
-    console.log('입력아이디:',cid,'\n입력값:',cv);
+    // 2. 현재 입력된 값 읽어오기
+    // let cv = $(this).val();
+
+    // console.log('입력아이디:',cid,'\n입력값:',cv);
+
+    // 3. 이메일 뒷주소 셋팅하기
+    let backEml = 
+    cid == 'email1' ? seleml.val() : eml2.val();
+    // 현재 입력아이디가 'email1'이면 선택박스값
+    // 아니면 두번째 이메일창에 입력하는 것이므로
+    // 두번째 이메일입력값을 뒷주소로 설정함!
+
+    // 4. 만약 선택박스값이 'free'(직접입력)이면
+    // 이메일 뒷주소로 변경함!
+    if(seleml.val() == 'free') backEml = eml2.val();
+
+    // 5. 이메일 전체주소 조합하기
+    let comp = eml1.val() + '@' + backEml;
+
+    // 6. 이메일 유효성 검사함수 호출
+    resEml(comp);
 
 }); ///////////////// keyup ///////////////////
 
