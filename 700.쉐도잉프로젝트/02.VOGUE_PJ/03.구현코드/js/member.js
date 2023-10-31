@@ -21,7 +21,31 @@ chkAll.change(function(){
     // 1. 체크박스 체크여부 확인하기
     let isChk = $(this).prop('checked');
     console.log('체크양?',isChk);
+
+    // 2. 전체 체크박스가 체크상태(true)이면
+    // 개별체크박스도 모두 true로 체크상태 변경!
+    // 미체크상태(false)면 개별박스도 모두 false!
+    chkEach.prop('checked', isChk);
+    // chkEach.attr('checked', isChk);
+    // for문 없이도 여러개의 체크박스를 
+    // 동시에 변경할 수 있음! 
+    // attr()도 동일하게 변경가능!(읽기만 안됨!)
 }); /////////// change /////////////////
+
+/********************************************* 
+    약관동의 개별 체크시 전체 체크박스 변경하기
+*********************************************/
+// 원리 : 개별체크박스가 모두 체크되면 전체체크하기
+// 대상 : .chk -> chkEach변수
+chkEach.change(function(){
+    // 1. 체크개수 알아오기 : length -> 개수 리턴!
+    let num = $('.chk:checked').length;
+    // console.log('체크개수:',num);
+
+    // 2. 체크개수가 3이면 전체체크박스 체크하기
+    if(num==3) chkAll.prop('checked',true);
+    else chkAll.prop('checked',false);
+}); //////////// change ////////////////////
 
 /***************************************************** 
     [ 속성값을 읽어오는 메서드 2가지 ]
