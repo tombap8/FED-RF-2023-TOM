@@ -141,13 +141,42 @@ form.logF input[type=password]`)
   const seleml = $('#seleml');
   ////////////////////////////////////////////
 
+  /******************************************** 
+    선택박스 변경시 이메일 검사하기
+    ______________________________
+
+    검사시점 : 선택박스에 change이벤트가 발생할때
+    제이쿼리 메서드 : change()
+    이벤트 대상 : #seleml -> seleml변수
+  ********************************************/
+ seleml.change(function(){
+    // 1. 선택박스 변경된 값 읽어오기
+    let cv = $(this).val();
+    console.log('선택값:',cv);
+
+ }); ///////// change메서드 ///////////////////
+
+
+
   /****************************************** 
     함수명 : resEml (result Email)
     기능 : 이메일 검사결과 처리
   ******************************************/
  const resEml = comp => { // comp - 이메일주소
-    console.log('이메일주소:',comp);
-    console.log('이메일검사결과:',vReg(comp,'eml'));
+    // console.log('이메일주소:',comp);
+    // console.log('이메일검사결과:',vReg(comp,'eml'));
+
+    // 이메일 정규식 검사에 따른 메시지 보이기
+    if(vReg(comp,'eml')){
+        eml1.siblings('.msg')
+        .text('적합한 이메일 형식입니다!')
+        .addClass('on');
+    } //////// if : 통과시 //////////
+    else{
+        eml1.siblings('.msg')
+        .text('맞지않는 이메일 형식입니다!')
+        .removeClass('on');
+    } //////// else : 불통과시 ////////
 
  }; ///////////// resEml /////////////////
 
