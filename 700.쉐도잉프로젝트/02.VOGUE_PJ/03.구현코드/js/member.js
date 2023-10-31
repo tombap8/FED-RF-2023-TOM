@@ -62,7 +62,13 @@ $('.YNbox button').click(function(){
     if(isBtn){
         if($('#termsService').prop('checked') && 
         $('#termsPrivacy').prop('checked')){
-            alert('통과');
+            // alert('통과');
+            // 동의/비동의박스 스~윽 사라지기
+            $('#conf').fadeOut(300,()=>{
+                // 사라진후 회원가입박스 스~윽 나타나기
+                $('.scont').fadeIn(300);
+            }); /////////// fadeOut ///////
+
         } //// if ///
         else{
             alert('모든 필수항목에 체크하셔야 합니다~!');
