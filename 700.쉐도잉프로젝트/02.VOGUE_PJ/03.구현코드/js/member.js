@@ -48,7 +48,7 @@ form.logF input[type=password]`)
       $(this).siblings(".msg").text("필수입력!")
       .removeClass('on');
 
-      // [ 불통과시 pass값 변경 ]
+      // [ 불통과시 pass값 변경1 ]
       pass = false;
     } //////// if //////
 
@@ -64,7 +64,7 @@ form.logF input[type=password]`)
             .text('영문자로 시작하는 6~20글자 영문자/숫자')
             .removeClass('on');
 
-            // [ 불통과시 pass값 변경 ]
+            // [ 불통과시 pass값 변경2 ]
             pass = false;
         } //////// if ///////
         else{ // 통과시
@@ -92,7 +92,7 @@ form.logF input[type=password]`)
             $(this).siblings('.msg')
             .text('특수문자,문자,숫자포함 형태의 5~15자리');
 
-            // [ 불통과시 pass값 변경 ]
+            // [ 불통과시 pass값 변경3 ]
             pass = false;
         } //////// if ///////
         else{ // 통과시            
@@ -111,7 +111,7 @@ form.logF input[type=password]`)
             $(this).siblings('.msg')
             .text('비밀번호가 일치하지 않습니다!');
 
-            // [ 불통과시 pass값 변경 ]
+            // [ 불통과시 pass값 변경4 ]
             pass = false;
         } //////// if ///////
         else{ // 통과시            
@@ -267,7 +267,7 @@ $('#email1,#email2')
         .text('맞지않는 이메일 형식입니다!')
         .removeClass('on');
 
-        // [ 불통과시 pass값 변경 ]
+        // [ 불통과시 pass값 변경5 ]
         pass = false;
     } //////// else : 불통과시 ////////
 
