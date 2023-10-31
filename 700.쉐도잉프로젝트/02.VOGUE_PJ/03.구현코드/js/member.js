@@ -47,6 +47,36 @@ chkEach.change(function(){
     else chkAll.prop('checked',false);
 }); //////////// change ////////////////////
 
+/************************************************* 
+    동의 / 비동의 버튼 클릭시 처리하기
+*************************************************/
+// 대상: .YNbox button
+// 통과조건 : #termsService 와 #termsPrivacy 
+//              체크박스가 모두 체크되면 통과!
+$('.YNbox button').click(function(){
+    // 1. 버튼구분하기 : is 동의버튼? -> is('#btnY')
+    let isBtn = $(this).is('#btnY');
+    console.log('동의냐?',isBtn);
+
+    // 2. 동의 버튼일 경우 : 필수체크확인후 회원가입허가!
+    if(isBtn){
+        if($('#termsService').prop('checked') && 
+        $('#termsPrivacy').prop('checked')){
+            alert('통과');
+        } //// if ///
+        else{
+            alert('모든 필수항목에 체크하셔야 합니다~!');
+        } /// else ///
+
+    } /////////// if /////////////
+    // 3. 비동의 버튼 클릭시 //////
+    else{
+        alert('비동의 하였으므로 메인 페이지로 이동합니다!');
+        location.href = 'index.html';
+    } //////// else //////
+
+}); /////////// click /////////////
+
 /***************************************************** 
     [ 속성값을 읽어오는 메서드 2가지 ]
     attribute 단어의 메서드 : attr(속성명)
