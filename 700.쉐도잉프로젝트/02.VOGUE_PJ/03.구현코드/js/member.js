@@ -47,6 +47,9 @@ form.logF input[type=password]`)
       //메시지 출력하기
       $(this).siblings(".msg").text("필수입력!")
       .removeClass('on');
+
+      // [ 불통과시 pass값 변경 ]
+      pass = false;
     } //////// if //////
 
     /**************************************** 
@@ -60,6 +63,9 @@ form.logF input[type=password]`)
             $(this).siblings('.msg')
             .text('영문자로 시작하는 6~20글자 영문자/숫자')
             .removeClass('on');
+
+            // [ 불통과시 pass값 변경 ]
+            pass = false;
         } //////// if ///////
         else{ // 통과시
             // 1. DB에 조회하여 같은 아이디가 있다면
@@ -85,6 +91,9 @@ form.logF input[type=password]`)
         if(!vReg(cv,cid)){ // 비밀번호검사 불통과시 들어감(!NOT)
             $(this).siblings('.msg')
             .text('특수문자,문자,숫자포함 형태의 5~15자리');
+
+            // [ 불통과시 pass값 변경 ]
+            pass = false;
         } //////// if ///////
         else{ // 통과시            
             // 메시지 지우기
@@ -101,6 +110,9 @@ form.logF input[type=password]`)
         if(cv != $('#mpw').val()){ 
             $(this).siblings('.msg')
             .text('비밀번호가 일치하지 않습니다!');
+
+            // [ 불통과시 pass값 변경 ]
+            pass = false;
         } //////// if ///////
         else{ // 통과시            
             // 메시지 지우기
@@ -254,6 +266,9 @@ $('#email1,#email2')
         eml1.siblings('.msg')
         .text('맞지않는 이메일 형식입니다!')
         .removeClass('on');
+
+        // [ 불통과시 pass값 변경 ]
+        pass = false;
     } //////// else : 불통과시 ////////
 
  }; ///////////// resEml /////////////////
