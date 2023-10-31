@@ -38,7 +38,7 @@ form.logF input[type=password]`)
     // 입력창 공백처리후 재입력하기!
     $(this).val(cv);
 
-    console.log("id는?", cid, "/값은?", cv);
+    // console.log("id는?", cid, "/값은?", cv);
 
     /************************************* 
         3. 빈값 여부 검사하기 (필수입력항목)
@@ -152,7 +152,7 @@ form.logF input[type=password]`)
  seleml.change(function(){
     // 1. 선택박스 변경된 값 읽어오기
     let cv = $(this).val();
-    console.log('선택값:',cv);
+    // console.log('선택값:',cv);
 
     // 2. 선택옵션별 분기
     // 2-1."선택해주세요"일 경우
@@ -283,6 +283,54 @@ $('#email1,#email2')
     // 상태값 전환 (eyeNum이 1이면 0, 0이면 1 할당!)
     eyeNum = eyeNum ? 0 : 1;
   }); ////////// click ///////////////
+
+  /********************************************* 
+    가입하기(submit) 버튼 클릭시 처리하기 
+    __________________________________
+
+    - form요소 내부의 submit버튼을 클릭하면
+    기본적으로 form요소에 설정된 action속성값인
+    페이지로 전송된다! 전체검사를 위해 이를 중지해야함!
+    -> 중지방법은? event.preventDefault()!!!
+
+    전체검사의 원리 : 
+    전역변수 pass를 설정하여 true를 할당하고
+    검사중간에 불통과 사유발생시 false로 변경!
+    유효성 검사 통과여부를 판단한다!
+
+    검사방법 :
+    기존 이벤트 blur 이벤트를 강제로 발생시킨다!
+    이벤트를 강제로 발생시키는 제이쿼리 메서드는?
+    ->>> trigger(이벤트명)
+
+  *********************************************/
+
+    // 검사용 변수
+    let pass = true;
+
+    // 이벤트 대상: #btnj
+    $('#btnj').click(e=>{
+        // 호출확인
+        console.log('가입해~!');
+
+        // 1. 기본이동 막기
+        e.preventDefault();
+
+        // 2. pass 통과여부 변수에 true를 할당!
+        pass = true;
+
+        // 3. 입력창 blur이벤트 강제 발생시키기
+        $(`form.logF input[type=text][id!=email2],
+        form.logF input[type=password]`)
+        .trigger('blur');
+
+        // 최종통과 여부
+        console.log('통과여부:',pass);
+
+    }); ///////////// click ///////////
+
+
+
 
 
 /*//////////////////////////////////////////////////////
