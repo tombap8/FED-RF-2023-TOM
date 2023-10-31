@@ -1,5 +1,5 @@
 // 회원가입 html데이터 ///
-const mcode = {
+export const mcode = {
     conf:`
     <div class="terms_p">
     <p class="terms_chk_all"> <span class="input_chk">
