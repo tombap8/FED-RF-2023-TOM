@@ -35,13 +35,19 @@ const addNum = () => ++listNum;
 // [1] 한페이지당 리스트수 : pgBlock
 const pgBlock = 9;
 // [2] 페이지 순번 : pgNum -> 증감예정!
-let pgNum = 6;
+let pgNum = 1;
 // [3] 전체 레코드 수 : totalCnt
 const totalCnt = bData.length;
 // [4] 페이징 블록 계산하기
 let pagingBlock = Math.floor(totalCnt/pgBlock);
 // [5] 나머지 리스트 여부 : 0이면 다음 페이지 없음!
 let addOver = totalCnt % pgBlock;
+
+///// 여기서 부터 업데이트가 페이지별로 반복됨! ////////
+
+const updateList = (newPgNum) => { 
+    // newPgNum - 새롭게 전달되는 현재 페이지번호
+    pgNum = newPgNum; // 기존 페이지번호를 업데이트함!
 
 // [6] 시작번호 업데이트
 listNum = (pgNum-1)*pgBlock;
@@ -71,6 +77,50 @@ board.html(hcode);
 console.log(`pgBlock:${pgBlock
 }\npgNum:${pgNum}\ntotalCnt:${totalCnt
 }\npagingBlock:${pagingBlock}\naddOver:${addOver}`);
+
+
+
+/////// 페이지 이동 링크 페이징 만들기 //////
+// 대상: .paging
+// 링크생성 원리: 블록개수만큼 숫자로 만든다
+// 사용데이터 : pagingBlock - 기본 페이지수 / 
+//              addOver - 추가 페이지여부
+const pNumBlock = $('.paging');
+let pNumCode = '';
+
+// 새로운 블록을 위한 변수
+let newPagingBlock;
+// 추가 리스트가 있을경우 나머지가 0아니므로 다음페이지추가!
+if(addOver!=0) newPagingBlock = pagingBlock+1;
+
+// 페이지 링크 a요소 만들기 /////
+for(let x=0; x< newPagingBlock; x++){
+    pNumCode += `<a href="#">${x+1}</a>`;
+    // 마지막 뒤에 바 안생김
+    if(x < newPagingBlock-1) pNumCode += ' | ';
+} /////////// for ///////////////////
+
+pNumBlock.html(pNumCode);
+
+// 새로생성된 a링크에 click이벤트 함수로
+// 리스트 업데이트 함수 호출하기!
+$('.paging a').click(function(e){
+    // 기본이동막기
+    e.preventDefault();
+    // 클릭된 a요소의 숫자 읽어오기
+    let atxt = $(this).text();
+    // console.log('숫자:',atxt);
+    // 리스트업데이트 함수 호출!
+    updateList(atxt);
+}); ////////// click //////////////
+
+
+}; /////////// updateList 함수 ///////////////
+
+// 리스트업데이트 함수 최초호출! : 1페이지
+updateList(1);
+
+
 
 
 // 데이터 태그 생성후 태그넣기
