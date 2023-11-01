@@ -3,10 +3,12 @@ import { mtInfo } from "./02.sub_com/mountain";
 
 // 컨텍스트 불러오기
 import { 누구냐 } from "./02.sub_com/cont_provider";
-import { func } from "prop-types";
+
+// 서브 컴포넌트 불러오기
+import 이야기 from "./02.sub_com/sub_com";
 
 
-console.log(mtInfo);
+// console.log(mtInfo);
 
 /********************************************** 
     1. props로 데이터를 전달하여 제목출력하기 
@@ -54,14 +56,45 @@ document.querySelector('#root1'));
 **********************************************/
 
 function 큰집(){
+
+    // 데이터 전달 : 산정보를 할당!
+    const myData = mtInfo;
+    // console.log(myData);
+    // 상태정보 useState를 사용하여 후크기능사용
+    // 데이터가 업데이트 되면 그것을 사용하는
+    // 컴포넌트도 업데이트 된다!!!!
+    // 산이름을 상태변수 후크로 설정!
+    const [myVal,setMyVal] = React.useState('백두산');
+
+    // 상태변수를 업데이트하는 함수를 생성!
+    const changeMyVal = (val) => {
+        setMyVal(val);
+        console.log(val);
+    }; /////// changeMyVal 함수 /////
+
+    // Provider 의 value속성명은 정해진것!
+    // 여기에 할당하여 메인 컴포넌트의 변수를
+    // 공유한다!
     return(
-        <누구냐.Provider value={{}}>
-            <할아버지 />
-            
+        <누구냐.Provider value={{myVal,changeMyVal,myData}}>
+            <할아버지 />            
         </누구냐.Provider>
     );
 }
 
 function 할아버지(){
-    return(<div></div>);
+    return<아버지 />;
 }
+function 아버지(){
+    return<아들 />;
+}
+function 아들(){
+    return<손녀 />;
+}
+function 손녀(){
+    return<이야기 />;
+}
+
+//// 산정보 내용 출력하기 ////////
+ReactDOM.render(<큰집 />,
+document.querySelector('#root2'));
