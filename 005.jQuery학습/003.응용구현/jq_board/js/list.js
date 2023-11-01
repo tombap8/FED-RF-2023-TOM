@@ -95,7 +95,12 @@ if(addOver!=0) newPagingBlock = pagingBlock+1;
 
 // 페이지 링크 a요소 만들기 /////
 for(let x=0; x< newPagingBlock; x++){
-    pNumCode += `<a href="#">${x+1}</a>`;
+    // 현재페이지만 b태그/ 나머지는 a태그사용
+    // 현재페이지는  pgNum 이므로( x+1 == pgNum )
+    pNumCode += 
+        x+1 == pgNum?
+        `<b>${x+1}</b>`:
+        `<a href="#">${x+1}</a>`;
     // 마지막 뒤에 바 안생김
     if(x < newPagingBlock-1) pNumCode += ' | ';
 } /////////// for ///////////////////
