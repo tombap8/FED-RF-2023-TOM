@@ -7,67 +7,67 @@
     <title>JS비동기 : 4. Async / Await 사용법</title>
     <script>
       /******************************************************************* 
-              [Async/Await란? "약속을 좀 더 쉽게!"]
+         [Async/Await란? "약속을 좀 더 쉽게!"]
 
-               1. async는 함수가 Promise를 반환하도록 설정한다!
-               2. await는 함수가 Promise를 기다리게 설정한다!
+        1. async는 함수가 Promise를 반환하도록 설정한다!
+        2. await는 함수가 Promise를 기다리게 설정한다!
 
-              [ async 구문 사용법 ]
-               ___________________________________
+        [ async 구문 사용법 ]
+        ___________________________________
 
-               -> 함수앞에 async 키워드를 써준다!
-               ___________________________________
+        -> 함수앞에 async 키워드를 써준다!
+        ___________________________________
 
-               async function 내함수() {
-                    return "우리지금만나!";
-                }
-                ____________________________________
+        async function 내함수() {
+            return "우리지금만나!";
+        }
+        ____________________________________
 
-                -> 위의 코드는 아래의 코드와 동일하다!
-                ____________________________________
+        -> 위의 코드는 아래의 코드와 동일하다!
+        ____________________________________
 
-                function 내함수() {
-                    return Promise.resolve("우리지금만나!");
-                }
-                _______________________________________________________
+        function 내함수() {
+            return Promise.resolve("우리지금만나!");
+        }
+        _______________________________________________________
 
-                -> async키워드를 사용한 함수호출코드 뒤에 
-                .then을 사용하여
-                   성공시/실패시코드를 작성한다!
-                _______________________________________________________
+        -> async키워드를 사용한 함수호출코드 뒤에 
+        .then을 사용하여
+            성공시/실패시코드를 작성한다!
+        _______________________________________________________
 
-                내함수().then(
-                    function(value) { 성공시코드 },
-                    function(error) { 실패시코드 }
-                );
-                ____________________________________
-                *********************
-                [ await 구문 사용법 ]
-               ___________________________________
+        내함수().then(
+            function(value) { 성공시코드 },
+            function(error) { 실패시코드 }
+        );
+        ____________________________________
+        *********************
+        [ await 구문 사용법 ]
+        ___________________________________
 
-               -> await키워드는 
-                    async함수 내에서만 사용가능함.
-                -> await키워드 는 
-                    함수실행을 일시 중지하고 계속하기 
-                    전에 Promise의 결과를 기다림
-               ___________________________________
+        -> await키워드는 
+            async함수 내에서만 사용가능함.
+        -> await키워드 는 
+            함수실행을 일시 중지하고 계속하기 
+            전에 Promise의 결과를 기다림
+        ___________________________________
 
-               async function 보여줘() {
-                let 내약속 = new Promise(function(성공함수) {
-                        성공함수("내메세지");
-                    });
-                    document.getElementById("mydiv").innerHTML = 
-                    await 내약속;
-                }
+        async function 보여줘() {
+        let 내약속 = new Promise(function(성공함수) {
+                성공함수("내메세지");
+            });
+            document.getElementById("mydiv").innerHTML = 
+            await 내약속;
+        }
 
-                보여줘();
-                ___________________________________
+        보여줘();
+        ___________________________________
 
-                ((단어뜻))
-                * resolve 해결하다
-                * asynchronous 동시에 존재하지 않는
-                * await 기다리다
-         *******************************************************************/
+        ((단어뜻))
+        * resolve 해결하다
+        * asynchronous 동시에 존재하지 않는
+        * await 기다리다
+    *******************************************************************/
       function 화면뿌려(이거) {
         document.querySelector("#show").innerHTML += 이거 + "<br>";
       }
@@ -99,15 +99,16 @@
 
       // 2. 파일을 전송 받은 후 실행하는 약속객체 생성하기
       async function 파일받아() {
-        const 파일약속 = new Promise(
-            function (success) {
+        const 파일약속 = new Promise(function (success) {
           // (1) XMLHttpRequest 객체 인스턴스 만들기
           const myAjax = new XMLHttpRequest();
 
           // (2) 비동기 파일요소 열기
           // 전송기능메모리 생성
-          myAjax.open("GET", 
-          "https://koreascience.kr/article/JAKO201812055796720.pdf");
+          myAjax.open(
+            "GET",
+            "https://koreascience.kr/article/JAKO201812055796720.pdf"
+          );
           // 같은 도메인의 파일을 Promise처리해야
           //실패처리까지 모두 완전하게 이루어진다!
 
@@ -127,15 +128,14 @@
 
         // await 사용하여 실행하기
         const 문서보여줘 = (txt) => {
-            console.log('문서보여줘 함수:',txt);
-            document.querySelector('#doc').innerHTML =
-            `<iframe src="${txt}" style="width:100%;height:100%;border:none;"></iframe>`;
-        };/////// 문서보여줘 함수 /////////////
+          console.log("문서보여줘 함수:", txt);
+          document.querySelector(
+            "#doc"
+          ).innerHTML = `<iframe src="${txt}" style="width:100%;height:100%;border:none;"></iframe>`;
+        }; /////// 문서보여줘 함수 /////////////
 
         // 문서보여줘 함수 호출!
         문서보여줘(await 파일약속);
-
-
       } //////////// async 파일받아 함수 //////////
 
       ///// async함수 호출 ///
