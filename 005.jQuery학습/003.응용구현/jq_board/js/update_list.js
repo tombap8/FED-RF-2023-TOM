@@ -17,7 +17,7 @@ console.log(Array.isArray(bData));
 // let aaa = JSON.parse(bData);
 // 원본 배열데이터를 문자형 데이터로 변경!
 let myData = JSON.stringify(bData)
-console.log(myData);
+// console.log(myData);
 
 
 
@@ -34,9 +34,8 @@ if(!localStorage.getItem('boardData')){
 
 
 ////////////////////////////////////////
-let aaa = localStorage.getItem('boardData')
 
-let useData = JSON.parse(aaa);
+let useData = JSON.parse(localStorage.getItem('boardData'));
 
 console.log("변환후:",useData);
 
