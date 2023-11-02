@@ -3,7 +3,6 @@
 // 게시판 데이터 불러오기
 import bData from './data.json' assert {type:'json'};
 
-
 // console.log(bData);
 
 // 데이터 idx의 내림차순으로 정렬변경하기!
@@ -12,6 +11,37 @@ Number(a.idx)==Number(b.idx)?
 0:Number(a.idx)>Number(b.idx)?-1:1);
 // idx는 숫자데이터로 형변환 비교하여
 // a.idx>b.idx 즉 앞에것이 크면 그대로 -1, 작으면 바꾸기 1
+
+console.log(Array.isArray(bData));
+
+// let aaa = JSON.parse(bData);
+// 원본 배열데이터를 문자형 데이터로 변경!
+let myData = JSON.stringify(bData)
+console.log(myData);
+
+
+
+////////////////////////////////////////
+// 로컬 스토리지 생성하기 /////////
+// 이름 : boardData
+if(!localStorage.getItem('boardData')){
+    localStorage.setItem('boardData',myData)
+}
+
+// console.log(localStorage.getItem('boardData'));
+
+
+
+
+////////////////////////////////////////
+let aaa = localStorage.getItem('boardData')
+
+let useData = JSON.parse(aaa);
+
+console.log("변환후:",useData);
+
+
+
 
 // 데이터를 화면 리스트 코드로 변환하여 적용한다!
 // 대상: #board tbody
