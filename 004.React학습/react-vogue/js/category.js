@@ -146,7 +146,7 @@ function MainCategory() {
 
   return(
     <React.Fragment>
-      <SubTitle />
+      <SubTitle tit={selData['제목']} />
       <ItemList />
     </React.Fragment>
   );
@@ -163,13 +163,13 @@ document.querySelector(".main-area"));
   컴포넌트명 : SubTitle
   기능 : 서브 타이틀 요소구성
 *******************************************/
-function SubTitle(){
+function SubTitle(props){ // tit - 서브타이틀
 
   return(
         // 2-1. 카테고리 페이지 상단영역
         <header className="cat-top-area">
           {/* 2-1-1. 서브타이틀 */}
-          <h2 className="cat-tit">Fashion</h2>
+          <h2 className="cat-tit">{props.tit}</h2>
           {/* 2-1-2. 서브메뉴(LNB:Local Navigation Bar) */}
           <nav className="lnb"></nav>
         </header>
