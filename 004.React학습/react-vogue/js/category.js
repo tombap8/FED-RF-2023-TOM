@@ -105,9 +105,10 @@ function TopArea() {
   );
 } //////////// TopArea 컴포넌트 /////////////
 
-// 상단영역 출력하기 //////
+// 상단영역 출력하기 /////////////////
 ReactDOM.render(<TopArea />, 
 document.querySelector(".top-area"));
+/////////////////////////////////////
 
 //////////////////////////////////////////////////////
 
@@ -127,7 +128,7 @@ function MainCategory() {
 
 } ///////// MainCategory 컴포넌트 /////////////
 
-// 메인영역 출력하기 /////////////
+// 메인영역 출력하기 ////////////////////
 ReactDOM.render(<MainCategory />, 
 document.querySelector(".main-area"));
 ///////////////////////////////////////
