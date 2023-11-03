@@ -134,7 +134,13 @@ function MainCategory() {
 function SubTitle(){
 
   return(
-    
+        // 2-1. 카테고리 페이지 상단영역
+        <header className="cat-top-area">
+          {/* 2-1-1. 서브타이틀 */}
+          <h2 className="cat-tit">Fashion</h2>
+          {/* 2-1-2. 서브메뉴(LNB:Local Navigation Bar) */}
+          <nav className="lnb"></nav>
+        </header>
   );
 
 } /////////////// SubTitle 컴포넌트 //////////////
