@@ -146,8 +146,12 @@ function MainCategory() {
 
   return(
     <React.Fragment>
-      <SubTitle tit={selData['제목']} menu={selData['메뉴']} />
-      <ItemList />
+      <SubTitle 
+        tit={selData['제목']} 
+        menu={selData['메뉴']} />
+      <ItemList 
+        cname={selData['경로']} 
+        tit={selData['타이틀']} />
     </React.Fragment>
   );
 
@@ -174,7 +178,7 @@ function SubTitle(props){
         <a href="#">{v}</a>
       </li>
     ); ///////// makeList 함수 ////////
-    
+
     // -> 오리지널 JS map()문법은 배열을 다시 리턴함
     // JS에서는 배열.map().join('') 로 사용했음
     // -> 리액트에서는 리액트용 map()을 다시 구성하여
@@ -206,31 +210,34 @@ function SubTitle(props){
   컴포넌트명 : ItemList
   기능 : 카테고리 아이템별 리스트요소구성
 *******************************************/
-function ItemList(){
+function ItemList(props){
+  // cname - 카테고리명(클래스명넣기)
+  // tit - 리스트 타이틀
 
   return(
     // 2-2. 카테고리 페이지 컨텐츠영역
-    <div className="cat-cont-area">
+    // html출력일 경우 dangerouslySetInnerHTML을 사용함!
+    <div className={"cat-cont-area "+props.cname}>
       <section className="pt2">
         <div className="cbx bgi bg1-1">
-          <h2></h2>
+          <h2>{props.tit[0]}</h2>
         </div>
         <div className="cbx bgi bg1-2">
-          <h2></h2>
+          <h2>{props.tit[1]}</h2>
         </div>
         <div className="cbx bgi bg1-3">
-          <h2></h2>
+          <h2>{props.tit[2]}</h2>
         </div>
       </section>
       <section className="pt2">
         <div className="cbx bgi bg2-1">
-          <h2></h2>
+          <h2>{props.tit[3]}</h2>
         </div>
         <div className="cbx bgi bg2-2">
-          <h2></h2>
+          <h2>{props.tit[4]}</h2>
         </div>
         <div className="cbx bgi bg2-3">
-          <h2></h2>
+          <h2>{props.tit[5]}</h2>
         </div>
       </section>
     </div>
