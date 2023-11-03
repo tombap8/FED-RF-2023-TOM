@@ -28,7 +28,9 @@
     <script src="./js/jquery-ui.min.js"></script>
     <!-- 공통모듈 JS - 카테고리페이지용 -->
     <script type="module" src="./js/common2.js"></script>
-    <script src="./js/linksys.js"></script>
+    <!-- 링크시스템 JS는 리액트 상단영역 컴포넌트가
+      그려진 후 호출해야 적용된다!!! 그래서 여기는 주석!
+      <script src="./js/linksys.js"></script> -->
 
     <!-- 1.리액트 기본 라이브러리 -->
     <script
@@ -43,14 +45,22 @@
     <!-- 3.리액트 바벨 라이브러리 -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    
-    <!-- 카테고리 페이지 JS -->
+    <!-- 링크 시스템 카테고리용 JS 
+      - 카테고리JS 보다 위에 둘것! -->
     <script
-      src="./js/category.js"
+      src="./js/linksys2.js"
       data-plugins="transform-es2015-modules-umd"
       type="text/babel"
     ></script>
-
+    
+    
+    <!-- 카테고리 페이지 JS -->
+    <script
+    src="./js/category.js"
+      data-plugins="transform-es2015-modules-umd"
+      type="text/babel"
+    ></script>
+    
 
   </head>
   <body>

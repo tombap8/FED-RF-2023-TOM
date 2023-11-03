@@ -1,7 +1,19 @@
 // 보그 PJ 카테고리 페이지 JS - category.js
 
+// 링크 시스템 JS 가져오기 //////
+import { makeLink } from "./linksys2.js";
+
 /////////// 상단영역 컴포넌트 /////////////
+/******************************************* 
+  컴포넌트명 : TopArea
+  기능 : 상단영역 메뉴, 로그 등 요소 구성
+*******************************************/
 function TopArea() {
+
+  // 컴포넌트 요소 랜더링 직전 호출구역
+  // -> 컴포넌트는 모두 만들어진 후 화면뿌리기 직전(가랜더랭)
+  React.useLayoutEffect(makeLink);
+
   return (
     <React.Fragment>
       {/* 1-1.상단메뉴 */}
@@ -94,7 +106,20 @@ function TopArea() {
 } //////////// TopArea 컴포넌트 /////////////
 
 // 상단영역 출력하기 //////
-ReactDOM.render(<TopArea />, document.querySelector(".top-area"));
+ReactDOM.render(<TopArea />, 
+document.querySelector(".top-area"));
+
+//////////////////////////////////////////////////////
 
 ////// 카테고리 페이지 메인 컴포넌트 ///////
-function MainCategory() {} ///////// MainCategory 컴포넌트 /////////////
+function MainCategory() {
+
+  return(
+    <React.Fragment>
+
+    </React.Fragment>
+  );
+
+} ///////// MainCategory 컴포넌트 /////////////
+
+
