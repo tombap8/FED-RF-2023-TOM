@@ -120,11 +120,17 @@ function MainCategory() {
 
   return(
     <React.Fragment>
-
+      <SubTitle />
+      <ItemList />
     </React.Fragment>
   );
 
 } ///////// MainCategory 컴포넌트 /////////////
+
+// 메인영역 출력하기 /////////////
+ReactDOM.render(<MainCategory />, 
+document.querySelector(".main-area"));
+///////////////////////////////////////
 
 ////// 메인 컴포넌트 하위 서브타이틀 컴포넌트 /////
 /******************************************* 
@@ -153,7 +159,31 @@ function SubTitle(){
 function ItemList(){
 
   return(
-
+    // 2-2. 카테고리 페이지 컨텐츠영역
+    <div className="cat-cont-area">
+      <section className="pt2">
+        <div className="cbx bgi bg1-1">
+          <h2></h2>
+        </div>
+        <div className="cbx bgi bg1-2">
+          <h2></h2>
+        </div>
+        <div className="cbx bgi bg1-3">
+          <h2></h2>
+        </div>
+      </section>
+      <section className="pt2">
+        <div className="cbx bgi bg2-1">
+          <h2></h2>
+        </div>
+        <div className="cbx bgi bg2-2">
+          <h2></h2>
+        </div>
+        <div className="cbx bgi bg2-3">
+          <h2></h2>
+        </div>
+      </section>
+    </div>
   );
 
 } /////////////// ItemList 컴포넌트 //////////////
