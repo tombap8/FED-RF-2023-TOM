@@ -3,6 +3,11 @@
 // 링크 시스템 JS 가져오기 //////
 import { makeLink } from "./linksys2.js";
 
+// 카테고리 데이터 가져오기 /////
+import catData from "./data/category_data.js";
+
+console.log(catData);
+
 /////////// 상단영역 컴포넌트 /////////////
 /******************************************* 
   컴포넌트명 : TopArea
