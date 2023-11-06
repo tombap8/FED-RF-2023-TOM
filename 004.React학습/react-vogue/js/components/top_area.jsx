@@ -7,7 +7,7 @@ import { makeLink } from "./linksys2.js";
   컴포넌트명 : TopArea
   기능 : 상단영역 메뉴, 로그 등 요소 구성
 *******************************************/
-export default function TopArea() {
+export default function TopArea(props) {
   // 컴포넌트 요소 랜더링 직전 호출구역
   // -> 컴포넌트는 모두 만들어진 후 화면뿌리기 직전(가랜더랭)
   React.useLayoutEffect(makeLink);
@@ -27,6 +27,8 @@ export default function TopArea() {
   // 메뉴 클릭시 변수 변경함수
   const chgCat = (data) => {
     console.log("나야나!", data);
+    // 전달된 부모함수 chgCat을 호출함!
+    props.chgItem(data.toLowerCase());
   }; ///////////// chgCat 함수 ///////////
 
   return (
