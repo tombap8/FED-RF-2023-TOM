@@ -4,6 +4,9 @@
 // 상단영역 컴포넌트 불러오기 /////
 import TopArea from "./components/top_area.jsx";
 
+// 메인영역 컴포넌트 불러오기 //////
+import MainCategory from "./components/main_area.jsx";
+
 // 하단영역 컴포넌트 불러오기 /////
 import FooterArea from "./components/footer_area.jsx";
 
@@ -17,7 +20,12 @@ function MainComponent() {
 
   return(
     <React.Fragment>
+      {/* 1.상단영역 */}
       <TopArea />
+      {/* 2.메인영역 */}
+      <MainCategory />
+      {/* 3.하단영역 */}
+      <FooterArea />
     </React.Fragment>
   );
 

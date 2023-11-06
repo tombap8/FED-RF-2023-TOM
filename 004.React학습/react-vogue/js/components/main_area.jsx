@@ -9,7 +9,7 @@ import catData from "./data/category_data.js";
   컴포넌트명 : MainCategory
   기능 : 아이템 페이지 타이틀 + 리스트 요소구성
 *******************************************/
-function MainCategory() {
+export default function MainCategory() {
   // 우선 URL로 넘어온 키값을 가져옴!
   // 파라미터 전달값 받기 : 파라미터JS전담객체는?
   // -> URLSearchParams(전체URL)
