@@ -19,6 +19,14 @@ function TopArea() {
   // -> 컴포넌트는 모두 만들어진 후 화면뿌리기 직전(가랜더랭)
   React.useLayoutEffect(makeLink);
 
+  // GNB용 메뉴 배열변수
+  const gnbText = ["FASHION","BEAUTY","LIVING","PEOPLE","VIDEO","RUNWAY","TIME & GEM","SHOPPING"];
+
+  // 메뉴 클릭시 변수 변경함수
+  const chgCat = data => {
+    console.log('나야나!',data);
+  }; ///////////// chgCat 함수 ///////////
+
   return (
     <React.Fragment>
       {/* 1-1.상단메뉴 */}
@@ -74,30 +82,13 @@ function TopArea() {
       {/* 1-3.GNB박스 */}
       <nav className="gnb">
         <ul>
-          <li>
-            <a href="#">FASHION</a>
-          </li>
-          <li>
-            <a href="#">BEAUTY</a>
-          </li>
-          <li>
-            <a href="#">LIVING</a>
-          </li>
-          <li>
-            <a href="#">PEOPLE</a>
-          </li>
-          <li>
-            <a href="#">VIDEO</a>
-          </li>
-          <li>
-            <a href="#">RUNWAY</a>
-          </li>
-          <li>
-            <a href="#">TIME &amp; GEM</a>
-          </li>
-          <li>
-            <a href="#">SHOPPING</a>
-          </li>
+          {
+            gnbText.map(v=>
+              <li>
+                <a href="#" onClick={()=>chgCat(v)}>{v}</a>
+              </li>)
+          }
+          
           <li>
             {/* 돋보기 검색버튼 */}
             <i href="#" className="fi fi-search">
