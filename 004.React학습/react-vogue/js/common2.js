@@ -25,9 +25,9 @@ const comArea = dFn.qsa('.common-area');
 comArea[1].innerHTML = tData.footerArea;
 
 // 모바일 메뉴버튼 요소 추가로 넣기 : .top-area 맨끝추가
-comArea[0].innerHTML += tData.mobtn;
+// comArea[0].innerHTML += tData.mobtn;
 // 모바일 메뉴 박스 추가로 넣기 : #top-area 맨끝추가
-comArea[0].parentElement.innerHTML += tData.mobx;
+// comArea[0].parentElement.innerHTML += tData.mobx;
 
 
 
