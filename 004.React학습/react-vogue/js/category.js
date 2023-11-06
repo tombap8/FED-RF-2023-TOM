@@ -130,17 +130,25 @@ function MainCategory() {
     '\n파라미터:',params,
     '\n키값:',catName);
 
+  // 카테고리 데이터 상태관리변수 만들기!
+  const [nowCat,setNowCat] = React.useState(catName);
+
+
   // 카테고리 해당 데이터 선택하기
   // 카테고리 전체 객체 데이터 중 해당항목 선택
-  const selData = catData[catName];
+  const selData = catData[nowCat];
 
   console.log(selData);
+
+  const chgMenu = () => setNowCat('living');
 
   return(
     <React.Fragment>
       <SubTitle 
         tit={selData['제목']} 
-        menu={selData['메뉴']} />
+        menu={selData['메뉴']}
+        />
+      <button onClick={chgMenu}>변경해!</button>
       <ItemList 
         cname={selData['경로']} 
         tit={selData['타이틀']} />
