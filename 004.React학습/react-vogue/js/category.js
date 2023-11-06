@@ -19,7 +19,7 @@ import setJSTop from "./common2.js";
 *******************************************/
 function MainComponent() {
   // 페이지 랜더링 후 한번만 실행
-  // React.useEffect(setJSTop,[]);
+  React.useEffect(setJSTop,[]);
 
   // 우선 URL로 넘어온 키값을 가져옴!
   // 파라미터 전달값 받기 : 파라미터JS전담객체는?
