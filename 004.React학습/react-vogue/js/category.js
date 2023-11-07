@@ -66,8 +66,8 @@ function MainComponent() {
     // 1. createContext() 를 생성하여 사용할 곳에 import한다!
     // 2. 최상위 컴포넌트에서 컨텍스트 프로바이더를 셋팅한다
     // 3. value 속성에 공유한 변수/함수를 넣어준다!
-    // -> 여러개일 경우 중괄호를 사용하여 셋팅함
-    // -> value={변수} / value={{변수,변수,함수,변수,함수}}
+    // -> 여러개일 경우 중괄호안에 콤마를 사용하여 셋팅함
+    // -> value={{변수}} / value={{변수,변수,함수,변수,함수}}
     // 4. 이것을 하위컴포넌트에서는 useContext(생성컨텍스트명)으로
     // 생성하여 셋팅된 변수/함수를 호출하여 사용한다!
     /* 
@@ -76,7 +76,7 @@ function MainComponent() {
       </생성컨텍스트명.Provider>
     
     */
-    <catContext.Provider value={chgCat}>
+    <catContext.Provider value={{chgCat}}>
       {/* 1.상단영역 */}
       <TopArea />
       {/* <TopArea chgItem={chgCat} />  프롭스펑션다운 */}
