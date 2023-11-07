@@ -83,7 +83,7 @@ function ItemList(props) {
 
   // 태그처리 구분 코드생성 함수
   const makeCode = (data) => {
-    console.log("배열인가?", Array.isArray(data));
+    // console.log("배열인가?", Array.isArray(data));
     // 배열데이터인 경우 ////
     if (Array.isArray(data)) {
       return (

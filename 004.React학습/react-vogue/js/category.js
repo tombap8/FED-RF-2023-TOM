@@ -68,6 +68,7 @@ function MainComponent() {
 } ////////////// MainComponent ////////////////
 
 // 메인 컴포넌트 출력하기 //////
-ReactDOM.render(<MainComponent />, document.querySelector("#root"));
+ReactDOM.render(<MainComponent />, 
+document.querySelector("#root"));
 
 //////////////////////////////////////////////////////
