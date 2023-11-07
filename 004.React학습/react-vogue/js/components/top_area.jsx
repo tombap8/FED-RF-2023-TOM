@@ -1,5 +1,8 @@
 /////////// 상단영역 컴포넌트 /////////////
 
+// 카테고리 컨텍스트 API 파일 불러오기 ///
+import { catContext } from "./components/cat_context.jsx";
+
 // 링크 시스템 JS 가져오기 //////
 import { makeLink } from "./linksys2.js";
 
