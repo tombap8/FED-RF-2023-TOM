@@ -35,7 +35,13 @@ function 이야기(){
             textAlign:'center'
         }}>
             {/* 제목 */}
-            <h1>{맘대로.myVal}</h1>
+            <h1>{맘대로.myVal}
+            {
+                // 제목이 '백두산'또는'후지산'이면 이미지출력
+                (맘대로.myVal=='백두산'||
+                맘대로.myVal=='후지산') && <MyImg />
+            }
+            </h1>
             {/* 이미지 */}
             <img 
                 src={selData.이미지} 
@@ -93,6 +99,17 @@ function 이야기(){
         </div>
     );
 
-}
+} /////////// 이야기 컴포넌트 //////////////
+
+// 컴포넌트 소멸(unmounting)을 알아보기위한 이미지 컴포넌트
+function MyImg(){
+    const isrc = 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L2hpcHBvdW5pY29ybl9tb3VudGFpbl9pY29uX3NpbGhvdWV0dGVfbW9ub3RvbmVfc2ltcGxlX2Flc3RoZXRpY184MDFlMzliNy00MmMwLTQzZjYtYWQyNS04N2IyNjkxYTM3NTgucG5n.png';
+
+    return(
+        <img src={isrc} alt='산이미지'
+        style={{width:'100px'}} />
+    ); ////////// return /////////
+
+} /////////// MyImg 컴포넌트 /////////////////
 
 export default 이야기;
