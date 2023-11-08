@@ -100,9 +100,23 @@ function 이야기(){
     );
 
 } /////////// 이야기 컴포넌트 //////////////
-
 // 컴포넌트 소멸(unmounting)을 알아보기위한 이미지 컴포넌트
 function MyImg(){
+    // 랜더링 후 후크관리구역
+    React.useEffect(()=>{
+        console.log('산이미지가 랜더링되었소?');
+        
+        // 현재 해당컴포넌트가 제거될 경우 관리구역
+        return(()=>{
+            console.log('나는 소멸한다~!ㅠ.ㅠ');
+            // 소멸하여 이미지가 안나오는 산은 
+            // '에베레스트'이므로 메시지를 띄움!
+            alert('에베레스트는 세계에서 가장 높은산이다~!');
+        }); /////////// return /////////
+    
+        // 한번만 실행되도록 옵션[] 빈 대괄호해줌!
+    },[]); //////// useEffect ////////////
+
     const isrc = 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L2hpcHBvdW5pY29ybl9tb3VudGFpbl9pY29uX3NpbGhvdWV0dGVfbW9ub3RvbmVfc2ltcGxlX2Flc3RoZXRpY184MDFlMzliNy00MmMwLTQzZjYtYWQyNS04N2IyNjkxYTM3NTgucG5n.png';
 
     return(
