@@ -8,15 +8,27 @@ function MarkLike() {
   const [lee, setLee] = React.useState(false);
 
   // 상태관리 변수를 업데이트 하는 함수 /////
-  const toggleSon = () => {
+  // useCallback 으로 재사용하도록 메모이제이션하기!!!
+  const toggleSon = React.useCallback(() => {
     setSon(!son);
-  };
-  const toggleDanaka = () => {
+  },[son]);
+  const toggleDanaka = React.useCallback(() => {
     setDanaka(!danaka);
-  };
-  const toggleLee = () => {
+  },[danaka]);
+  const toggleLee = React.useCallback(() => {
     setLee(!lee);
-  };
+  },[lee]);
+
+  // 기존 구현함수코드 /////////
+//   const toggleSon = () => {
+//     setSon(!son);
+//   };
+//   const toggleDanaka = () => {
+//     setDanaka(!danaka);
+//   };
+//   const toggleLee = () => {
+//     setLee(!lee);
+//   };
 
   /*********************************************** 
     [ 리액트 성능 최적화를 위한 문제인식!!! ]
@@ -59,7 +71,13 @@ function MarkLike() {
 } ///////////// MarkLike 컴포넌트 ////////////
 
 /// 좋아요 서브 컴포넌트 /////////
-const ShowLike = ({ name, sts, fn }) => {
+// 호출되는 컴포넌트가 매번 리랜더링되므로
+// 메인 컴포넌트의 useCallback처리된 함수도
+// 매번 새로 그려짐! 그래서 효과가 없다!
+// 따라서 호출되는 서브 컴포넌트를 메모이제이션 처리해야
+// useCallback도 효과를 보게된다!!!->>> 중요!!!
+// 방법: 기존 컴포넌트 함수를 React.memo(컴포넌트) 처리
+const ShowLike = React.memo(({ name, sts, fn }) => {
   // name - 선수명 / sts - 상태변수 / fn - 변경함수
   console.log({ name, sts });
   // 코드리턴 ////////////
@@ -70,7 +88,7 @@ const ShowLike = ({ name, sts, fn }) => {
       </button>
     </div>
   );
-}; ///////// ShowLike 컴포넌트 /////////////
+}); ///////// ShowLike 컴포넌트 /////////////
 
 // 컴포넌트 출력하기 ///////
 ReactDOM.render(<MarkLike />, document.querySelector("#root"));
