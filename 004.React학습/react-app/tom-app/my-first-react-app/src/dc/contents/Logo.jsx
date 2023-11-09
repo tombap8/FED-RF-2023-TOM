@@ -1,6 +1,6 @@
 // DC.com 로고 컴포넌트
 import React from "react";
-import { isrc } from "./data/imgSrc";
+import { isrc } from "../data/imgSrc";
 
 export const Logo = () => {
     // 객체형 스타일 적용
