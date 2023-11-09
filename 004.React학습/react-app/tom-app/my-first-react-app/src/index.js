@@ -1,10 +1,13 @@
 // index.js는 public/index.html 페이지에 적용되는 컴포넌트다!->루트 컴포넌트
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { TopArea } from './dc/TopArea';
+// css 도 불러온다!
+import './index.css';
 
 function App(){
   return(
-    <h1>나는누구?</h1>
+    <TopArea />
   )
 }
 
