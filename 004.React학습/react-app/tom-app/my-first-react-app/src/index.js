@@ -1,16 +1,18 @@
 // index.js는 public/index.html 페이지에 적용되는 컴포넌트다!->루트 컴포넌트
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
-import { TopArea } from './dc/TopArea';
 // css 도 불러온다!
 import './css/index.css';
+import { TopArea } from './dc/TopArea';
 import { MainArea } from './dc/MainArea';
+import { FooterArea } from './dc/FooterArea';
 
 function App(){
   return(
     <>
     <TopArea />
     <MainArea />
+    <FooterArea />
     </>
   )
 }
