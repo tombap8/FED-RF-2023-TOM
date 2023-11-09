@@ -10,9 +10,9 @@ function App() {
   // 그냥 일반적인 객체로 만들면 리랜더링시
   // 변수의 주소가 업데이트됨!
   // -> 이것이 useEffect에서 변경으로 인식!
-  //   const nara = {
-  //     country: isKor ? "한국" : "일본",
-  //   };
+  // const nara = {
+  //   country: isKor ? "한국" : "일본",
+  // };
 
   // 해결방안: useMemo()!!! ///////////////////
   const nara = React.useMemo(() => {
