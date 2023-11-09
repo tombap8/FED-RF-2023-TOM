@@ -3,9 +3,9 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
 // css 도 불러온다!
 import './css/index.css';
-import { TopArea } from './dc/TopArea';
-import { MainArea } from './dc/MainArea';
-import { FooterArea } from './dc/FooterArea';
+import { TopArea } from './dc/layout/TopArea';
+import { MainArea } from './dc/layout/MainArea';
+import { FooterArea } from './dc/layout/FooterArea';
 
 function App(){
   return(

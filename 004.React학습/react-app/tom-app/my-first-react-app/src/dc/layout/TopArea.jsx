@@ -1,7 +1,7 @@
 // 상단영역 컴포넌트
 // GNB 데이터
-import { Logo } from "./Logo";
-import { menu } from "./data/gnb";
+import { Logo } from "../Logo";
+import { menu } from "../data/gnb";
 
 export function TopArea(){
     return(
