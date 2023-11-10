@@ -1,9 +1,23 @@
+
 /* DC.com 전체 레이아웃 CSS */
+/* 나눔바른고딕 */
+@font-face {
+    font-family: nbg;
+    src: url(../../public/fonts/NanumBarunGothicLightSubset.woff) format("woff");
+}
+
+/* Pistilli체 */
+@font-face {
+    font-family: pist;
+    src: url(../../public/fonts/Pistilli-Roman.woff) format("woff");
+}
+
 .top-area{
     background-image: linear-gradient(to bottom,#CCC,#111);
     border: 4px double #000;
 }
 .gnb{
+    font-family: pist;
     width: 800px;
     margin: 0 auto;
 }
@@ -37,6 +51,7 @@
     display: none;
 }
 h1{
+    font-family: nbg;
     text-align: center;
 }
 
