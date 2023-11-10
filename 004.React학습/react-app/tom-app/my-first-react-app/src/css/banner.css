@@ -11,6 +11,12 @@
     padding: 25px;
     color: #fff;
     text-shadow: 0 0 3px #000;
+
+    text-align: left;
+    width: 30%;
+}
+.bantit button{
+    margin-top: 20px;
 }
 /* 배너슬라이드 */
 .slider{
