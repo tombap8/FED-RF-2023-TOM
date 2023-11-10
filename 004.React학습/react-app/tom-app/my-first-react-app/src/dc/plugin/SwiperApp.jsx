@@ -1,19 +1,32 @@
 // 스와이퍼 플러그인 컴포넌트
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
+import 'swiper/css/navigation';
 
-// import './styles.css';
+import "./css/swiper.css";
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Pagination,Navigation,Autoplay } from "swiper/modules";
 
 export function SwiperApp() {
+  // 불러올 이미지 리스트
+  const imgArr = [
+    "dcm28",
+    "dcm29",
+    "dcm30",
+    "dcm31",
+    "dcm32",
+    "dcm10",
+    "dcm11",
+    "dcm12",
+  ];
+
   return (
     <>
       <Swiper
@@ -21,21 +34,24 @@ export function SwiperApp() {
         spaceBetween={30}
         pagination={{
           clickable: true,
-        }}
-        modules={[Pagination]}
+        }}  
+        autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+        }}      
+        loop={true}
+        navigation={true}
+        modules={[Pagination,Navigation,Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {
+            imgArr.map((v,i)=>
+            <SwiperSlide key={i}>
+                <img src={"./images/"+v+".jpg"} alt="list image" />
+            </SwiperSlide>)
+        }        
+       
       </Swiper>
     </>
   );
-}/////////// SwiperApp 컴포넌트 ///////////
-
+} /////////// SwiperApp 컴포넌트 ///////////

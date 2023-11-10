@@ -11,7 +11,8 @@ import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
 
 /// 슬라이드 기능 구현 함수 ///////////
-function slideFn() {
+function slideFn(obj) {
+  console.log(obj)
   // 1. 대상선정
   // (1) 슬라이드
   const sldBox = $(".slider");
@@ -119,7 +120,7 @@ export function Banner(props) {
 
   // 코드리턴 ////////////////
   return (
-    <div className="banner">
+    <div className="banner" onLoad={()=>slideFn(this)}>
       {/* 이동슬라이드 */}
       <ul className="slider">{makeList(selData)}</ul>
 
