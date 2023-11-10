@@ -5,10 +5,13 @@ import { MainArea } from "./MainArea";
 import { TopArea } from "./TopArea";
 
 export function Layout(){
+    return(
     <>
       <TopArea />
       <MainArea />
       <FooterArea />
     </>
+
+    );
 
 } /////////// Layout 컴포넌트 ///////////

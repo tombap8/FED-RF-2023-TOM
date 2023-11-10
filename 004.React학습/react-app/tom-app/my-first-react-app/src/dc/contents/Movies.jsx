@@ -2,12 +2,12 @@
 
 import { Banner } from "./Banner";
 
-export function Movies(props){
+export function Movies(){
     return(
         <>
             <h1 style={{textAlign:'center'}}>
                 무비 페이지</h1>
-            <Banner category={props.cat} />
+            <Banner category="MOVIES" />
         </>
     )
 

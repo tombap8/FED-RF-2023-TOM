@@ -6,31 +6,31 @@ export const menu = [
     },
     {
         txt:"CHARACTERS",
-        link:"/ct",
+        link:"/character",
     },
     {
         txt:"COMICS",
-        link:"/co",
+        link:"/comics",
         sub:[{txt:"Hi",link:"/hi"},{txt:"My",link:"/my"},{txt:"We",link:"/we"},],
     },
     {
         txt:"MOVIES",
-        link:"/mv",
+        link:"/movies",
     },
     {
         txt:"GAMES",
-        link:"/gm",
+        link:"/games",
     },
     {
         txt:"NEWS",
-        link:"/nw",
+        link:"/news",
     },
     {
         txt:"VIDEO",
-        link:"/vd",
+        link:"/video",
     },
     {
         txt:"SWIPER",
-        link:"/sw",
+        link:"/swiperapp",
     },
 ];
