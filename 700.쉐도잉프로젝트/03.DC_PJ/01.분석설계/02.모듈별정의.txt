@@ -1,9 +1,17 @@
 [ 모듈별 정의 : 구조정의/객체화/기능정의 ]
 
 [1] 배너모듈
+    - 모듈명: Banner (JS/CSS)
+    (1) 구조정의 : 
+        Root > 
+    (2) 객체화 :
+        {
 
-[2] 메뉴버튼모듈
-    - 모듈명: MenuBtn (JS/CSS)
+        }
+    (3) 기능정의 :
+
+[2] 섹션소개모듈
+    - 모듈명: SecIntro (JS/CSS)
     (1) 구조정의 :
         Root > section > img Box + title Box + button Box
     (2) 객체화 :
