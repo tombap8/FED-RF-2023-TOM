@@ -23,11 +23,26 @@ export function TopArea() {
         <nav className="gnb">
           <ul>
             <li>
-              <Logo />
+              <Logo logoStyle="top" />
             </li>
             {menu.map((v, i) => (
               <li key={i}>
                 <Link to={v.link}>{v.txt}</Link>
+                {
+                  // 서브메뉴 데이터가 있으면 하위 그리기
+                  v.sub && (
+                    <div className="smenu">
+                      <ol>
+                        {
+                          v.sub.map((v,i)=>
+                          <li key={i}>
+                            <Link to={v.link}>{v.txt}</Link>
+                          </li>)
+                        }
+                      </ol>
+                    </div>
+                  )
+                }
               </li>
             ))}
           </ul>

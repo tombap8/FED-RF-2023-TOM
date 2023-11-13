@@ -1,9 +1,11 @@
 // index.js는 public/index.html 페이지에 적용되는 컴포넌트다!->루트 컴포넌트
+
+// 메인페이지 CSS 불러오기
+import "./css/index.css";
+
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-// css 도 불러온다!
-import "./css/index.css";
 import { Layout } from "./dc/layout/Layout";
 import { Main } from "./dc/contents/Main";
 import { Character } from "./dc/contents/Charactor";
@@ -63,7 +65,7 @@ export default function App() {
           <Route path="games" element={<Games />} />
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video />} />
-          <Route path="swiperapp" element={<SwiperApp />} />
+          <Route path="board" element={<SwiperApp />} />
         </Route>
       </Routes>
     </BrowserRouter>
