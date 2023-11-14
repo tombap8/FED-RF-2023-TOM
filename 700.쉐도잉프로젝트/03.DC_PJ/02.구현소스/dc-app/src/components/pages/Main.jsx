@@ -1,6 +1,6 @@
 // 메인페이지 메인컨텐츠
 
-import { Banner } from "./Banner";
+import { Banner } from "../modules/Banner";
 
 export function Main(){
     // cat 속성으로 메뉴분류 전달
