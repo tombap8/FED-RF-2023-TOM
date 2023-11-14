@@ -9,6 +9,8 @@
 #top-area {
     position: fixed;
     /* 상단고정-보이는화면기준 */
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 9999;
     /* 맨위! */

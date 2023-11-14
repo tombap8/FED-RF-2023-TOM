@@ -21,25 +21,28 @@ function App(){
 
   return(
       <>
-        <TopArea />
-        <button onClick={()=>chgPgName('main')}>
-          메인페이지
-        </button>
-        <button onClick={()=>chgPgName('men')}>
-          남성페이지
-        </button>
-        <button onClick={()=>chgPgName('women')}>
-          여성페이지
-        </button>
-        <button onClick={()=>chgPgName('style')}>
-          스타일페이지
-        </button>
+        <TopArea cat={pgName} />        
         <MainArea page={pgName} />
         <FooterArea />
       </>
   )
 
 } ///////////// App 컴포넌트 /////////////
+
+/* 
+<button onClick={()=>chgPgName('main')}>
+  메인페이지
+</button>
+<button onClick={()=>chgPgName('men')}>
+  남성페이지
+</button>
+<button onClick={()=>chgPgName('women')}>
+  여성페이지
+</button>
+<button onClick={()=>chgPgName('style')}>
+  스타일페이지
+</button>
+*/
 
 // 출력하기 ///////
 const root = createRoot(document.querySelector('#root'));
