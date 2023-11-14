@@ -5,17 +5,17 @@ import { banData } from "../data/banner";
 
 // 배너CSS
 import "../../css/banner.css";
+
 import { useEffect } from "react";
 // 제이쿼리 + 제이쿼리UI
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
 
-
-/// 슬라이드 기능 구현 함수 ///////////
-function slideFn() {
+// 배너 컴포넌트 //
+export function Banner(props) {
+  // category - 카테고리 분류명(베너 데이터선택)  
   
-  
-    // 2. 변수설정
+    // 1. 변수설정 //////////////////
     // (1) 애니시간
     const A_TM = 600;
     // (2) 애니이징
@@ -25,21 +25,19 @@ function slideFn() {
     // (4) 슬라이드순번
     let sNum = 0;
   
-  
-  
-  //// 슬라이드 이동구현 함수 ///////
+  //// 2. 슬라이드 이동구현 함수 ///////
   //// 이벤트 설정 및 함수 호출은 리액트파트에서 처리함!!
   //-> 그래야 다중 컴포넌트 배치시 개별화를 할 수 있다!
   const goSlide = (e) => {
     // 1. 이벤트가 발생한 요소
     const tg = e.target;
-    console.log(tg);
+    // console.log(tg);
     
     // 2. 대상선정
     // (1) 슬라이드 : 클릭된 버튼으로 부터 잡아줌!
     const sldBox = $(tg).siblings(".slider");
-    // (2) 슬라이드 블릿
-    const indic = $(tg).siblings('.indic li');
+    // (2) 슬라이드 블릿 : 형제요소는 .indic임!
+    const indic = $(tg).siblings('.indic').find('li');
     // console.log('블릿:',indic);
     // (3) 슬라이드 개수
     const sCnt = sldBox.find('li').length;
@@ -86,34 +84,27 @@ function slideFn() {
         if(sNum<0) sNum=sCnt-1;
       } /////// else /////////
   
-      // console.log('슬순번:',sNum);
+      console.log('슬순번:',sNum);
   
       // 블릿해당순번 클래스'on'넣기(다른li는 제거)
       indic.eq(sNum).addClass('on')
       .siblings().removeClass('on');
   
   } ////////////// goSlide함수 /////////////
-  
-} //////////// slideFn 함수 ///////////
 
-// 배너 컴포넌트 //
-export function Banner(props) {
-  // category - 카테고리 분류명(베너 데이터선택)
-  
   // 선택데이터
   const selData = banData[props.category];
 
   // 페이지 랜더링후 실행구역
-  useEffect(() => {
-    console.log("랜더링후~!");
-    // 슬라이드 기능구현함수 호출 : 선택데이터가 1초과일때
-    // if(selData.length>1) slideFn();
-  
-  }); ///////// useEffect //////////
+  // useEffect(() => {
+  //   console.log("랜더링후~!");
+  //   // 슬라이드 기능구현함수 호출 : 선택데이터가 1초과일때
+  //   // if(selData.length>1) slideFn();  
+  // }); ///////// useEffect //////////
 
-  // 리스트만들기 함수
+  // 리스트만들기 함수 ///////////
   const makeList = (data) => {
-    console.log(data);
+    // console.log(data);
     return data.map((v, i) => (
       <li key={i}>
         {/* 배너이미지 */}
@@ -123,14 +114,15 @@ export function Banner(props) {
           <h3>{v.tit1}</h3>
           <h2>{v.tit2}</h2>
           <p>{v.cont}</p>
-          <button>{v.btn}</button>
+          {/* 버튼 데이터가 없으면 출력안함 */}
+          {v.btn!=''&&<button>{v.btn}</button>}
         </section>
       </li>
     ));
-  };
+  }; ////////// makeList 함수 //////
 
-
-  // 코드리턴 ////////////////
+  ///////////////////////////////////
+  // 코드리턴 ///////////////////////
   return (
     <div className="banner">
       {/* 이동슬라이드 */}
