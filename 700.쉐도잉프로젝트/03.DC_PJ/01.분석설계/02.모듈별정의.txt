@@ -4,11 +4,15 @@
     - 모듈명: Banner (JS/CSS)
     (1) 구조정의 : 
         Root > div.banner 
-        > ul.slider 
-        > li 
-        > img 
-        + section.bantit 
-        > h2 + p + button    
+        > 
+        (ul.slider 
+            > li 
+            > img 
+            + section.bantit 
+            > h2 + p + button) 
+        
+        + button.abtn 
+        + ol.indic
         
     (2) 객체화 :
         {
