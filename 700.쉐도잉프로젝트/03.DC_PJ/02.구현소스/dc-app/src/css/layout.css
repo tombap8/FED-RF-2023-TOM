@@ -66,20 +66,6 @@ main.cont{
     display: block;
 }
 /* 삼각형모양 디자인 */
-.smenu::before{
-    content: '';
-    position: absolute;
-    top: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-bottom: 16px solid rgba(0, 0, 0, 0.291);
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-
-
-}
 .smenu::after{
     content: '';
     position: absolute;
@@ -91,8 +77,6 @@ main.cont{
     border-bottom: 15px solid #fff;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
-
 }
 
 h1{
