@@ -6,6 +6,9 @@ import { secIntroData } from "../data/sec_intro";
 // 섹션소개모듈용 CSS 불러오기
 import "../../css/sec_intro.css"
 
+// 링크 이동을 위한 라우터 불러오기
+import { Link } from "react-router-dom";
+
 // 구조정의:
 // Root > section > img Box + title Box + button Box
 
@@ -33,9 +36,11 @@ export function SecIntro(){
                     </div>
                     {/* 3. 버튼박스 */}
                     <div className="btnbx">
-                        <button>
-                            {v.btn.toUpperCase()}
-                        </button>
+                        <Link to={v.link}>
+                            <button>
+                                {v.btn.toUpperCase()}
+                            </button>
+                        </Link>
                     </div>
 
                 </div>
