@@ -19,7 +19,7 @@ export function autoScroll() {
   const pg = $(".page");
   // 전체 페이지개수
   const pgcnt = pg.length;
-  // console.log("페이지개수:", pgcnt, pg);
+  console.log("페이지개수:", pgcnt, pg);
   // 광실행금지변수
   let prot = [];
   // 광스크롤금지

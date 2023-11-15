@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     /* 보이는 화면기준 채우기 */
     /* body하위 요소의 높이값 %의 기준이됨! */
     overflow: hidden;
