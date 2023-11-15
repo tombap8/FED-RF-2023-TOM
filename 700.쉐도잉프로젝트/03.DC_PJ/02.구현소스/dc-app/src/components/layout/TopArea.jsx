@@ -66,6 +66,8 @@ export function TopArea() {
               <Link to="/login">LOGIN</Link>
             </li>
           </ul>
+          {/* 모바일용 햄버거 버튼 */}
+          <button className="hambtn" onClick=""></button>
         </nav>
       </header>
     </>
