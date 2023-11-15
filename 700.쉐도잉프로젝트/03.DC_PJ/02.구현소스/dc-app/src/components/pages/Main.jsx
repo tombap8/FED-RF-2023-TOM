@@ -1,12 +1,13 @@
 // 메인페이지 메인컨텐츠
 
 import { Banner } from "../modules/Banner";
+import { SecIntro } from "../modules/SecIntro";
 
 export function Main(){
     // cat 속성으로 메뉴분류 전달
     return(
-        <>
-            <h1 style={{textAlign:'center'}}>메인 페이지</h1>
+        <> 
+            {/* 1. 배너 컴포넌트 */}           
             <Banner 
                 category={
                 "main"+Math.ceil(Math.random()*3)
@@ -15,6 +16,9 @@ export function Main(){
             Math.ceil(Math.random()*3)
             결과적으로 
             'main1'/'main2'/'main3'중 하나를 불러온다! */}
+
+            {/* 2. 섹션소개 컴포넌트 */}
+            <SecIntro />
         </>
     )
 
