@@ -41,11 +41,25 @@ export function MainCont(){
 
             // 왼쪽으로 이동하기
             if(diff>0){
-                slide.animate({left:'-200%'},800)
+                slide.animate({left:'-200%'},
+                800,
+                "easeOutQuint",
+                ()=>{
+                    // 맨앞li 맨뒤로 이동
+                    slide.append(slide.find('li').first())
+                    // left값 -100%(처음값)
+                    .css({left:"-100%"})
+                })
             }
+            // 오른쪽으로 이동하기
             else if(diff<0){
-                slide.animate({left:'0'},800)
-            }
+                slide.animate({left:'0'},800,"easeOutQuint",
+                ()=>{
+                    // 맨뒤li 맨앞으로 이동
+                    slide.prepend(slide.find('li').last())
+                    // left값 -100%(처음값)
+                    .css({left:"-100%"})
+            })
 
 
         }); /////////// dragstop /////////
