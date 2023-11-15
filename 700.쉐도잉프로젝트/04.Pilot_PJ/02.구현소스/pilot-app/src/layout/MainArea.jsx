@@ -5,6 +5,7 @@ import { MenSub } from "../pages/MenSub";
 import { StyleSub } from "../pages/StyleSub";
 import { WomenSub } from "../pages/WomenSub";
 
+// 라우터 역할을 하는 MainArea 컴포넌트 ////////
 export function MainArea(props){
     // props.page 속성값으로 main/men/women/style
     return(

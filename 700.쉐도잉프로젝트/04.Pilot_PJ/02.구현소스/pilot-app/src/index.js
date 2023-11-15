@@ -5,6 +5,7 @@ import { TopArea } from './layout/TopArea';
 import { MainArea } from './layout/MainArea';
 import { FooterArea } from './layout/FooterArea';
 
+
 // 페이지 공통 CSS
 import './css/common.css';
 
