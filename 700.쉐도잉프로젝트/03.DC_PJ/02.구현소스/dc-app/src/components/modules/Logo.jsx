@@ -21,7 +21,8 @@ export const Logo = (props) => {
             width:"45px",
             height:"45px",
             marginRight:"30px",
-            borderRadius:"50%"
+            borderRadius:"50%",
+            cursor:"pointer"
         },
 
         bottom:{
