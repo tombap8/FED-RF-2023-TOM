@@ -9,7 +9,6 @@ export function MainArea(props){
     // props.page 속성값으로 main/men/women/style
     return(
         <>
-            <h1>메인영역</h1>
             {props.page=='main'&&<MainCont />}
             {props.page=='men'&&<MenSub />}
             {props.page=='women'&&<WomenSub />}

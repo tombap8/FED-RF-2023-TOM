@@ -7,7 +7,7 @@ export function MainCont(){
     return(
         <>
             {/* 1. 배너페이지 */}
-            <section className="page" 
+            <section id="ban" className="page" 
             style={{background:'lightblue'}}>
                 <Banner />
             </section>
