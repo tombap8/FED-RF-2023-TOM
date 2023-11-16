@@ -19,7 +19,7 @@ export function autoScroll() {
   const pg = $(".page");
   // 전체 페이지개수
   const pgcnt = pg.length;
-  console.log("페이지개수:", pgcnt, pg);
+  // console.log("페이지개수:", pgcnt, pg);
   // 광실행금지변수
   let prot = [];
   // 광스크롤금지
@@ -82,11 +82,11 @@ export function autoScroll() {
     if (prot[0]) return;
     chkCrazy(0);
 
-    console.log("휠~~~~~~!");
+    // console.log("휠~~~~~~!");
 
     // 1.휠방향 알아내기
     let delta = e.wheelDelta;
-    console.log(delta);
+    // console.log(delta);
 
     // 2. 방향에 따른 페이지번호 증감
     if (delta < 0) {
@@ -100,7 +100,7 @@ export function autoScroll() {
       // 첫페이지번호에 고정!
     } //// else ////
 
-    console.log(pno);
+    // console.log(pno);
 
     // 3. 스크롤 이동하기 + 메뉴에 클래스"on"넣기
     movePg();
