@@ -3,7 +3,7 @@
 /* 전체박스 */
 .vidbox{
     position: relative;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 /* 속박스 */
 .vidbox>div{
@@ -53,12 +53,12 @@
     margin-top: 20px;
 }
 
-
+/* 미디어쿼리 */
 @media screen and (max-width:1024px) {
-    .vidbox{
+    .vidbox>div{
         flex-direction: column;        
     }
-    .vidbox>div{
+    .vidbox>div>div{
         width: 100%;
     }
 

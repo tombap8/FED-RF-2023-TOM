@@ -21,8 +21,9 @@ export function Main(){
             {/* 2. 섹션소개 컴포넌트 */}
             <SecIntro />
 
-            {/* 3. 비디오소개 컴포넌트 */}
-            <VidIntro />
+            {/* 3. 비디오소개 컴포넌트:
+            cat - 페이지분류명 / cls - 클래스명('on'/'off') */}
+            <VidIntro cat="main" cls="off" />
         </>
     )
 

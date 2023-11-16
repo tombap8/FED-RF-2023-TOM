@@ -3,6 +3,9 @@
 // 비디오소개 데이터 가져오기
 import { vidIntroData } from "../data/vid_intro";
 
+// 비디오소개 CSS 불러오기
+import "../../css/vid_intro.css";
+
 /* 구조정의: 
 Root> section.vidbox > div 
 > video box(>video+img) 
