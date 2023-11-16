@@ -58,7 +58,36 @@
     </style>
     <script src="js/jquery-1.8.1.min.js"></script>
     <script src="js/jquery-ui-1.10.4.min.js"></script>
+    <script>
+        $(()=>{
+            // 세개의 박스중 가장위의 박스가 이벤트 대상(#cover)
+            $("#cover").mousemove(function(e){
     
+                // 1. 마우스 커서 이동시 x축값
+                let posx = e.offsetX;
+                // let posx = e.pageX;
+                // e.pageX 는 보이는 화면 왼쪽끝 기준위치
+                // e.offsetX 부모박스 내부에서의 왼쪽끝 기준위치
+                console.log(posx);
+
+                // 2. 움직일 대상: #mask
+                $("#mask").css({
+                    left: -posx*1.2 + "px"
+                })
+    
+            }) ///////////// mousemove ////////////
+
+            // 마우스 아웃시 원래위치로!
+            .mouseout(function(){
+                // 움직일 대상: #mask
+                $("#mask").css({
+                    left: "-546px"
+                })
+    
+            }); ///////////// mouseout ////////////
+
+        });
+    </script>
 </head>
 
 <body>
