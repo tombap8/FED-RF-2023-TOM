@@ -59,11 +59,11 @@ export const banData = {
     ],
     "COMICS":[
         {
-            "src":"./images/dcm3.jpg",
-            "tit1":"GOTHAM GAZETTE",
-            "tit2":"WORLDS TRAVELER",
-            "cont":`Barry who? The Flash isn't the only DC hero this summer who's been traveling through the multiverse.`,
-            "btn":"New Places, Familiar Faces",
+            "src":"./images/banner/comics/comics_ban1.jpg",
+            "tit1":"DC Profile",
+            "tit2":"GET IN ON THE OUTSIDERS",
+            "cont":`The Outsiders are back with a new Luke Fox-led team and a much different mission than before.`,
+            "btn":"Here's What You Need to Know",
         },
     ],
     "MOVIES":[

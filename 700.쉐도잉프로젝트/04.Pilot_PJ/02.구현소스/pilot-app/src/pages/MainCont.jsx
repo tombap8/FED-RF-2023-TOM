@@ -17,7 +17,7 @@ export function MainCont() {
     // 랜더링 후 한번만 적용!
     console.log("랜더링OK!");
     //자동스크롤 호출
-    // autoScroll();
+    autoScroll();
 
     // 드래그 기능넣기
     // 대상: .slide
