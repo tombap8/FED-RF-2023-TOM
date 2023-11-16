@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,6 +17,7 @@ import "./css/swiper.css";
 import { Pagination,Navigation,Autoplay } from "swiper/modules";
 
 export function SwiperApp() {
+  const myRef = useRef(null);
   // 불러올 이미지 리스트
   const imgArr = [
     "dcm28",
@@ -29,9 +30,19 @@ export function SwiperApp() {
     "dcm12",
   ];
 
+  let [sts,setSts] = useState(1);
+  const stopPlay = () => {
+    console.log('ㅎㅎ');
+    sts?
+    myRef.current.swiper.autoplay.stop():
+    myRef.current.swiper.autoplay.start();
+    sts?setSts(0):setSts(1);
+  }
+
   return (
     <>
       <Swiper
+        ref={myRef}
         slidesPerView={3}
         spaceBetween={30}
         pagination={{
@@ -53,8 +64,10 @@ export function SwiperApp() {
                 <img src={"./images/"+v+".jpg"} alt="list image" />
             </SwiperSlide>)
         }        
-       
       </Swiper>
+       <button 
+       style={{position:'relative',top:'20px',zIndex:10}} 
+       onClick={stopPlay}>{sts?'멈춤':'재생'}</button>
     </>
   );
 } /////////// SwiperApp 컴포넌트 ///////////
