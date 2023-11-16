@@ -14,7 +14,7 @@ export function dragBanner() {
   const cover = $(".cover");
   // 블릿
   const indic = $(".bindic li");
-//   console.log(indic);
+  //   console.log(indic);
 
   // 드래그 기능넣기
   slide.draggable({ axis: "x" });
@@ -38,8 +38,7 @@ export function dragBanner() {
 
     // 왼쪽으로 이동하기 ///////////////
     if (diff > gap) {
-      slide.animate({ left: "-200%" }, 
-      800, "easeOutQuint", () => {
+      slide.animate({ left: "-200%" }, 800, "easeOutQuint", () => {
         // 맨앞li 맨뒤로 이동
         slide
           .append(slide.find("li").first())
@@ -53,8 +52,7 @@ export function dragBanner() {
     }
     // 오른쪽으로 이동하기 //////////////
     else if (diff < -gap) {
-      slide.animate({ left: "0" }, 
-      800, "easeOutQuint", () => {
+      slide.animate({ left: "0" }, 800, "easeOutQuint", () => {
         // 맨뒤li 맨앞으로 이동
         slide
           .prepend(slide.find("li").last())
@@ -75,23 +73,20 @@ export function dragBanner() {
     }
 
     // 블릿변경함수호출
-    chgIndic(diff,gap)
-    
-
+    chgIndic(diff, gap);
   }); /////////// dragstop /////////
 
-
   //////// 블릿변경함수 /////////////
-  const chgIndic = (diff,gap) => {
+  const chgIndic = (diff, gap) => {
     // 블릿변경하기
     // 현재 슬라이드 순번 알아오기
     // -> 클래스명 'ban번호'로 되어 있음
     // 마지막 순번만 잘라서 1을빼면 순번임!
     // 선택순번 : gap값을 기준하여
-    let selSeq = (diff > gap ? 2 : (diff < -gap ? 0 : 1));
+    let selSeq = diff > gap ? 2 : diff < -gap ? 0 : 1;
     // diff가 양수면 2, diff가 음수면 0, 모두아니면 1
     // 선택순번의 클래스
-    let selCls = slide.find('li').eq(selSeq).attr('class');
+    let selCls = slide.find("li").eq(selSeq).attr("class");
     // console.log('클래스명:',selCls);
 
     // 해당 슬라이드 순번 : 클래스명의 숫자 - 1
@@ -102,27 +97,63 @@ export function dragBanner() {
     // console.log('블릿순번:',indicSeq);
 
     // 해당순번 블릿 클래스 'on'넣기/ 나머지는 빼기
-    indic.eq(indicSeq).addClass('on')
-    .siblings().removeClass('on');
-
-
+    indic.eq(indicSeq).addClass("on").siblings().removeClass("on");
   }; ////////// chgIndic 함수 ///////
 
+  ///////////////////////////////////////
+  ////// 각 배너 등장 타이틀 셋팅 /////////
+  ///////////////////////////////////////
+  let banTxt = {
+    ban1: "Men's Season<br>Collection",
+    ban2: "2023 Special<br>Collection",
+    ban3: "GongYoo<br>Collection",
+    ban4: "T-Shirt<br>Collection",
+    ban5: "Shoes<br>Collection",
+    ban6: "Wind Jacket<br>Collection",
+  }; ///////////// banTxt객체 //////////////
 
   ///////// 배너 글자등장 함수 /////////
   const showTit = () => {
-      
-      // 항상 이동후 배너는 1번째 순번이 주인공!
-      const currBan = slide.find('li').eq(1);
-      
-      // 현재 배너 클래스 읽기
-      const currCls = currBan.attr('class');
+    // 항상 이동후 배너는 1번째 순번이 주인공!
+    const currBan = slide.find("li").eq(1);
 
-      console.log('글자등장~~~!',currCls);
+    // 현재 배너 클래스 읽기
+    const currCls = currBan.attr("class");
 
+    console.log("글자등장~~~!", banTxt[currCls]);
 
+    // 기존h2태그는 삭제
+    $('.btit').remove();
+
+    // 타이틀을 현재 배너에 추가함
+    currBan.append(`<h2 class="btit">${banTxt[currCls]}</h2>`);
+
+    // 타이틀 left위치 변수처리
+    // ban2, ban3만 오른쪽위치
+    let leftVal = "30%";
+    if (currCls === "ban2" || currCls === "ban3") leftVal = "70%";
+
+    // css/ animate 코드
+    currBan.find('.btit')
+    .css({        
+        position: "absolute",
+        top: "55%", // 약간아래
+        left: leftVal,
+        transform: "translate(-50%,-50%)",
+        font: "bold 4.5vmax Verdana",
+        color: "#fff",
+        textShadow: "1px 1px 3px #777",
+        whiteSpace: "nowrap",
+        opacity: 0, // 처음에 투명
+    })
+    .animate({
+        top:"50%",
+        opacity: 1
+    },1000,'easeInOutQuart');
   }; ///////////// showTit 함수 /////////
 
 
+  // 첫배너 등장호출
+  setTimeout(showTit, 1000);
 
 } /////////// dragBanner 함수 //////////////
