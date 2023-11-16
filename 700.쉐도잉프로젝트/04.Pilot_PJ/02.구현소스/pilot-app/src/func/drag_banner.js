@@ -36,9 +36,10 @@ export function dragBanner() {
     let gap = winW / 10;
     // console.log("드래그 멈춤!", pos, winW, diff);
 
-    // 왼쪽으로 이동하기
+    // 왼쪽으로 이동하기 ///////////////
     if (diff > gap) {
-      slide.animate({ left: "-200%" }, 800, "easeOutQuint", () => {
+      slide.animate({ left: "-200%" }, 
+      800, "easeOutQuint", () => {
         // 맨앞li 맨뒤로 이동
         slide
           .append(slide.find("li").first())
@@ -46,11 +47,14 @@ export function dragBanner() {
           .css({ left: "-100%" });
         // 커버제거
         cover.hide();
+        // 글자등장함수 호출
+        showTit();
       });
     }
-    // 오른쪽으로 이동하기
+    // 오른쪽으로 이동하기 //////////////
     else if (diff < -gap) {
-      slide.animate({ left: "0" }, 800, "easeOutQuint", () => {
+      slide.animate({ left: "0" }, 
+      800, "easeOutQuint", () => {
         // 맨뒤li 맨앞으로 이동
         slide
           .prepend(slide.find("li").last())
@@ -58,6 +62,8 @@ export function dragBanner() {
           .css({ left: "-100%" });
         // 커버제거
         cover.hide();
+        // 글자등장함수 호출
+        showTit();
       });
     }
     // 제자리로 ////
@@ -101,6 +107,21 @@ export function dragBanner() {
 
 
   }; ////////// chgIndic 함수 ///////
+
+
+  ///////// 배너 글자등장 함수 /////////
+  const showTit = () => {
+      
+      // 항상 이동후 배너는 1번째 순번이 주인공!
+      const currBan = slide.find('li').eq(1);
+      
+      // 현재 배너 클래스 읽기
+      const currCls = currBan.attr('class');
+
+      console.log('글자등장~~~!',currCls);
+
+
+  }; ///////////// showTit 함수 /////////
 
 
 
