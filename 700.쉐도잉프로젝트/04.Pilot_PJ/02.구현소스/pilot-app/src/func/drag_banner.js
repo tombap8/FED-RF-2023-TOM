@@ -120,7 +120,7 @@ export function dragBanner() {
     // 현재 배너 클래스 읽기
     const currCls = currBan.attr("class");
 
-    console.log("글자등장~~~!", banTxt[currCls]);
+    // console.log("글자등장~~~!", banTxt[currCls]);
 
     // 기존h2태그는 삭제
     $('.btit').remove();
