@@ -10,14 +10,18 @@ section.vidswbox >
             h2.ifrtit + iframe + button.cbtn )
 */
 
+// 비디오스와이프 CSS 불러오기
+import "../../css/vid_swipe.css"
+
 export function VidSwipe(){
 
+    // 리턴코드 //////////////////
     return(
         <>
         {/* 모듈코드 */}
         <section className="vidswbox">
             {/* 1. 모듈타이틀 */}
-            <h2 className="tit"></h2>
+            <h2 className="tit">비디오스와이프</h2>
             {/* 2. 스와퍼 컴포넌트 */}
 
             {/* 3. 비디오 재생창 */}
@@ -33,8 +37,6 @@ export function VidSwipe(){
                 </div>
             </section>
         </section>
-
-        section.vidswbox>h2.tit+(section.vidbx>div.playvid>(h2.ifrtit + iframe + button))
         </>
     );
 
