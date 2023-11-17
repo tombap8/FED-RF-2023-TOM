@@ -78,7 +78,12 @@
 
     (1) 구조정의 :
         스와이퍼모듈 + 비디오재생모듈
-        
+        Root>
+        section.vidswbox >
+            ( h2.tit + <SwiperVid />) +
+            ( section.vidbx > 
+                div.playvid >
+                    h2.ifrtit + iframe + button )
     (2) 객체화 :
         {
             isrc:"",

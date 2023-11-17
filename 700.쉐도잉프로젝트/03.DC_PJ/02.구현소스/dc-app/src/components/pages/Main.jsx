@@ -3,6 +3,7 @@
 import { Banner } from "../modules/Banner";
 import { SecIntro } from "../modules/SecIntro";
 import { VidIntro } from "../modules/VidIntro";
+import { VidSwipe } from "../modules/VidSwipe";
 
 export function Main(){
     // cat 속성으로 메뉴분류 전달
@@ -24,6 +25,9 @@ export function Main(){
             {/* 3. 비디오소개 컴포넌트:
             cat - 페이지분류명 / cls - 클래스명('on'/'off') */}
             <VidIntro cat="main" cls="off" />
+
+            {/* 4. 비디오스와이프 컴포넌트 */}
+            <VidSwipe />
         </>
     )
 
