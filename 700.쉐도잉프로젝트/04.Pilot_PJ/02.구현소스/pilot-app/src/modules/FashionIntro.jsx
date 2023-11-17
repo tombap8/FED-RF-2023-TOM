@@ -10,14 +10,12 @@ export function FashionIntro(props) {
     <div id={props.cat} className="fs-page">
       <ul className="pgc">
         <li className="imgc">
-          <img src="./images/men02.png" alt="공유다!" />
+          <img src="" alt="" />
         </li>
         <li className="txtc">
           <h2>
             <a href="#">
-              MEN'S
-              <br />
-              ESSENTIALS
+              
             </a>
           </h2>
         </li>

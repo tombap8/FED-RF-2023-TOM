@@ -2,18 +2,19 @@
 
 export const fsData = {
     men:{
-        isrc:"",
-        ialt:"",
-        tit:""
+        isrc:"./images/men02.png",
+        ialt:"공유다!",
+        tit:`MEN'S<br />ESSENTIALS`
     },
     women:{
-        isrc:"",
-        ialt:"",
-        tit:""
+        isrc:"./images/women01.png",
+        ialt:"여자",
+        tit:`WOMEN'S<br />ESSENTIALS`
     },
+    // 스타일 데이터는 *로 구분하여 2개를 사용함!
     style:{
-        isrc:"",
-        ialt:"",
-        tit:""
+        isrc:"./images/style02.png*./images/style03.png",
+        ialt:"여자스타일*공유스타일",
+        tit:`MEN'S<br />STYLE*WOMEN'S<br />STYLE`
     },
 }; //////////// fsData ////////////
