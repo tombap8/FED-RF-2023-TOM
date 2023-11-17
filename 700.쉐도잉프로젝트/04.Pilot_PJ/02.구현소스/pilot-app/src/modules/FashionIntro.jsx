@@ -12,20 +12,64 @@ export function FashionIntro(props) {
   // 선택데이터
   const selData = fsData[props.cat];
 
+  // 새로적용할 스타일객체
+  const newStyle = {};
+  // 'women'일 경우 값을 셋팅
+  if (props.cat == "women") newStyle.flexDirection = "row-reverse";
+
   return (
     <div id={props.cat} className="fs-page">
-      <ul className="pgc">
+      <ul
+        className="pgc"
+        style={newStyle}
+        //   style={props.cat=='women'?{flexDirection:'row-reverse'}:{}}
+      >
         <li className="imgc">
-          <img src={selData.isrc} alt={selData.ialt} />
+          <img
+            src={
+              props.cat == "style" ? 
+              selData.isrc[0] : selData.isrc
+            }
+            alt={
+              props.cat == "style" ? 
+              selData.ialt[0] : selData.ialt
+            }
+          />
         </li>
         <li className="txtc">
-          <h2>
-            <a href="#">
-            {selData.tit.split('^')[0]} <br />
-            {selData.tit.split('^')[1]}
-            </a>
-          </h2>
+          {props.cat != "style" && (
+            <h2>
+              <a href="#">
+                {selData.tit[0]} <br />
+                {selData.tit[1]}
+              </a>
+            </h2>
+          )}
+          {props.cat == "style" && (
+            <>
+              <h2 className="tm">
+                <a href="#">
+                  {selData.tit[0][0]} <br />
+                  {selData.tit[0][1]}
+                </a>
+              </h2>
+              <h2 className="tw">
+                <a href="#">
+                  {selData.tit[1][0]} <br />
+                  {selData.tit[1][1]}
+                </a>
+              </h2>
+            </>
+          )}
         </li>
+        {props.cat == "style" && (
+          <li className="imgc">
+            <img
+              src={selData.isrc[1]}
+              alt={selData.ialt[1]}
+            />
+          </li>
+        )}
       </ul>
     </div>
   );

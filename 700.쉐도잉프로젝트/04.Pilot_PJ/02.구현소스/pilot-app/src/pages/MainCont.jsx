@@ -25,14 +25,18 @@ export function MainCont() {
 
   return (
     <>
-      {/* 1. 배너페이지 */}
+      {/* 1. 배너 페이지 */}
       <section id="ban" className="page" style={{ background: "lightblue" }}>
         <Banner />
       </section>
+      {/* 2. 남성패션 페이지 */}
       <section className="page">
         <FashionIntro cat="men" />
       </section>
-      <section className="page" style={{ background: "lightgreen" }}></section>
+      {/* 3. 여성패션 페이지 */}
+      <section className="page">
+        <FashionIntro cat="women" />
+      </section>
       <section
         className="page"
         style={{ background: "lightseagreen" }}
