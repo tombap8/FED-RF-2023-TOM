@@ -35,7 +35,7 @@ export const swVidData = [
     },
     {
         isrc:"./images/vidswp/vidswp4.jpg",
-        vsrc:"https://www.youtube.com/embed/QX4X1UBd8U4",
+        vsrc:"https://www.youtube.com/embed/eaAIHt4fV54",
         cat:"Exclusive Clip",
         tit:`Gotham Knights - "Art Burglary"`,
     },

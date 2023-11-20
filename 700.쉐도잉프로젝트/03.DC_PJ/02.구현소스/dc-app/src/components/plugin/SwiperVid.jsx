@@ -56,6 +56,8 @@ export function SwiperVid() {
     cbtn.click(()=>{
       // 전체박스 사라지기
       vbx.fadeOut(300);
+      // 기존 동영상 플레이 멈추기(src삭제)
+      ifr.attr('src','');
     }); //// click ////////
 
   }; ////////// showVid 함수 ////////////////
@@ -64,11 +66,26 @@ export function SwiperVid() {
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        // slidesPerView={4}
         spaceBetween={20}
         navigation={true}
         /* 사용할 모듈을 여기에 적용시킨다 */
         modules={[Navigation]}
+        // 스와이퍼 사이즈별 슬라이드수 변경!
+        breakpoints={{
+          200: {
+              slidesPerView: 1,
+          },
+          500: {
+              slidesPerView: 2,
+          },
+          1000: {
+              slidesPerView: 3,
+          },
+          1200: {
+              slidesPerView: 4,
+          },
+        }}
         className="mySwiper"
       >
         {

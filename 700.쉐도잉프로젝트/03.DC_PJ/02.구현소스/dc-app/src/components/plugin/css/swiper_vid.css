@@ -95,10 +95,32 @@
   display: none;
 }
 
+/* 기존 화살표 디자인 크기변경 */
+.swiper-button-prev::after,
+.swiper-button-next::after{
+    font-size: 25px;
+}
+/* 오버시 화살표색 변경 */
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after{
+    color: #000;
+}
+
 @media screen and (max-width: 1200px) {
   /* 동영상타이틀 */
   .vid-tit h3 {
     font-size: 14px;
     margin-top: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  /* 동영상크기 */
+  .play-vid {
+    width: 90vw;
+  }
+  /* 버튼위치 */
+  .play-vid button.cbtn{
+    top: -150px;
+    right: 0;
   }
 }
