@@ -1,9 +1,13 @@
 // 메인 페이지 JS - index.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM, { createRoot } from 'react-dom/client';
 import { TopArea } from './layout/TopArea';
 import { MainArea } from './layout/MainArea';
 import { FooterArea } from './layout/FooterArea';
+
+// 제이쿼리 
+import $ from 'jquery';
+import 'jquery-ui-dist/jquery-ui';
 
 
 // 페이지 공통 CSS
@@ -20,6 +24,25 @@ function App(){
     setPgName(txt);
   }; ///////// chgPgName 함수 //////
 
+  // 랜더링 후 실행구역 ////////////
+  useEffect(()=>{
+    $('.gnb li').click(function(){
+      // 순번변수
+      let idx = $(this).index();
+      console.log('나야나~!',idx);
+
+      // 페이지 이동
+      $("html,body").animate({
+        scrollTop:
+        ($(window).height()*idx)+"px"
+      },800,"easeInOutQuint")
+    })
+
+
+  }); ////////// useEffect //////////////
+
+
+  // 리턴코드 //////////////////////////
   return(
       <>
         <TopArea cat={pgName} />        
