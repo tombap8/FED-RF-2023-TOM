@@ -26,7 +26,7 @@ function App(){
 
   // 랜더링 후 실행구역 ////////////
   useEffect(()=>{
-    $('.gnb li').click(function(){
+    $('.gnb li, .indic li').click(function(){
       // 순번변수
       let idx = $(this).index();
       console.log('나야나~!',idx);
@@ -36,7 +36,16 @@ function App(){
         scrollTop:
         ($(window).height()*idx)+"px"
       },800,"easeInOutQuint")
-    })
+      ////// animate /////
+
+      // 클릭된 메뉴에 class 'on' 넣기
+      $('.gnb li').eq(idx).addClass('on')
+      .siblings().removeClass('on');
+      
+      $('.indic li').eq(idx).addClass('on')
+      .siblings().removeClass('on');
+    }); ///// click //////////
+
 
 
   }); ////////// useEffect //////////////
