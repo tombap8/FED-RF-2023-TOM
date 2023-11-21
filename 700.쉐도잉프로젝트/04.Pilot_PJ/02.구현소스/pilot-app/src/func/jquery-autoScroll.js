@@ -167,6 +167,51 @@ export function autoScroll() {
     .siblings().removeClass('on');
   }; //////////// addOn함수 ////////////
 
+  /******************************************** 
+        [ 페이지 등장액션 요소 적용하기 ]
+        1. 이벤트 적용시점 : 페이지도착후(애니후콜백) 
+        2. 이벤트 대상 : 각 페이지 동일
+            (1) .page .imgc - 이미지파트
+            (2) .page .txtc h2 a - 타이틀파트
+        3. 변경내용 :
+            [스타일시트 아래 항목 변경]
+            ((변경값))
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: 1s 1s; -> 타이틀만 지연시간
+            ((고정값))
+            transform-origin: left top;
+            display: inline-block; -> a요소만
+    ********************************************/
+
+
+  /*************************************** 
+    함수명 : initSet
+    기능 : 등장요소 처음상태 셋팅
+  ***************************************/
+ function initSet(){
+  // 1. 초기화하기
+
+  // 대상: .imgc
+  $('.imgc').css({
+    transform:'rotate(45deg)',
+    transformOrigin:'left top',
+    opacity: 0,
+    transition: '1s ease-in-out'
+  }); /////////// css //////////
+
+  // 대상: .txtc a
+  $('.txtc a').css({
+    transform:'rotate(45deg)',
+    transformOrigin:'left top',
+    opacity: 0,
+    transition: '1s ease-in-out 1s',
+    
+  }); /////////// css //////////
+
+
+ } /////////// initSet 함수 ///////////////
+
 
 
 
