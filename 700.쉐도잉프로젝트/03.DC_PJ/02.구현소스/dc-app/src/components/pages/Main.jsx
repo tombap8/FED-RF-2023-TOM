@@ -1,6 +1,7 @@
 // 메인페이지 메인컨텐츠
 
 import { Banner } from "../modules/Banner";
+import { CatList } from "../modules/CatList";
 import { SecIntro } from "../modules/SecIntro";
 import { VidIntro } from "../modules/VidIntro";
 import { VidSwipe } from "../modules/VidSwipe";
@@ -28,6 +29,9 @@ export function Main(){
 
             {/* 4. 비디오스와이프 컴포넌트 */}
             <VidSwipe tit="LATEST TRAILERS, CLIPS & MORE" />
+
+            {/* 5. 캐리터 리스트 컴포넌트 */}
+            <CatList />
         </>
     )
 
