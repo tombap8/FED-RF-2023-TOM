@@ -7,9 +7,12 @@ import { VidSwipe } from "../modules/VidSwipe";
 export function Movies(){
     return(
         <>
+            {/* 1. 무비페이지 배너 */}
             <Banner category="MOVIES" />
+            {/* 2. 무비 페이지 비디오소개 */}
             <VidIntro cat="MOVIES" cls="on" />
-            <VidSwipe tit="TRAILERS, CLIPS AND MORE" />
+            {/* 3. 무비 페이지 비디오스와이프 */}
+            <VidSwipe cat="movies" />
         </>
     )
 
