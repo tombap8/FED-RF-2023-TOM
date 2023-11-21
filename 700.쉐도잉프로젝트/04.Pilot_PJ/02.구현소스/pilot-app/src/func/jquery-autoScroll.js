@@ -206,11 +206,14 @@ export function autoScroll() {
     transformOrigin:'left top',
     opacity: 0,
     transition: '1s ease-in-out 1s',
-    
+    display: 'inline-block'
   }); /////////// css //////////
 
 
  } /////////// initSet 함수 ///////////////
+
+ // 최초호출!
+ initSet();
 
 
 
