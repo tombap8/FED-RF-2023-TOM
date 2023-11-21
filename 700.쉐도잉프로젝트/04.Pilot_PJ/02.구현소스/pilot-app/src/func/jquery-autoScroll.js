@@ -124,13 +124,12 @@ export function autoScroll() {
     // 대상: html,body -> 두개를 모두 잡아야 공통적으로 적용됨!
     $("html,body")
       .stop()
-      .animate(
-        {
-          scrollTop: $(window).height() * pno + "px",
-        },
-        700,
-        "easeInOutQuint"
-      );
+      .animate({
+          scrollTop: 
+          $(window).height() * pno + "px",
+        }, 700,"easeInOutQuint",actPage
+        // 애니메이션 후 actPage함수를 호출!
+      ); ///// animate //////
 
       // 해당 선택메뉴에 on 넣기
       addOn();
@@ -192,20 +191,20 @@ export function autoScroll() {
  function initSet(){
   // 1. 초기화하기
 
-  // 대상: .imgc
+  // 대상: 이미지 - .imgc
   $('.imgc').css({
     transform:'rotate(45deg)',
-    transformOrigin:'left top',
+    transformOrigin:'-10% -10%',
     opacity: 0,
     transition: '1s ease-in-out'
   }); /////////// css //////////
 
-  // 대상: .txtc a
+  // 대상: 글자 - .txtc a
   $('.txtc a').css({
     transform:'rotate(45deg)',
-    transformOrigin:'left top',
+    transformOrigin:'-100% -100%',
     opacity: 0,
-    transition: '1s ease-in-out 1s',
+    transition: '1s ease-in-out .5s',
     display: 'inline-block'
   }); /////////// css //////////
 
@@ -214,6 +213,28 @@ export function autoScroll() {
 
  // 최초호출!
  initSet();
+
+ /***************************************** 
+  함수명: actPage
+  기능: 페이지 도착후 등장 애니메이션
+ *****************************************/
+function actPage(){
+  console.log('액숀~!!!', pno);
+
+  // pno가 0 또는 4가 아니면 작동!
+  if(pno != 0 || pno != 4){
+    // 대상: 해당순번 .page 아래 .imgc 와 .txtc a
+    $('.page').eq(pno).find('.imgc,.txtc a')
+    .css({
+      transform: 'rotate(0deg)',
+      opacity: 1
+    }); ///////// css /////////
+  } ///////// if //////////////
+
+  // 첫페이지일때 등장요소 초기화!
+  if(pno==0) initSet();
+
+} ///////// actPage 함수 //////////////////
 
 
 
