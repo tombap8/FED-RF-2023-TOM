@@ -39,15 +39,14 @@ function App(){
 
       // 3. 비디오 재생/멈춤 : 대상 - .bgm
       // get(0)은 비디오컬렉션임! -> 제이쿼리용
-      const vid = $('.bgm').get(0)
+      const vid = $('.bgm').get(0);
       vid.paused? vid.play() : vid.pause();
       // console.log(vid.paused);
       // paused 속성 : 동영상 멈춤일때 true 리턴
       // play() 메서드 : 동영상 재생 메서드
       // pause() 메서드 : 동영상 정지 메서드
 
-    })
-
+    }); //////// click ////////
   }); ////////// useEffect //////////////
 
 
