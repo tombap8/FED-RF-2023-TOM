@@ -9,9 +9,9 @@ export function Movies(){
         <>
             {/* 1. 무비페이지 배너 */}
             <Banner category="MOVIES" />
-            {/* 2. 무비 페이지 비디오소개 */}
+            {/* 2. 무비페이지 비디오소개 */}
             <VidIntro cat="MOVIES" cls="on" />
-            {/* 3. 무비 페이지 비디오스와이프 */}
+            {/* 3. 무비페이지 비디오스와이프 */}
             <VidSwipe cat="movies" />
         </>
     )
