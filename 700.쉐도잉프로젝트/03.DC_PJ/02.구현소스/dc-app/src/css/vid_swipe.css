@@ -60,3 +60,9 @@
     font-size: 50px;
     cursor: pointer;
 }
+
+@media screen and (max-width:1200px){
+    .sw-inbox2 {
+        aspect-ratio: 1 / 1.7;
+    }
+}
