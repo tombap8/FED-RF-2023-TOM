@@ -14,15 +14,15 @@ export const menu = [
         sub:[
             {
                 txt: "LATEST COMICS",
-                link: "/co1",
+                link: "/comics",
             },
             {
                 txt: "DC UNIVERSE INFINITE",
-                link: "/co2",
+                link: "/comics",
             },
             {
                 txt: "ALL COMICS SERIES",
-                link: "/co3",
+                link: "/comics",
             },
         ],
     },
