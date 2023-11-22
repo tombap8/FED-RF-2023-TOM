@@ -4,6 +4,9 @@
 import { Banner } from "../modules/Banner";
 import { useLocation } from "react-router-dom";
 
+// 캐릭터 상세 페이지 CSS불러오기
+import "../../css/cat_detail.css";
+
 export function CatDetail(){
     // 라우터 호출시 전달한 값을 받는다!
     // 라우터 전달값을 받기위해 useLocation 생성하기!
@@ -17,12 +20,29 @@ export function CatDetail(){
     // 3. 캐릭터 명세
     const facts= loc.state.facts;
 
-    console.log(cname,cdesc,facts);
+    // console.log(cname,cdesc,facts);
 
     return(
         <>
             {/* 1. 배너 컴포넌트 */}
             <Banner category={cname} />
+            {/* 2. 상세정보박스 */}
+            <div className="detail">
+                {/* 2-1. 캐릭터 설명박스 */}
+                <div className="desc-box">
+                    <h2>{cname}</h2>
+                    <div className="cdesc">
+                        <p>{cdesc}</p>
+                    </div>
+                </div>
+                {/* 2-2. 캐릭터 명세 */}
+                <div className="facts">
+                    <div>
+                        <h3>CHARACTER FACTS</h3>
+                        <p>{facts}</p>
+                    </div>
+                </div>
+            </div>
         
         </>
     )
