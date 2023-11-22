@@ -15,6 +15,7 @@ import { Games } from "./components/pages/Games";
 import { News } from "./components/pages/News";
 import { Video } from "./components/pages/Video";
 import { SwiperApp } from "./components/plugin/SwiperApp";
+import { CatDetail } from "./components/pages/CatDetail";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video />} />
           <Route path="board" element={<SwiperApp />} />
+          <Route path="detail" element={<CatDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
