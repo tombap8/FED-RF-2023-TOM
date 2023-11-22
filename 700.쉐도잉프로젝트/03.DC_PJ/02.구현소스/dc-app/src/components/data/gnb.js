@@ -32,15 +32,15 @@ export const menu = [
         sub:[
             {
                 txt: "DC MOVIES",
-                link: "/mv",
+                link: "/movies",
             },
             {
                 txt: "DC SERIES",
-                link: "/mv",
+                link: "/series",
             },
             {
                 txt: "DC ON HBO MAX",
-                link: "/mv",
+                link: "/movies",
             },
         ]
     },
