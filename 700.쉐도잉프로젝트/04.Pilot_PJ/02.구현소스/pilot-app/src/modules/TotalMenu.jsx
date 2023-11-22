@@ -15,7 +15,7 @@ export function TotalMenu() {
     myCon.chgPgName(txt);
     // 전체박스 숨기기
     document.querySelector('.ham').click();
-  } //////// goPage 메서드 ///////////
+  }; //////// goPage 메서드 ///////////
 
   // 코드 리턴 //////////////////////
   return (
