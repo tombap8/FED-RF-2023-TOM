@@ -14,8 +14,7 @@ export function TotalMenu() {
   const goPage = (txt) => {
     myCon.chgPgName(txt);
     // 전체박스 숨기기
-    document.querySelector('.mbox')
-    .style.display = 'none';
+    document.querySelector('.ham').click();
   } //////// goPage 메서드 ///////////
 
   // 코드 리턴 //////////////////////
@@ -49,7 +48,8 @@ export function TotalMenu() {
           </dl>
           <dl>
             <dt>
-              <a href="#">WOMEN</a>
+              <a href="#" 
+              onClick={()=>goPage('women')}>WOMEN</a>
             </dt>
             <dd>
               <a href="#">T-SHIRT</a>
@@ -66,7 +66,8 @@ export function TotalMenu() {
           </dl>
           <dl>
             <dt>
-              <a href="#">STYLE</a>
+              <a href="#" 
+              onClick={()=>goPage('style')}>STYLE</a>
             </dt>
             <dd>
               <a href="#">COLLECTION</a>
