@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { Banner } from "../modules/Banner";
 
 // 자동스크롤 JS 불러오기
-import { autoScroll } from "../func/jquery-autoScroll";
+// import { autoScroll } from "../func/jquery-autoScroll";
+
 // 드래그배너 JS 불러오기
 import { dragBanner } from "../func/drag_banner";
 import { FashionIntro } from "../modules/FashionIntro";
@@ -16,7 +17,7 @@ export function MainCont() {
     // console.log("랜더링OK!");
 
     //자동스크롤 호출
-    autoScroll();
+    // autoScroll();
 
     //드래그배너 호출
     dragBanner();

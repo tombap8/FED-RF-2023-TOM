@@ -4,6 +4,9 @@ import ReactDOM, { createRoot } from 'react-dom/client';
 // 컨텍스트 API 불러오기
 import { pCon } from './modules/PilotContext';
 
+// 자동스크롤 JS 불러오기
+import {wheelFn} from './func/jquery-autoScroll';
+
 import { TopArea } from './layout/TopArea';
 import { MainArea } from './layout/MainArea';
 import { FooterArea } from './layout/FooterArea';
@@ -53,6 +56,21 @@ function App(){
     
     // 랜더링구역 한번만 실행 : 옵션 []
   },[]); ////////// useEffect //////////////
+
+
+  // 자동스크롤 적용 이벤트 설정하기
+  useEffect(()=>{
+
+    if(pgName=='main'){
+      // 휠이벤트 적용하기
+      window.addEventListener('wheel',wheelFn);
+    }
+    else{
+      // 휠이벤트 해제하기
+      window.removeEventListener('wheel',wheelFn);
+    }
+
+  }); ///////// useEffect ////////////////
 
 
   // 리턴코드 //////////////////////////

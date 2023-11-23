@@ -9,7 +9,7 @@ require('jquery-ui-dist/jquery-ui');
 require('jquery-ui-touch-punch/jquery.ui.touch-punch');
 
 
-export function autoScroll() {
+// export function autoScroll() {
   /****************************************** 
     대상 변수할당하기
   ******************************************/
@@ -45,7 +45,7 @@ export function autoScroll() {
   ******************************************/
   // 윈도우 휠이벤트 발생시
   // $(window).on("wheel", wheelFn); -> 제이쿼리 이벤트X
-  window.addEventListener('wheel',wheelFn);
+  // window.addEventListener('wheel',wheelFn);
 
   // 키보드 이벤트발생시 업데이트
   // 1. Page Up(33) / Up Arrow (38)
@@ -244,10 +244,17 @@ $('#logo a').click(e=>{
 }); //////// click ////////
 
 
+// 이벤트 설정함수 ///////
+function evtFn(){
+
+} /////////// evtFn 함수 /////////////////
+
+
+
+// 사용할 함수만 내보냄!
+export {wheelFn, evtFn}
 
 
 
 
-
-
-} ///////////// autoScroll 함수 //////////
+// } ///////////// autoScroll 함수 //////////
