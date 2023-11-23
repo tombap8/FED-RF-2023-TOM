@@ -14,6 +14,8 @@ require("jquery-ui-touch-punch/jquery.ui.touch-punch");
   ******************************************/
 // 전체 페이지번호
 let pno = 0;
+// 전체 페이지번호 초기화함수
+const zeroPno = () => {pno=0};
 // 페이지 요소
 let pg;
 // 전체 페이지개수
@@ -42,6 +44,7 @@ $(()=>{
   indic = $(".indic li");
   // 각 페이지별 등장요소
   minfo = $(".minfo");
+  
 
 }); /////////// load ///////////////
 
@@ -183,9 +186,6 @@ function initSet() {
   }); /////////// css //////////
 } /////////// initSet 함수 ///////////////
 
-// 최초호출!
-initSet();
-
 /***************************************** 
   함수명: actPage
   기능: 페이지 도착후 등장 애니메이션
@@ -254,6 +254,6 @@ function evtFn() {
 } /////////// evtFn 함수 /////////////////
 
 // 사용할 함수만 내보냄!
-export { wheelFn, evtFn };
+export { wheelFn, evtFn, initSet, zeroPno };
 
 // } ///////////// autoScroll 함수 //////////
