@@ -1,5 +1,5 @@
 // 메인 페이지 JS - index.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ReactDOM, { createRoot } from 'react-dom/client';
 // 컨텍스트 API 불러오기
 import { pCon } from './modules/PilotContext';
@@ -53,6 +53,11 @@ function App(){
     
     // 랜더링구역 한번만 실행 : 옵션 []
   },[]); ////////// useEffect //////////////
+
+  // 처음 로딩시 스크롤 상단이동 //////
+  useLayoutEffect(()=>{
+    window.scrollTo(0,0);
+  }); ///// useLayoutEffect //////////
 
 
 

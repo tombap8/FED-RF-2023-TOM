@@ -53,6 +53,8 @@ export function MainCont() {
       // 메인 페이지에만 사용되는 로고클릭시 상단이동 이벤트 해제
       // 제이쿼리로 특정요소에 걸어준경우 해제는 off(이벤트명)
       $("#logo a").off('click');
+      $(".gnb li").off('click').removeClass('on');
+      $(document).off('keydown');
 
 
     });////////// 소멸자 return //////
