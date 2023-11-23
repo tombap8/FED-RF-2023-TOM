@@ -31,7 +31,7 @@ export function Fashion(props){
         <>
             {/* 1. 배너영역 */}
             <section id="ban" className="page">
-                <SwiperApp />
+                <SwiperApp cat={myCon.pgName} />
             </section>
             {/* 2. 신상품영역 */}
             <section id="c1" className="cont c1 men"></section>

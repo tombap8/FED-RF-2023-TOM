@@ -52,7 +52,7 @@ $(()=>{
 // window.addEventListener('wheel',wheelFn);
 
 // 새로고침시 스크롤위치 캐싱 변경하기(맨위로!)
-// $("html,body").animate({ scrollTop: "0px" });
+$("html,body").animate({ scrollTop: "0px" });
 
 /**************************************** 
     함수명: wheelFn
