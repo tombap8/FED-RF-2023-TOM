@@ -11,8 +11,11 @@ export function Searching(props) {
   // 검색리스트 만들기 함수
   const schList = () => {};
 
-  // 엔터키 반응 함수 
+  // 엔터키 반응 함수
   const enterKey = () => {};
+
+  // 체크박스검색 함수 ////////
+  const chkSearch = () => {};
 
   // 리턴 코드 ////////////////////////
   return (
@@ -38,7 +41,63 @@ export function Searching(props) {
               onKeyUp={enterKey}
             />
           </div>
-          
+          {/* 1-2. 체크박스구역 */}
+          <div className="chkbx">
+            <ul>
+              <li>
+                {/* 타이틀 */}
+                <h2>
+                  ALIGNMENT
+                  <span className="spbtn">＋</span>
+                </h2>
+                {/* 체크박스리스트 */}
+                <ol>
+                  <li>
+                    Heroes
+                    {/* 숨긴 체크박스 */}
+                    <input 
+                        type="checkbox" 
+                        id="hero" 
+                        className="chkhdn"
+                        onChange={chkSearch} 
+                    />
+                    {/* 디자인노출 라벨 */}
+                    <label
+                    htmlFor="hero"
+                    className="chklb"></label>
+                  </li>
+                  <li>
+                    It's Complicated
+                    {/* 숨긴 체크박스 */}
+                    <input 
+                        type="checkbox" 
+                        id="hero" 
+                        className="chkhdn"
+                        onChange={chkSearch} 
+                    />
+                    {/* 디자인노출 라벨 */}
+                    <label
+                    htmlFor="hero"
+                    className="chklb"></label>
+                  </li>
+                  <li>
+                    Villains
+                    {/* 숨긴 체크박스 */}
+                    <input 
+                        type="checkbox" 
+                        id="hero" 
+                        className="chkhdn"
+                        onChange={chkSearch} 
+                    />
+                    {/* 디자인노출 라벨 */}
+                    <label
+                    htmlFor="hero"
+                    className="chklb"></label>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </div>
         </div>
         {/* 2. 결과리스트박스 */}
         <div className="listbx"></div>
