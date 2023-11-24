@@ -71,13 +71,13 @@ export function Searching(props) {
                     {/* 숨긴 체크박스 */}
                     <input 
                         type="checkbox" 
-                        id="hero" 
+                        id="comp" 
                         className="chkhdn"
                         onChange={chkSearch} 
                     />
                     {/* 디자인노출 라벨 */}
                     <label
-                    htmlFor="hero"
+                    htmlFor="comp"
                     className="chklb"></label>
                   </li>
                   <li>
@@ -85,13 +85,13 @@ export function Searching(props) {
                     {/* 숨긴 체크박스 */}
                     <input 
                         type="checkbox" 
-                        id="hero" 
+                        id="villain" 
                         className="chkhdn"
                         onChange={chkSearch} 
                     />
                     {/* 디자인노출 라벨 */}
                     <label
-                    htmlFor="hero"
+                    htmlFor="villain"
                     className="chklb"></label>
                   </li>
                 </ol>
