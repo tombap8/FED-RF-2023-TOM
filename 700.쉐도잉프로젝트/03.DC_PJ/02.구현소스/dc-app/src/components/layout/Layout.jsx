@@ -20,8 +20,8 @@ export function Layout() {
   // 라우터 이동객체설정
   const goNav = useNavigate();
 
-  // 라우터 이동함수
-  const chgPage = (txt) => goNav(txt);
+  // 라우터 이동함수 : pgName - 페이지이름 / param - 전달값
+  const chgPage = (pgName,param) => goNav(pgName,param);
 
   /********************************** 
    [컨텍스트 API 공유값 설정]
