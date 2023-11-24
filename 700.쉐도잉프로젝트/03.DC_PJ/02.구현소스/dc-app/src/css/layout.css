@@ -130,7 +130,8 @@ input:focus{
 .info>ul>li:last-child{
     font-weight: bold;
 }
-.bmenu{
+/* 하단 ol>li>a 링크박스 */
+ol.bmenu{
     font-family: 'Ubuntu Condensed', sans-serif;
     display: flex;
     justify-content: center;
