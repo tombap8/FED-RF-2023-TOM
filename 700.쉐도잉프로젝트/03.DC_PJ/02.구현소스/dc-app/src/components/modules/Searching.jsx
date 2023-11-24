@@ -3,6 +3,7 @@
 // 폰트어썸 불러오기
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SchCatList } from "./SchCatList";
 
 export function Searching(props) {
   // props.kword - 검색어전달
@@ -16,6 +17,9 @@ export function Searching(props) {
 
   // 체크박스검색 함수 ////////
   const chkSearch = () => {};
+
+  // 리스트 정렬 함수 /////////
+  const sortList = () => {};
 
   // 리턴 코드 ////////////////////////
   return (
@@ -100,7 +104,26 @@ export function Searching(props) {
           </div>
         </div>
         {/* 2. 결과리스트박스 */}
-        <div className="listbx"></div>
+        <div className="listbx">
+            {/* 2-1. 결과 타이틀 */}
+            <h2 className="restit">
+                BROWSE CHARACTERS (total)
+            </h2>
+            {/* 2-2. 정렬선택박스 */}
+            <aside className="sortby">
+                <select 
+                    name="sel" 
+                    id="sel" 
+                    className="sel"
+                    onChange={sortList}
+                >
+                    <option value="0">A-Z</option>
+                    <option value="1">Z-A</option>
+                </select>
+            </aside>
+            {/* 2-3. 캐릭터 리스트 컴포넌트 */}
+            <SchCatList />
+        </div>
       </section>
     </>
   );

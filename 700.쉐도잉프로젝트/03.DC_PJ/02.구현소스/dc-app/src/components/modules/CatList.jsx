@@ -18,7 +18,7 @@ Root >
                 div.cat-tit2 > h3
 */
 
-export function CatList(){
+export function CatList(props){
 
     return(
         <>
