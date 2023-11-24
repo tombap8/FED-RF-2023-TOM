@@ -5,6 +5,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SchCatList } from "./SchCatList";
 
+// 검색모듈용 CSS 불러오기
+import "../../css/searching.css";
+
 export function Searching(props) {
   // props.kword - 검색어전달
   console.log("전달검색어:", props.kword);
@@ -110,7 +113,7 @@ export function Searching(props) {
                 BROWSE CHARACTERS (total)
             </h2>
             {/* 2-2. 정렬선택박스 */}
-            <aside className="sortby">
+            <aside className="sortbx">
                 <select 
                     name="sel" 
                     id="sel" 
