@@ -46,6 +46,7 @@ export function Searching(props) {
               type="text"
               placeholder="Filter by Keyword"
               onKeyUp={enterKey}
+              value={props.kword}
             />
           </div>
           {/* 1-2. 체크박스구역 */}
@@ -125,7 +126,7 @@ export function Searching(props) {
                 </select>
             </aside>
             {/* 2-3. 캐릭터 리스트 컴포넌트 */}
-            <SchCatList />
+            <SchCatList word={props.kword} />
         </div>
       </section>
     </>

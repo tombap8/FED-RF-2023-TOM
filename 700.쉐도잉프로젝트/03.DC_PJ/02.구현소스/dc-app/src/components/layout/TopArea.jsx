@@ -46,7 +46,12 @@ export function TopArea() {
       let txt = $(e.target).val().trim();
       console.log(txt);
       // 빈값이 아니면 검색함수 호출(검색어전달!)
-      if(txt!='') goSearch(txt);
+      if(txt!=''){         
+        // 입력창 비우기 + 부모박스 닫기
+        $(e.target).val('').parent().hide();
+        // 검색 보내기
+        goSearch(txt);
+      } //// if ///////
     } ///////// if ///////
   }; ////////// enterKey 함수 ////////////
 
