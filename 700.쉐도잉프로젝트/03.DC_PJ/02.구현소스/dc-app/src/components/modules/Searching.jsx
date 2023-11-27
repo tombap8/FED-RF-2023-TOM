@@ -16,6 +16,27 @@ export function Searching(props) {
   // props.kword - 검색어전달
   console.log("전달검색어:", props.kword);
 
+  ////////// 후크 상태관리 변수 ////////////
+  // 1. 검색어 후크상태변수 : 초기값은 전달된 검색어
+  const [kword,setKword] = useState(props.kword)
+  // 2. 출력개수 후크상태변수
+  const [cntNum,setCntNum] = useState(0);
+  //////////////////////////////////////////
+
+  // 검색어 업데이트 함수 /////
+  const chgKword = txt => setKword(txt);
+
+  // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
+  if(props.kword!=kword) chgKword(props.kword);
+
+
+  // 리스트 개수변경함수 ///////
+  const chgCnt = (num) => {
+    // 후크 상태개수변수 업데이트하기
+    setCntNum(num);
+    // $('.cntNum').text(num);
+  }; ///////// showCnt 함수 ///////
+
   // 검색리스트 만들기 함수
   const schList = () => {};
 
@@ -28,15 +49,6 @@ export function Searching(props) {
   // 리스트 정렬 함수 /////////
   const sortList = () => {};
 
-  // 출력개수 후크 데이터로 셋팅!
-  const [cntNum,setCntNum] = useState(0);
-
-  // 리스트 개수변경함수 ///////
-  const chgCnt = (num) => {
-    // 후크 상태개수변수 업데이트하기
-    setCntNum(num);
-    // $('.cntNum').text(num);
-  }; ///////// showCnt 함수 ///////
 
   // 리턴 코드 ////////////////////////
   return (
@@ -60,7 +72,7 @@ export function Searching(props) {
               type="text"
               placeholder="Filter by Keyword"
               onKeyUp={enterKey}
-              defaultValue={props.kword}
+              defaultValue={kword}
               /* input요소에서 리액트 value속성은 
               defaultValue를 사용한다! */
             />
