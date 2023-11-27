@@ -27,7 +27,7 @@ export function Searching(props) {
   const chgKword = txt => setKword(txt);
 
   // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
-  if(props.kword!=kword) chgKword(props.kword);
+  // if(props.kword!=kword) chgKword(props.kword);
 
 
   // 리스트 개수변경함수 ///////
@@ -41,7 +41,14 @@ export function Searching(props) {
   const schList = () => {};
 
   // 엔터키 반응 함수
-  const enterKey = () => {};
+  const enterKey = (e) => {
+    // 엔터키일때만 반영함
+    if(e.key == 'Enter'){
+      let txt = $(e.target).val();
+      chgKword(txt)
+      console.log(txt,e.key);
+    }
+  };
 
   // 체크박스검색 함수 ////////
   const chkSearch = () => {};
@@ -153,11 +160,11 @@ export function Searching(props) {
                     <option value="1">Z-A</option>
                 </select>
             </aside>
-            {/* 2-3. 캐릭터 리스트 컴포넌트 */}
+            {/* 2-3. 캐릭터 리스트 컴포넌트 : 
+            검색어를 후크상태변수로 연결! -> 데이터변경에 반영 */}
             <SchCatList 
-            word={props.kword} 
-            chgCntFn={chgCnt}
-            se
+              word={kword} 
+              chgCntFn={chgCnt}
             />
         </div>
       </section>
