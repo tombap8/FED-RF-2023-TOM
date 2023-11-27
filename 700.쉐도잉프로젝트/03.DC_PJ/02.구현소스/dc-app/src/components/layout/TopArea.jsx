@@ -50,7 +50,9 @@ export const TopArea = memo(({chgPageFn}) => {
 
   // 검색 관련 함수들 ////////////
   // 1. 검색창 보이기함수
-  const showSearch = () => {
+  const showSearch = (e) => {
+    // 0. a요소 기본기능막기(리랜더링도 막는다!)
+    e.preventDefault();
     // 1. 검색창 보이기
     $('.searchingGnb').show();
     // 2. 입력창에 포커스 보내기
