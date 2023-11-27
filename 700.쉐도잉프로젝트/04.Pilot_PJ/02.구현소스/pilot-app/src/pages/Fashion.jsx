@@ -11,6 +11,7 @@ import { pCon } from "../modules/PilotContext";
 
 // 제이쿼리
 import $ from 'jquery';
+import { SinSang } from "../modules/SinSang";
 
 export function Fashion(props){
     // 컨텍스트 API 사용!
@@ -34,7 +35,9 @@ export function Fashion(props){
                 <SwiperApp cat={myCon.pgName} />
             </section>
             {/* 2. 신상품영역 */}
-            <section id="c1" className="cont c1 men"></section>
+            <section id="c1" className={"cont c1 "+myCon.pgName}>
+                <SinSang cat={myCon.pgName} />
+            </section>
             {/* 2.5. 상세보기박스 */}
             <div className="bgbx"></div>
             {/* 3. 패럴랙스 영역 */}
