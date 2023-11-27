@@ -5,8 +5,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SchCatList } from "./SchCatList";
 
+// 제이쿼리
+import $ from "jquery";
+
 // 검색모듈용 CSS 불러오기
 import "../../css/searching.css";
+import { useState } from "react";
 
 export function Searching(props) {
   // props.kword - 검색어전달
@@ -23,6 +27,16 @@ export function Searching(props) {
 
   // 리스트 정렬 함수 /////////
   const sortList = () => {};
+
+  // 출력개수 후크 데이터로 셋팅!
+  const [cntNum,setCntNum] = useState(0);
+
+  // 리스트 개수변경함수 ///////
+  const chgCnt = (num) => {
+    // 후크 상태개수변수 업데이트하기
+    setCntNum(num);
+    // $('.cntNum').text(num);
+  }; ///////// showCnt 함수 ///////
 
   // 리턴 코드 ////////////////////////
   return (
@@ -113,7 +127,7 @@ export function Searching(props) {
         <div className="listbx">
             {/* 2-1. 결과 타이틀 */}
             <h2 className="restit">
-                BROWSE CHARACTERS (total)
+                BROWSE CHARACTERS ({cntNum})
             </h2>
             {/* 2-2. 정렬선택박스 */}
             <aside className="sortbx">
@@ -128,7 +142,11 @@ export function Searching(props) {
                 </select>
             </aside>
             {/* 2-3. 캐릭터 리스트 컴포넌트 */}
-            <SchCatList word={props.kword} />
+            <SchCatList 
+            word={props.kword} 
+            chgCntFn={chgCnt}
+            se
+            />
         </div>
       </section>
     </>
