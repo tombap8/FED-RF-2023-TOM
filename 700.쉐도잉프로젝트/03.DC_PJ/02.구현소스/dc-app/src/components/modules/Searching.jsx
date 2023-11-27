@@ -46,7 +46,9 @@ export function Searching(props) {
               type="text"
               placeholder="Filter by Keyword"
               onKeyUp={enterKey}
-              value={props.kword}
+              defaultValue={props.kword}
+              /* input요소에서 리액트 value속성은 
+              defaultValue를 사용한다! */
             />
           </div>
           {/* 1-2. 체크박스구역 */}
