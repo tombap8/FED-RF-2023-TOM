@@ -62,7 +62,7 @@ export function SinSang(props) {
     )
     // 등장애니
     .animate({
-      top: '90%',
+      top: '110%',
       opacity: 1,
     },300)
 
@@ -113,7 +113,7 @@ export function SinSang(props) {
   // 랜더링 후 실행구역 //////
   useEffect(()=>{
     // 대상선정: .flist
-    
+
     // 신상리스트이동함수 호출!
     flowList($('.flist'))
 
@@ -130,8 +130,8 @@ export function SinSang(props) {
         <button>전체리스트</button>
       </h2>
       <div className="flowbx"
-      onMouseOver={()=>callSts=0} 
-      onMouseOut={()=>{
+      onMouseEnter={()=>callSts=0} 
+      onMouseLeave={()=>{
         callSts=1;flowList($('.flist'));}}>
         <ul className="flist">{makeList()}</ul>
       </div>
