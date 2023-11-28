@@ -11,7 +11,7 @@ import $ from "jquery";
 // 검색모듈용 CSS 불러오기
 import "../../css/searching.css";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useRef } from "react";
 
 export function Searching(props) {
   // props.kword - 검색어전달
@@ -24,18 +24,28 @@ export function Searching(props) {
   const [cntNum,setCntNum] = useState(0);
   //////////////////////////////////////////
 
+  // 검색 케이스 구분변수(useRef->값유지!)
+  const allow = useRef(1);
+  // 1-상단검색허용 , 0-상단검색불허용
+  // useRef 변수 사용은 변수명.current
+
   // 검색어 업데이트 함수 /////
   const chgKword = txt => setKword(txt);
 
-  useEffect(()=>{
+  // 상단검색 초기실행함수 ///////
+  const initFn = () => {
     // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
     if(props.kword!=kword){ 
       chgKword(props.kword);
       // 모듈검색 input창에 같은 값 넣어주기
       $('#schin').val(props.kword);
     } ///////// if ///////////
+  } ///////// initFn 함수 ///////////
 
-  },[kword]);
+  // 만약 useRef변수값이 1이면(true면) initFn실행!
+  if(allow.current) initFn();
+
+  console.log('allow값:',allow.current);
 
 
   // 리스트 개수변경함수 ///////
