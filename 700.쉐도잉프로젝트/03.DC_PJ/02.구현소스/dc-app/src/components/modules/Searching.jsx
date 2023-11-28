@@ -12,6 +12,7 @@ import $ from "jquery";
 import "../../css/searching.css";
 import { useState } from "react";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 export function Searching(props) {
   // props.kword - 검색어전달
@@ -28,6 +29,15 @@ export function Searching(props) {
   const allow = useRef(1);
   // 1-상단검색허용 , 0-상단검색불허용
   // useRef 변수 사용은 변수명.current
+
+  // 폰트어썸을 참조하는 테스트용 참조변수
+  const xx = useRef(null);
+  useEffect(()=>{
+    //xx가 폰트어썸 컴포넌트를 담은후!
+    console.log(xx);
+    // 테두리디자인 줘봐요!
+    xx.current.style.outline = '5px dotted orange';
+  }); //// useEffect ///
 
   // 검색어 업데이트 함수 /////
   const chgKword = txt => setKword(txt);
@@ -99,6 +109,7 @@ export function Searching(props) {
               className="schbtn"
               title="Open search"
               onClick={schList}
+              ref={xx}
             />
             {/* 입력창 */}
             <input
