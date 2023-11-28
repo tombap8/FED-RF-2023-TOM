@@ -11,6 +11,7 @@ import $ from "jquery";
 // 검색모듈용 CSS 불러오기
 import "../../css/searching.css";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export function Searching(props) {
   // props.kword - 검색어전달
@@ -26,8 +27,15 @@ export function Searching(props) {
   // 검색어 업데이트 함수 /////
   const chgKword = txt => setKword(txt);
 
-  // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
-  // if(props.kword!=kword) chgKword(props.kword);
+  useEffect(()=>{
+    // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
+    if(props.kword!=kword){ 
+      chgKword(props.kword);
+      // 모듈검색 input창에 같은 값 넣어주기
+      $('#schin').val(props.kword);
+    } ///////// if ///////////
+
+  },[kword]);
 
 
   // 리스트 개수변경함수 ///////
@@ -85,7 +93,12 @@ export function Searching(props) {
               onKeyUp={enterKey}
               defaultValue={kword}
               /* input요소에서 리액트 value속성은 
-              defaultValue를 사용한다! */
+              defaultValue를 사용한다! -> 처음입력값 
+              _________________________________
+              value속성을 쓰면 동적변경이 이루어지고
+              사용자가 입력하지 못하도록 readOnly(읽기전용)
+              설정이 되어 있어야한다! */
+              
             />
           </div>
           {/* 1-2. 체크박스구역 */}
