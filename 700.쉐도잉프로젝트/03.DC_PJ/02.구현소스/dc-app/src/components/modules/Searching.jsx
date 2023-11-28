@@ -64,6 +64,11 @@ export function Searching(props) {
 
   // 엔터키 반응 함수
   const enterKey = (e) => {
+    // 상단키워드 검색막기
+    allow.current = 0;
+    // 잠시후 상태해제
+    setTimeout(()=>allow.current=1,100);
+
     // 엔터키일때만 반영함
     if(e.key == 'Enter'){
       let txt = $(e.target).val();
