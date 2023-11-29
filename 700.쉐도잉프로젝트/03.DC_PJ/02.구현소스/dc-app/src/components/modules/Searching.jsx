@@ -92,12 +92,28 @@ export function Searching(props) {
     // $('.cntNum').text(num);
   }; ///////// showCnt 함수 ///////
 
-  // 검색리스트 만들기 함수
+  //////////////////////////
+  // 검색리스트 만들기 함수 //
+  //////////////////////////
   const schList = (e) => {
-    // console.log(e.currentTarget);
-    // 아이콘 다음요소가 input 이고 그 값을 읽어와서 변경
-    chgKword($(e.currentTarget).next().val())
-  };
+    // 1. 검색어 읽어오기
+    let keyword = $('#schin').val();
+
+    // 2. 데이터 검색하기
+    const newList = catListData.filter(v=>{
+      if(v.cname.toLowerCase().indexOf(keyword)!=-1) 
+      return true;
+    }); //////////// filter ////////////////////
+
+    console.log('검색결과:',newList);
+
+    // 3. 검색결과 리스트 업데이트하기
+    // 데이터 상태관리변수 업데이트!
+    setSelData([newList,2]);
+    // 검색건수 상태관리변수 업데이트!
+    setCnt(newList.length);
+    
+  }; ///////////// schList 함수 /////////////
 
   // 엔터키 반응 함수
   const enterKey = (e) => {
@@ -111,8 +127,11 @@ export function Searching(props) {
       let txt = $(e.target).val();
       chgKword(txt)
       console.log(txt,e.key);
-    }
-  };
+
+      // 검색리스트만들기 함수 호출
+      schList();
+    } /////// if //////
+  }; ////// enterKey 함수 //////
 
   // 체크박스검색 함수 ////////
   const chkSearch = () => {};
@@ -231,11 +250,8 @@ export function Searching(props) {
                 </select>
             </aside>
             {/* 2-3. 캐릭터 리스트 컴포넌트 : 
-            검색어를 후크상태변수로 연결! -> 데이터변경에 반영 */}
-            <SchCatList 
-              word={kword} 
-              chgCntFn={chgCnt}
-            />
+            데이터 상태변수 중 첫번째값만 보냄 */}
+            <SchCatList dt={selData[0]} total={cnt} />
         </div>
       </section>
     </>
