@@ -135,8 +135,18 @@ export function Searching(props) {
     } /////// if //////
   }; ////// enterKey 함수 //////
 
-  // 체크박스검색 함수 ////////
-  const chkSearch = () => {};
+  ////////////////////////
+  // 체크박스검색 함수 ////
+  ////////////////////////
+  const chkSearch = (e) => {
+    // 1. 체크박스 아이디 : 검색항목의 값(alignment)
+    const cid = e.target.id;
+
+    // 2. 체크박스 체크여부 : checked (true/false)
+    const chked = e.target.checked;
+    console.log('아이디:',cid,chked);
+
+  }; ////////////// chkSearch 함수 ///////////
 
   //////////////////////
   // 리스트 정렬 함수 ///
