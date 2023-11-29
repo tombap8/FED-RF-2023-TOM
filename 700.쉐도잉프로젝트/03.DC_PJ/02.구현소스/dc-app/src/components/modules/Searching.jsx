@@ -160,7 +160,7 @@ export function Searching(props) {
     // 5. 체크박스 체크유무에 따른 분기
     // (1) 체크박스가 true일대 해당 검색어로 검색하기
     if(chked){
-      // 현재데이터 변수에 담기
+      // 현재데이터 변수에 담기(수정예정!)
       const nowList = catListData.filter(v=>{
         if(v.alignment == cid) return true;
       }); /////////// filter //////////
@@ -188,6 +188,14 @@ export function Searching(props) {
           // 주의! 배열을 지우면 전체개수가 1씩줄어든다!
           // 반드시 줄임처리할것!
           i--;
+
+          // 참고테스트 : 배열삭제 delete는 무엇인가?
+          // delete배열지우기는 값만지우고 주소는 남는다!
+          // 지운후 값은 undefined로 남아진다!
+          // delete temp[i];
+          // -> 리스트처리시 에러발생함!
+          // 여기서는 splice를 반드시 사용할것!
+
         } //////// if ///////
       } ///////// for ////////
 
