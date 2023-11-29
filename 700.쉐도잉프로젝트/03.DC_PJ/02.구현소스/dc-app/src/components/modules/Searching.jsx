@@ -77,7 +77,7 @@ export function Searching(props) {
       // 모듈검색 input창에 같은 값 넣어주기
       $('#schin').val(props.kword);
       // 검색리스트 만들기 함수 호출
-      schList();
+      // schList();
     } ///////// if ///////////
   } ///////// initFn 함수 ///////////
 
@@ -145,6 +145,27 @@ export function Searching(props) {
     // 1. 선택옵션값 : 0 - 오름차순 / 1 - 내림차순
     const optVal = e.target.value;
     console.log('선택옵션:',optVal);
+
+    // 2. 재정렬할 데이터를 가져온다 : selData 첫번째값
+    let temp = selData[0];
+
+    // 3. 옵션에 따른 정렬반영하기
+    temp.sort((a,b)=>{
+      if(optVal == 1){ // 내림차순
+        return a.cname==b.cname?0:a.cname>b.cname?-1:1;
+      } ////// if ////
+      else if(optVal == 0){ // 오름차순
+        return a.cname==b.cname?0:a.cname>b.cname?1:-1;
+      } ////// else if ////
+    }); /////// sort /////////
+
+    console.log('정렬후:',temp,optVal);
+
+    // 4. 데이터 정렬후 정렬변경 반영하기
+    // -> 데이터 변경만 하면 정렬이 반영안됨!
+    // setSelData([배열데이터,정렬상태값])
+    setSelData([temp,Number(optVal)]);
+    
   }; ////////////// sortList 함수 //////////
 
 
