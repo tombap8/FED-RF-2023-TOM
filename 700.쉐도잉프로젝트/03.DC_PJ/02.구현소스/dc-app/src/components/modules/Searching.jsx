@@ -76,6 +76,8 @@ export function Searching(props) {
       chgKword(props.kword);
       // 모듈검색 input창에 같은 값 넣어주기
       $('#schin').val(props.kword);
+      // 검색리스트 만들기 함수 호출
+      schList();
     } ///////// if ///////////
   } ///////// initFn 함수 ///////////
 
@@ -136,8 +138,14 @@ export function Searching(props) {
   // 체크박스검색 함수 ////////
   const chkSearch = () => {};
 
-  // 리스트 정렬 함수 /////////
-  const sortList = () => {};
+  //////////////////////
+  // 리스트 정렬 함수 ///
+  //////////////////////
+  const sortList = (e) => {
+    // 1. 선택옵션값 : 0 - 오름차순 / 1 - 내림차순
+    const optVal = e.target.value;
+    console.log('선택옵션:',optVal);
+  }; ////////////// sortList 함수 //////////
 
 
   // 리턴 코드 ////////////////////////
@@ -235,7 +243,7 @@ export function Searching(props) {
         <div className="listbx">
             {/* 2-1. 결과 타이틀 */}
             <h2 className="restit">
-                BROWSE CHARACTERS ({cntNum})
+                BROWSE CHARACTERS ({cnt})
             </h2>
             {/* 2-2. 정렬선택박스 */}
             <aside className="sortbx">
