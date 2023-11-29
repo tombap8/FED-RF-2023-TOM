@@ -169,15 +169,38 @@ export function Searching(props) {
       if(num>1){ // 스프레드 연산자(...)사용!
         lastList = [...temp,...nowList];
       } //// if /////
-      else{
+      else{ // 하나일때
         lastList = nowList;
       }
 
     } /////////// if /////////
+    // (2) 체크박스가 false일때 데이터 지우기
+    else{
+      console.log('지울데이터:',cid);
+      // for문을 돌면서 배열데이터중 해당값을 지운다!
+      for(let i=0; i<temp.length;i++){
+        // -> 삭제대상:
+        // 데이터중 alignment 항목값이 아이디명과 같은것
+        if(temp[i].alignment==cid){
+          // 해당항목 지우기
+          // 배열지우기 메서드 : splice(순번,개수)
+          temp.splice(i,1);
+          // 주의! 배열을 지우면 전체개수가 1씩줄어든다!
+          // 반드시 줄임처리할것!
+          i--;
+        } //////// if ///////
+      } ///////// for ////////
+
+      console.log('삭제처리된배열:',temp);
+
+      // 결과처리하기 : 삭제처리된 temp를 결과에 넣기!
+      lastList = temp;
+
+    } /////////// else ///////////
 
     // 6. 검색결과 리스트 업데이트 하기
-    setSelData([temp,2]);
-    setCnt(temp.length);
+    setSelData([lastList,2]);
+    setCnt(lastList.length);
 
   }; ////////////// chkSearch 함수 ///////////
 
