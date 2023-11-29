@@ -146,6 +146,39 @@ export function Searching(props) {
     const chked = e.target.checked;
     console.log('아이디:',cid,chked);
 
+    // 3. 기존 입력 데이터 가져오기
+    // selData의 첫번째 배열값
+    let temp = selData[0];
+
+    // 결과집합배열변수 : 최종결과배열
+    let lastList = [];
+
+    // 4.체크박스 체크개수세기 : 1개초과시 배열합치기!
+    let num = $('.chkhdn:checked').length;
+    console.log('체크개수:',num);
+
+    // 5. 체크박스 체크유무에 따른 분기
+    // (1) 체크박스가 true일대 해당 검색어로 검색하기
+    if(chked){
+      // 현재데이터 변수에 담기
+      const nowList = catListData.filter(v=>{
+        if(v.alignment == cid) return true;
+      }); /////////// filter //////////
+
+      // 체크개수가 1초과일때 배열합치기
+      if(num>1){ // 스프레드 연산자(...)사용!
+        lastList = [...temp,...nowList];
+      } //// if /////
+      else{
+        lastList = nowList;
+      }
+
+    } /////////// if /////////
+
+    // 6. 검색결과 리스트 업데이트 하기
+    setSelData([temp,2]);
+    setCnt(temp.length);
+
   }; ////////////// chkSearch 함수 ///////////
 
   //////////////////////
