@@ -5,9 +5,12 @@ import { sinsangData } from "../data/sinsang";
 
 
 export function ItemDetail({cat,goods}) {
-  // goods - 상품 아이템정보(속성코드)
+  // cat - 카테고리명(men/women/style)
+  // goods - 상품 아이템정보(속성코드: m1,m2,...)
 
-  // 선택데이터
+  // 선택데이터 : 전체데이터[분류명][상품코드].split('^')
+  // -> 개별상품 배열이 된다!
+  // [상품명,상품코드,가격]
   const selData = sinsangData[cat][goods];
   console.log('선택데이터:',selData);
 
