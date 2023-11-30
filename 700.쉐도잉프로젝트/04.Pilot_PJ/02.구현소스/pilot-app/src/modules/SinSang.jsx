@@ -30,7 +30,8 @@ export function SinSang({cat,chgItemFn}) {
           <a href="#" 
           onClick={(e)=>{
             e.preventDefault();
-            chgItemFn('m'+(x+1))}}>
+            chgItemFn('m'+(x+1))
+            }}>
             <img
               src={"./images/goods/" + cat + "/m" + (x + 1) + ".png"}
               alt="신상품"
@@ -45,6 +46,7 @@ export function SinSang({cat,chgItemFn}) {
 
   // 상품에 오버시 상품정보를 보여주는 함수 /////
   const showInfo = (e) => {
+    e.preventDefault();
     // 대상
     const tg = $(e.currentTarget);
     // 1. 이벤트가 발생한 li의 class읽어오기(상품정보객체의 키)
@@ -74,6 +76,7 @@ export function SinSang({cat,chgItemFn}) {
 
   // 정보박스 지우기 함수 
   const removeInfo = (e) => {
+    e.preventDefault();
     $(e.currentTarget).find('.ibox').remove();
   };
 
