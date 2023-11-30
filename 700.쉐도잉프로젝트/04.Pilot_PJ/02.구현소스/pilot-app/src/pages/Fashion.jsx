@@ -1,6 +1,6 @@
 // 공통패션 서브페이지 컨텐츠 컴포넌트
 
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 
 // 공통 서브 CSS 불러오기
 import "../css/fashion.css";
@@ -30,8 +30,20 @@ export function Fashion(props){
         // 로고클릭시 페이지이동 : pgName 변경 -> chgPgName()
         $("#logo a").click(()=>myCon.chgPgName('main'));
 
-    },[])
+    },[]); ///////// useEffect ///////////
 
+    // 후크 상태변수
+    const [item,setItem] = useState(null);
+
+    // 신상컴포넌트에서 상세컴포넌트로 값을 전하기 위한
+    // 상태변수를 셋팅하여 함수로 이것을 변경하게 해준다!
+    // 프롭스 펑션다운~!!
+    const chgItem = (v) => {
+        console.log('상품정보:',v);
+        setItem(v);
+    }; /////////// chgItem 함수 //////
+    
+    // 리턴코드 //////////////////////////
     return(
         <>
             {/* 1. 배너영역 */}
@@ -41,7 +53,8 @@ export function Fashion(props){
             {/* 2. 신상품영역 */}
             <section id="c1" 
             className={"cont c1 "+myCon.pgName}>
-                <SinSang cat={myCon.pgName} />
+                <SinSang cat={myCon.pgName} 
+                chgItemFn={chgItem} />
             </section>            
             {/* 2.5. 상세보기박스 */}
             <div className="bgbx">
