@@ -30,17 +30,24 @@ export function Fashion(props){
         // 로고클릭시 페이지이동 : pgName 변경 -> chgPgName()
         $("#logo a").click(()=>myCon.chgPgName('main'));
 
+
+        // 상품상세보기 박스 처음에 숨기기
+        // $(".bgbx").hide();
+
     },[]); ///////// useEffect ///////////
 
     // 후크 상태변수
-    const [item,setItem] = useState(null);
+    const [item,setItem] = useState('m1');
 
     // 신상컴포넌트에서 상세컴포넌트로 값을 전하기 위한
     // 상태변수를 셋팅하여 함수로 이것을 변경하게 해준다!
     // 프롭스 펑션다운~!!
     const chgItem = (v) => {
         console.log('상품정보:',v);
+        // 상태변수 업데이트
         setItem(v);
+        // 상세박스 슬라이드 애니로 보이기
+        $(".bgbx").slideDown(400);
     }; /////////// chgItem 함수 //////
 
     // 리턴코드 //////////////////////////

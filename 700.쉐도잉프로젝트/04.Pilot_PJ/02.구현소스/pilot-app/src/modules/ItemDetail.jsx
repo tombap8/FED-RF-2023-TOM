@@ -3,6 +3,8 @@
 // 신상품 데이터 가져오기
 import { sinsangData } from "../data/sinsang";
 
+import $ from 'jquery';
+
 
 export function ItemDetail({cat,goods}) {
   // cat - 카테고리명(men/women/style)
@@ -11,19 +13,24 @@ export function ItemDetail({cat,goods}) {
   // 선택데이터 : 전체데이터[분류명][상품코드].split('^')
   // -> 개별상품 배열이 된다!
   // [상품명,상품코드,가격]
-  const selData = sinsangData[cat][goods];
+  const selData = sinsangData[cat][goods].split('^');
   console.log('선택데이터:',selData);
+
+  // 닫기 함수 ////
+  const closeBox = (e) => {
+    e.preventDefault();
+    $('.cbtn').slideUp(400);}
 
   // 리턴코드 ///////////////////////////
   return (
     <>
-      <a href="#" className="cbtn">
+      <a href="#" className="cbtn" onClick={closeBox}>
         <span className="ir">닫기버튼</span>
       </a>
       <div id="imbx">
         <div className="inx">
           <section className="gimg">
-            <img src="./images/goods/men/m3.png" alt="큰 이미지" />
+            <img src={"./images/goods/"+cat+"/"+goods+".png"} alt="큰 이미지" />
             <div className="small">
               <a href="#">
                 <img src="./images/goods/men/m1.png" alt="썸네일 이미지" />
@@ -42,7 +49,7 @@ export function ItemDetail({cat,goods}) {
                 <li>
                   <img src="./images/dx_ico_new-28143800.gif" alt="new버튼" />
                 </li>
-                <li id="gtit">상품명: [남성]빅로고 컬러 블럭 PQ 티셔츠</li>
+                <li id="gtit">상품명: {selData[0]}</li>
                 <li>
                   <img src="./images/icon_type02_social01.gif" alt="페이스북" />
                   <img src="./images/icon_type02_social02.gif" alt="트위터" />
@@ -51,7 +58,7 @@ export function ItemDetail({cat,goods}) {
                 </li>
                 <li>
                   <span>판매가</span>
-                  <span id="gprice">89,000원</span>
+                  <span id="gprice">{selData[2]}</span>
                 </li>
                 <li>
                   <span>적립금</span>
@@ -71,7 +78,7 @@ export function ItemDetail({cat,goods}) {
                   </span>
                 </li>
                 <li>
-                  <span>상품코드</span> <span id="gcode">DMTS7G731-WH</span>
+                  <span>상품코드</span> <span id="gcode">{selData[1]}</span>
                 </li>
                 <li>
                   <span>사이즈</span> <span>95 100 105 110</span>
