@@ -17,6 +17,7 @@ export function ItemDetail({cat,goods}) {
   const selData = sinsangData[cat][goods].split('^');
   console.log('선택데이터:',selData);
 
+
   // 닫기 함수 ////
   const closeBox = (e) => {
     e.preventDefault();
@@ -38,12 +39,26 @@ export function ItemDetail({cat,goods}) {
       let num = Number(sum.val());
       // 윗버튼은 ++, 아랫버튼은 --
       seq?num--:num++;
+      // 한계값
+      if(num<1) num=1;
       console.log('순번:',seq,num);
       // 증감 반영
       sum.val(num);
+      // 총합계 반영
+      // 기본값 : selData[2]
+      // 출력박스 : #total
+      $("#total").text(selData[2]*num);
     })
 
-  },[]);
+  },[]); ////  한번만 실행 /////
+
+  // 리랜더링 실행구역 /////
+  useEffect(()=>{
+    // 수량초기화
+    $("#sum").val('1');
+  }); ////////// useEffect //////
+
+  
 
 
   // 리턴코드 ///////////////////////////
@@ -125,7 +140,8 @@ export function ItemDetail({cat,goods}) {
                   <span>권장계절</span> <span>여름</span>
                 </li>
                 <li className="tot">
-                  <span>총합계</span> <span id="total">13,000</span>
+                  <span>총합계</span> 
+                  <span id="total">{selData[2]}</span>
                 </li>
               </ol>
             </div>
