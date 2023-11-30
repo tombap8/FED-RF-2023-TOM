@@ -58,7 +58,7 @@ export function Fashion(props){
             </section>            
             {/* 2.5. 상세보기박스 */}
             <div className="bgbx">
-                <ItemDetail />
+                <ItemDetail goods={item} cat={props.cat} />
             </div>
             {/* 3. 패럴랙스 영역 */}
             <section id="c2" className="cont c2 men"></section>
