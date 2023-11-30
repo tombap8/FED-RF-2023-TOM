@@ -42,7 +42,7 @@ export function Fashion(props){
         console.log('상품정보:',v);
         setItem(v);
     }; /////////// chgItem 함수 //////
-    
+
     // 리턴코드 //////////////////////////
     return(
         <>

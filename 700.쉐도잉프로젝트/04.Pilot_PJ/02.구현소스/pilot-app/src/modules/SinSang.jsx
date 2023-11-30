@@ -7,12 +7,12 @@ import { sinsangData } from "../data/sinsang";
 
 import $ from 'jquery';
 
-export function SinSang(props) {
-  // props.cat - 카테고리 분류명
-  // props.chgItemFn - 선택상품정보변경 부모함수
+export function SinSang({cat,chgItemFn}) {
+  // cat - 카테고리 분류명
+  // chgItemFn - 선택상품정보변경 부모함수
 
   // 선택데이터 : 해당카테고리 상품데이터만 가져온다!
-  const selData = sinsangData[props.cat];
+  const selData = sinsangData[cat];
   // console.log(selData);
 
   const makeList = () => {
@@ -28,9 +28,11 @@ export function SinSang(props) {
         onMouseLeave={removeInfo}
         >
           <a href="#" 
-          onClick={()=>props.chgItemFn('m'+(x+1))}>
+          onClick={(e)=>{
+            e.preventDefault();
+            chgItemFn('m'+(x+1))}}>
             <img
-              src={"./images/goods/" + props.cat + "/m" + (x + 1) + ".png"}
+              src={"./images/goods/" + cat + "/m" + (x + 1) + ".png"}
               alt="신상품"
             />
           </a>
