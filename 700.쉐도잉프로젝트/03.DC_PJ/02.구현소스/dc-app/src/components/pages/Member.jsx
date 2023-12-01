@@ -49,7 +49,36 @@ export function Member(){
 
     /////////////////////////////////////////
 
-    // 
+    // [ 유효성 검사 함수 ] ///////
+    // 1. 아이디 유효성 검사
+    const changeUserId = e => {
+        // 1. 아이디 유효성 검사식(따옴표로 싸지 말것!)
+        const valid = /^[A-Za-z0-9+]{5,}$/;
+
+        // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
+        console.log(e.target.value);
+
+        // 3. 에러아님 상태 if문
+        // 조건 : 유효성 검사 결과가 true인가? 에러상태아니면 false
+        // 검사방법 : 정규식.test() -> 정규식 검사결과 리턴메서드
+        // 결과 : true이면 에러상태값 false 
+        //       (false이면 에러상태값 true)
+        if(valid.test(e.target.value)){
+
+            // 1.사용중 아이디인지 검사(로컬쓰 셋팅후 추가!)
+
+            // 2. 결과반영하기
+            setUserIdError(false);
+        } //////////////// if ////////////////
+        // 에러일때 ////////////
+        else { 
+            setUserIdError(true);
+        } /////////////// else ///////////////
+
+        // 실제 userId 상태변수값이 업데이트 되어야만 화면에 출력됨
+        setUserId(e.target.value);
+
+    }; ///////// changeUserId 함수 //////////
 
 
 
@@ -69,7 +98,40 @@ export function Member(){
                                 type="text"
                                 maxLength="20"
                                 placeholder="Please enter your ID"
+                                value={userId}
+                                onChange={changeUserId}
                             />
+                            {
+                                // 에러일 경우 메시지출력
+                                // 조건문 && 요소
+                                userIdError &&
+                                <div className="msg">
+                                    <small
+                                    style={{
+                                        color:'red',
+                                        fontSize:'10px'
+                                    }}>
+                                        {idMsg}
+                                    </small>
+                                </div>
+                            }
+
+                            {
+                                // 통과시 메시지출력
+                                // 조건문 && 요소
+                                !userIdError &&
+                                <div className="msg">
+                                    <small
+                                    style={{
+                                        color:'green',
+                                        fontSize:'10px'
+                                    }}>
+                                        {msgId[2]}
+                                    </small>
+                                </div>
+                            }
+
+
                             
                         </li>
                         <li>
