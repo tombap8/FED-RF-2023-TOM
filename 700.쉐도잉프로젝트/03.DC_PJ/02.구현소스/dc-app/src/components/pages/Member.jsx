@@ -44,19 +44,31 @@ export function Member(){
         "That's a great ID!",
     ];
 
+    // [ 기타 메시지 프리셋 ]
+    const msgEtc = {
+        // 비밀번호
+        pwd:"5 to 15 digits in the form of special characters, characters, and numbers",
+        // 비밀번호확인
+        confPwd:"Password verification does not match",
+        // 필수입력
+        req:"This is a required entry",
+        // 이메일
+        email:"Please enter a valid email format"
+    }; ///// msgEtc ///////
+
     // [3] 에러메시지 상태변수
     const [idMsg, setIdMsg] = useState(msgId[0]);
 
     /////////////////////////////////////////
 
     // [ 유효성 검사 함수 ] ///////
-    // 1. 아이디 유효성 검사
+    // 1. 아이디 유효성 검사 ///////////
     const changeUserId = e => {
         // 1. 아이디 유효성 검사식(따옴표로 싸지 말것!)
         const valid = /^[A-Za-z0-9+]{5,}$/;
 
         // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
-        console.log(e.target.value);
+        // console.log(e.target.value);
 
         // 3. 에러아님 상태 if문
         // 조건 : 유효성 검사 결과가 true인가? 에러상태아니면 false
@@ -75,9 +87,36 @@ export function Member(){
             setUserIdError(true);
         } /////////////// else ///////////////
 
-        // 실제 userId 상태변수값이 업데이트 되어야만 화면에 출력됨
+        // 4. 실제 userId 상태변수값이 업데이트 되어야만 화면에 출력됨
         setUserId(e.target.value);
 
+    }; ///////// changeUserId 함수 //////////
+
+
+    // 2. 비밀번호 유효성 검사 ///////////
+    const changePwd = e => {
+        // 1. 비밀번호 유효성 검사식(따옴표로 싸지 말것!)
+        const valid = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+        // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
+        // console.log(e.target.value);
+
+        // 3. 에러에 따른 상태값 변경
+        if(valid.test(e.target.value)) setPwdError(false);else setPwdError(true);
+
+        // 4. 기존입력값 반영하기 
+        setPwd(e.target.value);
+
+    }; ///////// changeUserId 함수 //////////
+
+    // 3. 비밀번호확인 유효성 검사 ///////////
+    const changeChkPwd = e => {
+        // 1. 비밀번호 입력내용과 일치여부 확인
+        if(pwd===e.target.value) setPwdError(false);
+        else setPwdError(true);
+
+        // 2. 기존입력값 반영하기 
+        setPwd(e.target.value);
     }; ///////// changeUserId 함수 //////////
 
 
@@ -119,7 +158,9 @@ export function Member(){
                             {
                                 // 통과시 메시지출력
                                 // 조건문 && 요소
-                                !userIdError &&
+                                // 조건추가 : userId가 입력전일때 안보임처리
+                                // userId가 입력전엔 false로 리턴됨!
+                                !userIdError && userId &&
                                 <div className="msg">
                                     <small
                                     style={{
@@ -141,7 +182,22 @@ export function Member(){
                                 type="password"
                                 maxLength="20"
                                 placeholder="Please enter your Password"
+                                value={pwd}
+                                onChange={changePwd}
                             />
+                            {
+                                // 에러시 메시지출력
+                                pwdError &&
+                                <div className="msg">
+                                    <small
+                                    style={{
+                                        color:'red',
+                                        fontSize:'10px'
+                                    }}>
+                                        {msgEtc.pwd}
+                                    </small>
+                                </div>
+                            }
 
                         </li>
                         <li>
