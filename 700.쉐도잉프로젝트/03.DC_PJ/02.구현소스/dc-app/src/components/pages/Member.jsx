@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../css/member.css";
 import { useId, useState } from "react";
 
+// 로컬스토리지 생성 JS
+import { clearData, initData } from "../func/mem_fn";
+
 export function Member() {
   // [ 회원가입 페이지 요구사항 ]
   // -> 각 입력항목별로 유효성검사를 실행함
@@ -146,42 +149,71 @@ export function Member() {
   // [ 전체 유효성검사 체크함수 ] ///////////
   const totalValid = () => {
     // 1. 모든 상태변수에 빈값일때 에러상태값 업데이트!
-    if(!userId) setUserIdError(true);
-    if(!pwd) setPwdError(true);
-    if(!chkPwd) setChkPwdError(true);
-    if(!userName) setUserNameError(true);
-    if(!email) setEmailError(true);
+    if (!userId) setUserIdError(true);
+    if (!pwd) setPwdError(true);
+    if (!chkPwd) setChkPwdError(true);
+    if (!userName) setUserNameError(true);
+    if (!email) setEmailError(true);
 
     // 2. 통과시 true, 불통과시 false 리턴처리
     // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
-    if(
-        userId &&
-        pwd &&
-        chkPwd &&
-        userName &&
-        email &&
-        !userIdError &&
-        !pwdError &&
-        !chkPwdError &&
-        !userNameError &&
-        !emailError
-    ) return true;
+    if (
+      userId &&
+      pwd &&
+      chkPwd &&
+      userName &&
+      email &&
+      !userIdError &&
+      !pwdError &&
+      !chkPwdError &&
+      !userNameError &&
+      !emailError
+    )
+      return true;
     // 하나라도 false이면 false를 리턴함!
     else return false;
-
-
   }; /////////// totalValid 함수 ///////////
 
-
   // [ 서브밋 기능함수 ] /////////////////
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     // 1. 서브밋 기본이동 막기
     e.preventDefault();
     // 2. 유효성 검사 전체통과시
-    if(totalValid){
+    if (totalValid()) {
+      // alert('OK!');
+      // 회원가입정보를 로컬스토리지에 저장하기!
 
+      // 로컬스토리지 체크함수호출(없으면 생성함!)
+      initData();
+
+      // 1. 로컬스 변수할당
+      let memData = localStorage.getItem("mem-data");
+
+      // 2. 로컬스 객체변환
+      memData = JSON.parse(memData);
+
+      // 3. 새로운 데이터 구성하기
+      let newData = {
+        idx: memData.length + 1,
+        uid: userId,
+        pwd: pwd,
+        unm: userName,
+        eml: email,
+      };
+
+      // 4. 데이터 추가하기 : 배열에 데이터추가 push()
+      memData.push(newData);
+
+      // 5. 로컬스에 반영하기
+      localStorage.setItem("mem-data", JSON.stringify(memData));
+
+      // 6. 로그인 페이지로 이동(라우터이동) - 보류!
+      document.querySelector(".sbtn").innerText = "넌 이제 회원인거야~!";
     } ///////// if ////////
-
+    // 3. 불통과시
+    else {
+      alert("Change your input!");
+    }
   }; /////////// onSubmit 함수 //////////////
 
   // 리턴 코드 ///////////////////
@@ -345,7 +377,9 @@ export function Member() {
             </li>
             <li style={{ overflow: "hidden" }}>
               {/* 6.버튼 */}
-              <button className="sbtn" onClick={onSubmit}>Submit</button>
+              <button className="sbtn" onClick={onSubmit}>
+                Submit
+              </button>
             </li>
             <li>
               {/* 7. 로그인 페이지링크 */}
