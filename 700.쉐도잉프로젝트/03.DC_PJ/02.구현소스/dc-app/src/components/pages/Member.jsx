@@ -80,9 +80,39 @@ export function Member() {
     //       (false이면 에러상태값 true)
     if (valid.test(e.target.value)) {
       // 1.사용중 아이디인지 검사(로컬쓰 셋팅후 추가!)
+      // 로컬스토리지 체크함수호출(없으면 생성함!)
+      initData();
 
-      // 2. 결과반영하기
-      setUserIdError(false);
+      // 1. 로컬스 변수할당
+      let memData = localStorage.getItem("mem-data");
+
+      // 2. 로컬스 객체변환
+      memData = JSON.parse(memData);
+
+      // 3. 기존 아이디가 있으면 상태값 false로 업데이트
+      let isOK = true;
+
+      // 4. 검사돌리기
+      memData.forEach(v=>{
+        // 기존아이디와 같은 경우
+        if(v.uid===e.target.value){
+            // 메시지변경
+            setIdMsg(msgId[1]);
+            // 아이디에러상태값 업데이트
+            setUserIdError(true);
+            // 존재여부 업데이트
+            isOK = false;
+        } ////// if ////////
+      }); /////// forEach /////////
+
+      // 5. 기존 아이디 없으면 들어감 : 최종통과시 결과
+      if(isOK){
+        // 메시지변경
+        setIdMsg(msgId[0]);
+        // 아이디에러상태값 업데이트
+        setUserIdError(false);
+      } ////// if /////////////
+
     } //////////////// if ////////////////
     // 에러일때 ////////////
     else {
