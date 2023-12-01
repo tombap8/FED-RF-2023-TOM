@@ -112,11 +112,11 @@ export function Member(){
     // 3. 비밀번호확인 유효성 검사 ///////////
     const changeChkPwd = e => {
         // 1. 비밀번호 입력내용과 일치여부 확인
-        if(pwd===e.target.value) setPwdError(false);
-        else setPwdError(true);
+        if(pwd===e.target.value) setChkPwdError(false);
+        else setChkPwdError(true);
 
         // 2. 기존입력값 반영하기 
-        setPwd(e.target.value);
+        setChkPwd(e.target.value);
     }; ///////// changeUserId 함수 //////////
 
 
@@ -207,8 +207,22 @@ export function Member(){
                                 type="password"
                                 maxLength="20"
                                 placeholder="Please enter your Confirm Password"
+                                value={chkPwd}
+                                onChange={changeChkPwd}
                             />
-
+{
+                                // 에러시 메시지출력
+                                chkPwdError &&
+                                <div className="msg">
+                                    <small
+                                    style={{
+                                        color:'red',
+                                        fontSize:'10px'
+                                    }}>
+                                        {msgEtc.confPwd}
+                                    </small>
+                                </div>
+                            }
 
                         </li>
                         <li>
