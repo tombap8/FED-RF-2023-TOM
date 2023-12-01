@@ -1,9 +1,9 @@
 // DC PJ 회원가입 페이지 컴포넌트
 
 // 회원가입 CSS 불러오기
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../css/member.css";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export function Member() {
   // [ 회원가입 페이지 요구사항 ]
@@ -142,6 +142,47 @@ export function Member() {
     // 4. 기존입력값 반영하기
     setEmail(e.target.value);
   }; ///////// changeUserId 함수 //////////
+
+  // [ 전체 유효성검사 체크함수 ] ///////////
+  const totalValid = () => {
+    // 1. 모든 상태변수에 빈값일때 에러상태값 업데이트!
+    if(!userId) setUserIdError(true);
+    if(!pwd) setPwdError(true);
+    if(!chkPwd) setChkPwdError(true);
+    if(!userName) setUserNameError(true);
+    if(!email) setEmailError(true);
+
+    // 2. 통과시 true, 불통과시 false 리턴처리
+    // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
+    if(
+        userId &&
+        pwd &&
+        chkPwd &&
+        userName &&
+        email &&
+        !userIdError &&
+        !pwdError &&
+        !chkPwdError &&
+        !userNameError &&
+        !emailError
+    ) return true;
+    // 하나라도 false이면 false를 리턴함!
+    else return false;
+
+
+  }; /////////// totalValid 함수 ///////////
+
+
+  // [ 서브밋 기능함수 ] /////////////////
+  const onSubmit = e => {
+    // 1. 서브밋 기본이동 막기
+    e.preventDefault();
+    // 2. 유효성 검사 전체통과시
+    if(totalValid){
+
+    } ///////// if ////////
+
+  }; /////////// onSubmit 함수 //////////////
 
   // 리턴 코드 ///////////////////
   return (
@@ -304,7 +345,7 @@ export function Member() {
             </li>
             <li style={{ overflow: "hidden" }}>
               {/* 6.버튼 */}
-              <button className="sbtn">Submit</button>
+              <button className="sbtn" onClick={onSubmit}>Submit</button>
             </li>
             <li>
               {/* 7. 로그인 페이지링크 */}
