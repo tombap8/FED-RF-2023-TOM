@@ -1,9 +1,13 @@
 // Pilot PJ 장바구니 리스트 컴포넌트
 
 // 장바구니 리스트 CSS 불러오기
+import { useEffect } from "react";
 import "../css/cartlist.css";
 
 export function CartList() {
+
+  console.log(localStorage.getItem('cart'));
+
   return (
     <>
       <section id="cartlist">
@@ -92,7 +96,7 @@ export function CartList() {
             </tr>
 
             <tr>
-              <td colspan="6">총합계 :</td>
+              <td colSpan="6">총합계 :</td>
               <td>999,000원</td>
               <td></td>
             </tr>
