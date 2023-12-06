@@ -5,22 +5,19 @@ import { useEffect, useState } from "react";
 import gdata from "../data/glist-items";
 import { sinsangData } from "../data/sinsang";
 
-
-import $ from 'jquery';
+import $ from "jquery";
 import { CartList } from "./CartList";
 
-
-export function ItemDetail({cat,goods}) {
+export function ItemDetail({ cat, goods }) {
   // cat - 카테고리명(men/women/style)
   // goods - 상품 아이템정보(속성코드: m1,m2,...)
 
   // 카트사용여부 상태변수 /////////
-  const [csts,setCsts] = useState(0);
+  const [csts, setCsts] = useState(0);
 
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
-    
-    // 1.선택된 상품을 로컬스토리지에 담기!    
+    // 1.선택된 상품을 로컬스토리지에 담기!
     /* 데이터 구성:
     {
       idx: 상품유일키,
@@ -31,38 +28,31 @@ export function ItemDetail({cat,goods}) {
     -> 기존 선택객체는 selData에 담김
     -> 여기에 num항목을 추가한다!
     */
-   // 1-1.num항목 추가하기 : 값은 #sum의 value값
-   selData.num = $('#sum').val();
-   
-   console.log('카트쓸꼬얌~!',selData);
+    // 1-1.num항목 추가하기 : 값은 #sum의 value값
+    selData.num = $("#sum").val();
 
-   // 1-2.로컬스에 문자형변환하여 담는다
-   // (1) 기존 카트 로컬스가 없는 경우
-   if(!localStorage.getItem('cart')){
+    console.log("카트쓸꼬얌~!", selData);
+
+    // 1-2.로컬스에 문자형변환하여 담는다
+    // (1) 기존 카트 로컬스가 없는 경우
+    if (!localStorage.getItem("cart")) {
       // 아무것도 없으면 배열을 만들고 여기에 push함!
       let localD = [];
       localD.push(selData);
-      localStorage.setItem('cart',JSON.stringify(localD));
-   } ///// if ///
-   // (2) 기존 카트 로컬스가 있는 경우 기존값에 더하기
-   else{
-    let localD = localStorage.getItem('cart');
-    // 객체변환
-    localD = JSON.parse(localD);
-    // 객체변환 데이터에 push로 추가!
-    localD.push(selData);
-    // // 다시 문자형변환하여 넣기
-    localStorage.setItem('cart',JSON.stringify(localD));
-   }
-
-
-
-
+      localStorage.setItem("cart", JSON.stringify(localD));
+    } ///// if ///
+    // (2) 기존 카트 로컬스가 있는 경우 기존값에 더하기
+    else {
+      let localD = localStorage.getItem("cart");
+      // 객체변환
+      localD = JSON.parse(localD);
+      // 객체변환 데이터에 push로 추가!
+      localD.push(selData);
+      // // 다시 문자형변환하여 넣기
+      localStorage.setItem("cart", JSON.stringify(localD));
+    }
 
     setCsts(1);
-
-
-
   }; /////////// useCart함수 ////////////
 
   // 선택데이터 : 전체데이터[분류명][상품코드].split('^')
@@ -71,16 +61,15 @@ export function ItemDetail({cat,goods}) {
   // const selData = sinsangData[cat][goods].split('^');
   // console.log('선택데이터:',selData);
 
-  const selData = gdata.find(v=>{
+  const selData = gdata.find((v) => {
     // 조건: 분류와 상품분류코드가 일치하는 하나
-    if(v.cat===cat && v.ginfo[0]===goods)
-     return true;
-  })
-  // filter는 결과를 배열에 담고 
+    if (v.cat === cat && v.ginfo[0] === goods) return true;
+  });
+  // filter는 결과를 배열에 담고
   // find는 배열의 결과값만 가져옴
   // 하나의 값을 가져올때는 find가 좋다!
 
-  console.log('새로선택:',selData);
+  console.log("새로선택:", selData);
 
   // selData에 담긴 기존 객체데이터와 상품개수항목이 추가된
   // 객체를 만들고 이것을 로컬스에 저장한다!!!
@@ -88,57 +77,51 @@ export function ItemDetail({cat,goods}) {
   // 전체 데이터를 셋업하기위한 항목은 ginfo임!
   const ginfo = selData.ginfo;
 
-
-
   // 닫기 함수 ////
   const closeBox = (e) => {
     e.preventDefault();
-    $('.bgbx').slideUp(400);}
+    $(".bgbx").slideUp(400);
+  };
 
   // 랜더링후 실행구역 ///////
-  useEffect(()=>{
+  useEffect(() => {
     // 숫자출력 input
-    const sum = $('#sum');
+    const sum = $("#sum");
     // 수량증감 이미지버튼
-    const numBtn = $('.chg_num img');
-    
+    const numBtn = $(".chg_num img");
 
     // 수량 증감 함수 /////////
-    numBtn.click(e=>{
+    numBtn.click((e) => {
       // 이미지순번
       let seq = $(e.currentTarget).index();
       // 기존값 읽기
       let num = Number(sum.val());
       // 윗버튼은 ++, 아랫버튼은 --
-      seq?num--:num++;
+      seq ? num-- : num++;
       // 한계값
-      if(num<1) num=1;
-      console.log('순번:',seq,num);
+      if (num < 1) num = 1;
+      console.log("순번:", seq, num);
       // 증감 반영
       sum.val(num);
       // 총합계 반영
       // 기본값 : selData[2]
       // 출력박스 : #total
-      $("#total").text(addComma(ginfo[3]*num)+'원');
-    })
-
-  },[]); ////  한번만 실행 /////
+      $("#total").text(addComma(ginfo[3] * num) + "원");
+    });
+  }, []); ////  한번만 실행 /////
 
   // 리랜더링 실행구역 /////
-  useEffect(()=>{
+  useEffect(() => {
     // 수량초기화
-    $("#sum").val('1');
+    $("#sum").val("1");
     // 총합계초기화
-    $("#total").text(addComma(ginfo[3])+'원');
+    $("#total").text(addComma(ginfo[3]) + "원");
   }); ////////// useEffect //////
 
-  
-//정규식함수(숫자 세자리마다 콤마해주는 기능)
-function addComma(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-
+  //정규식함수(숫자 세자리마다 콤마해주는 기능)
+  function addComma(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   // 리턴코드 ///////////////////////////
   return (
@@ -149,7 +132,10 @@ function addComma(x) {
       <div id="imbx">
         <div className="inx">
           <section className="gimg">
-            <img src={"./images/goods/"+cat+"/"+goods+".png"} alt="큰 이미지" />
+            <img
+              src={"./images/goods/" + cat + "/" + goods + ".png"}
+              alt="큰 이미지"
+            />
             <div className="small">
               <a href="#">
                 <img src="./images/goods/men/m1.png" alt="썸네일 이미지" />
@@ -177,8 +163,7 @@ function addComma(x) {
                 </li>
                 <li>
                   <span>판매가</span>
-                  <span id="gprice">
-                    {addComma(ginfo[3])}원</span>
+                  <span id="gprice">{addComma(ginfo[3])}원</span>
                 </li>
                 <li>
                   <span>적립금</span>
@@ -220,15 +205,16 @@ function addComma(x) {
                   <span>권장계절</span> <span>여름</span>
                 </li>
                 <li className="tot">
-                  <span>총합계</span> 
-                  <span id="total">
-                    {addComma(ginfo[3])}원</span>
+                  <span>총합계</span>
+                  <span id="total">{addComma(ginfo[3])}원</span>
                 </li>
               </ol>
             </div>
             <div>
               <button className="btn btn1">BUY NOW</button>
-              <button className="btn" onClick={useCart}>SHOPPING CART</button>
+              <button className="btn" onClick={useCart}>
+                SHOPPING CART
+              </button>
               <button className="btn">WISH LIST</button>
             </div>
           </section>
@@ -236,10 +222,7 @@ function addComma(x) {
       </div>
 
       {/* 카트리스트 */}
-      {
-        csts &&
-        <CartList />
-      }
+      {csts && <CartList />}
     </>
   );
 } /////////// ItemDetail 컴포넌트 ///////////

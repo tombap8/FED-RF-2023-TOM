@@ -1,12 +1,18 @@
 // Pilot PJ 장바구니 리스트 컴포넌트
 
 // 장바구니 리스트 CSS 불러오기
-import { useEffect } from "react";
 import "../css/cartlist.css";
 
 export function CartList() {
+  // 선택 데이터 : 로컬스토리지 데이터를 객체변환!
+  const selData = JSON.parse(localStorage.getItem("cart"));
 
-  console.log(localStorage.getItem('cart'));
+  console.log(selData);
+
+  //정규식함수(숫자 세자리마다 콤마해주는 기능)
+  function addComma(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <>
@@ -30,70 +36,34 @@ export function CartList() {
               <th>삭제</th>
             </tr>
 
-            <tr>
-              <td>
-                <img src="images/goods/women/m2.png" alt="item" />
-              </td>
-              <td>1</td>
-              <td>[여성]빅로고 컬러 블럭 PQ 티셔츠</td>
-              <td>DMTS7G731-BK </td>
-              <td>89,000원</td>
-              <td>1</td>
-              <td>89,000원</td>
-              <td>
-                <button className="cfn" data-idx="5">
-                  ×
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="images/goods/women/m2.png" alt="item" />
-              </td>
-              <td>1</td>
-              <td>[여성]빅로고 컬러 블럭 PQ 티셔츠</td>
-              <td>DMTS7G731-BK </td>
-              <td>89,000원</td>
-              <td>1</td>
-              <td>89,000원</td>
-              <td>
-                <button className="cfn" data-idx="5">
-                  ×
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="images/goods/women/m2.png" alt="item" />
-              </td>
-              <td>1</td>
-              <td>[여성]빅로고 컬러 블럭 PQ 티셔츠</td>
-              <td>DMTS7G731-BK </td>
-              <td>89,000원</td>
-              <td>1</td>
-              <td>89,000원</td>
-              <td>
-                <button className="cfn" data-idx="5">
-                  ×
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="images/goods/women/m2.png" alt="item" />
-              </td>
-              <td>1</td>
-              <td>[여성]빅로고 컬러 블럭 PQ 티셔츠</td>
-              <td>DMTS7G731-BK </td>
-              <td>89,000원</td>
-              <td>1</td>
-              <td>89,000원</td>
-              <td>
-                <button className="cfn" data-idx="5">
-                  ×
-                </button>
-              </td>
-            </tr>
+            {selData.map((v, i) => (
+              <tr key={i}>
+                {/* 상품이미지 */}
+                <td>
+                  <img
+                    src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+                    alt="item"
+                  />
+                </td>
+                {/* 리스트순번 */}
+                <td>{i + 1}</td>
+                {/* 상품명 */}
+                <td>{v.ginfo[1]}</td>
+                {/* 상품코드 */}
+                <td>{v.ginfo[2]}</td>
+                {/* 상품가격 */}
+                <td>{addComma(v.ginfo[3])}원</td>
+                {/* 상품수량 */}
+                <td>{v.num}</td>
+                {/* 상품가격 총합계 */}
+                <td>{addComma(v.ginfo[3] * v.num)}원</td>
+                <td>
+                  <button className="cfn" data-idx={v.idx}>
+                    ×
+                  </button>
+                </td>
+              </tr>
+            ))}
 
             <tr>
               <td colSpan="6">총합계 :</td>
