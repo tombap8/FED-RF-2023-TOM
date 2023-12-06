@@ -57,6 +57,7 @@ export function CartList() {
                 <td>{v.num}</td>
                 {/* 상품가격 총합계 */}
                 <td>{addComma(v.ginfo[3] * v.num)}원</td>
+                {/* 삭제버튼 */}
                 <td>
                   <button className="cfn" data-idx={v.idx}>
                     ×
