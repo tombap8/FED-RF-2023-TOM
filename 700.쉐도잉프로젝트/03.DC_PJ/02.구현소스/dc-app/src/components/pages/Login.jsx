@@ -22,20 +22,14 @@ export function Login() {
   const [pwdError, setPwdError] = useState(false);
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
-    "User ID must contain a minimum of 5 characters",
-    "This ID is already in use!",
-    "That's a great ID!",
+    "This is a required entry", //필수입력
+    "ID does not exist", //아이디가 존재하지 않습니다
+    "Password doesn't match", //비밀번호가 일치하지 않습니다
   ];
   // [ 기타 메시지 프리셋 ]
   const msgEtc = {
     // 비밀번호
-    pwd: "5 to 15 digits in the form of special characters, characters, and numbers",
-    // 비밀번호확인
-    confPwd: "Password verification does not match",
-    // 필수입력
-    req: "This is a required entry",
-    // 이메일
-    email: "Please enter a valid email format",
+    pwd: "This is a required entry", //필수입력
   }; ///// msgEtc ///////
   // [3] 에러메시지 상태변수
   const [idMsg, setIdMsg] = useState(msgId[0]);
@@ -90,7 +84,7 @@ export function Login() {
     e.preventDefault();
 
     // 4-2. 유효성검사 전체 통과시 ////
-    if (totalValid) {
+    if (totalValid()) {
       console.log("통과!");
     } ///// if ///////
     // 4-3. 유효성검사 불통과시 /////
@@ -134,24 +128,6 @@ export function Login() {
                 )
               }
 
-              {
-                // 통과시 메시지출력
-                // 조건문 && 요소
-                // 조건추가 : userId가 입력전일때 안보임처리
-                // userId가 입력전엔 false로 리턴됨!
-                !userIdError && userId && (
-                  <div className="msg">
-                    <small
-                      style={{
-                        color: "green",
-                        fontSize: "10px",
-                      }}
-                    >
-                      {msgId[2]}
-                    </small>
-                  </div>
-                )
-              }
             </li>
             <li>
               {/* 2.비밀번호 */}
