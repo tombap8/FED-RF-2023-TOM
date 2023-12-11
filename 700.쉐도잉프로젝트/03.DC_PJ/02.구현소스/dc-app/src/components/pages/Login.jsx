@@ -103,10 +103,33 @@ export function Login() {
         console.log(memData);
 
         // 같은 아이디 검사 상태변수
-        let isOK = true;
+        // -> true면 아이디불일치할 경우
+        let isNot = true;
 
         // 입력데이터 중 아이디값 비교하기
-        
+        // 배열 데이터 순회하며 값비교하기!
+        memData.forEach(v=>{
+            // 같은 아이디가 있는가?
+            if(v['uid']===userId){
+                console.log('아이디같아요~!');
+                // 아이디에러 상태 업데이트
+                setUserIdError(false);
+                // 같은 아이디 상태 업데이트
+                isNot = false;
+
+            }
+
+        }); ////////// forEach /////////
+
+        // 아이디가 불일치할 경우
+        if(isNot){
+            console.log('아이디 달라요~!');
+            // 아이디가 다를때 메시지 보이기
+            setIdMsg(msgId[1]);
+            // 아이디 에러 상태 업데이트
+            setUserIdError(true);
+        } //////// if ///////////
+
 
 
     } ///// if ///////
