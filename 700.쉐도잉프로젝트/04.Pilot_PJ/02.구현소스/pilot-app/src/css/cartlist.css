@@ -71,5 +71,15 @@
     top: 50%;
     left: calc(100% - 50px);
     transform: translate(0, -50%);
+    transition: .4s ease-in 2s;
+}
+/* 원본 이미지 크기 */
+#mycart img{
+    width: 370px;
+}
+/* 변경 이미지 크기 */
+#mycart.on img{
+    width: 50px;
+    transition: .4s ease-in 2s;
 }
 

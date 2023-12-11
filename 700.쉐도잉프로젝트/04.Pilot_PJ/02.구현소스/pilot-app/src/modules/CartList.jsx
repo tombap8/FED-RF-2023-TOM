@@ -23,14 +23,7 @@ export function CartList() {
     // 카트버튼 나타나기
     $("#mycart").fadeIn(300, function () {
       // 페이드 애니후
-      $(this).delay(2000).animate(
-        {
-          top: "5%",
-          left: "80%",
-          width: "50px",
-        },
-        400
-      );
+      $(this).addClass('on');
     }); ////// fadeIn ////////
 
     console.log("나야나");
