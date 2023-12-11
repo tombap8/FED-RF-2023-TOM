@@ -20,6 +20,13 @@
     -> 배포시에만 "homepage" 속성값을 서버URL로 써준다!
 
     ((예시)) 
+    개발시:
+    {
+        "homepage": "",
+        ...
+    }
+
+    배포시:
     {
         "homepage": "https://tombap8.github.io/tom-dc-pj",
         ...
