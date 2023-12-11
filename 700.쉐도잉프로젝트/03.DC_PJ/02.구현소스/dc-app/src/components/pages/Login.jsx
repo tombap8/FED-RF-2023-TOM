@@ -4,6 +4,9 @@
 import { useState } from "react";
 import "../../css/member.css";
 
+// 로컬스 데이터 초기화 함수
+import { initData } from "../func/mem_fn";
+
 // 제이쿼리
 import $ from "jquery";
 
@@ -86,6 +89,26 @@ export function Login() {
     // 4-2. 유효성검사 전체 통과시 ////
     if (totalValid()) {
       console.log("통과!");
+        // DB역할의 로컬스에 데이터를 비교한다!
+
+        // 만약 로컬스에 'mem-data'가 없으면
+        // 초기화! -> 함수내에 이미 걸러내고 있음!
+        initData();
+
+        // 로컬스 'mem-data' 확인하기
+        let memData = localStorage.getItem('mem-data');
+
+        // 로컬스 데이터 객체화하기
+        memData = JSON.parse(memData);
+        console.log(memData);
+
+        // 같은 아이디 검사 상태변수
+        let isOK = true;
+
+        // 입력데이터 중 아이디값 비교하기
+        
+
+
     } ///// if ///////
     // 4-3. 유효성검사 불통과시 /////
     else {
