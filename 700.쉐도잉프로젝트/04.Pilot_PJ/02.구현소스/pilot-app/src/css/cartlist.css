@@ -4,7 +4,7 @@
 #cartlist{
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: -60%;
     width: 60vw;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.8);
@@ -52,5 +52,24 @@
 }
 #cartlist td img{
     width: 50px;
+}
+
+/* 카트버튼 이미지 */
+#mycart{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999999;
+    cursor: pointer;
+    display: none;
+}
+
+/* 카트박스 사이드 이동상태 */
+#mycart.on{
+    position: fixed;
+    top: 50%;
+    left: calc(100% - 50px);
+    transform: translate(0, -50%);
 }
 
