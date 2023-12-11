@@ -15,8 +15,8 @@ export function ItemDetail({ cat, goods }) {
   // 카트사용여부 상태변수 /////////
   const [csts, setCsts] = useState(0);
 
-  // 로컬스 변환값 변수
-  let transData;
+  // 로컬스 변환값 변수 - 상태변수로 리랜더링시 값을 유지하게함!
+  const [transData,setTransData] = useState(null);
 
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
@@ -61,7 +61,9 @@ export function ItemDetail({ cat, goods }) {
     
     // localD변수에 담긴 로컬스 변환값을 transData에 담아
     // CartList 컴포넌트에 전달한다!
-    transData = localD;
+    setTransData(localD);
+
+    console.log(transData);
 
     setCsts(1);
   }; /////////// useCart함수 ////////////
