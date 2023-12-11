@@ -15,6 +15,9 @@ export function ItemDetail({ cat, goods }) {
   // 카트사용여부 상태변수 /////////
   const [csts, setCsts] = useState(0);
 
+  // 로컬스 변환값 변수
+  let transData;
+
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
     // 1.선택된 상품을 로컬스토리지에 담기!
@@ -33,24 +36,32 @@ export function ItemDetail({ cat, goods }) {
 
     console.log("카트쓸꼬얌~!", selData);
 
+    // 로컬스 변환값 담을 변수
+    let localD;
+
     // 1-2.로컬스에 문자형변환하여 담는다
     // (1) 기존 카트 로컬스가 없는 경우
     if (!localStorage.getItem("cart")) {
       // 아무것도 없으면 배열을 만들고 여기에 push함!
-      let localD = [];
+      localD = [];
       localD.push(selData);
       localStorage.setItem("cart", JSON.stringify(localD));
     } ///// if ///
     // (2) 기존 카트 로컬스가 있는 경우 기존값에 더하기
     else {
-      let localD = localStorage.getItem("cart");
+      localD = localStorage.getItem("cart");
       // 객체변환
       localD = JSON.parse(localD);
       // 객체변환 데이터에 push로 추가!
       localD.push(selData);
       // // 다시 문자형변환하여 넣기
       localStorage.setItem("cart", JSON.stringify(localD));
-    }
+
+    } ///// else ///////
+    
+    // localD변수에 담긴 로컬스 변환값을 transData에 담아
+    // CartList 컴포넌트에 전달한다!
+    transData = localD;
 
     setCsts(1);
   }; /////////// useCart함수 ////////////
@@ -222,7 +233,7 @@ export function ItemDetail({ cat, goods }) {
       </div>
 
       {/* 카트리스트 */}
-      {csts && <CartList />}
+      {csts && <CartList selData={transData} />}
     </>
   );
 } /////////// ItemDetail 컴포넌트 ///////////

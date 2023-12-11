@@ -1,17 +1,23 @@
 // Pilot PJ 장바구니 리스트 컴포넌트
 
 // 장바구니 리스트 CSS 불러오기
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import "../css/cartlist.css";
 
 // 제이쿼리
 import $ from "jquery";
 
-export function CartList() {
-  // 선택 데이터 : 로컬스토리지 데이터를 객체변환!
-  const selData = JSON.parse(localStorage.getItem("cart"));
+// 전달값이 변경되면 리랜더링하기 위해 메모이제이션을 적용!
+export const CartList = memo(({selData}) => {
+  // 로컬 스토리지 데이터를 props로 전달 받는다!
 
-  console.log(selData);
+  // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
+  // const selData = JSON.parse(localStorage.getItem("cart"));
+
+  // 데이터개수
+  const cntData = selData.length;
+
+  console.log(selData,cntData+'개');
 
   //정규식함수(숫자 세자리마다 콤마해주는 기능)
   function addComma(x) {
@@ -21,19 +27,33 @@ export function CartList() {
   // 랜더링후 실행구역 /////////////
   useEffect(() => {
     // 카트버튼 나타나기
-    $("#mycart").fadeIn(300, function () {
+    $("#mycart")
+    .removeClass('on')
+    .fadeIn(300, function () {
       // 페이드 애니후
       $(this).addClass('on');
-    }); ////// fadeIn ////////
+    }) ////// fadeIn ////////
 
     console.log("나야나");
   }, []); /// useEffect ///////////////
+
+  // 리스트 보이기 함수 //////////
+  const showList = () => {
+    $("#cartlist").animate({right:'0'},600);
+  }; //////////// showList ////////////
+
+  // 리스트 숨기기 함수 //////////
+  const hideList = (e) => {
+    e.preventDefault();
+    $("#cartlist").animate({right:'-60%'},600);
+  }; //////////// hideList ////////////
 
   /// 리턴 코드 ///////////////////////
   return (
     <>
       <section id="cartlist">
-        <a href="#" className="cbtn cbtn2">
+        <a href="#" className="cbtn cbtn2"
+        onClick={hideList}>
           <span>닫기버튼</span>
         </a>
         <table>
@@ -91,12 +111,12 @@ export function CartList() {
         </table>
       </section>
       {/* 카트버튼이미지 박스 */}
-      <div id="mycart">
+      <div id="mycart" onClick={showList}>
         {/* 카트이미지 */}
         <img src="./images/mycart.gif" title="개의 상품이 있습니다" />
         {/* 카트상품개수 출력박스 */}
-        <div className="cntBx">8</div>
+        <div className="cntBx">{cntData}</div>
       </div>
     </>
   );
-} ////////////// CartList 컴포넌트 /////////
+}); ////////////// CartList 컴포넌트 /////////
