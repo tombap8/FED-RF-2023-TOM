@@ -26,7 +26,7 @@ export function Login() {
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
     "This is a required entry", //필수입력
-    "ID does not exist", //아이디가 존재하지 않습니다 
+    "ID does not exist", //아이디가 존재하지 않습니다
   ];
   // [ 비번 메시지 프리셋 ]
   const msgPwd = [
@@ -90,64 +90,59 @@ export function Login() {
     // 4-2. 유효성검사 전체 통과시 ////
     if (totalValid()) {
       console.log("통과!");
-        // DB역할의 로컬스에 데이터를 비교한다!
+      // DB역할의 로컬스에 데이터를 비교한다!
 
-        // 만약 로컬스에 'mem-data'가 없으면
-        // 초기화! -> 함수내에 이미 걸러내고 있음!
-        initData();
+      // 만약 로컬스에 'mem-data'가 없으면
+      // 초기화! -> 함수내에 이미 걸러내고 있음!
+      initData();
 
-        // 로컬스 'mem-data' 확인하기
-        let memData = localStorage.getItem('mem-data');
+      // 로컬스 'mem-data' 확인하기
+      let memData = localStorage.getItem("mem-data");
 
-        // 로컬스 데이터 객체화하기
-        memData = JSON.parse(memData);
-        console.log(memData);
+      // 로컬스 데이터 객체화하기
+      memData = JSON.parse(memData);
+      console.log(memData);
 
-        // 같은 아이디 검사 상태변수
-        // -> true면 아이디불일치할 경우
-        let isNot = true;
+      // 같은 아이디 검사 상태변수
+      // -> true면 아이디불일치할 경우
+      let isNot = true;
 
-        // 입력데이터 중 아이디값 비교하기
-        // 배열 데이터 순회하며 값비교하기!
-        memData.forEach(v=>{
-            // 같은 아이디가 있는가?
-            if(v['uid']===userId){
-                console.log('아이디같아요~!');
-                // 아이디에러 상태 업데이트
-                setUserIdError(false);
-                // 같은 아이디 상태 업데이트
-                isNot = false;
+      // 입력데이터 중 아이디값 비교하기
+      // 배열 데이터 순회하며 값비교하기!
+      memData.forEach((v) => {
+        // 같은 아이디가 있는가?
+        if (v["uid"] === userId) {
+          console.log("아이디같아요~!");
+          // 아이디에러 상태 업데이트
+          setUserIdError(false);
+          // 같은 아이디 상태 업데이트
+          isNot = false;
 
-                // 비밀번호가 일치하는가?
-                if(v['pwd']===pwd){
-                    console.log('비번이 같아요~!');
-                    // 비번에러 상태값 업데이트
-                    setPwdError(false);
+          // 비밀번호가 일치하는가?
+          if (v["pwd"] === pwd) {
+            console.log("비번이 같아요~!");
+            // 비번에러 상태값 업데이트
+            setPwdError(false);
+          } ///// if ////
+          else {
+            /// 비번 불일치!
+            console.log("비번달라요~!");
+            // 비번 다를때 메시지
+            setPwdMsg(msgPwd[1]);
+            // 비번에러 상태 업데이트
+            setPwdError(true);
+          } ///// else //////
+        } ////// if //////
+      }); ////////// forEach /////////
 
-                } ///// if ////
-                else{ /// 비번 불일치!
-                    console.log('비번달라요~!');
-                    // 비번 다를때 메시지
-                    setPwdMsg(msgPwd[1]);
-                    // 비번에러 상태 업데이트
-                    setPwdError(true);
-                } ///// else //////
-
-            } ////// if //////
-
-        }); ////////// forEach /////////
-
-        // 아이디가 불일치할 경우
-        if(isNot){
-            console.log('아이디 달라요~!');
-            // 아이디가 다를때 메시지 보이기
-            setIdMsg(msgId[1]);
-            // 아이디 에러 상태 업데이트
-            setUserIdError(true);
-        } //////// if ///////////
-
-
-
+      // 아이디가 불일치할 경우
+      if (isNot) {
+        console.log("아이디 달라요~!");
+        // 아이디가 다를때 메시지 보이기
+        setIdMsg(msgId[1]);
+        // 아이디 에러 상태 업데이트
+        setUserIdError(true);
+      } //////// if ///////////
     } ///// if ///////
     // 4-3. 유효성검사 불통과시 /////
     else {
@@ -189,7 +184,6 @@ export function Login() {
                   </div>
                 )
               }
-
             </li>
             <li>
               {/* 2.비밀번호 */}
