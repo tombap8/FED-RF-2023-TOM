@@ -33,7 +33,7 @@ export function Login() {
     // 비밀번호
     "This is a required entry", //필수입력
     "Password doesn't match", //비밀번호가 일치하지 않습니다
-  ]; ///// msgEtc ///////
+  ]; ///// msgPwd ///////
   // [3] 에러메시지 상태변수
   const [idMsg, setIdMsg] = useState(msgId[0]);
   const [pwdMsg, setPwdMsg] = useState(msgPwd[0]);
@@ -46,7 +46,7 @@ export function Login() {
     else {
       // 빈값일 경우
       // 메시지 띄우기 : "This is a required entry"
-      setIdMsg(msgEtc.req);
+      setIdMsg(msgId[0]);
       // 에러상태값 변경하기
       setUserIdError(true);
     } ///// else ////
@@ -61,7 +61,7 @@ export function Login() {
     else {
       // 빈값일 경우
       // 메시지 띄우기 : "This is a required entry"
-      setIdMsg(msgEtc.req);
+      setIdMsg(msgId[0]);
       // 에러상태값 변경하기
       setPwdError(true);
     } ///// else ////
@@ -128,7 +128,7 @@ export function Login() {
                 else{ /// 비번 불일치!
                     console.log('비번달라요~!');
                     // 비번 다를때 메시지
-                    setIdMsg(msgId[2]);
+                    setPwdMsg(msgPwd[1]);
                     // 비번에러 상태 업데이트
                     setPwdError(true);
                 } ///// else //////
@@ -211,7 +211,7 @@ export function Login() {
                         fontSize: "10px",
                       }}
                     >
-                      {msgEtc.pwd}
+                      {pwdMsg}
                     </small>
                   </div>
                 )
