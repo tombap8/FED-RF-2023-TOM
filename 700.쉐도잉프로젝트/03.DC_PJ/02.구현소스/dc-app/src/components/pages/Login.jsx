@@ -26,16 +26,17 @@ export function Login() {
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
     "This is a required entry", //필수입력
-    "ID does not exist", //아이디가 존재하지 않습니다
-    "Password doesn't match", //비밀번호가 일치하지 않습니다
+    "ID does not exist", //아이디가 존재하지 않습니다 
   ];
-  // [ 기타 메시지 프리셋 ]
-  const msgEtc = {
+  // [ 비번 메시지 프리셋 ]
+  const msgPwd = [
     // 비밀번호
-    pwd: "This is a required entry", //필수입력
-  }; ///// msgEtc ///////
+    "This is a required entry", //필수입력
+    "Password doesn't match", //비밀번호가 일치하지 않습니다
+  ]; ///// msgEtc ///////
   // [3] 에러메시지 상태변수
   const [idMsg, setIdMsg] = useState(msgId[0]);
+  const [pwdMsg, setPwdMsg] = useState(msgPwd[0]);
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ///////////
@@ -117,7 +118,22 @@ export function Login() {
                 // 같은 아이디 상태 업데이트
                 isNot = false;
 
-            }
+                // 비밀번호가 일치하는가?
+                if(v['pwd']===pwd){
+                    console.log('비번이 같아요~!');
+                    // 비번에러 상태값 업데이트
+                    setPwdError(false);
+
+                } ///// if ////
+                else{ /// 비번 불일치!
+                    console.log('비번달라요~!');
+                    // 비번 다를때 메시지
+                    setIdMsg(msgId[2]);
+                    // 비번에러 상태 업데이트
+                    setPwdError(true);
+                } ///// else //////
+
+            } ////// if //////
 
         }); ////////// forEach /////////
 
