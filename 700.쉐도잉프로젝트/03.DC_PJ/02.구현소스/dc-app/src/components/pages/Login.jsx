@@ -138,7 +138,7 @@ export function Login() {
           // 비번에러 상태값 업데이트
           setPwdError(false);
 
-          // **** [ 로그인후 셋팅작업 ] ****
+          // **** [ 로그인후 셋팅작업 ] **** //
           // 1. 로그인한 회원정보를 로컬스에 셋팅!
           // -> 서버의 세션을 대신하여 사용함!
           localStorage
@@ -146,6 +146,9 @@ export function Login() {
 
           // 2. 컨텍스트 API에 공개된 로그인상태 업데이트하기!
           myCon.setLogSts(localStorage.getItem('minfo'));
+
+          // 3. 컨텍스트 API에 공개된 로그인 메시지 업데이트하기!
+          myCon.setLogMsg("Welcome "+findD.unm);
 
           // 버튼에 메시지(재미로...)
           $('.sbtn').text('넌 로그인된거야~!');

@@ -16,6 +16,13 @@ main.cont{
     background-color: #fff;    
     font-family: 'Ubuntu Condensed', sans-serif;
 }
+/* 로그인 환영메시지 박스 */
+.logmsg{    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .gnb{
     max-width: 1320px;
     margin: 0 auto;
