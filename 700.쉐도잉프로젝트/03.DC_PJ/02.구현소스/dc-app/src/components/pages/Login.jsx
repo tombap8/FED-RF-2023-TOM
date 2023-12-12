@@ -125,12 +125,22 @@ export function Login() {
         // 아이디에러 상태 업데이트
         setUserIdError(false);
 
-        // 비밀번호가 일치하는가?
+        // 비밀번호가 일치하는가? -> 로그인 최종성공!!!
         if (findD["pwd"] === pwd) {
           console.log("비번이 같아요~!");
           // 비번에러 상태값 업데이트
           setPwdError(false);
-        } ///// if ////
+
+          // **** [ 로그인후 셋팅작업 ] ****
+          // 1. 로그인한 회원정보를 로컬스에 셋팅!
+          // -> 서버의 세션을 대신하여 사용함!
+          localStorage
+          .setItem('minfo',JSON.stringify(findD));
+
+          // 2. 라우팅 페이지 이동하기(useNavigate)
+
+
+        } /////////// if //////////
         else {
           /// 비번 불일치!
           console.log("비번달라요~!");
@@ -138,8 +148,8 @@ export function Login() {
           setPwdMsg(msgPwd[1]);
           // 비번에러 상태 업데이트
           setPwdError(true);
-        } ///// else //////
-      } ///////// if /////////
+        } ////////// else /////////
+      } //////////// if /////////////////
       else { // 같은 아이디가 없는 경우 /////
         console.log("아이디 달라요~!");
         // 아이디가 다를때 메시지 보이기
@@ -183,7 +193,7 @@ export function Login() {
       //   // 아이디 에러 상태 업데이트
       //   setUserIdError(true);
       // } //////// if ///////////
-      
+
     } ///// if ///////
     // 4-3. 유효성검사 불통과시 /////
     else {
