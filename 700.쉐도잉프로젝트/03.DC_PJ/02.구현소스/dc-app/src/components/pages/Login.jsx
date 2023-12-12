@@ -109,6 +109,14 @@ export function Login() {
 
       // 입력데이터 중 아이디값 비교하기
       // 배열 데이터 순회하며 값비교하기!
+      // 배열.find() 로 검색순회하면 해당 데이터 만나는 순간
+      // 끝내고 나옴! -> 효율성을 높이자!
+      let temp = memData.find(v=>{
+        if(v['uid']===userId) return true;
+      })
+
+      console.log(temp);
+
       memData.forEach((v) => {
         // 같은 아이디가 있는가?
         if (v["uid"] === userId) {
@@ -212,7 +220,7 @@ export function Login() {
               }
             </li>
             {/* 3.서브밋버튼 */}
-            <li>
+            <li style={{overflow:'hidden'}}>
               <button className="sbtn" onClick={onSubmit}>
                 Submit
               </button>
