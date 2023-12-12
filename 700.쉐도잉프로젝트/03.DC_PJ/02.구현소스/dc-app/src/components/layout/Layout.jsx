@@ -18,6 +18,18 @@ export function Layout() {
   // 2. 로그인 환영메시지 상태변수
   const [logMsg,setLogMsg] = useState(null);
 
+  /////////////////////////////
+  ////// 로그아웃 함수 /////////
+  // -> TopArea 컴포넌트에 전달함!
+  const logOut = useCallback(()=>{
+    // 1. 로컬스 삭제(minfo)
+    localStorage.removeItem('minfo');
+    // 2. 로그인 상태값 업데이트
+    setLogSts(null);
+    // 3. 로그인 메시지 업데이트
+    setLogMsg(null);
+  },[]); //////// logOut함수 //////////
+
   // 랜더링 후(화면보이기전) 실행구역 //////////
   useLayoutEffect(()=>{
     // 페이지 이동시 스크롤위치 상단이동
@@ -28,7 +40,8 @@ export function Layout() {
   const goNav = useNavigate();
 
   // 라우터 이동함수 : pgName - 페이지이름 / param - 전달값
-  const chgPage = useCallback((pgName,param) => goNav(pgName,param),[]);
+  const chgPage = useCallback(
+    (pgName,param) => goNav(pgName,param),[]);
   // 메모이제이션 되는 TopArea 컴포넌트에 제공하는 함수가
   // useCallback을 사용한 메모이제이션 처리되어야 변경없는 것을
   // 체크하여 함수를 업데이트 하지 않는다!
@@ -50,6 +63,7 @@ export function Layout() {
         chgPageFn={chgPage} 
         logSts={logSts} 
         logMsg={logMsg}
+        logOut={logOut}
       />
       <MainArea />
       <FooterArea />
