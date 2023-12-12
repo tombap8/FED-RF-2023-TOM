@@ -52,10 +52,26 @@ export function ItemDetail({ cat, goods }) {
       localD = localStorage.getItem("cart");
       // 객체변환
       localD = JSON.parse(localD);
-      // 객체변환 데이터에 push로 추가!
-      localD.push(selData);
-      // // 다시 문자형변환하여 넣기
-      localStorage.setItem("cart", JSON.stringify(localD));
+      // console.log('요요기:',localD,selData);
+
+      // **** 읽어온 로컬스에 넣을 상품코드가 있으면
+      // 메시지와 함께 넣지 않는다!
+      let temp = localD.find(v=>{
+        if(v.idx===selData.idx) return true;
+    }); ////// find /////
+
+      console.log('같은값있나?',temp);
+
+      // 만약 이미 선택된 데이터이면 메시지만 띄움
+      if(temp){
+        alert('이미 선택하신 아이템입니다!');
+      } /////// if //////
+      else{ // 새로운 아이템만 등록! ///
+        // 객체변환 데이터에 push로 추가!
+        localD.push(selData);
+        // // 다시 문자형변환하여 넣기
+        localStorage.setItem("cart", JSON.stringify(localD));
+      } ////// else //////
 
     } ///// else ///////
     
@@ -66,6 +82,16 @@ export function ItemDetail({ cat, goods }) {
     console.log(transData);
 
     setCsts(1);
+
+    // 쇼핑카트버튼 초기화 
+    $("#mycart")
+    .removeClass('on')
+    .delay(1000)
+    .fadeIn(300, function () {
+      // 페이드 애니후
+      $(this).addClass('on');
+    }) ////// fadeIn ////////
+
   }; /////////// useCart함수 ////////////
 
   // 선택데이터 : 전체데이터[분류명][상품코드].split('^')
