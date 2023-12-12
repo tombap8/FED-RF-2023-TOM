@@ -28,6 +28,8 @@ export function Layout() {
     setLogSts(null);
     // 3. 로그인 메시지 업데이트
     setLogMsg(null);
+    // 4. 첫페이지로 이동
+    chgPage('/',{});
   },[]); //////// logOut함수 //////////
 
   // 랜더링 후(화면보이기전) 실행구역 //////////
