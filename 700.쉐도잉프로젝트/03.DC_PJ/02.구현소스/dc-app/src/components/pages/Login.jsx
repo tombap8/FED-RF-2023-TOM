@@ -144,10 +144,13 @@ export function Login() {
           localStorage
           .setItem('minfo',JSON.stringify(findD));
 
+          // 2. 컨텍스트 API에 공개된 로그인상태 업데이트하기!
+          myCon.setLogSts(localStorage.getItem('minfo'));
+
           // 버튼에 메시지(재미로...)
           $('.sbtn').text('넌 로그인된거야~!');
 
-          // 2. 라우팅 페이지 이동하기(useNavigate)
+          // 3. 라우팅 페이지 이동하기(useNavigate)
           // 컨텍스트 API 함수호출!
           setTimeout(()=>
           myCon.chgPage('/',{}),1000);
