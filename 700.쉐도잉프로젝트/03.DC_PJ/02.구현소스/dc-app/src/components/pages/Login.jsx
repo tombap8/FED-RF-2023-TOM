@@ -1,7 +1,10 @@
 // 로그인 페이지 컴포넌트 - Login.jsx
 
+// 컨텍스트 API를 사용하는 컴포넌트 파일에서 불러옴!
+import { dcCon } from "../modules/dcContext";
+
 // 디자인은 회원가입과 동일!
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../../css/member.css";
 
 // 로컬스 데이터 초기화 함수
@@ -11,6 +14,10 @@ import { initData } from "../func/mem_fn";
 import $ from "jquery";
 
 export function Login() {
+
+  // 컨텍스트 API 사용하기
+  const myCon = useContext(dcCon);  
+
   // [ 상태관리변수 ] /////////
   // [1] 입력요소 상태변수 /////////
   // 1. 아이디변수
@@ -137,8 +144,14 @@ export function Login() {
           localStorage
           .setItem('minfo',JSON.stringify(findD));
 
-          // 2. 라우팅 페이지 이동하기(useNavigate)
+          // 버튼에 메시지(재미로...)
+          $('.sbtn').text('넌 로그인된거야~!');
 
+          // 2. 라우팅 페이지 이동하기(useNavigate)
+          // 컨텍스트 API 함수호출!
+          setTimeout(()=>
+          myCon.chgPage('/',{}),1000);
+          
 
         } /////////// if //////////
         else {

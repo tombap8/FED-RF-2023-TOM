@@ -13,7 +13,7 @@ import $ from 'jquery';
 // 폰트어썸 불러오기
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { memo, useContext } from "react";
+import { memo, useContext, useState } from "react";
 
 /******************************************************* 
   [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -47,6 +47,11 @@ export const TopArea = memo(({chgPageFn}) => {
 
   // 컨텍스트 API사용
   // const myCon = useContext(dcCon);
+
+  // ********* Hook 상태관리 변수 ********* //
+  // 1. 로그인 상태체크 변수 : 로컬스 'minfo'초기할당!
+  const [logSts,setLogSts] = 
+  useState(localStorage.getItem('minfo'));
 
   // 검색 관련 함수들 ////////////
   // 1. 검색창 보이기함수
@@ -149,13 +154,28 @@ export const TopArea = memo(({chgPageFn}) => {
                 <FontAwesomeIcon icon={faSearch} />
               </a>
             </li>
-            {/* 회원가입, 로그인은 로그인 아닌 상태일때 나옴 */}
-            <li>
-              <Link to="/member">JOIN US</Link>
-            </li>
-            <li>
-              <Link to="/login">LOGIN</Link>
-            </li>
+            {
+              /* 회원가입, 로그인은 
+              로그인 아닌 상태일때 나옴 */
+              logSts === null &&
+              <>
+                <li>
+                  <Link to="/member">JOIN US</Link>
+                </li>
+                <li>
+                  <Link to="/login">LOGIN</Link>
+                </li>
+              </>
+            }
+            {
+              /* 로그인상태일때 로그아웃버튼만 보임 */
+              logSts !== null &&
+              <>
+                <li>
+                  <a href="#">LOGOUT</a>
+                </li>
+              </>
+            }
           </ul>
           {/* 모바일용 햄버거 버튼 */}
           <button className="hambtn"></button>
