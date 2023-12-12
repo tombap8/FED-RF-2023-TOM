@@ -16,7 +16,7 @@ export function ItemDetail({ cat, goods }) {
   const [csts, setCsts] = useState(0);
 
   // 로컬스 변환값 변수 - 상태변수로 리랜더링시 값을 유지하게함!
-  const [transData,setTransData] = useState(null);
+  const [transData, setTransData] = useState(null);
 
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
@@ -38,6 +38,8 @@ export function ItemDetail({ cat, goods }) {
 
     // 로컬스 변환값 담을 변수
     let localD;
+    // 카트 입력데이터 담을 변수
+    let temp; // find()에서 undefined로 처리될 경우 false
 
     // 1-2.로컬스에 문자형변환하여 담는다
     // (1) 기존 카트 로컬스가 없는 경우
@@ -46,7 +48,10 @@ export function ItemDetail({ cat, goods }) {
       localD = [];
       localD.push(selData);
       localStorage.setItem("cart", JSON.stringify(localD));
-    } ///// if ///
+
+      // true 처리 되도록 선택데이터 할당!
+      temp = selData;
+    } ///// if //////
     // (2) 기존 카트 로컬스가 있는 경우 기존값에 더하기
     else {
       localD = localStorage.getItem("cart");
@@ -56,42 +61,47 @@ export function ItemDetail({ cat, goods }) {
 
       // **** 읽어온 로컬스에 넣을 상품코드가 있으면
       // 메시지와 함께 넣지 않는다!
-      let temp = localD.find(v=>{
-        if(v.idx===selData.idx) return true;
-    }); ////// find /////
+      temp = localD.find((v) => {
+        if (v.idx === selData.idx) return true;
+      }); ////// find /////
 
-      console.log('같은값있나?',temp);
+      console.log("같은값있나?", temp);
 
       // 만약 이미 선택된 데이터이면 메시지만 띄움
-      if(temp){
-        alert('이미 선택하신 아이템입니다!');
+      if (temp) {
+        alert("이미 선택하신 아이템입니다!");
       } /////// if //////
-      else{ // 새로운 아이템만 등록! ///
+
+      // **** 새로운 아이템만 등록! **** ///
+      else {
         // 객체변환 데이터에 push로 추가!
         localD.push(selData);
         // // 다시 문자형변환하여 넣기
         localStorage.setItem("cart", JSON.stringify(localD));
-      } ////// else //////
+      } ///////// else //////////
+    } //////////// else /////////////
 
-    } ///// else ///////
-    
-    // localD변수에 담긴 로컬스 변환값을 transData에 담아
-    // CartList 컴포넌트에 전달한다!
-    setTransData(localD);
+    // ****** 공통처리 **** (카트에 담긴 경우만!!!)
+    // temp에 데이터가 담긴 경우에만 공통업데이트함!
+    if (temp) {
+      // localD변수에 담긴 로컬스 변환값을
+      // transData에 담아
+      // CartList 컴포넌트에 전달한다!
+      setTransData(localD);
 
-    console.log(transData);
+      console.log(transData);
 
-    setCsts(1);
+      setCsts(1);
 
-    // 쇼핑카트버튼 초기화 
-    $("#mycart")
-    .removeClass('on')
-    .delay(1000)
-    .fadeIn(300, function () {
-      // 페이드 애니후
-      $(this).addClass('on');
-    }) ////// fadeIn ////////
-
+      // 쇼핑카트버튼 초기화
+      $("#mycart")
+        .removeClass("on")
+        .delay(1000)
+        .fadeIn(300, function () {
+          // 페이드 애니후
+          $(this).addClass("on");
+        }); ////// fadeIn ////////
+    } //////////// if /////////////////
   }; /////////// useCart함수 ////////////
 
   // 선택데이터 : 전체데이터[분류명][상품코드].split('^')
