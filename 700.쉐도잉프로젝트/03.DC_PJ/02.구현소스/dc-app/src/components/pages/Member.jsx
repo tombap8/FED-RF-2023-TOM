@@ -1,14 +1,21 @@
 // DC PJ 회원가입 페이지 컴포넌트
 
+// 컨텍스트 API 불러오기
+import { dcCon } from "../modules/dcContext";
+
 // 회원가입 CSS 불러오기
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../css/member.css";
-import { useId, useState } from "react";
+import { useContext, useState } from "react";
 
 // 로컬스토리지 생성 JS
-import { clearData, initData } from "../func/mem_fn";
+import { initData } from "../func/mem_fn";
 
 export function Member() {
+
+  // 컨텍스트 API 사용하기
+  const myCon = useContext(dcCon);
+
   // [ 회원가입 페이지 요구사항 ]
   // -> 각 입력항목별로 유효성검사를 실행함
   // -> 특이사항: 글자를 입력할때 마다 검사
@@ -237,8 +244,15 @@ export function Member() {
       // 5. 로컬스에 반영하기
       localStorage.setItem("mem-data", JSON.stringify(memData));
 
-      // 6. 로그인 페이지로 이동(라우터이동) - 보류!
-      document.querySelector(".sbtn").innerText = "넌 이제 회원인거야~!";
+      // 6. 버튼 텍스트변경(재미로...)
+      document.querySelector(".sbtn").innerText = 
+      "넌 이제 회원인거야~!";
+
+      // 7. 페이지 이동 : 로그인페이지로!
+      setTimeout(()=>
+        myCon.chgPage('login',{})
+      ,1000);
+
     } ///////// if ////////
     // 3. 불통과시
     else {
