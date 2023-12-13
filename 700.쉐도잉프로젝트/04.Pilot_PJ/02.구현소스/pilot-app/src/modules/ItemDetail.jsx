@@ -27,6 +27,12 @@ export function ItemDetail({ cat, goods }) {
 
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
+    // 카트 선택 아이템만 추가하기 위해
+    // 카트 컴포넌트와 공유한 useRef 참조변수인 flag값을
+    // true로 업데이트 한다!!!
+    flag.current = true;
+
+
     // 1.선택된 상품을 로컬스토리지에 담기!
     /* 데이터 구성:
     {
