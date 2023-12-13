@@ -20,6 +20,7 @@ import { Series } from "./components/pages/Series";
 import { SchPage } from "./components/pages/SchPage";
 import { Member } from "./components/pages/Member";
 import { Login } from "./components/pages/Login";
+import { Board } from "./components/pages/Board";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -77,7 +78,7 @@ export default function App() {
           <Route path="games" element={<Games />} />
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video />} />
-          <Route path="board" element={<SwiperApp />} />
+          <Route path="board" element={<Board />} />
           <Route path="detail" element={<CatDetail />} />
           <Route path="schpage" element={<SchPage />} />
           <Route path="member" element={<Member />} />
