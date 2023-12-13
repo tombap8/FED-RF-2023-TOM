@@ -197,7 +197,6 @@ ol.bmenu{
         padding: 0 20px;
         box-sizing: border-box;
         z-index: 9999;
-        overflow: hidden;
         transition: .4s ease-out;
     }
     .top-area.on{
@@ -208,6 +207,18 @@ ol.bmenu{
 
 /* 1024px 이하 미디어쿼리 */
 @media screen and (max-width:1024px) {
+
+    /* 모바일 모드일때 넘치는 자식숨기기 */
+    .top-area{
+        overflow: hidden;
+    }
+
+    /* 로그인 환영메시지박스 */
+    .logmsg {
+        top: 18px;
+    }
+
+    /* GNB박스 */
     .gnb{
         background-color: #fff;
     }
