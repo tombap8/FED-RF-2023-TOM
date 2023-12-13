@@ -281,6 +281,10 @@ ol.bmenu{
         vertical-align: 2px;
         margin-left: 5px;
     }
+    /* 서브메뉴 들어쓰기 없앰 */
+    .smenu{
+        text-indent: 0;
+    }
     /* 검색박스 */
     .searchingGnb{
         left: 80px;
