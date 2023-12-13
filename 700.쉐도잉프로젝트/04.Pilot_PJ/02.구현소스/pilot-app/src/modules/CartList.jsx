@@ -19,6 +19,14 @@ export const CartList = memo(({selData}) => {
 
   console.log(selData,cntData+'개');
 
+  // 전체합계 구하기
+  let totalCnt = 0;
+  selData.forEach(v=>{
+    totalCnt += v.ginfo[3]*v.num;
+  }); ////////// forEach ///////////
+
+  console.log('토탈:',totalCnt);
+
   //정규식함수(숫자 세자리마다 콤마해주는 기능)
   function addComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -48,6 +56,13 @@ export const CartList = memo(({selData}) => {
     e.preventDefault();
     $("#cartlist").animate({right:'-60%'},600);
   }; //////////// hideList ////////////
+
+  // 리스트 삭제 함수 ////////////////
+  const deleteItem = (e) => {
+    const selIdx = $(e.target).attr('data-idx');
+    console.log('지울아이:',selIdx);
+
+  }; ////////// deleteItem 함수 //////////
 
   /// 리턴 코드 ///////////////////////
   return (
@@ -96,7 +111,11 @@ export const CartList = memo(({selData}) => {
                 <td>{addComma(v.ginfo[3] * v.num)}원</td>
                 {/* 삭제버튼 */}
                 <td>
-                  <button className="cfn" data-idx={v.idx}>
+                  <button 
+                    className="cfn" 
+                    data-idx={v.idx}
+                    onClick={deleteItem}
+                  >
                     ×
                   </button>
                 </td>
@@ -105,7 +124,7 @@ export const CartList = memo(({selData}) => {
 
             <tr>
               <td colSpan="6">총합계 :</td>
-              <td>999,000원</td>
+              <td>{addComma(totalCnt)}원</td>
               <td></td>
             </tr>
           </tbody>
