@@ -11,9 +11,16 @@ import $ from "jquery";
 export const CartList = memo(({ selData }) => {
   // 로컬 스토리지 데이터를 props로 전달 받는다!
 
+  
   // 상태관리변수 설정 /////////////
   // 1. 변경 데이터 변수 : 전달된 데이터로 초기셋팅
   const [cartData,setCartData] = useState(selData);
+  
+  console.log(
+    '받은 데이터',selData,
+  '\n기존 데이터',cartData);
+
+  if(cartData!==selData) setCartData(selData);
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
   // const selData = JSON.parse(localStorage.getItem("cart"));
@@ -74,6 +81,7 @@ export const CartList = memo(({ selData }) => {
     console.log('제거후리스트:',newData);
 
     // 로컬스 데이터 업데이트!!!
+    localStorage.setItem('cart',JSON.stringify(newData));
 
     // 전체 데이터 업데이트 하면 모두 리랜더링되게 하자!
     setCartData(newData);
