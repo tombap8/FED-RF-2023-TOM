@@ -20,6 +20,10 @@ export const CartList = memo(({ selData }) => {
     '받은 데이터',selData,
   '\n기존 데이터',cartData);
 
+  // 카트 컴포넌트의 데이터가 상태관리되고 있으므로
+  // 외부에서 전달되는 데이터와 다를때 업데이트해야
+  // 외부에서 들어오는 데이터가 반영되어 리랜더링 된다!
+  // 삭제버튼도 작동하게 하려면???
   if(cartData!==selData) setCartData(selData);
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
