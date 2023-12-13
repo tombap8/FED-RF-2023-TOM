@@ -183,10 +183,12 @@ ol.bmenu{
 
 /* 1320px이하 미디어쿼리 */
 @media screen and (max-width:1320px) {
+    html,body{
+        overflow-x: hidden;
+    }
     body{
         padding-top: 58px;
         /* 첫번째 컨텐츠 가려짐방지 패딩 */
-        overflow-x: hidden;
     }
     .top-area{
         /* 보이는 화면고정 */
