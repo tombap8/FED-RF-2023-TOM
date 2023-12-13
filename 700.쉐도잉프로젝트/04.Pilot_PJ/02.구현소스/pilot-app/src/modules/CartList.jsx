@@ -1,15 +1,17 @@
 // Pilot PJ 장바구니 리스트 컴포넌트
 
 // 장바구니 리스트 CSS 불러오기
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import "../css/cartlist.css";
 
 // 제이쿼리
 import $ from "jquery";
 
 // 전달값이 변경되면 리랜더링하기 위해 메모이제이션을 적용!
-export const CartList = memo(({ selData }) => {
-  // 로컬 스토리지 데이터를 props로 전달 받는다!
+export const CartList = memo(({ selData, flag }) => {
+  // selData - 현재 반영된 데이터
+  // flag - 상태값 체크변수(true/false) -> 업데이트 여부결정!
+  console.log('업뎃상태값:',flag.current);
 
   
   // 상태관리변수 설정 /////////////
@@ -20,11 +22,17 @@ export const CartList = memo(({ selData }) => {
     '받은 데이터',selData,
   '\n기존 데이터',cartData);
 
+
   // 카트 컴포넌트의 데이터가 상태관리되고 있으므로
   // 외부에서 전달되는 데이터와 다를때 업데이트해야
   // 외부에서 들어오는 데이터가 반영되어 리랜더링 된다!
   // 삭제버튼도 작동하게 하려면???
-  if(cartData!==selData) setCartData(selData);
+  if(cartData!==selData) {
+      setCartData(selData);
+    console.log(3333)
+  }
+
+
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
   // const selData = JSON.parse(localStorage.getItem("cart"));
