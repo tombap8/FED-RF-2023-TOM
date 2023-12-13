@@ -8,7 +8,7 @@ import "../css/cartlist.css";
 import $ from "jquery";
 
 // 전달값이 변경되면 리랜더링하기 위해 메모이제이션을 적용!
-export const CartList = memo(({selData}) => {
+export const CartList = memo(({ selData }) => {
   // 로컬 스토리지 데이터를 props로 전달 받는다!
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
@@ -17,15 +17,15 @@ export const CartList = memo(({selData}) => {
   // 데이터개수
   const cntData = selData.length;
 
-  console.log(selData,cntData+'개');
+  console.log(selData, cntData + "개");
 
   // 전체합계 구하기
   let totalCnt = 0;
-  selData.forEach(v=>{
-    totalCnt += v.ginfo[3]*v.num;
+  selData.forEach((v) => {
+    totalCnt += v.ginfo[3] * v.num;
   }); ////////// forEach ///////////
 
-  console.log('토탈:',totalCnt);
+  console.log("토탈:", totalCnt);
 
   //정규식함수(숫자 세자리마다 콤마해주는 기능)
   function addComma(x) {
@@ -36,31 +36,38 @@ export const CartList = memo(({selData}) => {
   useEffect(() => {
     // 카트버튼 나타나기
     $("#mycart")
-    .removeClass('on')
-    .fadeIn(300, function () {
-      // 페이드 애니후
-      $(this).addClass('on');
-    }) ////// fadeIn ////////
+      .removeClass("on")
+      .fadeIn(300, function () {
+        // 페이드 애니후
+        $(this).addClass("on");
+      }); ////// fadeIn ////////
 
     console.log("나야나");
   }, []); /// useEffect ///////////////
 
   // 리스트 보이기 함수 //////////
   const showList = () => {
-    console.log('열려라!!');
-    $("#cartlist").animate({right:'0'},600);
+    console.log("열려라!!");
+    $("#cartlist").animate({ right: "0" }, 600);
   }; //////////// showList ////////////
 
   // 리스트 숨기기 함수 //////////
   const hideList = (e) => {
     e.preventDefault();
-    $("#cartlist").animate({right:'-60%'},600);
+    $("#cartlist").animate({ right: "-60%" }, 600);
   }; //////////// hideList ////////////
 
   // 리스트 삭제 함수 ////////////////
   const deleteItem = (e) => {
-    const selIdx = $(e.target).attr('data-idx');
-    console.log('지울아이:',selIdx);
+    const selIdx = $(e.target).attr("data-idx");
+    console.log("지울아이:", selIdx);
+
+    // 해당 데이터 순번 알아내기
+    const newData = selData.filter((v) => {
+      if (v.idx !== selIdx) return true;
+    });
+
+    console.log('제거후리스트:',newData);
 
   }; ////////// deleteItem 함수 //////////
 
@@ -68,8 +75,7 @@ export const CartList = memo(({selData}) => {
   return (
     <>
       <section id="cartlist">
-        <a href="#" className="cbtn cbtn2"
-        onClick={hideList}>
+        <a href="#" className="cbtn cbtn2" onClick={hideList}>
           <span>닫기버튼</span>
         </a>
         <table>
@@ -111,11 +117,7 @@ export const CartList = memo(({selData}) => {
                 <td>{addComma(v.ginfo[3] * v.num)}원</td>
                 {/* 삭제버튼 */}
                 <td>
-                  <button 
-                    className="cfn" 
-                    data-idx={v.idx}
-                    onClick={deleteItem}
-                  >
+                  <button className="cfn" data-idx={v.idx} onClick={deleteItem}>
                     ×
                   </button>
                 </td>
