@@ -55,6 +55,7 @@ export function Board() {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
+    console.log('다시바인딩!');
     // 데이터 선별하기
     const tempData = [];
 
@@ -116,11 +117,24 @@ export function Board() {
     let pgCode = [];
     // 리턴 코드 //////////
     for(let i=0; i<limit;i++){
-      pgCode[i] = <a href="#">{i+1}</a>;
+      pgCode[i] = <>
+        <a href="#">{i+1}</a> {i<limit-1?' | ':''}
+      </>;
     } ////// for /////
 
     return(pgCode);
  }; /////////// pagingLink 함수 ////////
+
+ /************************************* 
+    함수명 : chgList
+    기능 : 페이지 링크 클릭시 리스트변경
+  *************************************/
+ const chgList = (num) => {
+    console.log('번호:',num);
+    // 바인드 리스트 호출!
+    bindList();
+
+ }; ///////// chgList 함수 //////////////
 
 
   // 리턴코드 ////////////////////
