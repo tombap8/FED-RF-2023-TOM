@@ -111,20 +111,15 @@ export function Board() {
     '\n블록나머지:',blockPad,
     '\n최종한계수:',limit);
 
-    let pgCode;
+    // 리액트에서는 jsx문법 코드를 배열에 넣고
+    // 출력하면 바로 코드로 변환된다!!!
+    let pgCode = [];
     // 리턴 코드 //////////
     for(let i=0; i<limit;i++){
-      
-    }
+      pgCode[i] = <a href="#">{i+1}</a>;
+    } ////// for /////
 
-    return(
-      <>
-        {/* <b>1</b> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> | <a href="#">6</a></td> */}
-      </>
-    )
-  
-
-
+    return(pgCode);
  }; /////////// pagingLink 함수 ////////
 
 
