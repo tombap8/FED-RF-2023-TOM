@@ -28,6 +28,36 @@ export function Board() {
   // 상태추가 : L - 글목록
   // 전체 5가지 상태값 : CRUD+L
 
+  /************************************* 
+    함수명 : bindList
+    기능 : 페이지별 리스트를 생성하여 바인딩함
+  *************************************/
+  const bindList = () => {
+
+    return(
+      baseData.map((v,i)=>
+        <tr>
+          {/* 1. 일련번호 */}
+          <td>{i+1}</td>
+          {/* 2. 글제목 */}
+          <td>{v.tit}</td>
+          {/* 3. 글쓴이 */}
+          <td>{v.writer}</td>
+          {/* 4. 쓴날짜 */}
+          <td>{v.date}</td>
+          {/* 5. 조회수 */}
+          <td>{v.cnt}</td>
+        </tr>
+      )
+    );
+
+
+
+    // <tr>
+    //   <td colSpan="5">There is no data.</td>
+    // </tr>
+  }; /////////// bindList 함수 ////////////
+
   // 리턴코드 ////////////////////
   return (
     <>
@@ -48,11 +78,7 @@ export function Board() {
             </thead>
 
             {/* 중앙 레코드 표시부분 */}
-            <tbody>
-              <tr>
-                <td colSpan="5">There is no data.</td>
-              </tr>
-            </tbody>
+            <tbody>{bindList()}</tbody>
 
             {/* 하단 페이징 표시부분 */}
             <tfoot>
