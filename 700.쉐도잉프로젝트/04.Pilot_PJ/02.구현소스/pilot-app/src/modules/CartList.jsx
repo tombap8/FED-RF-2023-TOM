@@ -107,9 +107,10 @@ export const CartList = memo(({ selData, flag }) => {
   }; ////////// deleteItem 함수 //////////
 
   // 증감 반영함수 ////////////
-  const chgNum = dir => { // 0-감소,1-증가
-    console.log('증감반영:',dir);
-    $('#item-cnt').focus();
+  const chgNum = e => {
+    console.log('증감반영:');
+    $(e.currentTarget).parent()
+    .siblings('.item-cnt').focus();
 
   }; ///////// chgNum 함수 ///////////
 
