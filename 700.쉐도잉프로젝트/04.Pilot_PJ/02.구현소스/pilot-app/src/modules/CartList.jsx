@@ -11,29 +11,23 @@ import $ from "jquery";
 export const CartList = memo(({ selData, flag }) => {
   // selData - 현재 반영된 데이터
   // flag - 상태값 체크변수(true/false) -> 업데이트 여부결정!
-  console.log('업뎃상태값:',flag.current);
+  console.log("업뎃상태값:", flag.current);
 
-  
   // 상태관리변수 설정 /////////////
   // 1. 변경 데이터 변수 : 전달된 데이터로 초기셋팅
-  const [cartData,setCartData] = useState(selData);
-  
-  console.log(
-    '받은 데이터',selData,
-  '\n기존 데이터',cartData);
+  const [cartData, setCartData] = useState(selData);
 
+  console.log("받은 데이터", selData, "\n기존 데이터", cartData);
 
   // 카트 컴포넌트의 데이터가 상태관리되고 있으므로
   // 외부에서 전달되는 데이터와 다를때 업데이트해야
   // 외부에서 들어오는 데이터가 반영되어 리랜더링 된다!
   // 삭제버튼도 작동하게 하려면??? -> 상태변수로 제어한다!!!
   // 외부데이터업데이트는 flag.current값이 true까지 돼야한다!
-  if(cartData!==selData&&flag.current) {
-      setCartData(selData);
-    console.log(3333)
+  if (cartData !== selData && flag.current) {
+    setCartData(selData);
+    console.log(3333);
   }
-
-
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
   // const selData = JSON.parse(localStorage.getItem("cart"));
@@ -88,22 +82,28 @@ export const CartList = memo(({ selData, flag }) => {
     // 삭제기능만 작동한다!
     flag.current = false;
 
-    const selIdx = $(e.target).attr("data-idx");
-    console.log("지울아이:", selIdx);
+    let confMsg = "정말정말정말로 지우시겠습니까? 할인도하는데?";
+    // 지울지 여부를 사용자에게 물어본다!
+    // confirm() 대화창에 
+    // '확인'->true, '취소'->false 리턴함!
+    // confirm은 alert과 유사하게 window객체에 있음!
+    if (window.confirm(confMsg)) {
+      const selIdx = $(e.target).attr("data-idx");
+      console.log("지울아이:", selIdx);
 
-    // 해당 데이터 순번 알아내기
-    const newData = cartData.filter((v) => {
-      if (v.idx !== selIdx) return true;
-    });
+      // 해당 데이터 순번 알아내기
+      const newData = cartData.filter((v) => {
+        if (v.idx !== selIdx) return true;
+      });
 
-    console.log('제거후리스트:',newData);
+      console.log("제거후리스트:", newData);
 
-    // 로컬스 데이터 업데이트!!!
-    localStorage.setItem('cart',JSON.stringify(newData));
+      // 로컬스 데이터 업데이트!!!
+      localStorage.setItem("cart", JSON.stringify(newData));
 
-    // 전체 데이터 업데이트 하면 모두 리랜더링되게 하자!
-    setCartData(newData);
-
+      // 전체 데이터 업데이트 하면 모두 리랜더링되게 하자!
+      setCartData(newData);
+    } ////// if /////////
   }; ////////// deleteItem 함수 //////////
 
   /// 리턴 코드 ///////////////////////
