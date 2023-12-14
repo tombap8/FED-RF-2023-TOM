@@ -36,6 +36,9 @@ export function Board() {
     '페이지단위수:',pgBlock,
     '\n전체 레코드수:',totNum);
 
+  // 3. 시작레코드 순번
+  let initSeq = 0;
+
 
   // [ 상태관리 변수 셋팅 ] ////////
   // 1. 데이터 변경변수 : 초기데이터로 셋팅함
@@ -56,7 +59,9 @@ export function Board() {
     const tempData = [];
 
     // 데이터 선별용 for문
-    for (let i = 0; i < 10; i++) tempData.push(jsn[i]);
+    for (let i = initSeq; i < pgBlock; i++) {
+      tempData.push(jsn[i]);
+    } ///// for /////
 
     return tempData.map((v, i) => (
       <tr key={i}>
@@ -91,9 +96,33 @@ export function Board() {
  const pagingLink = () => {
 
   // 페이징 블록만들기 ////
-  // 1. 전체 페이지 번호수 계산하기
+  // 1. 블록개수 계산하기
+  const blockCnt = Math.floor(totNum / pgBlock);
   // 전체레코드수 / 페이지단위수 (나머지가 있으면 +1)
   // 전체레코드수 : pgBlock변수에 할당됨!
+  // 2. 블록 나머지수 
+  const blockPad = totNum % pgBlock;
+
+  // 최종 한계수 -> 여분레코드 존재에 따라 1더하기
+  const limit = blockCnt + (blockPad===0?0:1)
+
+  console.log(
+    '블록개수:',blockCnt,
+    '\n블록나머지:',blockPad,
+    '\n최종한계수:',limit);
+
+    let pgCode;
+    // 리턴 코드 //////////
+    for(let i=0; i<limit;i++){
+      
+    }
+
+    return(
+      <>
+        {/* <b>1</b> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> | <a href="#">6</a></td> */}
+      </>
+    )
+  
 
 
  }; /////////// pagingLink 함수 ////////
