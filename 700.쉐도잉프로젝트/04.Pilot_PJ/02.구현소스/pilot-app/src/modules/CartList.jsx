@@ -107,36 +107,45 @@ export const CartList = memo(({ selData, flag }) => {
   }; ////////// deleteItem 함수 //////////
 
   // 증감 반영함수 ////////////
-  const chgNum = e => {
+  const chgNum = (e) => {
     // 이벤트 타겟
     const tg = $(e.currentTarget);
     // 이벤트 타겟의 입력창
-    const tgInput = tg.parent().siblings('.item-cnt');
+    const tgInput = tg.parent().siblings(".item-cnt");
     // 입력창 숫자 읽기 : 문자형숫자->숫자형
     let cNum = Number(tgInput.val());
 
-    console.log('증감반영:');
+    console.log("증감반영:");
 
     // CSS 포커스시 반영버튼 보이기 셋팅에 맞춰서
     // 강제로 입력창에 포커스 주기!
     tgInput.focus();
 
     // 증감하기
-    if(tg.attr('alt')==='증가') cNum++;
+    if (tg.attr("alt") === "증가") cNum++;
     else cNum--;
 
     // 한계수체크
-    if(cNum<1) cNum=1;
+    if (cNum < 1) cNum = 1;
 
     // 화면반영하기
     tgInput.val(cNum);
-
   }; ///////// chgNum 함수 ///////////
 
   // 반영버튼 클릭시 데이터 업데이트하기 ////
   const goResult = () => {
-    console.log('결과야 나와라~!');
+    console.log("결과야 나와라~!");
 
+    flag.current = false;
+    // 해당 데이터 순번 알아내기
+    const newData = cartData.filter((v) => {
+      if (v.idx !== selIdx) return true;
+    });
+    // 로컬스 데이터 업데이트!!!
+    localStorage.setItem("cart", JSON.stringify(newData));
+
+    // 전체 데이터 업데이트 하면 모두 리랜더링되게 하자!
+    setCartData(newData);
   }; ////////// goResult 함수 //////////
 
   /// 리턴 코드 ///////////////////////
@@ -183,19 +192,31 @@ export const CartList = memo(({ selData, flag }) => {
                 <td className="cnt-part">
                   <div>
                     <span>
-                      <input type="text" 
-                      className="item-cnt" 
-                      defaultValue={v.num} />
-                      <button 
-                      className="btn-insert"
-                      onClick={goResult}>
-                        반영</button>
+                      <input
+                        type="text"
+                        className="item-cnt"
+                        defaultValue={v.num}
+                      />
+                      <button
+                        className="btn-insert"
+                        onClick={goResult}
+                        data-idx={v.idx}
+                      >
+                        반영
+                      </button>
                       <b className="btn-cnt">
-                        <img src="./images/cnt_up.png" alt="증가" onClick={chgNum} />
-                        <img src="./images/cnt_down.png" alt="감소" onClick={chgNum} />
+                        <img
+                          src="./images/cnt_up.png"
+                          alt="증가"
+                          onClick={chgNum}
+                        />
+                        <img
+                          src="./images/cnt_down.png"
+                          alt="감소"
+                          onClick={chgNum}
+                        />
                       </b>
                     </span>
-                    
                   </div>
                 </td>
                 {/* 상품가격 총합계 */}
