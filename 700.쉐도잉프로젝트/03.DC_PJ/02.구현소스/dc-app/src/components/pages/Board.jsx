@@ -34,11 +34,11 @@ export function Board() {
   // 2. 전체 레코드수 : 배열데이터 총개수
   const totNum = baseData.length;
   console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
-  
+
   // [ 상태관리 변수 셋팅 ] ////////
-  
+
   // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
-  const [pgNum,setPgNum] = useState(1);
+  const [pgNum, setPgNum] = useState(1);
   // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
   const [currData, setCurrData] = useState(null);
   // 2. 게시판 모드관리변수
@@ -56,26 +56,27 @@ export function Board() {
     console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
-
+    
     // 시작값 : (페이지번호-1)*블록단위수
+    let initNum = (pgNum - 1) * pgBlock;
     // 한계값 : 블록단위수*페이지번호
+    let limitNum = pgBlock * pgNum;
+    
     // 블록단위가 7일 경우 첫페이지는 0~7, 7~14,...
-    console.log(
-      '시작값:',(pgNum - 1) * pgBlock,
-      '\n한계값:',pgBlock * pgNum);
+    console.log("시작값:", initNum, 
+    "\n한계값:", limitNum);
 
     // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
-    for (let i = (pgNum - 1) * pgBlock; 
-    i < pgBlock * pgNum; i++) {
+    for (let i = initNum; i < limitNum; i++) {
       tempData.push(orgData[i]);
     } ///// for /////
 
-    console.log('결과셋:',tempData);
+    console.log("결과셋:", tempData);
 
     return tempData.map((v, i) => (
       <tr key={i}>
         {/* 1. 일련번호 */}
-        <td>{i + 1}</td>
+        <td>{i + 1 + initNum}</td>
         {/* 2. 글제목 */}
         <td>
           <a href="#" datatype={v.idx}>
@@ -150,7 +151,7 @@ export function Board() {
     console.log("번호:", currNum);
     // 현재 페이지번호 업데이트! -> 리스트 업데이트됨!
     setPgNum(currNum);
-    // 바인드 리스트 호출 불필요!!! 
+    // 바인드 리스트 호출 불필요!!!
     // 왜? pgNum을 bindList()에서 사용하기때문에
     // 리랜더링이 자동으로 일어남!!!
   }; ///////// chgList 함수 //////////////
