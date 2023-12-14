@@ -133,19 +133,53 @@ export const CartList = memo(({ selData, flag }) => {
   }; ///////// chgNum 함수 ///////////
 
   // 반영버튼 클릭시 데이터 업데이트하기 ////
-  const goResult = () => {
-    console.log("결과야 나와라~!");
+  const goResult = (e) => {
+    // 업데이트할 배열 고유값 idx
+    let tg = $(e.currentTarget);
+    let cidx = tg.attr('data-idx');
+    console.log("결과야 나와라~!",cidx);
 
+    // 데이터 리랜더링 중복실행막기
     flag.current = false;
-    // 해당 데이터 순번 알아내기
-    const newData = cartData.filter((v) => {
-      if (v.idx !== selIdx) return true;
+    
+    // 해당 데이터 업데이트 하기
+    // forEach로 돌리면 중간에 맞을 경우 return할 수 없음!
+    // 일반 for문으로 해야 return 또는 continue를 사용 가능
+
+    // ->>> some() 이라는 메서드가 있다!!!
+    // return true로 조건에 처리시 
+    // for문을 빠져나옴(return과 유사)
+    // return false로 조건 처리시 for문을 해당순번 
+    // 제외하고 계속 순회함(continue와 유사!)
+    // 참고: https://www.w3schools.com/jsref/jsref_some.asp
+
+    // [Array some() 메서드 테스트] //////
+    // cartData.some((v) => {
+    //   console.log('some테스트상단:',v.idx);
+    //   // if(v.idx==17){return true;} // -> for문 break 유사
+    //   if(v.idx==17){return false;} // -> for문 continue 유사
+    //   console.log('some테스트하단:',v.idx);
+    // });
+
+    // 클릭시 'data-idx'값에 업데이트할 요소 idx번호 있음!->cidx
+    cartData.some((v,i) => {
+      // 해당순번 업데이트하기
+      if(v.idx==cidx){
+        // 업데이트 하기 ///
+        cartData[i].num = tg.prev().val();
+
+        // some 메서드 이므로 true 리턴시 순회종료!
+        return true;
+
+      } ///// if ///////
     });
+
     // 로컬스 데이터 업데이트!!!
-    localStorage.setItem("cart", JSON.stringify(newData));
+    localStorage.setItem("cart", JSON.stringify(cartData));
 
     // 전체 데이터 업데이트 하면 모두 리랜더링되게 하자!
-    setCartData(newData);
+    setCartData(cartData);
+
   }; ////////// goResult 함수 //////////
 
   /// 리턴 코드 ///////////////////////
