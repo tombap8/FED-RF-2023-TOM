@@ -96,3 +96,20 @@
   opacity: 1;
   transition: .4s 3s;
 }
+
+/* 수량증감 박스 */
+.cnt-part{
+
+}
+/* 입력창 */
+#item-cnt{
+
+}
+/* 증감 이미지버튼 */
+.btn-cnt{
+
+}
+/* 반영 버튼 */
+.btn-insert{
+
+}

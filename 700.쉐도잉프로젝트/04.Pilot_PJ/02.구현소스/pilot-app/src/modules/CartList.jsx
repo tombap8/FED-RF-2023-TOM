@@ -84,7 +84,7 @@ export const CartList = memo(({ selData, flag }) => {
 
     let confMsg = "정말정말정말로 지우시겠습니까? 할인도하는데?";
     // 지울지 여부를 사용자에게 물어본다!
-    // confirm() 대화창에 
+    // confirm() 대화창에
     // '확인'->true, '취소'->false 리턴함!
     // confirm은 alert과 유사하게 window객체에 있음!
     if (window.confirm(confMsg)) {
@@ -147,7 +147,18 @@ export const CartList = memo(({ selData, flag }) => {
                 {/* 상품가격 */}
                 <td>{addComma(v.ginfo[3])}원</td>
                 {/* 상품수량 */}
-                <td>{v.num}</td>
+                <td className="cnt-part">
+                  <span>
+                    <input type="text" id="item-cnt" defaultValue={v.num} />
+                    <b className="btn-cnt">
+                      <img src="./images/cnt_up.png" alt="증가" />
+                      <img src="./images/cnt_down.png" alt="감소" />
+                    </b>
+                  </span>  
+                  <button className="btn-insert">
+                    반영  
+                  </button>                
+                </td>
                 {/* 상품가격 총합계 */}
                 <td>{addComma(v.ginfo[3] * v.num)}원</td>
                 {/* 삭제버튼 */}
