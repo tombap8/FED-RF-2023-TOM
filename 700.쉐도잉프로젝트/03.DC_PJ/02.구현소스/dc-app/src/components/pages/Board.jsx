@@ -27,6 +27,16 @@ else org = baseData;
 // console.log(org);
 
 export function Board() {
+  // [컴포넌트 전체 공통변수] /////////////
+  // 1. 페이지 단위수 : 한 페이지 당 레코드수
+  const pgBlock = 7;
+  // 2. 전체 레코드수 : 배열데이터 총개수
+  const totNum = baseData.length;
+  console.log(
+    '페이지단위수:',pgBlock,
+    '\n전체 레코드수:',totNum);
+
+
   // [ 상태관리 변수 셋팅 ] ////////
   // 1. 데이터 변경변수 : 초기데이터로 셋팅함
   const [jsn, setJsn] = useState(org);
@@ -46,14 +56,18 @@ export function Board() {
     const tempData = [];
 
     // 데이터 선별용 for문
-    for (let i = 0; i < 10; i++) tempData.push(baseData[i]);
+    for (let i = 0; i < 10; i++) tempData.push(jsn[i]);
 
     return tempData.map((v, i) => (
-      <tr>
+      <tr key={i}>
         {/* 1. 일련번호 */}
         <td>{i + 1}</td>
         {/* 2. 글제목 */}
-        <td>{v.tit}</td>
+        <td>
+          <a href="#" datatype={v.idx}>
+            {v.tit}
+          </a>
+        </td>
         {/* 3. 글쓴이 */}
         <td>{v.writer}</td>
         {/* 4. 쓴날짜 */}
@@ -67,6 +81,23 @@ export function Board() {
     //   <td colSpan="5">There is no data.</td>
     // </tr>
   }; /////////// bindList 함수 ////////////
+
+
+  
+  /************************************* 
+    함수명 : pagingLink
+    기능 : 리스트 페이징 링크를 생성한다!
+  *************************************/
+ const pagingLink = () => {
+
+  // 페이징 블록만들기 ////
+  // 1. 전체 페이지 번호수 계산하기
+  // 전체레코드수 / 페이지단위수 (나머지가 있으면 +1)
+  // 전체레코드수 : pgBlock변수에 할당됨!
+
+
+ }; /////////// pagingLink 함수 ////////
+
 
   // 리턴코드 ////////////////////
   return (
@@ -95,6 +126,7 @@ export function Board() {
               <tr>
                 <td colSpan="5" className="paging">
                   {/* 페이징번호 위치  */}
+                  {pagingLink()}
                 </td>
               </tr>
             </tfoot>
