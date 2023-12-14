@@ -148,16 +148,16 @@ export const CartList = memo(({ selData, flag }) => {
                 <td>{addComma(v.ginfo[3])}원</td>
                 {/* 상품수량 */}
                 <td className="cnt-part">
-                  <span>
-                    <input type="text" id="item-cnt" defaultValue={v.num} />
-                    <b className="btn-cnt">
-                      <img src="./images/cnt_up.png" alt="증가" />
-                      <img src="./images/cnt_down.png" alt="감소" />
-                    </b>
-                  </span>  
-                  <button className="btn-insert">
-                    반영  
-                  </button>                
+                  <div>
+                    <span>
+                      <input type="text" id="item-cnt" defaultValue={v.num} />
+                      <b className="btn-cnt">
+                        <img src="./images/cnt_up.png" alt="증가" />
+                        <img src="./images/cnt_down.png" alt="감소" />
+                      </b>
+                    </span>
+                    <button className="btn-insert">반영</button>
+                  </div>
                 </td>
                 {/* 상품가격 총합계 */}
                 <td>{addComma(v.ginfo[3] * v.num)}원</td>

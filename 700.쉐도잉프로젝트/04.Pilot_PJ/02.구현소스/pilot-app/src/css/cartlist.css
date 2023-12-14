@@ -94,22 +94,28 @@
 }
 #mycart.on .cntBx {
   opacity: 1;
-  transition: .4s 3s;
+  transition: 0.4s 3s;
 }
 
 /* 수량증감 박스 */
-.cnt-part{
-
+.cnt-part span,
+.cnt-part > div {
+  display: flex;
 }
 /* 입력창 */
-#item-cnt{
-
+#item-cnt {
+  width: 20px;
 }
 /* 증감 이미지버튼 */
-.btn-cnt{
-
+.btn-cnt {
+}
+#cartlist .btn-cnt img {
+  display: block;
+  width: 18px;
 }
 /* 반영 버튼 */
-.btn-insert{
-
+.btn-insert {
+  width: 34px;
+  white-space: nowrap;
+  padding: 0;
 }
