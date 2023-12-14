@@ -68,6 +68,9 @@ export function Board() {
 
     // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
     for (let i = initNum; i < limitNum; i++) {
+      // 마지막 페이지 한계수체크
+      if(i>=totNum) break; 
+      // 코드 푸시
       tempData.push(orgData[i]);
     } ///// for /////
 
