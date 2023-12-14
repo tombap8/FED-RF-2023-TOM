@@ -113,6 +113,8 @@
 }
 /* 반영 버튼 */
 .btn-insert {
+  position: absolute;
+  margin-left: 43px;
   width: 34px;
   white-space: nowrap;
   padding: 0;
@@ -120,6 +122,6 @@
 }
 
 #item-cnt:focus+.btn-insert{
-  outline: 10px dotted red;
+  /* outline: 10px dotted red; */
   display: inline-block;
 }

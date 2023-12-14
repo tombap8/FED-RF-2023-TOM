@@ -106,6 +106,12 @@ export const CartList = memo(({ selData, flag }) => {
     } ////// if /////////
   }; ////////// deleteItem 함수 //////////
 
+  // 증감 반영함수 ////////////
+  const chgNum = dir => { // 0-감소,1-증가
+    console.log('증감반영:',dir);
+
+  }; ///////// chgNum 함수 ///////////
+
   /// 리턴 코드 ///////////////////////
   return (
     <>
@@ -153,8 +159,8 @@ export const CartList = memo(({ selData, flag }) => {
                       <input type="text" id="item-cnt" defaultValue={v.num} />
                       <button className="btn-insert">반영</button>
                       <b className="btn-cnt">
-                        <img src="./images/cnt_up.png" alt="증가" />
-                        <img src="./images/cnt_down.png" alt="감소" />
+                        <img src="./images/cnt_up.png" alt="증가" onClick={()=>chgNum(1)} />
+                        <img src="./images/cnt_down.png" alt="감소" onClick={()=>chgNum(0)} />
                       </b>
                     </span>
                     
