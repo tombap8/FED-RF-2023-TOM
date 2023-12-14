@@ -151,12 +151,13 @@ export const CartList = memo(({ selData, flag }) => {
                   <div>
                     <span>
                       <input type="text" id="item-cnt" defaultValue={v.num} />
+                      <button className="btn-insert">반영</button>
                       <b className="btn-cnt">
                         <img src="./images/cnt_up.png" alt="증가" />
                         <img src="./images/cnt_down.png" alt="감소" />
                       </b>
                     </span>
-                    <button className="btn-insert">반영</button>
+                    
                   </div>
                 </td>
                 {/* 상품가격 총합계 */}

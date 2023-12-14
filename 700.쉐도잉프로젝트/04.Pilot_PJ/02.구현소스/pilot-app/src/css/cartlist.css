@@ -107,8 +107,6 @@
   width: 20px;
 }
 /* 증감 이미지버튼 */
-.btn-cnt {
-}
 #cartlist .btn-cnt img {
   display: block;
   width: 18px;
@@ -118,4 +116,10 @@
   width: 34px;
   white-space: nowrap;
   padding: 0;
+  display: none;
+}
+
+#item-cnt:focus+.btn-insert{
+  outline: 10px dotted red;
+  display: inline-block;
 }
