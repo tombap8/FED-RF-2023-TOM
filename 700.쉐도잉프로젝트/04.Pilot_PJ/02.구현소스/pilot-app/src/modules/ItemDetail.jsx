@@ -12,9 +12,7 @@ export function ItemDetail({ cat, goods }) {
   // cat - 카테고리명(men/women/style)
   // goods - 상품 아이템정보(속성코드: m1,m2,...)
 
-  // 카트사용여부 상태변수 /////////
-  const [csts, setCsts] = useState(0);
-
+  
   // 자식 카트 컴포넌트와 함께 상태값 공유할 변수
   const flag = useRef(true);
   // -> 이값이 true일때만 새로추가하는 데이터가 반영됨
@@ -22,8 +20,27 @@ export function ItemDetail({ cat, goods }) {
   // useRef를 사용한 이유는 리랜더링시에도 값을 유지하면서
   // 이 값이 변경되어도 리랜더링 되지 않아야 하기 때문에 선택함!!!
 
+
+  // 카트 사용여부 초기값은 로컬스 'cart'가 있으면 1
+  // 없으면 0 으로 셋팅해준다!
+  let stsVal=0;
+  let transVal=null;
+
+  // 카트셋팅에 필요한 데이터를 로컬스에 따라 셋팅함!
+  if(localStorage.getItem('cart')){ 
+    stsVal=1;
+    transVal = JSON.parse(localStorage.getItem('cart'));
+  } ///// if ////////
+  
   // 로컬스 변환값 변수 - 상태변수로 리랜더링시 값을 유지하게함!
-  const [transData, setTransData] = useState(null);
+  const [transData, setTransData] = useState(transVal); 
+
+
+    // 카트사용여부 상태변수 /////////
+    const [csts, setCsts] = useState(stsVal);
+
+
+
 
   // 카트에 담기 버튼 클릭시 호출함수 ////
   const useCart = () => {
