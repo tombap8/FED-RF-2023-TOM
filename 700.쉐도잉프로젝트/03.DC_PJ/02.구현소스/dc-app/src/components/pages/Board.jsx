@@ -181,7 +181,7 @@ export function Board() {
     // 기본막기
     e.preventDefault();
     // 해당 버튼의 텍스트 읽어오기
-    const btxt = $(e.currentTarget).text();
+    let btxt = $(e.target).text();
     const modeTxt = {
       List: "L",
       Write: "C",
@@ -189,7 +189,7 @@ export function Board() {
       Modify: "U",
       Delete: "L",
     };
-    //  console.log(modeTxt[btxt]);
+     console.log(btxt);
     setBdMode(modeTxt[btxt] ? modeTxt[btxt] : "R");
   }; ////////// chgMode 함수 ///////////
 
@@ -332,7 +332,7 @@ export function Board() {
               {
                 // 리스트 모드(L)
                 bdMode === "L" && (
-                  <button onChange={chgMode}>
+                  <button onClick={chgMode}>
                     <a href="#">
                       Write
                     </a>
@@ -343,12 +343,12 @@ export function Board() {
                 // 글쓰기 모드(C)
                 bdMode === "C" && (
                   <>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         Submit
                       </a>
                     </button>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         List
                       </a>
@@ -360,12 +360,12 @@ export function Board() {
                 // 읽기 모드(R)
                 bdMode === "R" && (
                   <>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         List
                       </a>
                     </button>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         Modify
                       </a>
@@ -377,17 +377,17 @@ export function Board() {
                 // 수정 모드(U)
                 bdMode === "U" && (
                   <>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         Submit
                       </a>
                     </button>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         Delete
                       </a>
                     </button>
-                    <button onChange={chgMode}>
+                    <button onClick={chgMode}>
                       <a href="#">
                         List
                       </a>
