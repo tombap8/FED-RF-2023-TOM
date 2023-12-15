@@ -207,11 +207,32 @@ export function Board() {
     // 4. 모드별 분기하기 //////
     // 4-1. 읽기 모드
     if(modeTxt==="R"){
+
+      setBdMode('R');
+
       // 1. a링크의 'data-idx'값 읽어오기
       let cidx = $(e.target).attr('data-idx');
       console.log("읽기처리",cidx);
 
-      setBdMode('R');
+      // 2. 해당정보 가져오기 : orgData에서 조회함
+      const cData = orgData.find(v=>{
+        if(v.idx===cidx)return true;
+      });
+
+      console.log('현재Data:',cData);
+
+      // 3. 읽기모드 입력창에 데이터 매칭하여 넣기
+      $(()=>{ // DOM그린후 실행함!
+        // (1) 글쓴이
+        $(".readone .name").val(cData.writer);
+        // (2) 글제목
+        $(".readone .subject").val(cData.tit);
+        // (3) 글내용
+        $(".readone .content").val(cData.cont);
+      });
+
+
+
       
 
     } ////// if ///////
