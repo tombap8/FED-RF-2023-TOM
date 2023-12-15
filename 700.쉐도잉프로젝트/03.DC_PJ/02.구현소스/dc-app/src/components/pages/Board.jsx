@@ -1,7 +1,7 @@
 // OPINION 의견 게시판 컴포넌트
 
 // 게시판용 CSS
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import "../../css/board.css";
 
 // 제이쿼리
@@ -177,21 +177,52 @@ export function Board() {
     함수명 : chgMode
     기능 : 게시판 옵션 모드를 변경함
   *************************************/
-  const chgMode = (e) => {
+  const chgMode = useCallback((e) => {
     // 기본막기
     e.preventDefault();
-    // 해당 버튼의 텍스트 읽어오기
+
+    // 1. 해당 버튼의 텍스트 읽어오기
     let btxt = $(e.target).text();
-    const modeTxt = {
-      List: "L",
-      Write: "C",
-      Submit: "L",
-      Modify: "U",
-      Delete: "L",
+    console.log(btxt);
+
+    // 2. 텍스트별 모드 연결하기
+    let modeTxt;
+    
+    switch(btxt) {
+      case "List": modeTxt="L"; break;
+      case "Write": modeTxt="C"; break;
+      case "Modify": modeTxt="U"; break;
+      case "Submit": modeTxt="X"; break;
+      case "Delete": modeTxt="X"; break;
+      default: modeTxt="R";
     };
-     console.log(btxt);
-    setBdMode(modeTxt[btxt] ? modeTxt[btxt] : "R");
-  }; ////////// chgMode 함수 ///////////
+
+    // 3. 모드 이동하기 
+    // -> Submit은 모드변경없이 새글쓰기/글변경하기
+    // 둘 중 하나의 기능을 하므로 리스트로 보내기만 한다!
+    if(modeTxt!=="X") setBdMode(modeTxt);
+
+    console.log("버튼명:",btxt,"모드명:",modeTxt);
+
+    // 4. 모드별 분기하기 //////
+    // 4-1. 읽기 모드
+    if(bdMode==="C" && btxt!=="Submit"){
+      console.log("읽기처리");
+    } ////// if ///////
+    // 4-2. 쓰기 모드
+    else if(bdMode==="C" && btxt==="Submit"){
+      console.log("쓰기처리");
+    } ////// else if ///////
+    // 4-3. 수정하기 모드
+    else if(bdMode==="U" && btxt==="Submit"){
+      console.log("수정처리");
+    } ////// else if ///////
+    // 4-4. 삭제하기 모드
+    else if(bdMode==="U" && btxt==="Delete"){
+      console.log("삭제처리");
+    } ////// else if ///////
+
+  },[bdMode]); //////// chgMode 함수 ///////////
 
   // 리턴코드 ////////////////////
   return (
