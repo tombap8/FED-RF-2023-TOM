@@ -4,6 +4,9 @@
 import { Fragment, useState } from "react";
 import "../../css/board.css";
 
+// 제이쿼리
+import $ from "jquery";
+
 // 기본 데이터 제이슨 불러오기
 import baseData from "../data/board.json";
 
@@ -25,7 +28,7 @@ if (localStorage.getItem("bdata"))
 else orgData = baseData;
 // else orgData = [];
 
-// console.log(org);
+// // console.log(org);
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
@@ -34,7 +37,7 @@ export function Board() {
   const pgBlock = 7;
   // 2. 전체 레코드수 : 배열데이터 총개수
   const totNum = orgData.length;
-  console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
+  // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
 
   // [ 상태관리 변수 셋팅 ] ////////
 
@@ -54,7 +57,7 @@ export function Board() {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
-    console.log("다시바인딩!", pgNum);
+    // console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
 
@@ -64,7 +67,7 @@ export function Board() {
     let limitNum = pgBlock * pgNum;
 
     // 블록단위가 7일 경우 첫페이지는 0~7, 7~14,...
-    console.log("시작값:", initNum, "\n한계값:", limitNum);
+    // console.log("시작값:", initNum, "\n한계값:", limitNum);
 
     // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
     for (let i = initNum; i < limitNum; i++) {
@@ -74,7 +77,7 @@ export function Board() {
       tempData.push(orgData[i]);
     } ///// for /////
 
-    console.log("결과셋:", tempData);
+    // console.log("결과셋:", tempData);
 
     // 데이터가 없는 경우 출력 ///
     if (orgData.length === 0) {
@@ -92,8 +95,7 @@ export function Board() {
         <td>{i + 1 + initNum}</td>
         {/* 2. 글제목 */}
         <td>
-          <a href="#" data-idx={v.idx} 
-            onClick={chgMode}>
+          <a href="#" data-idx={v.idx} onClick={chgMode}>
             {v.tit}
           </a>
         </td>
@@ -123,14 +125,14 @@ export function Board() {
     // 최종 한계수 -> 여분레코드 존재에 따라 1더하기
     const limit = blockCnt + (blockPad === 0 ? 0 : 1);
 
-    console.log(
-      "블록개수:",
-      blockCnt,
-      "\n블록나머지:",
-      blockPad,
-      "\n최종한계수:",
-      limit
-    );
+    // console.log(
+    //   "블록개수:",
+    //   blockCnt,
+    //   "\n블록나머지:",
+    //   blockPad,
+    //   "\n최종한계수:",
+    //   limit
+    // );
 
     // 리액트에서는 jsx문법 코드를 배열에 넣고
     // 출력하면 바로 코드로 변환된다!!!
@@ -163,7 +165,7 @@ export function Board() {
   *************************************/
   const chgList = (e) => {
     let currNum = e.target.innerText;
-    console.log("번호:", currNum);
+    // console.log("번호:", currNum);
     // 현재 페이지번호 업데이트! -> 리스트 업데이트됨!
     setPgNum(currNum);
     // 바인드 리스트 호출 불필요!!!
@@ -180,15 +182,15 @@ export function Board() {
     e.preventDefault();
     // 해당 버튼의 텍스트 읽어오기
     const btxt = $(e.target).text();
-    const modeTxt = { 
-      List: "L", 
-      Write: "C", 
+    const modeTxt = {
+      List: "L",
+      Write: "C",
       Submit: "L",
       Modify: "U",
-      Delete: "L"
-     };
-     console.log(modeTxt);
-    // setBdMode(modeTxt);
+      Delete: "L",
+    };
+    //  console.log(modeTxt[btxt]);
+    setBdMode(modeTxt[btxt] ? modeTxt[btxt] : "R");
   }; ////////// chgMode 함수 ///////////
 
   // 리턴코드 ////////////////////
@@ -331,7 +333,9 @@ export function Board() {
                 // 리스트 모드(L)
                 bdMode === "L" && (
                   <button>
-                    <a href="#" onClick={chgMode}>Write</a>
+                    <a href="#" onClick={chgMode}>
+                      Write
+                    </a>
                   </button>
                 )
               }
@@ -340,10 +344,14 @@ export function Board() {
                 bdMode === "C" && (
                   <>
                     <button>
-                      <a href="#" onClick={chgMode}>Submit</a>
+                      <a href="#" onClick={chgMode}>
+                        Submit
+                      </a>
                     </button>
                     <button>
-                      <a href="#" onClick={chgMode}>List</a>
+                      <a href="#" onClick={chgMode}>
+                        List
+                      </a>
                     </button>
                   </>
                 )
@@ -351,9 +359,18 @@ export function Board() {
               {
                 // 읽기 모드(R)
                 bdMode === "R" && (
-                  <button>
-                    <a href="#" onClick={chgMode}>List</a>
-                  </button>
+                  <>
+                    <button>
+                      <a href="#" onClick={chgMode}>
+                        List
+                      </a>
+                    </button>
+                    <button>
+                      <a href="#" onClick={chgMode}>
+                        Modify
+                      </a>
+                    </button>
+                  </>
                 )
               }
               {
@@ -361,20 +378,23 @@ export function Board() {
                 bdMode === "U" && (
                   <>
                     <button>
-                      <a href="#" onClick={chgMode}>Submit</a>
+                      <a href="#" onClick={chgMode}>
+                        Submit
+                      </a>
                     </button>
                     <button>
-                      <a href="#" onClick={chgMode}>Delete</a>
+                      <a href="#" onClick={chgMode}>
+                        Delete
+                      </a>
                     </button>
                     <button>
-                      <a href="#" onClick={chgMode}>List</a>
+                      <a href="#" onClick={chgMode}>
+                        List
+                      </a>
                     </button>
                   </>
                 )
               }
-              {/* <button>
-                <a href="#">Modify</a>
-              </button> */}
             </td>
           </tr>
         </tbody>
