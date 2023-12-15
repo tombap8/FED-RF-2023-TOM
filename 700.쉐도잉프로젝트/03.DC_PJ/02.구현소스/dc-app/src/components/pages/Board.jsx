@@ -25,7 +25,6 @@ if (localStorage.getItem("bdata"))
 else orgData = baseData;
 // else orgData = [];
 
-
 // console.log(org);
 
 // ******* Borad 컴포넌트 ******* //
@@ -93,7 +92,8 @@ export function Board() {
         <td>{i + 1 + initNum}</td>
         {/* 2. 글제목 */}
         <td>
-          <a href="#" datatype={v.idx}>
+          <a href="#" data-idx={v.idx} 
+            onClick={chgMode}>
             {v.tit}
           </a>
         </td>
@@ -170,6 +170,26 @@ export function Board() {
     // 왜? pgNum을 bindList()에서 사용하기때문에
     // 리랜더링이 자동으로 일어남!!!
   }; ///////// chgList 함수 //////////////
+
+  /************************************* 
+    함수명 : chgMode
+    기능 : 게시판 옵션 모드를 변경함
+  *************************************/
+  const chgMode = (e) => {
+    // 기본막기
+    e.preventDefault();
+    // 해당 버튼의 텍스트 읽어오기
+    const btxt = $(e.target).text();
+    const modeTxt = { 
+      List: "L", 
+      Write: "C", 
+      Submit: "L",
+      Modify: "U",
+      Delete: "L"
+     };
+     console.log(modeTxt);
+    // setBdMode(modeTxt);
+  }; ////////// chgMode 함수 ///////////
 
   // 리턴코드 ////////////////////
   return (
@@ -311,7 +331,7 @@ export function Board() {
                 // 리스트 모드(L)
                 bdMode === "L" && (
                   <button>
-                    <a href="#">Write</a>
+                    <a href="#" onClick={chgMode}>Write</a>
                   </button>
                 )
               }
@@ -320,10 +340,10 @@ export function Board() {
                 bdMode === "C" && (
                   <>
                     <button>
-                      <a href="#">Submit</a>
+                      <a href="#" onClick={chgMode}>Submit</a>
                     </button>
                     <button>
-                      <a href="#">List</a>
+                      <a href="#" onClick={chgMode}>List</a>
                     </button>
                   </>
                 )
@@ -332,7 +352,7 @@ export function Board() {
                 // 읽기 모드(R)
                 bdMode === "R" && (
                   <button>
-                    <a href="#">List</a>
+                    <a href="#" onClick={chgMode}>List</a>
                   </button>
                 )
               }
@@ -341,13 +361,13 @@ export function Board() {
                 bdMode === "U" && (
                   <>
                     <button>
-                      <a href="#">Submit</a>
+                      <a href="#" onClick={chgMode}>Submit</a>
                     </button>
                     <button>
-                      <a href="#">Delete</a>
+                      <a href="#" onClick={chgMode}>Delete</a>
                     </button>
                     <button>
-                      <a href="#">List</a>
+                      <a href="#" onClick={chgMode}>List</a>
                     </button>
                   </>
                 )
