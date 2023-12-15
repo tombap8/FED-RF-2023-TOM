@@ -209,15 +209,15 @@ export function Board() {
     if(bdMode==="C" && btxt!=="Submit"){
       console.log("읽기처리");
     } ////// if ///////
-    // 4-2. 쓰기 모드
+    // 4-2. 쓰기 모드 : 모드변경없이 처리후 리스트보내기
     else if(bdMode==="C" && btxt==="Submit"){
       console.log("쓰기처리");
     } ////// else if ///////
-    // 4-3. 수정하기 모드
+    // 4-3. 수정하기 모드 : 모드변경없이 처리후 리스트보내기
     else if(bdMode==="U" && btxt==="Submit"){
       console.log("수정처리");
     } ////// else if ///////
-    // 4-4. 삭제하기 모드
+    // 4-4. 삭제하기 모드 : 모드변경없이 처리후 리스트보내기
     else if(bdMode==="U" && btxt==="Delete"){
       console.log("삭제처리");
     } ////// else if ///////
