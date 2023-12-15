@@ -177,7 +177,7 @@ export function Board() {
     함수명 : chgMode
     기능 : 게시판 옵션 모드를 변경함
   *************************************/
-  const chgMode = useCallback((e) => {
+  const chgMode = (e) => {
     // 기본막기
     e.preventDefault();
 
@@ -200,33 +200,39 @@ export function Board() {
     // 3. 모드 이동하기 
     // -> Submit은 모드변경없이 새글쓰기/글변경하기
     // 둘 중 하나의 기능을 하므로 리스트로 보내기만 한다!
-    if(modeTxt!=="X") setBdMode(modeTxt);
+    // if(modeTxt!=="X") setBdMode(modeTxt);
 
     console.log("버튼명:",btxt,"모드명:",modeTxt);
 
     // 4. 모드별 분기하기 //////
     // 4-1. 읽기 모드
-    if(bdMode==="C" && btxt!=="Submit"){
+    if(modeTxt==="R"){
       // 1. a링크의 'data-idx'값 읽어오기
       let cidx = $(e.target).attr('data-idx');
       console.log("읽기처리",cidx);
+
+      setBdMode('R');
       
 
     } ////// if ///////
+    else if(modeTxt==="L"){
+      setBdMode('L');
+    }
     // 4-2. 쓰기 모드 : 모드변경없이 처리후 리스트보내기
-    else if(bdMode==="C" && btxt==="Submit"){
-      console.log("쓰기처리");
-    } ////// else if ///////
+    // else if(modeTxt==="C" && btxt==="Submit"){
+    //   console.log("쓰기처리");
+    // } ////// else if ///////
     // 4-3. 수정하기 모드 : 모드변경없이 처리후 리스트보내기
-    else if(bdMode==="U" && btxt==="Submit"){
-      console.log("수정처리");
-    } ////// else if ///////
+    // else if(modeTxt==="U" && btxt==="Submit"){
+    //   console.log("수정처리");
+    // } ////// else if ///////
     // 4-4. 삭제하기 모드 : 모드변경없이 처리후 리스트보내기
-    else if(bdMode==="U" && btxt==="Delete"){
-      console.log("삭제처리");
-    } ////// else if ///////
+    // else if(modeTxt==="U" && btxt==="Delete"){
+    //   console.log("삭제처리");
+    // } ////// else if ///////
 
-  },[bdMode]); //////// chgMode 함수 ///////////
+
+  }; //////// chgMode 함수 ///////////
 
   // 리턴코드 ////////////////////
   return (
