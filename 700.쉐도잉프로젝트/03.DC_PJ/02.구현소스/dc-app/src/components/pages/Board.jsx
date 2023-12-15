@@ -207,7 +207,11 @@ export function Board() {
     // 4. 모드별 분기하기 //////
     // 4-1. 읽기 모드
     if(bdMode==="C" && btxt!=="Submit"){
-      console.log("읽기처리");
+      // 1. a링크의 'data-idx'값 읽어오기
+      let cidx = $(e.target).attr('data-idx');
+      console.log("읽기처리",cidx);
+      
+
     } ////// if ///////
     // 4-2. 쓰기 모드 : 모드변경없이 처리후 리스트보내기
     else if(bdMode==="C" && btxt==="Submit"){
