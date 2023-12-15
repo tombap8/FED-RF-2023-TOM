@@ -175,7 +175,7 @@ export function Board() {
 
   // 선택된 데이터 셋팅을 위한 참조변수
   const cData = useRef(null);
-  
+
   /************************************* 
     함수명 : chgMode
     기능 : 게시판 옵션 모드를 변경함
@@ -212,6 +212,8 @@ export function Board() {
       console.log("읽기처리",cidx);
       
       // 2. 해당정보 가져오기 : orgData에서 조회함
+      // 전역 참조변수에 저장하여 리랜더링시 리턴코드에
+      // 이값이 적용되게 해준다!!!
       cData.current = orgData.find(v=>{
         if(v.idx===cidx)return true;
       });
@@ -260,9 +262,14 @@ export function Board() {
       // 1. 제목, 내용 필수입력 체크
       
 
+    } ////// else if ///////
 
+    // 3-5. 수정모드 /////////
+    else if(modeTxt==="U"){
+      console.log('수정모드');
+
+      setBdMode('U');
       
-
 
     } ////// else if ///////
     
@@ -359,13 +366,15 @@ export function Board() {
               <tr>
                 <td>Name</td>
                 <td>
-                  <input type="text" className="name" size="20" readOnly value={cData.current.writer} />
+                  <input type="text" className="name" size="20" readOnly 
+                  value={cData.current.writer} />
                 </td>
               </tr>
               <tr>
                 <td>Title</td>
                 <td>
-                  <input type="text" className="subject" size="60" readOnly value={cData.current.tit} />
+                  <input type="text" className="subject" size="60" readOnly 
+                  value={cData.current.tit} />
                 </td>
               </tr>
               <tr>
@@ -393,19 +402,25 @@ export function Board() {
               <tr>
                 <td>Name</td>
                 <td>
-                  <input type="text" className="name" size="20" readOnly />
+                  <input type="text" className="name" size="20" readOnly 
+                  value={cData.current.writer}/>
+                  {/* value는 수정불가! */}
                 </td>
               </tr>
               <tr>
                 <td>Title</td>
                 <td>
-                  <input type="text" className="subject" size="60" />
+                  <input type="text" className="subject" size="60" 
+                  defaultValue={cData.current.tit}/>
+                  {/* defaultValue로 써야 수정가능! */}
                 </td>
               </tr>
               <tr>
                 <td>Content</td>
                 <td>
-                  <textarea className="content" cols="60" rows="10"></textarea>
+                  <textarea className="content" cols="60" rows="10"
+                  defaultValue={cData.current.cont}></textarea>
+                  {/* defaultValue로 써야 수정가능! */}
                 </td>
               </tr>
             </tbody>
