@@ -16,6 +16,8 @@ export const CartList = memo(({ selData, flag }) => {
   // 상태관리변수 설정 /////////////
   // 1. 변경 데이터 변수 : 전달된 데이터로 초기셋팅
   const [cartData, setCartData] = useState(selData);
+  // 2. 리랜더링 강제적용 상태변수
+  const [force,setForce] = useState(null);
 
   console.log("받은 데이터", selData, "\n기존 데이터", cartData);
 
@@ -183,6 +185,8 @@ export const CartList = memo(({ selData, flag }) => {
     // 배열데이터가 업데이트 된것으로 인식되지 않는다!
     // 따라서 강제 리랜더링 상태값을 설정하여 이 값을
     // 변경하여 리랜더링 하자!
+    setForce(Math.random());
+    // 매번 랜덤수를 넣으면 반드시 리랜더링된다!!!^^
 
   }; ////////// goResult 함수 //////////
 
