@@ -353,7 +353,7 @@ export function Board() {
       setBtnSts(false);
     } //////// else ///////////   
 
-  }; ///////// chgUsrInfo 함수 ////////
+  }; ///////// compUsr 함수 ////////
 
   // 리턴코드 ////////////////////
   return (
