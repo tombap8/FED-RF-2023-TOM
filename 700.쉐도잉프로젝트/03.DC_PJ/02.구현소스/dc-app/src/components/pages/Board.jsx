@@ -81,6 +81,10 @@ export function Board() {
   useEffect(() => {
     // 만약 로그아웃하면 버튼 상태값 false로 변경하기!
     if (myCon.logSts === null) setBtnSts(false);
+
+    // 만약 글쓰기모드(C)에서 로그아웃을 한 경우 리스트페이지이동
+    if(myCon.logSts === null && bdMode==='C') setBdMode('L');
+
   }, [myCon.logSts]);
   // [ 리랜더링의 원인 중 많은 경우 랜더링 전 즉,
   // 가상돔에 설정을 잡을 때 발생한다! ]
