@@ -7,6 +7,9 @@ import "../../css/board.css";
 // 컨텍스트 API 불러오기
 import { dcCon } from "../modules/dcContext";
 
+// 로컬스토리지 사용자정보 생성 JS
+import { initData } from "../func/mem_fn";
+
 // 제이쿼리
 import $ from "jquery";
 
@@ -35,6 +38,10 @@ else orgData = baseData;
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
+
+  // 기본사용자 정보 셋업 함수 호출
+  initData();
+
   // 컨텍스트 API 사용하기
   const myCon = useContext(dcCon);
 
@@ -303,6 +310,17 @@ export function Board() {
     // } ////// else if ///////
   }; //////// chgMode 함수 ///////////
 
+  // 사용자 정보 변환함수 //////////
+  const chgUsrInfo = usr => {
+    // 사용자 정보조회 로컬스(mem-info)
+    // 보드 상단에서 null일경우 생성함수 이미 호출!
+    // null을 고려하지 말고 코드작성!
+    const info = JSON.parse(localStorage.getItem('mem-info'));
+    console.log(info);
+    
+
+  }; ///////// chgUsrInfo 함수 ////////
+
   // 리턴코드 ////////////////////
   return (
     <>
@@ -385,7 +403,7 @@ export function Board() {
                     className="name"
                     size="20"
                     readOnly
-                    value={cData.current.writer}
+                    value={chgUsrInfo(cData.current.uid)}
                   />
                 </td>
               </tr>
