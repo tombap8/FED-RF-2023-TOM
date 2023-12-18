@@ -315,8 +315,20 @@ export function Board() {
     // 사용자 정보조회 로컬스(mem-info)
     // 보드 상단에서 null일경우 생성함수 이미 호출!
     // null을 고려하지 말고 코드작성!
-    const info = JSON.parse(localStorage.getItem('mem-info'));
+
+    // 1. 로컬스 원본 데이터 조회
+    const info = JSON.parse(
+      localStorage.getItem('mem-data'));
     console.log(info);
+
+    // 2. 원본으로 부터 해당 사용자 정보 조회
+    const cUser = info.find(v=>{
+      if(v.uid===usr) return true;
+    })
+
+    console.log(cUser);
+
+
     
 
   }; ///////// chgUsrInfo 함수 ////////
