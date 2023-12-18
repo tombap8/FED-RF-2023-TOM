@@ -100,6 +100,15 @@ export function Board() {
     // 데이터 선별하기
     const tempData = [];
 
+    // 내림차순 정렬
+    orgData.sort((a, b) => {
+      return Number(a.idx) === Number(b.idx)
+        ? 0
+        : Number(a.idx) > Number(b.idx)
+        ? -1
+        : 1;
+    });
+
     // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
     // 한계값 : 블록단위수*페이지번호
@@ -115,6 +124,8 @@ export function Board() {
       // 코드 푸시
       tempData.push(orgData[i]);
     } ///// for /////
+
+    
 
     // console.log("결과셋:", tempData);
 
@@ -266,7 +277,7 @@ export function Board() {
       // 전역 참조변수에 저장하여 리랜더링시 리턴코드에
       // 이값이 적용되게 해준다!!!
       cData.current = orgData.find((v) => {
-        if (v.idx === cidx) return true;
+        if (Number(v.idx) === Number(cidx)) return true;
       });
 
       console.log("현재Data:", cData.current);
@@ -347,9 +358,34 @@ export function Board() {
         // 2. 원본 데이터 변수할당
         let orgTemp = orgData;
 
-        // 3. 임시변수에 입력할 객체 데이터 생성하기
+        // 3. 입력idx 기본키값을 숫자값 중 최대값에 1을 더함!
+        // 3-1. idx값만 모아서 배열로 재구성함(숫자형변환!)
+        let arrIdx = orgTemp.map((v) => parseInt(v.idx));
+        // 최대값
+        let maxNum = Math.max(...arrIdx);
+        console.log("idx배열:", arrIdx);
+        console.log("최대값:", maxNum);
+        console.log("다른방법최대값:", Math.max.apply(null, arrIdx));
+        // 스프레드 연산자 나오기 전에는 항상 apply메서드 사용함
+        // apply(this객체,배열값) -> this객체 전달없으므로 null씀
+        // -> 배열값 내부의 값을 하나씩 전달함!
+
+        // Math.max() 에서 값을 비교하기 위해 배열값을
+        // 나열하여 입력하면 된다!
+        // 배열값을 나열하는 연산자는? Spread Operator(스프레드연산자 : ...)
+        // 다른배열을 합칠때도 사용함
+
+        // let aa = [1,16];
+        // let bb = [300,500];
+        // let cc = [...aa,...bb];
+        // console.log('합친배열:',cc);
+
+        // let test = Math.max(1,2,3,4,5);
+        // console.log('1~5사이최대값:',test);
+
+        // 4. 임시변수에 입력할 객체 데이터 생성하기
         let temp = {
-          idx: 51,
+          idx: maxNum + 1,
           tit: subEle.val().trim(),
           cont: contEle.val().trim(),
           att: "",
@@ -359,7 +395,21 @@ export function Board() {
           cnt: "0",
         };
 
-        console.log('입력전 준비데이터:',temp);
+        // console.log("입력전 준비데이터:", temp);
+        
+        // 5. 원본임시변수에 배열데이터 값 push하기
+        orgTemp.push(temp);
+        
+        // console.log("최종반영 전체데이터:",  orgTemp);
+
+        // 6. 로컬스에 반영하기
+        localStorage.setItem('bdata',
+        JSON.stringify(orgTemp))
+
+        // 7. 리스트 페이지로 이동하기
+        setBdMode('L');
+
+
       } //////// else //////////
     } ////// else if ///////
 
