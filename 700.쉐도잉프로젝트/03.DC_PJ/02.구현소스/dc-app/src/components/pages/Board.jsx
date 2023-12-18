@@ -83,8 +83,7 @@ export function Board() {
     if (myCon.logSts === null) setBtnSts(false);
 
     // 만약 글쓰기모드(C)에서 로그아웃을 한 경우 리스트페이지이동
-    if(myCon.logSts === null && bdMode==='C') setBdMode('L');
-
+    if (myCon.logSts === null && bdMode === "C") setBdMode("L");
   }, [myCon.logSts]);
   // [ 리랜더링의 원인 중 많은 경우 랜더링 전 즉,
   // 가상돔에 설정을 잡을 때 발생한다! ]
@@ -300,13 +299,12 @@ export function Board() {
 
     // 3-3. 쓰기 모드 //////////////
     else if (modeTxt === "C") {
-      // 로그인한 사용자 정보 셋팅하기 : 글쓰기버튼은 
+      // 로그인한 사용자 정보 셋팅하기 : 글쓰기버튼은
       // 로그인한 사람에게 노출되므로 아래코드는 괜찮다!
       logData.current = JSON.parse(myCon.logSts);
       // 이 데이터로 가상돔 구성시 리액트코드에 데이터매칭함!
       // 필요데이터: 로그인 사용자이름(unm), 이메일(eml)
-     
-    
+
       setBdMode("C");
 
       // 1. 글쓴이와 이메일은 로그인상태값에서 읽어와서
@@ -325,15 +323,44 @@ export function Board() {
     else if (modeTxt === "S" && bdMode === "C") {
       console.log("글쓰기 서브밋");
 
+      // 제목,내용 입력요소
+      const subEle = $(".writeone .subject");
+      const contEle = $(".writeone .content");
+
+      // console.log(subEle.val().trim(),contEle.val().trim());
+
       // 1. 제목, 내용 필수입력 체크
       // 리랜더링 없는 DOM상태 기능구현!!
-      const subEle = $('.writeone .subject');
-      const contEle = $('.writeone .content');
+      if (subEle.val().trim() === "" || contEle.val().trim() === "") {
+        window.alert("제목과 내용은 필수입력입니다!");
+      } /////// if /////////
 
-      if(subEle.val().trim()===""||contEle.val().trim()){
-        window.alert('제목과 내용은 필수입력입니다!');
-      }
+      // 2. 통과시 실제 데이터 입력하기
+      else {
+        const addZero = (x) => (x < 10 ? "0" + x : x);
+        // 1. 날짜 데이터 구성
+        let today = new Date();
+        let yy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
 
+        // 2. 원본 데이터 변수할당
+        let orgTemp = orgData;
+
+        // 3. 임시변수에 입력할 객체 데이터 생성하기
+        let temp = {
+          idx: 51,
+          tit: subEle.val().trim(),
+          cont: contEle.val().trim(),
+          att: "",
+          date: `${yy}-${addZero(mm)}-${addZero(dd)}`,
+          uid: logData.current.uid,
+          unm: logData.current.unm,
+          cnt: "0",
+        };
+
+        console.log('입력전 준비데이터:',temp);
+      } //////// else //////////
     } ////// else if ///////
 
     // 3-5. 수정모드 /////////
@@ -436,15 +463,25 @@ export function Board() {
               <tr>
                 <td>Name</td>
                 <td>
-                  <input type="text" className="name" size="20" readOnly
-                  value={logData.current.unm} />
+                  <input
+                    type="text"
+                    className="name"
+                    size="20"
+                    readOnly
+                    value={logData.current.unm}
+                  />
                 </td>
               </tr>
               <tr>
                 <td>Email</td>
                 <td>
-                  <input type="text" className="email" size="40" readOnly
-                  value={logData.current.eml} />
+                  <input
+                    type="text"
+                    className="email"
+                    size="40"
+                    readOnly
+                    value={logData.current.eml}
+                  />
                 </td>
               </tr>
               <tr>
