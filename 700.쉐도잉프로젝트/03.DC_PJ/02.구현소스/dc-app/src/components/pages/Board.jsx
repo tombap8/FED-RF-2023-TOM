@@ -320,25 +320,36 @@ export function Board() {
   // 사용자 비교함수 //////////
   // 원본으로 부터 해당 사용자 정보 조회하여
     // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
-  const compUsr = (usr) => {  
+  const compUsr = (usr) => { // usr - 글쓴이 아이디(uid)
     // 사용자 정보조회 로컬스(mem-info)
     // 보드 상단에서 null일경우 생성함수 이미 호출!
     // null을 고려하지 말고 코드작성!
 
-    // 1. 로컬스 원본 데이터 조회
-    const info = JSON.parse(
-      localStorage.getItem('mem-data'));
-    console.log(info);
+    // 로그인 상태일 경우 조회하여
+    // 버튼 상태 업데이트 하기
+    if(myCon.logSts!==null){
+      // 1. 로컬스 원본 데이터 조회
+      const info = JSON.parse(
+        localStorage.getItem('mem-data'));
+      console.log(info);
+  
+      // 2. 원본으로 부터 해당 사용자 정보 조회하여
+      // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
+      const cUser = info.find(v=>{
+        if(v.uid===usr) return true;
+      })
+  
+      console.log(cUser);
 
-    // 2. 원본으로 부터 해당 사용자 정보 조회하여
-    // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
-    const cUser = info.find(v=>{
-      if(v.uid===usr) return true;
-    })
-
-    console.log(cUser);
-
-    
+      // 3. 로그인사용자 정보와 조회하기
+      // 아이디로 조회함!
+      const currUsr = JSON.parse(myCon.logSts);
+      if(currUsr.uid===cUser.uid) setBtnSts(true);
+      else setBtnSts(false);
+    } /////// if ////////////
+    else{ // 로그인 안한 상태 ////
+      setBtnSts(false);
+    } //////// else ///////////   
 
   }; ///////// chgUsrInfo 함수 ////////
 
