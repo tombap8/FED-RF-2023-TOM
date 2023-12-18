@@ -29,7 +29,7 @@ export function Layout() {
     // 3. 로그인 메시지 업데이트
     setLogMsg(null);
     // 4. 첫페이지로 이동
-    chgPage('/',{});
+    // chgPage('/',{});
   },[]); //////// logOut함수 //////////
 
   // 랜더링 후(화면보이기전) 실행구역 //////////
@@ -53,12 +53,13 @@ export function Layout() {
   /********************************** 
    [컨텍스트 API 공유값 설정]
    1. chgPage 함수 : 라우터 이동기능 
-   2. setLogSts : 로그인 상태값 업데이트  
-   3. setLogMsg : 로그인 메시지 업데이트  
+   2. logSts : 로그인 상태값
+   3. setLogSts : 로그인 상태값 업데이트  
+   4. setLogMsg : 로그인 메시지 업데이트  
    **********************************/
   // 리턴코드 ////////////////////////
   return (
-    <dcCon.Provider value={{ chgPage, setLogSts, setLogMsg }}>
+    <dcCon.Provider value={{ chgPage, logSts, setLogSts, setLogMsg }}>
       {/* 메모이제이션 관리를 위해 함수를
       컨텍스트방식이 아닌 속성으로 직접보냄! */}
       <TopArea 

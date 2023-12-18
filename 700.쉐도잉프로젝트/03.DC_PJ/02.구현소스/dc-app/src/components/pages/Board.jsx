@@ -1,8 +1,11 @@
 // OPINION 의견 게시판 컴포넌트
 
 // 게시판용 CSS
-import { Fragment, useCallback, useRef, useState } from "react";
+import { Fragment, useCallback, useContext, useRef, useState } from "react";
 import "../../css/board.css";
+
+// 컨텍스트 API 불러오기
+import { dcCon } from "../modules/dcContext";
 
 // 제이쿼리
 import $ from "jquery";
@@ -32,6 +35,12 @@ else orgData = baseData;
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
+
+  // 컨텍스트 API 사용하기
+  const myCon = useContext(dcCon);
+
+  console.log('로그인상태:',myCon.logSts);
+
   // [컴포넌트 전체 공통변수] /////////////
   // 1. 페이지 단위수 : 한 페이지 당 레코드수
   const pgBlock = 7;
