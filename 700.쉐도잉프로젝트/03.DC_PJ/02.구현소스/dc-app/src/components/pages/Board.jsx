@@ -70,6 +70,8 @@ export function Board() {
   // 3. 버튼공개 여부 관리변수 : 수정버튼
   const [btnSts, setBtnSts] = useState(false);
 
+  
+
   /************************************* 
     함수명 : bindList
     기능 : 페이지별 리스트를 생성하여 바인딩함
