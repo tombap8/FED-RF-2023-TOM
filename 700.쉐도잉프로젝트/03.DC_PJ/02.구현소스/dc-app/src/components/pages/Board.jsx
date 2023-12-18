@@ -305,6 +305,7 @@ export function Board() {
       logData.current = JSON.parse(myCon.logSts);
       // 이 데이터로 가상돔 구성시 리액트코드에 데이터매칭함!
       // 필요데이터: 로그인 사용자이름(unm), 이메일(eml)
+     
     
       setBdMode("C");
 
@@ -325,6 +326,14 @@ export function Board() {
       console.log("글쓰기 서브밋");
 
       // 1. 제목, 내용 필수입력 체크
+      // 리랜더링 없는 DOM상태 기능구현!!
+      const subEle = $('.writeone .subject');
+      const contEle = $('.writeone .content');
+
+      if(subEle.val().trim()===""||contEle.val().trim()){
+        window.alert('제목과 내용은 필수입력입니다!');
+      }
+
     } ////// else if ///////
 
     // 3-5. 수정모드 /////////
