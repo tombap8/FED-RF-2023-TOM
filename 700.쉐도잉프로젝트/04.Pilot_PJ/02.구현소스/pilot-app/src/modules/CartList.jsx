@@ -251,6 +251,7 @@ export const CartList = memo(({ selData, flag }) => {
             <span>
               <input type="text" 
               className="item-cnt" 
+              readOnly
               value={v.num} />
               {/* 실제개수 반영값을 위해 value속성사용할것!
               defaultValue를 쓰면 값변경 반영안됨! */}
