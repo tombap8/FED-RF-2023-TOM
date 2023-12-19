@@ -249,8 +249,11 @@ export const CartList = memo(({ selData, flag }) => {
         <td className="cnt-part">
           <div>
             <span>
-              <input type="text" className="item-cnt" 
+              <input type="text" 
+              className="item-cnt" 
               value={v.num} />
+              {/* 실제개수 반영값을 위해 value속성사용할것!
+              defaultValue를 쓰면 값변경 반영안됨! */}
               <button
                 className="btn-insert"
                 onClick={goResult}
