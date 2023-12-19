@@ -1,7 +1,7 @@
 // Pilot PJ 장바구니 리스트 컴포넌트
 
 // 장바구니 리스트 CSS 불러오기
-import { memo, useCallback, useEffect, useState } from "react";
+import { Fragment, memo, useCallback, useEffect, useState } from "react";
 import "../css/cartlist.css";
 
 // 제이쿼리
@@ -16,8 +16,7 @@ export const CartList = memo(({ selData, flag }) => {
   // [컴포넌트 전체 공통변수] /////////////
   // 1. 페이지 단위수 : 한 페이지 당 레코드수
   const pgBlock = 5;
-  // 2. 전체 레코드수 : 배열데이터 총개수
-  const totNum = selData.length;
+
   // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
 
   // 상태관리변수 설정 ///////////////
@@ -43,7 +42,7 @@ export const CartList = memo(({ selData, flag }) => {
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
   // const selData = JSON.parse(localStorage.getItem("cart"));
 
-  // 데이터개수
+  // 전체 데이터개수
   const cntData = cartData.length;
 
   console.log(cartData, cntData + "개");
@@ -212,8 +211,8 @@ export const CartList = memo(({ selData, flag }) => {
 
     // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
     for (let i = initNum; i < limitNum; i++) {
-      // 마지막 페이지 한계수체크
-      if (i >= totNum) break;
+      // 마지막 페이지 한계수체크(cntData전체개수체크)
+      if (i >= cntData) break;
       // 코드 푸시
       tempData.push(cartData[i]);
     } ///// for /////
@@ -227,8 +226,10 @@ export const CartList = memo(({ selData, flag }) => {
       );
     } ////// if /////////
 
+    // console.log('찍기직전Data:',tempData);
+
     return tempData.map((v, i) => (
-      <tr key={i}>
+      <tr key={i} data-v={v}>
         {/* 상품이미지 */}
         <td>
           <img
@@ -248,7 +249,8 @@ export const CartList = memo(({ selData, flag }) => {
         <td className="cnt-part">
           <div>
             <span>
-              <input type="text" className="item-cnt" defaultValue={v.num} />
+              <input type="text" className="item-cnt" 
+              value={v.num} />
               <button
                 className="btn-insert"
                 onClick={goResult}
@@ -274,6 +276,70 @@ export const CartList = memo(({ selData, flag }) => {
       </tr>
     ));
   }; /////////// bindList 함수 ////////////
+
+  /************************************* 
+    함수명 : pagingLink
+    기능 : 리스트 페이징 링크를 생성한다!
+  *************************************/
+  const pagingLink = () => {
+    // 페이징 블록만들기 ////
+    // 1. 블록개수 계산하기
+    const blockCnt = Math.floor(cntData / pgBlock);
+    // 전체레코드수 / 페이지단위수 (나머지가 있으면 +1)
+    // 전체레코드수 : pgBlock변수에 할당됨!
+    // 2. 블록 나머지수
+    const blockPad = cntData % pgBlock;
+
+    // 최종 한계수 -> 여분레코드 존재에 따라 1더하기
+    const limit = blockCnt + (blockPad === 0 ? 0 : 1);
+
+    // console.log(
+    //   "블록개수:",
+    //   blockCnt,
+    //   "\n블록나머지:",
+    //   blockPad,
+    //   "\n최종한계수:",
+    //   limit
+    // );
+
+    // 리액트에서는 jsx문법 코드를 배열에 넣고
+    // 출력하면 바로 코드로 변환된다!!!
+    let pgCode = [];
+    // 리턴 코드 //////////
+    // 만약 빈태그 묶음에 key를 심어야할 경우
+    // 불가하므로 Fragment 조각 가상태그를 사용한다!
+    for (let i = 0; i < limit; i++) {
+      pgCode[i] = (
+        <Fragment key={i}>
+          {pgNum - 1 === i ? (
+            <b>{i + 1}</b>
+          ) : (
+            <a href="#" onClick={chgList}>
+              {i + 1}
+            </a>
+          )}
+
+          {i < limit - 1 ? " | " : ""}
+        </Fragment>
+      );
+    } ////// for /////
+
+    return pgCode;
+  }; /////////// pagingLink 함수 ////////
+
+  /************************************* 
+    함수명 : chgList
+    기능 : 페이지 링크 클릭시 리스트변경
+  *************************************/
+  const chgList = (e) => {
+    let currNum = e.target.innerText;
+    // console.log("번호:", currNum);
+    // 현재 페이지번호 업데이트! -> 리스트 업데이트됨!
+    setPgNum(currNum);
+    // 바인드 리스트 호출 불필요!!!
+    // 왜? pgNum을 bindList()에서 사용하기때문에
+    // 리랜더링이 자동으로 일어남!!!
+  }; ///////// chgList 함수 //////////////
 
   /// 리턴 코드 ///////////////////////
   return (
@@ -306,6 +372,15 @@ export const CartList = memo(({ selData, flag }) => {
               <td></td>
             </tr>
           </tbody>
+          {/* 하단 페이징 표시부분 */}
+          <tfoot>
+            <tr>
+              <td colSpan="8" className="paging">
+                {/* 페이징번호 위치  */}
+                {pagingLink()}
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </section>
       {/* 카트버튼이미지 박스 */}

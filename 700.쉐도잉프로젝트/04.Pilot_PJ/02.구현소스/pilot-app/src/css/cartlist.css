@@ -129,3 +129,14 @@
   transition: none;
   /* display: inline-block; */
 }
+
+/* 페이징 파트 */
+.paging{
+  text-align: center;
+  padding: 20px 0;
+}
+.paging a, .paging b{
+  color: #222;
+  text-decoration: none;
+  font-size: 20px;
+}
