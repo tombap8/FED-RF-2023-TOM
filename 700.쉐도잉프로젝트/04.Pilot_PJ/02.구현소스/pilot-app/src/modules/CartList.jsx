@@ -13,11 +13,13 @@ export const CartList = memo(({ selData, flag }) => {
   // flag - 상태값 체크변수(true/false) -> 업데이트 여부결정!
   console.log("업뎃상태값:", flag.current);
 
-  // 상태관리변수 설정 /////////////
-  // 1. 변경 데이터 변수 : 전달된 데이터로 초기셋팅
+  // 상태관리변수 설정 ///////////////
+  // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
+  const [pgNum, setPgNum] = useState(1);
+  // 2. 변경 데이터 변수 : 전달된 데이터로 초기셋팅
   const [cartData, setCartData] = useState(selData);
-  // 2. 리랜더링 강제적용 상태변수
-  const [force,setForce] = useState(null);
+  // 3. 리랜더링 강제적용 상태변수
+  const [force, setForce] = useState(null);
 
   console.log("받은 데이터", selData, "\n기존 데이터", cartData);
 
@@ -138,20 +140,20 @@ export const CartList = memo(({ selData, flag }) => {
   const goResult = (e) => {
     // 업데이트할 배열 고유값 idx
     let tg = $(e.currentTarget);
-    let cidx = tg.attr('data-idx');
-    console.log("결과야 나와라~!",cidx);
+    let cidx = tg.attr("data-idx");
+    console.log("결과야 나와라~!", cidx);
 
     // 데이터 리랜더링 중복실행막기
     flag.current = false;
-    
+
     // 해당 데이터 업데이트 하기
     // forEach로 돌리면 중간에 맞을 경우 return할 수 없음!
     // 일반 for문으로 해야 return 또는 continue를 사용 가능
 
     // ->>> some() 이라는 메서드가 있다!!!
-    // return true로 조건에 처리시 
+    // return true로 조건에 처리시
     // for문을 빠져나옴(return과 유사)
-    // return false로 조건 처리시 for문을 해당순번 
+    // return false로 조건 처리시 for문을 해당순번
     // 제외하고 계속 순회함(continue와 유사!)
     // 참고: https://www.w3schools.com/jsref/jsref_some.asp
 
@@ -164,15 +166,14 @@ export const CartList = memo(({ selData, flag }) => {
     // });
 
     // 클릭시 'data-idx'값에 업데이트할 요소 idx번호 있음!->cidx
-    cartData.some((v,i) => {
+    cartData.some((v, i) => {
       // 해당순번 업데이트하기
-      if(v.idx==cidx){
+      if (v.idx == cidx) {
         // 업데이트 하기 ///
         cartData[i].num = tg.prev().val();
 
         // some 메서드 이므로 true 리턴시 순회종료!
         return true;
-
       } ///// if ///////
     });
 
@@ -187,8 +188,74 @@ export const CartList = memo(({ selData, flag }) => {
     // 변경하여 리랜더링 하자!
     setForce(Math.random());
     // 매번 랜덤수를 넣으면 반드시 리랜더링된다!!!^^
-
   }; ////////// goResult 함수 //////////
+
+  /************************************* 
+    함수명 : bindList
+    기능 : 페이지별 리스트를 생성하여 바인딩함
+  *************************************/
+  const bindList = () => {
+    return(
+      cartData.map((v, i) => (
+        <tr key={i}>
+          {/* 상품이미지 */}
+          <td>
+            <img
+              src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+              alt="item"
+            />
+          </td>
+          {/* 리스트순번 */}
+          <td>{i + 1}</td>
+          {/* 상품명 */}
+          <td>{v.ginfo[1]}</td>
+          {/* 상품코드 */}
+          <td>{v.ginfo[2]}</td>
+          {/* 상품가격 */}
+          <td>{addComma(v.ginfo[3])}원</td>
+          {/* 상품수량 */}
+          <td className="cnt-part">
+            <div>
+              <span>
+                <input
+                  type="text"
+                  className="item-cnt"
+                  defaultValue={v.num}
+                />
+                <button
+                  className="btn-insert"
+                  onClick={goResult}
+                  data-idx={v.idx}
+                >
+                  반영
+                </button>
+                <b className="btn-cnt">
+                  <img
+                    src="./images/cnt_up.png"
+                    alt="증가"
+                    onClick={chgNum}
+                  />
+                  <img
+                    src="./images/cnt_down.png"
+                    alt="감소"
+                    onClick={chgNum}
+                  />
+                </b>
+              </span>
+            </div>
+          </td>
+          {/* 상품가격 총합계 */}
+          <td>{addComma(v.ginfo[3] * v.num)}원</td>
+          {/* 삭제버튼 */}
+          <td>
+            <button className="cfn" data-idx={v.idx} onClick={deleteItem}>
+              ×
+            </button>
+          </td>
+        </tr>
+      ))
+    );
+  }; /////////// bindList 함수 ////////////
 
   /// 리턴 코드 ///////////////////////
   return (
@@ -213,64 +280,7 @@ export const CartList = memo(({ selData, flag }) => {
               <th>삭제</th>
             </tr>
 
-            {cartData.map((v, i) => (
-              <tr key={i}>
-                {/* 상품이미지 */}
-                <td>
-                  <img
-                    src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
-                    alt="item"
-                  />
-                </td>
-                {/* 리스트순번 */}
-                <td>{i + 1}</td>
-                {/* 상품명 */}
-                <td>{v.ginfo[1]}</td>
-                {/* 상품코드 */}
-                <td>{v.ginfo[2]}</td>
-                {/* 상품가격 */}
-                <td>{addComma(v.ginfo[3])}원</td>
-                {/* 상품수량 */}
-                <td className="cnt-part">
-                  <div>
-                    <span>
-                      <input
-                        type="text"
-                        className="item-cnt"
-                        defaultValue={v.num}
-                      />
-                      <button
-                        className="btn-insert"
-                        onClick={goResult}
-                        data-idx={v.idx}
-                      >
-                        반영
-                      </button>
-                      <b className="btn-cnt">
-                        <img
-                          src="./images/cnt_up.png"
-                          alt="증가"
-                          onClick={chgNum}
-                        />
-                        <img
-                          src="./images/cnt_down.png"
-                          alt="감소"
-                          onClick={chgNum}
-                        />
-                      </b>
-                    </span>
-                  </div>
-                </td>
-                {/* 상품가격 총합계 */}
-                <td>{addComma(v.ginfo[3] * v.num)}원</td>
-                {/* 삭제버튼 */}
-                <td>
-                  <button className="cfn" data-idx={v.idx} onClick={deleteItem}>
-                    ×
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {bindList()}
 
             <tr>
               <td colSpan="6">총합계 :</td>
