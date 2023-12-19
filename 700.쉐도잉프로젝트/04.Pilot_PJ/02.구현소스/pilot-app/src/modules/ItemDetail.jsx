@@ -30,6 +30,8 @@ export function ItemDetail({ cat, goods }) {
     stsVal=1;
     transVal = JSON.parse(localStorage.getItem('cart'));
   } ///// if ////////
+
+  console.log("로컬스있니?",stsVal)
   
   // 로컬스 변환값 변수 - 상태변수로 리랜더링시 값을 유지하게함!
   const [transData, setTransData] = useState(transVal); 
@@ -196,6 +198,13 @@ export function ItemDetail({ cat, goods }) {
       // 출력박스 : #total
       $("#total").text(addComma(ginfo[3] * num) + "원");
     });
+
+    // 카트가 생성된 경우 버튼 보이기
+    // (카트부모박스 .bgbx 보이기)
+    console.log('카트노출상태:',csts);
+    if(csts===1) $('.bgbx').show();
+
+
   }, []); ////  한번만 실행 /////
 
   // 리랜더링 실행구역 /////
