@@ -15,11 +15,10 @@ export const CartList = memo(({ selData, flag }) => {
 
   // [컴포넌트 전체 공통변수] /////////////
   // 1. 페이지 단위수 : 한 페이지 당 레코드수
-  const pgBlock = 7;
+  const pgBlock = 5;
   // 2. 전체 레코드수 : 배열데이터 총개수
-  const totNum = orgData.length;
+  const totNum = selData.length;
   // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
-
 
   // 상태관리변수 설정 ///////////////
   // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
@@ -203,66 +202,77 @@ export const CartList = memo(({ selData, flag }) => {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
-    return(
-      cartData.map((v, i) => (
-        <tr key={i}>
-          {/* 상품이미지 */}
-          <td>
-            <img
-              src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
-              alt="item"
-            />
-          </td>
-          {/* 리스트순번 */}
-          <td>{i + 1}</td>
-          {/* 상품명 */}
-          <td>{v.ginfo[1]}</td>
-          {/* 상품코드 */}
-          <td>{v.ginfo[2]}</td>
-          {/* 상품가격 */}
-          <td>{addComma(v.ginfo[3])}원</td>
-          {/* 상품수량 */}
-          <td className="cnt-part">
-            <div>
-              <span>
-                <input
-                  type="text"
-                  className="item-cnt"
-                  defaultValue={v.num}
-                />
-                <button
-                  className="btn-insert"
-                  onClick={goResult}
-                  data-idx={v.idx}
-                >
-                  반영
-                </button>
-                <b className="btn-cnt">
-                  <img
-                    src="./images/cnt_up.png"
-                    alt="증가"
-                    onClick={chgNum}
-                  />
-                  <img
-                    src="./images/cnt_down.png"
-                    alt="감소"
-                    onClick={chgNum}
-                  />
-                </b>
-              </span>
-            </div>
-          </td>
-          {/* 상품가격 총합계 */}
-          <td>{addComma(v.ginfo[3] * v.num)}원</td>
-          {/* 삭제버튼 */}
-          <td>
-            <button className="cfn" data-idx={v.idx} onClick={deleteItem}>
-              ×
-            </button>
-          </td>
+    // 데이터 선별하기
+    const tempData = [];
+
+    // 시작값 : (페이지번호-1)*블록단위수
+    let initNum = (pgNum - 1) * pgBlock;
+    // 한계값 : 블록단위수*페이지번호
+    let limitNum = pgBlock * pgNum;
+
+    // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
+    for (let i = initNum; i < limitNum; i++) {
+      // 마지막 페이지 한계수체크
+      if (i >= totNum) break;
+      // 코드 푸시
+      tempData.push(cartData[i]);
+    } ///// for /////
+
+    // 데이터가 없는 경우 출력 ///
+    if (cartData.length === 0) {
+      return (
+        <tr>
+          <td colSpan="8">There is no data.</td>
         </tr>
-      ))
-    );
+      );
+    } ////// if /////////
+
+    return tempData.map((v, i) => (
+      <tr key={i}>
+        {/* 상품이미지 */}
+        <td>
+          <img
+            src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+            alt="item"
+          />
+        </td>
+        {/* 리스트순번 */}
+        <td>{i + 1}</td>
+        {/* 상품명 */}
+        <td>{v.ginfo[1]}</td>
+        {/* 상품코드 */}
+        <td>{v.ginfo[2]}</td>
+        {/* 상품가격 */}
+        <td>{addComma(v.ginfo[3])}원</td>
+        {/* 상품수량 */}
+        <td className="cnt-part">
+          <div>
+            <span>
+              <input type="text" className="item-cnt" defaultValue={v.num} />
+              <button
+                className="btn-insert"
+                onClick={goResult}
+                data-idx={v.idx}
+              >
+                반영
+              </button>
+              <b className="btn-cnt">
+                <img src="./images/cnt_up.png" alt="증가" onClick={chgNum} />
+                <img src="./images/cnt_down.png" alt="감소" onClick={chgNum} />
+              </b>
+            </span>
+          </div>
+        </td>
+        {/* 상품가격 총합계 */}
+        <td>{addComma(v.ginfo[3] * v.num)}원</td>
+        {/* 삭제버튼 */}
+        <td>
+          <button className="cfn" data-idx={v.idx} onClick={deleteItem}>
+            ×
+          </button>
+        </td>
+      </tr>
+    ));
   }; /////////// bindList 함수 ////////////
 
   /// 리턴 코드 ///////////////////////
