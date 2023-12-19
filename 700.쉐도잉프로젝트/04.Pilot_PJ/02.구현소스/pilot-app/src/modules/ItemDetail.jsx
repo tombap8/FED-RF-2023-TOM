@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 // 신상품 데이터 가져오기
 import gdata from "../data/glist-items";
-import { sinsangData } from "../data/sinsang";
 
 import $ from "jquery";
 import { CartList } from "./CartList";
