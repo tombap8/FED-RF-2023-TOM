@@ -39,10 +39,9 @@ export function ItemDetail({ cat, goods }) {
     // 카트사용여부 상태변수 /////////
     const [csts, setCsts] = useState(stsVal);
 
-
-
-
+  //////////////////////////////////////
   // 카트에 담기 버튼 클릭시 호출함수 ////
+  /////////////////////////////////////
   const useCart = () => {
     // 카트 선택 아이템만 추가하기 위해
     // 카트 컴포넌트와 공유한 useRef 참조변수인 flag값을
