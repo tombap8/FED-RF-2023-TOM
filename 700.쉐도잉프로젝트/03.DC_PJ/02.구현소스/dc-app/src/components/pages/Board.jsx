@@ -521,9 +521,15 @@ export function Board() {
 
       // 3. 로그인사용자 정보와 조회하기
       // 아이디로 조회함!
-      const currUsr = JSON.parse(myCon.logSts);
-      if (currUsr.uid === cUser.uid) setBtnSts(true);
-      else setBtnSts(false);
+      if(cUser){ 
+        // 할당안되면 undefined 이므로 할당되었을때만 if문처리
+        const currUsr = JSON.parse(myCon.logSts);
+        if (currUsr.uid === cUser.uid) setBtnSts(true);
+        else setBtnSts(false);
+      } //// if /////
+      else{ // 사용자비교값이 없는 경우
+        setBtnSts(false);
+      } //// else ////
     } /////// if ////////////
     else {
       // 로그인 안한 상태 ////
