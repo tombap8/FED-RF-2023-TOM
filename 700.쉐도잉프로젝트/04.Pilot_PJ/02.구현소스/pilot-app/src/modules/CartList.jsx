@@ -237,8 +237,8 @@ export const CartList = memo(({ selData, flag }) => {
             alt="item"
           />
         </td>
-        {/* 리스트순번 */}
-        <td>{i + 1}</td>
+        {/* 리스트순번 : 페이지별 시작번호반영 */}
+        <td>{i + 1 + initNum}</td>
         {/* 상품명 */}
         <td>{v.ginfo[1]}</td>
         {/* 상품코드 */}
