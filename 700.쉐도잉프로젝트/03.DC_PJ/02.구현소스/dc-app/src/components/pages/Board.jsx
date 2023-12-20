@@ -96,7 +96,7 @@ export function Board() {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
-    // console.log("다시바인딩!", pgNum);
+    console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
 
@@ -134,7 +134,7 @@ export function Board() {
           <td colSpan="5">There is no data.</td>
         </tr>
       );
-    } ////// if /////////
+    } ////// if /////////    
 
     // if문에 들어가지 않으면 여기를 리턴함!
     return tempData.map((v, i) => (
@@ -155,6 +155,8 @@ export function Board() {
         <td>{v.cnt}</td>
       </tr>
     ));
+
+    
   }; /////////// bindList 함수 ////////////
 
   /************************************* 
@@ -586,6 +588,9 @@ export function Board() {
         } ////////// if //////////
       });
 
+      // 원본 데이터에 반영하기 : 꼭해야만 리스트가 업데이트됨!
+      orgData = data;
+      
       // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
       localStorage.setItem('bdata',JSON.stringify(data));
 
