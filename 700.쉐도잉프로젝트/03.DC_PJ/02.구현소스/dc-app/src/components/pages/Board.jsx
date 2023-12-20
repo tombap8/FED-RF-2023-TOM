@@ -564,8 +564,9 @@ export function Board() {
 
     // 세션스에 등록된 글번호만큼 돌다가 같은 글이면
     // isOK값을 false로 처리함!
+    // 주의: cntIdx는 숫자로만 된 배열이다! [1,2,5,6]
     cntIdx.some((v) => {
-      if (Number(v.idx) === Number(cidx)) {
+      if (Number(v) === Number(cidx)) {
         isOK = false;
         // 여기서 나감!(break역할!)
         return true;
@@ -587,7 +588,7 @@ export function Board() {
 
       // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
       localStorage.setItem('bdata',JSON.stringify(data));
-      
+
     } //////////// if /////////////
 
     // 5. [ 현재글 세션스에 처리하기 ] ////////
