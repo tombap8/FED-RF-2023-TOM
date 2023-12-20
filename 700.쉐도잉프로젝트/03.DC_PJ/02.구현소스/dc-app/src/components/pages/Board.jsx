@@ -577,6 +577,10 @@ export function Board() {
 
     console.log('넣은후:',cntIdx);
 
+    // 세션스에 저장하기
+    sessionStorage
+    .setItem('cnt-idx',JSON.stringify(cntIdx));
+
  }; //////////// plusCnt 함수 /////////////
 
 
