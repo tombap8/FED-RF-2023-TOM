@@ -569,6 +569,7 @@ export function Board() {
     let cntIdx = 
     JSON.parse(sessionStorage.getItem('cnt-idx'));
 
+    // 배열여부확인
     console.log(Array.isArray(cntIdx));
 
     // 세션스 배열에 idx값 넣기
