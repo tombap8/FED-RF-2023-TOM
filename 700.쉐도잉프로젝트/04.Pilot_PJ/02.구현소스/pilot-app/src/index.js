@@ -95,7 +95,7 @@ function App() {
   // 처음 로딩시 스크롤 상단이동 //////
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }); ///// useLayoutEffect //////////
+  },[]); ///// useLayoutEffect //////////
 
   /***************************************** 
     [ 컨텍스트 API 공개 변수들 ]
