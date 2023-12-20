@@ -578,10 +578,14 @@ export function Board() {
     // 3-2. 로그인한 사용자일 경우 로그인 사용자계정과 같은
     // 글이면 증가하지 않는다!
     if(localStorage.getItem('minfo')){
+      // 사용자 로그인정보 로컬스
       let minfo = 
       JSON.parse(localStorage.getItem('minfo'));
+      // 로그인 아이디
       let cUid = minfo.uid;
       console.log('로그인사용자검사',cUid);
+      // 로그인 아이디 === 현재글 아이디
+      if(cUid === cData.current.uid) isOK = false;
 
     } ////////////// if //////////////
 
