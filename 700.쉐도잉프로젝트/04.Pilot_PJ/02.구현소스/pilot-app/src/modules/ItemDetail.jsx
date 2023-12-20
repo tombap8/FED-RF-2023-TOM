@@ -1,14 +1,19 @@
 // 상품상세보기 컴포넌트
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect } from "react";
 // 신상품 데이터 가져오기
 import gdata from "../data/glist-items";
+// 컨텍스트 API 불러오기
+import { pCon } from "./PilotContext";
 
 import $ from "jquery";
 
 export function ItemDetail({ cat, goods }) {
   // cat - 카테고리명(men/women/style)
   // goods - 상품 아이템정보(속성코드: m1,m2,...)
+
+  // 컨텍스트 API 사용하기
+  const myCon = useContext(pCon);
 
   
   //////////////////////////////////////
@@ -18,7 +23,7 @@ export function ItemDetail({ cat, goods }) {
     // 카트 선택 아이템만 추가하기 위해
     // 카트 컴포넌트와 공유한 useRef 참조변수인 flag값을
     // true로 업데이트 한다!!!
-    flag.current = true;
+    myCon.flag.current = true;
 
 
     // 1.선택된 상품을 로컬스토리지에 담기!
@@ -51,11 +56,11 @@ export function ItemDetail({ cat, goods }) {
       // localD변수에 담긴 로컬스 변환값을 
         // transData에 담아
         // CartList 컴포넌트에 전달한다!
-        setTransData(localD);
+        myCon.setTransData(localD);
 
-        console.log(transData);
+        console.log(myCon.transData);
 
-        setCsts(1);
+        myCon.setCsts(1);
 
         // 쇼핑카트버튼 초기화
         $("#mycart")
@@ -98,11 +103,11 @@ export function ItemDetail({ cat, goods }) {
         // localD변수에 담긴 로컬스 변환값을 
         // transData에 담아
         // CartList 컴포넌트에 전달한다!
-        setTransData(localD);
+        myCon.setTransData(localD);
 
-        console.log(transData);
+        console.log(myCon.transData);
 
-        setCsts(1);
+        myCon.setCsts(1);
 
         // 쇼핑카트버튼 초기화
         $("#mycart")

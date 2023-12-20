@@ -7,7 +7,7 @@ import { pCon } from "./modules/PilotContext";
 import { TopArea } from "./layout/TopArea";
 import { MainArea } from "./layout/MainArea";
 import { FooterArea } from "./layout/FooterArea";
-import { CartList } from "./CartList";
+import { CartList } from "./modules/CartList";
 
 // 제이쿼리
 import $ from "jquery";
