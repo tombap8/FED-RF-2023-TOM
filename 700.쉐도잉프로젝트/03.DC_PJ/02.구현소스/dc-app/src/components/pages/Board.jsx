@@ -288,6 +288,9 @@ export function Board() {
 
       setBdMode("R");
 
+      // 조회수 증가 함수 호출!
+      plusCnt();
+
       // -> 아래의 방식은 스크립트로 DOM에 셋팅하는 방법
       // ->>> 리액트는 가상돔에 데이터를 셋팅하도록 해야함!
       // cData를 참조변수로 만들어서 미리 데이터를 셋팅했음!
@@ -536,6 +539,46 @@ export function Board() {
       setBtnSts(false);
     } //////// else ///////////
   }; ///////// compUsr 함수 ////////
+
+
+  /************************************* 
+    * 함수명 : plusCnt
+    * 기능 : 게시판 조회수 증가 반영하기
+    * 조건 : 
+      (1) 자신의 글은 업데이트 안됨
+      (2) 한 글에 대해 한번만 업데이트 됨
+      -> 방법: 사용자가 방문한 글 고유번호를
+      배열에 기록하고 조회하여 같은 글인 경우 
+      업데이트를 막아준다!
+      (이때 배열은 세션스에 기록함! 이유는
+        브라우저 닫을 때 사라짐!)
+
+    * 업데이트 시점 : 글 읽기 모드에 들어간후
+  *************************************/
+ const plusCnt = () => {
+    // 1. 현재읽은 글은 cData.current로 읽어옴!
+    let cidx = cData.current.idx;
+    console.log('조회수 증가체크 idx:',cidx);
+
+    // 2. 세션스에 'cnt-idx' 이름으로 배열 데이터를 저장함!
+    // 만약 없으면 우선 만들기 ///
+    if(!sessionStorage.getItem('cnt-idx'))
+      sessionStorage.setItem('cnt-idx','[]');
+
+    // 세션스 파싱!
+    let cntIdx = 
+    JSON.parse(sessionStorage.getItem('cnt-idx'));
+
+    console.log(Array.isArray(cntIdx));
+
+    // 세션스 배열에 idx값 넣기
+    cntIdx.push(Number(cidx));
+
+    console.log('넣은후:',cntIdx);
+
+ }; //////////// plusCnt 함수 /////////////
+
+
 
   // 리턴코드 ////////////////////
   return (
