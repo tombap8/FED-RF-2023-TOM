@@ -46,6 +46,13 @@ export function GList() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // 상품클릭시 상세보기 보여주는 함수 ////
+  const showDetail = (gCode,catCode) => {
+    // gCode - 상품코드, catCode - 분류명
+    console.log('상세보여!',gCode,catCode);
+
+  }; //////////// showDetail 함수 ///////////
+
   // 리턴 코드 ///////////////////
   return (
     <main id="cont">
