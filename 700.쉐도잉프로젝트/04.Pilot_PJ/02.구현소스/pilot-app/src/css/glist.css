@@ -5,6 +5,11 @@
     font-family: 'Ubuntu','Nanum Gothic';
 }
 
+/* 상세보기 내부 박스 디자인 변경 */
+.inx{
+    background-color: rgb(255 255 255 / 0.817);
+}
+
 /* 타이틀 */
 .tit {
     position: relative;

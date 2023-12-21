@@ -11,17 +11,15 @@ import { ItemDetail } from "../modules/ItemDetail";
 console.log("전체Data:", gdata);
 
 export function GList() {
+  // 상태관리 변수 /////////////////
+  // 1. 아이템 코드(m1,m2,m3,...)
+  const [item, setItem] = useState("m1");
+  // 2. 카테고리명(men/women/style)
+  const [catName, setCatName] = useState("men");
+  // 3. 상세보기모드(true/false)
+  const [detailSts, setDetailSts] = useState(true);
 
-    // 상태관리 변수 /////////////////
-    // 1. 아이템 코드(m1,m2,m3,...)
-    const [item,setItem] = useState('m1');
-    // 2. 카테고리명(men/women/style)
-    const [catName,setCatName] = useState('men');
-    // 3. 상세보기모드(true/false)
-    const [detailSts,setDetailSts] = useState(true);
-
-
-    // 리스트 만들기 함수 ////////
+  // 리스트 만들기 함수 ////////
   const makeList = () =>
     gdata.map((v, i) => (
       <div key={i}>
@@ -64,13 +62,23 @@ export function GList() {
         <div className="grid">{makeList()}</div>
       </section>
       {
-      /* 2.5. 상세보기박스 */
-        detailSts &&
-        <div className="bgbx">
+        /* 2.5. 상세보기박스 */
+        detailSts && (
+          <div
+            className="bgbx"
+            style={{
+              position: "fixed",
+              top: 0,
+              paddingTop: "12vh",
+              backdropFilter: "blur(8px)",
+              height: "100vh",
+              zIndex: 9999,
+            }}
+          >
             <ItemDetail goods={item} cat={catName} />
-        </div>
+          </div>
+        )
       }
-
     </main>
   );
 } /////////////// GList 컴포넌트 ///////////
