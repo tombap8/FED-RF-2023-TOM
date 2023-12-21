@@ -1,14 +1,27 @@
 // 상품 전체 리스트 페이지
 
 // 상품전체리스트 CSS 불러오기
+import { useEffect, useState } from "react";
 import "../css/glist.css";
 
 // 상품데이터 불러오기
 import gdata from "../data/glist-items";
+import { ItemDetail } from "../modules/ItemDetail";
 
 console.log("전체Data:", gdata);
 
 export function GList() {
+
+    // 상태관리 변수 /////////////////
+    // 1. 아이템 코드(m1,m2,m3,...)
+    const [item,setItem] = useState('m1');
+    // 2. 카테고리명(men/women/style)
+    const [catName,setCatName] = useState('men');
+    // 3. 상세보기모드(true/false)
+    const [detailSts,setDetailSts] = useState(true);
+
+
+    // 리스트 만들기 함수 ////////
   const makeList = () =>
     gdata.map((v, i) => (
       <div key={i}>
@@ -26,6 +39,10 @@ export function GList() {
       </div>
     )); //////////// makeList ////////
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //정규식함수(숫자 세자리마다 콤마해주는 기능)
   function addComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -34,7 +51,7 @@ export function GList() {
   // 리턴 코드 ///////////////////
   return (
     <main id="cont">
-        <h1 className="tit">All ITEMS LIST</h1>
+      <h1 className="tit">All ITEMS LIST</h1>
       <section>
         <div id="optbx">
           <label htmlFor="men">남성</label>
@@ -46,6 +63,14 @@ export function GList() {
         </div>
         <div className="grid">{makeList()}</div>
       </section>
+      {
+      /* 2.5. 상세보기박스 */
+        detailSts &&
+        <div className="bgbx">
+            <ItemDetail goods={item} cat={catName} />
+        </div>
+      }
+
     </main>
   );
 } /////////////// GList 컴포넌트 ///////////
