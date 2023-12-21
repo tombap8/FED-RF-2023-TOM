@@ -34,6 +34,7 @@ export function GList() {
   // 리턴 코드 ///////////////////
   return (
     <main id="cont">
+        <h1 className="tit">All ITEMS LIST</h1>
       <section>
         <div id="optbx">
           <label htmlFor="men">남성</label>

@@ -1,8 +1,19 @@
+/* 전체 */
+/* 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Ubuntu&display=swap');
+#cont{
+    font-family: 'Ubuntu','Nanum Gothic';
+}
+
 /* 타이틀 */
 .tit {
+    position: relative;
+    top: 8vw;
     text-align: center;
     /* 글자 최소크기 지정 */
     font-size: max(3vw, 25px);
+    color: navy;
+    text-shadow: 4px 4px 2px #0000006d;
 }
 .wrap{
     overflow: hidden;
