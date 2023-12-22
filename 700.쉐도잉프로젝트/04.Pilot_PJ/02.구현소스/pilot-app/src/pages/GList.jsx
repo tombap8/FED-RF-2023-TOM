@@ -85,7 +85,11 @@ export function GList() {
     // 2. 체크박스 체크여부 : checked (true/false)
     const chked = e.target.checked;
     console.log('아이디:',cid,chked);
-    
+
+    // 4.체크박스 체크개수세기 : 1개초과시 배열합치기!
+    let num = $('.chkbx:checked').length;
+    console.log('체크개수:',num);
+
   }; ////////////// changeList 함수 ///////////
 
   // 리턴 코드 ///////////////////
