@@ -114,6 +114,7 @@ export function GList() {
       else{ // 하나일때
         lastList = nowList;
       }
+      console.log('추가구역:',lastList);
 
     } /////////// if /////////
     // (2) 체크박스가 false일때 데이터 지우기
@@ -122,8 +123,8 @@ export function GList() {
       // for문을 돌면서 배열데이터중 해당값을 지운다!
       for(let i=0; i<temp.length;i++){
         // -> 삭제대상:
-        // 데이터중 alignment 항목값이 아이디명과 같은것
-        if(temp[i].alignment==cid){
+        // 데이터중 cat 항목값이 아이디명과 같은것
+        if(temp[i].cat==cid){
           // 해당항목 지우기
           // 배열지우기 메서드 : splice(순번,개수)
           temp.splice(i,1);
@@ -146,10 +147,11 @@ export function GList() {
       // 결과처리하기 : 삭제처리된 temp를 결과에 넣기!
       lastList = temp;
 
+    // 6. 검색결과 리스트 업데이트 하기
+    // setCurrData(temp);
+    console.log('삭제구역:',lastList);
     } /////////// else ///////////
 
-    // 6. 검색결과 리스트 업데이트 하기
-    setCurrData(lastList);
 
   }; ////////////// changeList 함수 ///////////
 
