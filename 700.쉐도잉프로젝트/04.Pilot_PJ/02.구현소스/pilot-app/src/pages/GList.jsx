@@ -74,6 +74,20 @@ export function GList() {
     $(".bgbx").slideDown(600);
   }; //////////// showDetail 함수 ///////////
 
+  /******************************************* 
+    함수명: changeList
+    기능: 체크박스에 따른 리스트 변경하기
+  *******************************************/
+  const changeList = (e) => {
+    // 1. 체크박스 아이디
+    const cid = e.target.id;
+
+    // 2. 체크박스 체크여부 : checked (true/false)
+    const chked = e.target.checked;
+    console.log('아이디:',cid,chked);
+    
+  }; ////////////// changeList 함수 ///////////
+
   // 리턴 코드 ///////////////////
   return (
     <main id="cont">
@@ -81,11 +95,14 @@ export function GList() {
       <section>
         <div id="optbx">
           <label htmlFor="men">남성</label>
-          <input type="checkbox" id="men" defaultChecked />
+          <input type="checkbox" className="chkbx" id="men" defaultChecked
+          onChange={changeList} />
           <label htmlFor="women">여성</label>
-          <input type="checkbox" id="women" defaultChecked />
+          <input type="checkbox" className="chkbx" id="women" defaultChecked
+          onChange={changeList} />
           <label htmlFor="style">스타일</label>
-          <input type="checkbox" id="style" defaultChecked />
+          <input type="checkbox" className="chkbx" id="style" defaultChecked
+          onChange={changeList} />
         </div>
         <div className="grid">{makeList()}</div>
       </section>
