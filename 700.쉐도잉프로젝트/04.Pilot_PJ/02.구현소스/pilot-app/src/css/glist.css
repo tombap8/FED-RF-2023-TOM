@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Ubuntu&display=swap');
 #cont{
     font-family: 'Ubuntu','Nanum Gothic';
+    /* 최소높이(하단영역높이뺌) */
+    min-height: calc(100vh - 477px);
 }
 
 /* 상세보기 내부 박스 디자인 변경 */
