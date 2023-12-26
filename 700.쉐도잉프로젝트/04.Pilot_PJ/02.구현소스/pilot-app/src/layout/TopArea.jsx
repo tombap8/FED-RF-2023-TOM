@@ -16,8 +16,16 @@ export function TopArea(props) {
     console.log('카테고리:',props.cat);
     // glist일 경우 적용하기
     if(props.cat==="glist"){
-      let atxt = $(e.currentTarget).text();
+      // 클릭된요소
+      const tgEle = $(e.currentTarget);
+      let atxt = tgEle.text();
       console.log('메뉴글자:',atxt);
+
+      // 클릭된 자신은 class 'on'넣고
+      // 다른 형제 메뉴는 class 'on'빼기
+      tgEle.addClass('on')
+      .siblings().removeClass('on')
+
 
 
     } //////// if ////////
