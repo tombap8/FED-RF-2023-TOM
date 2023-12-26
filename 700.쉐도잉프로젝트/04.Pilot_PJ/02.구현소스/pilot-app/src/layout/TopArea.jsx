@@ -7,12 +7,28 @@ import { TotalMenu } from "../modules/TotalMenu";
 export function TopArea(props) {
   // props.cat - 카테고리명(메뉴데이터 선택용)
 
+
+  // GNB 클릭시 변경적용함수 ////
+  const clickGnb = (e) => {
+    console.log('카테고리:',props.cat);
+    // glist일 경우 적용하기
+    if(props.cat==="glist"){
+      console.log('나자신:',e.currentTarget);
+
+
+    } //////// if ////////
+  }; ///////// clickGnb /////////
+
   /// GNB메뉴 리스트 만들기 함수
   const makeList = (data) => {
     console.log('GNB리스트:',data);
     return(
       gnbData[data].map((v,i)=>
-        <li key={i}>
+        <li key={i}
+          className={
+            props.cat==="glist"&&i===0?'on':''
+          }
+          onClick={clickGnb}>
           <a href="#">{v}</a>
         </li>
       )
