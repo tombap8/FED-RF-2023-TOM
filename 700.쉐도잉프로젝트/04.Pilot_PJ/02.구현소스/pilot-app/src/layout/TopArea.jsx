@@ -28,9 +28,10 @@ export function TopArea(props) {
       console.log('메뉴글자:',atxt);
       
       // 우선 공유 참조변수 myCon.gMode를 업데이트
-      myCon.gMode.current = atxt;
-      
-      console.log('gMode:',myCon.gMode.current);
+      myCon.setGMode(atxt.substr(0,1));
+      // 첫글자만 잘라서 넣기!(F/P/M)
+      console.log('gMode:', myCon.gMode);
+
 
       // 클릭된 자신은 class 'on'넣고
       // 다른 형제 메뉴는 class 'on'빼기

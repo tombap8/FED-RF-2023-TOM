@@ -1,7 +1,7 @@
 // 상품 전체 리스트 페이지
 
 // 상품전체리스트 CSS 불러오기
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "../css/glist.css";
 
 // 제이쿼리
@@ -12,14 +12,25 @@ import gdata from "../data/glist-items";
 
 import { ItemDetail } from "../modules/ItemDetail";
 
+// 컨텍스트 API 불러오기
+import { pCon } from "../modules/PilotContext";
+
 console.log("전체Data:", gdata);
 
 ///////////////////////////////////////////
 //////// GList 컴포넌트 ///////////////////
 export function GList() {
+  // 컨텍스트 사용하기
+  const myCon = useContext(pCon);
+
+  // 컨텍스트 변수인 gMode의 3가지값 :
+  // 1. 'F' -> Filter List임!
+  // 2. 'P' -> Paging List
+  // 3. 'M' -> More List
+  // -> 위의 값에 따라 리액트 조건출력(&&)을 사용함!
+
   // 변경될 데이터 원본과 분리하여 데이터 변경하기위한 참조변수
-  const transData = 
-    useRef(JSON.parse(JSON.stringify(gdata)));
+  const transData = useRef(JSON.parse(JSON.stringify(gdata)));
   // -> 깊은복사로 원본데이터와 연결성 없음!!!
   // 주의: 사용시 current 속성을 씀!
 
@@ -95,51 +106,49 @@ export function GList() {
 
     // 2. 체크박스 체크여부 : checked (true/false)
     const chked = e.target.checked;
-    console.log('아이디:',cid,chked);
+    console.log("아이디:", cid, chked);
 
     // 3.체크박스 체크개수세기 : 1개초과시 배열합치기!
-    let num = $('.chkbx:checked').length;
-    console.log('체크개수:',num);
-    
+    let num = $(".chkbx:checked").length;
+    console.log("체크개수:", num);
 
     // 4. 체크박스 체크유무에 따른 분기
     // (1) 체크박스가 true일대 해당 검색어로 검색하기
     // -> 데이터 추가시 원본에서 데이터를 만들고 참조변수에 추가함!
-    if(chked){
+    if (chked) {
       // 현재데이터 변수에 담기(원본데이터로 부터!)
-      const nowList = gdata.filter(v=>{
-        if(v.cat===cid) return true;
-      }) /////////// filter //////////
+      const nowList = gdata.filter((v) => {
+        if (v.cat === cid) return true;
+      }); /////////// filter //////////
 
       // 체크개수가 1초과일때 배열합치기
-      if(num>1){ // 스프레드 연산자(...)사용!
-        transData.current = 
-          [...transData.current,...nowList];
+      if (num > 1) {
+        // 스프레드 연산자(...)사용!
+        transData.current = [...transData.current, ...nowList];
       } //// if /////
-      else{ // 하나일때
+      else {
+        // 하나일때
         transData.current = nowList;
       }
 
-      console.log('추가구역:',transData.current);
-
+      console.log("추가구역:", transData.current);
     } /////////// if /////////
 
     // (2) 체크박스가 false일때 데이터 지우기
     // -> 참조변수에 있는 데이터를 기준으로 데이터를 삭제함!
-    else{
-      console.log('지울데이터:',cid);
+    else {
+      console.log("지울데이터:", cid);
       // 기존 연결성을 끊고 깊은복사로 임시변수에 할당함!
-      const temp = 
-      JSON.parse(JSON.stringify(transData.current));
+      const temp = JSON.parse(JSON.stringify(transData.current));
 
       // for문을 돌면서 배열데이터중 해당값을 지운다!
-      for(let i=0; i<temp.length;i++){
+      for (let i = 0; i < temp.length; i++) {
         // -> 삭제대상:
         // 데이터중 cat 항목값이 아이디명과 같은것
-        if(temp[i].cat==cid){
+        if (temp[i].cat == cid) {
           // 해당항목 지우기
           // 배열지우기 메서드 : splice(순번,개수)
-          temp.splice(i,1);
+          temp.splice(i, 1);
           // 주의! 배열을 지우면 전체개수가 1씩줄어든다!
           // 반드시 줄임처리할것!
           i--;
@@ -150,43 +159,81 @@ export function GList() {
           // delete temp[i];
           // -> 리스트처리시 에러발생함!
           // 여기서는 splice를 반드시 사용할것!
-
         } //////// if ///////
       } ///////// for ////////
 
-      console.log('삭제처리된배열:',temp);
+      console.log("삭제처리된배열:", temp);
 
       // 결과처리하기 : 삭제처리된 temp를 참조변수에 할당!
       transData.current = temp;
-
     } /////////// else ///////////
-    
+
     // 6. 검색결과 리스트 업데이트 하기
     setCurrData(transData.current);
-    // 위의 분기문에서 만들어진 참조변수 데이터를 
+    // 위의 분기문에서 만들어진 참조변수 데이터를
     // 최종 업데이트함!
     // 리스트가 리랜더링됨!!!
-
   }; ////////////// changeList 함수 ///////////
 
   // 리턴 코드 ///////////////////
   return (
     <main id="cont">
       <h1 className="tit">All ITEMS LIST</h1>
-      <section>
-        <div id="optbx">
-          <label htmlFor="men">남성</label>
-          <input type="checkbox" className="chkbx" id="men" defaultChecked
-          onChange={changeList} />
-          <label htmlFor="women">여성</label>
-          <input type="checkbox" className="chkbx" id="women" defaultChecked
-          onChange={changeList} />
-          <label htmlFor="style">스타일</label>
-          <input type="checkbox" className="chkbx" id="style" defaultChecked
-          onChange={changeList} />
-        </div>
-        <div className="grid">{makeList()}</div>
-      </section>
+
+      {
+        // [ Filter List 모드 출력 ] //
+        myCon.gMode === "F" && (
+          <section>
+            <div id="optbx">
+              <label htmlFor="men">남성</label>
+              <input
+                type="checkbox"
+                className="chkbx"
+                id="men"
+                defaultChecked
+                onChange={changeList}
+              />
+              <label htmlFor="women">여성</label>
+              <input
+                type="checkbox"
+                className="chkbx"
+                id="women"
+                defaultChecked
+                onChange={changeList}
+              />
+              <label htmlFor="style">스타일</label>
+              <input
+                type="checkbox"
+                className="chkbx"
+                id="style"
+                defaultChecked
+                onChange={changeList}
+              />
+            </div>
+            <div className="grid">{makeList()}</div>
+          </section>
+        )
+      }
+
+      {
+        // [ Paging List 모드 출력 ] //
+        myCon.gMode === "P" && (
+          <section>            
+            <div className="grid">{makeList()}</div>
+            페이징~~~
+          </section>
+        )
+      }
+
+      {
+        // [ More List 모드 출력 ] //
+        myCon.gMode === "M" && (
+          <section>            
+            <div className="grid">{makeList()}</div>
+            모아리스트~~~
+          </section>
+        )
+      }
       {/* 2.5. 상세보기박스 */}
       <div
         className="bgbx"

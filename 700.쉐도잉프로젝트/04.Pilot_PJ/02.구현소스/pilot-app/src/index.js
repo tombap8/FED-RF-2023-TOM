@@ -99,7 +99,10 @@ function App() {
   }, []); ///// useLayoutEffect //////////
 
   // GList 페이지에서 사용하는 모드구분 참조변수
-  const gMode = useRef(null);
+  const [gMode,setGMode] = useState('F');
+  // 처음값은 'F' -> Filter List임!
+  // 'P' -> Paging List
+  // 'M' -> More List
 
   /***************************************** 
     [ 컨텍스트 API 공개 변수들 ]
@@ -109,7 +112,8 @@ function App() {
     4. setTransData - 카트 사용 데이터 셋업
     5. transData - 카트 사용 데이터
     6. setCsts - 로컬스에 카트정보 셋업여부
-    7. gMode - 전체 리스트 페이지 뷰모드 구분
+    7. gMode, setGMode 
+      - 전체 리스트 페이지 뷰모드 구분
   *****************************************/
 
   // 리턴코드 //////////////////////////
@@ -117,7 +121,7 @@ function App() {
     <pCon.Provider
       value={{ pgName, chgPgName, 
         flag, setTransData, transData, 
-        setCsts, gMode }}
+        setCsts, gMode, setGMode }}
     >
       <TopArea cat={pgName} />
       <MainArea page={pgName} />
