@@ -7,13 +7,22 @@ import "../css/glist.css";
 // 제이쿼리
 import $ from "jquery";
 
-// 상품데이터 불러오기
+// 상품데이터 불러오기 : 원본데이터
 import gdata from "../data/glist-items";
+
 import { ItemDetail } from "../modules/ItemDetail";
 
 console.log("전체Data:", gdata);
 
+///////////////////////////////////////////
+//////// GList 컴포넌트 ///////////////////
 export function GList() {
+  // 변경될 데이터 원본과 분리하여 데이터 변경하기위한 참조변수
+  const transData = 
+    useRef(JSON.parse(JSON.stringify(gdata)));
+  // -> 깊은복사로 원본데이터와 연결성 없음!!!
+  // 주의: 사용시 current 속성을 씀!
+
   // 참조변수셋팅 : 리랜더링없이 값유지!
   // 1. 아이템 코드(m1,m2,m3,...)
   const item = useRef("m1");
@@ -91,16 +100,11 @@ export function GList() {
     // 3.체크박스 체크개수세기 : 1개초과시 배열합치기!
     let num = $('.chkbx:checked').length;
     console.log('체크개수:',num);
+    
 
-    // 4. 기존 입력 데이터 가져오기
-    // 현재 상태관리 데이터 배열값(변경되는 데이터)
-    let temp = currData;
-
-    // 결과집합배열변수 : 최종결과배열
-    let lastList = [];
-
-    // 5. 체크박스 체크유무에 따른 분기
+    // 4. 체크박스 체크유무에 따른 분기
     // (1) 체크박스가 true일대 해당 검색어로 검색하기
+    // -> 데이터 추가시 원본에서 데이터를 만들고 참조변수에 추가함!
     if(chked){
       // 현재데이터 변수에 담기(원본데이터로 부터!)
       const nowList = gdata.filter(v=>{
@@ -109,17 +113,25 @@ export function GList() {
 
       // 체크개수가 1초과일때 배열합치기
       if(num>1){ // 스프레드 연산자(...)사용!
-        lastList = [...temp,...nowList];
+        transData.current = 
+          [...transData.current,...nowList];
       } //// if /////
       else{ // 하나일때
-        lastList = nowList;
+        transData.current = nowList;
       }
-      console.log('추가구역:',lastList);
+
+      console.log('추가구역:',transData.current);
 
     } /////////// if /////////
+
     // (2) 체크박스가 false일때 데이터 지우기
+    // -> 참조변수에 있는 데이터를 기준으로 데이터를 삭제함!
     else{
       console.log('지울데이터:',cid);
+      // 기존 연결성을 끊고 깊은복사로 임시변수에 할당함!
+      const temp = 
+      JSON.parse(JSON.stringify(transData.current));
+
       // for문을 돌면서 배열데이터중 해당값을 지운다!
       for(let i=0; i<temp.length;i++){
         // -> 삭제대상:
@@ -144,14 +156,15 @@ export function GList() {
 
       console.log('삭제처리된배열:',temp);
 
-      // 결과처리하기 : 삭제처리된 temp를 결과에 넣기!
-      lastList = temp;
+      // 결과처리하기 : 삭제처리된 temp를 참조변수에 할당!
+      transData.current = temp;
 
-    // 6. 검색결과 리스트 업데이트 하기
-    // setCurrData(temp);
-    console.log('삭제구역:',lastList);
     } /////////// else ///////////
-
+    
+    // 6. 검색결과 리스트 업데이트 하기
+    // 위의 분기문에서 만들어진 참조변수 데이터를 최종 업데이트함!
+    setCurrData(transData.current);
+    // 리스트가 리랜더링됨!!!
 
   }; ////////////// changeList 함수 ///////////
 
