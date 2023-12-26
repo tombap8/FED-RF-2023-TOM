@@ -38,9 +38,9 @@ let orgData;
 if (localStorage.getItem("bdata"))
   orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기 + 로컬스 생성하기!
-else{ 
+else {
   // 기본 데이터 제이슨에서 가져온것 넣기
-  orgData = baseData;  
+  orgData = baseData;
 } /////// else /////////
 // else orgData = [];
 
@@ -48,14 +48,13 @@ else{
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
-  
   // 보드 데이터가 로컬스에 없으면 생성하기!
-  if (!localStorage.getItem("bdata")){ // !연산자로 false일때 실행
+  if (!localStorage.getItem("bdata")) {
+    // !연산자로 false일때 실행
     // 로컬스 'bdata'가 없으므로 여기서 최초 생성하기
     // -> 조회수증가시 로컬스 데이터로 확인하기 때문!
-    localStorage.setItem('bdata',JSON.stringify(orgData));
+    localStorage.setItem("bdata", JSON.stringify(orgData));
   } //////////// if ///////////////
-
 
   // 기본사용자 정보 셋업 함수 호출
   initData();
@@ -146,7 +145,7 @@ export function Board() {
           <td colSpan="5">There is no data.</td>
         </tr>
       );
-    } ////// if /////////    
+    } ////// if /////////
 
     // if문에 들어가지 않으면 여기를 리턴함!
     return tempData.map((v, i) => (
@@ -167,8 +166,6 @@ export function Board() {
         <td>{v.cnt}</td>
       </tr>
     ));
-
-    
   }; /////////// bindList 함수 ////////////
 
   /************************************* 
@@ -572,7 +569,7 @@ export function Board() {
     let cntIdx = JSON.parse(sessionStorage.getItem("cnt-idx"));
 
     // 배열여부확인
-    console.log(Array.isArray(cntIdx),cntIdx);
+    console.log(Array.isArray(cntIdx), cntIdx);
 
     // 3. [ 카운트 증가하기 조건검사 ] //////////
 
@@ -589,20 +586,18 @@ export function Board() {
 
     // 3-2. 로그인한 사용자일 경우 로그인 사용자계정과 같은
     // 글이면 증가하지 않는다!
-    if(localStorage.getItem('minfo')){
+    if (localStorage.getItem("minfo")) {
       // 1.사용자 로그인정보 로컬스
-      let minfo = 
-      JSON.parse(localStorage.getItem('minfo'));
+      let minfo = JSON.parse(localStorage.getItem("minfo"));
 
       // 2.로그인 아이디
       let cUid = minfo.uid;
 
-      // 3.로그인 아이디 === 현재글 아이디 검사통과시 
+      // 3.로그인 아이디 === 현재글 아이디 검사통과시
       // isOK 값 false처리로 조회수 증가막기!
-      if(cUid === cData.current.uid) isOK = false;
+      if (cUid === cData.current.uid) isOK = false;
 
-      console.log('로그인사용자검사',cUid,isOK);
-
+      console.log("로그인사용자검사", cUid, isOK);
     } ////////////// if //////////////
 
     console.log(localStorage.getItem("bdata"));
@@ -614,7 +609,7 @@ export function Board() {
       data.some((v) => {
         if (Number(v.idx) === Number(cidx)) {
           // 기존 cnt항목의 숫자를 1증가하여 업데이트!
-          v.cnt = Number(v.cnt)+1;
+          v.cnt = Number(v.cnt) + 1;
           // 여기서 나감!(break역할!)
           return true;
         } ////////// if //////////
@@ -622,19 +617,19 @@ export function Board() {
 
       // 원본 데이터에 반영하기 : 꼭해야만 리스트가 업데이트됨!
       orgData = data;
-      
-      // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
-      localStorage.setItem('bdata',JSON.stringify(data));
 
+      // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
+      localStorage.setItem("bdata", JSON.stringify(data));
     } //////////// if /////////////
 
     // 5. [ 현재글 세션스에 처리하기 ] ////////
-    if(isOK){ // 조회수 증가일 경우에만 글번호 세션스 등록!
+    if (isOK) {
+      // 조회수 증가일 경우에만 글번호 세션스 등록!
       // 세션스 배열에 idx값 넣기
       cntIdx.push(Number(cidx));
-  
+
       console.log("넣은후:", cntIdx);
-  
+
       // 세션스에 저장하기
       sessionStorage.setItem("cnt-idx", JSON.stringify(cntIdx));
     } /////////////// if //////////////
@@ -646,32 +641,54 @@ export function Board() {
       {
         /* 1. 게시판 리스트 : 게시판 모드 'L'일때 출력 */
         bdMode === "L" && (
-          <table className="dtbl" id="board">
-            <caption>OPINION</caption>
-            {/* 상단 컬럼명 표시영역 */}
-            <thead>
-              <tr>
-                <th>Number</th>
-                <th>Title</th>
-                <th>Writer</th>
-                <th>Date</th>
-                <th>Hits</th>
-              </tr>
-            </thead>
+          <>
+          {/* 전체 타이틀 */}
+            <h1 className="tit">OPINION</h1>
+            
+            {/* 검색옵션박스 */}
+            <div class="selbx">
+              <select name="cta" id="cta" className="cta">
+                <option value="tit">Title</option>
+                <option value="cont">Contents</option>
+                <option value="unm">Writer</option>
+              </select>
+              <select name="sel" id="sel" className="sel">
+                <option value="0">JungYeol</option>
+                <option value="1">Ascending</option>
+                <option value="2">Descending</option>
+              </select>
+              <input id="stxt" type="text" maxlength="50" />
+              <button class="sbtn">Search</button>
+            </div>
 
-            {/* 중앙 레코드 표시부분 */}
-            <tbody>{bindList()}</tbody>
+            {/* 리스트 테이블 */}
+            <table className="dtbl" id="board">
+              {/* <caption></caption> */}
+              {/* 상단 컬럼명 표시영역 */}
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Title</th>
+                  <th>Writer</th>
+                  <th>Date</th>
+                  <th>Hits</th>
+                </tr>
+              </thead>
 
-            {/* 하단 페이징 표시부분 */}
-            <tfoot>
-              <tr>
-                <td colSpan="5" className="paging">
-                  {/* 페이징번호 위치  */}
-                  {pagingLink()}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+              {/* 중앙 레코드 표시부분 */}
+              <tbody>{bindList()}</tbody>
+
+              {/* 하단 페이징 표시부분 */}
+              <tfoot>
+                <tr>
+                  <td colSpan="5" className="paging">
+                    {/* 페이징번호 위치  */}
+                    {pagingLink()}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </>
         )
       }
       {
