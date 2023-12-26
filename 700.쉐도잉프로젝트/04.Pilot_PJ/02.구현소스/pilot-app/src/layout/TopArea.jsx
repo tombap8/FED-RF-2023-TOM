@@ -4,6 +4,9 @@
 import { gnbData } from "../data/gnb";
 import { TotalMenu } from "../modules/TotalMenu";
 
+// 제이쿼리
+import $ from 'jquery';
+
 export function TopArea(props) {
   // props.cat - 카테고리명(메뉴데이터 선택용)
 
@@ -13,7 +16,8 @@ export function TopArea(props) {
     console.log('카테고리:',props.cat);
     // glist일 경우 적용하기
     if(props.cat==="glist"){
-      console.log('나자신:',e.currentTarget);
+      let atxt = $(e.currentTarget).text();
+      console.log('메뉴글자:',atxt);
 
 
     } //////// if ////////
