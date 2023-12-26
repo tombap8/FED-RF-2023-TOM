@@ -4,12 +4,18 @@
 import { gnbData } from "../data/gnb";
 import { TotalMenu } from "../modules/TotalMenu";
 
+// 컨텍스트 API 불러오기
+import { pCon } from "../modules/PilotContext";
+
 // 제이쿼리
 import $ from 'jquery';
+import { useContext } from "react";
 
 export function TopArea(props) {
   // props.cat - 카테고리명(메뉴데이터 선택용)
 
+  // 컨텍스트 API 사용하기
+  const myCon = useContext(pCon);
 
   // GNB 클릭시 변경적용함수 ////
   const clickGnb = (e) => {
@@ -20,6 +26,11 @@ export function TopArea(props) {
       const tgEle = $(e.currentTarget);
       let atxt = tgEle.text();
       console.log('메뉴글자:',atxt);
+      
+      // 우선 공유 참조변수 myCon.gMode를 업데이트
+      myCon.gMode.current = atxt;
+      
+      console.log('gMode:',myCon.gMode.current);
 
       // 클릭된 자신은 class 'on'넣고
       // 다른 형제 메뉴는 class 'on'빼기

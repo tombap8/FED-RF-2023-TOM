@@ -81,7 +81,8 @@ function App() {
     // (카트부모박스 .bgbx 보이기)
     console.log("카트노출상태:", csts);
     if (csts === 1) {
-      $(()=>{ // 로딩구역 ///
+      $(() => {
+        // 로딩구역 ///
         // 전체 보여라!
         $(".bgbx").show();
         // 카트 사이드에 나와라!
@@ -95,7 +96,10 @@ function App() {
   // 처음 로딩시 스크롤 상단이동 //////
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  },[]); ///// useLayoutEffect //////////
+  }, []); ///// useLayoutEffect //////////
+
+  // GList 페이지에서 사용하는 모드구분 참조변수
+  const gMode = useRef(null);
 
   /***************************************** 
     [ 컨텍스트 API 공개 변수들 ]
@@ -105,12 +109,16 @@ function App() {
     4. setTransData - 카트 사용 데이터 셋업
     5. transData - 카트 사용 데이터
     6. setCsts - 로컬스에 카트정보 셋업여부
+    7. gMode - 전체 리스트 페이지 뷰모드 구분
   *****************************************/
 
   // 리턴코드 //////////////////////////
   return (
-    <pCon.Provider 
-      value={{ pgName, chgPgName, flag, setTransData, transData, setCsts }}>
+    <pCon.Provider
+      value={{ pgName, chgPgName, 
+        flag, setTransData, transData, 
+        setCsts, gMode }}
+    >
       <TopArea cat={pgName} />
       <MainArea page={pgName} />
       <FooterArea />
