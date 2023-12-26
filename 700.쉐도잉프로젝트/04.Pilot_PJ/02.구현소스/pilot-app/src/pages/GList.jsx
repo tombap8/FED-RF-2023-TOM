@@ -218,9 +218,11 @@ export function GList() {
       {
         // [ Paging List 모드 출력 ] //
         myCon.gMode === "P" && (
-          <section>            
+          <section>
             <div className="grid">{makeList()}</div>
-            페이징~~~
+            <div id="paging">
+              <a href="#">1</a>|<a href="#">2</a>|<a href="#">3</a>
+            </div>
           </section>
         )
       }
@@ -228,9 +230,11 @@ export function GList() {
       {
         // [ More List 모드 출력 ] //
         myCon.gMode === "M" && (
-          <section>            
+          <section>
             <div className="grid">{makeList()}</div>
-            모아리스트~~~
+            <div id="more">
+              <button class="more">MORE</button>
+            </div>
           </section>
         )
       }
