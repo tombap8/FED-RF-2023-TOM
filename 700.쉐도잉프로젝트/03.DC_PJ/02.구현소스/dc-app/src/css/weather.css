@@ -15,4 +15,22 @@
     border-radius: 10px;
     border: 2px dashed #fff;
     padding: 10px;
+    text-align: center;
+}
+
+
+@media screen and (max-width:850px) {
+    .weather-bx{
+        top: 10%;
+        transform: none;
+        line-height: 10px;
+        font-size: 9px;
+    }
+    .weather-bx h5{
+        margin-top: 0;
+    }
+    .weather-bx img{
+        margin-top: -20px;
+        margin-bottom: -20px;
+    }
 }
