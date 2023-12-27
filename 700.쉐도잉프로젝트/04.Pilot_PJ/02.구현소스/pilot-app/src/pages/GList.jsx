@@ -46,28 +46,41 @@ export function GList() {
   const [currData, setCurrData] = useState(gdata);
 
   // 리스트 만들기 함수 ////////
-  const makeList = () =>
-    currData.map((v, i) => (
-      <div key={i}>
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            showDetail(v.ginfo[0], v.cat);
-          }}
-        >
-          [{i + 1}]
-          <img
-            src={"./images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
-            alt="dress"
-          />
-          <aside>
-            <h2>{v.ginfo[1]}</h2>
-            <h3>{addComma(v.ginfo[3])}원</h3>
-          </aside>
-        </a>
-      </div>
-    )); //////////// makeList ////////
+  const makeList = () =>{
+    // 리턴용변수
+    let retVal;
+
+  
+    // 1. Filter List //////////////
+    if(myCon.gMode==='F'){
+      retVal = currData.map((v, i) => (
+        <div key={i}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              showDetail(v.ginfo[0], v.cat);
+            }}
+          >
+            [{i + 1}]
+            <img
+              src={"./images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+              alt="dress"
+            />
+            <aside>
+              <h2>{v.ginfo[1]}</h2>
+              <h3>{addComma(v.ginfo[3])}원</h3>
+            </aside>
+          </a>
+        </div>
+      ));
+
+    } ////////////// if //////////////
+
+    // 분기문 결과 리턴하기 ////
+    return retVal;
+  
+  }; ////////////// makeList ///////////////
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -233,7 +246,7 @@ export function GList() {
           <section>
             <div className="grid">{makeList()}</div>
             <div id="more">
-              <button class="more">MORE</button>
+              <button className="more">MORE</button>
             </div>
           </section>
         )
