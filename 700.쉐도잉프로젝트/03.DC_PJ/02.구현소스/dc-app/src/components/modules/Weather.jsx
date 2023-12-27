@@ -14,9 +14,8 @@ class Weather extends Component {
         // 만들면 이것이 상태변수가 된다!!
         // 클래스 내부속성은 this키워드를 사용함!
         // 받아온 날씨정보를 셋업할 객체임!
-        this.wInfo = {temp:'',desc:'',icon:'',loading:true};
-        // 함수형 컴포넌트처럼 useState()를 쓰지 않음!
-        // -> 값의 셋팅은 setWInfo 라고 씀(함수형과 같지만 처음선언시 없음)
+        // state 이름의 상태변수에 setState()로 셋팅함
+        this.state = {temp:'',desc:'',icon:'',loading:true};
     } ///// 생성자함수 /////////////
 
     // 컴포넌트 생성후 날씨정보 조회하여 화면에 보이기
@@ -44,12 +43,20 @@ class Weather extends Component {
         fetch(url) // 파일받기
             .then(res=>res.json()) // json() 제이슨파일형식파싱
             .then(wdata=>{ //파일파싱후후 내용읽기
-                console.log(wdata);
-            })
+                console.log(wdata,wdata.main.temp);
+                // 상태변수인 wInfo에 값을 셋팅한다!
+                // 셋팅용 상태변수 메서드형은 setState()
+                // this키워드 사용!
+                this.setState({
+                    temp: wdata.main.temp,
+                    desc: wdata.weather[0].description,
+                    icon: wdata.weather[0].icon,
+                    loading: false // 로딩여부끝(false)
+                })
 
-
-
-
+            }) /////// 마지막 then /////
+            // 에러시 처리
+            .catch(err=>console.log(err));
 
 
     } ////////// componentDidMount 메서드 ///////////
