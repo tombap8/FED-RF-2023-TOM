@@ -1,0 +1,18 @@
+/* 날씨 컴포넌트 CSS */
+
+.info{
+    position: relative;
+    /* 날씨박스의 부모자격 */
+}
+
+.weather-bx{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5vw;
+    font-family: Ubuntu;
+    font-size: 11px;
+    border-radius: 10px;
+    border: 2px dashed #fff;
+    padding: 10px;
+}

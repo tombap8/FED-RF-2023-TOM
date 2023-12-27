@@ -1,5 +1,8 @@
 import { Component } from "react";
 
+// 날씨 CSS
+import '../../css/weather.css';
+
 
 // 여기서는 컴포넌트를 class로 만들어 보자!
 // 컴포넌트 class는 기본적으로 Component 클래스를 상속받는다!
@@ -15,7 +18,8 @@ class Weather extends Component {
         // 클래스 내부속성은 this키워드를 사용함!
         // 받아온 날씨정보를 셋업할 객체임!
         // state 이름의 상태변수에 setState()로 셋팅함
-        this.state = {temp:'',desc:'',icon:'',loading:true};
+        this.state = 
+        {temp:'',desc:'',icon:'',loading:true,city:''};
     } ///// 생성자함수 /////////////
 
     // 컴포넌트 생성후 날씨정보 조회하여 화면에 보이기
@@ -51,7 +55,8 @@ class Weather extends Component {
                     temp: wdata.main.temp,
                     desc: wdata.weather[0].description,
                     icon: wdata.weather[0].icon,
-                    loading: false // 로딩여부끝(false)
+                    loading: false, // 로딩여부끝(false)
+                    city: cityName,
                 })
 
             }) /////// 마지막 then /////
@@ -64,10 +69,34 @@ class Weather extends Component {
     // 컴포넌트 결과 랜더링 메서드 //////
     // render()
     render(){
+        // 아이콘 정보
+        const isrc = `http://openweathermap.com/img/w/${this.state.icon}.png`;
 
-        return(
-            <h1>날씨양~!</h1>
-        )
+        // 로딩중 loading값이 true이면
+        if(this.state.loading){
+            return <h4>Loading...</h4>;
+        } /// if ////
+        // 로딩성공시 loading 값이 false이면
+        else{
+            /* 절대온도이므로 섭씨온도로 바꾼다!
+                    절대온도 - 273.15 뺀다!
+                    소수점도 한자리만 표시 */
+            let ctemp  = 
+            (parseInt(this.state.temp)-273.15).toFixed(1);
+            // toFixed(자릿수)
+
+            return(
+                <div className="weather-bx">
+                    <h4>Now Weather</h4>
+                    <h5>{this.state.city}</h5>
+                    <img src={isrc} alt="weather icon" />           
+                    <p>{ctemp}℃</p>
+                    <p>{this.state.desc}</p>
+                </div>
+            );
+
+        } /// else ////
+
 
     } //////////// render 메서드 //////////////////
 
