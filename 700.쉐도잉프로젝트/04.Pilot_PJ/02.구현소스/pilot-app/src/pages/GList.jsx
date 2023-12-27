@@ -46,13 +46,14 @@ export function GList() {
   const [currData, setCurrData] = useState(gdata);
 
   // 리스트 만들기 함수 ////////
-  const makeList = () =>{
+  const makeList = () => {
     // 리턴용변수
     let retVal;
 
-  
+    console.log(currData);
+
     // 1. Filter List //////////////
-    if(myCon.gMode==='F'){
+    if (myCon.gMode === "F") {
       retVal = currData.map((v, i) => (
         <div key={i}>
           <a
@@ -74,12 +75,45 @@ export function GList() {
           </a>
         </div>
       ));
+    } ////////////// if //////////////
 
+    // 2. Paging List //////////////
+    else if (myCon.gMode === "P") {
+      // map아닌 일반 for문사용시
+      // 배열에 push하여 데이터넣기
+      // JSX문법 태그를 그냥태그가 아.니.다!!!!
+      // 절대 변환불필요!!! 그대로 보내서 출력함!
+      retVal = []; // 배열형 할당!
+
+      for (let i = 0; i < 10; i++) {
+        retVal.push(
+          <div key={i}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                showDetail(currData[i].ginfo[0], currData[i].cat);
+              }}
+            >
+              [{i + 1}]
+              <img
+                src={"./images/goods/" + 
+                currData[i].cat + "/" + 
+                currData[i].ginfo[0] + ".png"}
+                alt="dress"
+              />
+              <aside>
+                <h2>{currData[i].ginfo[1]}</h2>
+                <h3>{addComma(currData[i].ginfo[3])}원</h3>
+              </aside>
+            </a>
+          </div>
+        );
+      } //////// for //////////////
     } ////////////// if //////////////
 
     // 분기문 결과 리턴하기 ////
     return retVal;
-  
   }; ////////////// makeList ///////////////
 
   useEffect(() => {
