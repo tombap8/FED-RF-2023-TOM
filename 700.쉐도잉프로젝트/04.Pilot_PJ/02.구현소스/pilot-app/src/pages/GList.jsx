@@ -87,6 +87,14 @@ export function GList() {
 
     // 2. Paging List //////////////
     else if (myCon.gMode === "P") {
+      // 페이징은 데이터 변형이 아닌 원본데이터에 대한
+      // 부분데이터 가져오기다!
+      // console.log('원본data:',gdata);
+
+      // 원본에 대한 개수로 다시 업데이트함!
+      totNum = gdata.length;
+      console.log('원본개수:',totNum);
+
       // map아닌 일반 for문사용시
       // 배열에 push하여 데이터넣기
       // JSX문법 태그를 그냥태그가 아.니.다!!!!
@@ -109,23 +117,23 @@ export function GList() {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                showDetail(currData[i].ginfo[0], currData[i].cat);
+                showDetail(gdata[i].ginfo[0], gdata[i].cat);
               }}
             >
               [{i + 1}]
               <img
                 src={
                   "./images/goods/" +
-                  currData[i].cat +
+                  gdata[i].cat +
                   "/" +
-                  currData[i].ginfo[0] +
+                  gdata[i].ginfo[0] +
                   ".png"
                 }
                 alt="dress"
               />
               <aside>
-                <h2>{currData[i].ginfo[1]}</h2>
-                <h3>{addComma(currData[i].ginfo[3])}원</h3>
+                <h2>{gdata[i].ginfo[1]}</h2>
+                <h3>{addComma(gdata[i].ginfo[3])}원</h3>
               </aside>
             </a>
           </div>
