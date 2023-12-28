@@ -90,7 +90,7 @@ export function Board() {
   const [btnSts, setBtnSts] = useState(false);
 
   // 4. 강제 리랜더링 관리변수 : 값을 랜덤값으로 변경하여사용
-  const [force,setForce] = useState(null);
+  const [force, setForce] = useState(null);
 
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
@@ -642,51 +642,46 @@ export function Board() {
 
   // 검색기능수행 함수 ////////////////////
   const searchList = () => {
-    
     // 1. 검색기준값 읽어오기
-    const cta = $('#cta').val();
-    
-    
+    const cta = $("#cta").val();
+
     // 2. 검색어 읽어오기 : 소문자변환, 앞뒤공백제거
-    const inpVal = $('#stxt').val().toLowerCase().trim();
+    const inpVal = $("#stxt").val().toLowerCase().trim();
 
     // 3. 검색어입력 안한경우 경고창과 return
-    if(inpVal===""){
-      alert('Write down keyword!!!');
+    if (inpVal === "") {
+      alert("Write down keyword!!!");
       return;
     } //////// if //////
 
-    console.log('검색시작~!',cta,inpVal);
+    console.log("검색시작~!", cta, inpVal);
 
     // 원본데이터로 검색하지 않고 로컬스토리지 데이터사용!
-    console.log('원본데이터:',orgData);
-    
-    const storageData = 
-    JSON.parse(localStorage.getItem('bdata'));
+    console.log("원본데이터:", orgData);
 
-    console.log('로컬스:',storageData);
-    
-    // 4. 전체 원본 데이터에서 검색기준값으로 검색하기
-    const resData = orgData.filter(v=>{
+    // 로컬스 데이터 가져오기
+    const storageData = JSON.parse(localStorage.getItem("bdata"));
+
+    console.log("로컬스:", storageData);
+
+    // 4. 전체 로컬스 데이터에서 검색기준값으로 검색하기
+    const resData = storageData.filter((v) => {
       // 원본 문자데이터 소문자변환!
       let compTxt = v[cta].toLowerCase();
 
       // 검색기준이 동적으로 변수에 담기므로
       // 대괄호로 객체값을 읽어온다!
       // indexOf() 로 like검색함!
-      if(compTxt.indexOf(inpVal)!==-1) return true;
+      if (compTxt.indexOf(inpVal) !== -1) return true;
     });
-    
-    console.log('검색데이터:',resData);
+
+    console.log("검색데이터:", resData);
 
     // 5. 리스트 업데이트 하기
     orgData = resData;
 
     // 6. 강제 리랜더링하기
     setForce(Math.random());
-
-
-
   }; ////////////// searchList 함수 //////////////
 
   // 리턴코드 ////////////////////
@@ -696,9 +691,9 @@ export function Board() {
         /* 1. 게시판 리스트 : 게시판 모드 'L'일때 출력 */
         bdMode === "L" && (
           <>
-          {/* 전체 타이틀 */}
+            {/* 전체 타이틀 */}
             <h1 className="tit">OPINION</h1>
-            
+
             {/* 검색옵션박스 */}
             <div className="selbx">
               <select name="cta" id="cta" className="cta">
@@ -712,7 +707,9 @@ export function Board() {
                 <option value="2">Descending</option>
               </select>
               <input id="stxt" type="text" maxLength="50" />
-              <button className="sbtn" onClick={searchList}>Search</button>
+              <button className="sbtn" onClick={searchList}>
+                Search
+              </button>
             </div>
 
             {/* 리스트 테이블 */}
@@ -894,9 +891,16 @@ export function Board() {
               {
                 // 리스트 모드(L)
                 bdMode === "L" && myCon.logSts !== null && (
-                  <button onClick={chgMode}>
-                    <a href="#">Write</a>
-                  </button>
+                  <>
+                  {/* List버튼은 검색실행시에만 나타남
+                  클릭시 전체리스트로 돌아감. 이때 버튼사라짐 */}
+                    <button onClick={chgMode}>
+                      <a href="#">List</a>
+                    </button>
+                    <button onClick={chgMode}>
+                      <a href="#">Write</a>
+                    </button>
+                  </>
                 )
               }
               {
