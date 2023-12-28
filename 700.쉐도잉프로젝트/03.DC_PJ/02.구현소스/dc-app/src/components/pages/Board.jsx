@@ -75,8 +75,10 @@ export function Board() {
 
   // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
   const [pgNum, setPgNum] = useState(1);
+
   // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
-  const [currData, setCurrData] = useState(null);
+  // const [currData, setCurrData] = useState(null);
+
   // 2. 게시판 모드관리변수
   const [bdMode, setBdMode] = useState("L");
   // 모드구분값 : CRUD (Create/Read/Update/Delete)
@@ -86,6 +88,9 @@ export function Board() {
 
   // 3. 버튼공개 여부 관리변수 : 수정버튼
   const [btnSts, setBtnSts] = useState(false);
+
+  // 4. 강제 리랜더링 관리변수 : 값을 랜덤값으로 변경하여사용
+  const [force,setForce] = useState(null);
 
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
@@ -653,13 +658,19 @@ export function Board() {
 
     console.log('검색시작~!',cta,inpVal);
 
+    // 원본데이터로 검색하지 않고 로컬스토리지 데이터사용!
     console.log('원본데이터:',orgData);
+    
+    const storageData = 
+    JSON.parse(localStorage.getItem('bdata'));
+
+    console.log('로컬스:',storageData);
     
     // 4. 전체 원본 데이터에서 검색기준값으로 검색하기
     const resData = orgData.filter(v=>{
       // 원본 문자데이터 소문자변환!
       let compTxt = v[cta].toLowerCase();
-      
+
       // 검색기준이 동적으로 변수에 담기므로
       // 대괄호로 객체값을 읽어온다!
       // indexOf() 로 like검색함!
@@ -667,6 +678,13 @@ export function Board() {
     });
     
     console.log('검색데이터:',resData);
+
+    // 5. 리스트 업데이트 하기
+    orgData = resData;
+
+    // 6. 강제 리랜더링하기
+    setForce(Math.random());
+
 
 
   }; ////////////// searchList 함수 //////////////
