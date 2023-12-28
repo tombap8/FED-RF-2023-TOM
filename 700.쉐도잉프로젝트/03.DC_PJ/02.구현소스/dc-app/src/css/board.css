@@ -62,13 +62,14 @@
 	*/
 }
 
-/* a요소 말줄임표시하기 */
-.dtbl tbody td a{
+/* 보드 메인리스트 a요소 말줄임표시하기 */
+#board tbody td a {
     display: block;
     white-space: nowrap;
     overflow: hidden;
-    /* 말줄임표시 */
     text-overflow: ellipsis;
+    /* 가로크기 지정(최대361px) */
+    width: min(361px,40vw);
 }
 
 /*각 th별 가로크기지정 */
