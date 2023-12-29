@@ -91,6 +91,9 @@ export function Board() {
   // 4. 강제 리랜더링 관리변수 : 값을 랜덤값으로 변경하여사용
   const [force, setForce] = useState(null);
 
+  // 5. 검색상태 관리변수 : 값유지만 하도록 참조변수로 생성
+  const searchSts = useRef(false);
+
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
   useEffect(() => {
@@ -131,14 +134,8 @@ export function Board() {
     // 데이터 선별하기
     const tempData = [];
 
-    // 내림차순 정렬
-    orgData.sort((a, b) => {
-      return Number(a.idx) === Number(b.idx)
-        ? 0
-        : Number(a.idx) > Number(b.idx)
-        ? -1
-        : 1;
-    });
+    // 내림차순 정렬 함수호출
+    sortData(orgData);
 
     // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
@@ -699,10 +696,7 @@ export function Board() {
     setForce(Math.random());
   }; ////////////// searchList 함수 //////////////
 
-  console.log(orgData,
-    JSON.parse(localStorage.getItem('bdata')));
-
-    console.log(orgData!==JSON.parse(localStorage.getItem('bdata')));
+  
 
   // 리턴코드 ////////////////////
   return (
@@ -910,10 +904,8 @@ export function Board() {
             <td>
               {
                 // 리스트 모드(L)
-                bdMode === "L" && 
-                // 원본데이터와 로컬스 데이터가 다르면
-                // 검색한 것이므로 리스트버튼을 출력한다! 
-                orgData !== JSON.parse(localStorage.getItem('bdata'))
+                // 검색상태관리 참조변수 searchSts값이 true일때만 출력! 
+                bdMode === "L" && searchSts.current
                 && (
                   <>
                   {/* List버튼은 검색실행시에만 나타남
