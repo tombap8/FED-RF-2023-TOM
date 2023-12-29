@@ -107,13 +107,16 @@ export function Board() {
     함수명 : sortData
     기능 : 내림차순정렬
   ****************************************/
-  function sortData (data) {
+  function sortData (data,arr) {
+    // arr은 배열값으로 
+    // 내림차순은 [-1,1]
+    // 오름차순은 [1,-1] 을 보내준다!
     return data.sort((a, b) => {
       return Number(a.idx) === Number(b.idx)
         ? 0
         : Number(a.idx) > Number(b.idx)
-        ? -1
-        : 1;
+        ? arr[0]
+        : arr[1];
     });
   } ////////////// sortData 함수 ////////////
 
@@ -124,7 +127,7 @@ export function Board() {
  const rawData = () => {
     // orgData를 로컬스 데이터로 덮어쓰기
     // 단, 내림차순으로 정렬하여 넣어준다!
-    orgData = sortData(JSON.parse(localStorage.getItem('bdata')));
+    orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
  }; ///////////// rawData /////////////
 
   /************************************* 
@@ -137,7 +140,7 @@ export function Board() {
     const tempData = [];
 
     // 내림차순 정렬 함수호출
-    sortData(orgData);
+    sortData(orgData,[-1,1]);
 
     // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
@@ -707,8 +710,23 @@ export function Board() {
     orgData = resData;
 
     // 6. 강제 리랜더링하기
-    setForce(Math.random());
+    // 조건: 기존 1페이지 일때만 실행
+    // 다른 페이지에서 검색하면 1페이지로 변경(이때 리랜더링됨!)
+    if(pgNum===1) setForce(Math.random());
+    else setPgNum(1);
   }; ////////////// searchList 함수 //////////////
+
+  // 검색을 실행하고 다른페이지로 이동할 경우
+  // 데이터가 검색된 것으로 남아있으므로
+  // 이때 소멸자로 원본 데이터 초기화 셋팅 함수를
+  // 호출해준다!!
+  useEffect(()=>{
+    // 소멸자
+    return(()=>{
+      rawData();
+    }); ///// return 소멸자 /////
+
+  },[]); /////// useEffect /////////
 
   // 리턴코드 ////////////////////
   return (
@@ -727,13 +745,30 @@ export function Board() {
                 <option value="cont">Contents</option>
                 <option value="unm">Writer</option>
               </select>
-              <select name="sel" id="sel" className="sel">
-                <option value="0">JungYeol</option>
+              <select name="sel" id="sel" className="sel" onChange={(e)=>{
+                // 선택값읽기
+                let opt = $(e.currentTarget).val();
+                console.log('선택값:',opt);
+                // 선택에 따른 정렬호출
+                if(Number(opt)===0) 
+                  sortData(orgData,[-1,1]);
+                else 
+                  sortData(orgData,[1,-1]);
+
+                  console.log(orgData);
+                  // 강제 리랜더링
+                  setForce(Math.random());
+              }}>
+                <option value="0">Descending</option>
                 <option value="1">Ascending</option>
-                <option value="2">Descending</option>
               </select>
-              <input id="stxt" type="text" maxLength="50" />
-              <button className="sbtn" onClick={searchList}>
+              <input id="stxt" type="text" maxLength="50" onKeyUp={(e)=>{
+                // 엔터칠때 검색실행!
+                if(e.code==='Enter')searchList();
+                // console.log(e.code);
+              }} />
+              <button className="sbtn" 
+              onClick={searchList}>
                 Search
               </button>
             </div>
@@ -926,6 +961,7 @@ export function Board() {
                       rawData();
                       setForce(Math.random());
                       $('#stxt').val('');
+                      $('#cta').val('tit')
                     }}>
                       <a href="#">List</a>
                     </button>
