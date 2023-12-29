@@ -1,13 +1,7 @@
 // OPINION 의견 게시판 컴포넌트
 
 // 게시판용 CSS
-import {
-  Fragment,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import "../../css/board.css";
 
 // 컨텍스트 API 불러오기
@@ -109,21 +103,29 @@ export function Board() {
   // 의존성에 등록하여 그 변경발생시 한번만 실행되도록 설정하는
   // 것이다!!!
 
-
   /**************************************** 
     함수명 : sortData
     기능 : 내림차순정렬
   ****************************************/
- const sortData = data => {
-  return data.sort((a, b) => {
-    return Number(a.idx) === Number(b.idx)
-      ? 0
-      : Number(a.idx) > Number(b.idx)
-      ? -1
-      : 1;
-  });
- }; ////////////// sortData 함수 ////////////
+  function sortData (data) {
+    return data.sort((a, b) => {
+      return Number(a.idx) === Number(b.idx)
+        ? 0
+        : Number(a.idx) > Number(b.idx)
+        ? -1
+        : 1;
+    });
+  } ////////////// sortData 함수 ////////////
 
+  /**************************************** 
+    함수명 : rawData
+    기능 : 데이터 초기화하기(전체데이터 업데이트)
+  ****************************************/
+ const rawData = () => {
+    // orgData를 로컬스 데이터로 덮어쓰기
+    // 단, 내림차순으로 정렬하여 넣어준다!
+    orgData = sortData(JSON.parse(localStorage.getItem('bdata')));
+ }; ///////////// rawData /////////////
 
   /************************************* 
     함수명 : bindList
@@ -262,6 +264,15 @@ export function Board() {
   const chgMode = (e) => {
     // 기본막기
     e.preventDefault();
+
+    // 만약 검색상태였다면 searchSts값이 treu이므로
+    // 이때 false로 업데이트와 함께 orgData도 초기화해준다!
+    if(searchSts.current){
+      // searchSts값 true 업데이트
+      searchSts.current = false;
+      // orgData초기화
+      rawData();
+    } //////// if ///////////////
 
     // 1. 해당 버튼의 텍스트 읽어오기
     let btxt = $(e.target).text();
@@ -666,6 +677,9 @@ export function Board() {
       return;
     } //////// if //////
 
+    // 3번이후 검색실행시 검색상태값 업데이트 true
+    searchSts.current = true; // List버튼 보이기!
+
     console.log("검색시작~!", cta, inpVal);
 
     // 원본데이터로 검색하지 않고 로컬스토리지 데이터사용!
@@ -695,8 +709,6 @@ export function Board() {
     // 6. 강제 리랜더링하기
     setForce(Math.random());
   }; ////////////// searchList 함수 //////////////
-
-  
 
   // 리턴코드 ////////////////////
   return (
@@ -904,13 +916,17 @@ export function Board() {
             <td>
               {
                 // 리스트 모드(L)
-                // 검색상태관리 참조변수 searchSts값이 true일때만 출력! 
-                bdMode === "L" && searchSts.current
-                && (
+                // 검색상태관리 참조변수 searchSts값이 true일때만 출력!
+                bdMode === "L" && searchSts.current && (
                   <>
-                  {/* List버튼은 검색실행시에만 나타남
+                    {/* List버튼은 검색실행시에만 나타남
                   클릭시 전체리스트로 돌아감. 이때 버튼사라짐 */}
-                    <button onClick={chgMode}>
+                    <button onClick={()=>{
+                      // 데이터 초기화(전체리스트)
+                      rawData();
+                      setForce(Math.random());
+                      $('#stxt').val('');
+                    }}>
                       <a href="#">List</a>
                     </button>
                   </>
