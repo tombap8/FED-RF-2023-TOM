@@ -3,7 +3,6 @@
 // 게시판용 CSS
 import {
   Fragment,
-  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -106,6 +105,22 @@ export function Board() {
   // -> 해결책은 랜더링 후 처리구역에서 변경되는 상태변수를
   // 의존성에 등록하여 그 변경발생시 한번만 실행되도록 설정하는
   // 것이다!!!
+
+
+  /**************************************** 
+    함수명 : sortData
+    기능 : 내림차순정렬
+  ****************************************/
+ const sortData = data => {
+  return data.sort((a, b) => {
+    return Number(a.idx) === Number(b.idx)
+      ? 0
+      : Number(a.idx) > Number(b.idx)
+      ? -1
+      : 1;
+  });
+ }; ////////////// sortData 함수 ////////////
+
 
   /************************************* 
     함수명 : bindList
@@ -684,6 +699,11 @@ export function Board() {
     setForce(Math.random());
   }; ////////////// searchList 함수 //////////////
 
+  console.log(orgData,
+    JSON.parse(localStorage.getItem('bdata')));
+
+    console.log(orgData!==JSON.parse(localStorage.getItem('bdata')));
+
   // 리턴코드 ////////////////////
   return (
     <>
@@ -890,13 +910,24 @@ export function Board() {
             <td>
               {
                 // 리스트 모드(L)
-                bdMode === "L" && myCon.logSts !== null && (
+                bdMode === "L" && 
+                // 원본데이터와 로컬스 데이터가 다르면
+                // 검색한 것이므로 리스트버튼을 출력한다! 
+                orgData !== JSON.parse(localStorage.getItem('bdata'))
+                && (
                   <>
                   {/* List버튼은 검색실행시에만 나타남
                   클릭시 전체리스트로 돌아감. 이때 버튼사라짐 */}
                     <button onClick={chgMode}>
                       <a href="#">List</a>
                     </button>
+                  </>
+                )
+              }
+              {
+                // 리스트 모드(L)
+                bdMode === "L" && myCon.logSts !== null && (
+                  <>
                     <button onClick={chgMode}>
                       <a href="#">Write</a>
                     </button>
