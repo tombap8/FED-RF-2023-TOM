@@ -186,3 +186,18 @@
 .btngrp button:hover a{
     color: #fff;
 }
+
+@media screen and (max-width:700px) {
+    /* 보기 모드 공통 */
+    .cont .dtblview {
+        width: 90vw;
+    }
+    .cont .dtblview td{
+        width: auto;
+        font-size: 16px;
+    }
+    .cont .dtblview input,
+    .cont .dtblview textarea {
+        width: calc(90vw - 64px);
+    }
+}
