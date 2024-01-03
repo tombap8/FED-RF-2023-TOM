@@ -58,16 +58,21 @@ export function Board() {
   // console.log("로그인상태:", myCon.logSts);
 
   // [컴포넌트 전체 공통변수] /////////////
-  // 1. 페이지 단위수 : 한 페이지 당 레코드수
+  // 1-1. 페이지 단위수 : 한 페이지 당 레코드수
   const pgBlock = 7;
+  // 1-2. 페이징의 페이지 단위수 : 페이징 표시 개수
+  const pgPgBlock = 4;
+  
   // 2. 전체 레코드수 : 배열데이터 총개수
   const totNum = orgData.length;
   // // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
 
   // [ 상태관리 변수 셋팅 ] ////////
 
-  // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
+  // 1-1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
   const [pgNum, setPgNum] = useState(1);
+  // 1-2. 페이징의 현재 페이지 번호 : 참조변수로 생성
+  const pgPgNum = useRef(1);
 
   // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
   // const [currData, setCurrData] = useState(null);
@@ -236,6 +241,11 @@ export function Board() {
     //   "\n최종한계수:",
     //   limit
     // );
+
+    // [ 페이징의 페이징 하기 ]
+    // [1] 페이징 블록 - 한 페이징블록수 : pgPgBlock 변수(4)
+    // [2] 페이징 현재 페이지번호 : pgPgNum 변수(기본값1)
+
 
     // 리액트에서는 jsx문법 코드를 배열에 넣고
     // 출력하면 바로 코드로 변환된다!!!
