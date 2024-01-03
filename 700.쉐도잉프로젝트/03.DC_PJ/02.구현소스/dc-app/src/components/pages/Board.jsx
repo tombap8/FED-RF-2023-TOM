@@ -62,7 +62,7 @@ export function Board() {
   const pgBlock = 7;
   // 1-2. 페이징의 페이지 단위수 : 페이징 표시 개수
   const pgPgBlock = 4;
-  
+
   // 2. 전체 레코드수 : 배열데이터 총개수
   const totNum = orgData.length;
   // // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
@@ -145,13 +145,13 @@ export function Board() {
   // 최초랜더링 시에만 한번 실행하기 ///////
   ////////////////////////////////////////
   // -> 경우에 따라 내림차순 필요한 경우 firstSts값을
-  // true로만 변경하면 리랜더링시 bindList() 위에서 
+  // true로만 변경하면 리랜더링시 bindList() 위에서
   // 먼저 적용된다! (글쓰기후 리스트오기/검색직후에 적용함!)
-  if (firstSts.current){ 
+  if (firstSts.current) {
     // 내림차순 정렬적용하기
     sortData(orgData, [-1, 1]);
     // 정렬선택박스 내림차순으로 변경하기
-    $('#sel').val('0');
+    $("#sel").val("0");
   } /////// if ///////
 
   /************************************* 
@@ -233,6 +233,12 @@ export function Board() {
     // 최종 한계수 -> 여분레코드 존재에 따라 1더하기
     const limit = blockCnt + (blockPad === 0 ? 0 : 1);
 
+    // 페이징의 페이징 한계수 구하기
+    const pgBlockCnt = Math.floor(limit / pgPgBlock);
+    const pgBlockPad = limit % pgPgBlock;
+    const pgLimit = pgBlockCnt + (pgBlockPad === 0 ? 0 : 1);
+    console.log("페이징의 페이징한계값:", pgLimit);
+
     // // console.log(
     //   "블록개수:",
     //   blockCnt,
@@ -246,16 +252,22 @@ export function Board() {
     // [1] 페이징 블록 - 한 페이징블록수 : pgPgBlock 변수(4)
     // [2] 페이징 현재 페이지번호 : pgPgNum 변수(기본값1)
 
-
     // 리액트에서는 jsx문법 코드를 배열에 넣고
     // 출력하면 바로 코드로 변환된다!!!
     let pgCode = [];
     // 리턴 코드 //////////
     // 만약 빈태그 묶음에 key를 심어야할 경우
     // 불가하므로 Fragment 조각 가상태그를 사용한다!
-    for (let i = 0; i < limit; i++) {
+
+    // 시작값 : (페페넘-1)*페페블럭
+    let initNum = (pgPgNum.current - 1) * pgPgBlock;
+    // 한계값 : 페페넘*페페블럭
+    let limitNum = pgPgNum.current * pgPgBlock;
+
+    for (let i = initNum; i < limitNum; i++) {
       pgCode[i] = (
         <Fragment key={i}>
+          {/* 1.페이징 링크 만들기 */}
           {pgNum - 1 === i ? (
             <b>{i + 1}</b>
           ) : (
@@ -269,8 +281,52 @@ export function Board() {
       );
     } ////// for /////
 
+    // pgPgNum.current = 2;
+
+    {
+      // 2.페이징 이전블록이동 버튼 - 배열 맨앞에 추가!
+      // 기준: 1페이지가 아니면 보임!
+      pgCode.unshift(
+        pgPgNum.current === 1 ? (
+          ""
+        ) : (
+          <Fragment key={-1}>
+            <a href="#">◀</a>
+          </Fragment>
+        )
+      );
+    }
+    {
+      // 3.페이징 다음블록이동 버튼
+      // 기준: 페이징의 페이징 블록 끝번호가 아니면 보임
+      pgCode.push(
+        pgPgNum.current === pgLimit ? (
+          ""
+        ) : (
+          <Fragment key={-2}>
+            <a href="#" onClick={(e)=>{
+              e.preventDefault();
+              goPaging(1,)
+            }}>▶</a>
+          </Fragment>
+        )
+      );
+    }
+
     return pgCode;
   }; /////////// pagingLink 함수 ////////
+
+  // 페이징의 페이징 이동함수 /////////
+  const goPaging = (dir) => {
+    // dir이동방향(오른쪽:+1, 왼쪽:-1)
+    const newPgPgNum = pgPgNum.current + dir;
+    const newPgNum = newPgPgNum * pgPgBlock;
+    
+    // 페이징의 페이징번호 업데이트
+    pgPgNum.current = newPgPgNum;
+    // 이동할 페이지번호 : 다음 블록의 첫페이지로 이동
+    setPgNum(newPgNum); // -> 리랜더링!
+  };
 
   /************************************* 
     함수명 : chgList
