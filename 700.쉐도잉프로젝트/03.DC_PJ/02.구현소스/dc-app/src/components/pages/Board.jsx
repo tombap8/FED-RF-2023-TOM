@@ -299,10 +299,11 @@ export function Board() {
           ""
         ) : (
           <Fragment key={-1}>
+            «&nbsp;&nbsp;
             <a href="#" onClick={(e)=>{
               e.preventDefault();
               goPaging(-1);
-            }}>◀</a>
+            }}>◀</a>&nbsp;&nbsp;
           </Fragment>
         )
       );
@@ -315,10 +316,11 @@ export function Board() {
           ""
         ) : (
           <Fragment key={-2}>
-            <a href="#" onClick={(e)=>{
+            &nbsp;&nbsp;<a href="#" onClick={(e)=>{
               e.preventDefault();
               goPaging(1);
             }}>▶</a>
+            &nbsp;&nbsp;»
           </Fragment>
         )
       );
