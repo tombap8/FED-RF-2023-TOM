@@ -112,8 +112,8 @@ export function Board() {
     함수명 : sortData
     기능 : 내림차순정렬
   ****************************************/
-  function sortData (data,arr) {
-    // arr은 배열값으로 
+  function sortData(data, arr) {
+    // arr은 배열값으로
     // 내림차순은 [-1,1]
     // 오름차순은 [1,-1] 을 보내준다!
     return data.sort((a, b) => {
@@ -129,17 +129,20 @@ export function Board() {
     함수명 : rawData
     기능 : 데이터 초기화하기(전체데이터 업데이트)
   ****************************************/
- const rawData = () => {
+  const rawData = () => {
     // orgData를 로컬스 데이터로 덮어쓰기
     // 단, 내림차순으로 정렬하여 넣어준다!
     // orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
-    orgData = JSON.parse(localStorage.getItem('bdata'),[-1,1]);
- }; ///////////// rawData /////////////
+    orgData = JSON.parse(localStorage.getItem("bdata"), [-1, 1]);
+  }; ///////////// rawData /////////////
 
- 
- // 최초랜더링 시에만 한번 실행하기
- if(firstSts.current)
-    sortData(orgData,[-1,1]);
+  // 최초랜더링 시에만 한번 실행하기
+  if (firstSts.current){ 
+    // 내림차순 정렬적용하기
+    sortData(orgData, [-1, 1]);
+    // 정렬선택박스 내림차순으로 변경하기
+    $('#sel').val('0');
+  } /////// if ///////
 
   /************************************* 
     함수명 : bindList
@@ -148,7 +151,7 @@ export function Board() {
   const bindList = () => {
     // 바인드시 최초상태 false로 업데이트!
     firstSts.current = false;
-    
+
     // console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
@@ -284,7 +287,7 @@ export function Board() {
 
     // 만약 검색상태였다면 searchSts값이 treu이므로
     // 이때 false로 업데이트와 함께 orgData도 초기화해준다!
-    if(searchSts.current){
+    if (searchSts.current) {
       // searchSts값 true 업데이트
       searchSts.current = false;
       // orgData초기화
@@ -462,7 +465,12 @@ export function Board() {
         // 6. 로컬스에 반영하기
         localStorage.setItem("bdata", JSON.stringify(orgTemp));
 
-        // 7. 리스트 페이지로 이동하기
+        // 내림차순 정렬하도록 firstSts값을 true로 변경하면
+        // 리랜더링시 정렬 적용될까? bindList 전에 적용되야함!
+        firstSts.current = true; //-> 효과있음!
+        // bindList() 위의 내림차순코드가 실행됨!
+
+        // 7. 리스트 페이지로 이동하기 : 리랜더링됨!
         setBdMode("L");
       } //////// else //////////
     } ////// else if ///////
@@ -723,10 +731,15 @@ export function Board() {
     // 5. 리스트 업데이트 하기
     orgData = resData;
 
+    // 내림차순 정렬하도록 firstSts값을 true로 변경하면
+    // 리랜더링시 정렬 적용될까? bindList 전에 적용되야함!
+    firstSts.current = true; //-> 효과있음!
+    // bindList() 위의 내림차순코드가 실행됨!
+
     // 6. 강제 리랜더링하기
     // 조건: 기존 1페이지 일때만 실행
     // 다른 페이지에서 검색하면 1페이지로 변경(이때 리랜더링됨!)
-    if(pgNum===1) setForce(Math.random());
+    if (pgNum === 1) setForce(Math.random());
     else setPgNum(1);
   }; ////////////// searchList 함수 //////////////
 
@@ -734,18 +747,17 @@ export function Board() {
   // 데이터가 검색된 것으로 남아있으므로
   // 이때 소멸자로 원본 데이터 초기화 셋팅 함수를
   // 호출해준다!!
-  useEffect(()=>{
+  useEffect(() => {
     // 처음 한번 들어왔을때 내림차순 정렬은 효과 있는가?
     // 화면 랜더링 전에 정렬을 해야 바로 반영되므로
     // 여기서 정렬은 효과 없음!
     // sortData(orgData,[-1,1]);
 
     // 소멸자
-    return(()=>{
+    return () => {
       rawData();
-    }); ///// return 소멸자 /////
-
-  },[]); /////// useEffect /////////
+    }; ///// return 소멸자 /////
+  }, []); /////// useEffect /////////
 
   // 리턴코드 ////////////////////
   return (
@@ -764,30 +776,37 @@ export function Board() {
                 <option value="cont">Contents</option>
                 <option value="unm">Writer</option>
               </select>
-              <select name="sel" id="sel" className="sel" onChange={(e)=>{
-                // 선택값읽기
-                let opt = $(e.currentTarget).val();
-                console.log('선택값:',opt);
-                // 선택에 따른 정렬호출
-                if(Number(opt)===0) 
-                  sortData(orgData,[-1,1]);
-                else 
-                  sortData(orgData,[1,-1]);
+              <select
+                name="sel"
+                id="sel"
+                className="sel"
+                onChange={(e) => {
+                  // 선택값읽기
+                  let opt = $(e.currentTarget).val();
+                  console.log("선택값:", opt);
+                  // 선택에 따른 정렬호출
+                  if (Number(opt) === 0) sortData(orgData, [-1, 1]);
+                  else sortData(orgData, [1, -1]);
 
                   console.log(orgData);
                   // 강제 리랜더링
                   setForce(Math.random());
-              }}>
+                }}
+              >
                 <option value="0">Descending</option>
                 <option value="1">Ascending</option>
               </select>
-              <input id="stxt" type="text" maxLength="50" onKeyUp={(e)=>{
-                // 엔터칠때 검색실행!
-                if(e.code==='Enter')searchList();
-                // console.log(e.code);
-              }} />
-              <button className="sbtn" 
-              onClick={searchList}>
+              <input
+                id="stxt"
+                type="text"
+                maxLength="50"
+                onKeyUp={(e) => {
+                  // 엔터칠때 검색실행!
+                  if (e.code === "Enter") searchList();
+                  // console.log(e.code);
+                }}
+              />
+              <button className="sbtn" onClick={searchList}>
                 Search
               </button>
             </div>
@@ -975,13 +994,15 @@ export function Board() {
                   <>
                     {/* List버튼은 검색실행시에만 나타남
                   클릭시 전체리스트로 돌아감. 이때 버튼사라짐 */}
-                    <button onClick={()=>{
-                      // 데이터 초기화(전체리스트)
-                      rawData();
-                      setForce(Math.random());
-                      $('#stxt').val('');
-                      $('#cta').val('tit')
-                    }}>
+                    <button
+                      onClick={() => {
+                        // 데이터 초기화(전체리스트)
+                        rawData();
+                        setForce(Math.random());
+                        $("#stxt").val("");
+                        $("#cta").val("tit");
+                      }}
+                    >
                       <a href="#">List</a>
                     </button>
                   </>
