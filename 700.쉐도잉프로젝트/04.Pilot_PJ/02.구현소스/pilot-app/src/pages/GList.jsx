@@ -52,6 +52,10 @@ export function GList() {
   const totNum = gdata.length;
   // 3. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
   const [pgNum, setPgNum] = useState(1);
+  // 4. 더보기 블록단위수 : 한번에 보여주는 레코드수
+  const moreBlock = 5;
+  // 5. 더보기 블록개수 : 상태변수로 숫자 유지하기
+  const [moreNum,setMoreNum] = useState(1);
 
   // 리스트 만들기 함수 ////////
   const makeList = () => {
@@ -155,7 +159,54 @@ export function GList() {
           </div>
         );
       } //////// for //////////////
-    } ////////////// if //////////////
+    } ////////////// else if //////////////
+
+    
+    // 3. More List //////////////
+    else if (myCon.gMode === "M") {
+
+      // 리턴할 배열을 새로할당함
+      retVal = []; // 배열형 할당!
+
+      // 한계값 : 더보기 블록단위수 * 더보기 블록개수
+      let limitNum = pgBlock * pgNum;
+
+      for (let i = 0; i < limitNum; i++) {
+        // 마지막 페이지 한계수체크
+        if (i >= totNum) break;
+
+        // 순회하며 데이터 넣기
+        retVal.push(
+          <div key={i}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                showDetail(gdata[i].ginfo[0], gdata[i].cat);
+              }}
+            >
+              [{i + 1}]
+              <img
+                src={
+                  "./images/goods/" +
+                  gdata[i].cat +
+                  "/" +
+                  gdata[i].ginfo[0] +
+                  ".png"
+                }
+                alt="dress"
+              />
+              <aside>
+                <h2>{gdata[i].ginfo[1]}</h2>
+                <h3>{addComma(gdata[i].ginfo[3])}원</h3>
+              </aside>
+            </a>
+          </div>
+        );
+      } //////// for //////////////
+
+
+    } ////////////// else if //////////////
 
     // 분기문 결과 리턴하기 ////
     return retVal;
