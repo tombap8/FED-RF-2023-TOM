@@ -167,6 +167,15 @@ export function GList() {
 
     // 3. More List //////////////
     else if (myCon.gMode === "M") {
+      // 데이터 초기화하기 /////////////
+      // moreNum이 1이 아니면 초기화!
+      // 단, 모드를 변경하는 상단메뉴일때만 적용해야함!
+      // 컨텍스트 API의 gInit 참조변수가 true일때만 적용함!
+      console.log("상단메뉴클릭상태:", myCon.gInit.current);
+      if (moreNum !== 1 && myCon.gInit.current) {
+        setMoreNum(1);
+      } ///////// if /////////
+
       // 리턴할 배열을 새로할당함
       retVal = []; // 배열형 할당!
 
@@ -450,6 +459,8 @@ export function GList() {
                   <button
                     className="more"
                     onClick={() => {
+                      // 부모 클릭 상태변수값 false변경!
+                      myCon.gInit.current = false;
                       let temp = moreNum;
                       setMoreNum(++temp);
                     }}
