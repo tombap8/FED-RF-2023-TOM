@@ -55,7 +55,12 @@ export function GList() {
   // 4. 더보기 블록단위수 : 한번에 보여주는 레코드수
   const moreBlock = 5;
   // 5. 더보기 블록개수 : 상태변수로 숫자 유지하기
-  const [moreNum,setMoreNum] = useState(1);
+  const [moreNum, setMoreNum] = useState(1);
+  // 6. 더보기 블록개수 한계수 계산
+  const moreLimit =
+    Math.floor(totNum / moreBlock) + (totNum % moreBlock !== 0 ? 1 : 0);
+  // 나누어서 나머지가 있으면 1더하고 없으면 0더함(즉,없음)
+  console.log("더보기한계수:", moreLimit);
 
   // 리스트 만들기 함수 ////////
   const makeList = () => {
@@ -66,12 +71,11 @@ export function GList() {
 
     // 1. Filter List //////////////
     if (myCon.gMode === "F") {
-
       // 데이터 초기화하기 /////////////
       // gdata와 같지 않으면 초기화!
       // 단, 모드를 변경하는 상단메뉴일때만 적용해야함!
       // 컨텍스트 API의 gInit 참조변수가 true일때만 적용함!
-      if(currData !== gdata && myCon.gInit.current){
+      if (currData !== gdata && myCon.gInit.current) {
         // 깊은복사로 데이터 재할당!
         // -> 무한 리랜더링을 피하려면 참조변수를 활용한다!
         transData.current = JSON.parse(JSON.stringify(gdata));
@@ -109,11 +113,11 @@ export function GList() {
 
       // 만약 상단메뉴를 클릭해서 들어온 경우
       // 페이지 번호가 1이 아니면 초기화해주기
-      if(pgNum!==1 && myCon.gInit.current){
+      if (pgNum !== 1 && myCon.gInit.current) {
         setPgNum(1);
       }
 
-      console.log('원본개수:',totNum);
+      console.log("원본개수:", totNum);
 
       // map아닌 일반 for문사용시
       // 배열에 push하여 데이터넣기
@@ -161,20 +165,18 @@ export function GList() {
       } //////// for //////////////
     } ////////////// else if //////////////
 
-    
     // 3. More List //////////////
     else if (myCon.gMode === "M") {
-
       // 리턴할 배열을 새로할당함
       retVal = []; // 배열형 할당!
 
       // 한계값 : 더보기 블록단위수 * 더보기 블록개수
-      let limitNum = pgBlock * pgNum;
+      let limitNum = moreBlock * moreNum;
+      // 한계값이 전체 레코드수(totNum)보다 커지면
+      // 전체레코드수로 고정!
+      if (limitNum > totNum) limitNum = totNum;
 
       for (let i = 0; i < limitNum; i++) {
-        // 마지막 페이지 한계수체크
-        if (i >= totNum) break;
-
         // 순회하며 데이터 넣기
         retVal.push(
           <div key={i}>
@@ -204,8 +206,6 @@ export function GList() {
           </div>
         );
       } //////// for //////////////
-
-
     } ////////////// else if //////////////
 
     // 분기문 결과 리턴하기 ////
@@ -305,7 +305,6 @@ export function GList() {
     // 대상 보이기
     $(".bgbx").slideDown(600);
   }; //////////// showDetail 함수 ///////////
-  
 
   /******************************************* 
     함수명: changeList
@@ -444,9 +443,22 @@ export function GList() {
         myCon.gMode === "M" && (
           <section>
             <div className="grid">{makeList()}</div>
-            <div id="more">
-              <button className="more">MORE</button>
-            </div>
+            {
+              // 더보기 블록개수가 한계수가 아닐때만 버튼출력
+              moreNum !== moreLimit && (
+                <div id="more">
+                  <button
+                    className="more"
+                    onClick={() => {
+                      let temp = moreNum;
+                      setMoreNum(++temp);
+                    }}
+                  >
+                    MORE
+                  </button>
+                </div>
+              )
+            }
           </section>
         )
       }
