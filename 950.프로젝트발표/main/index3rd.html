@@ -261,13 +261,13 @@
                 animation: rot2 0.5s ease-in-out infinite alternate;
             }
 
-            .sbox > li:hover .cbox {
+            .sbox > li.on .cbox {
                 width: 300px;
                 transition: 0.4s ease-out;
                 z-index: 2;
             }
 
-            .sbox > li:hover .cbox > div:last-child {
+            .sbox > li.on .cbox > div:last-child {
                 height: 300px;
                 transition: 0.4s ease-out 0.4s;
             }
@@ -797,6 +797,15 @@
             $(function () {
                 // jQB /////////////////
 
+                // 이름원을 클릭할때 상세 프로젝트 열기
+                $(".sbox li").click(function(){
+                    $(this).addClass('on').siblings().removeClass('on');
+                })
+                // 이름원에서 마우스 떠날때 프록젝트 닫기
+                $(".sbox li").mouseleave(function(){
+                    $(this).removeClass('on');
+                })
+
                 // 메인타이틀 클릭시
                 $(".mainTit").click(function () {
                     $(".mtit").css({
@@ -996,7 +1005,7 @@
                     <div></div>
                     <div>
                         <h2 class="tit">최강야구</h2>
-                        <img src="images/1st/pf7.png" alt="문승준PJ" />
+                        <img src="images/3rd/pf7.png" alt="문승준PJ" />
                         <p class="desc">
                             <a
                                 href="https://moonlyong.github.io/FED-RF-2023-Project-MSJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/"
