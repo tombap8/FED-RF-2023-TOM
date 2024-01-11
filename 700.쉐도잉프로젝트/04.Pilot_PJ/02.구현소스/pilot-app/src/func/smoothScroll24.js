@@ -1,6 +1,5 @@
-// Smooth Scroll JS Verson 2020.12
-// 부드러운 스크롤 2023.09.19 버전 : 모듈화
-// arranged by Tom Brace Parker
+// Smooth Scroll JS Verson 2024.1
+// 부드러운 스크롤 리액트 사용버전
 
 // startSS()함수를 호출하여 사용
 // function startSS() {

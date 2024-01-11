@@ -13,6 +13,37 @@ export function SinSang({cat,chgItemFn}) {
   // cat - 카테고리 분류명
   // chgItemFn - 선택상품정보변경 부모함수
 
+  // 이전카테고리 저장용 참조변수
+  const afterCat = useRef(null);
+
+  // 신상품 리스트 이동함수 사용변수 ///
+  // 위치값변수(left값) -> 리랜더링시 기존값을 유지하도록
+  // ->  useRef를 사용한다!! -> 변수명.current로 사용!
+  const lpos = useRef(0);
+  // 재귀호출 상태값(1-호출,0-멈춤)
+  const callSts = useRef(1);
+  // 재귀호출변수(setTimeout을 지우기용 변수)
+  const autoT = useRef(null);
+
+  // 확인
+  console.log('신상cat:',cat,'/신상afterCat:',afterCat.current);
+
+  // 들어온 cat 파라미터값과 이전 cat을 저장한 afterCat값이 다를때
+  // 새로운 cat으로 변경되었으므로 초기화를 실행함
+  if(cat !== afterCat.current){
+    // 신상 흘러가기 변수 초기화
+    lpos.current = 0;
+    // 신상 멈춤/가기 상태변수 초기화
+    callSts.current = 1;
+    // setTimeout으로 재귀호출을 변수에 담아 지우기
+    clearTimeout(autoT.current);
+
+  } //////////// if /////////////////
+  
+
+
+
+
   // 컨텍스트 API사용하기
   const myCon = useContext(pCon);
 
@@ -95,15 +126,9 @@ function addComma(x) {
     $(e.currentTarget).find('.ibox').remove();
   };
 
-  // 신상품 리스트 이동함수 사용변수 ///
-  // 위치값변수(left값) -> 리랜더링시 기존값을 유지하도록
-  // ->  useRef를 사용한다!! -> 변수명.current로 사용!
-  let lpos = useRef(0);
-  // 재귀호출 상태값(1-호출,0-멈춤)
-  let callSts = 1;
   
 
-  // 신상품 리스트 이동함수 //////
+  // [ 신상품 리스트 이동함수 ] //////
   const flowList = (ele) => { // ele-움직일대상
     // console.log(ele);
     // 대상의 left값을 1씩 감소함
@@ -121,8 +146,8 @@ function addComma(x) {
     ele.css({left:lpos.current+'px'})
 
     // 재귀호출
-    if(callSts)
-      setTimeout(()=>flowList(ele),40)
+    if(callSts.current)
+      autoT.current = setTimeout(()=>flowList(ele),40)
 
   }; ////////// flowList ////////////
 
