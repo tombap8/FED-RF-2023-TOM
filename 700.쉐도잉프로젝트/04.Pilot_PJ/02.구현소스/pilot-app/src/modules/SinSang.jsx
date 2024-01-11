@@ -1,6 +1,6 @@
 // 신상품 컴포넌트 ////////
 
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef } from "react";
 // 컨텍스트 API 불러오기
 import { pCon } from "./PilotContext";
 
@@ -30,11 +30,15 @@ export function SinSang({ cat, chgItemFn }) {
   // 들어온 cat 파라미터값과 이전 cat을 저장한 afterCat값이 다를때
   // 새로운 cat으로 변경되었으므로 초기화를 실행함
   if (cat !== afterCat.current) {
+    
+  } //////////// if /////////////////
+
+  useLayoutEffect(()=>{
     // 신상 흘러가기 변수 초기화
     lpos.current = 0;
     // 신상 멈춤/가기 상태변수 초기화
     callSts.current = 1;
-  } //////////// if /////////////////
+  },[cat])
 
   // cat을 afterCat 담아서 다음번에 비교하게한다!
   afterCat.current = cat;
@@ -144,7 +148,7 @@ export function SinSang({ cat, chgItemFn }) {
     // 재귀호출
     if (callSts.current) 
     setTimeout(() => flowList(ele), 40);
-    
+
   }; ////////// flowList ////////////
 
   // 랜더링 후  한번만 실행구역 //////
