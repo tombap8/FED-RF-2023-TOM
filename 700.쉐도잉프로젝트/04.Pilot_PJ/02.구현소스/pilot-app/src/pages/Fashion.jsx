@@ -1,6 +1,6 @@
 // 공통패션 서브페이지 컨텐츠 컴포넌트
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 
 // 공통 서브 CSS 불러오기
 import "../css/fashion.css";
@@ -70,6 +70,12 @@ export function Fashion(props) {
       setPos(0);
     }; /////// 소멸자 ////////////////
   }, []); ///////// useEffect ///////////
+
+  useEffect(()=>{
+    setPos(0);
+  },[props.cat])
+
+  
 
   // 후크 상태변수
   const [item, setItem] = useState("m1");
