@@ -14,6 +14,9 @@ import $ from 'jquery';
 import { SinSang } from "../modules/SinSang";
 import { ItemDetail } from "../modules/ItemDetail";
 
+// 부드러운 스크롤 JS
+import { startSS, setPos } from "../func/smoothScroll24";
+
 export function Fashion(props){
     // 컨텍스트 API 사용!
     const myCon = useContext(pCon);
@@ -21,6 +24,9 @@ export function Fashion(props){
     // props.cat - 서브 카테고리명
 
     useEffect(()=>{
+        // 부드러운 스크롤 호출
+        startSS();
+
         // 스크롤바 생성하기(x축은 숨김)
         $('html,body').css({
             overflow:'visible',
