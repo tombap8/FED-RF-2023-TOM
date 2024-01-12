@@ -1,6 +1,6 @@
 // 메인 페이지 컨텐츠 컴포넌트
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Banner } from "../modules/Banner";
 
 // 자동스크롤 JS 불러오기
@@ -60,6 +60,12 @@ export function MainCont() {
     });////////// 소멸자 return //////
   }, []); /////// useEffect ///////////
 
+  // 처음 로딩시 스크롤 상단이동 //////
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); ///// useLayoutEffect //////////
+
+  // 리턴 코드 /////////////////////
   return (
     <>
       {/* 1. 배너 페이지 */}

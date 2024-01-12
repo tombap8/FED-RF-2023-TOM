@@ -41,7 +41,7 @@ export function Fashion(props) {
     // 에 대한 기본 막기가 가능함!(여기서는 스크롤 기능임!)
 
     // 부드러운 스크롤 위치값 초기화!!!
-    setPos(0);
+    // setPos(0);
 
     // 스크롤바 생성하기(x축은 숨김)
     $("html,body").css({
@@ -69,11 +69,19 @@ export function Fashion(props) {
       // 부드러운 스크롤 위치값 초기화!!!
       setPos(0);
     }; /////// 소멸자 ////////////////
+
   }, []); ///////// useEffect ///////////
 
+  // props.cat 카테고리가 변경될때만 맨위로 값 변경!
   useLayoutEffect(()=>{
+    console.log('같으면 실행안함?');
+    // 부드러운 스크롤 위치값
     setPos(0);
-  },[props.cat])
+    // 윈도우 실제로 상단이동
+    window.scrollTo(0, 0);
+    // 열렸을 수 있는 상세페이지 닫기
+    $('.bgbx').hide();
+  },[props.cat]);
 
   
 
