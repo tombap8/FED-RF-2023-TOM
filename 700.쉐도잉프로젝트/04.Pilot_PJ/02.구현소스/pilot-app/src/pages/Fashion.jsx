@@ -15,6 +15,9 @@ import { SwiperApp } from "../plugin/SwiperApp";
 // 컨텍스트 API
 import { pCon } from "../modules/PilotContext";
 
+// 데이터 셋업을 위한 gnb데이터 불러오기
+import { gnbData } from "../data/gnb";
+
 // 제이쿼리
 import $ from "jquery";
 import { SinSang } from "../modules/SinSang";
@@ -130,7 +133,12 @@ export function Fashion(props) {
           // 패럴랙스 이동정도 조정속성 strength
           // 수치범위 :  -500 ~ 1000 -> 높은 숫자는 반대방향
           strength={200}
-        ></Parallax>
+        >
+          <h2 class="c2tit">
+            2024 {gnbData[props.cat][1]}
+          </h2>
+
+        </Parallax>
       </section>
       {/* 4. 단일상품영역 */}
       <section id="c3" className="cont c3"></section>
