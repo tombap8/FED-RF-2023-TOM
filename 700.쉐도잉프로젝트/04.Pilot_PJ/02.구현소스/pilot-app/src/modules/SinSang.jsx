@@ -13,9 +13,6 @@ export function SinSang({ cat, chgItemFn }) {
   // cat - 카테고리 분류명
   // chgItemFn - 선택상품정보변경 부모함수
 
-  // 이전카테고리 저장용 참조변수
-  const afterCat = useRef(null);
-
   // 신상품 리스트 이동함수 사용변수 ///
   // 위치값변수(left값) -> 리랜더링시 기존값을 유지하도록
   // ->  useRef를 사용한다!! -> 변수명.current로 사용!
@@ -23,25 +20,14 @@ export function SinSang({ cat, chgItemFn }) {
   // 재귀호출 상태값(1-호출,0-멈춤)
   const callSts = useRef(1);
 
-  // 확인
-  console.log("신상cat:", cat, 
-  "/신상afterCat:", afterCat.current);
-
-  // 들어온 cat 파라미터값과 이전 cat을 저장한 afterCat값이 다를때
-  // 새로운 cat으로 변경되었으므로 초기화를 실행함
-  if (cat !== afterCat.current) {
-    
-  } //////////// if /////////////////
-
+  // 전달변수 cat 카테고리명이 다를 경우에만 업데이트!
   useLayoutEffect(()=>{
     // 신상 흘러가기 변수 초기화
     lpos.current = 0;
     // 신상 멈춤/가기 상태변수 초기화
     callSts.current = 1;
-  },[cat])
+  },[cat]); /////// cat이 다를때
 
-  // cat을 afterCat 담아서 다음번에 비교하게한다!
-  afterCat.current = cat;
 
   // 컨텍스트 API사용하기
   const myCon = useContext(pCon);
