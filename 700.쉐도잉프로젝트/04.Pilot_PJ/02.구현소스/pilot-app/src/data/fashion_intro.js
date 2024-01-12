@@ -20,6 +20,14 @@ export const fsData = {
       ["WOMEN'S", "STYLE"],
     ],
   },
+
+  // 서브 정보 구성하기 /////
+  submen1: {
+    isrc: "./images/sub/men/03.disc.png",
+    ialt: "공유가 해변에 있다!",
+    tit: ["MEN'S", "BEACH STYLE"],
+  },
+
   // 서브페이지용 데이터는 구성이 다름
   sub: {
     men: [
