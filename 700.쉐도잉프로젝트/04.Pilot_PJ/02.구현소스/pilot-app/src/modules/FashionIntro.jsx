@@ -19,7 +19,7 @@ export function FashionIntro(props) {
   // pCon에 Provider value 속성에 공개한 변수/함수를 사용함!
 
   // 선택데이터
-  const selData = fsData[props.cat];
+  let selData = fsData[props.cat];
 
   // 만약 서브 페이지 데이터일 경우 다시 선택함
   if(props.subcat !== 'etc'){
@@ -56,7 +56,7 @@ export function FashionIntro(props) {
         }
         {/* 스타일이면 타이틀2개, 아니면 1개 */}
         {
-          props.cat === 'etc' &&
+          props.subcat === 'etc' &&
         <li className="txtc">
           {props.cat != "style" && (
             <h2>

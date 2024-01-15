@@ -135,7 +135,7 @@ export function Fashion(props) {
           // 수치범위 :  -500 ~ 1000 -> 높은 숫자는 반대방향
           strength={200}
         >
-          <h2 class="c2tit">2024 {gnbData[props.cat][1]}</h2>
+          <h2 className="c2tit">2024 {gnbData[props.cat][1]}</h2>
         </Parallax>
       </section>
       {/* 4. 단일상품영역 */}
