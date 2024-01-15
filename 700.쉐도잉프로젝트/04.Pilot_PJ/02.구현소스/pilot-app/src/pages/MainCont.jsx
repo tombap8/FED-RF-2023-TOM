@@ -79,17 +79,17 @@ export function MainCont() {
 
       {/* 2. 남성패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="men" />
+        <FashionIntro cat="men" subcat="etc" />
       </section>
 
       {/* 3. 여성패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="women" />
+        <FashionIntro cat="women" subcat="etc" />
       </section>
 
       {/* 4. 스타일패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="style" />
+        <FashionIntro cat="style" subcat="etc" />
       </section>
 
       {/* 메인에만 나오는 사이드 인디케이터 */}
