@@ -103,7 +103,7 @@ export function Fashion(props) {
     // 등장액션은 원래위치로 복귀하며 투명도회복 애니
 
     // 등장액션 체크함수 이벤트 설정하기
-    window.addEventListener('scroll')
+    window.addEventListener('scroll',chkPos);
 
 
 
