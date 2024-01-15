@@ -82,6 +82,10 @@ export function Fashion(props) {
 
       // 부드러운 스크롤 위치값 초기화!!!
       setPos(0);
+
+      // 등장액션 체크함수 이벤트 해제하기!
+      window.removeEventListener('scroll',chkPos);
+
     }; /////// 소멸자 ////////////////
   }, []); ///////// useEffect ///////////
 
@@ -129,7 +133,7 @@ export function Fashion(props) {
 
   // 위치값 리턴함수 //////////
   const retClient = idx => {
-    console.log(idx);
+    // console.log(idx);
     return document.querySelectorAll('.sc-ani')[idx]
     .getBoundingClientRect().top;
   };//////////// retClient함수 /////
@@ -174,7 +178,7 @@ export function Fashion(props) {
         <SwiperApp cat={myCon.pgName} />
       </section>
       {/* 2. 신상품영역 */}
-      <section id="c1" className={"cont c1 " + myCon.pgName}>
+      <section id="c1" className={"cont sc-ani c1 " + myCon.pgName}>
         <SinSang cat={myCon.pgName} chgItemFn={chgItem} />
       </section>
       {/* 2.5. 상세보기박스 */}
