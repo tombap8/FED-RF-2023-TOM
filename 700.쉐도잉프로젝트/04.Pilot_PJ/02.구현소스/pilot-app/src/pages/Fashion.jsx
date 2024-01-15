@@ -86,6 +86,9 @@ export function Fashion(props) {
       // 등장액션 체크함수 이벤트 해제하기!
       window.removeEventListener('scroll',chkPos);
 
+      // 끝낼때 이벤트 소멸하기
+      $('.gnb a').off('click');
+
     }; /////// 소멸자 ////////////////
   }, []); ///////// useEffect ///////////
 
@@ -98,6 +101,25 @@ export function Fashion(props) {
     window.scrollTo(0, 0);
     // 열렸을 수 있는 상세페이지 닫기
     $(".bgbx").hide();
+
+    // 메뉴 클릭시 위치 이동하기 //////
+    $('.gnb a').on('click', e=>{
+      e.preventDefault();
+      // 아이디 읽어오기
+      let cid = $(e.currentTarget).attr('href');
+      // 해당 아이디 위치값
+      let cpos = $(cid).offset().top;
+      console.log(cpos);
+      // 해당위치로 이동 애니메이션
+      $('html,body').stop().animate({
+        scrollTop: cpos + 'px'
+      }, 600);
+
+      // 부드러운 스크롤 위치값 씽크맞춤
+      setPos(cpos);
+
+    }); /////////// GNB click /////////
+
 
     /////////////////////////////////////
     // 스크롤 등장액션 만들기 /////////////
