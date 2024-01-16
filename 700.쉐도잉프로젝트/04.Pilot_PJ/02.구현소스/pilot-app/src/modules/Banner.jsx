@@ -10,7 +10,13 @@ export function Banner() {
 
     // 리스트를 만드는 함수 ////
     const makeList = (gubun) => {
-        // gubun : 1 - 배너 / 0 - 블릿
+        // gubun : true - 배너 / false - 블릿
+
+        // 참고)
+        // 0/1로 false/true를 대신하면 리액트에서는
+        // 이 숫자를 하단에 출력함! 따라서 true/false로 
+        // 변경하여 코딩하면 이 문제는 해결됨!
+
         // for문을 돌려서 태그를 생성할때 배열에 담는다!
         // -> 문자형이 아닌 JSX의 태그이므로 배열에 담고
         // for문 없이 그대로 태그를 출력할 수 있다!
@@ -46,8 +52,8 @@ export function Banner() {
     {/* 배열로 태그를 받았지만 그 데이터가 JSX문법의 데이터이고
     JSX문법의 태그 내부에 호출하여 태그가 그대로 출력됨!
     map() 으로 순회하여 태그를 만들때도 동일한 원리가 작동됨! */}
-      <ul className="slide">{makeList(1)}</ul>
-      <ol className="bindic">{makeList(0)}</ol>
+      <ul className="slide">{makeList(true)}</ul>
+      <ol className="bindic">{makeList(false)}</ol>
       <div className="cover"></div>
     </>
   );
