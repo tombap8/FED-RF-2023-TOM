@@ -4,6 +4,9 @@ html,body{
     padding: 0;
     overflow: hidden;
 }
+body{
+    background-color: #000;
+}
 
 /* IR 설명숨기기 */
 .ir{
@@ -17,6 +20,7 @@ html,body{
 #stc{
     position: relative;
     height: 100vh;
+    display: none;
 }
 #stc>div{
     position: absolute;
