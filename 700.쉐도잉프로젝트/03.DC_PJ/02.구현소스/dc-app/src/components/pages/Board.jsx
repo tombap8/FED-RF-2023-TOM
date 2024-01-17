@@ -1285,6 +1285,8 @@ const AttachBox = () => {
       <input type="file" className="file" />
       {
         // 업로드 정보가 null이 아니면 파일정보 출력
+        uploadedInfo && 
+        <FileInfo uploadedInfo={uploadedInfo} />
       }
       {
         // 업로드 정보가 null이면 안내문자 출력
