@@ -1,0 +1,36 @@
+/* 영화 인트로 애니 CSS */
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 스틸컷 전체박스 */
+#stc{
+    position: relative;
+    height: 100vh;
+}
+#stc>div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* 상단 */
+#stc>div:nth-child(1){
+    height: 50%;
+    clip-path: polygon();
+}
+/* 오른쪽 */
+#stc>div:nth-child(1){
+    width: 50%;
+}
+/* 하단 */
+#stc>div:nth-child(1){
+    height: 50%;
+}
+/* 왼쪽 */
+#stc>div:nth-child(1){
+    width: 50%;
+}
