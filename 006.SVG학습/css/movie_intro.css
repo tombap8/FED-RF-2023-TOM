@@ -33,7 +33,12 @@ body{
     /* 트랜지션 */
     transition: 3s ease-in-out;
 }
+
 /* 애니적용 클래스 셋팅 */
+#stc.anion>div{
+    /* 공통 투명도 복원 */
+    opacity: 1;
+}
 #stc.anion>div:nth-child(1){
     top: 0;
 }
@@ -61,21 +66,21 @@ body{
 }
 /* 오른쪽 */
 #stc>div:nth-child(2){
-    right: 0;
+    right: -15%;
     background-image: url(../images/sc4.jpg);
     width: 50%;
     clip-path: polygon(100% 0%,0% 50%,100% 100%);
 }
 /* 하단 */
 #stc>div:nth-child(3){
-    bottom: 0;
+    bottom: -15%;
     height: 50%;
     background-image: url(../images/sc3.jpg);
     clip-path: polygon(0% 100%,100% 100%,50% 0%);
 }
 /* 왼쪽 */
 #stc>div:nth-child(4){
-    left: 0;
+    left: -15%;
     width: 50%;
     background-image: url(../images/sc2.jpg);
     clip-path: polygon(0% 0%,0% 100%,100% 50%);
