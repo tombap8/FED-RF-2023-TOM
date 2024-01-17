@@ -31,6 +31,8 @@ html,body{
     height: 50%;
     background-image: url(../images/sc1.jpg);
     clip-path: polygon(0% 0%,50% 100%,100% 0%);
+    /* 밝기조정 */
+    filter: brightness(0.7);
 }
 /* 오른쪽 */
 #stc>div:nth-child(2){
