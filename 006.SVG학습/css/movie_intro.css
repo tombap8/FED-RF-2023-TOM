@@ -5,6 +5,14 @@ html,body{
     overflow: hidden;
 }
 
+/* IR 설명숨기기 */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
 /* 스틸컷 전체박스 */
 #stc{
     position: relative;
@@ -44,4 +52,33 @@ html,body{
     width: 50%;
     background-image: url(../images/sc2.jpg);
     clip-path: polygon(0% 0%,0% 100%,100% 50%);
+}
+
+/* 로고박스 */
+#mlogo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1100px;
+}
+/* 로고이미지 */
+#mlogo img{
+    width: 100%;
+}
+/* svg 삼각형 */
+.tribox{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-48%);
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+}
+.tribox polygon{
+    fill: none;
+    stroke: #fff;
+    stroke-width: 5;
 }
