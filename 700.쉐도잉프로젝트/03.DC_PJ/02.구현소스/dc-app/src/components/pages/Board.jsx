@@ -3,6 +3,7 @@
 // 게시판용 CSS
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import "../../css/board.css";
+import "../../css/board_file.css";
 
 // 컨텍스트 API 불러오기
 import { dcCon } from "../modules/dcContext";
@@ -995,6 +996,12 @@ export function Board() {
                   <textarea className="content" cols="60" rows="10"></textarea>
                 </td>
               </tr>
+              <tr>
+                <td>Attachment</td>
+                <td>
+                  <AttachBox />
+                </td>
+              </tr>
             </tbody>
           </table>
         )
@@ -1185,3 +1192,39 @@ export function Board() {
     </>
   );
 } //////////// Board 컴포넌트 /////////////
+
+/////////////////////////////////////////////
+// 업로드 기능 서브 컴포넌트 및 메서드 만들기 ///
+//////////////////////////////////////////////
+
+// 업로드 모듈을 리턴하는 서브컴포넌트 ////////
+const AttachBox = () => {
+  // [상태관리변수] //////////////
+  // 1.드래그 또는 파일을 첨부할때 활성화 여부관리 변수
+  // 값: true 이면 활성화, false이면 비활성화
+  const [isOn,setIsOn] = useState(false);
+  // 2. 업로드파일 정보 관리변수
+  const [uploadedInfo,setUploadedInfo] = useState(null);
+
+  // 리턴 코드 //////////////////////
+  return(
+    <label className="info-view">
+      <input type="file" className="file" />
+      {
+        // 업로드 정보가 null이 아니면 파일정보 출력
+      }
+      {
+        // 업로드 정보가 null이면 안내문자 출력
+        !uploadedInfo &&
+        <>
+          {/* 업로드안내 아이콘 */}
+          <p className="info-view-msg">
+            Click or drop the file here.</p>
+          <p className="info-view-desc">
+            Up to 3MB per file</p>
+        </>
+      }
+    </label>
+  );
+
+};
