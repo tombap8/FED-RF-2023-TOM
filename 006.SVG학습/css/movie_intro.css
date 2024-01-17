@@ -74,7 +74,7 @@ body{
     width: 100%;
     opacity: 0;
 }
-/* svg 삼각형 */
+/* svg 삼각형 박스 */
 .tribox{
     position: absolute;
     top: 0;
@@ -84,6 +84,7 @@ body{
     margin: 0 auto;
     width: 25%;
 }
+/* svg 삼각형 */
 .tribox polygon{
     fill: none;
     stroke: #fff;
@@ -93,8 +94,11 @@ body{
     /* 데쉬옵셋으로 공백부터 나오게함 */
     stroke-dashoffset: 330%;
     
+}
+/* 애니메이션 적용 클래스 */
+.tribox.anion polygon{
     /* 애니메이션 */
-    animation: line-ani 3s ease-in-out 2s forwards;
+    animation: line-ani 3s ease-in-out forwards;
 }
 
 /* 라인 SVG 스테이지 */
@@ -114,9 +118,14 @@ body{
     /* 데쉬옵셋으로 공백부터 나오게함 */
     stroke-dashoffset: 150%;
 
-    /* 애니메이션 */
-    animation: line-ani 5s ease-in-out 2s forwards;
 }
+
+/* 애니메이션 적용 클래스 */
+.stage.anion line1{
+    /* 애니메이션 */
+    animation: line-ani 5s ease-in-out forwards;
+}
+
 /* 라인애니메이션 키프레임 */
 @keyframes line-ani {
     to{
