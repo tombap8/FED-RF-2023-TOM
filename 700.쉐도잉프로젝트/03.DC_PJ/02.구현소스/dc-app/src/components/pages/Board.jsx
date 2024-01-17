@@ -1253,12 +1253,17 @@ const AttachBox = () => {
   const setFileInfo = (fileInfo) => {
     // 전달된 객체값을 한번에 할당하는 방법(객체 구조분해법)
     // 구조분해 할당을 하면 객체의 값이 담긴다!
-    const {name,size,type} = fileInfo;
-    console.log('전체값:',fileInfo);
-    console.log('name:',name);
-    console.log('size:',size);
-    console.log('type:',type);
+    const {name,size: byteSize,type} = fileInfo;
+    // 바이트 단위의 파일크기를 mb단위로 변환한다!
+    const size = (byteSize/(1024*1024)).toFixed(2)+'mb';
+    // console.log('전체값:',fileInfo);
+    // console.log('name:',name);
+    // console.log('size:',size);
+    // console.log('type:',type);
 
+    // 파일정보 상태관리 변수에 업데이트함!
+    setUploadedInfo({name,size,type});
+    // -> 변경시 리랜더링으로 업로드구역에 반영됨!
 
   }; //////////// setFileInfo 메서드 //////////
 
@@ -1295,6 +1300,27 @@ const AttachBox = () => {
     </label>
   );
 }; ///////////// AttachBox 컴포넌트 //////////
+
+/* 
+Object.keys(obj) – 객체의 키만 담은 배열을 반환합니다.
+Object.values(obj) – 객체의 값만 담은 배열을 반환합니다.
+Object.entries(obj) – [키, 값] 쌍을 담은 배열을 반환합니다.
+*/
+
+// 파일정보를 보여주는 파일정보 컴포넌트 ////////
+const FileInfo = ({uploadedInfo}) => (
+  <ul className="info-view-info">
+    {console.log(Object.entries(uploadedInfo))}
+    {
+      Object.entries(uploadedInfo).map(([key,value])=>(
+        <li key={key}>
+          <span className="info-key">😊 {key} : </span>
+          <span className="info-value">{value}</span>
+        </li>
+      ))
+    }
+  </ul>
+); ////////////// FileInfo 컴포넌트 ///////////
 
 // 업로드 표시 아이콘 SVG 태그 리턴 컴포넌트 ////
 // 화살표함수에 중괄호 안쓰고 JSX태그를 바로 쓰면 리턴키워드 생략
