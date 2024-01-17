@@ -58,16 +58,29 @@ $('.play-box').hover(
     // 클릭시 이미지 변경하기 + 오디오 재생/멈춤하기
     .on('click',function(){
         
-        // 오디오요소 : 제이쿼리는 get(0)으로 요소를 선택
+        // 1.오디오요소 : 제이쿼리는 get(0)으로 요소를 선택
         const myAudio = $('.my-audio').get(0);
         
-        // 현재 오디오 멈춤여부 알아오기
+        // 2.현재 오디오 멈춤여부 알아오기
         let isPaused = myAudio.paused;
         console.log('멈췄니?',isPaused);
 
         // paused 는 오디오/비디오 멈춤여부를 리턴함
         // 멈춤상태명 true / 재생상태면 false
 
+        // 3.분기하여 처리하기
+        // (1) 멈춤상태면 재생하기
+        if(isPaused){
+            // 재생하기
+            myAudio.play();
+
+        } ////// if /////////
+        // (2) 재생상태면 멈추기
+        else{
+            // 멈추기
+            myAudio.pause();
+
+        } /////// else ////////
 
 
 
