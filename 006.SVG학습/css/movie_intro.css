@@ -20,7 +20,6 @@ body{
 #stc{
     position: relative;
     height: 100vh;
-    display: none;
 }
 #stc>div{
     position: absolute;
@@ -28,10 +27,32 @@ body{
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+
+    /* 공통 투명도 */
+    opacity: 0;
+    /* 트랜지션 */
+    transition: 3s ease-in-out;
 }
+/* 애니적용 클래스 셋팅 */
+#stc.anion>div:nth-child(1){
+    top: 0;
+}
+#stc.anion>div:nth-child(2){
+    right: 0;
+    transition-delay: 1.5s;
+}
+#stc.anion>div:nth-child(3){
+    bottom: 0;
+    transition-delay: 3s;
+}
+#stc.anion>div:nth-child(4){
+    left: 0;
+    transition-delay: 4.5s;
+}
+
 /* 상단 */
 #stc>div:nth-child(1){
-    top: 0;
+    top: -15%;
     height: 50%;
     background-image: url(../images/sc1.jpg);
     clip-path: polygon(0% 0%,50% 100%,100% 0%);
@@ -121,7 +142,7 @@ body{
 }
 
 /* 애니메이션 적용 클래스 */
-.stage.anion line1{
+.stage.anion .line1{
     /* 애니메이션 */
     animation: line-ani 5s ease-in-out forwards;
 }
