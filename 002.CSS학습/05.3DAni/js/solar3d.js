@@ -21,4 +21,12 @@ menu.on('click',function(){
     let scaleNum = $(this).attr('data-num');
     console.log('배율:',scaleNum);
 
+    // 2. 배율적용하기
+    scaleBox.css({transform:`scale(${scaleNum})`});
+
+    // 3. 클릭된 메뉴에 클래스'on'넣기
+    // 나머지는 빼기
+    $(this).addClass('on')
+    .siblings().removeClass('on');
+
 }); ///////// click ////////////

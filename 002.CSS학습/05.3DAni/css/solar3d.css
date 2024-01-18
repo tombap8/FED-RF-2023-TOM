@@ -92,6 +92,15 @@ body {
 }
 
 
+/* 태양계박스 축소확대용 부모박스 */
+.scale-box{
+    position: relative;
+    top: 34%;
+    /* 트랜지션: 속시이지 */
+    transition: transform 2s ease-in-out;
+}
+
+
 /* 태양계 전체 부모박스 */
 /* 태양계 전체박스를 3D변형으로 기울임! */
 #solar {
