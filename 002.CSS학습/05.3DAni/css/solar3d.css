@@ -80,7 +80,13 @@ body{
     left: 0;
     bottom: 0;
     right: 0;
-
+    /* 3D 변형을 위한 셋팅은 부모박스에서 설정 */
+    transform-style: preserve-3d;
+    /* x축 기준으로 기울임 */
+    transform: rotateX(70deg);
+    /* 중앙을 중심으로 뒤쪽으로 기울여짐
+    x축 중앙선 기준으로 상단은 화면뒤
+    하단은 화면 앞으로 나옴! */
 }
 
 /* 태양박스 */
@@ -88,7 +94,12 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: 
+    translate(-50%, -50%) rotateX(-70deg);
+    /* 태양이 태양계박스와 함께 
+    70도 누워 있으므로 x축으로 70도
+    반대방향으로 세워줘야 태양이 똑바로 보인다!
+    트랜스폼은 한번에 셋팅한다! */
 
     width: var(--sun-size);
     height: var(--sun-size);
@@ -147,6 +158,11 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
+    /* 행성의 부모가 기울었으므로 반대로 세워줌! */
+    transform: rotateY(-70deg) scale(2);
+    /* 내부에 트랜스폼 사용으로 x,y축 역전으로
+    반대방향을 세워야함! 축역전으로 행성크기가
+    상대적으로 작아졌으므로 크기를 키워준다! */
 
 }
 
@@ -163,14 +179,33 @@ body{
     left: calc(50% - var(--earth-size)/2);
     width: var(--earth-size);
     height: var(--earth-size);
-    /* 지구를 왼쪽궤도 위로 이동 
-    - 궤도 크기의 절반크기로 마이너스  */
-    transform: 
-    translateX(calc(-1*var(--earth-orbit)/2));
+
+    /* 애니메이션 */
+    
 }
 /* 지구행성 셋팅 */
 #earth .planet{
     background-image: url(../images/earth.png);
+}
+
+/* 지구회전 키프레임 */
+/* rotate가 두개인 이유: 
+처음것은 중앙회전 나중것은 이동된 요소 회전임 */
+@keyframes earth {
+    /* 지구를 왼쪽궤도 위로 이동하여 돌아줌 
+    - 궤도 크기의 절반크기로 마이너스  */
+    from{
+        transform: 
+        rotate(0deg)
+        translateX(calc(-1*var(--earth-orbit)/2))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg)
+        translateX(calc(-1*var(--earth-orbit)/2))
+        rotate(-360deg);
+    }
 }
 
 /************* 목성행성 셋팅 *************/
