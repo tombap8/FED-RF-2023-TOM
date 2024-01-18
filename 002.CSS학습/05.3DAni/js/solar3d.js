@@ -17,5 +17,8 @@ const scaleBox = $('.scale-box');
 
 // 2. 이벤트 함수 셋팅하기
 menu.on('click',function(){
+    // 1. 배율 속성값 읽어오기 : data-num
+    let scaleNum = $(this).attr('data-num');
+    console.log('배율:',scaleNum);
 
 }); ///////// click ////////////
