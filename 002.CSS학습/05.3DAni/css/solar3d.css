@@ -5,3 +5,140 @@
 /* 웹폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@900&display=swap');
 
+/* 행성의 크기를 변수에 설정함 */
+:root{
+    /* 태양크기 */
+    --sun-size: 250px;
+    /* 지구크기 */
+    --earth-size: 80px;
+    /* 지구궤도 */
+    --earth-orbit: 600px;
+    /* 달크기 */
+    --moon-size: 40px;
+    /* 목성크기 */
+    --jupiter-size: 150px;
+    /* 목성궤도 */
+    --jupiter-orbit: 1000px;
+    /* 토성크기 */
+    --saturn-size: 160px;
+    /* 토성궤도 */
+    --saturn-orbit: 1400px;
+    /* 명왕성크기 */
+    --pluto-size: 50px;
+    /* 명왕성궤도 */
+    --pluto-orbit: 1600px;
+}
+
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+body{
+    background: url(../images/space.jpg) no-repeat center/cover;
+    overflow: hidden;
+    /* 스크롤바없앰 */
+}
+/* 공통클래스 */
+
+/* 배경이미지설명숨기기 */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 공사중 표시 */
+/* body *{
+    outline: 1px dashed lightblue;
+} */
+
+/* 타이틀 */
+.tit {
+    position: relative;
+    z-index: 1;
+    /* 행성들보다 위 */
+
+    margin: 0;
+    padding: 0;
+    /* h1의 기본마진,패딩 없앰 */
+    font-family: 'Big Shoulders Stencil Text', cursive;
+    color: #fff;
+    font-size: 80px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* 태양계 전체 부모박스 */
+/* 태양계 전체박스를 3D변형으로 기울임! */
+#solar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+/* 태양박스 */
+#sun{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--sun-size);
+    height: var(--sun-size);
+    /* 원형 */
+    border-radius: 50%;
+    /* 원형바깥쪽 글로우효과 */
+    box-shadow: 0 0 60px 10px orange;
+
+    /* 커지는 태양이미지 숨기기 */
+    overflow: hidden;
+
+}
+/* 태양이미지 */
+#sun img{
+    width: 100%;
+    height: 100%;
+
+    /* 애니메이션 호출 */
+    animation: flame-ani 40s linear infinite alternate;
+}
+/* 태양이 이글거리는 애니메이션 키프레임 */
+@keyframes flame-ani {
+    to{
+        transform: scale(1.5);
+    }
+} /* 키프레임 */
+
+/************** 행성공통 클래스 **************/
+/* 궤도 클래스 */
+.orbit{
+    position: absolute;
+    /* 부모는 #solar */   
+    
+    /* 박스 정중앙이동 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* 원형궤도 테두리 보이기 */
+    border: 5px solid rgb(255 255 255 / 0.5);
+    border-radius: 50%;
+}
+
+/************* 지구행성 셋팅 *************/
+#earth.orbit{
+
+}
+
+/************* 목성행성 셋팅 *************/
+
+/************* 토성행성 셋팅 *************/
+
+/************* 명왕성행성 셋팅 *************/
