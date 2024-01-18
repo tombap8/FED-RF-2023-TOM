@@ -238,13 +238,13 @@ body{
     from{
         transform: 
         rotate(0deg)
-        translateX(calc(-1*var(--jupiter-orbit)/2))
+        translateX(calc(var(--jupiter-orbit)/2))
         rotate(0deg);
     }
     to{
         transform: 
         rotate(360deg)
-        translateX(calc(-1*var(--jupiter-orbit)/2))
+        translateX(calc(var(--jupiter-orbit)/2))
         rotate(-360deg);
     }
 }
@@ -316,7 +316,7 @@ body{
     height: var(--pluto-size);
     
     /* 애니메이션 */
-    animation: pluto 40s linear infinite;
+    animation: pluto 50s linear infinite;
 }
 /* 명왕성행성 셋팅 */
 #pluto .planet{
@@ -332,13 +332,13 @@ body{
     from{
         transform: 
         rotate(0deg)
-        translateX(calc(-1*var(--pluto-orbit)/2))
+        translateX(calc(var(--pluto-orbit)/2))
         rotate(0deg);
     }
     to{
         transform: 
         rotate(360deg)
-        translateX(calc(-1*var(--pluto-orbit)/2))
+        translateX(calc(var(--pluto-orbit)/2))
         rotate(-360deg);
     }
 }
