@@ -68,8 +68,8 @@ body{
     /* height: 133px; */
     /* outline: 3px solid red; */
     background: url(../images/car.jpg) no-repeat;
-    background-size: 100%;
-    background-position: -249px -424px;
+    background-size: 1020%;
+    background-position: 20.3% 64%;
     border-radius: 50%;
 }
 /* 앞바퀴 */
@@ -81,4 +81,15 @@ body{
 .bw{
     bottom: 30.2%;
     right: 20.1%;
+}
+/* 바퀴회전 클래스 */
+.grp-ba.anion .ba{
+    animation: rotate-ba 2s linear infinite;
+}
+
+/* 바퀴회전 키프레임 */
+@keyframes rotate-ba {
+    to{
+        transform: rotate(-360deg);
+    }
 }
