@@ -127,3 +127,18 @@ body{
         transform: rotate(-360deg);
     }
 }
+
+/* 로고 */
+#logo{
+    position: absolute;
+    top: 50%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    width: 60%;
+}
+/* 로고 등장애니 클래스 */
+#logo.anion{
+    left: 50%;
+    transition: left 3s ease-out;
+}
