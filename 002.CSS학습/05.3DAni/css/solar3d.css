@@ -155,11 +155,45 @@ body{
     width: var(--earth-orbit);
     height: var(--earth-orbit);
 }
+/* 지구행성 포지션 - 중앙중심회전 */
+#earth .pos{
+    position: absolute;
+    /* calc() 계산으로 정중앙이동 */
+    top: calc(50% - var(--earth-size)/2);
+    left: calc(50% - var(--earth-size)/2);
+    width: var(--earth-size);
+    height: var(--earth-size);
+    /* 지구를 왼쪽궤도 위로 이동 
+    - 궤도 크기의 절반크기로 마이너스  */
+    transform: 
+    translateX(calc(-1*var(--earth-orbit)/2));
+}
+/* 지구행성 셋팅 */
+#earth .planet{
+    background-image: url(../images/earth.png);
+}
 
 /************* 목성행성 셋팅 *************/
 #jupiter.orbit{
     width: var(--jupiter-orbit);
     height: var(--jupiter-orbit);
+}
+/* 목성행성 포지션 - 중앙중심회전 */
+#jupiter .pos{
+    position: absolute;
+    /* calc() 계산으로 정중앙이동 */
+    top: calc(50% - var(--jupiter-size)/2);
+    left: calc(50% - var(--jupiter-size)/2);
+    width: var(--jupiter-size);
+    height: var(--jupiter-size);
+    /* 목성를 왼쪽궤도 위로 이동 
+    - 궤도 크기의 절반크기로 마이너스  */
+    transform: 
+    translateX(calc(-1*var(--jupiter-orbit)/2));
+}
+/* 목성행성 셋팅 */
+#jupiter .planet{
+    background-image: url(../images/jupiter.png);
 }
 
 /************* 토성행성 셋팅 *************/
@@ -167,9 +201,43 @@ body{
     width: var(--saturn-orbit);
     height: var(--saturn-orbit);
 }
+/* 토성행성 포지션 - 중앙중심회전 */
+#saturn .pos{
+    position: absolute;
+    /* calc() 계산으로 정중앙이동 */
+    top: calc(50% - var(--saturn-size)/2);
+    left: calc(50% - var(--saturn-size)/2);
+    width: var(--saturn-size);
+    height: var(--saturn-size);
+    /* 토성를 왼쪽궤도 위로 이동 
+    - 궤도 크기의 절반크기로 마이너스  */
+    transform: 
+    translateX(calc(-1*var(--saturn-orbit)/2));
+}
+/* 토성행성 셋팅 */
+#saturn .planet{
+    background-image: url(../images/saturn.png);
+}
 
 /************* 명왕성행성 셋팅 *************/
 #pluto.orbit{
     width: var(--pluto-orbit);
     height: var(--pluto-orbit);
+}
+/* 명왕성행성 포지션 - 중앙중심회전 */
+#pluto .pos{
+    position: absolute;
+    /* calc() 계산으로 정중앙이동 */
+    top: calc(50% - var(--pluto-size)/2);
+    left: calc(50% - var(--pluto-size)/2);
+    width: var(--pluto-size);
+    height: var(--pluto-size);
+    /* 명왕성을 왼쪽궤도 위로 이동 
+    - 궤도 크기의 절반크기로 마이너스  */
+    transform: 
+    translateX(calc(-1*var(--pluto-orbit)/2));
+}
+/* 명왕성행성 셋팅 */
+#pluto .planet{
+    background-image: url(../images/pluto.png);
 }
