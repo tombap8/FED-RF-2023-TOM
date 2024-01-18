@@ -218,6 +218,16 @@ body{
 #saturn .planet{
     background-image: url(../images/saturn.png);
 }
+/* 가상요소로 토성이미지 배경으로 넣기 */
+#saturn .planet::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -30%;
+    width: 160%;
+    height: 100%;
+    background: url(../images/saturn.png) no-repeat 0/100% 100%;
+}
 
 /************* 명왕성행성 셋팅 *************/
 #pluto.orbit{
