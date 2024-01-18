@@ -18,6 +18,27 @@ body{
     max-width: 1359px;
     width: 100%;
 }
+
+/* 자동차 시동 클래스 */
+#mycar.anion{
+    animation: 
+    brr-car .03s infinite alternate,
+    go-car 3s ease-in 3s forwards;
+}
+
+/* 자동차 시동 키프레임 */
+@keyframes brr-car {
+    to{
+        transform: translate(-50%, -49.5%);
+    }
+}
+/* 자동차 이동 키프레임 */
+@keyframes go-car {
+    to{
+        left: -50%;
+    }
+}
+
 /* 자동차이미지 */
 #mycar img{
     width: 100%;
@@ -50,7 +71,8 @@ body{
 }
 /* 애니클래스 설정 */
 .spath.anion path{
-    animation: line-ani 10s linear forwards;
+    animation: 
+    line-ani 10s linear forwards;
 }
 
 /* 자동차 선애니 */
@@ -59,6 +81,13 @@ body{
         stroke-dashoffset: 0;
     }
 }
+/* 자동차 선 사라짐애니 */
+@keyframes fade-ani {
+    to{
+        opacity: 0;
+    }
+}
+
 
 /* 바퀴공통 */
 .ba{
@@ -83,8 +112,8 @@ body{
     right: 20.1%;
 }
 /* 바퀴회전 클래스 */
-.grp-ba.anion .ba{
-    animation: rotate-ba 2s linear infinite;
+#mycar.anion .ba{
+    animation: rotate-ba 2s linear 3s infinite;
 }
 
 /* 바퀴회전 키프레임 */
