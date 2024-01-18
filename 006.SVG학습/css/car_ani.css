@@ -74,12 +74,12 @@ body{
 }
 /* 앞바퀴 */
 .fw{
-    bottom: 30%;
+    bottom: 30.3%;
     left: 18.2%;
 }
 /* 앞바퀴 */
 .bw{
-    bottom: 30.2%;
+    bottom: 30.8%;
     right: 20.1%;
 }
 /* 바퀴회전 클래스 */
