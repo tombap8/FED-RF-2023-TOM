@@ -132,13 +132,44 @@ body{
     border-radius: 50%;
 }
 
-/************* 지구행성 셋팅 *************/
-#earth.orbit{
+/* 행성 클래스 (.pos의 자식) */
+.planet{
+    position: absolute;
+    /* 부모는? .pos */
+    top: 0;
+    left: 0;
+    /* 부모행성크기에 맞춤 */
+    width: 100%;
+    height: 100%;
+    /* 원 */
+    border-radius: 50%;
+    /* 행성배경이미지 공통 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
 
 }
 
+/************* 지구행성 셋팅 *************/
+#earth.orbit{
+    width: var(--earth-orbit);
+    height: var(--earth-orbit);
+}
+
 /************* 목성행성 셋팅 *************/
+#jupiter.orbit{
+    width: var(--jupiter-orbit);
+    height: var(--jupiter-orbit);
+}
 
 /************* 토성행성 셋팅 *************/
+#saturn.orbit{
+    width: var(--saturn-orbit);
+    height: var(--saturn-orbit);
+}
 
 /************* 명왕성행성 셋팅 *************/
+#pluto.orbit{
+    width: var(--pluto-orbit);
+    height: var(--pluto-orbit);
+}
