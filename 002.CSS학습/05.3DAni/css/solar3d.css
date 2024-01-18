@@ -181,7 +181,7 @@ body{
     height: var(--earth-size);
 
     /* 애니메이션 */
-    
+    animation: earth 20s linear infinite;
 }
 /* 지구행성 셋팅 */
 #earth .planet{
@@ -220,15 +220,33 @@ body{
     top: calc(50% - var(--jupiter-size)/2);
     left: calc(50% - var(--jupiter-size)/2);
     width: var(--jupiter-size);
-    height: var(--jupiter-size);
-    /* 목성를 왼쪽궤도 위로 이동 
-    - 궤도 크기의 절반크기로 마이너스  */
-    transform: 
-    translateX(calc(-1*var(--jupiter-orbit)/2));
+    height: var(--jupiter-size);    
+
+    /* 애니메이션 */
+    animation: jupiter 30s linear infinite;
 }
 /* 목성행성 셋팅 */
 #jupiter .planet{
     background-image: url(../images/jupiter.png);
+}
+/* 목성회전 키프레임 */
+/* rotate가 두개인 이유: 
+처음것은 중앙회전 나중것은 이동된 요소 회전임 */
+@keyframes jupiter {
+    /* 목성를 왼쪽궤도 위로 이동하여 돌아줌 
+    - 궤도 크기의 절반크기로 마이너스  */
+    from{
+        transform: 
+        rotate(0deg)
+        translateX(calc(-1*var(--jupiter-orbit)/2))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg)
+        translateX(calc(-1*var(--jupiter-orbit)/2))
+        rotate(-360deg);
+    }
 }
 
 /************* 토성행성 셋팅 *************/
@@ -244,10 +262,9 @@ body{
     left: calc(50% - var(--saturn-size)/2);
     width: var(--saturn-size);
     height: var(--saturn-size);
-    /* 토성를 왼쪽궤도 위로 이동 
-    - 궤도 크기의 절반크기로 마이너스  */
-    transform: 
-    translateX(calc(-1*var(--saturn-orbit)/2));
+
+    /* 애니메이션 */
+    animation: saturn 40s linear infinite;
 }
 /* 토성행성 셋팅 */
 #saturn .planet{
@@ -264,6 +281,26 @@ body{
     background: url(../images/saturn.png) no-repeat 0/100% 100%;
 }
 
+/* 토성회전 키프레임 */
+/* rotate가 두개인 이유: 
+처음것은 중앙회전 나중것은 이동된 요소 회전임 */
+@keyframes saturn {
+    /* 토성를 왼쪽궤도 위로 이동하여 돌아줌 
+    - 궤도 크기의 절반크기로 마이너스  */
+    from{
+        transform: 
+        rotate(0deg)
+        translateX(calc(-1*var(--saturn-orbit)/2))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg)
+        translateX(calc(-1*var(--saturn-orbit)/2))
+        rotate(-360deg);
+    }
+}
+
 /************* 명왕성행성 셋팅 *************/
 #pluto.orbit{
     width: var(--pluto-orbit);
@@ -277,12 +314,31 @@ body{
     left: calc(50% - var(--pluto-size)/2);
     width: var(--pluto-size);
     height: var(--pluto-size);
-    /* 명왕성을 왼쪽궤도 위로 이동 
-    - 궤도 크기의 절반크기로 마이너스  */
-    transform: 
-    translateX(calc(-1*var(--pluto-orbit)/2));
+    
+    /* 애니메이션 */
+    animation: pluto 40s linear infinite;
 }
 /* 명왕성행성 셋팅 */
 #pluto .planet{
     background-image: url(../images/pluto.png);
+}
+
+/* 명왕성회전 키프레임 */
+/* rotate가 두개인 이유: 
+처음것은 중앙회전 나중것은 이동된 요소 회전임 */
+@keyframes pluto {
+    /* 명왕성를 왼쪽궤도 위로 이동하여 돌아줌 
+    - 궤도 크기의 절반크기로 마이너스  */
+    from{
+        transform: 
+        rotate(0deg)
+        translateX(calc(-1*var(--pluto-orbit)/2))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg)
+        translateX(calc(-1*var(--pluto-orbit)/2))
+        rotate(-360deg);
+    }
 }
