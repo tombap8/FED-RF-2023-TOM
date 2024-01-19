@@ -59,6 +59,14 @@ app.post("/upload", upload.single("file"),
   console.log(req.file);
 });
 
+// 전송파일 인코딩 변환설정
+app.use(express.urlencoded({extended:true})); 
+// url : Uniform Resource 
+app.use(express.json());
+
+
+
+
 // 기본 포트 연결하기
 app.listen(8080, function () {
   console.log("8080포트로 연결됨!");
