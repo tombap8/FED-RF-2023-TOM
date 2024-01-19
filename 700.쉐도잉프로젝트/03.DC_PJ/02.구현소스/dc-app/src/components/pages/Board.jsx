@@ -1015,12 +1015,6 @@ export function Board() {
                   <textarea className="content" cols="60" rows="10"></textarea>
                 </td>
               </tr>
-              <tr>
-                <td>Attachment</td>
-                <td>
-                  <AttachBox />
-                </td>
-              </tr>
             </tbody>
           </table>
         )
