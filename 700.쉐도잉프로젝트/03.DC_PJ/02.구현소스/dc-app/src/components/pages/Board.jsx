@@ -17,12 +17,9 @@ import $ from "jquery";
 // 기본 데이터 제이슨 불러오기
 import baseData from "../data/board.json";
 
-<<<<<<< HEAD
 // 파일전송 요청을 위해 엑스오스 불러오기
 import axios from "axios";
 
-=======
->>>>>>> parent of 9346fe1 (ss)
 // 기본 데이터 역순정렬
 baseData.sort((a, b) => {
   return Number(a.idx) === Number(b.idx)
@@ -1285,12 +1282,11 @@ const AttachBox = () => {
     // 파일정보 읽어오기
     // 드롭된 파일로 부터 전송된 파일정보는 아래와 같이 읽어온다!
     const fileInfo = e.dataTransfer.files[0];
-    // console.log(fileInfo);
+    console.log(fileInfo);
 
     // 파일정보셋팅 메서드 호출!
     setFileInfo(fileInfo);
 
-<<<<<<< HEAD
     // 서브밋 저장구역에서 파일정보를 사용하도록
     // 상위 컴포넌트 변수인 uploadFile에 저장하는
     // 함수인 updateFileInfo() 를 호출하는 속성인
@@ -1299,8 +1295,6 @@ const AttachBox = () => {
 
     // 서버전송은 서브밋 버튼 클릭후 실행!!!
 
-=======
->>>>>>> parent of 9346fe1 (ss)
   }; ///////// controlDrop 메서드 ////////
 
   // 드롭된 파일 정보를 화면 뿌려주는 메서드 //////
