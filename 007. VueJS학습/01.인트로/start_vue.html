@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue JS 시작하기</title>
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- 뷰JS를 사용하기 위해서는 CDN방식으로 먼저 스탠드얼론 버전을 불러와야함! -->
+    <script>
+        // 로딩구역 //////
+        window.addEventListener('load',()=>{
+            console.log('로딩완료!');
+
+            // new Vue() 하는 순간!
+            // 뷰객체가 인스턴스로 메모리에 생성된다!
+            // 선택대상요소가 가상돔으로 메모리상 변경가능해짐!
+
+            // 1. 텍스트 바인딩 /////////////
+            new Vue({
+                // 1. el 은 적용할 요소(element)를 담는 속성
+                el: "#app1",
+                // 2. data 는 사용할 데이터를 셋업하는 속성
+                data: {
+                    // 객체형식으로 여러개의 변수/값을 셋팅함!
+                    message: '나는 뷰JS를 잘쓰는 프론트엔드 개발자다!',
+                    yo: '!요!',
+                },
+                // 3. 함수구역 만들기 : methods속성
+                methods:{
+                    // 변경함수만들기
+                    changeTxt : function(){
+                        console.log('나야나!');
+                    },
+                },
+            });
+
+
+
+
+
+
+
+        }); ///////////// 로드구역 ///////////////
+
+    </script>
+  </head>
+  <body>
+    <h1>Vue JS 기초연습</h1>
+
+    <hr />
+
+    <h2>1. 텍스트 바인딩(binding->데이터넣기!)</h2>
+    <!-- 뷰인스턴스 생성 대상이 되는 순간 html태그는
+    일반html이 아닌 뷰가 변환하는 대상으로 뷰문법으로 적용함 -->
+    <div id="app1">
+        <p> {{message}} </p>
+        <p> 세상은{{yo}} 너희가{{yo}} 아는바{{yo}} 그 세상이{{yo}} 아니란다!{{yo}} </p>
+        <!-- 
+            {{}} 중복중괄호는 콧수염 표시자(Mustasch)
+            이 부분에 뷰JS 데이터를 넣는 자리다!
+            -> 콧수염 표시자는 주로 데이터를 합쳐서 표현할때
+            많이 사용된다!
+            -> 주의사항 : 
+            내용으로 표현식만 쓸것!
+            예) 표현식은 1+1과 같이 그자리에 값이 찍히는 것을 표현식이라고 보면됨!
+            -> 문장은 쓰지말것!!!
+            문장은 if문, for문 , 할당문
+            예) if(){}, for(){}, let x = "ㅎㅎ"
+         -->
+
+         <!-- 기능을 가진 버튼을 생성함 -->
+         <button>변경하기</button>
+    </div>
+
+    <hr />
+
+    <h2>2. 반복 렌더링</h2>
+    <div id="app2"></div>
+
+    <hr />
+
+    <h2>3. 이벤트 사용하기</h2>
+    <div id="app3"></div>
+
+    <hr />
+
+    <h2>4. 입력 양식과 동기화하기</h2>
+    <div id="app4"></div>
+
+    <hr />
+
+    <h2>5. 조건분기</h2>
+    <div id="app5"></div>
+  </body>
+</html>
