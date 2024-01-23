@@ -120,6 +120,35 @@ const vm = new Vue({
     // 랜더링후 자동실행구역
     // 1. 제목 숨겼다 보이기
     $('.tit').hide().delay(1000).slideDown(300);
+    // 2. 로고 왼쪽에서 날아오기
+    $('.logo')
+    .css({
+        position: 'relative',
+        opacity:0,
+        left:'-100%'
+    })
+    .delay(2000)
+    .animate({
+        opacity:1,
+        left:'0'
+    },800,'easeInOutQuint',
+    ()=>{
+        // 등장후 콜백함수로 스크롤 이동!
+
+        // 배너선택
+        const ban = $('.banner');
+        // console.log(ban.height());
+    
+        // 3. 스크롤 이동하기
+        $('html,body')
+        .animate({
+            scrollTop: 
+            (ban.offset().top+ban.height()+120)+'px'
+        },600,'easeInOutExpo');
+
+    }); ////// animate //////
+
+
 
   }, ///////////// mounted /////////////
 
