@@ -112,4 +112,15 @@ const vm = new Vue({
     // 생성된 상품데이터 확인
     console.log('itemData:',this.itemData);
   }, /////////// created ////////////////
+
+  // [ 뷰 랜더링 완료 단계 : mounted ] ////
+  // -> JS, 제이쿼리 등 DOM에 그려진 후 코딩해야하는
+  // 것을 이 파트에 연결시킨다!
+  mounted: function(){
+    // 랜더링후 자동실행구역
+    // 1. 제목 숨겼다 보이기
+    $('.tit').hide().delay(1000).slideDown(300);
+
+  }, ///////////// mounted /////////////
+
 }); //////// Vue 인스턴스 설정 /////////
