@@ -39,7 +39,39 @@
         <p v-html="content"></p>
       </section>
       <!-- 3. 상품리스트파트  -->
-      <section class="part"></section>
+      <section class="part gwrap">
+        <ol class="glist" 
+        v-for="(item,idx) in itemData">
+        <!-- 상품이미지 출력 : 
+            각 배열의 객체 다시 for문으로 돌아주기
+            -> item에 값을 담음 
+            v-if:  조건이 속성명이 'img'인것 
+            v-html: 이미지태그 경로전달하여 만들기
+            -> makeImg()는 내가만든 함수
+        -->
+            <li 
+                v-for="(val,key) in item"
+                v-if="key==='img'"
+                v-html="makeImg(val)"
+            ></li>
+        <!-- 상품명 출력:
+            조건: 속성명이 'name'인것
+         -->
+         <li
+            v-for="(val,key) in item"
+            v-if="key==='name'"
+         > Item : {{val}} </li>
+
+        <!-- 상품가격 출력:
+            조건: 속성명이 'price'인것
+         -->
+         <li
+            v-for="(val,key) in item"
+            v-if="key==='price'"
+         > Price : ￦{{addCommas(val)}} </li>
+        </ol>
+
+      </section>
     </div>
     <!-- 
         기본구성 : 3단구성

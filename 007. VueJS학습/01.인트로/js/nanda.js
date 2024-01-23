@@ -72,7 +72,7 @@ const vm = new Vue({
             `;
     },
     //정규식함수(숫자 세자리마다 콤마해주는 기능)
-    numberWithCommas(x) {
+    addCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   }, /////// methods ///////
@@ -103,9 +103,9 @@ const vm = new Vue({
       this.itemData.push(
         new GetList(
           i, // 일련번호
-          goods[rdm1], // 상품명
+          goods[rdm1]+i, // 상품명
           `fashion1/nanda_${i}.jpg`, // 이미지명
-          2000 * rdm2 // 상품가격
+          20000 * rdm2 // 상품가격
         )
       );
     } /////////// for ///////////
