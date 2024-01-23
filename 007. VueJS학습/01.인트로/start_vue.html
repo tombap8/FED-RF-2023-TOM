@@ -125,6 +125,8 @@
                 }, //// myOver함수 ///
                 overClick(txt){ // txt-전달변수
                   console.log('오버클릭:',txt);
+                  //
+
                 },
             },
         }); ////////// #app3 Vue ///////////
@@ -239,6 +241,9 @@
          @mouseover="myOver"
          @click="overClick('후계자')"
          >오버해봐!</button>
+         <!-- 함수호출시 값을 보낼 수 있고 소괄호가 있는
+           함수일지라도 바로 실행되지 않고 이벤트
+           발생시에만 실행된다! -->
     </div>
 
     <hr />
