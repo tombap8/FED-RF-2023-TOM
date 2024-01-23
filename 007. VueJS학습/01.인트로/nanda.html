@@ -28,13 +28,16 @@
       <section class="part">
         <!-- 1-1.제목 -->
         <h1 class="tit" v-text="bigTit"></h1>
-        <!-- v-text 디렉티브: 텍스트 속성 -->
-        
+        <!-- v-text 디렉티브: 텍스트출력 속성 -->
+
         <!-- 1-2.로고 -->
-        <div></div>
+        <div v-html="logo"></div>
+        <!-- v-html 디렉티브: 태그출력 속성 -->
       </section>
       <!-- 2. 배너파트 -->
-      <section class="part"></section>
+      <section class="part">
+        <p v-html="content"></p>
+      </section>
       <!-- 3. 상품리스트파트  -->
       <section class="part"></section>
     </div>
