@@ -105,19 +105,27 @@
                 }, //// myClick 함수 ///
                 // 함수할당속성원형은 
                 // -> 함수명:function(){}
-                // 함수축약형은 -> 함수명(){}
+                // 함수할당속성축약형은 
+                // -> 함수명(){}
                 // JS오리저널 문법이다!(객체함수축약형)
+
+
+                // myOver: () => {
+                // myOver: function(){
                 myOver(){
                     // 현재 이벤트 대상
                     let cEvt = event.target;
-                    console.log('오버시:',cEvt);
+                    console.log('오버시:',cEvt,this);
                     // 1.버튼 글자 변경하기
                     cEvt.innerText = '오버하지마~!';
                     // 2. 2초후 글자 또 변경하기
                     setTimeout(() => {
                         cEvt.innerText = '클릭해봐~!';
                     }, 2000);
-                }
+                }, //// myOver함수 ///
+                overClick(txt){ // txt-전달변수
+                  console.log('오버클릭:',txt);
+                },
             },
         }); ////////// #app3 Vue ///////////
 
@@ -227,7 +235,10 @@
             축약형
             @이벤트명="값"
          -->
-         <button @mouseover="myOver">오버해봐!</button>
+         <button 
+         @mouseover="myOver"
+         @click="overClick('후계자')"
+         >오버해봐!</button>
     </div>
 
     <hr />
