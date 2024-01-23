@@ -68,6 +68,39 @@
           },// data
         }); //// #app2 Vue ////////
 
+        // 3. 이벤트 사용하기 /////////////
+        new Vue({
+            // 대상선정
+            el: '#app3',
+            // 메서드 구현하기
+            methods: {
+                // 클릭시 함수
+                myClick : function(e){
+                    // 버튼자신은? 
+                    // e.target ? e.currentTarget ?
+                    // 참고) this는 뷰인스턴스 자신임!
+                    console.log('버튼클릭이양~!',
+                    e.target,
+                    e.currentTarget);
+                    // event.target : 이벤트가 발생한 근본요소
+                    // event.currentTarget : 현재 이벤트가 발생한 요소
+
+                    // 현재는 하위요소가 없어서 동일함!
+
+                    // 1. 버튼글자 바꾸기
+                    e.target.innerText = "놀랐지?";
+
+                    // 2. 잠시후 해당요소(Root)아래에
+                    // 새로운 html넣기
+                    setTimeout(() => {
+                        console.log('2초후:',this);
+                    }, 2000);
+
+
+                },
+            },
+        }); ////////// #app3 Vue ///////////
+
       }); ///////////// 로드구역 ///////////////
     </script>
   </head>
@@ -166,7 +199,15 @@
     <hr />
 
     <h2>3. 이벤트 사용하기</h2>
-    <div id="app3"></div>
+    <div id="app3">
+        <!-- <button v-on:click="myClick">클릭해봐!!!</button> -->
+        <button @click="myClick">클릭해봐!!!</button>
+        <!-- 
+            v-on:이벤트명="값"
+            축약형
+            @이벤트명="값"
+         -->
+    </div>
 
     <hr />
 
