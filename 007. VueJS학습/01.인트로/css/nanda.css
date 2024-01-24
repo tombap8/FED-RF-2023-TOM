@@ -50,6 +50,11 @@
 .glist li {
   position: relative;
 }
+/* 이미지li 배경색 */
+.glist li:first-child{
+  background-image: 
+  linear-gradient(to bottom,#bebebe,#e9e9e9);
+}
 /* 상품이미지 */
 .glist img {
   width: 100%;
