@@ -7,6 +7,21 @@
   font-size: max(3vw, 25px);
 }
 
+/* 유튜브 동영상 박스 */
+.you-box{
+  position: relative;
+  padding: 20px 5px;
+}
+/* 아이프레임 오버 막기 가상요소 */
+.you-box::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 /* 그리드 박스 */
 .grid {
   /* 그리드 박스 */
