@@ -25,7 +25,17 @@
     </h1>
     <!-- 2.그리드 레이아웃 박스 -->
     <div class="grid">
-        <!-- 그리드리스트 컴포넌트 -->
+        <!-- 그리드리스트 컴포넌트
+        반복문은 상위에 해준다!
+        단순반복은 in 뒤에 숫자를 쓰면됨!
+            v-for="(일련번호,순번) in 횟수"
+            -> 순번은 0부터, 일련번호는 1부터
+    -->
+        <list-comp 
+            v-for="(n,i) in 50" 
+            v-bind:data-num="n"
+            v-bind:data-num2="i"
+        ></list-comp>
     </div>
     <!-- 3.하단정보 -->
     <div class="tit2">
