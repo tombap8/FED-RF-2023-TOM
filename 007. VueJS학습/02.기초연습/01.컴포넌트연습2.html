@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01.컴포넌트 연습1</title>
-    <link rel="stylesheet" href="./css/comp1.css" />
+    <title>01.컴포넌트 연습2 - 데이터전달/이벤트호출</title>
+    <link rel="stylesheet" href="./css/comp2.css" />
     <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
     <!-- 메인 JS -->
-    <script src="./js/comp1.js" defer></script>
+    <script src="./js/comp2.js" defer></script>
   </head>
   <body>
     <!-- 1.타이틀 -->
@@ -40,9 +40,17 @@
     -->
         <list-comp 
             v-for="(n,i) in 50" 
-            v-bind:data-num="n"
-            v-bind:data-num2="i"
+            v-bind:haha="n"
+            v-bind:key="n"
+            v-bind:mySeq="i"
+            v-bind:end-let="'WT'"
         ></list-comp>
+        <!-- 
+          v-bind:속성명="값"
+          쌍따옴표 안의 값은 변수가 됨!
+          만약 문자값을 보내고 싶으면 따옴표로 다시쌈!
+          예) v-bind:endLet="'WT'"
+         -->
     </div>
     <!-- 3.하단정보 -->
     <div class="tit2">
