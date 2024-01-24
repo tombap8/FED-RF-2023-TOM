@@ -40,16 +40,24 @@
     -->
         <list-comp 
             v-for="(n,i) in 50" 
-            v-bind:haha="n"
+            v-bind:data-num="n"
             v-bind:key="n"
-            v-bind:mySeq="i"
+            v-bind:my-seq="i"
             v-bind:end-let="'WT'"
+            v-on:hull="goMsg"
+            v-on:got-kimchi="overMsg"
         ></list-comp>
         <!-- 
           v-bind:속성명="값"
           쌍따옴표 안의 값은 변수가 됨!
           만약 문자값을 보내고 싶으면 따옴표로 다시쌈!
-          예) v-bind:endLet="'WT'"
+          예) v-bind:end-let="'WT'"
+
+          ((v-bind:key))는 무엇인가?
+          for문으로 반복하여 요소를 생성할때
+          내부적으로 요소를 구분하는 유일키를 설정할때
+          사용한다! ->> 주의: key값을 props하지 말것!
+          -> 용도가 다르므로 에러발생함!
          -->
     </div>
     <!-- 3.하단정보 -->
