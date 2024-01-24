@@ -66,9 +66,11 @@ const vm = new Vue({
   methods: {
     // 이미지 태그를 만들어서 리턴함
     makeImg(val) {
-      // val - 이미지경로명
+      // val - 이미지명만 들어옴!
+      // 오버시 이미지까지 2개의 이미지를 리턴함!
       return `
-            <img src="./images/${val}" alt="item">
+            <img src="./images/fashion1/${val}.jpg" alt="item">
+            <img src="./images/fashion2/${val}.png" alt="item">
             `;
     },
     //정규식함수(숫자 세자리마다 콤마해주는 기능)
@@ -104,7 +106,7 @@ const vm = new Vue({
         new GetList(
           i, // 일련번호
           goods[rdm1]+i, // 상품명
-          `fashion1/nanda_${i}.jpg`, // 이미지명
+          `nanda_${i}`, // 이미지명
           20000 * rdm2 // 상품가격
         )
       );
