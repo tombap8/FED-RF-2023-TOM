@@ -39,14 +39,17 @@ Vue.component("list-comp", {
     <div>
         <img 
           v-bind:src="gsrc" 
-          v-on:click="goPapa"
+          v-on:click="goPapa('나는 공유다!')"
           alt="의류아이템"> 
           <aside>
           <h2 
             v-text="gname"
-            v-on:mouseover="goMama"
+            v-on:mouseover="goMama({이름:'김고은',나이:'34살'})"
             ></h2> 
-            <h3 v-text="gprice"></h3>
+            <h3 
+            v-text="gprice"
+            v-on:click="goPapa('나는 김수현이다!')"
+            ></h3>
         </aside>
     </div>
     `,
@@ -85,18 +88,18 @@ props:['data-num','my-seq','end-let'],
   // 2-4. methods 속성 : 컴포넌트 내부 메서드 셋팅
   methods: {
     // 자식 메서드에서 부모메서드를 호출한다!
-    goPapa(){
-      // $emit(부모가만든이벤트명)
+    goPapa(txt){
+      // this.$emit(부모이벤트명,전달값)
       // 부모가 만든이벤트명은 여기서 hull
-      this.$emit('hull');
+      this.$emit('hull',txt);
       // 과정: 자식이벤트인 'click'이벤트가
       // 부모 컴포넌트에 셋팅된 'hull'이벤트로
       // 전달되어 거기연결된 함수가 실행된다!
     },
-    goMama(){
-      // $emit(부모가만든이벤트명)
+    goMama(pm){ // pm - 전달변수
+      // this.$emit(부모이벤트명,전달값)
       // 부모가 만든이벤트명은 여기서 hull
-      this.$emit('got-kimchi');
+      this.$emit('got-kimchi',pm);
       // 과정: 자식이벤트인 'click'이벤트가
       // 부모 컴포넌트에 셋팅된 'hull'이벤트로
       // 전달되어 거기연결된 함수가 실행된다!
@@ -137,13 +140,13 @@ new Vue({
   // 부모 뷰 인스턴스 메서드구역
   methods:{
     // 자식 이벤트 전달후 실행메서드!
-    goMsg(){
-      alert('자식이 부모에게 이벤트 전달 성공!!!');
+    goMsg(txt){
+      alert('자식이 부모에게 이벤트 전달 성공!!!'+txt);
     },
     // 자식 컴포넌트의 오버이벤트가 전달되어 
     // 호출하는 함수
-    overMsg(){
-      alert('오 마이 갓김치!');
+    overMsg(pm){ // pm - 전달변수
+      alert('오 마이 갓김치!'+pm.이름+' 나이는 '+pm.나이);
     },
   },
 });
