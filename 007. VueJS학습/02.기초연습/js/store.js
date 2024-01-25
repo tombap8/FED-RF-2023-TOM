@@ -3,7 +3,8 @@
 ////// 뷰엑스 스토아를 활용한 변수 셋팅하기 ///////
 // [뷰엑스 스토어 인스턴스를 생성한다!!!] //////
 
-export const store = new Vuex.Store({
+// export const store = new Vuex.Store({
+export default new Vuex.Store({
     // 1. 데이터 셋팅구역
     state:{
         // 도시 데이터 셋업
