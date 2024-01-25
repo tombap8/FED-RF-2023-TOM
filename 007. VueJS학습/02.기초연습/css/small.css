@@ -119,7 +119,7 @@ body{
     /* 세로중앙이동 */
     width: 56px;
     height: 111px;
-    background: url(../img_gallery/mv_btns.png) no-repeat;
+    background: url(../images/mv_btns.png) no-repeat;
 }
 
 /* 오른쪽버튼 */
@@ -149,7 +149,7 @@ body{
     right: 5%;
     width: 40px;
     height: 39px;
-    background: url(../img_gallery/mv_btns.png) no-repeat;
+    background: url(../images/mv_btns.png) no-repeat;
     background-position: -129px -342px;
 
     /* 트랜지션 */
