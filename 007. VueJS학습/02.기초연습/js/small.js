@@ -166,10 +166,70 @@ new Vue({
   // DOM이 모두 로딩후 실행구역(리액트의 useLayoutEffect와 유사함)
   mounted(){
     // 제이쿼리 코드를 사용가능!
-    // 1. 갤러리 리스트 클리시 큰 이미지박스 보이기
+
+    // 원래가격변수 : 각 리스트 아이템 클릭순간 셋팅
+    let orgPrice;
+
+
+    // 1. 갤러리 리스트 클릭시 큰 이미지박스 보이기
     $(".grid>div").on('click',function(){
-      console.log('대상:',this);
+      // console.log('대상:',this);
+
+      // 클릭된 이미지 경로 읽어오기
+      let isrc = $(this).find('img').attr('src');
+      console.log('이미지경로:',isrc);
+
+      // 상세정보창 큰 이미지 변경하기
+      $('.gimg img').attr('src',isrc);
+
+      // 상품명 읽어오기
+      let cName = $('aside h2',this).html();
+      // 상품명 넣기
+      $('#gtit').html(cName);
+
+      // 가격 읽어오기
+      let cprice = $('aside h3',this).html();
+      // 가격 넣기
+      $('#gprice').html(cprice);
+      
+      // 최초 가격 총합계 넣기
+      let tprice = 
+      $('aside h3 span:last-child',this).html();
+      $('#total').html(tprice);
+      
+    
+      // 원래가격 셋팅하기: '원',',' 모두 없앰!
+      orgPrice = Number(tprice.replace('원','').replace(/,/g,''));
+      console.log('원래가격:',orgPrice);
+      // 문자열.replace(바꿀놈, 바뀔놈)
+
+
+      // 상품상세정보창 보이기
+      $('#bgbx').show();
+
+
     }); ////////// click ///////////
+
+    // 증감버튼 셋팅 ////
+    $('.chg_num img').click(function(){
+        // 클릭된 증감 이미지 순번
+        let idx = $(this).index();
+        console.log('순번:',idx);
+
+        // 현재 개수
+        let num = Number($("#sum").val());
+
+        // 증감분기
+        if(idx===0){ // 증가
+          $('#total').html((orgPrice*++num)+"원")
+
+        }
+    })
+
+    // 닫기버튼 셋팅
+    $('.cbtn').click((e)=>{
+      e.preventDefault();
+      $('#bgbx').hide()});
 
 
 
