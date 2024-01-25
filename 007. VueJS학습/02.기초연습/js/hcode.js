@@ -21,9 +21,16 @@ const hcode = {
             ></h2> 
             <h3>
               <span 
-              v-text="gprice" 
-              v-bind:class="{del:retSale()}"
-              ></span>원
+                v-html="
+                addCommas(gprice)+'원'" 
+                v-bind:class="{del:retSale()}"
+              ></span>
+              <span 
+                v-if="retSale()"
+                v-html="
+                addCommas(salePrice)+'원'"
+                class="sale"
+              ></span>
             </h3>
         </aside>
     </div>
