@@ -9,6 +9,20 @@ import store from "./store.js";
 // 등록방법: new Vue({el:"",store,methods:{}})
 // -> 스토아 변수를 그대로 써주면 된다!!!
 
+// 리스트 만들기함수
+const makeList  = x => {
+    console.log('메뉴배열:',x);
+    // x 메뉴 배열
+    return x.map(v=>`
+    <li>
+        <a href="#"
+        v-on:click="changeData('${v}')"
+        >${v=='처음'?'💒':v}</a>
+    </li>
+    `).join('');
+    // map으로 만든 배열값에 사이콤마제거는 join('')
+}; ///////// makeList함수 //////
+
 // [1] 컴포넌트 셋팅하기 //////////////
 // 1. 상단영역 컴포넌트 셋팅
 Vue.component('top-area',{
@@ -16,26 +30,9 @@ Vue.component('top-area',{
     template:`
         <header>
             <ul class="gnb">
-                <li>
-                    <a href="#"
-                    v-on:click="changeData('처음')"
-                    >💒</a>
-                </li>
-                <li>
-                    <a href="#"
-                    v-on:click="changeData('서울')"
-                    >서울</a>
-                </li>
-                <li>
-                    <a href="#"
-                    v-on:click="changeData('부산')"
-                    >부산</a>
-                </li>
-                <li>
-                    <a href="#"
-                    v-on:click="changeData('제주')"
-                    >제주</a>
-                </li>
+                ${makeList(
+                    Object.keys(
+                        store.state.cityData))}
             </ul>
 
         </header>

@@ -17,6 +17,10 @@ export default new Vuex.Store({
                 이미지:`https://www.shutterstock.com/image-photo/songpagu-seoul-south-korea-september-260nw-2094838786.jpg`,
                 설명:`대한민국의 수도인 서울을 지방자치단체인 특별시로 부르는 명칭이다. 한반도 중앙에 있으며, 한강을 사이에 두고 남북으로 펼쳐져 있다. 북쪽 끝은 도봉구 도봉동, 동쪽 끝은 강동구 상일동, 남쪽 끝은 서초구 원지동, 서쪽 끝은 강서구 오곡동이다. 시청은 중구 을지로1가(태평로1가 31)에 있다.`
             },
+            "광주":{
+                이미지:`https://lh3.googleusercontent.com/proxy/Hlm7UJgsfKcwHLsZ0LZ7y_iMfZgHEO2ASqJ71supehQIKStw-r9MJjCBR1FwMWG4gvuLDgtOt4A2m2dv7aHUFuHu-_CW__IUjoNGQ8e9fl1k-mVjLalFI2kfRRcQ0ZsyfQ`,
+                설명:`광주시는 대한민국 경기도 남동부에 있는 시이다. 광주산맥에 둘러싸인 분지 지형이며, 경안천이 흐른다. 동쪽으로 양평군, 여주시, 서쪽으로 성남시, 남쪽으로 용인시, 이천시, 북쪽으로 하남시, 남양주시와 접한다`
+            },
             "부산":{
                 이미지:`https://imagescdn.gettyimagesbank.com/500/201901/jv11336724.jpg`,
                 설명:`대한민국 제2의 도시이자, 제1의 무역항이다. 동쪽과 남쪽은 바다에 면하고, 서쪽은 김해시 장유동과 창원시 진해구, 북쪽은 양산시 물금읍과 김해시 대동면, 동쪽은 울산광역시 서생면·온양읍에 접한다. 대한민국 남동단의 관문으로 서울특별시에서 남동쪽으로 약 450km, 대한해협을 끼고 일본 시모노세키[下關]와 약 250km 떨어져 있다. 1군 15구로 이루어져 있으며, 면적은 765.94㎢이다. 시청 소재지는 부산광역시 연제구 연산5동 1000번지이다.`
