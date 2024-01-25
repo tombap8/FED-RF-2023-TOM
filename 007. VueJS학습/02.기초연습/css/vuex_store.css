@@ -20,7 +20,7 @@ header a {
     color: #222;
     text-decoration: none;
 }
-header a:hover,
+header li+li a:hover,
 header a.on {
     color: orangered;
     text-decoration: overline;

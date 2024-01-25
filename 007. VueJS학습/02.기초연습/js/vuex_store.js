@@ -15,7 +15,7 @@ Vue.component('top-area',{
     // (1) 템플릿 설정
     template:`
         <header>
-            <ul>
+            <ul class="gnb">
                 <li>
                     <a href="#"
                     v-on:click="changeData('처음')"
@@ -145,6 +145,35 @@ new Vue({
     }, //// created ////
     // DOM 생성후 실행구역(mounted) : 제이쿼리(JS) 코드
     mounted(){
+        // 1. 메뉴클릭시 클릭된 li의 a요소에 .on주기
+        // 나머지는 .on지우고 home은 적용제외!
+        $('.gnb a').click(function(){
+            // 넣기는 첫번째껏 제외
+            if($(this).parent().index()!==0){
+                $(this).addClass('on');
+            } /// if ////
+            // 지우기는 무조건
+            $(this).parent().siblings()
+            .find('a').removeClass('on');
+
+            // 박스 나타나기 함수호출
+            showBox();
+        });
+
+        function showBox(){
+            // 이미지와 설명박스 순서대로 나타나기
+            // 대상: 
+            $('main img').css({opacity:0}).stop()
+            .delay(200).fadeTo(500,1);
+            // stop() - 기존애니메이션 지움
+            // fadeTo(시간,투명도) - opacity애니메이션
+
+            $('main p').css({opacity:0}).stop()
+            .delay(400).fadeTo(500,1);
+
+
+        } /////// showBox ////////
+
 
     }, //// mounted /////
 
