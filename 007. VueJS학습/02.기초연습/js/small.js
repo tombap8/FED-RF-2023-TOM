@@ -170,10 +170,17 @@ new Vue({
     // 원래가격변수 : 각 리스트 아이템 클릭순간 셋팅
     let orgPrice;
 
+    // 현재리스트 순번 : 양쪽 이동버튼에서 사용
+    let cIdx;
+
 
     // 1. 갤러리 리스트 클릭시 큰 이미지박스 보이기
     $(".grid>div").on('click',function(){
       // console.log('대상:',this);
+
+      // 현재리스트 순번 셋팅하기
+      cIdx = $(this).index();
+      console.log('클릭된리스트순번:',cIdx);
 
       // 클릭된 이미지 경로 읽어오기
       let isrc = $(this).find('img').attr('src');
@@ -207,29 +214,111 @@ new Vue({
       // 상품상세정보창 보이기
       $('#bgbx').show();
 
+      // 개수 초기화
+      sum.val('1');
 
     }); ////////// click ///////////
+
+    // 개수대상
+    const sum = $("#sum");
 
     // 증감버튼 셋팅 ////
     $('.chg_num img').click(function(){
         // 클릭된 증감 이미지 순번
         let idx = $(this).index();
         console.log('순번:',idx);
+        
 
         // 현재 개수
-        let num = Number($("#sum").val());
+        let num = Number(sum.val());
+
+        // 반영될 변경수
+        let setNum;
 
         // 증감분기
         if(idx===0){ // 증가
-          $('#total').html((orgPrice*++num)+"원")
-
+          setNum = ++num;          
+          if(setNum>50){ setNum=50;num=50;}
         }
+        else{
+          setNum = --num;
+          if(setNum<1){ setNum=1;num=1;}
+        } /// else ///
+
+        // 최종반영하기        
+        sum.val(setNum);
+        $('#total').html(
+          addCommas(orgPrice*setNum)+"원");
     })
 
     // 닫기버튼 셋팅
     $('.cbtn').click((e)=>{
       e.preventDefault();
       $('#bgbx').hide()});
+
+      // 세자리콤마 함수
+    const addCommas = (x) => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // 이전/다음 버튼 셋팅하기
+    // 대상: .abtn
+    $('.abtn').click(function(e){
+      e.preventDefault();
+
+      // 오른쪽 버튼이면 true
+      let isR = $(this).is('.rb');
+      
+      // 방향분기 ////
+      if(isR){ // 오른쪽
+        // 다음순번
+        ++cIdx;
+        if(cIdx>49) cIdx=0;
+      }
+      else{ // 왼쪽
+        --cIdx;
+        if(cIdx<0) cIdx=49;
+      }
+
+      // 정보 타겟요소(리스트 순번으로 가져옴)
+      const target = $('.grid>div').eq(cIdx);
+      console.log('cIdx:',cIdx,'/타겟:',target);
+
+      // 처음 리스트 클릭하여 열때 셋팅한 것들을
+      // 모두 다시 셋팅한다! 단, 주인공이 target!!!
+
+      // 타겟 이미지 경로 읽어오기
+      let isrc = target.find('img').attr('src');
+      console.log('이미지경로:',isrc);
+
+      // 상세정보창 큰 이미지 변경하기
+      $('.gimg img').attr('src',isrc);
+
+      // 상품명 읽어오기
+      let cName = $('aside h2',target).html();
+      // 상품명 넣기
+      $('#gtit').html(cName);
+
+      // 가격 읽어오기
+      let cprice = $('aside h3',target).html();
+      // 가격 넣기
+      $('#gprice').html(cprice);
+      
+      // 최초 가격 총합계 넣기
+      let tprice = 
+      $('aside h3 span:last-child',target).html();
+      $('#total').html(tprice);
+      
+    
+      // 원래가격 셋팅하기: '원',',' 모두 없앰!
+      orgPrice = Number(tprice.replace('원','').replace(/,/g,''));
+      console.log('원래가격:',orgPrice);
+      // 문자열.replace(바꿀놈, 바뀔놈)
+
+      // 개수 초기화
+      sum.val('1');
+
+    }); /////////// click //////////////
 
 
 
