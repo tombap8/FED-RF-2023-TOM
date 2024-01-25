@@ -55,8 +55,9 @@ props:['data-num','my-seq','end-let'],
     return {
       // 이미지 src
       gsrc: `images/${this.dataNum}.jpg`,
-      // 상품명
-      gname: 'DE-'+this.setName()+this.endLet,
+      // 상품명 : data-num 값이 짝수/홀수에 따라 아이콘변경
+      gname: 'DE-'+this.setName()+this.endLet
+      +(this.dataNum%2?"😘":"👍"),
       // 상품가격
       gprice: this.setPrice(),
     };

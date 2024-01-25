@@ -14,16 +14,13 @@ const hcode = {
   <div>
         <img 
           v-bind:src="gsrc" 
-          v-on:click="goPapa('나는 공유다!')"
           alt="의류아이템"> 
           <aside>
           <h2 
-            v-text="gname"
-            v-on:mouseover="goMama({이름:'김고은',나이:'34살'})"
+            v-text="gname"            
             ></h2> 
             <h3 
             v-text="gprice"
-            v-on:click="goPapa('나는 김수현이다!')"
             ></h3>
         </aside>
     </div>
