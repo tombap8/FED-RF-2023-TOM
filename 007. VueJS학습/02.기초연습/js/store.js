@@ -18,7 +18,7 @@ export default new Vuex.Store({
                 설명:`대한민국의 수도인 서울을 지방자치단체인 특별시로 부르는 명칭이다. 한반도 중앙에 있으며, 한강을 사이에 두고 남북으로 펼쳐져 있다. 북쪽 끝은 도봉구 도봉동, 동쪽 끝은 강동구 상일동, 남쪽 끝은 서초구 원지동, 서쪽 끝은 강서구 오곡동이다. 시청은 중구 을지로1가(태평로1가 31)에 있다.`
             },
             "광주":{
-                이미지:`https://lh3.googleusercontent.com/proxy/Hlm7UJgsfKcwHLsZ0LZ7y_iMfZgHEO2ASqJ71supehQIKStw-r9MJjCBR1FwMWG4gvuLDgtOt4A2m2dv7aHUFuHu-_CW__IUjoNGQ8e9fl1k-mVjLalFI2kfRRcQ0ZsyfQ`,
+                이미지:`https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ_FFIgFdtlfVNtvwxKRfgdVythniTW6qi5D2Rh6e_7veOadgN41C7jN9MYTRBlQQf3IKTSTxy2RuJau50uXAun7xKU-2ZIdgW1C6lIkA`,
                 설명:`광주시는 대한민국 경기도 남동부에 있는 시이다. 광주산맥에 둘러싸인 분지 지형이며, 경안천이 흐른다. 동쪽으로 양평군, 여주시, 서쪽으로 성남시, 남쪽으로 용인시, 이천시, 북쪽으로 하남시, 남양주시와 접한다`
             },
             "부산":{
