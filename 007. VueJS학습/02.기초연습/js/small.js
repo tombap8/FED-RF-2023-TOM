@@ -53,13 +53,15 @@ props:['data-num','my-seq','end-let'],
     // 템플릿에서 사용할 변수는 반드시 리턴함!
     // 속성:값으로 구성된 객체를 리턴한다!
     return {
-      // 이미지 src
+      // 1.이미지 src
       gsrc: `images/${this.dataNum}.jpg`,
-      // 상품명 : data-num 값이 짝수/홀수에 따라 아이콘변경
+      // 2.상품명 : data-num 값이 짝수/홀수에 따라 아이콘변경
       gname: 'DE-'+this.setName()+this.endLet
       +(this.dataNum%2?"😘":"👍"),
-      // 상품가격
+      // 3.상품가격
       gprice: this.setPrice(),
+      // 4.세일가격 : 상품원래가격의 30%세일(원가격*0.7)
+      // salePrice: 
     };
   },
   // 2-4. methods 속성 : 컴포넌트 내부 메서드 셋팅
@@ -95,10 +97,23 @@ props:['data-num','my-seq','end-let'],
       // 이름리턴
       return goods[rdm];
     },
-    // 가격만들기 함수
+    // 가격만들기 함수 : 숫자만 만들어서 리턴
     setPrice() {
       let rdm = Math.ceil(Math.random() * 17) + 3;
-      return this.addCommas(20000 * rdm) + "원";
+      return this.addCommas(20000 * rdm);
+    },
+    // 세일여부 리턴 메서드
+    retSale(){
+      return(
+        this.dataNum == 3 ||
+        this.dataNum == 5 ||
+        this.dataNum == 14 ||
+        this.dataNum == 22 ||
+        this.dataNum == 26 ||
+        this.dataNum == 38 ||
+        this.dataNum == 45 ||
+        this.dataNum == 50
+      );
     },
     // 세자리콤마 함수
     addCommas(x) {

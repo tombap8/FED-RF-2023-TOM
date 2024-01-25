@@ -19,9 +19,12 @@ const hcode = {
           <h2 
             v-text="gname"            
             ></h2> 
-            <h3 
-            v-text="gprice"
-            ></h3>
+            <h3>
+              <span 
+              v-text="gprice" 
+              v-bind:class="{del:retSale()}"
+              ></span>원
+            </h3>
         </aside>
     </div>
 `,
