@@ -18,6 +18,11 @@ Vue.component('top-area',{
             <ul>
                 <li>
                     <a href="#"
+                    v-on:click="changeData('처음')"
+                    >💒</a>
+                </li>
+                <li>
+                    <a href="#"
                     v-on:click="changeData('서울')"
                     >서울</a>
                 </li>
@@ -44,6 +49,18 @@ Vue.component('top-area',{
         // 스토아 변수 업데이트 메서드
         changeData(pm){
             console.log('업데이트:',pm);
+            // 여기서 바로 스토아 변수를 업데이트한다!
+
+            // 1. 이미지 변수 : imgSrc
+            // 이 위치에서 접근하려면 store.state 로 접근!
+            store.state.imgSrc = 
+            store.state.cityData[pm].이미지;
+
+            // 2. 설명 변수 : desc
+            // 이 위치에서 접근하려면 store.state 로 접근!
+            store.state.desc = 
+            store.state.cityData[pm].설명;
+
         }, ////// changeData 메서드 //////
     }
 });
