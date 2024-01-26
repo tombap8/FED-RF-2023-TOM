@@ -4,6 +4,41 @@
 import store from "./store.js";
 // default로 내보내기 후 기본이름은 store임!
 
+// 라우터 템플릿 만들기
+let Trip = {
+    template: 
+    `<div class="trip router">World Trip</div>`
+}
+let Foods = {
+    template: 
+    `<div class="foods router">World Foods</div>`
+}
+// 라우터 연결 옵션 셋팅하기
+// let routes = [{},{}]
+let routes = [
+    // 첫번째 루트
+    {
+        // router-link 의 to 속성값과 동일
+        path: '/trip',
+        // 연결할 컴포넌트
+        component: Trip,
+    },
+    // 두번째 루트
+    {
+        // router-link 의 to 속성값과 동일
+        path: '/foods',
+        // 연결할 컴포넌트
+        component: Foods,
+    },
+];
+
+// 라우터 옵션 연결하여 인스턴스 생성하기!!!
+const router = new VueRouter({
+    routes // 위의 라우트 셋팅 배열변수
+});
+// [중요!!!] 뷰인스턴스에 라우터를 등록해줘야함!
+// -> new Vue({el:"",router,methods:{}})
+
 // [ 중요!!! ]
 // 뷰인스턴스에 스토아를 사용할 수 있게 등록해줘야함!
 // 등록방법: new Vue({el:"",store,methods:{}})
