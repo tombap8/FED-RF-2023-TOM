@@ -12,3 +12,20 @@ let Foods = {
         World Foods {{ this.$route.params.item }}
     </div>`,
 };
+
+
+// 뷰 라우터 인스턴스 생성하기 /////
+export default router = new VueRouter({
+    routes: [
+        // 첫번째 루트
+        {
+            path: '/trip',
+            component: Trip,
+        },
+        // 두번째 루트
+        {
+            path: '/foods',
+            component: Foods,
+        },
+    ],
+});
