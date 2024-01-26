@@ -39,7 +39,13 @@
                 <!-- 서브메뉴 : menu배열개수가 0아니면 출력 -->
                 <ol class="smenu"
                 v-if="val.menu.length!=0">
-                    
+                <!-- v는 객체값, k는 객체속성 -->
+                    <li v-for="(v,k) in val.menu">
+                        <router-link
+                        v-bind:to="v">
+                            {{k}}
+                        </router-link>
+                    </li>
                 </ol>
             </li>
 
