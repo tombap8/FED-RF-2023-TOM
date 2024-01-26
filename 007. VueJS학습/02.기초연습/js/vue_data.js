@@ -23,7 +23,7 @@ Vue.component("my-comp",{
             <div v-for="(v,i) in $store.state.items">
                 <img 
                 v-bind:src="
-                    './img_gallery/' +
+                    './images/' +
                     (v.idx > 50 ? 1 : v.idx) +
                     '.jpg'
                 " 
@@ -55,7 +55,7 @@ new Vue({
     created(){
 
         // 뷰엑스 스토어 액션스구역 메서드 initData호출하기!
-        // store.dispatch('initData');
+        store.dispatch('initData');
 
 
         // 엑시오스 사용하여 제이슨 데이터 가져오기
