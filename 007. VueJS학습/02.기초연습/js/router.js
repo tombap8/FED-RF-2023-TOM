@@ -1,6 +1,6 @@
 // 뷰라우터 인스턴스 설정파일 - router.js
 
-// 라우터 템플릿 만들기
+// 라우터 템플릿 만들기 : 내용 컴포넌트
 let Trip = {
   template: `<div class="trip router">World Trip</div>`,
 };
@@ -12,6 +12,14 @@ let Foods = {
         World Foods {{ this.$route.params.item }}
     </div>`,
 };
+/* 
+    [파라미터로 전달된 라우터 값을 읽는 코드법]
+    this.$route.params.cls
+    1. this 는 현재 라우터를 사용하는 뷰인스턴스
+    2. $route 는 현재 연결된 라우트 정보객체
+    3. params 는 라우트 하위 파라미터 전달속성
+    4. cls / item 은 전달된 파라미터이름 (여기서 값이 나옴)
+*/
 
 // 뷰 라우터 인스턴스 생성하기 /////
 // const router = new VueRouter({

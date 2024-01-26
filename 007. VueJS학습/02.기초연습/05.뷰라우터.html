@@ -28,12 +28,40 @@
       <header class="top">
         <div class="gnb">
           <ul>
-            <li>
+            <!-- linkData 속성에 셋팅된 객체값으로 메뉴를 만들어준다 
+            첫번째 for문은 객체니까 (값,속성명) 순서임
+            -->
+            <li v-for="(val,key) in this.linkData">
+                <!-- 상위메뉴 -->
+                <router-link v-bind:to="val.link">
+                    {{key}}
+                </router-link>
+                <!-- 서브메뉴 : menu배열개수가 0아니면 출력 -->
+                <ol class="smenu"
+                v-if="val.menu.length!=0">
+                    
+                </ol>
+            </li>
+
+
+
+            <!-- <li>
               <router-link to="/trip">세계여행사</router-link>
             </li>
             <li>
-              <router-link to="/foods">세계먹거리</router-link>
-            </li>
+              <router-link to="/foods">
+                세계먹거리</router-link>
+                <ol class="smenu">
+                    <li>
+                        <router-link
+                        v-bind:to='{ 
+                            name: "umsik", 
+                            params: { item: "피자", cls: "pizza" } }'>
+                            피자
+                        </router-link>
+                    </li>
+                </ol>
+            </li> -->
           </ul>
         </div>
       </header>
