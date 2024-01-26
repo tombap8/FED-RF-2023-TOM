@@ -2,6 +2,10 @@
 
 // 라우터 셋팅 가져오기
 import router from "./router.js";
+// import 시 중괄호{} 없이 변수쓰면 
+// 보내는 곳에서 default로 보내는 것임!
+// 중괄호를 사용하여 변수를 쓰면 여러 변수를 보낼 수 있는
+// 일반적인 export만 사용하는 경우임
 
 // 뷰 라우터에서 사용할 링크 셋팅 데이터
 const linkData = {
@@ -52,5 +56,13 @@ new Vue({
         linkData : linkData2, // 하위 메뉴구조 데이터로 변경!
 
     }, // data ///
+    // DOM구성후 첫페이지 라우터 설정하기
+    mounted(){
+        this.$router.push('/trip');
+        // this 는 현재 뷰인스턴스
+        // $router 는 라우터 전체객체
+        // push(경로) -> 강제로 경로이동하기
+    },
+
 
 }); ////////// 뷰 인스턴스 //////////

@@ -2,10 +2,10 @@
 
 // 라우터 템플릿 만들기
 let Trip = {
-    template: `<div class="trip router">World Trip</div>`,
+  template: `<div class="trip router">World Trip</div>`,
 };
 let Foods = {
-    template: `
+  template: `
     <div v-bind:class="
         'foods router '+this.$route.params.cls
     ">
@@ -13,19 +13,38 @@ let Foods = {
     </div>`,
 };
 
-
 // 뷰 라우터 인스턴스 생성하기 /////
-export default router = new VueRouter({
-    routes: [
-        // 첫번째 루트
-        {
-            path: '/trip',
-            component: Trip,
-        },
-        // 두번째 루트
-        {
-            path: '/foods',
-            component: Foods,
-        },
-    ],
+// const router = new VueRouter({
+//-> 변수에 담으면 아래쪽에별도로 export 한다!
+
+// export const router = new VueRouter({
+// -> default 없는 다중파일 export는 받는 곳에서
+// 중괄호{} 사용해야함!
+
+// 이름없이 라우터를 내보내면 받는 곳에서 router로 보통 받음!
+export default new VueRouter({
+  routes: [
+    // 첫번째 루트
+    {
+      path: "/trip",
+      component: Trip,
+    },
+    // 두번째 루트
+    {
+      path: "/foods",
+      component: Foods,
+    },
+    // 두번째 루트의 파라미터 버전 루트추가!
+    {
+        // 파라미터를 받는 같은 path의 루트는
+        // 호출과 구분을 위해 반드시 name속성을 설정해야함!
+        name: 'umsik',
+        path:'/foods:item',
+        // 경로 뒤에 콜론(:)을 쓰고 뒤에 파라미터 변수를 씀
+        component: Foods,
+    }
+  ],
 });
+
+// 변수에 담은 경우 하나 내보내기 아래쪽에 별도로함!
+// export default router;
