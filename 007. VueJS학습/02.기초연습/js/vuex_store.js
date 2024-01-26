@@ -173,7 +173,10 @@ new Vue({
        store.commit('initSet',{
         url:"https://img.freepik.com/premium-vector/city-illustration_23-2147514701.jpg",
         txt:"도시소개에 오신것을 환영합니다!",
-       })
+       });
+
+       // ations 메서드 호출하기! : dispatch(메서드명,전달값)
+       store.dispatch('myAct','나야나!!!');
 
     }, //// created ////
     // DOM 생성후 실행구역(mounted) : 제이쿼리(JS) 코드
