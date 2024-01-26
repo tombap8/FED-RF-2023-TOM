@@ -42,10 +42,14 @@
           '/' 슬래쉬는 현재페이지(Root)를 의미함!
 
           이렇게 생성된 실제요소는 기본적으로 a요소로 나옴
-
+          만약 a요소가 아닌 다른 요소를 쓰고 싶으면
+          tag속성으로 변경함!
+          <router-link to="/trip" tag="button">...
          -->
-         <router-link to="/trip"></router-link>
-         <router-link to="/foods"></router-link>
+         <router-link to="/trip" tag="button">
+          세계여행사</router-link>
+         <router-link to="/foods">
+          세계먹거리</router-link>
          <!-- 
           [라우터에서 연결한 컴포넌트(템플릿) 보일곳]
           router-view를 쓴 자리에 컴포넌트 소스코드가 뿌려짐!

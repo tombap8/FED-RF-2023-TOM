@@ -68,3 +68,9 @@ footer {
     padding: 10px;
     text-decoration: none;
 }
+
+/* 선택된 라우터 선택메뉴 클래스 */
+.router-link-active {
+    text-decoration: overline !important;
+    font-weight: bold;
+}
