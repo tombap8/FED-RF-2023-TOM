@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 // 뷰엑스 스토어 JS 불러오기
 import store from './store';
-// import router from './router'
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   store, // 스토어 사용 등록!!!
-  // router, // 라우터 사용 등록!!!
+  router, // 라우터 사용 등록!!!
   components: { App },
   template: '<App/>',
   // 뷰 인스턴스 생성 직후 호출코드구역
