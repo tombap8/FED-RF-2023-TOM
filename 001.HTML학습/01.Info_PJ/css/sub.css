@@ -546,7 +546,7 @@ h2.st5 {
 }
 
 /* 기사타이틀 처리박스 */
-.pnews td div{
+.pnews td a{
     /* 말줄임 처리하기(2줄처리) */
     overflow: hidden;
     text-overflow: ellipsis;
