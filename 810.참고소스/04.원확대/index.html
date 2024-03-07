@@ -11,24 +11,43 @@
         }
         .wrap{
             position: absolute;
-            top: 50%;
-            width: 50vw;
-            height: 50vw;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        .circle{
-            position: fixed;
             top: 0;
             width: 100vw;
             height: 100vh;
             background: url(https://blog.kakaocdn.net/dn/cpoe1f/btqHWwxlkNl/jXV4ekyUtndkH6RZbQxg6k/img.jpg) no-repeat center/cover;
         }
+        .cbox{
+            background-color: lightblue;
+            height: 100vh;
+        }
+        .circle{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 20vw;
+            height: 20vw;
+            border-radius: 50%;
+            border: 1px solid #000;
+            background-color: #fff;
+            mix-blend-mode: saturation;
+        }
     </style>
+    <script>
+        window.addEventListener('load',()=>{
+            let aa = document.querySelector('.circle');
+            document.body.onmousemove=e=>{
+                aa.style.top = e.screenY+'px';
+                aa.style.left = e.screenX+'px';
+            }
+        })
+    </script>
 </head>
 <body>
     <div class="wrap">
-        <div class="circle"></div>
+        <div class="cbox">
+            <div class="circle"></div>
+
+        </div>
     </div>
     
 </body>
