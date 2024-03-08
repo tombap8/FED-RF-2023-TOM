@@ -183,6 +183,10 @@ body{
     animation: rotate-earth-ani 20s linear infinite;
 }
 
+#earth:hover{
+    animation-play-state: paused;
+}
+
 /* 지구회전 키프레임 */
 @keyframes rotate-earth-ani {
     from{
