@@ -1,51 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>switch문 연습</title>
-        <!-- 웹폰트 CDN -->
-        <link href="https://fonts.googleapis.com/css?family=Audiowide&amp;display=swap" rel="stylesheet" />
-        <style>
-            /* 타이틀 */
-            .tit {
-                text-align: center;
-                font: bold 72px/100px "Audiowide";
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch문 연습</title>
+    <!-- 웹폰트 CDN -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Audiowide&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 타이틀 */
+      .tit {
+        text-align: center;
+        font: bold 72px/100px "Audiowide";
+      }
 
-            /* 스틸컷장면박스 */
-            .photo {
-                text-align: center;
-                /* 인라인요소 가로중앙정렬 */
-                background-color: skyblue;
-                padding: 20px;
-                margin-bottom: 50px;
-            }
+      /* 스틸컷장면박스 */
+      .photo {
+        text-align: center;
+        /* 인라인요소 가로중앙정렬 */
+        background-color: skyblue;
+        padding: 20px;
+        margin-bottom: 50px;
+        height: 50vh;
+        overflow: hidden;
+      }
+      .photo img.off {
+        position: relative;
+        left: -100%;
+        opacity: 0;
+      }
+      .photo img {
+        position: relative;
+        left: 0;
+        opacity: 1;
+        transition: .5s ease-out;
+      }
+      .photo img.on {
+        position: relative;
+        left: 100%;
+        opacity: 0;
+      }
 
-            /* 메인이미지 */
-            #scene {
-                height: 290px;
-                /* width는 비율에 맞게 자동임! */
-            }
+      /* 메인이미지 */
+      #scene {
+        height: 100%;
+        /* width는 비율에 맞게 자동임! */
+      }
 
-            /* 선택버튼박스 */
-            .btnbx {
-                text-align: center;
-                /* 버튼요소는 인라인블록이지만 
+      /* 선택버튼박스 */
+      .btnbx {
+        text-align: center;
+        /* 버튼요소는 인라인블록이지만 
             인라인특성이 있으므로 글자중앙정렬적용됨! */
-            }
+      }
 
-            /* 버튼공통 */
-            .btns {
-                font-size: 42px;
-            }
-        </style>
-        <!-- JS코드구역 -->
-        <script>
-            // 이벤트까지 JS에서 걸어주면
-            // 코드가 분리된다!
+      /* 버튼공통 */
+      .btns {
+        font-size: 42px;
+      }
+    </style>
+    <!-- JS코드구역 -->
+    <script>
+      // 이벤트까지 JS에서 걸어주면
+      // 코드가 분리된다!
 
-            /***************************************** 
+      /***************************************** 
      html요소를 선택할 경우 실행순서가 중요함
      html 본문요소가 모두 로딩후에 선택해야함!
      로딩후 선택법:
@@ -66,132 +87,146 @@
 
     *****************************************/
 
-            // 로딩구역만들기!!!
-            // 선택요소.addEventListener(이벤트,함수)
-            // window.addEventListener('load',loadFn);
-            window.addEventListener("DOMContentLoaded", loadFn);
+      // 로딩구역만들기!!!
+      // 선택요소.addEventListener(이벤트,함수)
+      // window.addEventListener('load',loadFn);
+      window.addEventListener("DOMContentLoaded", loadFn);
 
-            function loadFn() {
-                // 1.호출확인
-                console.log("로딩완료!");
+      function loadFn() {
+        // 1.호출확인
+        console.log("로딩완료!");
 
-                // 2.버튼요소선택
-                var btns = document.querySelectorAll(".btns");
+        // 2.버튼요소선택
+        var btns = document.querySelectorAll(".btns");
 
-                console.log("버튼들:", btns);
+        console.log("버튼들:", btns);
 
-                // 3. 이벤트 설정하기
-                btns[0].onclick = changeImg;
-                btns[1].onclick = changeImg;
-                btns[2].onclick = changeImg;
-                btns[3].onclick = changeImg;
-                // -> 함수명만 써야 함수내부코드가 이벤트속성에
-                // 값으로 할당된다!
+        // 3. 이벤트 설정하기
+        btns[0].onclick = changeImg;
+        btns[1].onclick = changeImg;
+        btns[2].onclick = changeImg;
+        btns[3].onclick = changeImg;
+        // -> 함수명만 써야 함수내부코드가 이벤트속성에
+        // 값으로 할당된다!
 
-                // 이퀄 오른쪽 함수에 소괄호를 하면
-                // 함수가 바로 실행됨!
-                // 이벤트속성에 함수명령어가 담기지 않음!
-                // btns[2].onclick = changeImg();
+        // 이퀄 오른쪽 함수에 소괄호를 하면
+        // 함수가 바로 실행됨!
+        // 이벤트속성에 함수명령어가 담기지 않음!
+        // btns[2].onclick = changeImg();
 
-                // 소괄호가 있는 함수호출은
-                // 함수호출 명령어를 사용하는 것임!
-                // 그래서 요소에 직접 이벤트속성으로
-                // 따옴표안에 값을 쓰는 것은 아래와
-                // 같이 익명함수구역안에 코드를
-                // 쓰는 것과 같기때문이다!
-                // btns[2].onclick = function(){
-                //     changeImg();
-                // }
+        // 소괄호가 있는 함수호출은
+        // 함수호출 명령어를 사용하는 것임!
+        // 그래서 요소에 직접 이벤트속성으로
+        // 따옴표안에 값을 쓰는 것은 아래와
+        // 같이 익명함수구역안에 코드를
+        // 쓰는 것과 같기때문이다!
+        // btns[2].onclick = function(){
+        //     changeImg();
+        // }
 
-                // <button class="btns" onclick="changeImg()">
-            } //////////// loadFn 함수 /////////
+        // <button class="btns" onclick="changeImg()">
+      } //////////// loadFn 함수 /////////
 
-            /*********************************** 
+      /*********************************** 
         함수명 : changeImg
         기능 : 메인 이미지 src변경하기
     ***********************************/
-            function changeImg() {
-                // 1. 호출확인
-                console.log("변경!!!", this.innerText);
+      function changeImg() {
+        // 1. 호출확인
+        console.log("변경!!!", this.innerText);
 
-                // 2. 클릭된 버튼 텍스트 읽기
-                var btnTxt = this.innerText;
-                // this 키워드
-                // -> 함수를 호출한 요소 자신
-                // this키워드를 사용하면 요소내부의
-                // 속성, 데이터를 사용할 수 있다!
+        var tg = document.querySelector(".photo img");
+        tg.classList.add("off");
+        setTimeout(function () {
+          tg.classList.remove("off");
+          tg.classList.add("on");
+        }, 500);
+        setTimeout(function () {
+            changeSet();
+          tg.classList.remove("on");
+        }, 1000);
 
-                // console.log('나는누구?',this);
+        // 2. 클릭된 버튼 텍스트 읽기
+        var btnTxt = this.innerText;
 
-                // 3. 대상선정 : 변경할 이미지
-                // img#scene -> scene변수
-                var scene = document.querySelector("#scene");
+        var changeSet = function () {
+          // this 키워드
+          // -> 함수를 호출한 요소 자신
+          // this키워드를 사용하면 요소내부의
+          // 속성, 데이터를 사용할 수 있다!
 
-                // console.log('메인이미지:',scene);
+          console.log('나는누구?',this);
 
-                // 이미지src변수
-                var isrc;
+          // 3. 대상선정 : 변경할 이미지
+          // img#scene -> scene변수
+          var scene = document.querySelector("#scene");
 
-                // 4. 이미지 src속성값 만들기(switch문 분기)
-                switch (btnTxt) {
-                    case "포스터":
-                        isrc = "./images/ala1.jpg";
-                        break;
-                    case "장면1":
-                        isrc = "./images/ala4.jpg";
-                        break;
-                    case "장면2":
-                        isrc = "./images/ala2.jpg";
-                        break;
-                    case "장면3":
-                        isrc = "./images/ala3.jpg";
-                        break;
-                } ////////// switch case //////////
+          // console.log('메인이미지:',scene);
 
-                // if (btnTxt == "포스터") {
-                //     isrc = "./images/ala1.jpg";
-                // } else if (btnTxt == "장면1") {
-                //     isrc = "./images/ala4.jpg";
-                // } else if (btnTxt == "장면2") {
-                //     isrc = "./images/ala2.jpg";
-                // } else if (btnTxt == "장면3") {
-                //     isrc = "./images/ala3.jpg";
-                // }
+          // 이미지src변수
+          var isrc;
 
-                // 참고: if문 조건식에서 비교연산자를
-                // 할당연산자로 쓰면 무조건 true처리됨!
+          // 4. 이미지 src속성값 만들기(switch문 분기)
+          switch (btnTxt) {
+            case "포스터":
+              isrc = "./images/ala1.jpg";
+              break;
+            case "장면1":
+              isrc = "./images/ala4.jpg";
+              break;
+            case "장면2":
+              isrc = "./images/ala2.jpg";
+              break;
+            case "장면3":
+              isrc = "./images/ala3.jpg";
+              break;
+          } ////////// switch case //////////
 
-                console.log("경로:", isrc);
+          // if (btnTxt == "포스터") {
+          //     isrc = "./images/ala1.jpg";
+          // } else if (btnTxt == "장면1") {
+          //     isrc = "./images/ala4.jpg";
+          // } else if (btnTxt == "장면2") {
+          //     isrc = "./images/ala2.jpg";
+          // } else if (btnTxt == "장면3") {
+          //     isrc = "./images/ala3.jpg";
+          // }
 
-                // 5. 이미지 src속성 변경하기
-                // scene.src = isrc;
-                scene.setAttribute("src", isrc);
-                /****************************************** 
+          // 참고: if문 조건식에서 비교연산자를
+          // 할당연산자로 쓰면 무조건 true처리됨!
+
+          console.log("경로:", isrc);
+
+          // 5. 이미지 src속성 변경하기
+          // scene.src = isrc;
+          scene.setAttribute("src", isrc);
+          /****************************************** 
             [ 요소 속성값 넣기 ]
             1. 선택요소.속성명 = 값
             2. 선택요소.setAttribute(속성명,값)
             참고) getAttribute(속성명) -> 속성값읽기
         ******************************************/
-            } ///////// changeImg 함수 ////////////
-            //////////////////////////////////////
-        </script>
-    </head>
+        };
+      } ///////// changeImg 함수 ////////////
+      //////////////////////////////////////
+    </script>
+  </head>
 
-    <body>
-        <!-- 전체 타이틀 -->
-        <h1 class="tit">All New Aladin</h1>
+  <body>
+    <!-- 전체 타이틀 -->
+    <h1 class="tit">All New Aladin</h1>
 
-        <!-- 스틸컷장면박스 -->
-        <div class="photo">
-            <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷" />
-        </div>
+    <!-- 스틸컷장면박스 -->
+    <div class="photo">
+      <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷" />
+    </div>
 
-        <!-- 선택버튼박스 -->
-        <div class="btnbx">
-            <button class="btns">포스터</button>
-            <button class="btns">장면1</button>
-            <button class="btns">장면2</button>
-            <button class="btns">장면3</button>
-        </div>
-    </body>
+    <!-- 선택버튼박스 -->
+    <div class="btnbx">
+      <button class="btns">포스터</button>
+      <button class="btns">장면1</button>
+      <button class="btns">장면2</button>
+      <button class="btns">장면3</button>
+    </div>
+  </body>
 </html>
