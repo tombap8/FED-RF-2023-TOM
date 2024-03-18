@@ -196,7 +196,7 @@
                 // 출력대상 : target[2]
                 target[2].innerHTML = arr3.join("★");
 
-                // -> 배열메서드는 중요하므로 별로롤 훈련함~!!^^
+                // -> 배열메서드는 중요하므로 별도로 훈련함~!!^^
 
                 /******************************************** 
                         [ 객체(Object) 란? ]
@@ -265,7 +265,7 @@
                     비밀번호: 7777,
                     팬레터: function () {
                         // 변경대상.style
-                        let mycss = target[3].style;
+                        let mycss = this.style;
 
                         // 1. 메시지 띄우기
                         alert("상남자 오빠! 지금뭐해?");
@@ -360,14 +360,17 @@
                     weight: "74kg",
                     com: "매니지먼트숲",
                     work: "도깨비,부산행",
-                    msgFn: function (txt) {
+                    msgFn: function (ele,txt) {
+                        // 간접호출인 경우 자신을 변수로 받는다!
+                        // ele - 이벤트요소 자신
                         // txt - 팬레터내용
                         // 1. 메시지 띄우기
                         alert("팬레터:" + txt);
                         // alert에 콤마사용불가 +사용
+                        console.log('zzz:',this,ele,txt);
 
                         // 변경대상.style
-                        let mycss = target[4].style;
+                        let mycss = ele.style;
 
                         // 2. 배경이미지 넣기
                         mycss.background =
@@ -415,7 +418,7 @@
                 target[4].onclick = function () {
                     // 실행코드 구역에서 객체 메서드를 호출
                     // 전달값도 여기서 보내준다!
-                    GU.msgFn("\n공유오빠, 오징어게임 싸다구 멋쪘어요! \n차기작도 기대해요!화이팅!!!");
+                    GU.msgFn(this,"\n공유오빠, 오징어게임 싸다구 멋쪘어요! \n차기작도 기대해요!화이팅!!!");
                     // \n은 alert창에서 줄바꿈해줌!
                 }; ///////// click이벤트 함수 ///////
 
