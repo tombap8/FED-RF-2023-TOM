@@ -61,15 +61,17 @@
         }
 
         /* 
-            [ CSS Masking ] - 아직 웹표준기술아님!
+            [ CSS Masking ] - 2023-12 웹표준기술됨!
             - 이미지의 일부를 자연스럽게 감추는 기법
             - 검정색부분은 보이는 영역, 투명색은 숨기는 영역
             - 셋팅법이 배경이미지 셋팅과 유사
                 linear-gradient와 같은 그라데이션
                 CSS함수를 이용하여 셋팅함
+            - 이미지가 검정색에서 투명으로 바뀌는 것을
+            url()로 호출하여 사용하면 마스킹효과가 적용됨!
         */
         .masking1{
-            -webkit-mask-image: 
+            mask-image: 
             linear-gradient(to right,black 30%,transparent 80%);
 
         }

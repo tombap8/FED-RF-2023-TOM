@@ -58,6 +58,26 @@
             button {
                 font-size: 40px;
             }
+
+            /* 불꽃놀이 박스 */
+            .fireworks{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 100;
+                background: url(./images/fireworks.gif) center;
+                display: none;
+                
+                font-size: 6vw;
+                font-weight: bold;
+                color: aqua;
+                white-space: nowrap;
+                text-shadow: 0 0 5px #333;
+                text-align: center;
+                line-height: 100vh;
+            }
         </style>
         <script>
             /**************************************** 
@@ -487,6 +507,18 @@ https://wallpaperaccess.com/full/11682.jpg
                 }, 2000); ////// 인터발함수 ///////
             });
             /////////// 로드구역 /////////////////////
+
+   
+
+            function showFireworks(){
+                // 1. 대상선정:.fireworks
+                let fireworks = document.querySelector(".fireworks");
+                fireworks.style.display = "block";
+                setTimeout(() => {
+                    fireworks.style.display = "none";
+                }, 3000);
+            } 
+
         </script>
     </head>
 
@@ -496,7 +528,7 @@ https://wallpaperaccess.com/full/11682.jpg
 
 
         <!-- 프로젝트 버튼 -->
-        <button onclick="alert(Korea('우'))">우리나라 대한민국 만세 프로젝트 시작!</button>
+        <button onclick="alert(Korea('우'));showFireworks();">우리나라 대한민국 만세 프로젝트 시작!</button>
         <!-- 
             [JS 일반적인 실행순서]
             1. 위에서 아래로
@@ -508,5 +540,10 @@ https://wallpaperaccess.com/full/11682.jpg
 
         <!-- 애국가 가사 타이틀 넣기박스 -->
         <div class="letters"></div>
+
+        <!-- 불꽃놀이 박스 -->
+        <div class="fireworks">
+            우리나라 대한민국 만세!!!
+        </div>
     </body>
 </html>
