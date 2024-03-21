@@ -5,29 +5,29 @@
         <title>Event Flow</title>     
         <style>
             body{
-                font-size: 5vw;
+                font-size: 5vh;
                 text-align: center;
-                padding-top: 5vw;
+                padding-top: 5vh;
             }
             body>*{
                 box-sizing: border-box;
             }
             div {
-                width: 60vw;
+                width: 60vh;
                 background-color: #6e6e6e;
-                padding: 5vw;
-                margin: 5vw auto;
+                padding: 5vh;
+                margin: 5vh auto;
             }
             p {
-                width: 40vw;
+                width: 40vh;
                 background-color: #adadad;
-                padding: 5vw;
+                padding: 5vh;
             }
             a {
                 display: block;
-                width: 30vw;
+                width: 30vh;
                 background-color: #ccc;
-                padding: 5vw;
+                padding: 5vh;
                 border: #000 thin solid;
             }
         </style>
@@ -60,7 +60,7 @@
                 // 아들방에 추가 클릭이벤트 셋팅하기 ///
                 // 추가이벤트는 반드시 addEventListener() 사용
                 const sonFn = e => {
-                    event.currentTarget.style.outline=
+                    e.currentTarget.style.outline=
                     '20px dotted hotpink';
 
                     // 단순버블링막기 : stopPropagation()
@@ -68,7 +68,7 @@
 
                     // 버블링+다른 이벤트까지 막기
                     // stopImmediatePropagation()
-                    // event.stopImmediatePropagation();
+                    e.stopImmediatePropagation();
                 };
 
                 // 이벤트 걸기
@@ -136,7 +136,7 @@
 
                 // 아들방 클릭이벤트 지우기 버튼 클릭시 ///
                 qs('.clear').onclick = () => {
-
+                    console.log('지워!!!');
                     // 1. 이벤트 리스너로 등록한 이벤트 지우기
                     qs('a').removeEventListener('click',sonFn);
 
