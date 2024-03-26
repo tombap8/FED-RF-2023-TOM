@@ -1,97 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02.클립애니메이션</title>
     <style>
-html,body,h1{
-    margin: 0;
-    padding: 0;
-}
-body{
-    background-color: lightseagreen;
-}
-h1{
-    position: relative;
-    top: 50%;
-    text-align: center;
-    color: #fff;
-    translate: 0 -50%;
-    font-size: 4vw;
-}
-.pg{
-    height: 100vh;
-    outline: 2px dashed red;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    transition: 2s ease-in-out;
-}
-.pg1{
-    background-image: url(https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2911&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    clip-path: circle(10% at 15% 15%);
-
-}
-.pg.on{    
-    animation: moveCircle 10s ease-in-out 1s forwards;
-}
-@keyframes moveCircle {
-    0%{    
+      html,
+      body,
+      h1 {
+        margin: 0;
+        padding: 0;
+      }
+      .w1 {
+        background-color: lightseagreen;
+      }
+      .w2 {
+        background-color: lightcoral;
+      }
+      .w3 {
+        background-color: darkkhaki;
+      }
+      h1 {
+        position: relative;
+        top: 50%;
+        text-align: center;
+        color: #fff;
+        translate: 0 -50%;
+        font-size: 4vw;
+      }
+      .pg {
+        height: 100vh;
+        outline: 2px dashed red;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: 2s ease-in-out;
+      }
+      .pg1 {
+        background-image: url(https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2911&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
         clip-path: circle(10% at 15% 15%);
-    }
-    20%{    
-        clip-path: circle(10% at 75% 15%);
-    }
-    50%{    
-        clip-path: circle(10% at 75% 75%);
-    }
-    70%{    
-        clip-path: circle(10% at 15% 75%);
-    }
-    80%{    
-        clip-path: circle(10% at 50% 50%);
-    }
-    100%{    
-        clip-path: circle(100% at 50% 50%);
-    }
-}
-.pg2{
-    background-image: url(https://images.unsplash.com/photo-1503424886307-b090341d25d1?q=80&w=2952&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    clip-path: polygon(35% 17%, 43.4% 28.6%, 42.6% 47%, 54.2% 51%, 49.2% 83%, 23% 69.6%, 11.4% 50.6%, 23.2% 48.4%, 24.2% 28%);
-    
-}
-.pg2.ace{
-    clip-path: polygon(-0.8% -0.4%, 100.2% 0.2%, 100.2% 35.2%, 100% 68.6%, 100.4% 100.4%, -0.6% 100.4%, -0.4% 53.8%, 0% 44.8%, -0.2% 27.6%)
-}
-.pg3{
-    background-image: url(https://images.unsplash.com/photo-1549558549-415fe4c37b60?q=80&w=2919&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    clip-path: circle(10% at 0% 0%);
-}
-.pg3.save{    
-    clip-path: circle(500% at 0% 0%);
-}
-.wrap{
-    filter:drop-shadow(5px 5px 5px #000);
-}
+      }
+      .pg1.on {
+        animation: moveCircle 10s ease-in-out 1s forwards;
+      }
+      @keyframes moveCircle {
+        0% {
+          clip-path: circle(10% at 15% 15%);
+        }
+        20% {
+          clip-path: circle(10% at 75% 15%);
+        }
+        50% {
+          clip-path: circle(10% at 75% 75%);
+        }
+        70% {
+          clip-path: circle(10% at 15% 75%);
+        }
+        80% {
+          clip-path: circle(10% at 50% 50%);
+        }
+        100% {
+          clip-path: circle(100% at 50% 50%);
+        }
+      }
+      .pg2 {
+        background-image: url(https://images.unsplash.com/photo-1503424886307-b090341d25d1?q=80&w=2952&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        clip-path: polygon(
+          35% 17%,
+          43.4% 28.6%,
+          42.6% 47%,
+          54.2% 51%,
+          49.2% 83%,
+          23% 69.6%,
+          11.4% 50.6%,
+          23.2% 48.4%,
+          24.2% 28%
+        );
+      }
+      .pg2.on {
+        clip-path: polygon(
+          -0.8% -0.4%,
+          100.2% 0.2%,
+          100.2% 35.2%,
+          100% 68.6%,
+          100.4% 100.4%,
+          -0.6% 100.4%,
+          -0.4% 53.8%,
+          0% 44.8%,
+          -0.2% 27.6%
+        );
+      }
+      /* 
+        클립패스 코드생성툴 사이트
+        https://toolsmatrix.com/clippath
+        https://bennettfeely.com/clippy/
+      */
+      .pg3 {
+        background-image: url(https://images.unsplash.com/photo-1549558549-415fe4c37b60?q=80&w=2919&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        clip-path: circle(10% at 0% 0%);
+      }
+      .pg3.on {
+        clip-path: circle(500% at 0% 0%);
+      }
+      .wrap {
+        filter: drop-shadow(5px 5px 5px #000);
+      }
     </style>
     <script>
-        window.addEventListener('load',()=>{
-            document.querySelectorAll('.pg')
-            .forEach(ele=>{
-                ele.onclick=()=>{ele.classList.toggle('on')}
-            })
-        })
+      window.addEventListener("load", () => {
+        document.querySelectorAll(".pg").forEach((ele) => {
+          ele.onclick = () => {
+            ele.classList.toggle("on");
+          };
+        });
+      });
     </script>
-    <!-- https://bennettfeely.com/clippy/ -->
-    <!-- https://toolsmatrix.com/clippath -->
-</head>
-<body>
-    <div class="wrap">
-    <div class="pg pg1">
+  </head>
+  <body>
+    <div class="wrap w1">
+      <div class="pg pg1">
         <h1>여기는 어디일까요?</h1>
-    </div></div>
-    <div class="pg pg2"></div>
-    <div class="pg pg3"></div>
-</body>
+      </div>
+    </div>
+    <div class="wrap w2">
+      <div class="pg pg2">
+        <h1>여기는 어디일까요?</h1>
+      </div>
+    </div>
+    <div class="wrap w3">
+      <div class="pg pg3">
+        <h1>여기는 어디일까요?</h1>
+      </div>
+    </div>
+  </body>
 </html>
