@@ -272,10 +272,19 @@ body.on::after {
     right: 9px;
     width: 0;
     height: 70px;
-    background: url(../images/bim.png) no-repeat right/auto 100%;  
+    background: 
+    url(../images/bim.png) no-repeat right/auto 100%,
+    url(../images/screen.gif) no-repeat -50% center/auto 80%;  
     /* 트랜지션 : 먼저 빔회수하기 */
     transition: width .2s linear;
 
+}
+.beam img{
+    position: absolute;
+    width: 110px;
+    top: 20%;
+    right: 50%;
+    z-index: -2;
 }
 /* .gnb오버시 빔박스 빔쏘기 */
 .gnb:hover .beam{
