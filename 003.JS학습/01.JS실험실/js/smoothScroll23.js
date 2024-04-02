@@ -1,6 +1,7 @@
 // Smooth Scroll JS Verson 2023.09
 // 부드러운 스크롤 2020.12 초기버전
 // 부드러운 스크롤 2023.09 수정버전
+// 부드러운 스크롤 2024.04 변수선언개정
 // arranged by Tom Brace Parker
 
 // startSS()함수를 호출하여 사용
@@ -12,46 +13,46 @@ function startSS() {
 }
 
 // 전역변수 스크롤 위치값
-let pos;
-// 다른 코딩으로 스크롤 이동시 이 변수에 일치필요!!!
+let scrollPos;
+// -> 다른 코딩으로 스크롤 이동시 이 변수에 일치필요!!!
 
-function SmoothScroll(target, speed, smooth) {
-    // target - 대상요소, speed - 스크롤애니속도, smooth - 부드러운정도
-    if (target === document)
-        target = (document.scrollingElement ||
+function SmoothScroll(scrollTarget, speed, smooth) {
+    // scrollTarget - 대상요소, speed - 스크롤애니속도, smooth - 부드러운정도
+    if (scrollTarget === document)
+        scrollTarget = (document.scrollingElement ||
             document.documentElement ||
             document.body.parentNode ||
             document.body) // cross browser support for document scrolling
 
-    var moving = false
-    pos = target.scrollTop
-    var frame = target === document.body &&
+    let moving = false
+    scrollPos = scrollTarget.scrollTop
+    let frame = scrollTarget === document.body &&
         document.documentElement ?
         document.documentElement :
-        target // safari is the new IE
+        scrollTarget // safari is the new IE
 
     // 최신 통합 이벤트
-    target.addEventListener('wheel', scrolled, {
+    scrollTarget.addEventListener('wheel', scrolled, {
         passive: false
         // 기본기능 막기시 에러발생방지
         // window, document, body 일경우 에러발생함!
     })
     // 구 이벤트
-    target.addEventListener('mousewheel', scrolled, {
+    scrollTarget.addEventListener('mousewheel', scrolled, {
         passive: false
     })
     // 파이어폭스 이벤트
-    target.addEventListener('DOMMouseScroll', scrolled, {
+    scrollTarget.addEventListener('DOMMouseScroll', scrolled, {
         passive: false
     })
 
     function scrolled(e) {
         e.preventDefault(); // disable default scrolling
 
-        var delta = normalizeWheelDelta(e)
+        let delta = normalizeWheelDelta(e)
 
-        pos += -delta * speed
-        pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
+        scrollPos += -delta * speed
+        scrollPos = Math.max(0, Math.min(scrollPos, scrollTarget.scrollHeight - frame.clientHeight)) // limit scrolling
 
         if (!moving) update()
     }
@@ -69,9 +70,9 @@ function SmoothScroll(target, speed, smooth) {
     function update() {
         moving = true
 
-        var delta = (pos - target.scrollTop) / smooth
+        let delta = (scrollPos - scrollTarget.scrollTop) / smooth
 
-        target.scrollTop += delta
+        scrollTarget.scrollTop += delta
 
         if (Math.abs(delta) > 0.5)
             requestFrame(update)
@@ -79,7 +80,7 @@ function SmoothScroll(target, speed, smooth) {
             moving = false
     }
 
-    var requestFrame = function () { // requestAnimationFrame cross browser
+    const requestFrame = function () { // requestAnimationFrame cross browser
         return (
             window.requestAnimationFrame ||
             window.webkitRequestAnimationFrame ||
