@@ -63,45 +63,59 @@
         margin: 0 auto;
         outline: 2px dashed lightcoral;
 
-        /***************************** 
+        /******************************************** 
             [ 가로 그리드 템플릿 ]
             grid-template-columns
-        *****************************/
-        /* 1. 가로 사이즈 단위를 띄어쓰기로
-        나열하면 개수만큼 그크기의 세로 컬럼이
-        생성됨 
-        grid-template-columns: 100px 200px 300px 400px;*/
-
-        /* 2. fr단위로 가로전체를 기준하여
-        비율을 설정한 컬럼이 생성됨
-        fraction(부분) 
-        grid-template-columns: 1fr 3fr 5fr 2fr;*/
-
-        /* 3. repeat(수치의 반복수, 반복수치)
-        -> 반복수*반복수치개수 가 컬럼수가 된다!
-        단순하게 사용할 경우 repeat(컬럼수,1fr) 
-        grid-template-columns: repeat(3,100px 1fr 2fr);*/
+            _____________________
+            
+            1. 가로 사이즈 단위를 띄어쓰기로
+            나열하면 개수만큼 그크기의 세로 컬럼이
+            생성됨 
+            예)
+            grid-template-columns: 
+            100px 200px 300px 400px;
+    
+            2. fr단위로 가로전체를 기준하여
+            비율을 설정한 컬럼이 생성됨
+            fraction(부분) 
+            예)
+            grid-template-columns: 
+            1fr 3fr 5fr 2fr;
+    
+            3. repeat(수치의 반복수, 반복수치)
+            -> 반복수*반복수치개수 가 컬럼수가 된다!
+            단순하게 사용할 경우 repeat(컬럼수,1fr) 
+            예)
+            grid-template-columns: 
+            repeat(3,100px 1fr 2fr);
+        ********************************************/
         grid-template-columns: repeat(5,1fr);
 
-        /***************************** 
+        /******************************************* 
             [ 세로 그리드 템플릿 ]
             grid-template-rows
-        *****************************/
-        /* 1. 구체적인 수치를 나열하면
-        나열한 개수만큼만 그 수치로 셋팅됨
-        나머지는 auto임 
-        grid-template-rows: 100px 200px 300px;*/
+            ____________________
 
-        /* 2. fr단위를 써서 나열하면 비를 쓴만큼
-        높이값 전체에서의 비로 셋팅됨 
-        grid-template-rows: 1fr 3fr 5fr 2fr;*/
-
-        /* 3. repeat(수치의반복, 반복수치) 
-        -> column과 유사 
-        grid-template-rows: repeat(4,300px);*/
-
-        /* 4. 모든 높이값 동일하게 셋팅하기 
-        grid-auto-rows: 400px;*/
+            1. 구체적인 수치를 나열하면
+            나열한 개수만큼만 그 수치로 셋팅됨
+            나머지는 auto임 
+            예)
+            grid-template-rows: 100px 200px 300px;
+    
+            2. fr단위를 써서 나열하면 비를 쓴만큼
+            높이값 전체에서의 비로 셋팅됨 
+            예)
+            grid-template-rows: 1fr 3fr 5fr 2fr;
+    
+            3. repeat(수치의반복, 반복수치) 
+            -> column과 유사 
+            예)
+            grid-template-rows: repeat(4,300px);
+    
+            4. 모든 높이값 동일하게 셋팅하기 
+            예)
+            grid-auto-rows: 400px;
+        *******************************************/
 
         /***************************** 
             [ 수평방향 간격 ]
