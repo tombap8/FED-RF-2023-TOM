@@ -257,7 +257,8 @@ const showNum2 = dFn.qs(".showNum2");
 // (2) 배열 숫자 데이터 만큼 이미지로 변환하여 출력
 // map().join() 맵쬬잉!
 const showScreen2 = () =>
-  (showNum2.innerHTML = arrString.map((val) => `<span>${val}</span>`).join(""));
+  (showNum2.innerHTML = 
+    arrString.map((val) => `<span>${val}</span>`).join(""));
 
 // 최초출력
 showScreen2();
