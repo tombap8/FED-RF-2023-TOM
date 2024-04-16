@@ -1,11 +1,17 @@
 [ 리엑트 CDN방식 호출코드! ]
 
 <!-- 1.리액트 기본 라이브러리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
+<script
+    src="https://unpkg.com/react@18/umd/react.production.min.js"
+    crossorigin
+></script>
 <!-- 2.리액트 가상돔 라이브러리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+<script
+    src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    crossorigin
+></script>
 <!-- 3.리액트 바벨 라이브러리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.4/babel.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 
 
