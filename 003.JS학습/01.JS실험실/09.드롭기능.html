@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dongle&display=swap");
+      .tit {
+        font-family: "Dongle", sans-serif;
+        font-size: 5vh;
+        text-align: center;
+        color: purple;
+      }
+      .wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .dtg {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #f00;
+        margin: 20px;
+      }
+      .dropbx {
+        height: 50vh;
+        border: 10px dotted orange;
+
+        font-family: "Dongle", sans-serif;
+        font-size: 10vh;
+        white-space: nowrap;
+        text-align: center;
+        line-height: 50vh;
+        color: darkorange;
+      }
+    </style>
+    <script>
+      const qs = (x) => document.querySelector(x);
+      const qsa = (x) => document.querySelectorAll(x);
+      const cg = (x) => console.log(x);
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const dtg = qsa(".dtg");
+        const dropbx = qs(".dropbx");
+        const part = qsa(".dropbx div");
+
+        let x1 = dropbx.offsetLeft;
+        let x2 = x1 + dropbx.clientWidth;
+        let y1 = dropbx.offsetTop;
+        let y2 = y1 + dropbx.clientHeight;
+
+        cg("x1:" + x1 + "/x2:" + x2 + "/y1:" + y1 + "/y2:" + y2);
+
+        dtg.forEach((ele) => setDrag(ele));
+
+        function setDrag(dtg) {
+          let drag = false;
+          let fx,
+            mvx,
+            fy,
+            mvy,
+            lx = 0,
+            rx,
+            ly = 0,
+            ry;
+          /* 
+                    fx : first x
+                    fy : first y
+                    mvx : moving x
+                    mvy : moving y
+                    lx : last x
+                    ly : last y
+                    rx : result x
+                    ry : result y
+                */
+
+          const dTrue = () => (drag = true);
+          const dFalse = () => (drag = false);
+          const firstPoint = () => {
+            fx = event.pageX;
+            fy = event.pageY;
+          };
+          const lastPoint = () => {
+            lx += rx;
+            ly += ry;
+          };
+          const mMove = (e) => {
+            if (drag) {
+              mvx = e.pageX;
+              rx = mvx - fx;
+              // cg(`드래그중-x:${rx}/${lx}`);
+
+              dtg.style.left = rx + lx + "px";
+
+              mvy = e.pageY;
+              ry = mvy - fy;
+              // cg(`드래그중-x:${ry}/${ly}`);
+
+              dtg.style.top = ry + ly + "px";
+            }
+          }; //////// mMove 함수 ////////
+
+          const saveit = [];
+
+          const checkArea = () => {
+            if (
+              event.pageX > x1 &&
+              event.pageX < x2 &&
+              event.pageY > y1 &&
+              event.pageY < y2
+            ) {
+              cg("여기" + event.pageY);
+              let obj = event.currentTarget.getAttribute("alt");
+              cg(obj);
+
+              let num = 0;
+
+              if (obj === "박보검" || obj === "김유정") num = 1;
+              else if (obj === "이재욱" || obj === "정소민") num = 2;
+              else if (obj === "공유" || obj === "김고은") num = 0;
+
+              dropbx.style.background = `url(${dramaImg[num]}) repeat-x center/auto 100%`;
+            }
+          };
+
+          dtg.addEventListener("mousedown", () => {
+            dTrue();
+            firstPoint();
+          });
+          dtg.addEventListener("mouseup", () => {
+            dFalse();
+            lastPoint();
+            checkArea();
+          });
+          dtg.addEventListener("mouseleave", () => {
+            dFalse();
+          });
+
+          dtg.addEventListener("mousemove", mMove);
+        } ////////// setDrag 함수 ////////////////
+
+        const imgset = [
+          "https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202212/22/munhwa/20221222103011835bggm.jpg",
+          "https://image.cine21.com/resize/cine21/person/2019/1030/11_35_56__5db8f70c422b9[X252,310].jpg",
+          "https://newsimg.hankookilbo.com/cms/articlerelease/2021/03/22/cdf0fd2f-64a6-4e22-b8e6-865da21c7ba8.jpg",
+          "https://image.cine21.com/resize/cine21/person/2019/0816/18_21_55__5d5675b3bdc5c[X252,310].jpg",
+          "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202107/08/JTBC/20210708153002482ktbd.jpg",
+          "https://newsimg.sedaily.com/2022/10/19/26CESYFZ0R_1.jpg",
+        ];
+        const alttxt = [
+          "박보검",
+          "공유",
+          "이재욱",
+          "김고은",
+          "정소민",
+          "김유정",
+        ];
+
+        const dramaImg = [
+          "https://upload.wikimedia.org/wikipedia/ko/6/63/%EB%93%9C%EB%9D%BC%EB%A7%88_%EB%8F%84%EA%B9%A8%EB%B9%84_%ED%8F%AC%EC%8A%A4%ED%84%B02.jpg",
+          "https://newsimg.sedaily.com/2016/08/17/1L06D7UIZ7_1.jpg",
+          "http://www.kukinews.com/data/kuk/image/2022/08/29/kuk202208290038.jpg",
+        ];
+
+        dtg.forEach((ele, idx) => {
+          ele.style.background = `url(${imgset[idx]}) no-repeat center/cover`;
+          ele.setAttribute("alt", alttxt[idx]);
+        });
+        // part.forEach((ele,idx)=>{
+        //     ele.style.background = `url(${dramaImg[idx]}) no-repeat center/cover`;
+        // })
+
+        dropbx.addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+        dropbx.addEventListener("drop", (e) => {
+          e.preventDefault();
+
+          cg("드롭!");
+        });
+      }); ///////////////// 로드구역 ////////////////
+    </script>
+  </head>
+  <body>
+    <h1 class="tit">★아래 드라마 주인공들을 드래그하여 드롭하세요~!★</h1>
+    <div class="wrap">
+      <div class="dtg"></div>
+      <div class="dtg"></div>
+      <div class="dtg"></div>
+      <div class="dtg"></div>
+      <div class="dtg"></div>
+      <div class="dtg"></div>
+    </div>
+
+    <div class="dropbx">여기에 드롭하세요~!</div>
+  </body>
+</html>
