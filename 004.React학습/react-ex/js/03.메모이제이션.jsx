@@ -84,7 +84,7 @@ function App() {
       </button>
       {/* 다나카 */}
       <img
-        src="https://i.namu.wiki/i/_7clMYRh4lQpmab_9mRbYqcaytIydOj40IGAOjOwRW4Z2v3RbRXh00Hq5NIMwHSXA9BCFfvKZXE85JtokIyw0KRdLIoBzT9TOli_OwQ2uDBFYomQRR3DqO8DcULZ_Y8s5GmVhX9TcoL1DgvmBwfMVQ.webp"
+        src="https://i.namu.wiki/i/fNSwm2U4hvUad455bOoiJsczNZDdOmZ3Kl7qUkCGzdMt7ckJB-LRnO7PXPUjWF7ADTuYS9vaTZKsnSNajizvWw.webp"
         style={{
           height: "300px",
           position: "fixed",
@@ -96,7 +96,7 @@ function App() {
       />
       {/* 손흥민 */}
       <img
-        src="https://i.namu.wiki/i/6IbJUlvAY5g8I1eD5dMFYEpaUajLlz4kZjS0vf86ssahkMsrRXDwiDujI-4tt4OqHGDLt3BbSXxxiawyDXf2tCKUBz-Vmsv9C8ZsXBNEXKkBO6zJEhlAPqodPsAsl5vh9DgcodJPjLZt6dPvFA4gnA.webp"
+        src="https://image.kmib.co.kr/online_image/2021/0105/202101050405_12120924172594_1.jpg"
         style={{
           height: "300px",
           position: "fixed",
