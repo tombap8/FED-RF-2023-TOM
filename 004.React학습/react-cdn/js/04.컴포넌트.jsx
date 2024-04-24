@@ -1,7 +1,8 @@
 // 04.리액트 컴포넌트 JSX
-
+import mFn from "../js/my_function";
 import Avengers from "./avengers";
 // import시에 CDN에서도 js/jsx 확장자는 생략가능함!
+console.log(mFn.qs("#root1"));
 
 /************************************************* 
     [ 리액트 컴포넌트 ]
