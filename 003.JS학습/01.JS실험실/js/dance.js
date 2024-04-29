@@ -14,6 +14,7 @@ const domFn = {
 
     // 바운딩top값 리턴함수
     getBCR: ele => ele.getBoundingClientRect().top,
+    getBCR2: ele => ele.getBoundingClientRect().left,
   }; /////// domFn 객체 /////////////
 
   // 1. 요구사항 : 3번 스테이지에 ul>li 구조의 이미지넣기
@@ -80,6 +81,10 @@ const domFn = {
         target.style.left = '-3000px';
     }
 
+    // let leftVal = domFn.getBCR2(domFn.qsaEl(target,'li')[2]);
+    // leftVal = Math.abs(leftVal/window.innerWidth/2)*100;
+    // console.log(leftVal); 
+    // domFn.qsaEl(target,'li')[2].style.translate = `0 ${leftVal}%`;
 
   } //////////// moveSlide 함수 //////////////
 
