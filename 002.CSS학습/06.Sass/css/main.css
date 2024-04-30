@@ -94,8 +94,17 @@ h1, h2, h3, h4, h5, h6 {
 .main-area ul li, .main-area ol li, .main-area p li {
   text-decoration: underline;
   text-underline-offset: 10px;
+  text-decoration-thickness: 5px;
   background-color: #ff0;
   text-align: center;
+}
+.main-area ul li:first-child, .main-area ol li:first-child, .main-area p li:first-child {
+  color: orchid;
+  font-weight: bold;
+  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+}
+.main-area ul li::before, .main-area ol li::before, .main-area p li::before {
+  content: "😁";
 }
 
 /* 6. 반복코드 확장 @extend 
@@ -109,6 +118,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   cursor: pointer;
   margin-left: 20px;
+}
+.button-basic:hover, .button-report:hover {
+  background-color: hotpink;
+  text-decoration: overline;
+  text-decoration-style: wavy;
+}
+.button-basic.my, .my.button-report {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 5px;
 }
 
 .box-basic, .bottom-title, .button-box, .top-area h2 {

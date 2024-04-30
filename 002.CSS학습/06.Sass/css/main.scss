@@ -117,8 +117,19 @@ $fontSize1: 38px;
         li{
             text-decoration: underline;
             text-underline-offset: 10px;
+            text-decoration-thickness: 5px;
             background-color: #ff0;
             text-align: center;
+            // 선택자에 연속으로 사용할 가상요소는
+            // &를 붙여서 쓴다!
+            &:first-child{
+                color: orchid;
+                font-weight: bold;
+                text-shadow: 1px 0 #000,-1px 0 #000,0 1px #000,0 -1px #000,;
+            }
+            &::before{
+                content: '😁';
+            }
         }
     }
 }
@@ -134,6 +145,21 @@ $fontSize1: 38px;
     font-size: 16px;
     cursor: pointer;
     margin-left: 20px;
+    // &:hover는 선택요소 오버시 연결코딩
+    &:hover{
+        background-color: hotpink;
+        text: {
+            decoration: overline;
+            decoration-style: wavy;
+        }
+    }
+
+    &.my{
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 10px;
+        text-decoration-thickness: 5px;
+    }
   }
 
   .box-basic {    
