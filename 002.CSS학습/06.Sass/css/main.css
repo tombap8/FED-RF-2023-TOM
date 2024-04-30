@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* 여러줄 주석도 사용함 */
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.top-area {
+  color: #cd0202;
+}
+.top-area h1 {
+  padding: 20px;
+  color: #0067dd;
+  /* 시작이 같은 속성은 묶어서 표현 */
+  font-size: 38px;
+  font-family: "Times New Roman";
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  background-color: #41aaff;
+  background-image: url("https://png.pngtree.com/png-clipart/20190118/ourmid/pngtree-hand-painted-pink-small-flower-flower-png-image_461226.jpg");
+  background-size: 100px;
+  background-position: center;
+  background-repeat: repeat-x;
+}/*# sourceMappingURL=main.css.map */

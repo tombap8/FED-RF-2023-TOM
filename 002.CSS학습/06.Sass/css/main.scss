@@ -1,0 +1,51 @@
+// 메인 Sass : main.scss
+
+@import "variables";
+
+//JS에서 사용되는 한줄 주석도 지원한다!
+/* 여러줄 주석도 사용함 */
+
+// 변수도 간단히 쓸수 있다 -> $변수명:값
+// 변수범위 : 중첩된 
+
+
+
+// 배경이미지
+$bgImageTop: "https://png.pngtree.com/png-clipart/20190118/ourmid/pngtree-hand-painted-pink-small-flower-flower-png-image_461226.jpg";
+
+// 글자크기지정
+$fontSize1: 38px;
+
+// 설정셋
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.top-area {
+    color: $mainColor1;
+    h1{
+        padding: 20px;
+        color: $mainColor2;
+        /* 시작이 같은 속성은 묶어서 표현 */
+        font: {
+            size: $fontSize1;
+            family: "Times New Roman";
+        }
+
+        text: {
+            align: center;
+            decoration: underline;
+            underline-offset: 10px;
+        }
+
+        background: {
+            color: $mainColor2-1;
+            image: url($bgImageTop);
+            size: 100px;
+            position: center;
+            repeat: repeat-x;
+        }
+    }
+}
