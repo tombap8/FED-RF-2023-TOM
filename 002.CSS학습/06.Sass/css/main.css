@@ -1,5 +1,45 @@
 @charset "UTF-8";
 /* 여러줄 주석도 사용함 */
+/* 기본 초기화 셋팅 */
+/* 기본 초기화 */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+dt,
+dd,
+p,
+figure,
+figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+/* ul,ol 순번,블릿없앰 */
+ul, ol {
+  list-style: none;
+}
+
+/* a요소 리셋 */
+a {
+  color: #222;
+  text-decoration: none;
+}
+
+/* heading 요소 글자크기 */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  /* 박스 디자인시 글자크기로 인한
+  영향을 없애기 위한 초기화! */
+}
+
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
@@ -10,16 +50,88 @@
 }
 .top-area h1 {
   padding: 20px;
-  color: #0067dd;
-  /* 시작이 같은 속성은 묶어서 표현 */
+  color: aqua;
+  margin-bottom: 38px;
   font-size: 38px;
   font-family: "Times New Roman";
   text-align: center;
   text-decoration: underline;
   text-underline-offset: 10px;
-  background-color: #41aaff;
-  background-image: url("https://png.pngtree.com/png-clipart/20190118/ourmid/pngtree-hand-painted-pink-small-flower-flower-png-image_461226.jpg");
-  background-size: 100px;
+  text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4705882353);
+  /* 시작이 같은 속성은 묶어서 표현 */
+  background-color: #ff6a6a;
+  background-image: url("../images/flower.png");
+  background-size: 50px;
   background-position: center;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
+}
+.top-area h2 {
+  font-size: 30px;
+}
+
+/* @include 믹스인 포함 */
+.main-area section {
+  border-color: pink;
+  border-style: dashed;
+  border-width: 7px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.main-area h3 {
+  color: darkblue;
+  margin-bottom: 38px;
+  font-size: 38px;
+  font-family: "Times New Roman";
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4705882353);
+}
+.main-area ul, .main-area ol, .main-area p {
+  line-height: 2;
+  font-size: 24px;
+}
+.main-area ul li, .main-area ol li, .main-area p li {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  background-color: #ff0;
+  text-align: center;
+}
+
+/* 6. 반복코드 확장 @extend 
+다중적용시 클래스를 여러개 지정할 필요없음 */
+.button-basic, .button-report {
+  display: inline-block;
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.box-basic, .bottom-title, .button-box, .top-area h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.button-report {
+  background-color: orange;
+  color: #fff;
+}
+
+.button-box {
+  background-image: linear-gradient(to bottom, lightgreen, transparent);
+}
+
+.bottom-title {
+  color: red;
+  margin-bottom: 38px;
+  font-size: 38px;
+  font-family: "Times New Roman";
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4705882353);
 }/*# sourceMappingURL=main.css.map */

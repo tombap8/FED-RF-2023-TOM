@@ -1,17 +1,32 @@
 // 메인 Sass : main.scss
 
-@import "variables";
-
+// 1. 사스 주석
 //JS에서 사용되는 한줄 주석도 지원한다!
 /* 여러줄 주석도 사용함 */
 
+
+// 2. 사스 확장자 별 파일구분
+// .scss - 사스관리파일
+// .css.map - 사스파일과 css연결정보 파일
+// .css - 실제로 적용되는 컴파일된 CSS
+
+// css파일에서 @import는 http 요청을 하지만
+// sass에서는 파일을 하나로 합치기때문에
+// 실제파일이 분할되어 http요청할일은 전혀없다!
+
+// 부분파일은 원래 언더바를 붙여야하지만
+// 사스에서는 자동으로 인식하여 언더바앞에 없어도됨!
+// 3. 사스 파일 불러오기(합치기)
+@import "data/variables";
+@import "common/reset";
+
+
+// 4. 사스 변수사용하기
 // 변수도 간단히 쓸수 있다 -> $변수명:값
-// 변수범위 : 중첩된 
-
-
+// 변수범위 : 중첩된 하위요소에 상속되어 적용함
 
 // 배경이미지
-$bgImageTop: "https://png.pngtree.com/png-clipart/20190118/ourmid/pngtree-hand-painted-pink-small-flower-flower-png-image_461226.jpg";
+$bgImageTop: "../images/flower.png";
 
 // 글자크기지정
 $fontSize1: 38px;
@@ -23,29 +38,121 @@ $fontSize1: 38px;
     margin: 0 auto;
 }
 
+// 5. 믹스인 : 일종의 설정함수
+// 호출시엔 @include 사용
+@mixin box-border($bdColor){
+    border: {
+        color: $bdColor;
+        style: dashed;
+        width: 7px
+    }
+}
+// @mixin 셋팅함수 - 전달값 있을때만 소괄호함
+// 전달값이 있는데 안보내면 기본값 지정가능함!
+@mixin title-text($selColor:red){
+    color: $selColor;
+    margin-bottom: $fontSize1;
+    font: {
+        size: $fontSize1;
+        family: "Times New Roman";
+    }
+
+    text: {
+        align: center;
+        decoration: underline;
+        underline-offset: 10px;
+        shadow: 5px 5px 4px #00000078;
+    }
+}
+
 .top-area {
     color: $mainColor1;
     h1{
         padding: 20px;
-        color: $mainColor2;
+        // 믹스인 한번에 묶어서 불러오기
+        @include title-text($fontColor1);
+        // color: $fontColor1;
         /* 시작이 같은 속성은 묶어서 표현 */
-        font: {
-            size: $fontSize1;
-            family: "Times New Roman";
-        }
+        // font: {
+        //     size: $fontSize1;
+        //     family: "Times New Roman";
+        // }
 
-        text: {
-            align: center;
-            decoration: underline;
-            underline-offset: 10px;
-        }
+        // text: {
+        //     align: center;
+        //     decoration: underline;
+        //     underline-offset: 10px;
+        //     shadow: 5px 5px 4px #000;
+        // }
+
 
         background: {
-            color: $mainColor2-1;
+            color: $mainColor1-2;
             image: url($bgImageTop);
-            size: 100px;
+            size: 50px;
             position: center;
-            repeat: repeat-x;
+            repeat: repeat;
+        }
+    }
+    h2{
+        @extend .box-basic;
+        font-size: $fontSize3;
+    }
+}
+
+/* @include 믹스인 포함 */
+.main-area {
+    section{
+        @include box-border(pink);
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    h3{
+        @include title-text(darkblue);
+
+    }
+    ul,ol,p{
+        line-height: 2;
+        font-size: 24px;
+        li{
+            text-decoration: underline;
+            text-underline-offset: 10px;
+            background-color: #ff0;
+            text-align: center;
         }
     }
 }
+
+/* 6. 반복코드 확장 @extend 
+다중적용시 클래스를 여러개 지정할 필요없음 */
+.button-basic  {
+    display: inline-block;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .box-basic {    
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .button-report  {
+    @extend .button-basic;
+    background-color: orange;
+    color: #fff;
+  }
+
+  .button-box{
+    @extend .box-basic;
+    background-image: linear-gradient(to bottom, lightgreen, transparent);
+  }
+
+  .bottom-title{
+    @extend .box-basic;
+    @include title-text;
+  }
