@@ -16,3 +16,39 @@ through 뒤에 나오는 숫자 이하로 반복되는 값을 사용한다. (해
     background-position:0 ($i * -10px);
   }
 }
+
+
+///////////////////////
+
+$colors: (color1: blue, color2: red, color3: green);
+
+
+@each 키워드를 이용해 맵핑하기 
+@each $key, $color in $colors {
+  .#{$key}-text {color: $color;}
+}
+
+-> 결과:
+.color1-text { color : blue; }
+
+.color2-text { color : red; }
+
+.color3-text { color : green; }
+
+
+//////////////////////////////////
+
+
+@function limitSize($size) {
+  @if $size >= 0 and $size <= 200px {
+    @return 200px;
+  } @else {
+    @return 800px;
+  }
+}
+
+div {
+  width: limitSize(180px);
+  height: limitSize(340px);
+}
+출처: https://inpa.tistory.com/entry/SCSS-💎-조건문-반복문 [Inpa Dev 👨‍💻:티스토리]

@@ -19,14 +19,14 @@
     max-width: 970px;
     height: 44px;
     margin: 0 auto;
-}
-/* 상단메뉴 하위 파티션박스 */
-.tmenu>div{
-    /* 플렉스 하위 등분할 */
-    flex: 1;
-    /* 
-        flex-shrink, flex-grow, flex-basis
-    */
+    /* 상단메뉴 하위 파티션박스 */
+    div{
+        /* 플렉스 하위 등분할 */
+        flex: 1;
+        /* 
+            flex-shrink, flex-grow, flex-basis
+        */
+    }
 }
 /* 1-1-1.sns박스 */
 .sns a{
@@ -44,22 +44,23 @@
 
     /* 트랜지션: 속시이지 */
     transition: opacity .2s;
-}
-/* a요소 마우스 오버시 */
-.sns a:hover{
-    opacity: 0.8;
-}
-/* 트위터 크기조정 */
-.sns a.fi-twitter{
-    font-size: 13px;
-}
-/* 유튜브 크기조정 */
-.sns a.fi-youtube-play{
-    font-size: 11px;
-}
-/* 카카오스토리 배경이미지 넣기 */
-.sns a.cas{
-    background: url(../images/sns_kakao.png) no-repeat center/auto 100%;
+
+    /* a요소 마우스 오버시 */
+    &:hover{
+        opacity: 0.8;
+    }
+    /* 트위터 크기조정 */
+    &.fi-twitter{
+        font-size: 13px;
+    }
+    /* 유튜브 크기조정 */
+    &.fi-youtube-play{
+        font-size: 11px;
+    }
+    /* 카카오스토리 배경이미지 넣기 */
+    &.cas{
+        background: url(../images/sns_kakao.png) no-repeat center/auto 100%;
+    }
 }
 
 /* 1-1-2.사이드메뉴 */
@@ -72,17 +73,17 @@
     /* 글자체: Roboto, 나눔바른고딕 */
     font-family: "Roboto", nbg;
     font-size: 12px;
-}
-/* 사이드메뉴 상위 a요소 */
-.smbx>li>a{
-    display: block;
-    padding: 0 13px;
-    line-height: 44px;
-    color: #747474;
-}
-/* 사이드메뉴 상위메뉴 첫번째li 사이구분선 */
-.smbx > li:first-child{
-    border-right: 1px solid #e5e5e5;
+    /* 사이드메뉴 상위 a요소 */
+    &>li>a{
+        display: block;
+        padding: 0 13px;
+        line-height: 44px;
+        color: #747474;
+    }
+    /* 사이드메뉴 상위메뉴 첫번째li 사이구분선 */
+    & > li:first-child{
+        border-right: 1px solid #e5e5e5;
+    }
 }
 /* 사이드 메뉴 서브박스 */
 .smsub{

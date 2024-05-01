@@ -49,7 +49,7 @@ $fontSize1: 38px;
 }
 // @mixin 셋팅함수 - 전달값 있을때만 소괄호함
 // 전달값이 있는데 안보내면 기본값 지정가능함!
-@mixin title-text($selColor:red){
+@mixin title-text($selColor:red,$showSts:false){
     color: $selColor;
     margin-bottom: $fontSize1;
     font: {
@@ -63,6 +63,11 @@ $fontSize1: 38px;
         underline-offset: 10px;
         shadow: 5px 5px 4px #00000078;
     }
+    @if $showSts {
+        &::before {
+            content: '❤️';
+        }
+    }
 }
 
 .top-area {
@@ -70,7 +75,7 @@ $fontSize1: 38px;
     h1{
         padding: 20px;
         // 믹스인 한번에 묶어서 불러오기
-        @include title-text($fontColor1);
+        @include title-text($fontColor1,true);
         // color: $fontColor1;
         /* 시작이 같은 속성은 묶어서 표현 */
         // font: {
@@ -97,6 +102,29 @@ $fontSize1: 38px;
     h2{
         @extend .box-basic;
         font-size: $fontSize3;
+        position: relative;
+        span{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            &:nth-of-type(1) {
+                top: 0;
+                left: 0;
+            }
+            &:nth-of-type(2) {
+                top: 0;
+                right: 0;
+            }
+            &:nth-of-type(3) {
+                bottom: 0;
+                left: 0;
+            }
+            &:nth-of-type(4) {
+                bottom: 0;
+                right: 0;
+            }
+        }
     }
 }
 
@@ -108,7 +136,7 @@ $fontSize1: 38px;
         padding: 20px;
     }
     h3{
-        @include title-text(darkblue);
+        @include title-text(darkblue,true);
 
     }
     ul,ol,p{
@@ -136,6 +164,12 @@ $fontSize1: 38px;
                 content: '😁';
             }
         }
+        @for $i from 2 through 5{
+            li:nth-child(#{$i}){
+              border-left: ($i * 20px) solid red;
+              border-right: ($i * 20px) solid red;
+            }
+          }
     }
 }
 
@@ -186,4 +220,8 @@ $fontSize1: 38px;
   .bottom-title{
     @extend .box-basic;
     @include title-text;
+  }
+
+  @each $key, $color in $colors {
+    .#{$key}-circle {background-color: $color;}
   }
