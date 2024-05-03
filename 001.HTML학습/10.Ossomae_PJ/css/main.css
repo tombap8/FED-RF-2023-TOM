@@ -7,7 +7,7 @@ html,body,h1{
 
 body{
     overflow: hidden;
-    background: url(../images/bg-main.jpg) no-repeat fixed center/cover;
+    background: url(../images/bg-main.jpg) fixed left bottom/50%;
 }
 
  /* IR 클래스 */
@@ -20,8 +20,7 @@ body{
 
 /* 1.메인타이틀 */
 .mtit{
-    width: 20%;
-    max-width: 300px;
+    height: 25vh;
     /* 최대크기지정 */
     aspect-ratio: 1/1;
     margin: 0 auto; 
@@ -34,7 +33,10 @@ body{
 
 /* 2. 갤러리박스 */
 #gbx{
-    position: relative;
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 100%;
     /* 부모자격: 버튼의 부모 */
     padding: 2% 0;
 }
