@@ -155,12 +155,14 @@ document.querySelector('#root3'));
 
 
 /////// 3. 좀 더 복잡한 리스트를 출력하는 컴포넌트 ///////
+// {year:"2020",mtit:"남산의"},
 
 // 전달할 배열변수 /////
 const movs = [
     {year:"2021",mtit:"모가디슈"},
     {year:"2022",mtit:"범죄도시2"},
     {year:"2023",mtit:"가디언즈 오브 갤럭시3"},
+    {year:"2024",mtit:"파묘"},
 ];
 // const movs = [];
 
