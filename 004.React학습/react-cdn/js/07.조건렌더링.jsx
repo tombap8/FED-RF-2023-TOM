@@ -155,14 +155,14 @@ document.querySelector('#root3'));
 
 
 /////// 3. 좀 더 복잡한 리스트를 출력하는 컴포넌트 ///////
-// {year:"2020",mtit:"남산의"},
+// {year:"2020",mtit:"남산의 부장들",poster:"https://i.namu.wiki/i/d-g1xW3vvsfh71KCQIxl2es_i0wKyMJhkwEaXKdCgDAyhJVRb4vWA_TNnRHMksw0S6pK_nFrDITK2ISIJRuRpA.webp"},
 
 // 전달할 배열변수 /////
 const movs = [
-    {year:"2021",mtit:"모가디슈"},
-    {year:"2022",mtit:"범죄도시2"},
-    {year:"2023",mtit:"가디언즈 오브 갤럭시3"},
-    {year:"2024",mtit:"파묘"},
+    {year:"2021",mtit:"모가디슈",poster:"https://upload.wikimedia.org/wikipedia/ko/9/92/%EC%98%81%ED%99%94_%EB%AA%A8%EA%B0%80%EB%94%94%EC%8A%88.jpg"},
+    {year:"2022",mtit:"범죄도시2",poster:"https://upload.wikimedia.org/wikipedia/ko/b/b9/%EB%B2%94%EC%A3%84%EB%8F%84%EC%8B%9C_2_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"},
+    {year:"2023",mtit:"가디언즈 오브 갤럭시3",poster:"https://i.namu.wiki/i/qA_v1drdO1CusnMcmQVZDEGXEspqfuS0-sAHYUFExpgZMF_GSyCSrxSh-_IWua2lqD6GnNNlqw0hMvNzXYrefA.webp"},
+    {year:"2024",mtit:"파묘",poster:"https://i.namu.wiki/i/EWdG2Jtlu36U1-03moAiO7Hmh1waKlbB0DIEvamksSTTzWCsqDXxUiiPSdcmpAQjh_tUFOwAGhR7LX7f6U0wXQ.webp"},
 ];
 // const movs = [];
 
@@ -175,6 +175,7 @@ const movs = [
     2021년도 영화1
     2022년도 영화2
     2023년도 영화3
+    ... 여기는 영화포스트 나열하기 ...
 */
 
 
