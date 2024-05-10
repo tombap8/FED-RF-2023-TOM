@@ -252,7 +252,7 @@ const worksrc = {
 //          작품명(wname)
 function MakeWork(props) {
   return (
-    <div>
+    <div style={{backgroundColor:props.bgc?"pink":"lightblue"}}>
       <h2>{props.painter}</h2>
       <img
         src={worksrc[props.painter]}
@@ -303,22 +303,27 @@ function ExpComp(props) {
       {/* 1. 큰제목 */}
       <Title tit="명화" />
       {/* 2. 변경버튼 : 클릭시 again함수를 호출함 */}
-      <button onClick={againFn}>작가변경!!!</button>
+      <button onClick={againFn} 
+      style={{
+        backgroundColor:result?"red":"blue",
+        color:result?"yellow":"aqua"
+        }}>작가변경!!!</button>
       {/* 3. 작품출력 : 3항연산자로 작품변경하기
             result 변수를 후크변수로 셋팅하면
             컴포넌트가 이 변수의 값이 변경됨에 따라
             자동으로 재설정된다! */}
       {result ? (
-        <MakeWork painter="피카소" wname="우는여인" />
+        <MakeWork painter="피카소" wname="우는여인" bgc={result} />
       ) : (
-        <MakeWork painter="모네" wname="양산을 쓴 여인" />
+        <MakeWork painter="모네" wname="양산을 쓴 여인" bgc={result} />
       )}
     </React.Fragment>
   );
 } //////////// ExpComp 컴포넌트 ////////////
 
 // 4-3. 개발자가 좋아하는 명화 출력하기 //////
-ReactDOM.render(<ExpComp isChange={false} />, document.querySelector("#root5"));
+ReactDOM.render(<ExpComp isChange={false} />, 
+document.querySelector("#root5"));
 // ReactDOM.render(어쩌구,저쩌구)
 
 /********************************************************* 
