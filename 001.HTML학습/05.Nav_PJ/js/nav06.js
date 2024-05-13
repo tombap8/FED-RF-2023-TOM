@@ -23,12 +23,12 @@ const gnbBox = domFn.qs('.gnb');
 
 
 // 3. 객체 데이터로 html 코드만들기
-let hcode = '';
+let hcode = '<ul>';
 
 for(let x in mdata){ // x는 속성명
   // console.log('속성명:',x); 
   hcode +=
-  `<ul>
+  `
       <li>
           <a href="#">${x}</a>
           <div class="smenu">
@@ -44,8 +44,10 @@ for(let x in mdata){ // x는 속성명
               </aside>
           </div>
       </li>
-    </ul>`
+    `
 } //////// for in /////////////
+
+hcode += '</ul>';
 
 // 확인
 // console.log('코드:',hcode);
