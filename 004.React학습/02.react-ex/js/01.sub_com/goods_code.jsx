@@ -14,6 +14,7 @@ function GoodsCode(props) { // idx - 데이터 배열순번
     // 코드 리턴파트 //////////
     return selData.map((v) => (
       /* props.chgFn(뷰상태1,상품고유번호idx) */
+      <li>
       <a href="#" onClick={()=>props.chgFn(1,v.idx)}>
       <ol class="glist">
         <li>
@@ -26,6 +27,7 @@ function GoodsCode(props) { // idx - 데이터 배열순번
         <li>{v.gname}</li>
         <li>가격 : {v.gprice}원</li>
       </ol></a>
+      </li>
     ));
   } /////////// GoodsCode //////////////////
 

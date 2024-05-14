@@ -15,16 +15,14 @@ let gprice = ["123000","224000","253000","340000","520000"];
 // 호출시 : rdm[아이템개수]
 let rdm = (x)=> Math.floor(Math.random()*x);
 
-let bb = '';
+let bb = [];
 
 for(let x=1;x<=19;x++){
-bb += `
-    {
-        "idx":'${x}',
-        "gname":'${gname[rdm(4)]}',
-        "category":'${category[rdm(2)]}',
-        "gprice":'${gprice[rdm(5)]}'
-    },
-`;
+bb.push({
+        "idx":x,
+        "gname":gname[rdm(4)],
+        "category":category[rdm(2)],
+        "gprice":gprice[rdm(5)]
+    });
 }
 console.log(bb)
