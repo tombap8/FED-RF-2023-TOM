@@ -12,9 +12,9 @@ function GoodsCode(props) { // idx - 데이터 배열순번
     const selData = twoData[props.idx];
   
     // 코드 리턴파트 //////////
-    return selData.map((v) => (
+    return selData.map((v,i) => (
       /* props.chgFn(뷰상태1,상품고유번호idx) */
-      <li>
+      <li key={i}>
       <a href="#" onClick={()=>props.chgFn(1,v.idx)}>
       <ol class="glist">
         <li>
