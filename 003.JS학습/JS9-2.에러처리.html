@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS9-2. 에러처리</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=IBM+Plex+Sans+KR&family=Sunflower:wght@300&display=swap');
+      .wrap{
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+        transform-origin: top;
+        scale: 2;
+        font-family: "IBM Plex Sans KR", sans-serif;
+      }
+      .tit{
+        text-align: center;
+        color: #fff;
+        background-image: linear-gradient(to bottom,yellow, red);
+        background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 2px #00000055;
+      }
+      .tit2{
+        color: #fff;
+        background-image: linear-gradient(to bottom,lightgreen, darkgreen);
+        background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 2px #00000055;
+      }
       /* 칭찬스티커 */
       .jshow {
         position: absolute;
@@ -32,6 +56,10 @@
     <script>
       /********************************************* 
         [ 에러처리 기본구문 ]
+
+        - 에러처리구문은 문법적 에러를 처리하는 것이아닌
+        논리적인 값을 흐름에서 발생할 수 있는 에러의
+        처리를 위해 만들어진 구문이다! 
 
         try{} 실행코드블록
         catch(err){} 오류처리를 위한 코드블록
@@ -151,6 +179,9 @@
           // 여기서 코드를 빠져나감처리!
           return;
         } /////////// catch문 ///////////////////
+        finally{
+          console.log("에러처리 체크하였습니다~!");
+        }
         /////////////////////////////////////////
 
         // 4. 메시지 만들기 ////////////
@@ -215,23 +246,25 @@
     </script>
   </head>
   <body>
-    <h1>JS 에러처리</h1>
-    <hr />
-    <!-- if문 연습 -->
-    <h2>if문 연습</h2>
-    <h3 id="jexp">평가출력</h3>
-    <label for="jumsu">점수입력:</label>
-    <input
-      type="text"
-      id="jumsu"
-      placeholder="점수를 입력하세요!"
-      maxlength="3"
-      onkeypress="if(event.keyCode===13)jumsu()"
-    />
-    <button class="sbtn" onclick="jumsu()">평가하기</button>
-    <!-- 칭찬스티커 -->
-    <div class="jshow">
-      <span class="ir">칭찬스티커</span>
+    <div class="wrap">
+      <h1 class="tit">JS 에러처리</h1>
+      <hr />
+      <!-- if문 연습 -->
+      <h2 class="tit2">평가점수별 칭찬스티커</h2>
+      <h3 id="jexp">평가출력</h3>
+      <label for="jumsu">점수입력:</label>
+      <input
+        type="text"
+        id="jumsu"
+        placeholder="점수를 입력하세요!"
+        maxlength="3"
+        onkeypress="if(event.keyCode===13)jumsu()"
+      />
+      <button class="sbtn" onclick="jumsu()">평가하기</button>
+      <!-- 칭찬스티커 -->
+      <div class="jshow">
+        <span class="ir">칭찬스티커</span>
+      </div>
     </div>
   </body>
 </html>
