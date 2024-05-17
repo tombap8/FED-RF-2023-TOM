@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS9-2. 에러처리</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=IBM+Plex+Sans+KR&family=Sunflower:wght@300&display=swap');
-      .wrap{
+      @import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=IBM+Plex+Sans+KR&family=Sunflower:wght@300&display=swap");
+      .wrap {
         position: absolute;
         left: 50%;
         translate: -50%;
@@ -14,20 +14,20 @@
         scale: 2;
         font-family: "IBM Plex Sans KR", sans-serif;
       }
-      .tit{
+      .tit {
         text-align: center;
         color: #fff;
-        background-image: linear-gradient(to bottom,yellow, red);
+        background-image: linear-gradient(to bottom, yellow, red);
         background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 2px #00000055;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 2px #00000055;
       }
-      .tit2{
+      .tit2 {
         color: #fff;
-        background-image: linear-gradient(to bottom,lightgreen, darkgreen);
+        background-image: linear-gradient(to bottom, lightgreen, darkgreen);
         background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 2px #00000055;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 2px #00000055;
       }
       /* 칭찬스티커 */
       .jshow {
@@ -178,8 +178,8 @@
           // catch문에 왔다는 것은 에러발생했다는 것!
           // 여기서 코드를 빠져나감처리!
           return;
-        } /////////// catch문 ///////////////////
-        finally{
+        } finally {
+          /////////// catch문 ///////////////////
           console.log("에러처리 체크하였습니다~!");
         }
         /////////////////////////////////////////
