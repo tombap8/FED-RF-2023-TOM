@@ -98,10 +98,12 @@
     transition: .5s;
 }
 /* 상위메뉴 오버시 서브박스 나타나기 */
-.smbx>li:hover .smsub{
-    /* display: block; */
-    opacity: 1;
-    height: auto;
+.smbx{
+    & > li:hover .smsub{
+        /* display: block; */
+        opacity: 1;
+        height: auto;
+    }
 }
 .smsub a{
     display: block;
