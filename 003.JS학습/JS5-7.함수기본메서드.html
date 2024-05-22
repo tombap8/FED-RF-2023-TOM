@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            body{
+                background-image: linear-gradient(45deg,lightcoral,lightgreen,pink,lightblue);
+                background-attachment: fixed;
+            }
+        </style>
         <script>
             function 힘내(콜콜){
                 return this.호호 + " 그리고 " + this.하하 + " AND " + 콜콜;
@@ -58,7 +64,7 @@
                 exBox[3].innerText = 대표동물.발표.apply(동물2,["아시아","영장류"]);
 
                 exBox[4].innerText = 힘내.call({호호:"전쟁",하하:"평화"},"톨스토이")
-                exBox[5].innerText = 노래.call(document.querySelector(".iam"));
+                exBox[5].innerText = 노래.apply(document.querySelector(".iam"));
                 exBox[6].innerText = `내가 최대로 받을 수 있는 연봉은 ${Math.max.apply(null,myNum)}만원이다!`
             })
 
