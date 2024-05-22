@@ -1,9 +1,9 @@
 // JS9-3. 로컬 스토리지 JS
 
 // DOM 메서드 ////
-import dFn from './dom.js';
+import mFn from './dom.js';
 
-// // console.log(dFn);
+// // console.log(mFn);
 
 
     /*************************************************************** 
@@ -57,14 +57,14 @@ import dFn from './dom.js';
 
 // [ 1. 로컬 스토리지 연습 ] //////////////////////
 // 1. 버튼 기능 이벤트 대상: .local-box button
-const btnLocal = dFn.qsa('.local-box button');
+const btnLocal = mFn.qsa('.local-box button');
 // console.log('대상:',btnLocal);
 
 // 2. 버튼에 이벤트 설정
-btnLocal.forEach(ele=>dFn.addEvt(ele,'click',localSFn));
+btnLocal.forEach(ele=>mFn.addEvt(ele,'click',localSFn));
 
 // -> 개별 로컬스토리지 삭제 이벤트 설정하기
-dFn.qsa('.local ol li').forEach((ele,idx)=>{
+mFn.qsa('.local ol li').forEach((ele,idx)=>{
     // 로컬스토리지 키명 배열
     const keyName = ["lname","lrole","lcat"];
     ele.onclick = function(){
@@ -113,17 +113,17 @@ function localSFn(){
         bindMod();
     } /////// else if : 전체삭제 ////////////
     else if(btxt == '보여줘'){
-        dFn.qs('.local .nm').innerText = 
+        mFn.qs('.local .nm').innerText = 
         localStorage.getItem('lname');
-        dFn.qs('.local .role').innerText = 
+        mFn.qs('.local .role').innerText = 
         localStorage.getItem('lrole');
-        dFn.qs('.local .cat').innerText = 
+        mFn.qs('.local .cat').innerText = 
         localStorage.getItem('lcat');
 
     } /////// else if : 보여줘 ////////////
 
     // -> 객체를 생성하여 로컬 스토리지에 넣기
-    else if(btxt = '처리'){
+    else if(btxt == '처리'){
         // 1. 로컬쓰에 'minfo'가 없거나 
         //'minfo'값이 '[]'배열 초기화값이면 makeObj() 호출!
         if(!localStorage.getItem('minfo')||
@@ -228,23 +228,23 @@ function bindData(){
     `;
 
     // 4. 화면출력 : 대상 - .board
-    dFn.qs('.board').innerHTML = hcode;
+    mFn.qs('.board').innerHTML = hcode;
 
     // 5. 화면출력 후 지우기 링크 셋팅하기
-    dFn.qsa('.board .del-link a')
-    .forEach(ele=>dFn.addEvt(ele,'click',
+    mFn.qsa('.board .del-link a')
+    .forEach(ele=>mFn.addEvt(ele,'click',
     ()=>delRec(ele.getAttribute('data-idx'))));
 
 } /////////////// bindData 함수 ////////////////
 
 /// 입력 처리함수 호출 이벤트설정하기 ///////
-dFn.addEvt(dFn.qs('#sbtn'),'click',insData);
+mFn.addEvt(mFn.qs('#sbtn'),'click',insData);
 
 /// 입력 처리함수 /////////////////////
 function insData(){
     // 1. 입력항목 읽어오기
-    let tit = dFn.qs('#tit').value;
-    let cont = dFn.qs('#cont').value;
+    let tit = mFn.qs('#tit').value;
+    let cont = mFn.qs('#cont').value;
     
     // 2. 만약 하나라도 비었다면 돌아가!
     // trim() 앞뒤공백제거 -> 스페이스바만 쳐도 불통과!
@@ -358,13 +358,13 @@ function delRec(idx){
 //////////////////////////////////////////////
 // 1.  대상선정: 
 // 1-1. 선택박스 : .sel
-const modSel = dFn.qs('#sel');
+const modSel = mFn.qs('#sel');
 // 1-2. 제목 입력박스
-const modTit = dFn.qs('#tit2');
+const modTit = mFn.qs('#tit2');
 // 1-3. 내용 입력박스
-const modCont = dFn.qs('#cont2');
+const modCont = mFn.qs('#cont2');
 // 1-4. 수정버튼
-const moBtn = dFn.qs('#mobtn');
+const moBtn = mFn.qs('#mobtn');
 
 
 // 2. 데이터 바인딩하기
@@ -402,7 +402,7 @@ function bindMod(){
 bindMod();
 
 /// 3. 선택항목 변경 이벤트 설정하기 //////
-dFn.addEvt(modSel,'change',setMod);
+mFn.addEvt(modSel,'change',setMod);
 
 // 4. 수정데이터 수정모드에 셋팅하기 /////
 function setMod(){
@@ -449,7 +449,7 @@ function setMod(){
 } ///////////// setMod 함수 //////////////
 
 // 5. 수정버튼 클릭 이벤트 설정하기 ////////
-dFn.addEvt(moBtn,'click',modifyData);
+mFn.addEvt(moBtn,'click',modifyData);
 
 // 6. 수정내용 반영 함수 만들기 //////////
 function modifyData(){    
@@ -517,14 +517,14 @@ function modifyData(){
 
 // [ 2. 세션 스토리지 연습 ] //////////////////////
 // 1. 버튼 기능 이벤트 대상: .session-box button
-const btnSession = dFn.qsa('.session-box button');
+const btnSession = mFn.qsa('.session-box button');
 // console.log('대상:',btnSession);
 
 // 2. 버튼에 이벤트 설정
-btnSession.forEach(ele=>dFn.addEvt(ele,'click',sessionSFn));
+btnSession.forEach(ele=>mFn.addEvt(ele,'click',sessionSFn));
 
 // -> 개별 세션스토리지 삭제 이벤트 설정하기
-dFn.qsa('.session ol li').forEach((ele,idx)=>{
+mFn.qsa('.session ol li').forEach((ele,idx)=>{
     // 세션스토리지 키명 배열
     const keyName = ["lname","lrole","lcat"];
     ele.onclick = function(){
@@ -563,11 +563,11 @@ function sessionSFn(){
         // 개별 세션쓰로 지우는 방법은 removeItem(키명)
     } /////// else if : 전체삭제 ////////////
     else if(btxt == '보여줘'){
-        dFn.qs('.session .nm').innerText = 
+        mFn.qs('.session .nm').innerText = 
         sessionStorage.getItem('lname');
-        dFn.qs('.session .role').innerText = 
+        mFn.qs('.session .role').innerText = 
         sessionStorage.getItem('lrole');
-        dFn.qs('.session .cat').innerText = 
+        mFn.qs('.session .cat').innerText = 
         sessionStorage.getItem('lcat');
 
     } /////// else if : 보여줘 ////////////
