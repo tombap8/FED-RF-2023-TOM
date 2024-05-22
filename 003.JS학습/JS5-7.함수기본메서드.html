@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function 힘내(콜콜){
+                return this.호호 + " 그리고 " + this.하하 + " AND " + 콜콜;
+            }
+
+            function 노래(){
+                return "노래제목은 "+this.title+":"+this.id;
+            }
+
+
+            window.addEventListener("load",()=>{
+                const exBox = document.querySelectorAll(".ex");
+
+                const 인간 = {
+                    성명: function () {
+                        return this.성 + " " + this.명;
+                    },
+                };
+                const 사람1 = {
+                    성: "마",
+                    명: "동석",
+                };
+                const 사람2 = {
+                    성: "이",
+                    명: "제훈",
+                };
+
+                ///////////////////////////
+
+                const 대표동물 = {
+                    발표: function (지역,분류) {
+                        return this.나라 + `(${지역})` + " " + this.이름 + `(${분류})`;
+                    },
+                };
+                const 동물1 = {
+                    나라: "호주",
+                    이름: "코알라",
+                };
+                const 동물2 = {
+                    나라: "일본",
+                    이름: "원숭이",
+                };
+
+                const myNum = [2000,4000,5000];
+
+                //////////////////////////
+    
+                // This will return "Mary Doe"
+                exBox[0].innerText = 인간.성명.call(사람1);
+                exBox[1].innerText = 인간.성명.apply(사람2);
+                exBox[2].innerText = 대표동물.발표.call(동물1,"오세아니아","유대류");
+                exBox[3].innerText = 대표동물.발표.apply(동물2,["아시아","영장류"]);
+
+                exBox[4].innerText = 힘내.call({호호:"전쟁",하하:"평화"},"톨스토이")
+                exBox[5].innerText = 노래.call(document.querySelector(".iam"));
+                exBox[6].innerText = `내가 최대로 받을 수 있는 연봉은 ${Math.max.apply(null,myNum)}만원이다!`
+            })
+
+            /* 
+             // 1. 로컬쓰 데이터 읽어와서 배열로 변환
+                const localData = 
+                JSON.parse(localStorage.getItem("minfo"));
+                let maxNum = Math.max.apply(null,localData.map(v=>v.idx));
+                console.log("입력!!!",localData,maxNum);
+
+                // 2. 입력할 데이터 객체형식으로 배열에 넣기
+                // 배열.push({객체})
+                localData.push({
+                    idx: maxNum+1,
+                    tit: mFn.qs("#tit").value,
+                    cont: mFn.qs("#cont").value
+                });
+
+            */
+        </script>
+    </head>
+    <body>
+        <b class="iam" title="킬디스럽" id="홍야홍야"></b>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+        <h1 class="ex"></h1>
+
+    </body>
+</html>
