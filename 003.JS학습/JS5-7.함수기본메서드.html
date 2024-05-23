@@ -1,74 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <style>
-            body{
-                background-image: linear-gradient(45deg,lightcoral,lightgreen,pink,lightblue);
-                background-attachment: fixed;
-            }
-        </style>
-        <script>
-            function 힘내(콜콜){
-                return this.호호 + " 그리고 " + this.하하 + " AND " + 콜콜;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS5-7. 함수 기본 메서드 : call() / apply() / bind()</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+      body {
+        background-image: linear-gradient(
+          45deg,
+          lightcoral,
+          lightgreen,
+          pink,
+          lightblue
+        );
+        background-attachment: fixed;
+        text-align: center;
 
-            function 노래(){
-                return "노래제목은 "+this.title+":"+this.id;
-            }
+        font-family: "Jua", sans-serif;
+        padding-bottom: 100px;
+      }
+      h1 {
+        font-weight: normal;
+      }
+      .mainTit{
+        font-size: max(40px,3vw);
+      }
+      .ex {
+        color: aqua;
+        -webkit-text-stroke: 0.5px #222;
+        text-shadow: 2px 2px 2px #000000c2;
+      }
+      .bindWrap{
+        display: flex;
+        justify-content: center;
+        gap: 0 100px;
+      }
+    </style>
+    <script>
+      function 힘내(콜콜) {
+        return this.호호 + " 그리고 " + this.하하 + " AND " + 콜콜;
+      }
 
+      function 노래() {
+        return "노래제목은 " + this.title + ":" + this.id;
+      }
 
-            window.addEventListener("load",()=>{
-                const exBox = document.querySelectorAll(".ex");
+      window.addEventListener("load", () => {
+        const exBox = document.querySelectorAll(".ex");
 
-                const 인간 = {
-                    성명: function () {
-                        return this.성 + " " + this.명;
-                    },
-                };
-                const 사람1 = {
-                    성: "마",
-                    명: "동석",
-                };
-                const 사람2 = {
-                    성: "이",
-                    명: "제훈",
-                };
+        const 인간 = {
+          성명: function () {
+            return this.성 + " " + this.명;
+          },
+        };
+        const 사람1 = {
+          성: "마",
+          명: "동석",
+        };
+        const 사람2 = {
+          성: "이",
+          명: "제훈",
+        };
 
-                ///////////////////////////
+        const 회원 = {
+          성: "김",
+          명: "재원",
+          이름다: function () {
+            return this.성 + " " + this.명;
+          },
+          시간차: function () {
+            setTimeout(
+              function () {
+                exBox[9].innerText = this.성 + " " + this.명;
+              }.bind(this),
+              2000
+            );
+          },
+          화살표: function () {
+            setTimeout(() => {
+              exBox[10].innerText = this.성 + " " + this.명;
+            }, 3000);
+          },
+        };
 
-                const 대표동물 = {
-                    발표: function (지역,분류) {
-                        return this.나라 + `(${지역})` + " " + this.이름 + `(${분류})`;
-                    },
-                };
-                const 동물1 = {
-                    나라: "호주",
-                    이름: "코알라",
-                };
-                const 동물2 = {
-                    나라: "일본",
-                    이름: "원숭이",
-                };
+        const 개인1 = {
+          성: "최",
+          명: "수연",
+        };
+        const 개인2 = {
+          성: "정",
+          명: "성호",
+        };
+        const 개인3 = {
+          성: "이",
+          명: "나영",
+        };
 
-                const myNum = [2000,4000,5000];
+        ///////////////////////////
 
-                //////////////////////////
-    
-                // This will return "Mary Doe"
-                exBox[0].innerText = 인간.성명.call(사람1);
-                exBox[1].innerText = 인간.성명.apply(사람2);
-                exBox[2].innerText = 대표동물.발표.call(동물1,"오세아니아","유대류");
-                exBox[3].innerText = 대표동물.발표.apply(동물2,["아시아","영장류"]);
+        const 대표동물 = {
+          발표: function (지역, 분류) {
+            return this.나라 + `(${지역})` + " " + this.이름 + `(${분류})`;
+          },
+        };
+        const 동물1 = {
+          나라: "호주",
+          이름: "코알라",
+        };
+        const 동물2 = {
+          나라: "일본",
+          이름: "원숭이",
+        };
 
-                exBox[4].innerText = 힘내.call({호호:"전쟁",하하:"평화"},"톨스토이")
-                exBox[5].innerText = 노래.apply(document.querySelector(".iam"));
-                exBox[6].innerText = `내가 최대로 받을 수 있는 연봉은 ${Math.max.apply(null,myNum)}만원이다!`
-            })
+        const myNum = [2400, 3600, 4200, 5300, 6700];
 
-            /* 
+        //////////////////////////
+
+        // This will return "Mary Doe"
+        exBox[0].innerText = 인간.성명.call(사람1);
+        exBox[1].innerText = 인간.성명.apply(사람2);
+
+        exBox[2].innerText = 대표동물.발표.call(동물1, "오세아니아", "유대류");
+        exBox[3].innerText = 대표동물.발표.apply(동물2, ["아시아", "영장류"]);
+
+        exBox[4].innerText = 힘내.call(
+          { 호호: "전쟁", 하하: "평화" },
+          "톨스토이"
+        );
+        exBox[5].innerText = 노래.apply(document.querySelector(".iam"));
+        exBox[6].innerText = `내가 받았던 연봉 중 최대값은 ${Math.max.apply(
+          null,
+          myNum
+        )}만원이다!`;
+
+        exBox[7].innerText = 회원.이름다();
+        exBox[8].innerText = 회원.이름다.bind(개인1)();
+        회원.시간차.bind(개인2)();
+        회원.화살표.bind(개인3)();
+      });
+
+      /* 
              // 1. 로컬쓰 데이터 읽어와서 배열로 변환
                 const localData = 
                 JSON.parse(localStorage.getItem("minfo"));
@@ -84,17 +156,38 @@
                 });
 
             */
-        </script>
-    </head>
-    <body>
-        <b class="iam" title="킬디스럽" id="홍야홍야"></b>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
-        <h1 class="ex"></h1>
+    </script>
+  </head>
+  <body>
+    <h1 class="mainTit">JS5-7. 함수 기본 메서드 : call() / apply() / bind()</h1>
 
-    </body>
+    <b class="iam" title="킬디스럽" id="홍야홍야"></b>
+    <h1>🎯 call(객체) / appply(객체) : 객체메서드로 구현</h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>
+      🎯 call(객체,추가변수) / appply(객체,[추가변수]) : 객체메서드로 구현
+    </h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>🎯 call(객체,추가변수) / appply(객체,[추가변수]) : 일반함수로 구현</h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>🎯 Math.max.appply(null,배열변수) 응용</h1>
+    <h1 class="ex"></h1>
+
+    <h1>🎯 bind() 사용법</h1>
+    <div class="bindWrap">
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+    </div>
+  </body>
 </html>
