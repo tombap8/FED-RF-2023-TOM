@@ -21,7 +21,7 @@ function MyHome(){
 }
 // 일반적으로 props down할때 props변수 하나를 써서
 // 하위 (점찍어서) 속성으로 접근했으나 중괄호구역 즉,
-// 리액트 코드구역을 쓰면 변수명을 개수만큼 직접사용가능함!
+// 구조분해할당 방식을 쓰면 변수명을 개수만큼 직접사용가능함!
 function MyRoom({aa,bb}){
     return <MyBag ee={aa} ff={bb} />
 }
