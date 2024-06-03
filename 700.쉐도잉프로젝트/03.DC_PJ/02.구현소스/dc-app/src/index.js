@@ -1,4 +1,5 @@
-// index.js는 public/index.html 페이지에 적용되는 컴포넌트다!->루트 컴포넌트
+// index.js는 public/index.html 페이지에 적용되는 컴포넌트다!
+// ->루트 컴포넌트
 
 // 메인페이지 CSS 불러오기
 import "./css/index.css";
