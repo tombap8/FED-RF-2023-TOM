@@ -16,30 +16,62 @@
           d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
       }
 
+    /************************************************** 
+      [ 프라미스 체이닝 ]
+      - 프라미스로 생성코드를 담고 then메서드로 사용코드를 
+      실행시 연속해서 생성코드가 이어질 경우 다음 then메서드를 
+      체이닝하여 연속 사용할 수 있다! 
+      이때 프라미스로 생성코드를 리턴해야 기다린 후 
+      다음 then메서드를 호출하여 원하는 기다림효과를 볼 수 있다!
+
+      ((사용예))
+        프라미스변수
+        .then(()=>return 프라미스)
+        .then(()=>return 프라미스)
+        .then(()=>마지막실행코드) 
+
+      _________________________________________________
+
+      [ 프라미스 병렬호출 ]
+      - 프라미스는 병렬로 then메서드 호출이 가능하다!
+
+      ((사용예))
+        프라미스변수
+        .then(()=>실행코드1) 
+        프라미스변수
+        .then(()=>실행코드2) 
+
+    **************************************************/
+
       const myPromise = new Promise((sFn) => {
         setTimeout(() => {
-          화면뿌려("나는 전도연이다!")
+          화면뿌려("나는 전도연이다!");
           sFn();
         }, 2000);
       });
 
-      myPromise.then((v) => {
-        // setTimeout(() => {
-          화면뿌려(
-            `<img src="https://images.khan.co.kr/article/2023/03/03/news-p.v1.20230303.139d5a1324fd43e9b750689a1c57af4e_P1.jpg" style="height:70vh" alt="길복순">`
-          );
-        // return v;
-        // }, 2000);
-      }).then((v) => {
-        setTimeout(() => {
-          화면뿌려(`킬링타임<div id="time" style="font-size:5vh"></div>`);
-        return v;
-        }, 1000);
-      }).then((v) => {
-        setTimeout(() => {
-          setInterval(킬링타임, 1000)
-        }, 1000);
-      })
+      myPromise
+        .then(() => {
+          return new Promise((sFn) => {
+            setTimeout(() => {
+              화면뿌려(
+                `<img src="https://images.khan.co.kr/article/2023/03/03/news-p.v1.20230303.139d5a1324fd43e9b750689a1c57af4e_P1.jpg" style="height:70vh" alt="길복순">`
+              );
+              sFn();
+            }, 1000);
+          });
+        })
+        .then(() => {
+          return new Promise((sFn) => {
+            setTimeout(() => {
+              화면뿌려(`킬링타임<div id="time" style="font-size:5vh"></div>`);
+              sFn();
+            }, 1000);
+          });
+        })
+        .then(() => {
+          setInterval(킬링타임, 1000);
+        });
 
       // 일정시간 후 함수실행 -> 비동기함수 호출!
       // setTimeout(() => setInterval(킬링타임, 1000), 6000);
