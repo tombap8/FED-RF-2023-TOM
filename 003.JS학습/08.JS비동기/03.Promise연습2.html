@@ -45,28 +45,28 @@
           // console.log(res);
 
           // 화면에 보여주기
-          return new Promise();  document.querySelector(".wrap").innerHTML = res
-            .map(
-              (v) =>
+          return new Promise(sFn=>{
+            document.querySelector(".wrap").innerHTML = res
+              .map(
+                (v) =>
+                  `
+                  <div 
+                  class="page"
+                  style="background-image: url(${v["download_url"]})"
+                  >${v["author"]}</div>
                 `
-                <div 
-                class="page"
-                style="background-image: url(${v["download_url"]})"
-                >${v["author"]}</div>
-              `
-            )
-            .join("");
-        }); /////////////// Promise /////////////
+              )
+              .join("");
+              sFn();
+          }); /////////////// Promise /////////////
+            
+          }) 
 
         
         // 로딩중 프라미스 /////
-        const myP = new Promise(sFn=>{
-          window.onload = ()=>{
-            sFn();
-          };
-        });
+       
         
-        myP.then(()=>{
+        .then(()=>{
           document.querySelector("#loading").remove();
           document.querySelector(".wrap").style.opacity = 1;
         })
