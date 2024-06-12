@@ -1,6 +1,8 @@
 // 03.메모이제이션 : useMemo
 
+
 function App() {
+  console.log("리랜더링!!!");
   // 점수관련 후크변수
   const [score, setScore] = React.useState(0);
   // 국적관련 후크변수
@@ -55,7 +57,7 @@ function App() {
   return (
     <header className="header" style={{ textAlign: "center" }}>
       <h1>
-        한국과 일본이 축구를 하고 있습니다!
+        <ShowTit/>
         <br />
         {isKor ? "한국이" : "일본이"} 몇점 차로 승리를 예측합니까?
       </h1>
@@ -109,6 +111,14 @@ function App() {
     </header>
   );
 } /////////// App 컴포넌트 ///////////////
+
+
+
+const ShowTit = React.memo(()=>{
+  console.log("ShowTit 재실행!");
+  return(<h1>한국과 일본이 축구를 하고 있습니다!</h1>);
+});
+
 
 // 출력하기 /////////
 ReactDOM.render(<App />, document.querySelector("#root"));
