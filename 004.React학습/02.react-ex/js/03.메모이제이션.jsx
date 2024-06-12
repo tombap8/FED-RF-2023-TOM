@@ -1,41 +1,45 @@
-// 03.메모이제이션 : useMemo
-
+// 03.메모이제이션 : useMeno
 
 function App() {
-  console.log("리랜더링!!!");
-  // 점수관련 후크변수
+  console.log("App컴포넌트 랜더링");
+
+  // 점수관련 상태변수
   const [score, setScore] = React.useState(0);
-  // 국적관련 후크변수
+  // 국적관련 상태변수
   const [isKor, setIsKor] = React.useState(true);
 
-  // 국적표시 객체
-  // 그냥 일반적인 객체로 만들면 리랜더링시
-  // 변수의 주소가 업데이트됨!
-  // -> 이것이 useEffect에서 변경으로 인식!
+  // 국적표시 객체 //
+  // -> 매번 컴포넌트가 리랜더링 될때마다
+  // 할당되는 객체의 주소값이 변경된다!
   // const nara = {
-  //   country: isKor ? "한국" : "일본",
+  //     country: isKor?"한국":"일본"
   // };
 
-  // 해결방안: useMemo()!!! ///////////////////
+  // 처음 할당된 객체의 주소값을 메모하여! 재사용하면
+  // 다른 상태변수가 변경될때 같은 주소값을 유지하여
+  // nara변수가 변경되지 않도록 한다!
+  // 사용법:
+  // 변수 = React.useMemo(()=>{return객체},[의존성])
   const nara = React.useMemo(() => {
-    // useMemo함수 내부에서 원래 객체를 리턴함!
     return {
       country: isKor ? "한국" : "일본",
     };
-  }, [isKor]); //-> isKor에 의존성을 심어준다!
+  }, [isKor]); // -> isKor에 의존성을 심어준다!
 
-  // 랜더링 상태관리(useEffect) : nara 데이터 변경시
-  // -> nara객체는 isKor 후크변수와 연결됨!
-  // 현재 증상: nara는 isKor에 연결되었으나
+  // 랜더링 상태관리 후크 useEffect 설정
+  // nara객체는 isKor에 의존하고 있음
+  // 따라서 isKor이 변경되면 nara가 변경됨!
+  // [현재 증상]: nara는 isKor에 연결되었으나
   // score에는 연결되어 있지 않음! 그런데 왜? nara에
   // 변경을 관리하는 useEffect에 걸리는 걸까???
   React.useEffect(() => {
-    console.log("nara가 변경됨!!!");
-    // 축구선수이미지 중 해당 나라 이미지가 위로 올라옴
+    console.log("nara가 변경됨!");
+    // 축구선수 이미지 중 해당 나라 이미지가 위로 올라옴
     $("img")
-      .eq(isKor ? 1 : 0) // isKor이 1이면 '손흥민' 즉, 1번째
+      .eq(isKor ? 1 : 0) // isKor이 true 이면 "손흥민" 1번
       .animate({ bottom: "+=50px" }, 300);
-  }, [nara]); ///////// useEffect ////////////////
+    // bottom 기존값에 50px씩 중첩해서 더함!
+  }, [nara]);
 
   /******************************************************** 
     [흔하면서도 재미있는 현상!!!]
@@ -53,19 +57,24 @@ function App() {
     특정하여 정확한 반영을 위해 기존데이터를 재사용해준다!
   ********************************************************/
 
-  // 코드리턴 ///////////
+  /// 코드리턴구역 ///////////
   return (
     <header className="header" style={{ textAlign: "center" }}>
+      {/* 제목 서브컴포넌트 */}
+      <ShowTit txt="한국과 일본이 축구를 하고 있습니다!" />
       <h1>
-        <ShowTit/>
         <br />
         {isKor ? "한국이" : "일본이"} 몇점 차로 승리를 예측합니까?
       </h1>
+      {/* 점수입력창 */}
       <input
         type="number"
         value={score}
         onChange={(e) => setScore(e.target.value)}
-        style={{ fontSize: "40px", textAlign: "center" }}
+        style={{
+          fontSize: "40px",
+          textAlign: "center",
+        }}
       />
 
       <hr />
@@ -75,15 +84,16 @@ function App() {
       {/* 국적변경버튼 */}
       <button
         onClick={() => {
-          // 한국사람여부 반대로 넣기
+          // 한국사람여부 변수(isKor) 반대로 넣기
           setIsKor(!isKor);
-          // 점수차 초기화
+          // 국적변경시 예상점수차 초기화하기
           setScore(0);
         }}
         style={{ fontSize: "40px" }}
       >
         국적변경하기
       </button>
+
       {/* 다나카 */}
       <img
         src="https://i.namu.wiki/i/fNSwm2U4hvUad455bOoiJsczNZDdOmZ3Kl7qUkCGzdMt7ckJB-LRnO7PXPUjWF7ADTuYS9vaTZKsnSNajizvWw.webp"
@@ -110,15 +120,20 @@ function App() {
       />
     </header>
   );
-} /////////// App 컴포넌트 ///////////////
+} ////////////// App 컴포넌트 ///////////////
+
+// 제목을 만들어주는 서브컴포넌트 //////////////
+// -> 초기 셋팅후 변경내용이 없는 서브 컴포넌트가
+// 리랜더링 되지 않도록 하는 방법은? 
+// -> React.memo(()=>{})
+// 주의사항: 컴포넌트가 할당형으로 만들어져야함!
+const ShowTit = React.memo(({ txt }) => {
+  console.log("ShowTit컴포넌트 랜더링");
+  return <h1 style={{ fontSize: "45px" }}>⚽{txt}⚽</h1>;
+}); /////////// ShowTit 컴포넌트 //////////
 
 
-
-const ShowTit = React.memo(()=>{
-  console.log("ShowTit 재실행!");
-  return(<h1>한국과 일본이 축구를 하고 있습니다!</h1>);
-});
-
-
-// 출력하기 /////////
-ReactDOM.render(<App />, document.querySelector("#root"));
+// 리액트 루트객체 생성
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// 화면랜더링
+root.render(<App />);
