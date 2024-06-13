@@ -11,7 +11,7 @@ export function MainArea(props){
     return(
         <>
             {
-                // main or glistrk 아니면 
+                // main or glist 아니면 
                 // 서브 Fashion이동
                 props.page=='main'?<MainCont />:
                 props.page=='glist'?<GList />:
