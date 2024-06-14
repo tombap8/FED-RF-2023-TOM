@@ -24,9 +24,16 @@ export function SwiperApp(props) {
     for (let x = 0; x < num; x++) {
       temp[x] = (
         <SwiperSlide key={x}>
-          <img
-            src={"./images/sub/" + props.cat + "/banner/ban" + (x + 1) + ".png"}
-          />
+          {
+            props.cat=="men"&&x==2?
+            
+            <video src={"./images/sub/" + props.cat + "/banner/cgv.mp4"} style={{width:"100%",height:"100%",objectFit:"cover"}} muted loop autoPlay />:
+            <img
+              src={"./images/sub/" + props.cat + "/banner/ban" + (x + 1) + ".png"}
+            />
+            
+
+          }
         </SwiperSlide>
       );
     } /////////// for /////////////
