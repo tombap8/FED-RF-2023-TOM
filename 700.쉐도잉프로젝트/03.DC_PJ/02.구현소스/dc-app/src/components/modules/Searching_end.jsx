@@ -10,45 +10,43 @@ import "../../css/searching.scss";
 // 데이터 불러오기 : 캐릭터 리스트 데이터
 import { catListData } from "../data/swiper_cat";
 
-
 // 캐릭터 리스트 결과 컴포넌트
 import SearchingCat from "./SearchingCat";
 
-function Searching({kword}) {
-    // kword - 전달받은 키워드
-    console.log("kword:", kword);
-    console.log("data:", catListData);
-const [kw,setKw] = useState(kword);
-const [sort,setSort] = useState("asc");
+function Searching({ kword }) {
+  // kword - 전달받은 키워드
+  console.log("kword:", kword);
+  console.log("data:", catListData);
+  const [kw, setKw] = useState(kword);
+  const [sort, setSort] = useState("asc");
 
-    // 검색어가 있는 데이터 필터하기
-    const newList = catListData.filter(v=>{
-        // 속성중 캐릭터 이름 중 검색(v.cname)
-        // 검색어는 모두 영어일 경우 소문자처리함
-        let newVal = v.cname.toLocaleLowerCase();
-        // 전달받은 키워드도 소문자처리
-        let key = kw.toLocaleLowerCase();
-        // 문자열이 있는 값만 배열로 재수집!
-        if(newVal.indexOf(key) !== -1) return true;
-        // 문자열.indexOf(문자) 문자열위치번호 리턴함
-        // 그런데 결과가 없으면 -1을 리턴함!
-        // 그래서 -1이 아닐경우 true를 리턴하면
-        // filter에서 변수에 저장할 배열로 수집된다!
-    }); //////////////// filter ///////////////////
-    if(sort == "asc"){
-        newList.sort((a,b)=>
-            a.cname < b.cname ? -1 :
-            a.cname > b.cname ? 1 : 0
-        );
-    }
-    else if(sort == "desc"){
-        newList.sort((a,b)=>
-            a.cname < b.cname ? 1 :
-            a.cname > b.cname ? -1 : 0
-        );
-    }
-    console.log("newList:", newList);
-    /* 
+  // 검색어가 있는 데이터 필터하기
+  const newList = catListData.filter((v) => {
+    // 속성중 캐릭터 이름 중 검색(v.cname)
+    // 검색어는 모두 영어일 경우 소문자처리함
+    let newVal = v.cname.toLocaleLowerCase();
+    // 전달받은 키워드도 소문자처리
+    let key = kw.toLocaleLowerCase();
+    // 문자열이 있는 값만 배열로 재수집!
+    if (newVal.indexOf(key) !== -1) return true;
+    // 문자열.indexOf(문자) 문자열위치번호 리턴함
+    // 그런데 결과가 없으면 -1을 리턴함!
+    // 그래서 -1이 아닐경우 true를 리턴하면
+    // filter에서 변수에 저장할 배열로 수집된다!
+  }); //////////////// filter ///////////////////
+
+  // 정렬
+  if (sort == "asc") {
+    newList.sort((a, b) =>
+      a.cname < b.cname ? -1 : a.cname > b.cname ? 1 : 0
+    );
+  } else if (sort == "desc") {
+    newList.sort((a, b) =>
+      a.cname < b.cname ? 1 : a.cname > b.cname ? -1 : 0
+    );
+  }
+  console.log("newList:", newList);
+  /* 
         변수 = 배열.filter(v=>{
             if(v.속성명.indexOf(검색어)!=-1) return true
         })
@@ -73,11 +71,15 @@ const [sort,setSort] = useState("asc");
               title="Open search"
             />
             {/* 입력창 */}
-            <input id="schin" type="text" placeholder="Filter by Keyword"
-            defaultValue={kw}
-            onKeyUp={(e)=>{
-                if(e.key=="Enter") setKw(e.target.value);
-            }} />
+            <input
+              id="schin"
+              type="text"
+              placeholder="Filter by Keyword"
+              defaultValue={kw}
+              onKeyUp={(e) => {
+                if (e.key == "Enter") setKw(e.target.value);
+              }}
+            />
           </div>
           {/* 1-2. 체크박스구역 */}
           <div className="chkbx">
@@ -122,18 +124,22 @@ const [sort,setSort] = useState("asc");
           <h2 className="restit">BROWSE CHARACTERS</h2>
           {/* 2-2. 정렬선택박스 */}
           <aside className="sortbx">
-            <select name="sel" id="sel" className="sel"
-            onChange={(e)=>{
+            <select
+              name="sel"
+              id="sel"
+              className="sel"
+              onChange={(e) => {
                 setSort(e.target.value);
                 console.log(e.target.value);
-            }}>
+              }}
+            >
               <option value="asc">A-Z</option>
               <option value="desc">Z-A</option>
             </select>
           </aside>
           {/* 2-3. 캐릭터 리스트 컴포넌트 : 
             데이터 상태변수 중 첫번째값만 보냄 */}
-            <SearchingCat dt={newList} />
+          <SearchingCat dt={newList} />
         </div>
       </section>
     </>

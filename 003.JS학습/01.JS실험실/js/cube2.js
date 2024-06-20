@@ -22,9 +22,9 @@
 import domFn from "./dom.js";
 
 // 데이터 제이슨 불러오기 : 어서써 타입 제이슨!
-import mvData from './data_moving.json' assert{type:'json'};
+import mvData from './data_moving.json' with{type:'json'};
 
-// console.log(mvData);
+console.log(mvData);
 
 // 0. 변수셋팅
 // 단위각도
