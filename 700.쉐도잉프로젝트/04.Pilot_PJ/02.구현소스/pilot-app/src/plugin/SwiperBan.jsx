@@ -18,16 +18,15 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export function SwiperBan({ cat }) {
   // cat - 카테고리명
-  console.log("배너카테고리명:",cat);
+  console.log("배너카테고리명:", cat);
   const swp = useRef(null);
 
-  useLayoutEffect(()=>{
-    if(swp.current){ 
-      swp.current.slideTo(0,0);
+  useLayoutEffect(() => {
+    if (swp.current) {
+      swp.current.slideTo(0, 0);
     }
 
     console.log(swp.current);
-
   });
 
   // 리스트만들기 함수 ////
@@ -43,8 +42,8 @@ export function SwiperBan({ cat }) {
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
               muted
               // loop
-              className={cat+"-vid"}
-            //   autoPlay
+              className={cat + "-vid"}
+              //   autoPlay
             />
           ) : (
             <img
@@ -64,11 +63,10 @@ export function SwiperBan({ cat }) {
     <>
       <Swiper
         /* ref 속성에 useRef 할당변수를 넣어서 외부에 연결함 */
-        onInit={(s)=>{
+        onInit={(s) => {
           swp.current = s;
         }}
-
-        onActiveIndexChange={()=>{
+        onActiveIndexChange={() => {
           console.log("ㅋㅋ~!");
         }}
         slidesPerView={1}
@@ -86,33 +84,38 @@ export function SwiperBan({ cat }) {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
         // 슬라이드 이동후 실행코드구역
-        onSlideChange={(swp)=>{
-            // swp는 내부로 전달되는 스와이퍼 자신객체
-            // activeIndex는 loop시 오류있음
-            // realIndex는 loop에도 잘 나옴!
+        onSlideChange={(swp) => {
+          // swp는 내부로 전달되는 스와이퍼 자신객체
+          // activeIndex는 loop시 오류있음
+          // realIndex는 loop에도 잘 나옴!
 
-            // style에는 없으므로 여기서 리턴
-            if(cat == "style") return;
+          // style에는 없으므로 여기서 리턴
+          if (cat == "style") return;
 
-            // 현재 진짜순번
-            let idx = swp.realIndex;
-            console.log("슬라이드순번:",idx);
+          // 현재 진짜순번
+          let idx = swp.realIndex;
+          console.log("슬라이드순번:", idx);
 
-            let vidObj = document.querySelector(`.${cat}-vid`);
+          let vidObj = document.querySelector(`.${cat}-vid`);
 
-            if(idx == 0){
-               vidObj.play();
-               vidObj.addEventListener("timeupdate",(e)=>{
-                  console.log(e.target.paused);
+          if (idx == 0) {
+            vidObj.play();
+            swp.autoplay.stop();
+            swp.autoplay.running = false;
 
-                  if(e.target.paused)
-                  swp.current.autoplay.start();
-                })
-            }
-            else{
-               vidObj.pause();
-                swp.current.autoplay.stop();
-            }
+
+            vidObj.addEventListener("timeupdate", (e) => {
+              console.log(e.target.paused);
+
+              if (e.target.paused) {
+                swp.slideNext();
+                swp.autoplay.start();
+                swp.autoplay.running = true;
+              }
+            });
+          } else {
+            vidObj.pause();
+          }
         }}
       >
         {makeList(cat == "style" ? 5 : 3)}
