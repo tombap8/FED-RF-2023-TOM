@@ -6,7 +6,7 @@ import "./css/index.css";
 
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, BrowserRouter, Route, Routes} from "react-router-dom"
+import { HashRouter, BrowserRouter, Route, Routes, useLocation} from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
 import { Main } from "./components/pages/Main";
 import { Character } from "./components/pages/Charactor";
@@ -22,6 +22,7 @@ import { SchPage } from "./components/pages/SchPage";
 import { Member } from "./components/pages/Member";
 import { Login } from "./components/pages/Login";
 import { Board } from "./components/pages/Board";
+import { useEffect } from "react";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -62,6 +63,9 @@ export default function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
     {/* <BrowserRouter> */}
     
+    {/* 라우터 변경시 상단이동 */}
+    <ScrollTop />
+    
     {/* basename 을 안써도 HashRouter는 package.json의 homepage 속성값을 
     자동으로 연결함 */}
     {/* <HashRouter> */}
@@ -90,6 +94,27 @@ export default function App() {
     </BrowserRouter>
   );
 } ///////////// App 컴포넌트 ///////////////////
+
+
+///////////////////////////////////////
+// 컴포넌트로 만들고 라우터안에 넣고 ////
+// 라우터 경로변경시 스크롤 최상단이동 //
+//////////////////////////////////////
+const ScrollTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // 스크롤 최상단 이동
+    window.scrollTo(0, 0);
+    // 변경되 라우터 경로 확인
+    console.log(pathname);
+  }, [pathname]);
+  // 의존성을 라우터경로 변수로 만들어준다!
+
+  // 컴포넌트라서 리턴하지만 실제로는 null리턴
+  return null;
+}; ////////////// ScrollTop ////////////////////
+
 
 // 컴포넌트 출력 //////////
 // 먼저 root객체만들고
