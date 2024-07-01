@@ -74,18 +74,21 @@ export function Member() {
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ///////////
   const changeUserId = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+    
     // 1. 아이디 유효성 검사식(따옴표로 싸지 말것!)
     const valid = /^[A-Za-z0-9+]{5,}$/;
 
     // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
-    // console.log(e.target.value);
+    // console.log(val);
 
     // 3. 에러아님 상태 if문
     // 조건 : 유효성 검사 결과가 true인가? 에러상태아니면 false
     // 검사방법 : 정규식.test() -> 정규식 검사결과 리턴메서드
     // 결과 : true이면 에러상태값 false
     //       (false이면 에러상태값 true)
-    if (valid.test(e.target.value)) {
+    if (valid.test(val)) {
       // 1.사용중 아이디인지 검사(로컬쓰 셋팅후 추가!)
       // 로컬스토리지 체크함수호출(없으면 생성함!)
       initData();
@@ -102,7 +105,7 @@ export function Member() {
       // 4. 검사돌리기
       memData.forEach(v=>{
         // 기존아이디와 같은 경우
-        if(v.uid===e.target.value){
+        if(v.uid===val){
             // 메시지변경
             setIdMsg(msgId[1]);
             // 아이디에러상태값 업데이트
@@ -122,66 +125,78 @@ export function Member() {
 
     } //////////////// if ////////////////
     // 에러일때 ////////////
-    else {
+    else{
       setUserIdError(true);
     } /////////////// else ///////////////
 
     // 4. 실제 userId 상태변수값이 업데이트 되어야만 화면에 출력됨
-    setUserId(e.target.value);
+    setUserId(val);
   }; ///////// changeUserId 함수 //////////
 
   // 2. 비밀번호 유효성 검사 ///////////
   const changePwd = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+
     // 1. 비밀번호 유효성 검사식(따옴표로 싸지 말것!)
     const valid = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
     // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
-    // console.log(e.target.value);
+    // console.log(val);
 
     // 3. 에러에 따른 상태값 변경
-    if (valid.test(e.target.value)) setPwdError(false);
+    if (valid.test(val)) setPwdError(false);
     else setPwdError(true);
 
     // 4. 기존입력값 반영하기
-    setPwd(e.target.value);
-  }; ///////// changeUserId 함수 //////////
+    setPwd(val);
+  }; ///////// changePwd 함수 //////////
 
   // 3. 비밀번호확인 유효성 검사 ///////////
   const changeChkPwd = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+    
     // 1. 비밀번호 입력내용과 일치여부 확인
-    if (pwd === e.target.value) setChkPwdError(false);
+    if (pwd === val) setChkPwdError(false);
     else setChkPwdError(true);
 
     // 2. 기존입력값 반영하기
-    setChkPwd(e.target.value);
-  }; ///////// changeUserId 함수 //////////
+    setChkPwd(val);
+  }; ///////// changeChkPwd 함수 //////////
 
   // 4. 사용자이름 유효성 검사 ///////////
   const changeUserName = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+    
     // 1. 빈값체크
-    if (e.target.value !== "") setUserNameError(false);
+    if (val !== "") setUserNameError(false);
     else setUserNameError(true);
 
     // 2. 기존입력값 반영하기
-    setUserName(e.target.value);
-  }; ///////// changeUserId 함수 //////////
+    setUserName(val);
+  }; ///////// changeUserName 함수 //////////
 
   // 5. 이메일 유효성 검사 ///////////
   const changeEmail = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+    
     // 1. 이메일 유효성 검사식(따옴표로 싸지 말것!)
     const valid =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 
     // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
-    // console.log(e.target.value);
+    // console.log(val);
 
     // 3. 에러에 따른 상태값 변경
-    if (valid.test(e.target.value)) setEmailError(false);
+    if (valid.test(val)) setEmailError(false);
     else setEmailError(true);
 
     // 4. 기존입력값 반영하기
-    setEmail(e.target.value);
-  }; ///////// changeUserId 함수 //////////
+    setEmail(val);
+  }; ///////// changeEmail 함수 //////////
 
   // [ 전체 유효성검사 체크함수 ] ///////////
   const totalValid = () => {
