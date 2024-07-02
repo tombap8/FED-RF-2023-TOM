@@ -24,12 +24,14 @@ export function Login() {
   const [userId, setUserId] = useState("");
   // 2. 비밀번호변수
   const [pwd, setPwd] = useState("");
+
   // [2] 에러상태관리 변수
   // -> 에러상태값 초기값은 에러아님(false)
   // 1. 아이디변수
   const [userIdError, setUserIdError] = useState(false);
   // 2. 비밀번호변수
   const [pwdError, setPwdError] = useState(false);
+  
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
     "This is a required entry", //필수입력
