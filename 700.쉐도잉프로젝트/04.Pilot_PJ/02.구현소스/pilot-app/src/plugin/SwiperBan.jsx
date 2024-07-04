@@ -113,8 +113,9 @@ export function SwiperBan({ cat }) {
                 swp.autoplay.running = true;
               }
             });
-          } else {
-            vidObj.pause();
+          } else {            
+            let playPromise = vidObj.play();
+            if(playPromise !== undefined) playPromise.then(()=>vidObj.pause());
           }
         }}
       >
