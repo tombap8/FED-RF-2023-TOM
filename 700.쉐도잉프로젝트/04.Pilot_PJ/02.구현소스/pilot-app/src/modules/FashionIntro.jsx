@@ -49,7 +49,7 @@ export function FashionIntro(props) {
           props.subcat === 'etc' &&
           <li className="imgc">
             <img
-              src={props.cat == "style" ? selData.isrc[0] : selData.isrc}
+              src={process.env.PUBLIC_URL+(props.cat == "style" ? selData.isrc[0] : selData.isrc)}
               alt={props.cat == "style" ? selData.ialt[0] : selData.ialt}
             />
           </li>
@@ -87,7 +87,7 @@ export function FashionIntro(props) {
         {/* 스타일 패션에서만 나오는 이미지 */}
         {props.cat == "style" && (
           <li className="imgc">
-            <img src={selData.isrc[1]} alt={selData.ialt[1]} />
+            <img src={process.env.PUBLIC_URL+selData.isrc[1]} alt={selData.ialt[1]} />
           </li>
         )}
 
@@ -107,7 +107,7 @@ export function FashionIntro(props) {
             {/* 이미지박스 */}
             <li className="imgc sc-ani">
               <img
-                src={selData.isrc}
+                src={process.env.PUBLIC_URL+selData.isrc}
                 alt={selData.ialt}
               />
             </li>
@@ -119,7 +119,7 @@ export function FashionIntro(props) {
           {/* 이미지박스 */}
           <li className="imgc sc-ani">
               <img
-                src={selData.isrc[0]}
+                src={process.env.PUBLIC_URL+selData.isrc[0]}
                 alt={selData.ialt[0]}
               />
             </li>
@@ -141,7 +141,7 @@ export function FashionIntro(props) {
             {/* 이미지박스 */}
             <li className="imgc sc-ani">
               <img
-                src={selData.isrc[1]}
+                src={process.env.PUBLIC_URL+selData.isrc[1]}
                 alt={selData.ialt[1]}
               />
             </li>

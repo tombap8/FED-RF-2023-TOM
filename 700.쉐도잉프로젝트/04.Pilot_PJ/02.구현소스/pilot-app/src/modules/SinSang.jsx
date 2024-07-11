@@ -9,7 +9,7 @@ import { sinsangData } from "../data/sinsang";
 
 import $ from "jquery";
 
-export function SinSang({ cat, chgItemFn }) {
+export function SinSang({ cat, chgItemFn, setPos }) {
   // cat - 카테고리 분류명
   // chgItemFn - 선택상품정보변경 부모함수
 
@@ -53,10 +53,16 @@ export function SinSang({ cat, chgItemFn }) {
             onClick={(e) => {
               e.preventDefault();
               chgItemFn("m" + (x + 1));
+              // setTimeout(()=>{
+                console.log("요기요기");
+                let pos = $(".bgbx").offset().top-95;
+                setPos(pos)
+                $("html,body").animate({scrollTop:pos+"px"},500);
+              // },100);
             }}
           >
             <img
-              src={"./images/goods/" + cat + "/m" + (x + 1) + ".png"}
+              src={process.env.PUBLIC_URL+"/images/goods/" + cat + "/m" + (x + 1) + ".png"}
               alt="신상품"
             />
           </a>

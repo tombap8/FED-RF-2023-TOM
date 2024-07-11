@@ -199,11 +199,20 @@ export function Fashion(props) {
         <SwiperApp cat={myCon.pgName} />
       </section>
       {/* 2. 신상품영역 */}
-      <section id="c1" className={"cont sc-ani c1 " + myCon.pgName}>
-        <SinSang cat={myCon.pgName} chgItemFn={chgItem} />
+      <section id="c1" className={"cont sc-ani c1 " + myCon.pgName} 
+      style={{
+        position:"relative",
+        zIndex:"999"}}>
+        <SinSang cat={myCon.pgName} chgItemFn={chgItem} setPos={setPos} />
       </section>
       {/* 2.5. 상세보기박스 */}
-      <div className="bgbx">
+      <div className="bgbx" onClick={e=>{
+        let pos = window.scrollY - 
+        e.currentTarget.offsetHeight;
+        console.log(pos);
+        setPos(pos);
+        $("html,body").animate({scrollTop: pos+"px"},400);
+        }}>
         <ItemDetail goods={item} cat={props.cat} />
       </div>
       {/* 3. 패럴랙스 영역 : 리액트용 패럴랙스 적용 */}
@@ -211,7 +220,8 @@ export function Fashion(props) {
         <Parallax
           className="c2"
           // 패럴랙스할 배경이미지 설정속성 bgImage
-          bgImage={"./images/sub/" + props.cat + "/02.special.png"}
+          bgImage={process.env.PUBLIC_URL+"/images/sub/" + 
+          props.cat + "/02.special.png"}
           // 패럴랙스 이동정도 조정속성 strength
           // 수치범위 :  -500 ~ 1000 -> 높은 숫자는 반대방향
           strength={200}

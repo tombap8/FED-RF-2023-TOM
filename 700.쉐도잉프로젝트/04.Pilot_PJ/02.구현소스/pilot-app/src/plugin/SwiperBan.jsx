@@ -38,7 +38,7 @@ export function SwiperBan({ cat }) {
         <SwiperSlide key={x}>
           {(cat == "men" || cat == "women") && x == 0 ? (
             <video
-              src={"./images/sub/" + cat + "/banner/mv.mp4"}
+              src={process.env.PUBLIC_URL+"/images/sub/" + cat + "/banner/mv.mp4"}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
               muted
               // loop
@@ -47,7 +47,7 @@ export function SwiperBan({ cat }) {
             />
           ) : (
             <img
-              src={"./images/sub/" + cat + "/banner/ban" + (x + 1) + ".png"}
+              src={process.env.PUBLIC_URL+"/images/sub/" + cat + "/banner/ban" + (x + 1) + ".png"}
             />
           )}
         </SwiperSlide>

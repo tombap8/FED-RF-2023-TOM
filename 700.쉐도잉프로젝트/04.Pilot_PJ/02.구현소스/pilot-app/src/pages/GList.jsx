@@ -93,7 +93,7 @@ export function GList() {
           >
             [{i + 1}]
             <img
-              src={"./images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+              src={process.env.PUBLIC_URL+"/images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
               alt="dress"
             />
             <aside>
@@ -147,7 +147,7 @@ export function GList() {
               [{i + 1}]
               <img
                 src={
-                  "./images/goods/" +
+                  process.env.PUBLIC_URL+"/images/goods/" +
                   gdata[i].cat +
                   "/" +
                   gdata[i].ginfo[0] +
@@ -199,7 +199,7 @@ export function GList() {
               [{i + 1}]
               <img
                 src={
-                  "./images/goods/" +
+                  process.env.PUBLIC_URL+"/images/goods/" +
                   gdata[i].cat +
                   "/" +
                   gdata[i].ginfo[0] +
