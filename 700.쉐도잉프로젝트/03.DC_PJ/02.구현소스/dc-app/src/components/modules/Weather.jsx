@@ -107,7 +107,7 @@ class Weather extends Component {
     // render()
     render(){
         // 아이콘 정보
-        const isrc = `http://openweathermap.com/img/w/${this.state.icon}.png`;
+        const isrc = `https://openweathermap.com/img/w/${this.state.icon}.png`;
 
         // 로딩중 loading값이 true이면
         if(this.state.loading){
