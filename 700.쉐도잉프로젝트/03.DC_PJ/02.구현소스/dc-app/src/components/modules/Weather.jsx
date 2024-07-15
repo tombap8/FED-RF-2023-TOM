@@ -38,10 +38,10 @@ class Weather extends Component {
         // 2. 날씨정보조회 키코드(로그인사용자 키복사)
         const apiKey = '7fdf8fb74f3e2ed02bfb7e298a32df49';
         // 3. 날씨정보조회 url : 날씨정보 제이슨이 날아온다!
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
 
         // 브라우저에 검증
-        // http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=7fdf8fb74f3e2ed02bfb7e298a32df49
+        // https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=7fdf8fb74f3e2ed02bfb7e298a32df49
 
         // 소스샘플
         // https://openweathermap.org/api/one-call-3
