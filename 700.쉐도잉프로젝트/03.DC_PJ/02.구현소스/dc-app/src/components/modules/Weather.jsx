@@ -148,6 +148,10 @@ class Weather extends Component {
     } //////////// render 메서드 //////////////////
 
 
+    /****************************************************** 
+        도시명을 브라우저 기반 정보로 가져오려면 아래글 참조        
+        https://cloudcie.tistory.com/entry/Javascript-geocoding-%EC%9D%B4%EC%9A%A9-%EC%9C%84%EB%8F%84-%EA%B2%BD%EB%8F%84-%EA%B8%B0%EB%B0%98-%EB%8F%84%EC%8B%9C-%EC%9D%B4%EB%A6%84-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
+    ******************************************************/
 
 
 
