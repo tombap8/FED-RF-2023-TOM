@@ -28,6 +28,16 @@ class Weather extends Component {
     // 컴포넌트 생성후 날씨정보 조회하여 화면에 보이기
     // 함수형 컴포넌트에서는 랜더링후는 useEffect()이지만
     // 클래스형은 componentDidMount() 메서드 사용함!
+
+    // 참고) 함수형 컴포넌트의 후크인 useEffect()는
+    // 클래스형 컴포넌트의 아래 3가지가 통합된 것이다!
+    // (1) componentDidMount : 컴포넌트 생성후
+    // 후크비교 -> useEffect(()=>{},[]) : 처음 한번만 실행
+    // (2) componentDidUpdate : 컴포넌트 업데이트후
+    // 후크비교 -> useEffect(()=>{}) : 매번 리랜더링 후 실행
+    // (3) componentWillUnmount : 컴포넌트 소멸후
+    // 후크비교 -> useEffect(()=>{return(()=>{})},[]) : 소멸자로 소멸후 실행
+
     componentDidMount(){
 
         // [ 날씨조회 정보 사이트 ]
