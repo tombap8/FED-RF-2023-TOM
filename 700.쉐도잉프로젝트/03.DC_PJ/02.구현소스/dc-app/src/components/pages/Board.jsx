@@ -261,7 +261,7 @@ export function Board() {
 
     // [ 페이징의 페이징 하기 ]
     // [1] 페이징 블록 - 한 페이징블록수 : pgPgBlock 변수(4)
-    // [2] 페이징 현재 페이지번호 : pgPgNum 변수(기본값1)
+    // [2] 페이징의 페이징 현재번호 : pgPgNum 변수(기본값1)
 
     // 리액트에서는 jsx문법 코드를 배열에 넣고
     // 출력하면 바로 코드로 변환된다!!!
@@ -389,7 +389,7 @@ export function Board() {
     // opt가 false이면 맨끝이동
     else newPgPgNum = dir; // dir에 첫번호/끝번호옴!
 
-    // 새 페이지번호 : (전페이지 끝번호) + 1
+    // 새 페이지번호 : (새페이지 끝번호) + 1
     const newPgNum = (newPgPgNum - 1) * pgPgBlock + 1;
 
     // 페이징의 페이징번호 업데이트
