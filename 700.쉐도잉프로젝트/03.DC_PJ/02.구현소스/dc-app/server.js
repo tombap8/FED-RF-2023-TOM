@@ -54,7 +54,7 @@ const upload = multer({ storage: storage });
 // -> upload는 폴더명이 아니고 작업명이다!!!
 // -> 두번째 항목은 전송종류를 설정 : 파일전송은 'file'
 // -> 세번째는 내부전달 변수인 요청,응답에 대한 함수
-app.post("/upload", upload.single("file"), 
+app.post("/FED-RF-2023-TOM/700.%EC%89%90%EB%8F%84%EC%9E%89%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.DC_PJ/02.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/dc-app/build", upload.single("file"), 
 (req, res) => {
   console.log(req.file);
 });
@@ -75,7 +75,7 @@ app.listen(8080, function () {
 // 서버 루트폴더 정적연결하기!(루트 정하기)
 // -> SPA에서 빌드하면 배포용 소스가 build폴더에 생성되므로
 // 이 배포용 폴더를 Root로 잡으면 편하다!!!
-app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.static(path.join(__dirname, "/FED-RF-2023-TOM/700.%EC%89%90%EB%8F%84%EC%9E%89%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.DC_PJ/02.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/dc-app/build")));
 // -> SPA 앱 빌드시 유의사항 : package.json파일에
 // home:'http://localhost:8080' 를 등록하여 사용함!!!
 // localhost는 127.0.0.1 내부호출 아이피와 동일함!
@@ -84,7 +84,7 @@ app.use(express.static(path.join(__dirname, "/build")));
 // -> get방식으로 연결하기 때문에 get()메서드 사용!
 app.get("/", function (request, response) {
   // 내부로 전달되는 값은 처음것이 요청, 두번째가 응답임!
-  response.sendFile(path.join(__dirname), "/build/index.html");
+  response.sendFile(path.join(__dirname), "/FED-RF-2023-TOM/700.%EC%89%90%EB%8F%84%EC%9E%89%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.DC_PJ/02.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/dc-app/build/index.html");
   // 첫페이지는 요청에 대한 응답임! 파일을 내려보내주니까
   // sendFile() 메서드사용!
 });
