@@ -625,7 +625,7 @@ export function Board() {
         // path값과 같은 upload라는 하위 경로를 써준다!
         // 두번째 셋팅값은 서버로 전송될 파일정보를 써준다!
         axios
-          .post("http://localhost:8080/upload", formData)
+          .post("http://localhost:8080/xxx", formData)
           .then((res) => {
             // res는 성공결과 리턴값 변수
             const { fileName } = res.data;
@@ -1124,9 +1124,16 @@ export function Board() {
               <tr>
                 <td>Attachment</td>
                 <td>
-                  <a href={'/uploads/'+cData.current.att} download={true}>
+                  <a href={'../build/uploads/'+cData.current.att} download={cData.current.att}>
                     {cData.current.att}
                   </a>
+                  {
+                    cData.current.att.split('.')[1] == "png"&&
+                    <div>
+                      <img src={'../build/uploads/'+cData.current.att} alt="image" style={{width:"100%"}}/>
+
+                    </div>
+                  }
                 </td>
               </tr>
             </tbody>

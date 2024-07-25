@@ -54,21 +54,13 @@ const upload = multer({ storage: storage });
 // -> upload는 폴더명이 아니고 작업명이다!!!
 // -> 두번째 항목은 전송종류를 설정 : 파일전송은 'file'
 // -> 세번째는 내부전달 변수인 요청,응답에 대한 함수
-app.post("/build", upload.single("file"), 
+app.post("/xxx", upload.single("file"), 
 (req, res) => {
   console.log(req.file);
 });
 
-// 전송파일 인코딩 변환설정
-app.use(express.urlencoded({extended:true})); 
-// url : Uniform Resource 
-app.use(express.json());
-
-
-
-
 // 기본 포트 연결하기
-app.listen(3000, function () {
+app.listen(8080, function () {
   console.log("8080포트로 연결됨!");
 });
 

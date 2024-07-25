@@ -1,0 +1,54 @@
+https://charming-kyu.tistory.com/46
+
+mkcert -install
+명령어를 실행하려면 먼저 exe파일을 본 프로젝트에 설치하자
+https://mungkhs1.tistory.com/64
+설치다운로드 주소: https://github.com/FiloSottile/mkcert/releases
+
+
+HTTP vs HTTPS
+Http는 Hyper Text Transfer Protocol의 약자로 네트워크를 통해 데이터를 전송하기 위한 프로토콜입니다. 
+Https의 S는 TLS 또는 SSL을 사용하여 HTTP 요청 및 응답 을 암호화하는 보안을 나타냅니다.
+
+따라서 Http만 사용할 경우 네트워크에서 누군가 요청에 달린 데이터를 가로챌 수 있지만,
+Https를 사용하면 암호화된 임의의 문자열만 보이게 됩니다.
+
+
+cloudflare.com의 HTTP vs HTTPS
+Https가 작동하려면 공개키 암호화(비대칭 암호 알고리즘)가 사용됩니다.
+이 유형의 암호화는 두 개의 키를 사용합니다.
+Public Key : 공개키는 서버의 SSL 인증서를 통해 클라이언트에게 공유됩니다.
+Private Key : 개인키(비밀키)는 서버만 가지고 있는 키이고 클라이언트로 받은 암호화된 정보를 복호화할 때 사용됩니다.
+
+
+geeksforgeeks.org 비대칭 암호화
+따라서 localhost에서 https를 사용하려면 public key와 별도의 private key를 포함하는 인증서를 만들어야 합니다.
+인증서가 유효하려면 사용 중인 사이트가 신뢰할 수 있음을 확인하는 인증 기관(CA)에서
+도메인(localhost / 127.0.01)에 대해 발급받아야 합니다.
+
+위 작업을 수행하기 위해 로컬에서 신뢰할 수 있는 인증서를 만들기 위해 mkcert를 설치합니다.
+
+ 
+
+mkcert
+mkcert를 전역적으로 설치합니다.
+
+npm install -g mkcert
+이제 CA(Certificate Authority)를 만들겠습니다.
+
+mkcert create-ca
+명령을 입력하면 실행한 곳에서 두가지 파일이 생성됩니다.
+ca.key - CA private key
+ca.crt - CA certificate
+
+원래 Private Key는 안전한 위치에 저장하는 것이 중요하지만 설명하기 위해 위치를 변경하지 않겠습니다.
+CA를 생성했으므로 다음 단계는 localhost 도메인의 인증서를 만들어야합니다.
+아래와 같이 인증서를 만들 수 있습니다.
+
+mkcert create-cert
+원래 create-cert에 대한 다양한 옵션이 있습니다.
+다만 도메인이 localhost일 경우 다른 옵션 없이 기본 값 옵션으로 명령을 수행해도 괜찮습니다.
+이렇게해서 인증서(cert.crt)와 개인키(cert.key)가 생성되었습니다.
+
+이제 필요한 파일이 있으므로 다음 단계는 cert.key 와 cery.crt 파일을 프로젝트에 복사합니다.
+
