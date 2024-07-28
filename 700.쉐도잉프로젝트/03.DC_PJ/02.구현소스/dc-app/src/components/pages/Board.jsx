@@ -1124,13 +1124,13 @@ const imgExt = ["jpg","png","gif"];
               <tr>
                 <td>Attachment</td>
                 <td>
-                  <a href={'./uploads/'+cData.current.att} download={cData.current.att}>
+                  <a href={process.env.PUBLIC_URL+'/uploads/'+cData.current.att} download={cData.current.att}>
                     {cData.current.att}
                   </a>
                   {
                     imgExt.includes(cData.current.att.split('.')[1]) &&
                     <div>
-                      <img src={'./uploads/'+cData.current.att} alt="image" style={{width:"100%"}}/>
+                      <img src={process.env.PUBLIC_URL+'/uploads/'+cData.current.att} alt="image" style={{width:"100%"}}/>
 
                     </div>
                   }
