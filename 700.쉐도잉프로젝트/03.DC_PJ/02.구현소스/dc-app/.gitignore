@@ -13,7 +13,6 @@
 
 # auth
 /mkcert
-/.pem
 
 # misc
 .DS_Store

@@ -942,7 +942,7 @@ export function Board() {
       rawData();
     }; ///// return 소멸자 /////
   }, []); /////// useEffect /////////
-
+const imgExt = ["jpg","png","gif"];
   // 리턴코드 ////////////////////
   return (
     <>
@@ -1124,13 +1124,13 @@ export function Board() {
               <tr>
                 <td>Attachment</td>
                 <td>
-                  <a href={'../build/uploads/'+cData.current.att} download={cData.current.att}>
+                  <a href={'./uploads/'+cData.current.att} download={cData.current.att}>
                     {cData.current.att}
                   </a>
                   {
-                    cData.current.att.split('.')[1] == "png"&&
+                    imgExt.includes(cData.current.att.split('.')[1]) &&
                     <div>
-                      <img src={'../build/uploads/'+cData.current.att} alt="image" style={{width:"100%"}}/>
+                      <img src={'./uploads/'+cData.current.att} alt="image" style={{width:"100%"}}/>
 
                     </div>
                   }
