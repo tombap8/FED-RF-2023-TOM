@@ -11,6 +11,10 @@
 # production
 # /build
 
+# auth
+/mkcert
+/.pem
+
 # misc
 .DS_Store
 .env.local
