@@ -30,6 +30,7 @@ const storage = multer.diskStorage({
     destination: function(req,file,setPath){
         // 여기에 파일저장위치를 지정함!
         setPath(null,"public/uploads/");
+        // -> 아래는 실서버 배포시 변경용코드![1]
         // setPath(null,"build/uploads/");
         // 여기지정하면 자동으로 uploads파일을 만들지 않음!
     },
@@ -52,7 +53,7 @@ const upload = multer({ storage: storage });
 // 파일업로드는 POST방식으로 진행함!
 // 익스프레스 서버 메서드에 post()메서드로 설정함!
 // -> 첫번째값은 루트아래에 업로드관련 post전송을 선택
-// -> upload는 폴더명이 아니고 작업명이다!!!
+// -> xxx는 폴더명이 아니고 작업명이다!!!
 // -> 두번째 항목은 전송종류를 설정 : 파일전송은 'file'
 // -> 세번째는 내부전달 변수인 요청,응답에 대한 함수
 app.post("/xxx", upload.single("file"), 
@@ -69,6 +70,7 @@ app.listen(8080, function () {
 // -> SPA에서 빌드하면 배포용 소스가 build폴더에 생성되므로
 // 이 배포용 폴더를 Root로 잡으면 편하다!!!
 app.use(express.static(path.join(__dirname, "/public")));
+// -> 아래는 실서버 배포시 변경용코드![2]
 // app.use(express.static(path.join(__dirname, "/build")));
 // -> SPA 앱 빌드시 유의사항 : package.json파일에
 // home:'http://localhost:8080' 를 등록하여 사용함!!!
@@ -79,6 +81,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.get("/", function (request, response) {
   // 내부로 전달되는 값은 처음것이 요청, 두번째가 응답임!
   response.sendFile(path.join(__dirname), "/public/index.html");
+  // -> 아래는 실서버 배포시 변경용코드![3]
   // response.sendFile(path.join(__dirname), "/build/index.html");
   // 첫페이지는 요청에 대한 응답임! 파일을 내려보내주니까
   // sendFile() 메서드사용!
