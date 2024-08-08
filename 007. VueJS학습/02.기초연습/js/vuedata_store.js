@@ -13,12 +13,12 @@
       ____________________________________________
 
       ((해결방법!))
-      import 변수 from 제이슨파일경로 assert{type:"json"}
+      import 변수 from 제이슨파일경로 width {type:"json"}
 
-      assert{type:"json"} -> import시 형식을 지정해주는 객체!
-      이것으로 제이슨 형식을 맞춰서 전송타입 오류를 없앤다!!!
+      assert{type:"json"} -> 이 문법은 2023년 폐기됨!(에러남)
 */
-import jsnData from "./goods.json" assert{type:"json"};
+// import jsnData from "./goods.json" assert{type:"json"};->에러!
+import jsnData from "./goods.json" with {type:"json"};
 
 
 
