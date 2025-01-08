@@ -4,7 +4,6 @@
 //JS에서 사용되는 한줄 주석도 지원한다!
 /* 여러줄 주석도 사용함 */
 
-
 // 2. 사스 확장자 별 파일구분
 // .scss - 사스관리파일
 // .css.map - 사스파일과 css연결정보 파일
@@ -20,7 +19,6 @@
 @import "data/variables";
 @import "common/reset";
 
-
 // 4. 사스 변수사용하기
 // 변수도 간단히 쓸수 있다 -> $변수명:값
 // 변수범위 : 중첩된 하위요소에 상속되어 적용함
@@ -34,194 +32,212 @@ $fontSize1: 38px;
 // 설정셋
 
 .wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 // 5. 믹스인 : 일종의 설정함수
 // 호출시엔 @include 사용
-@mixin box-border($bdColor){
-    border: {
-        color: $bdColor;
-        style: dashed;
-        width: 7px
-    }
+@mixin box-border($bdColor) {
+  border: {
+    color: $bdColor;
+    style: dashed;
+    width: 7px;
+  }
 }
 // @mixin 셋팅함수 - 전달값 있을때만 소괄호함
 // 전달값이 있는데 안보내면 기본값 지정가능함!
-@mixin title-text($selColor:red,$showSts:false){
-    color: $selColor;
-    margin-bottom: $fontSize1;
-    font: {
-        size: $fontSize1;
-        family: "Times New Roman";
-    }
+@mixin title-text($selColor: red, $showSts: false) {
+  color: $selColor;
+  margin-bottom: $fontSize1;
+  font: {
+    size: $fontSize1;
+    family: "Times New Roman";
+  }
 
-    text: {
-        align: center;
-        decoration: underline;
-        underline-offset: 10px;
-        shadow: 5px 5px 4px #00000078;
+  text: {
+    align: center;
+    decoration: underline;
+    underline-offset: 10px;
+    shadow: 5px 5px 4px #00000078;
+  }
+  @if $showSts {
+    &::before {
+      content: "❤️";
     }
-    @if $showSts {
-        &::before {
-            content: '❤️';
-        }
-    }
+  }
 }
 
 .top-area {
-    color: $mainColor1;
-    h1{
-        padding: 20px;
-        // 믹스인 한번에 묶어서 불러오기
-        @include title-text($fontColor1,true);
-        // color: $fontColor1;
-        /* 시작이 같은 속성은 묶어서 표현 */
-        // font: {
-        //     size: $fontSize1;
-        //     family: "Times New Roman";
-        // }
+  color: $mainColor1;
+  h1 {
+    padding: 20px;
+    // 믹스인 한번에 묶어서 불러오기
+    @include title-text($fontColor1, true);
+    // color: $fontColor1;
+    /* 시작이 같은 속성은 묶어서 표현 */
+    // font: {
+    //     size: $fontSize1;
+    //     family: "Times New Roman";
+    // }
 
-        // text: {
-        //     align: center;
-        //     decoration: underline;
-        //     underline-offset: 10px;
-        //     shadow: 5px 5px 4px #000;
-        // }
+    // text: {
+    //     align: center;
+    //     decoration: underline;
+    //     underline-offset: 10px;
+    //     shadow: 5px 5px 4px #000;
+    // }
 
-
-        background: {
-            color: $mainColor1-2;
-            image: url($bgImageTop);
-            size: 50px;
-            position: center;
-            repeat: repeat;
-        }
+    background: {
+      color: $mainColor1-2;
+      image: url($bgImageTop);
+      size: 50px;
+      position: center;
+      repeat: repeat;
     }
-    h2{
-        @extend .box-basic;
-        font-size: $fontSize3;
-        position: relative;
-        span{
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            &:nth-of-type(1) {
-                top: 0;
-                left: 0;
-            }
-            &:nth-of-type(2) {
-                top: 0;
-                right: 0;
-            }
-            &:nth-of-type(3) {
-                bottom: 0;
-                left: 0;
-            }
-            &:nth-of-type(4) {
-                bottom: 0;
-                right: 0;
-            }
+  }
+  h2 {
+    @extend .box-basic;
+    font-size: $fontSize3;
+    position: relative;
+    span {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+          @if ($i==1 or $i == 2) {
+            top: -30px;
+          }
+          @if ($i==1 or $i == 3) {
+            left: 0;
+          }
+          @if ($i==2 or $i == 4) {
+            right: 0;
+          }
+          @if ($i==3 or $i == 4) {
+            bottom: 0;
+          }
         }
+      }
+      // &:nth-of-type(1) {
+      //     top: 0;
+      //     left: 0;
+      // }
+      // &:nth-of-type(2) {
+      //     top: 0;
+      //     right: 0;
+      // }
+      // &:nth-of-type(3) {
+      //     bottom: 0;
+      //     left: 0;
+      // }
+      // &:nth-of-type(4) {
+      //     bottom: 0;
+      //     right: 0;
+      // }
     }
+  }
 }
 
 /* @include 믹스인 포함 */
 .main-area {
-    section{
-        @include box-border(pink);
-        margin-bottom: 20px;
-        padding: 20px;
-    }
-    h3{
-        @include title-text(darkblue,true);
+  section {
+    @include box-border(pink);
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  h3 {
+    @include title-text(darkblue, true);
+  }
+  ul,
+  ol,
+  p {
+    line-height: 2;
+    font-size: 24px;
+    li {
+      text-decoration: underline;
+      text-underline-offset: 10px;
+      text-decoration-thickness: 5px;
+      text-align: center;
+      background-color: #ff0;
+      // 네스팅 이어붙이기 기법(&:)
+      // 가상요소,가상클래스,특정클래스를
+      // 다시 셋팅할 수 있는 방법
+      // &(앰퍼센드)는 현재선택요소 자신을 가리킴!
 
+      // 선택자에 연속으로 사용할 가상요소는
+      // &를 붙여서 쓴다!
+      &:first-child {
+        color: orchid;
+        font-weight: bold;
+        text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+      }
+      &::before {
+        content: "😁";
+      }
     }
-    ul,ol,p{
-        line-height: 2;
-        font-size: 24px;
-        li{
-            text-decoration: underline;
-            text-underline-offset: 10px;
-            text-decoration-thickness: 5px;
-            text-align: center;
-            background-color: #ff0;
-            // 네스팅 이어붙이기 기법(&:)
-            // 가상요소,가상클래스,특정클래스를
-            // 다시 셋팅할 수 있는 방법
-            // &(앰퍼센드)는 현재선택요소 자신을 가리킴!
-
-            // 선택자에 연속으로 사용할 가상요소는
-            // &를 붙여서 쓴다!
-            &:first-child{
-                color: orchid;
-                font-weight: bold;
-                text-shadow: 1px 0 #000,-1px 0 #000,0 1px #000,0 -1px #000,;
-            }
-            &::before{
-                content: '😁';
-            }
-        }
-        @for $i from 2 through 5{
-            li:nth-child(#{$i}){
-              border-left: ($i * 20px) solid red;
-              border-right: ($i * 20px) solid red;
-            }
-          }
+    @for $i from 2 through 5 {
+      li:nth-child(#{$i}) {
+        border-left: ($i * 20px) solid red;
+        border-right: ($i * 20px) solid red;
+      }
     }
+  }
 }
 
 /* 6. 반복코드 확장 @extend 
 다중적용시 클래스를 여러개 지정할 필요없음 */
-.button-basic  {
-    display: inline-block;
-    border: 1px solid #222;
-    border-radius: 20px;
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 20px;
-    // &:hover는 선택요소 오버시 연결코딩
-    &:hover{
-        background-color: hotpink;
-        text: {
-            decoration: overline;
-            decoration-style: wavy;
-        }
-    }
-
-    &.my{
-        text-decoration: underline;
-        text-decoration-style: dotted;
-        text-underline-offset: 10px;
-        text-decoration-thickness: 5px;
+.button-basic {
+  display: inline-block;
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+  // &:hover는 선택요소 오버시 연결코딩
+  &:hover {
+    background-color: hotpink;
+    text: {
+      decoration: overline;
+      decoration-style: wavy;
     }
   }
 
-  .box-basic {    
-    text-align: center;
-    padding: 20px 0;
+  &.my {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 5px;
   }
-  
-  .button-report  {
-    @extend .button-basic;
-    background-color: orange;
-    color: #fff;
-  }
+}
 
-  .button-box{
-    @extend .box-basic;
-    background-image: linear-gradient(to bottom, lightgreen, transparent);
-  }
+.box-basic {
+  text-align: center;
+  padding: 20px 0;
+}
 
-  .bottom-title{
-    @extend .box-basic;
-    @include title-text;
-  }
+.button-report {
+  @extend .button-basic;
+  background-color: orange;
+  color: #fff;
+}
 
-  @each $key, $color in $colors {
-    .#{$key}-circle {background-color: $color;}
+.button-box {
+  @extend .box-basic;
+  background-image: linear-gradient(to bottom, lightgreen, transparent);
+}
+
+.bottom-title {
+  @extend .box-basic;
+  @include title-text;
+}
+
+@each $key, $color in $colors {
+  .#{$key}-circle {
+    background-color: $color;
   }
+}

@@ -79,20 +79,20 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
 }
 .top-area h2 span:nth-of-type(1) {
-  top: 0;
+  top: -30px;
   left: 0;
 }
 .top-area h2 span:nth-of-type(2) {
-  top: 0;
+  top: -30px;
   right: 0;
 }
 .top-area h2 span:nth-of-type(3) {
-  bottom: 0;
   left: 0;
+  bottom: 0;
 }
 .top-area h2 span:nth-of-type(4) {
-  bottom: 0;
   right: 0;
+  bottom: 0;
 }
 
 /* @include 믹스인 포함 */
@@ -116,38 +116,54 @@ h1, h2, h3, h4, h5, h6 {
 .main-area h3::before {
   content: "❤️";
 }
-.main-area ul, .main-area ol, .main-area p {
+.main-area ul,
+.main-area ol,
+.main-area p {
   line-height: 2;
   font-size: 24px;
 }
-.main-area ul li, .main-area ol li, .main-area p li {
+.main-area ul li,
+.main-area ol li,
+.main-area p li {
   text-decoration: underline;
   text-underline-offset: 10px;
   text-decoration-thickness: 5px;
   text-align: center;
   background-color: #ff0;
 }
-.main-area ul li:first-child, .main-area ol li:first-child, .main-area p li:first-child {
+.main-area ul li:first-child,
+.main-area ol li:first-child,
+.main-area p li:first-child {
   color: orchid;
   font-weight: bold;
   text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
 }
-.main-area ul li::before, .main-area ol li::before, .main-area p li::before {
+.main-area ul li::before,
+.main-area ol li::before,
+.main-area p li::before {
   content: "😁";
 }
-.main-area ul li:nth-child(2), .main-area ol li:nth-child(2), .main-area p li:nth-child(2) {
+.main-area ul li:nth-child(2),
+.main-area ol li:nth-child(2),
+.main-area p li:nth-child(2) {
   border-left: 40px solid red;
   border-right: 40px solid red;
 }
-.main-area ul li:nth-child(3), .main-area ol li:nth-child(3), .main-area p li:nth-child(3) {
+.main-area ul li:nth-child(3),
+.main-area ol li:nth-child(3),
+.main-area p li:nth-child(3) {
   border-left: 60px solid red;
   border-right: 60px solid red;
 }
-.main-area ul li:nth-child(4), .main-area ol li:nth-child(4), .main-area p li:nth-child(4) {
+.main-area ul li:nth-child(4),
+.main-area ol li:nth-child(4),
+.main-area p li:nth-child(4) {
   border-left: 80px solid red;
   border-right: 80px solid red;
 }
-.main-area ul li:nth-child(5), .main-area ol li:nth-child(5), .main-area p li:nth-child(5) {
+.main-area ul li:nth-child(5),
+.main-area ol li:nth-child(5),
+.main-area p li:nth-child(5) {
   border-left: 100px solid red;
   border-right: 100px solid red;
 }
